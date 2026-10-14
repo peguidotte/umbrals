@@ -134,6 +134,10 @@ class AssetPipelineTests(unittest.TestCase):
         self.path.write_text(self.path.read_text().replace('"fps": 30', '"fps": NaN'))
         with self.assertRaisesRegex(AssetError, "Non-finite"):validate(self.root)
 
+    def test_rejects_overflowed_json_number(self):
+        self.path.write_text(self.path.read_text().replace('"fps": 30', '"fps": 1e400'))
+        with self.assertRaisesRegex(AssetError, "Non-finite"):validate(self.root)
+
     def test_published_release_and_schema_are_immutable(self):
         base = self.commit_base()
         self.data["description"] = "Replaced old art";self.save();build(self.root)

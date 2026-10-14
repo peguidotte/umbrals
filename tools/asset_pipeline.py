@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import re
 import subprocess
 from pathlib import Path, PurePosixPath
@@ -21,6 +22,13 @@ class AssetError(ValueError):
 
 
 def read_json(path: Path) -> Any:
+    def invalid_number(value: str) -> None:
+        raise AssetError(f"Non-finite JSON number: {value}")
+    def finite_number(value: str) -> float:
+        parsed = float(value)
+        if not math.isfinite(parsed):
+            invalid_number(value)
+        return parsed
     def unique(pairs: list) -> dict:
         result = {}
         for key, value in pairs:
@@ -29,7 +37,7 @@ def read_json(path: Path) -> Any:
             result[key] = value
         return result
     return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=unique,
-                      parse_constant=lambda value: (_ for _ in ()).throw(AssetError(f"Non-finite JSON number: {value}")))
+                      parse_constant=invalid_number, parse_float=finite_number)
 
 
 def write_json(path: Path, value: Any) -> None:

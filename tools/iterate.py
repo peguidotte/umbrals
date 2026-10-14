@@ -216,7 +216,7 @@ def main():
                 status = run_command(argv, log)
             report['steps'].append({'name':name,'exit_code':status,'seconds':round(time.monotonic()-step_start,2),'command':argv})
             if name == 'rules-and-ui':
-                for filename in ['asset-report.json','rules.log','mutation-report.json','ui-report.json','ui_state_test.log','ui_flow_test.log','startup_smoke.log','import.log']:
+                for filename in ['asset-report.json','asset-unit-report.json','asset_catalog_test.log','rules.log','mutation-report.json','ui-report.json','ui_state_test.log','ui_flow_test.log','startup_smoke.log','import.log']:
                     if (ROOT / 'test-results' / filename).exists():
                         shutil.copy2(ROOT / 'test-results' / filename, out / 'logs' / filename)
             if name == 'web-export' and status == 0:

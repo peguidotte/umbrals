@@ -25,6 +25,8 @@ Os objetivos e a rubrica estão em `docs/ux-contracts.json`. O navegador usa cli
 
 Os gates incluem orçamento de energia, efeitos sem dupla conjuração, cancelamentos preservando a run, captura/evolução/substituição, foco, ordem das camadas, títulos das cartas, contraste de botões sólidos, persistência, opções aplicadas às cartas atuais e pools limitados. Cinco formatos são exercitados em menu, combate, pausa, opções e texto ampliado. A suíte Godot injeta eventos de controle para testar roteamento; não comprova controle físico. Erros e testes vazios falham, e fontes modificadas durante a execução invalidam a tentativa.
 
+Antes de recarregar a página nos testes de persistência, o harness lê o registro correspondente no IndexedDB até os bytes gravados refletirem as preferências/estatísticas esperadas. A sincronização de `userfs` do Godot é assíncrona. Essa espera usa transações somente de leitura, não força gravação nem altera o jogo; as verificações após reload continuam obrigatórias. Logs do catálogo de assets e de seus testes também acompanham cada iteração.
+
 O relatório distingue gates automáticos de revisão estética. Observe renders em tamanho real e o vídeo: prioridade da arena, colisões de texto, escolhas claras, duração de feedback e consequências das recompensas. Compare com a versão anterior e registre o que melhorou e o que piorou. Uma diferença de pixels só mostra mudança. Beleza, diversão, acessibilidade completa e performance em hardware exigem avaliação própria; não recebem um número automático.
 
 ## Ferramentas

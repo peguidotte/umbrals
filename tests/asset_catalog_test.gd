@@ -1,6 +1,7 @@
 extends SceneTree
 const Assets = preload("res://scripts/assets/catalog.gd")
 const Paths = preload("res://scripts/assets/binding_paths.gd")
+const Content = preload("res://scripts/content.gd")
 var checks: int = 0
 var failed: int = 0
 
@@ -13,6 +14,13 @@ func expect(value: bool, description: String) -> void:
 func _init() -> void:
 	for binding: String in Paths.PATHS:
 		expect(Assets.resource(binding) != null, "Pinned resource loads: " + binding)
+	for species: Dictionary in Content.SPECIES.values():
+		for art: String in species.art:
+			expect(Assets.texture(art) != null, "Every species and evolution has a pinned portrait: " + art)
+	for power: Dictionary in Content.POWERS.values():
+		expect(Assets.texture(power.art) != null, "Every power has a pinned illustration: " + power.art)
+	for enemy: Dictionary in Content.ENCOUNTERS:
+		expect(Assets.texture(enemy.art) != null, "Every encounter has a pinned character: " + enemy.art)
 	var catalog: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/catalog.json"))
 	for asset_id: String in catalog.modules:
 		for version: String in catalog.modules[asset_id].versions:
