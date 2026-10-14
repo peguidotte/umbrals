@@ -1,6 +1,7 @@
 extends SceneTree
 const Stack = preload("res://scripts/ui/screen_stack.gd")
 const Preferences = preload("res://scripts/ui/preferences.gd")
+const Storage = preload("res://scripts/storage.gd")
 var checks: int = 0
 var failed: int = 0
 
@@ -37,5 +38,26 @@ func _init() -> void:
 	loaded.load_saved()
 	expect(loaded.values.reduced_motion and loaded.values.large_text and loaded.values.music == 0, "Valid local preferences survive loading")
 	expect(is_equal_approx(loaded.text_scale(), 1.12), "Large text has an explicit scaling policy")
+	var current_path: String = "user://storage_test.json"
+	var legacy_path: String = "user://legacy_storage_test.json"
+	var legacy: Dictionary = {"runs": 3, "wins": 1}
+	expect(Storage.read_json(current_path, "test.storage").is_empty(), "Missing saves start with empty data")
+	expect(Storage.write_json(legacy_path, "test.legacy", legacy), "Legacy fixture is written atomically")
+	var restored: Dictionary = Storage.read_json(current_path, "test.storage", legacy_path)
+	expect(restored.get("runs") == 3 and restored.get("wins") == 1 and restored.size() == 2, "An existing legacy save remains readable")
+	var current: Dictionary = {"runs": 4, "wins": 2}
+	expect(Storage.write_json(current_path, "test.storage", current), "New records are committed to their native file")
+	restored = Storage.read_json(current_path, "test.storage", legacy_path)
+	expect(restored.get("runs") == 4 and restored.get("wins") == 2 and restored.size() == 2, "The current save takes precedence over legacy data")
+	var corrupt = FileAccess.open(current_path, FileAccess.WRITE)
+	corrupt.store_string("[]")
+	corrupt.close()
+	restored = Storage.read_json(current_path, "test.storage", legacy_path)
+	expect(restored.get("runs") == 3 and restored.get("wins") == 1 and restored.size() == 2, "Invalid current save shapes recover from legacy data")
+	Storage.write_json(Preferences.PATH, Preferences.WEB_KEY, {"music": 99, "large_text": "true", "flashes": 1})
+	var validated = Preferences.new()
+	validated.load_saved()
+	expect(validated.values.music == 1.0, "Stored volume is validated and clamped after loading")
+	expect(not validated.values.large_text and not validated.values.flashes, "Stored invalid booleans preserve safe defaults")
 	print(JSON.stringify({"suite": "ui_state", "checks": checks, "failed": failed}))
 	quit(0 if failed == 0 else 1)

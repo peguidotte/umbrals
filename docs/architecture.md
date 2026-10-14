@@ -10,6 +10,8 @@
 
 There are no network services, credentials or analytics endpoints. JSON gameplay logs go to stdout. Saves contain completed runs, wins, best applied damage and a separate validated preferences file. No personal data is collected. The Godot project lives at the standalone repository root. The legacy native user-data location is preserved so moving the source does not reset existing saves.
 
+`scripts/storage.gd` stores small JSON records atomically on desktop and synchronously in browser `localStorage` on Web. Web `FileAccess` writes depend on an asynchronous IndexedDB sync; navigating immediately could otherwise restore an older record. Preferences and statistics have separate versioned keys. Existing Godot files remain readable as a fallback for migration, and callers validate loaded fields before applying them. Storage errors leave the current session usable and emit a warning; they must not be described as a successful save.
+
 ## Individuals and content
 
 Each individual has `uid`, `species`, `passive`, `stage`. A species trait is fixed; its strength changes at stage 2. A passive belongs to that individual. Capture creates a new UID with a seeded passive roll; evolution preserves UID and passive. Passive pools exclude meaningless rolls: Vital is offered to Musgo, whose powers can heal.

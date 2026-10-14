@@ -98,42 +98,6 @@ try:
             wait(f"window.umbralState.version === '{version}' && window.umbralState.screen === 'menu'", timeout=90000)
             page.wait_for_timeout(200)
 
-        def wait_saved(filename, expected):
-            # Godot's userfs -> IndexedDB sync is asynchronous. Observe committed
-            # bytes before unloading; never force a save or mutate browser state.
-            page.wait_for_function('''async ({filename, expected}) => {
-                for (const info of await indexedDB.databases()) {
-                    if (!info.name) continue;
-                    const db = await new Promise((resolve, reject) => {
-                        const request = indexedDB.open(info.name);
-                        request.onsuccess = () => resolve(request.result);
-                        request.onerror = () => reject(request.error);
-                        request.onupgradeneeded = () => request.transaction.abort();
-                    });
-                    try {
-                        if (!db.objectStoreNames.contains('FILE_DATA')) continue;
-                        const saved = await new Promise((resolve, reject) => {
-                            const transaction = db.transaction('FILE_DATA', 'readonly');
-                            const request = transaction.objectStore('FILE_DATA').openCursor();
-                            request.onerror = () => reject(request.error);
-                            request.onsuccess = () => {
-                                const row = request.result;
-                                if (!row) return resolve(false);
-                                if (String(row.key).endsWith('/' + filename)) {
-                                    try {
-                                        const data = JSON.parse(new TextDecoder().decode(row.value.contents));
-                                        return resolve(Object.entries(expected).every(([key,value]) => data[key] === value));
-                                    } catch (_) { return resolve(false); }
-                                }
-                                row.continue();
-                            };
-                        });
-                        if (saved) return true;
-                    } finally { db.close(); }
-                }
-                return false;
-            }''', arg={'filename': filename, 'expected': expected}, timeout=20000, polling=250)
-
         def key(value):
             serial = state()['input_serial']
             page.keyboard.press(value)
@@ -207,14 +171,17 @@ try:
         click('settings.large_text')
         check(state()['preferences']['reduced_motion'] and state()['preferences']['large_text'], 'Accessibility preferences respond to actual controls')
         geometry('Large-text options')
-        shot('03-options-large')
-        wait_saved('umbral_preferences_v1.json', state()['preferences'])
+        # Reload before screenshots or delays can hide an asynchronous save race.
         load()
         check(state()['preferences']['reduced_motion'] and state()['preferences']['large_text'], 'Accessibility preferences persist after reload')
         check(math.isclose(state()['preferences']['music'], before_volume + .05, abs_tol=.001), 'Volume preference persists after reload')
         click('menu.settings')
+        shot('03-options-large')
         click('settings.reduced_motion')
         click('settings.large_text')
+        load()
+        check(not state()['preferences']['reduced_motion'] and not state()['preferences']['large_text'], 'Disabling accessibility preferences also survives a rapid reload')
+        click('menu.settings')
         back('menu')
         click('menu.help')
         wait("window.umbralState.screen === 'help'")
@@ -348,7 +315,6 @@ try:
         shot('13-victory')
         page.wait_for_timeout(650)
         check(state()['feedback']['trauma']==0, 'Shake returns to rest')
-        wait_saved('umbral_stats_v1.json', state()['stats'])
         load()
         check(state()['stats']['wins']==1, 'Statistics persist through a browser reload')
         start()

@@ -1,5 +1,7 @@
 # Umbral: Ecos do Bosque
 
+[![CI do Umbral](https://github.com/peguidotte/umbrals/actions/workflows/umbral.yml/badge.svg)](https://github.com/peguidotte/umbrals/actions/workflows/umbral.yml)
+
 Roguelike 2D de poderes e criaturas, em português. Cada **Umbral** tem um trait da espécie, uma passiva individual e uma evolução que desbloqueia outro poder. Versão **0.3.0**, em **Godot 4.6.3 / GDScript**. O projeto tem repositório próprio: `project.godot`, código, assets, testes, skills e harness ficam na raiz.
 
 O jogo abre em um menu na floresta. O combate tem criaturas em cena, HUD compacto, cartas em leque, previsão de consequências e impactos curtos. Pausa, grimório, inspeção e opções compartilham navegação por foco. Música, efeitos, movimento reduzido, flashes opcionais e texto ampliado ficam nas opções e persistem entre sessões.
@@ -47,6 +49,8 @@ python tools/serve.py
 
 O harness Web joga por cliques e teclado reais. Verifica menu, opções, pausa, foco, energia, camadas, captura, evolução, assinatura, save após reload e substituição/cancelamento. Exercita cinco formatos de tela, incluindo 720p, 4:3 e ultrawide, com texto ampliado. Evidências e builds são ignorados no Git. Gates automáticos não atribuem nota de beleza ou diversão: a revisão dos renders e do vídeo registra a decisão.
 
+O [CI](docs/ci.md) apresenta resultados no resumo da execução, preserva evidências de falhas e entrega os bundles Web, Windows e Linux como artifacts. Inclui regressão de recarga rápida das preferências e smoke test do executável Linux.
+
 Se as ferramentas não estiverem disponíveis, no Linux x86_64:
 
 ```bash
@@ -65,4 +69,4 @@ O bootstrap usa artefatos oficiais e valida SHA-512. O download inicial de templ
 
 MVP com 3 espécies, 3 evoluções, 12 poderes e 5 passivas; a run continua curta. O bot heurístico usa dano, escudo e cura, mas simulações não comprovam diversão nem balanceamento final. Criaturas/poderes são vetores originais; a floresta foi gerada com Image Gen; música ambiente e efeitos usam síntese original. Não há mapa ramificado, loja, remapeamento de controles, save de uma run em andamento ou Steamworks. Apenas preferências e estatísticas são salvas.
 
-O build Windows é exportado sem assinatura e precisa de playtest em Windows. Navegação por controle tem teste com eventos Godot simulados; falta controle físico. O render Web é validado com Chromium/software WebGL; performance e áudio em hardware real ainda exigem avaliação. O CI está preparado, mas só executa remotamente após envio ao GitHub.
+O build Windows é exportado sem assinatura e precisa de playtest em Windows. Navegação por controle tem teste com eventos Godot simulados; falta controle físico. O render Web é validado com Chromium/software WebGL; performance e áudio em hardware real ainda exigem avaliação. Consulte o badge e a execução correspondente ao commit para verificar o resultado remoto do CI.

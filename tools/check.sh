@@ -4,6 +4,8 @@ cd "$(dirname "$0")/.."
 source tools/environment.sh
 mkdir -p test-results
 touch test-results/.gdignore
+# Root reports describe this attempt; earlier iteration evidence stays in artifacts/.
+rm -f test-results/{asset-report.json,asset-unit-report.json,asset_catalog_test.log,rules.log,mutation-report.json,ui-report.json,ui_state_test.log,ui_flow_test.log,startup_smoke.log,import.log}
 python - <<'PY'
 import json, unittest
 from pathlib import Path
