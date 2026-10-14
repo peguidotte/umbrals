@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "creature portrait",
+  "files": {
+    "portrait": {
+      "bytes": 1536,
+      "kind": "texture",
+      "path": "portrait.svg",
+      "provenance": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "sha256": "fe12c24c74a852c1ac0551e1ecb7f1bd7fe88d35ccc812a5e9b6eba04c5ef7a5",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "umbrals/volt",
+  "provenance": {
+    "kind": "authored original vector",
+    "license": "Original project asset; no external samples or game artwork.",
+    "tool": "tools/generate_assets.py"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

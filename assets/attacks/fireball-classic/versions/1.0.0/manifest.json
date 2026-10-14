@@ -1,0 +1,174 @@
+{
+  "animations": {
+    "charge": {
+      "columns": 5,
+      "display_size": [
+        384,
+        384
+      ],
+      "file": "charge",
+      "fps": 30,
+      "frame_size": [
+        384,
+        384
+      ],
+      "frames": 20,
+      "loop": false,
+      "pivot": [
+        192,
+        192
+      ]
+    },
+    "impact": {
+      "columns": 6,
+      "display_size": [
+        512,
+        512
+      ],
+      "file": "impact",
+      "fps": 30,
+      "frame_size": [
+        512,
+        512
+      ],
+      "frames": 36,
+      "loop": false,
+      "pivot": [
+        256,
+        256
+      ]
+    },
+    "projectile": {
+      "columns": 6,
+      "display_size": [
+        512,
+        320
+      ],
+      "file": "projectile",
+      "fps": 30,
+      "frame_size": [
+        512,
+        320
+      ],
+      "frames": 24,
+      "loop": true,
+      "pivot": [
+        348,
+        160
+      ]
+    }
+  },
+  "dependencies": [],
+  "description": "Classic fireball study",
+  "files": {
+    "charge": {
+      "bytes": 406918,
+      "kind": "texture",
+      "path": "charge.png",
+      "sha256": "b92741cf78ea7b5a7962849e27361a6632b45a1c17b40c9dd72f7c1a0a0a3006",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1920,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "impact": {
+      "bytes": 1929372,
+      "kind": "texture",
+      "path": "impact.png",
+      "sha256": "c89703a8546849e733ce77025811f33bbfa40117b7de30d2deb086377d587c2f",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3072,
+          3072
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "projectile": {
+      "bytes": 1107322,
+      "kind": "texture",
+      "path": "projectile.png",
+      "sha256": "e3e634843248fd1343fd0f7664b254329b874903cbcbed23f55981af67babe99",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3072,
+          1280
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "review-preview-gif": {
+      "bytes": 998344,
+      "kind": "review",
+      "path": "review/preview.gif",
+      "sha256": "b79c1f6ecb0e84f2e59833f7ffd342a62e26531ab132de5578549ab94a6e9829",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          432
+        ],
+        "frames": 77,
+        "mode": "P"
+      }
+    },
+    "review-preview-mp4": {
+      "bytes": 186832,
+      "kind": "review",
+      "path": "review/preview.mp4",
+      "sha256": "83e328b49c88de2ae6ebb86e96cfe9a32a8b0640b1ad0966c8fe138dee6ac233"
+    },
+    "review-transparent-webp": {
+      "bytes": 4429700,
+      "kind": "review",
+      "path": "review/transparent.webp",
+      "sha256": "bf17d374bc2b8eaf2b10534b85893abd293643b77562af36be5d6555ec3ff122",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          960,
+          540
+        ],
+        "frames": 80,
+        "mode": "RGBA"
+      }
+    },
+    "source-metadata": {
+      "bytes": 868,
+      "kind": "data",
+      "path": "source-metadata.json",
+      "sha256": "4c6bce4389e1e14d16c6a9800f6dfc0dbc457cd586a148e1fea4c67f666877a9"
+    }
+  },
+  "id": "attacks/fireball-classic",
+  "metadata": {
+    "duration_ms": 3200,
+    "gameplay_power": "fireball",
+    "original_metadata_role": "source-metadata",
+    "source_iteration": 1,
+    "timing": {
+      "chargeMs": 667,
+      "flightMs": 800,
+      "impactMs": 1200,
+      "pauseMs": 533
+    }
+  },
+  "provenance": {
+    "kind": "original procedural 2D VFX",
+    "license": "Original session-authored art; no external game sprites.",
+    "review_context": "Standalone animation study, not final Umbrals species art.",
+    "tool": "tools/asset_authoring"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "1.0.0"
+}

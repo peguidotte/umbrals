@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "creature portrait",
+  "files": {
+    "portrait": {
+      "bytes": 1416,
+      "kind": "texture",
+      "path": "portrait.svg",
+      "provenance": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "sha256": "b27e17b2961498669ada331e0efa5551a50b4bcf67110ebea9353ed2a05151b8",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "characters/owl",
+  "provenance": {
+    "kind": "authored original vector",
+    "license": "Original project asset; no external samples or game artwork.",
+    "tool": "tools/generate_assets.py"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

@@ -1,5 +1,6 @@
 class_name UmbralAudio
 extends Node
+const Assets = preload("res://scripts/assets/catalog.gd")
 var voices: Array[AudioStreamPlayer] = []
 var ui_voice: AudioStreamPlayer
 var music: AudioStreamPlayer
@@ -46,7 +47,7 @@ func _loop(name: String, volume: float) -> AudioStreamPlayer:
 	var player = AudioStreamPlayer.new()
 	player.bus = "Music"
 	player.volume_db = volume
-	var stream: AudioStreamWAV = load("res://assets/%s.wav" % name)
+	var stream: AudioStreamWAV = Assets.resource("audio/" + name.replace("_", "-"))
 	stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 	stream.loop_end = int(stream.data.size() / 2)
 	player.stream = stream
@@ -71,7 +72,7 @@ func play(name: String, small: bool = false) -> void:
 	var player: AudioStreamPlayer = ui_voice if small else voices[voice_index % voices.size()]
 	voice_index += 1
 	player.pitch_scale = [0.98, 1.0, 1.025, 1.01][voice_index % 4]
-	player.stream = load("res://assets/%s.wav" % name)
+	player.stream = Assets.resource("audio/" + name.replace("_", "-"))
 	player.play()
 
 func set_boss(active: bool) -> void:

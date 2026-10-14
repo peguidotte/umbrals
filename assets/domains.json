@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "domains": {
+    "attacks": "Poderes ativos: ilustrações, preparação, projéteis, rastros e impactos.",
+    "characters": "Personagens, inimigos e rigs de demonstração; não define espécies de Umbral.",
+    "umbrals": "Arte de espécies e formas evoluídas dos Umbrals.",
+    "traits": "Apresentação de traços específicos de espécie.",
+    "passives": "Apresentação de passivas dos indivíduos, preservadas na evolução.",
+    "items": "Ícones, modelos e efeitos de itens e equipamentos.",
+    "audio": "Sons e música reutilizáveis, com procedência e parâmetros PCM.",
+    "world": "Cenários e ambientes.",
+    "fonts": "Famílias tipográficas e suas licenças.",
+    "ui": "Elementos visuais compartilhados da interface."
+  }
+}

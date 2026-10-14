@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "event sound",
+  "files": {
+    "sound": {
+      "bytes": 2248,
+      "kind": "audio",
+      "path": "sound.wav",
+      "provenance": {
+        "kind": "original deterministic PCM synthesis",
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
+      },
+      "sha256": "f3f5adcddabd142c696d58b9ad7013c7c22deb64ac7369604306a9abab1712fe",
+      "technical": {
+        "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
+        "seconds": 0.05
+      }
+    }
+  },
+  "id": "audio/hover",
+  "provenance": {
+    "kind": "original deterministic PCM synthesis",
+    "license": "Original project asset; no external samples.",
+    "tool": "tools/generate_audio.py"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

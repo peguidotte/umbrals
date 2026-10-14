@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "creature portrait",
+  "files": {
+    "portrait": {
+      "bytes": 1571,
+      "kind": "texture",
+      "path": "portrait.svg",
+      "provenance": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "sha256": "67706908ab5d5fb285848cdc47546034b3065e73fc75b942083d81584c3e0c12",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "umbrals/tempestral",
+  "provenance": {
+    "kind": "authored original vector",
+    "license": "Original project asset; no external samples or game artwork.",
+    "tool": "tools/generate_assets.py"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

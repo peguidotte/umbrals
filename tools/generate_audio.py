@@ -1,12 +1,18 @@
 """Original, bounded PCM synthesis for Umbral's UI, magic, impacts and ambience."""
 import json
+import argparse
 import math
 from pathlib import Path
 import random
 import struct
 import wave
 
-ROOT = Path(__file__).resolve().parents[1]
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--output", type=Path, default=Path(__file__).resolve().parents[1] / "builds/asset-work/audio")
+ROOT = parser.parse_args().output.resolve()
+if ROOT.is_relative_to(Path(__file__).resolve().parents[1] / "assets"):
+    parser.error("Generate into staging, then create a new version with tools/assets.py")
+ROOT.mkdir(parents=True, exist_ok=True)
 SAMPLE_RATE = 22050
 records = []
 
@@ -22,7 +28,7 @@ def write(name, duration, sample):
         maximum = max(maximum, abs(value))
         energy += value * value
         frames.extend(struct.pack('<h', value))
-    with wave.open(str(ROOT / 'assets' / f'{name}.wav'), 'wb') as output:
+    with wave.open(str(ROOT / f'{name}.wav'), 'wb') as output:
         output.setparams((1, 2, SAMPLE_RATE, 0, 'NONE', 'not compressed'))
         output.writeframes(frames)
     records.append({'asset': name, 'seconds': duration, 'peak_dbfs': round(20 * math.log10(maximum / 32767), 2), 'clipped_samples': 0})
@@ -50,5 +56,5 @@ def pad(t, _):
 
 write('ambience', 12, pad)
 write('boss_pulse', 12, lambda t, _: .14 * math.exp(-((t % .75) * 18)) * math.sin(2 * math.pi * 73.333333 * t) * min(1, t / .2, (12-t) / .2))
-(ROOT / 'assets/audio-manifest.json').write_text(json.dumps({'source': 'original deterministic synthesis', 'sample_rate': SAMPLE_RATE, 'mono': True, 'assets': records}, indent=2))
+(ROOT / 'audio-manifest.json').write_text(json.dumps({'source': 'original deterministic synthesis', 'sample_rate': SAMPLE_RATE, 'mono': True, 'assets': records}, indent=2))
 print(f'Generated {len(records)} original audio assets; every source peaks below 0 dBFS.')

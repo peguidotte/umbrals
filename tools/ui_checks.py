@@ -7,7 +7,7 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 reports = []
-for script in ('ui_state_test.gd', 'ui_flow_test.gd', 'startup_smoke.gd'):
+for script in ('asset_catalog_test.gd', 'ui_state_test.gd', 'ui_flow_test.gd', 'startup_smoke.gd'):
     with tempfile.TemporaryDirectory(prefix='umbral-ui-test-') as temporary:
         env = dict(os.environ)
         env['XDG_DATA_HOME'] = str(Path(temporary) / 'data')

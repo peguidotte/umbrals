@@ -1,0 +1,68 @@
+{
+  "animations": {
+    "pike-somersault": {
+      "columns": 8,
+      "display_size": [
+        384,
+        384
+      ],
+      "file": "pike-somersault",
+      "fps": 30,
+      "frame_size": [
+        256,
+        256
+      ],
+      "frames": 126,
+      "loop": false,
+      "low_file": "pike-somersault-low",
+      "pivot": [
+        128,
+        128
+      ]
+    }
+  },
+  "dependencies": [],
+  "description": "Demonstration acrobatic Umbral rig",
+  "files": {
+    "pike-somersault": {
+      "bytes": 1241875,
+      "kind": "texture",
+      "path": "pike-somersault.png",
+      "sha256": "c41d4d48e1f6f3a8c39b37026242b61081b774045e5b6237189cee812820d4e6",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2048,
+          4096
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "pike-somersault-low": {
+      "bytes": 462047,
+      "kind": "texture",
+      "path": "pike-somersault-low.png",
+      "sha256": "6f6c31775ec4781b0af1e7a60dc029294b5050d39a6e57e84a5efe9423119e9b",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          2048
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/demo-acrobat",
+  "provenance": {
+    "kind": "original procedural 2D VFX",
+    "license": "Original session-authored art; no external game sprites.",
+    "review_context": "Standalone animation study, not final Umbrals species art.",
+    "tool": "tools/asset_authoring"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "1.0.0"
+}

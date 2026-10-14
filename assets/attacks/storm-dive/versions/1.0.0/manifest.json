@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "power illustration",
+  "files": {
+    "icon": {
+      "bytes": 657,
+      "kind": "texture",
+      "path": "icon.svg",
+      "provenance": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "sha256": "1f36d281534b5da29f45a60472756413a3cd62b43501dd61c36e81825c210bfd",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "attacks/storm-dive",
+  "provenance": {
+    "kind": "authored original vector",
+    "license": "Original project asset; no external samples or game artwork.",
+    "tool": "tools/generate_assets.py"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

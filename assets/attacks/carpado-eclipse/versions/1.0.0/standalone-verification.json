@@ -1,0 +1,26 @@
+{
+  "asset_validation": true,
+  "forward_rotation_degrees": 360,
+  "pike_knees_straight": true,
+  "heel_contact_error_px": 0,
+  "gif_duration_ms": 4210,
+  "video_duration_s": 4.2,
+  "active_high_atlas_memory_mib": 61.6875,
+  "active_low_atlas_memory_mib": 15.421875,
+  "gpu_and_target_mobile_profile": "not measured",
+  "browser_behavior": {
+    "exact_contact_event": true,
+    "mirrored_heel_contact": true,
+    "cancel_fade_ms": 150,
+    "repeated_attacks": 20,
+    "sprite_draw_calls_peak": 5
+  },
+  "low_quality_no_afterimages": true,
+  "reduced_motion_no_autoplay": true,
+  "browser_page_errors": [],
+  "js_draw_timing": {
+    "samples": 204,
+    "p95_js_draw_ms": 5.599999999627471,
+    "scope": "JavaScript draw CPU only; GPU and device FPS unmeasured"
+  }
+}

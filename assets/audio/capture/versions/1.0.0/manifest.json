@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "event sound",
+  "files": {
+    "sound": {
+      "bytes": 22094,
+      "kind": "audio",
+      "path": "sound.wav",
+      "provenance": {
+        "kind": "original deterministic PCM synthesis",
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
+      },
+      "sha256": "09dafa093dd15b231634f789d37449313cfeec4fdb809ac5b0686217cdec21ef",
+      "technical": {
+        "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
+        "seconds": 0.5
+      }
+    }
+  },
+  "id": "audio/capture",
+  "provenance": {
+    "kind": "original deterministic PCM synthesis",
+    "license": "Original project asset; no external samples.",
+    "tool": "tools/generate_audio.py"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

@@ -1,10 +1,16 @@
 """Generate original vector creatures and short synthesized effects. No external art."""
 from pathlib import Path
+import argparse
 import math
 import struct
 import wave
 
-ROOT = Path(__file__).resolve().parents[1] / "assets"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--output", type=Path, default=Path(__file__).resolve().parents[1] / "builds/asset-work/vectors")
+ROOT = parser.parse_args().output.resolve()
+if ROOT.is_relative_to(Path(__file__).resolve().parents[1] / "assets"):
+    parser.error("Generate into staging, then create a new version with tools/assets.py")
+ROOT.mkdir(parents=True, exist_ok=True)
 
 
 def creature(name, color, shapes):

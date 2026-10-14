@@ -1,5 +1,6 @@
 class_name UmbralPowerCard
 extends Button
+const Assets = preload("res://scripts/assets/catalog.gd")
 const Content = preload("res://scripts/content.gd")
 const Rules = preload("res://scripts/rules.gd")
 const UI = preload("res://scripts/ui/kit.gd")
@@ -31,7 +32,7 @@ func configure(data: Dictionary, umbral: Dictionary, team: Array, large: float, 
 	individual = umbral
 	power = Content.power_stats(card.power, int(individual.stage))
 	effect = Rules.evaluate([card], team)
-	art_texture = load("res://assets/powers/%s.svg" % power.art)
+	art_texture = Assets.texture(power.art)
 	text_scale = large
 	reduced_motion = reduce
 	tooltip_text = "%s — %s\n%d dano · %d escudo · %d cura\nTrait: %s\nPassiva: %s\nC: inspeção detalhada" % [power.name.replace("\n", " "), Content.display_name(individual), effect.damage, effect.block, effect.heal, Content.trait_text(individual), Content.PASSIVES[individual.passive].description]

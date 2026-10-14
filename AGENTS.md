@@ -16,5 +16,7 @@
 - Do not turn pixel differences or test counts into a beauty/fun score. If a gate fails, fix the implementation or justified test synchronization; preserve the failed attempt.
 - Do not describe headless tests as visual validation or simulated wins as proof of fun.
 - Keep assets original or record their provenance in `assets/README.md` and `assets/asset-manifest.json`. Preserve original generated-media metadata and font licenses.
+- Asset architecture and authoring workflow: `docs/assets/README.md`. Each module has an immutable `assets/<domain>/<slug>/versions/<semver>/manifest.json`; create a new version instead of editing a version already in the base branch. Keep actors separate from attack effects and pin dependencies explicitly. Game rules and content remain in their existing scripts.
+- Update `assets/runtime-lock.json` deliberately; never resolve an asset through an implicit latest version. Run `python tools/assets.py build` after catalog changes and `python tools/assets.py validate --base-ref origin/main` before publishing. Generated indexes and Godot bindings are committed.
 - Never commit build output, iteration artifacts, credentials, machine-local paths or user saves.
 - Do not push, publish to Steam, or create a public release without authorization.

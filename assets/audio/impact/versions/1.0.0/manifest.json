@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "event sound",
+  "files": {
+    "sound": {
+      "bytes": 11068,
+      "kind": "audio",
+      "path": "sound.wav",
+      "provenance": {
+        "kind": "original deterministic PCM synthesis",
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
+      },
+      "sha256": "b05c2a33e106b40aaa006d645a4cb5dcbd0ade59ac914ab5b120e44333f062c3",
+      "technical": {
+        "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
+        "seconds": 0.25
+      }
+    }
+  },
+  "id": "audio/impact",
+  "provenance": {
+    "kind": "original deterministic PCM synthesis",
+    "license": "Original project asset; no external samples.",
+    "tool": "tools/generate_audio.py"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

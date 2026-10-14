@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "event sound",
+  "files": {
+    "sound": {
+      "bytes": 9746,
+      "kind": "audio",
+      "path": "sound.wav",
+      "provenance": {
+        "kind": "original deterministic PCM synthesis",
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
+      },
+      "sha256": "5fdb1b9660c9c43f57d17bed37b60bd8f297db5932de2c38065514edf91370b7",
+      "technical": {
+        "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
+        "seconds": 0.22
+      }
+    }
+  },
+  "id": "audio/leaf",
+  "provenance": {
+    "kind": "original deterministic PCM synthesis",
+    "license": "Original project asset; no external samples.",
+    "tool": "tools/generate_audio.py"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

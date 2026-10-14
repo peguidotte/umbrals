@@ -1,0 +1,48 @@
+{
+  "dependencies": [],
+  "description": "moonlit forest background",
+  "files": {
+    "background": {
+      "bytes": 2303981,
+      "kind": "texture",
+      "path": "background.png",
+      "provenance": {
+        "brief": "Illustrated blue-green moonlit forest clearing, ancient stone arch, layered botanical silhouettes, quiet dark foreground and lower area for native cards; light from upper right; no text, UI, characters or logos.",
+        "edit_history": "Copied the original PNG without resampling, cropping, recompression or metadata stripping. Aspect-cover happens only at render time.",
+        "kind": "generated original",
+        "license_record": "Generated service output under applicable service terms; no third-party game asset source.",
+        "model_version": "not exposed by the tool",
+        "original_sha256": "e117d4f995c69c9a72ac5dbbeb3ce8e0b49aea98249d2c1536279dacb4a8729b",
+        "recorded_date_utc": "2026-10-14",
+        "tool": "OpenAI Image Gen tool"
+      },
+      "sha256": "e117d4f995c69c9a72ac5dbbeb3ce8e0b49aea98249d2c1536279dacb4a8729b",
+      "technical": {
+        "alpha": false,
+        "anchor": "aspect-cover center",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mipmaps": false,
+        "mode": "RGB"
+      }
+    }
+  },
+  "id": "world/moonlit-clearing",
+  "provenance": {
+    "brief": "Illustrated blue-green moonlit forest clearing, ancient stone arch, layered botanical silhouettes, quiet dark foreground and lower area for native cards; light from upper right; no text, UI, characters or logos.",
+    "edit_history": "Copied the original PNG without resampling, cropping, recompression or metadata stripping. Aspect-cover happens only at render time.",
+    "kind": "generated original",
+    "license_record": "Generated service output under applicable service terms; no third-party game asset source.",
+    "model_version": "not exposed by the tool",
+    "original_sha256": "e117d4f995c69c9a72ac5dbbeb3ce8e0b49aea98249d2c1536279dacb4a8729b",
+    "recorded_date_utc": "2026-10-14",
+    "tool": "OpenAI Image Gen tool"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

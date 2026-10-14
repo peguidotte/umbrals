@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/peguidotte/umbrals/assets/schemas/module-v1.schema.json",
+  "title": "Umbrals asset release",
+  "type": "object",
+  "required": ["schema_version", "id", "version", "status", "description", "provenance", "files", "dependencies"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*/[a-z][a-z0-9-]*$"},
+    "version": {"$ref": "#/$defs/version"},
+    "status": {"enum": ["draft", "prototype", "production", "deprecated"]},
+    "description": {"type": "string", "minLength": 1},
+    "changes": {"type": "string", "minLength": 1},
+    "provenance": {"type": "object", "minProperties": 1},
+    "dependencies": {"type": "array", "items": {"$ref": "#/$defs/reference"}, "uniqueItems": true},
+    "files": {"type": "object", "propertyNames": {"pattern": "^[a-z][a-z0-9-]*$"}, "additionalProperties": {"$ref": "#/$defs/file"}},
+    "animations": {"type": "object", "additionalProperties": {"$ref": "#/$defs/animation"}},
+    "performances": {"type": "object", "additionalProperties": {"type": "object"}},
+    "metadata": {"type": "object"}
+  },
+  "$defs": {
+    "version": {"type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"},
+    "reference": {"type": "object", "required": ["id", "version"], "additionalProperties": false, "properties": {"id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*/[a-z][a-z0-9-]*$"}, "version": {"$ref": "#/$defs/version"}}},
+    "file": {
+      "type": "object", "required": ["path", "sha256", "bytes", "kind"], "additionalProperties": false,
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "kind": {"enum": ["texture", "audio", "font", "data", "license", "review"]},
+        "technical": {"type": "object"}, "provenance": {"type": "object"}
+      }
+    },
+    "animation": {
+      "type": "object", "required": ["frame_size", "columns", "frames", "fps", "pivot", "loop"], "additionalProperties": false,
+      "oneOf": [{"required": ["file"]}, {"required": ["pages"]}],
+      "properties": {
+        "file": {"type": "string"}, "low_file": {"type": "string"},
+        "pages": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["file", "frames"], "additionalProperties": false, "properties": {"file": {"type": "string"}, "frames": {"type": "integer", "minimum": 1}, "low_file": {"type": "string"}}}},
+        "frame_size": {"type": "array", "items": {"type": "integer", "minimum": 1}, "minItems": 2, "maxItems": 2},
+        "display_size": {"type": "array", "items": {"type": "number", "exclusiveMinimum": 0}, "minItems": 2, "maxItems": 2},
+        "columns": {"type": "integer", "minimum": 1}, "frames": {"type": "integer", "minimum": 1},
+        "fps": {"type": "number", "exclusiveMinimum": 0},
+        "pivot": {"type": "array", "items": {"type": "number", "minimum": 0}, "minItems": 2, "maxItems": 2},
+        "loop": {"type": "boolean"}
+      }
+    }
+  }
+}

@@ -1,8 +1,10 @@
 class_name UmbralUI
 extends RefCounted
 const RuneButton = preload("res://scripts/ui/rune_button.gd")
-const BODY = preload("res://assets/body.ttf")
-const DISPLAY = preload("res://assets/display.ttf")
+const Assets = preload("res://scripts/assets/catalog.gd")
+const Paths = preload("res://scripts/assets/binding_paths.gd")
+const BODY = preload(Paths.FONTS_BODY)
+const DISPLAY = preload(Paths.FONTS_DISPLAY)
 const INK = Color("101c23")
 const PAPER = Color("f3e6c5")
 const GOLD = Color("dec88d")
@@ -105,11 +107,11 @@ static func spacer() -> Control:
 	result.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	return result
 
-static func art(path: String, minimum: Vector2) -> TextureRect:
+static func art(asset_id: String, minimum: Vector2) -> TextureRect:
 	var result = TextureRect.new()
 	result.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	result.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	result.texture = load("res://assets/" + path + ".svg")
+	result.texture = Assets.texture(asset_id)
 	result.custom_minimum_size = minimum
 	result.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return result
