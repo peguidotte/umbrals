@@ -7,45 +7,80 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: umbral-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    name: Rules, browser and builds
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
+    env:
+      PYTHONUNBUFFERED: '1'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
-      - uses: actions/cache@v4
+      - name: Prepare writable tool paths
+        run: printf 'FERAL_STATE_ROOT=%s/umbral-tools\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
+      - name: Cache verified engine and templates
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |
-            ~/.local/bin/godot
-            ~/.local/share/godot/export_templates
-          key: godot-4.6.3-linux-web-windows-v1
+            ${{ runner.temp }}/umbral-tools/.local/bin/godot
+            ${{ runner.temp }}/umbral-tools/.local/share/godot/export_templates
+          key: godot-4.6.3-${{ runner.os }}-${{ runner.arch }}-release-v2
+      - name: Cache pinned browser tools
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/umbral-tools/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('tools/requirements-browser.txt') }}
       - name: Install verified Godot and templates
         run: source tools/environment.sh && python tools/install_godot.py
       - name: Install browser harness
         run: |
           source tools/environment.sh
-          pip install -r tools/requirements-browser.txt
+          python -m pip install -r tools/requirements-browser.txt
           python -m playwright install --with-deps chromium
       - name: Build and review an experience iteration
-        run: python tools/iterate.py --label ci --goal 'Preservar regras, navegação e experiência em cinco formatos de tela' --video
+        run: python tools/iterate.py --label ci --goal 'Preservar regras, navegação, saves e experiência em cinco formatos de tela' --video --report-file test-results/ci-run.json
       - name: Export desktop and package
         run: |
           bash tools/build.sh Windows
           bash tools/build.sh Linux
           python tools/package.py
-      - uses: actions/upload-artifact@v4
+      - name: Smoke-test native Linux
+        run: |
+          source tools/environment.sh
+          builds/linux/Umbral.x86_64 --headless -- --smoke-exit >test-results/native-linux.log 2>&1
+          if rg -n 'SCRIPT ERROR:|^ERROR:|instances leaked|Resources still in use' test-results/native-linux.log; then exit 1; fi
+      - name: Upload review evidence
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: umbral-evidence
+          retention-days: 14
           path: |
             test-results/
             artifacts/
-      - uses: actions/upload-artifact@v4
+      - name: Upload playable builds
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: umbral-builds
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0
           path: |
             builds/*.zip
             builds/manifest.json
+      - name: Publish validation summary
+        if: always()
+        env:
+          CI_JOB_STATUS: ${{ job.status }}
+        run: python tools/ci_report.py --report test-results/ci-run.json --status "$CI_JOB_STATUS"

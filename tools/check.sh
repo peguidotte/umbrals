@@ -4,6 +4,8 @@ cd "$(dirname "$0")/.."
 source tools/environment.sh
 mkdir -p test-results
 touch test-results/.gdignore
+# Root reports describe this attempt; earlier iteration evidence stays in artifacts/.
+rm -f test-results/{asset-report.json,rules.log,mutation-report.json,ui-report.json,ui_state_test.log,ui_flow_test.log,startup_smoke.log,import.log}
 python tools/asset_checks.py
 godot --headless --path . --editor --import --quit >test-results/import.log 2>&1
 if rg -n 'SCRIPT ERROR:|^ERROR:' test-results/import.log; then exit 1; fi

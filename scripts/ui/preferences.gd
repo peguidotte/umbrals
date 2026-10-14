@@ -2,12 +2,13 @@ class_name UmbralPreferences
 extends RefCounted
 ## Atomic local settings. Values are validated before use; no gameplay RNG is involved.
 signal changed
+const Storage = preload("res://scripts/storage.gd")
 const PATH = "user://umbral_preferences_v1.json"
+const WEB_KEY = "umbral.preferences.v1"
 var values: Dictionary = {"music": 0.55, "sfx": 0.8, "reduced_motion": false, "flashes": false, "large_text": false}
 
 func load_saved() -> void:
-	if not FileAccess.file_exists(PATH): return
-	var data = JSON.parse_string(FileAccess.get_file_as_string(PATH))
+	var data: Dictionary = Storage.read_json(PATH, WEB_KEY)
 	if data is Dictionary:
 		for key in values:
 			if key in ["music", "sfx"] and (data.get(key) is float or data.get(key) is int):
@@ -27,15 +28,8 @@ func set_value(key: String, value: Variant) -> bool:
 	return true
 
 func _save() -> void:
-	var temporary: String = PATH + ".tmp"
-	var file = FileAccess.open(temporary, FileAccess.WRITE)
-	if not file:
+	if not Storage.write_json(PATH, WEB_KEY, values):
 		push_warning("Could not save preferences.")
-		return
-	file.store_string(JSON.stringify(values))
-	file.close()
-	var error: int = DirAccess.rename_absolute(ProjectSettings.globalize_path(temporary), ProjectSettings.globalize_path(PATH))
-	if error != OK: push_warning("Could not replace preferences file.")
 
 func text_scale() -> float:
 	return 1.12 if values.large_text else 1.0

@@ -6,6 +6,7 @@ const Content = preload("res://scripts/content.gd")
 const UI = preload("res://scripts/ui/kit.gd")
 const Screens = preload("res://scripts/ui/screen_stack.gd")
 const Preferences = preload("res://scripts/ui/preferences.gd")
+const Storage = preload("res://scripts/storage.gd")
 const Actions = preload("res://scripts/ui/input_actions.gd")
 const World = preload("res://scripts/ui/world.gd")
 const Actor = preload("res://scripts/ui/actor.gd")
@@ -16,6 +17,7 @@ const Effects = preload("res://scripts/ui/effects.gd")
 const Audio = preload("res://scripts/ui/audio.gd")
 const SAVE_PATH = "user://umbral_stats_v1.json"
 const LEGACY_SAVE_PATH = "user://feral_hand_stats.json"
+const WEB_STATS_KEY = "umbral.stats.v1"
 
 var game = Rules.new()
 var screens = Screens.new()
@@ -882,9 +884,7 @@ func _log(event_name: String, details: Dictionary) -> void:
 	print(JSON.stringify(entry))
 
 func _load_stats() -> void:
-	var path: String = SAVE_PATH if FileAccess.file_exists(SAVE_PATH) else LEGACY_SAVE_PATH
-	if not FileAccess.file_exists(path): return
-	var data = JSON.parse_string(FileAccess.get_file_as_string(path))
+	var data: Dictionary = Storage.read_json(SAVE_PATH, WEB_STATS_KEY, LEGACY_SAVE_PATH)
 	if data is Dictionary:
 		for key in stats:
 			if data.get(key) is float or data.get(key) is int: stats[key] = maxi(0, int(data[key]))
@@ -895,9 +895,8 @@ func _record_result() -> void:
 	stats.runs = int(stats.runs) + 1
 	if game.phase == "victory": stats.wins = int(stats.wins) + 1
 	stats.best_damage = maxi(int(stats.best_damage), game.total_damage)
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	if file: file.store_string(JSON.stringify(stats))
-	else: push_warning("Could not persist run statistics.")
+	if not Storage.write_json(SAVE_PATH, WEB_STATS_KEY, stats):
+		push_warning("Could not persist run statistics.")
 	_log("run_finished", {"outcome": game.phase, "damage": game.total_damage})
 
 func _update_menu_stats() -> void:

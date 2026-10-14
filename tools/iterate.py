@@ -165,6 +165,7 @@ def main():
     parser.add_argument('--goal', default='Melhorar a experiência preservando os contratos de jogo e navegação.')
     parser.add_argument('--baseline', type=Path, help='Earlier iteration directory or archived screenshots.')
     parser.add_argument('--video', action='store_true')
+    parser.add_argument('--report-file', type=Path, help='Also write the machine-readable run result here, for CI summaries.')
     args = parser.parse_args()
     if args.review_only:
         out = args.review_only.resolve()
@@ -197,6 +198,7 @@ def main():
     started = time.monotonic()
     engine = subprocess.run(['bash','-c','source tools/environment.sh; godot --version'],cwd=ROOT,capture_output=True,text=True,check=True).stdout.strip()
     report = {'label':args.label,'version':version,'goal':args.goal,'started_utc':stamp,
+              'evidence_dir':str(out.relative_to(ROOT)),
               'source_hash':sources['sha256'],'baseline':str(baseline) if baseline else None,
               'status':'running','steps':[],'comparisons':[],
               'tools':{'godot':engine,'python':sys.version.split()[0], 'playwright':importlib.metadata.version('playwright'), 'pillow':importlib.metadata.version('Pillow')},
@@ -242,11 +244,18 @@ def main():
                     if item.get('suite') == 'umbral_rules':
                         report['rules'] = item
         report['status'] = 'failed' if failed else 'passed'
+        if failed and not report.get('failure'):
+            step = next((item for item in report['steps'] if item['exit_code'] != 0), {})
+            report['failed_step'] = step.get('name', 'iteration')
+            report['failure'] = report.get('browser', {}).get('failure') or f"{report['failed_step']} exited with code {step.get('exit_code', 'unknown')}; inspect its preserved log."
         report['seconds'] = round(time.monotonic()-started,2)
         report['comparisons'] = compare_images(report.get('browser',{}),baseline,out)
         (out / 'run.json').write_text(json.dumps(report,indent=2,ensure_ascii=False))
+        if args.report_file:
+            args.report_file.parent.mkdir(parents=True, exist_ok=True)
+            args.report_file.write_text(json.dumps(report, indent=2, ensure_ascii=False))
         write_review(out,report)
-        print(json.dumps({'status':report['status'],'report':str(out / 'review.html'),'seconds':report['seconds']},ensure_ascii=False))
+        print(json.dumps({'status':report['status'],'report':str(out / 'review.html'),'seconds':report['seconds'],'failure':report.get('failure')},ensure_ascii=False))
     return int(failed)
 
 
