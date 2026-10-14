@@ -13,9 +13,20 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Validate versioned assets and immutable releases
+        env:
+          ASSET_PR_BASE: ${{ github.event.pull_request.base.sha }}
+          ASSET_PUSH_BASE: ${{ github.event.before }}
+        run: |
+          pip install -r tools/requirements-assets.txt
+          asset_base="${ASSET_PR_BASE:-${ASSET_PUSH_BASE:-origin/main}}"
+          if [[ "$asset_base" =~ ^0+$ ]]; then asset_base=origin/main; fi
+          python tools/assets.py validate --base-ref "$asset_base"
       - uses: actions/cache@v4
         with:
           path: |

@@ -9,7 +9,7 @@ config/use_custom_user_dir=true
 config/custom_user_dir_name="godot/app_userdata/Feral Hand"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://assets/ember.svg"
+config/icon="res://assets/umbrals/ember/versions/1.0.0/portrait.svg"
 
 [display]
 window/size/viewport_width=1600

@@ -1,4 +1,5 @@
 extends Control
+const Assets = preload("res://scripts/assets/catalog.gd")
 ## Session coordinator. HUDs react to discrete rule signals; the screen stack owns input.
 
 const Rules = preload("res://scripts/rules.gd")
@@ -177,7 +178,7 @@ func _build_menu() -> void:
 			if child != primary:
 				child.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
 				child.add_theme_stylebox_override("hover", ui.style(Color(0.035, 0.07, 0.075, 0.45), Color.TRANSPARENT))
-	var hero: TextureRect = UI.art("ignivar", Vector2(390, 390))
+	var hero: TextureRect = UI.art("umbrals/ignivar", Vector2(390, 390))
 	_at(hero, menu_root, Vector2(0.76, 0.57), Vector2(390, 390))
 	menu_stats = ui.label("", 18, UI.MUTED)
 	menu_root.add_child(menu_stats)
@@ -292,7 +293,7 @@ func _apply_safe_margin(margin: MarginContainer) -> void:
 func _sync_battle(animate: bool = false) -> void:
 	if not is_instance_valid(battle_root): return
 	var foe: Dictionary = Content.ENCOUNTERS[game.encounter]
-	enemy_art.texture = load("res://assets/%s.svg" % foe.art)
+	enemy_art.texture = Assets.texture(foe.art)
 	enemy_name.text = foe.name
 	enemy_intent.text = "⚔  INTENÇÃO  %d" % game.intent_damage()
 	burn_label.text = "♨  QUEIMADURA  %d" % game.enemy_burn if game.enemy_burn else ""
@@ -599,7 +600,7 @@ func _codex() -> void:
 		row.add_child(column)
 		var individual: Dictionary = Rules.make_umbral(species_id, "fierce", 0)
 		var species: Dictionary = Content.SPECIES[species_id]
-		column.add_child(UI.art(species_id, Vector2(180, 160)))
+		column.add_child(UI.art("umbrals/" + species_id, Vector2(180, 160)))
 		column.add_child(ui.label(species.names[0] + " → " + species.names[1], 27, Color(species.color), true, true))
 		column.add_child(ui.label(species.trait, 24, UI.GOLD, false, true))
 		column.add_child(ui.paragraph(Content.trait_text(individual), 22))
@@ -633,7 +634,7 @@ func _inspection() -> void:
 	var body: VBoxContainer = _modal_frame(title, "Vínculo de " + Content.display_name(umbral) + " · " + species.element, 1000)
 	var row: HBoxContainer = UI.row(28)
 	body.add_child(row)
-	row.add_child(UI.art("powers/" + Content.POWERS[inspection.card.power].art if inspection.has("card") else species.art[int(umbral.stage) - 1], Vector2(210, 200)))
+	row.add_child(UI.art(Content.POWERS[inspection.card.power].art if inspection.has("card") else species.art[int(umbral.stage) - 1], Vector2(210, 200)))
 	var details: VBoxContainer = UI.column(15)
 	details.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(details)
@@ -720,7 +721,7 @@ func _replacement() -> void:
 func _ending() -> void:
 	var won: bool = game.phase == "victory"
 	var body: VBoxContainer = _modal_frame("A aurora tem seus nomes." if won else "Ainda existem outros ecos.", "Expedição concluída." if won else "Combine proteção, cura e queimadura para encontrar outro caminho.", 1050)
-	body.add_child(UI.art(Content.SPECIES[game.party[0].species].art[int(game.party[0].stage) - 1] if won else "stag", Vector2(240, 180)))
+	body.add_child(UI.art(Content.SPECIES[game.party[0].species].art[int(game.party[0].stage) - 1] if won else "characters/stag", Vector2(240, 180)))
 	body.add_child(ui.label("%d DANO  ·  %d UMBRALS  ·  SEMENTE %d" % [game.total_damage, game.party.size(), game.seed_value], 23, UI.GOLD, false, true))
 	_button(body, "NOVA EXPEDIÇÃO", _new_seed, "result.new", screens.top(), true)
 	_button(body, "REPETIR ESTA SEMENTE", _start_game.bind(game.seed_value), "result.retry", screens.top())

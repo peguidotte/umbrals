@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "power illustration",
+  "files": {
+    "icon": {
+      "bytes": 710,
+      "kind": "texture",
+      "path": "icon.svg",
+      "provenance": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "sha256": "b7629623edd4d41100de28043691ea03ef3b35b04e692c7a70c2ce2404b947b3",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "attacks/fireball",
+  "provenance": {
+    "kind": "authored original vector",
+    "license": "Original project asset; no external samples or game artwork.",
+    "tool": "tools/generate_assets.py"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

@@ -1,7 +1,8 @@
 class_name UmbralWorld
 extends Control
 ## Only scenery animates here. No gameplay state is polled or mutated.
-const BACKGROUND = preload("res://assets/world/clearing.png")
+const Paths = preload("res://scripts/assets/binding_paths.gd")
+const BACKGROUND = preload(Paths.WORLD_MOONLIT_CLEARING)
 var clock: float = 0.0
 var still: bool = false
 var title_mode: bool = true

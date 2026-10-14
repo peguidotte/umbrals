@@ -6,6 +6,7 @@
 - `scripts/rules.gd`: deterministic state machine, individuals, owned power instances, deck recycling, simultaneous casts, burn, counterattacks and rewards.
 - `scripts/main.gd`: session coordinator, screen construction, feedback events, local statistics and opt-in read-only browser state.
 - `scripts/ui/`: screen stack, named input, atomic preferences, theme/buttons, persistent cards/hand, actors, world, health display, bounded effects and audio.
+- `scripts/assets/`: exact production resource bindings and version-explicit animation loading. Assets are independently versioned modules; gameplay content stores logical art IDs. See `docs/assets/README.md` for ownership, immutable releases, authoring and CI validation.
 
 There are no network services, credentials or analytics endpoints. JSON gameplay logs go to stdout. Saves contain completed runs, wins, best applied damage and a separate validated preferences file. No personal data is collected. The Godot project lives at the standalone repository root. The legacy native user-data location is preserved so moving the source does not reset existing saves.
 

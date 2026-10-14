@@ -1,0 +1,70 @@
+{
+  "contract": "validated by game-vfx validate_vfx_spec.py",
+  "capture_fps": 30,
+  "capture_duration_ms": 4000,
+  "browser": "Chromium headless in current execution environment",
+  "limitations": [
+    "GPU time and actual overdraw not measured",
+    "Mobile target hardware not profiled",
+    "JavaScript draw timing is not total frame or GPU time"
+  ],
+  "initial_playthrough": {
+    "releases": 1,
+    "impacts": 1,
+    "phase": "dissipate"
+  },
+  "mouth": {
+    "source_snapshot": true,
+    "contact_time_ms": 1200,
+    "impact_time_ms": 2000,
+    "cancel_fade_ms": 150,
+    "sprite_draw_calls": 3,
+    "repeat_cleanup": true
+  },
+  "hand": {
+    "source_snapshot": true,
+    "contact_time_ms": 1200,
+    "impact_time_ms": 2000,
+    "cancel_fade_ms": 150,
+    "sprite_draw_calls": 3,
+    "repeat_cleanup": true
+  },
+  "kick": {
+    "source_snapshot": true,
+    "contact_time_ms": 1200,
+    "impact_time_ms": 2000,
+    "cancel_fade_ms": 150,
+    "sprite_draw_calls": 3,
+    "repeat_cleanup": true
+  },
+  "low_quality": {
+    "projectile_width": 1536,
+    "sprite_draw_calls": 2
+  },
+  "js_draw_timing": {
+    "samples": 232,
+    "p50_ms": 0.19999999995343387,
+    "p95_ms": 3.199999999953434,
+    "peak_sprite_draw_calls": 3
+  },
+  "reduced_motion": {
+    "no_autoplay": true,
+    "no_animated_travel": true,
+    "static_impact_cue": true
+  },
+  "page_errors": [],
+  "valid": true,
+  "texture_memory": {
+    "high_selected_profile_mib": 62.125,
+    "low_selected_profile_mib": 15.53125,
+    "basis": "RGBA atlas dimensions, one loaded profile; excludes browser driver overhead"
+  },
+  "animation_event_adapter": {
+    "delayed_contact_holds_until_explicit_release": true,
+    "release_is_idempotent": true,
+    "origin_detaches_from_body": true,
+    "per_cast_release_and_flight_times": true,
+    "cancel_rejects_late_contact": true,
+    "repeated_casts_cleaned_up": 20
+  }
+}

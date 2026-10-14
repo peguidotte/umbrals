@@ -1,0 +1,520 @@
+{
+  "animations": {
+    "charge-hand": {
+      "columns": 6,
+      "display_size": [
+        256,
+        256
+      ],
+      "file": "charge-hand",
+      "fps": 30,
+      "frame_size": [
+        256,
+        256
+      ],
+      "frames": 36,
+      "loop": false,
+      "low_file": "charge-hand-low",
+      "pivot": [
+        128,
+        128
+      ]
+    },
+    "charge-kick": {
+      "columns": 6,
+      "display_size": [
+        256,
+        256
+      ],
+      "file": "charge-kick",
+      "fps": 30,
+      "frame_size": [
+        256,
+        256
+      ],
+      "frames": 36,
+      "loop": false,
+      "low_file": "charge-kick-low",
+      "pivot": [
+        128,
+        128
+      ]
+    },
+    "charge-mouth": {
+      "columns": 6,
+      "display_size": [
+        256,
+        256
+      ],
+      "file": "charge-mouth",
+      "fps": 30,
+      "frame_size": [
+        256,
+        256
+      ],
+      "frames": 36,
+      "loop": false,
+      "low_file": "charge-mouth-low",
+      "pivot": [
+        128,
+        128
+      ]
+    },
+    "impact": {
+      "columns": 6,
+      "display_size": [
+        640,
+        640
+      ],
+      "file": "impact",
+      "fps": 30,
+      "frame_size": [
+        384,
+        384
+      ],
+      "frames": 42,
+      "loop": false,
+      "low_file": "impact-low",
+      "pivot": [
+        192,
+        192
+      ]
+    },
+    "projectile": {
+      "columns": 6,
+      "display_size": [
+        512,
+        256
+      ],
+      "file": "projectile",
+      "fps": 30,
+      "frame_size": [
+        512,
+        256
+      ],
+      "frames": 24,
+      "loop": true,
+      "low_file": "projectile-low",
+      "pivot": [
+        369,
+        128
+      ]
+    },
+    "release": {
+      "columns": 3,
+      "display_size": [
+        256,
+        256
+      ],
+      "file": "release",
+      "fps": 30,
+      "frame_size": [
+        256,
+        256
+      ],
+      "frames": 6,
+      "loop": false,
+      "low_file": "release-low",
+      "pivot": [
+        128,
+        128
+      ]
+    }
+  },
+  "dependencies": [
+    {
+      "id": "characters/demo-beast",
+      "version": "1.0.0"
+    },
+    {
+      "id": "characters/demo-caster",
+      "version": "1.0.0"
+    },
+    {
+      "id": "characters/demo-athlete",
+      "version": "1.0.0"
+    }
+  ],
+  "description": "Shared fireball with mouth, palm and kick casting profiles",
+  "files": {
+    "charge-hand": {
+      "bytes": 320644,
+      "kind": "texture",
+      "path": "charge-hand.png",
+      "sha256": "1856147315cc3f8fe05b3f0e0f61a6829b1c8846601eb71f1ea60749149c9e15",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "charge-hand-low": {
+      "bytes": 129724,
+      "kind": "texture",
+      "path": "charge-hand-low.png",
+      "sha256": "cc39609455d9904a498d2168ead09a4c540bbefa2d2e9eb950159d0a67943cbf",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          768
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "charge-kick": {
+      "bytes": 298191,
+      "kind": "texture",
+      "path": "charge-kick.png",
+      "sha256": "d89302608843f6ed7e962e4cac96cbf06ac27db5ac819907d7dc385029d15406",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "charge-kick-low": {
+      "bytes": 122625,
+      "kind": "texture",
+      "path": "charge-kick-low.png",
+      "sha256": "6c4c6dc0fc1947e5305e839452dd61f5aa46c8cb63d2001ac3ef2dfa90b8af8d",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          768
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "charge-mouth": {
+      "bytes": 202326,
+      "kind": "texture",
+      "path": "charge-mouth.png",
+      "sha256": "895b07e23eecdc4b868ec4ef3bbe27c92bfb9f640f0d9a705176ba9fb5a8577c",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "charge-mouth-low": {
+      "bytes": 83114,
+      "kind": "texture",
+      "path": "charge-mouth-low.png",
+      "sha256": "22388aa8d14523124e2d284acfe59022d810f39bd1d4bf1e8cc1179322d6fba8",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          768
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "impact": {
+      "bytes": 1479975,
+      "kind": "texture",
+      "path": "impact.png",
+      "sha256": "9dd10eb753bad96f57dd3d51e510179e3c46614e7f65e92621373c341e66f4ed",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2304,
+          2688
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "impact-low": {
+      "bytes": 499129,
+      "kind": "texture",
+      "path": "impact-low.png",
+      "sha256": "59520955f84dc4b2a02cac17e3da6948aeca36917fdfc38a57eb479ffb0c1ea4",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1152,
+          1344
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "projectile": {
+      "bytes": 841759,
+      "kind": "texture",
+      "path": "projectile.png",
+      "sha256": "44c54b141fe7fd314a1eaf7b3b8e62b65eb71770d97d19a637d6b595b4bbc78b",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3072,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "projectile-low": {
+      "bytes": 321277,
+      "kind": "texture",
+      "path": "projectile-low.png",
+      "sha256": "9f1633f6a695078590f24a748a0e45376a05c83327c2d5261737a8a38410f142",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "release": {
+      "bytes": 19804,
+      "kind": "texture",
+      "path": "release.png",
+      "sha256": "7aed92f881a1baa301d95859889a1e765f53bf191d4e3af27ce96e9ffcfc1463",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "release-low": {
+      "bytes": 7304,
+      "kind": "texture",
+      "path": "release-low.png",
+      "sha256": "ac1410bba96b4efdc773868b743cd6bcde42b1a25b51b9fb11280102098b420c",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          256
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "review-comparison-gif": {
+      "bytes": 2979171,
+      "kind": "review",
+      "path": "review/comparison.gif",
+      "sha256": "8616defd83f25505e25919c1e19f5917dace3ad2fc9f8797f5a02b8d4a78399a",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          840
+        ],
+        "frames": 96,
+        "mode": "P"
+      }
+    },
+    "review-hand-mp4": {
+      "bytes": 212014,
+      "kind": "review",
+      "path": "review/hand.mp4",
+      "sha256": "4210bb3bb810a84d1eeac84b7dc4f90bb9679efb0499a4505177d03d625903f5"
+    },
+    "review-hand-transparent-webp": {
+      "bytes": 4260072,
+      "kind": "review",
+      "path": "review/hand-transparent.webp",
+      "sha256": "ee9c29d88ff2ca0e6effefb36051c4965e86d5deea93e5be59afa02d04eefc46",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          960,
+          540
+        ],
+        "frames": 101,
+        "mode": "RGBA"
+      }
+    },
+    "review-kick-mp4": {
+      "bytes": 212721,
+      "kind": "review",
+      "path": "review/kick.mp4",
+      "sha256": "2e3ef2c4908a1175671a7a26047193ecb18eaad4978fa5efe8698b1deb991461"
+    },
+    "review-kick-transparent-webp": {
+      "bytes": 4287538,
+      "kind": "review",
+      "path": "review/kick-transparent.webp",
+      "sha256": "3c6f611725891d551d063a0f2d7054f5f07f0a072b6d3552d071a7dfc5bfcea7",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          960,
+          540
+        ],
+        "frames": 101,
+        "mode": "RGBA"
+      }
+    },
+    "review-mouth-mp4": {
+      "bytes": 202911,
+      "kind": "review",
+      "path": "review/mouth.mp4",
+      "sha256": "74e7f93f8b4b3da02ccd0da01be765efd28c30fc7f087f8080f37621343f42ce"
+    },
+    "review-mouth-transparent-webp": {
+      "bytes": 4100614,
+      "kind": "review",
+      "path": "review/mouth-transparent.webp",
+      "sha256": "ad6c322191151d351f4e166418df8a6260d029600a080e5b8e83a1dd1a979bf9",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          960,
+          540
+        ],
+        "frames": 101,
+        "mode": "RGBA"
+      }
+    },
+    "source-metadata": {
+      "bytes": 18322,
+      "kind": "data",
+      "path": "source-metadata.json",
+      "sha256": "9e82f83b516305af6e1806d8e19f4ea2cbd6f19888dfb1e5b2cfc7f19122a861"
+    },
+    "standalone-verification": {
+      "bytes": 1880,
+      "kind": "data",
+      "path": "standalone-verification.json",
+      "sha256": "167ff9e661f4831dc8460d950fcaf25d7938cd7f97d8df7ab2909c40c48420f1"
+    },
+    "vfx-spec": {
+      "bytes": 4180,
+      "kind": "data",
+      "path": "vfx-spec.json",
+      "sha256": "5aec3f60d1116d1dc006b9c2fe6f2ba50805ef16a5a6d0dbd32e32a808c0f33e"
+    }
+  },
+  "id": "attacks/fireball-umbral-cast",
+  "metadata": {
+    "duration_ms": 4000,
+    "gameplay_power": "fireball",
+    "phases": [
+      {
+        "end_ms": 1050,
+        "id": "charge",
+        "start_ms": 0
+      },
+      {
+        "end_ms": 1200,
+        "id": "release",
+        "start_ms": 1050
+      },
+      {
+        "end_ms": 2000,
+        "id": "travel",
+        "start_ms": 1200
+      },
+      {
+        "end_ms": 2167,
+        "id": "impact",
+        "start_ms": 2000
+      },
+      {
+        "end_ms": 3400,
+        "id": "dissipate",
+        "start_ms": 2167
+      },
+      {
+        "end_ms": 4000,
+        "id": "cooldown",
+        "start_ms": 3400
+      }
+    ],
+    "source_iteration": 4
+  },
+  "performances": {
+    "hand": {
+      "actor": {
+        "animation": "fireball-cast",
+        "id": "characters/demo-caster",
+        "version": "1.0.0"
+      },
+      "charge": "charge-hand",
+      "impact": "impact",
+      "impact_ms": 2000,
+      "projectile": "projectile",
+      "release": "release",
+      "release_event": "hand.release",
+      "release_ms": 1200,
+      "release_socket": {
+        "x": 292,
+        "y": 231
+      }
+    },
+    "kick": {
+      "actor": {
+        "animation": "fireball-cast",
+        "id": "characters/demo-athlete",
+        "version": "1.0.0"
+      },
+      "charge": "charge-kick",
+      "impact": "impact",
+      "impact_ms": 2000,
+      "projectile": "projectile",
+      "release": "release",
+      "release_event": "foot.contact",
+      "release_ms": 1200,
+      "release_socket": {
+        "x": 288,
+        "y": 288.0
+      }
+    },
+    "mouth": {
+      "actor": {
+        "animation": "fireball-cast",
+        "id": "characters/demo-beast",
+        "version": "1.0.0"
+      },
+      "charge": "charge-mouth",
+      "impact": "impact",
+      "impact_ms": 2000,
+      "projectile": "projectile",
+      "release": "release",
+      "release_event": "mouth.release",
+      "release_ms": 1200,
+      "release_socket": {
+        "x": 279,
+        "y": 226.0
+      }
+    }
+  },
+  "provenance": {
+    "kind": "original procedural 2D VFX",
+    "license": "Original session-authored art; no external game sprites.",
+    "review_context": "Standalone animation study, not final Umbrals species art.",
+    "tool": "tools/asset_authoring"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "1.0.0"
+}

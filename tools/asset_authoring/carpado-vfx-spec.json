@@ -1,0 +1,127 @@
+{
+  "name": "umbral-carpado-do-eclipse",
+  "duration_ms": 4200,
+  "phases": [
+    {
+      "id": "anticipation",
+      "start_ms": 0,
+      "end_ms": 600
+    },
+    {
+      "id": "takeoff",
+      "start_ms": 600,
+      "end_ms": 920
+    },
+    {
+      "id": "pike",
+      "start_ms": 920,
+      "end_ms": 1620
+    },
+    {
+      "id": "descent",
+      "start_ms": 1620,
+      "end_ms": 1966.6666666667
+    },
+    {
+      "id": "impact",
+      "start_ms": 1966.6666666667,
+      "end_ms": 2200
+    },
+    {
+      "id": "recover",
+      "start_ms": 2200,
+      "end_ms": 2800
+    },
+    {
+      "id": "return",
+      "start_ms": 2800,
+      "end_ms": 3360
+    },
+    {
+      "id": "idle",
+      "start_ms": 3360,
+      "end_ms": 4200
+    }
+  ],
+  "layers": [
+    {
+      "id": "actor",
+      "type": "authored-pose-flipbook",
+      "max_particles": 1,
+      "draw_calls": 1,
+      "space": "animated-root",
+      "blend": "source-over"
+    },
+    {
+      "id": "afterimages",
+      "type": "pooled-billboards",
+      "max_particles": 2,
+      "draw_calls": 2,
+      "space": "previous-actor-roots",
+      "blend": "source-over"
+    },
+    {
+      "id": "foot-trail",
+      "type": "authored-flipbook",
+      "max_particles": 1,
+      "draw_calls": 1,
+      "space": "animated-root",
+      "blend": "source-over"
+    },
+    {
+      "id": "takeoff",
+      "type": "authored-flipbook",
+      "max_particles": 1,
+      "draw_calls": 1,
+      "space": "origin-ground",
+      "blend": "source-over"
+    },
+    {
+      "id": "impact",
+      "type": "authored-flipbook",
+      "max_particles": 1,
+      "draw_calls": 1,
+      "space": "heel-contact",
+      "blend": "source-over"
+    }
+  ],
+  "budgets": {
+    "max_particles": 6,
+    "max_draw_calls": 6,
+    "max_overdraw": 4,
+    "max_blur_radius": 12,
+    "active_texture_memory_mib": 80,
+    "total_frame_ms_hypothesis": 16.67
+  },
+  "reduced_motion": {
+    "enabled": true,
+    "behavior": "No autoplay; substitute a static actor and restrained contact ring for spin, afterimages and flying fragments."
+  },
+  "goal": "Ler um mortal carpado para frente com joelhos estendidos, deslocamento do Umbral e golpe de calcanhar sincronizado com o alvo.",
+  "context": {
+    "engine": "Engine-neutral transparent flipbooks; local Canvas 2D viewer",
+    "camera": "side-on fixed battle camera",
+    "capture_fps": 30,
+    "target_fps_hypothesis": 60,
+    "seed": 518
+  },
+  "quality_tiers": {
+    "high": {
+      "atlas_scale": 1
+    },
+    "low": {
+      "atlas_scale": 0.5,
+      "afterimages": 0
+    }
+  },
+  "events": {
+    "jump.release_ms": 600,
+    "heel.contact_ms": 1966.6666666667,
+    "landing.contact_ms": 2166.6666666667,
+    "cancel": "stop emission, fade existing effect for 150 ms, then return to rest"
+  },
+  "hooks": {
+    "audio": "optional jump, rotation and heel.contact hooks; exported preview is silent",
+    "camera_shake": "off; strongest contact beat is local to the hit point"
+  }
+}

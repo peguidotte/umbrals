@@ -1,0 +1,51 @@
+{
+  "name": "Bola de fogo",
+  "version": 1,
+  "direction": "right",
+  "durationMs": 3200,
+  "timing": {
+    "chargeMs": 667,
+    "flightMs": 800,
+    "impactMs": 1200,
+    "pauseMs": 533
+  },
+  "charge": {
+    "image": "assets/charge.png",
+    "frameWidth": 384,
+    "frameHeight": 384,
+    "columns": 5,
+    "frames": 20,
+    "fps": 30,
+    "anchor": {
+      "x": 192,
+      "y": 192
+    },
+    "loop": false
+  },
+  "projectile": {
+    "image": "assets/projectile.png",
+    "frameWidth": 512,
+    "frameHeight": 320,
+    "columns": 6,
+    "frames": 24,
+    "fps": 30,
+    "anchor": {
+      "x": 348,
+      "y": 160
+    },
+    "loop": true
+  },
+  "impact": {
+    "image": "assets/impact.png",
+    "frameWidth": 512,
+    "frameHeight": 512,
+    "columns": 6,
+    "frames": 36,
+    "fps": 30,
+    "anchor": {
+      "x": 256,
+      "y": 256
+    },
+    "loop": false
+  }
+}

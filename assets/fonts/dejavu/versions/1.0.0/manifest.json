@@ -1,0 +1,43 @@
+{
+  "dependencies": [],
+  "description": "native UI font",
+  "files": {
+    "body": {
+      "bytes": 759720,
+      "kind": "font",
+      "path": "body.ttf",
+      "provenance": {
+        "kind": "third-party font",
+        "license_record": "assets/FONT-LICENSE.txt",
+        "source": "Debian font package: DejaVu Sans / DejaVu Serif"
+      },
+      "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e"
+    },
+    "display": {
+      "bytes": 380660,
+      "kind": "font",
+      "path": "display.ttf",
+      "provenance": {
+        "kind": "third-party font",
+        "license_record": "assets/FONT-LICENSE.txt",
+        "source": "Debian font package: DejaVu Sans / DejaVu Serif"
+      },
+      "sha256": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7"
+    },
+    "license": {
+      "bytes": 3859,
+      "kind": "license",
+      "path": "license.txt",
+      "sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9"
+    }
+  },
+  "id": "fonts/dejavu",
+  "provenance": {
+    "kind": "third-party font",
+    "license_record": "assets/FONT-LICENSE.txt",
+    "source": "Debian font package: DejaVu Sans / DejaVu Serif"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

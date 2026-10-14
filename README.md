@@ -33,6 +33,8 @@ A primeira semente é `42013` para uma partida reproduzível. **Nova expedição
 
 ## Desenvolvimento e evidências
 
+Os assets são módulos com identidade e versões próprias, separados em ataques, personagens, Umbrals, traits, passivas, itens, áudio, mundo, fontes e UI. O jogo usa versões de produção fixadas em `assets/runtime-lock.json`; os novos VFX e rigs de demonstração ficam como protótipos. Veja [arquitetura, versionamento e comandos](docs/assets/README.md). Para gerar e validar o catálogo: `python tools/assets.py build` e `python tools/assets.py validate --base-ref origin/main` (dependências em `tools/requirements-assets.txt`).
+
 ```bash
 source tools/environment.sh
 python tools/iterate.py --label minha-iteracao --goal 'Melhoria observável de experiência' --video

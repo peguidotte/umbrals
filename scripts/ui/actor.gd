@@ -1,5 +1,6 @@
 class_name UmbralActor
 extends Button
+const Assets = preload("res://scripts/assets/catalog.gd")
 const Content = preload("res://scripts/content.gd")
 const UI = preload("res://scripts/ui/kit.gd")
 var portrait: TextureRect
@@ -48,14 +49,14 @@ func _pivot() -> void:
 func set_identity(data: Dictionary, scale_text: float = 1.0) -> void:
 	identity = data
 	if data.is_empty():
-		portrait.texture = load("res://assets/volt.svg")
+		portrait.texture = Assets.texture("umbrals/volt")
 		portrait.modulate = Color(0.5, 0.62, 0.59, 0.3)
 		caption.text = "Vínculo livre"
 		passive_caption.text = "Capture outro Umbral"
 		disabled = true
 	else:
 		var species: Dictionary = Content.SPECIES[data.species]
-		portrait.texture = load("res://assets/%s.svg" % species.art[int(data.stage) - 1])
+		portrait.texture = Assets.texture(species.art[int(data.stage) - 1])
 		portrait.modulate = Color.WHITE
 		accent = Color(species.color)
 		caption.text = Content.display_name(data)
