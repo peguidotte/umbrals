@@ -1,0 +1,67 @@
+{
+  "source": "original deterministic synthesis",
+  "sample_rate": 22050,
+  "mono": true,
+  "assets": [
+    {
+      "asset": "hover",
+      "seconds": 0.05,
+      "peak_dbfs": -17.71,
+      "clipped_samples": 0
+    },
+    {
+      "asset": "draw",
+      "seconds": 0.16,
+      "peak_dbfs": -15.77,
+      "clipped_samples": 0
+    },
+    {
+      "asset": "capture",
+      "seconds": 0.5,
+      "peak_dbfs": -15.13,
+      "clipped_samples": 0
+    },
+    {
+      "asset": "evolve",
+      "seconds": 0.7,
+      "peak_dbfs": -15.72,
+      "clipped_samples": 0
+    },
+    {
+      "asset": "fire",
+      "seconds": 0.24,
+      "peak_dbfs": -15.36,
+      "clipped_samples": 0
+    },
+    {
+      "asset": "leaf",
+      "seconds": 0.22,
+      "peak_dbfs": -15.24,
+      "clipped_samples": 0
+    },
+    {
+      "asset": "storm",
+      "seconds": 0.18,
+      "peak_dbfs": -15.16,
+      "clipped_samples": 0
+    },
+    {
+      "asset": "impact",
+      "seconds": 0.25,
+      "peak_dbfs": -13.8,
+      "clipped_samples": 0
+    },
+    {
+      "asset": "ambience",
+      "seconds": 12,
+      "peak_dbfs": -19.73,
+      "clipped_samples": 0
+    },
+    {
+      "asset": "boss_pulse",
+      "seconds": 12,
+      "peak_dbfs": -17.61,
+      "clipped_samples": 0
+    }
+  ]
+}

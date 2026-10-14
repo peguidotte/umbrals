@@ -1,0 +1,9 @@
+**/.godot/
+**/builds/
+**/__pycache__/
+**/test-results/
+**/artifacts/
+**/.DS_Store
+/.cache/
+/.config/
+/.local/

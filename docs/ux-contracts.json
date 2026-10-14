@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "reference": [1600, 900],
+  "viewports": [[1280, 720], [1440, 900], [1920, 1080], [1024, 768], [2560, 1080]],
+  "automatic_contracts": [
+    "Menu, pause, options and inspection have initial focus and a working back path.",
+    "Power selection retains node identity and selection across pause/options.",
+    "Modal drawing order stays above raised power cards.",
+    "Actionable targets remain in the canvas; power titles fit their cards.",
+    "Solid button foreground/background text contrast is at least 4.5:1.",
+    "Illegal casts have no gameplay side effects; repeated input cannot double-cast.",
+    "Preferences and completed-run statistics persist after reload.",
+    "Reduced motion updates current cards and clears transient effects.",
+    "Particles and SFX voices are bounded; impact shake returns to rest.",
+    "A browser-input run reaches victory, captures, evolves and explicitly replaces an individual.",
+    "No Godot runtime errors, empty test passes, or source changes during evidence capture."
+  ],
+  "review_questions": [
+    "Em cinco segundos, consigo localizar fôlego, intenção, energia e a próxima ação?",
+    "As criaturas e a arena têm prioridade visual, com textos sem colisões ou cortes?",
+    "Seleção, foco, erro e poder desbloqueado são distinguíveis sem depender só de cor?",
+    "O impacto comunica a ação e volta ao repouso rapidamente? Compare com movimento reduzido.",
+    "Captura, evolução e substituição explicam as consequências antes da confirmação?",
+    "A melhoria atende ao objetivo desta iteração? Registre uma comparação concreta e qualquer regressão.",
+    "Que decisão tornou a partida mais interessante? Registre a hipótese de playtest; testes não provam diversão."
+  ]
+}

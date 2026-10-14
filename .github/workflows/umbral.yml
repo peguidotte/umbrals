@@ -1,0 +1,51 @@
+name: Umbral — validate and build
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.local/bin/godot
+            ~/.local/share/godot/export_templates
+          key: godot-4.6.3-linux-web-windows-v1
+      - name: Install verified Godot and templates
+        run: source tools/environment.sh && python tools/install_godot.py
+      - name: Install browser harness
+        run: |
+          source tools/environment.sh
+          pip install -r tools/requirements-browser.txt
+          python -m playwright install --with-deps chromium
+      - name: Build and review an experience iteration
+        run: python tools/iterate.py --label ci --goal 'Preservar regras, navegação e experiência em cinco formatos de tela' --video
+      - name: Export desktop and package
+        run: |
+          bash tools/build.sh Windows
+          bash tools/build.sh Linux
+          python tools/package.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: umbral-evidence
+          path: |
+            test-results/
+            artifacts/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: umbral-builds
+          path: |
+            builds/*.zip
+            builds/manifest.json
