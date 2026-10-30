@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "creature portrait",
+  "files": {
+    "portrait": {
+      "bytes": 1821,
+      "kind": "texture",
+      "path": "portrait.svg",
+      "provenance": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "sha256": "e7c898f62cd2585e1f42900fe97981c050f8d46815c2db74dfa64c210a72f362",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "umbrals/ignivar",
+  "provenance": {
+    "kind": "authored original vector",
+    "license": "Original project asset; no external samples or game artwork.",
+    "tool": "tools/generate_assets.py"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

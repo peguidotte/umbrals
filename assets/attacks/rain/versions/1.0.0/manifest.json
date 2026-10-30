@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "Original power icon",
+  "files": {
+    "icon": {
+      "bytes": 786,
+      "kind": "texture",
+      "path": "icon.svg",
+      "provenance": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "license": "Original project asset; no external artwork.",
+        "tool": "authored directly for the battle content slice"
+      },
+      "sha256": "4dc2ea8ccc0d73e49a2544035f6e6fae04b0f966d05f59abde210a1519ff385b",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "attacks/rain",
+  "provenance": {
+    "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+    "license": "Original project asset; no external artwork.",
+    "tool": "authored directly for the battle content slice"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

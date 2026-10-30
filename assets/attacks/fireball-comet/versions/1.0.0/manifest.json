@@ -1,0 +1,279 @@
+{
+  "animations": {
+    "charge": {
+      "columns": 6,
+      "display_size": [
+        384,
+        384
+      ],
+      "file": "charge",
+      "fps": 30,
+      "frame_size": [
+        384,
+        384
+      ],
+      "frames": 24,
+      "loop": false,
+      "pivot": [
+        192,
+        192
+      ]
+    },
+    "impact": {
+      "columns": 6,
+      "display_size": [
+        640,
+        640
+      ],
+      "fps": 30,
+      "frame_size": [
+        640,
+        640
+      ],
+      "frames": 48,
+      "loop": false,
+      "pages": [
+        {
+          "file": "impact-page-01",
+          "frames": 36
+        },
+        {
+          "file": "impact-page-02",
+          "frames": 12
+        }
+      ],
+      "pivot": [
+        320,
+        320
+      ]
+    },
+    "projectile": {
+      "columns": 6,
+      "display_size": [
+        640,
+        384
+      ],
+      "file": "projectile",
+      "fps": 30,
+      "frame_size": [
+        640,
+        384
+      ],
+      "frames": 32,
+      "loop": true,
+      "pivot": [
+        454,
+        192
+      ]
+    }
+  },
+  "dependencies": [],
+  "description": "Fast comet fireball study",
+  "files": {
+    "charge": {
+      "bytes": 756647,
+      "kind": "texture",
+      "path": "charge.png",
+      "sha256": "21f82e2ee2ea6bdeb23c2d4785438616a443ed98c5b1102cfd95f1a249ba289e",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2304,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "impact-page-01": {
+      "bytes": 3061086,
+      "kind": "texture",
+      "path": "impact-page-01.png",
+      "provenance": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "normalization": {
+          "frame_size": [
+            640,
+            640
+          ],
+          "operation": "Unchanged frame pixels; 8 -> 6 columns, 2 page(s).",
+          "original_file": "review/original-impact.png",
+          "original_sha256": "5a152845c08f6d62aecb92cb405693ae855fba046b287f24b2e25b8af42d5764",
+          "source_columns": 8,
+          "tool": "tools/normalize_atlas.py"
+        },
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "sha256": "4d4858f8ea5d10fe713712bec0085c5671d69a9ea4ffd02c3df01ff2646f29d1",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3840,
+          3840
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "impact-page-02": {
+      "bytes": 588356,
+      "kind": "texture",
+      "path": "impact-page-02.png",
+      "provenance": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "normalization": {
+          "frame_size": [
+            640,
+            640
+          ],
+          "operation": "Unchanged frame pixels; 8 -> 6 columns, 2 page(s).",
+          "original_file": "review/original-impact.png",
+          "original_sha256": "5a152845c08f6d62aecb92cb405693ae855fba046b287f24b2e25b8af42d5764",
+          "source_columns": 8,
+          "tool": "tools/normalize_atlas.py"
+        },
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "sha256": "cef2a4542d39590ccf7aea4b5449338ba89aa30c05d98926236d88ebc27186ac",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3840,
+          1280
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "original-impact": {
+      "bytes": 3673691,
+      "kind": "review",
+      "path": "review/original-impact.png",
+      "sha256": "5a152845c08f6d62aecb92cb405693ae855fba046b287f24b2e25b8af42d5764",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          5120,
+          3840
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "original-projectile": {
+      "bytes": 1888383,
+      "kind": "review",
+      "path": "review/original-projectile.png",
+      "sha256": "491dbad2acf9d3c646a3f05006972084b2f2344bc5f3ad463676a780965131d4",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          5120,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "projectile": {
+      "bytes": 1897362,
+      "kind": "texture",
+      "path": "projectile.png",
+      "provenance": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "normalization": {
+          "frame_size": [
+            640,
+            384
+          ],
+          "operation": "Unchanged frame pixels; 8 -> 6 columns, 1 page(s).",
+          "original_file": "review/original-projectile.png",
+          "original_sha256": "491dbad2acf9d3c646a3f05006972084b2f2344bc5f3ad463676a780965131d4",
+          "source_columns": 8,
+          "tool": "tools/normalize_atlas.py"
+        },
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "sha256": "3316feba18f866cb8b11defdf89db9dbfbe94cf0ecf1bd305f5598dbeda0d897",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3840,
+          2304
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "review-preview-gif": {
+      "bytes": 1542188,
+      "kind": "review",
+      "path": "review/preview.gif",
+      "sha256": "1a601a99f699e3e0a7184ed3731094ec34b0ce913768a790485788db736cdb8d",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          432
+        ],
+        "frames": 86,
+        "mode": "P"
+      }
+    },
+    "review-preview-mp4": {
+      "bytes": 288776,
+      "kind": "review",
+      "path": "review/preview.mp4",
+      "sha256": "28eba3d43137a7468288a55fb2aea26f39048a22de82709b2080e031fa80df25"
+    },
+    "review-transparent-webp": {
+      "bytes": 6660130,
+      "kind": "review",
+      "path": "review/transparent.webp",
+      "sha256": "db93720a20f967de5422d7a0dcd605b8e95fb8d9b21722f598526c3078c541c2",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          960,
+          540
+        ],
+        "frames": 91,
+        "mode": "RGBA"
+      }
+    },
+    "source-metadata": {
+      "bytes": 1045,
+      "kind": "data",
+      "path": "source-metadata.json",
+      "sha256": "3b87b3e80ee98deff22e9142bd5af28a6e88db9c0aa4e64d580660f6987d377d"
+    }
+  },
+  "id": "attacks/fireball-comet",
+  "metadata": {
+    "duration_ms": 3600.0,
+    "gameplay_power": "fireball",
+    "original_metadata_role": "source-metadata",
+    "source_iteration": 3,
+    "timing": {
+      "chargeMs": 800.0,
+      "flightMs": 666.6666666666666,
+      "impactMs": 1600.0,
+      "pauseMs": 533.3333333333334
+    }
+  },
+  "provenance": {
+    "kind": "original procedural 2D VFX",
+    "license": "Original session-authored art; no external game sprites.",
+    "review_context": "Standalone animation study, not final Umbrals species art.",
+    "tool": "tools/asset_authoring"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "1.0.0"
+}

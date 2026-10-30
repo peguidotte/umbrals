@@ -1,5 +1,6 @@
 class_name UmbralPowerCard
 extends Button
+const Assets = preload("res://scripts/assets/catalog.gd")
 const Content = preload("res://scripts/content.gd")
 const UI = preload("res://scripts/ui/kit.gd")
 const Conditions = preload("res://scripts/battle/conditions.gd")
@@ -36,7 +37,7 @@ func configure(data: Dictionary, umbral: Dictionary, team: Array, large: float, 
 	power = Content.power_stats(str(card.power), int(individual.get("stage", 1)))
 	var able_count: int = team.filter(func(member: Dictionary) -> bool: return int(member.get("slot", -1)) >= 0 and int(member.hp) > 0).size()
 	effect = Rules.power_effect(card, individual, able_count)
-	art_texture = load("res://assets/powers/%s.svg" % power.art)
+	art_texture = Assets.texture(power.art)
 	text_scale = large
 	reduced_motion = reduce
 	tooltip_text = "%s — %s\n%d ação(ões) · %d potência · %d escudo · %d cura\n%s\nSelecione e clique em uma vaga para mudar o alvo. Q/E: alvo. P: plano. C: detalhes." % [str(power.name).replace("\n", " "), Content.display_name(individual), int(power.cost), int(effect.get("damage", 0)), int(effect.get("block", 0)), int(effect.get("heal", 0)), _scope_label()]

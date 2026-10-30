@@ -1,0 +1,55 @@
+{
+  "dependencies": [],
+  "description": "Evolved battle creature atlas",
+  "files": {
+    "atlas": {
+      "bytes": 1072,
+      "kind": "data",
+      "path": "atlas.json",
+      "sha256": "714f4b1e92485b6511df54fecbc27a626bf3ba74483413454c8ff1a57c5d009f"
+    },
+    "texture": {
+      "bytes": 973669,
+      "kind": "texture",
+      "path": "texture.png",
+      "provenance": {
+        "brief": "Matching evolved forms of the first-stage atlas. Image Gen spacing edit preserved the designs and added generous transparent gutters to isolate each creature. Exact edit prompt was not available after the delegated turn ended.",
+        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-fc0c3e7f-230d-4a4b-ad76-10a5c6835e8f.png",
+        "original_sha256": "6a227222f7a02cbd60ef30c746627df9e6bffb42dc4f7bbfd57d067342980c43",
+        "recorded_date_utc": "2026-10-18",
+        "tool": "OpenAI Image Gen"
+      },
+      "sha256": "6a227222f7a02cbd60ef30c746627df9e6bffb42dc4f7bbfd57d067342980c43",
+      "technical": {
+        "alpha": true,
+        "anchor": "grounded atlas region",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/battle-evolved",
+  "provenance": {
+    "brief": "Matching evolved forms of the first-stage atlas. Image Gen spacing edit preserved the designs and added generous transparent gutters to isolate each creature. Exact edit prompt was not available after the delegated turn ended.",
+    "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+    "kind": "generated original",
+    "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+    "model_version": "Not exposed by tool; none inferred.",
+    "original_output_basename": "exec-fc0c3e7f-230d-4a4b-ad76-10a5c6835e8f.png",
+    "original_sha256": "6a227222f7a02cbd60ef30c746627df9e6bffb42dc4f7bbfd57d067342980c43",
+    "recorded_date_utc": "2026-10-18",
+    "tool": "OpenAI Image Gen"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "power illustration",
+  "files": {
+    "icon": {
+      "bytes": 701,
+      "kind": "texture",
+      "path": "icon.svg",
+      "provenance": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "sha256": "cb99c620a7ba1d125faf03d9ff49b2a7a746e2899107773732af74fe66b224f4",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "attacks/judgment",
+  "provenance": {
+    "kind": "authored original vector",
+    "license": "Original project asset; no external samples or game artwork.",
+    "tool": "tools/generate_assets.py"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

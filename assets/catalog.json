@@ -1,0 +1,500 @@
+{
+  "modules": {
+    "attacks/carpado-eclipse": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/carpado-eclipse/versions/1.0.0/manifest.json",
+          "sha256": "9a81ebc234aa65a6b20dfddba4a4d5bbde2254ccfbb7a6c4776c0e915c270281",
+          "status": "prototype"
+        }
+      }
+    },
+    "attacks/cinder-claw": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/cinder-claw/versions/1.0.0/manifest.json",
+          "sha256": "4d4a6b6da7f94d93a61832698f644e012835c6d1c67cd3374573f2eda97cb35b",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/dew-mend": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/dew-mend/versions/1.0.0/manifest.json",
+          "sha256": "58abf63c9395e8c555e881c0c424073e12da19ea12919be0c81fb41d537dc312",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/fireball": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/fireball/versions/1.0.0/manifest.json",
+          "sha256": "8ef55f846d42244e54679a414b22c9531d5a313f817fadb2ff93bb438c9fa665",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/fireball-classic": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/fireball-classic/versions/1.0.0/manifest.json",
+          "sha256": "92c0a60f07a948d850197d893b543f431652eb5074b3007963d1eddd55904f8c",
+          "status": "prototype"
+        }
+      }
+    },
+    "attacks/fireball-comet": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/fireball-comet/versions/1.0.0/manifest.json",
+          "sha256": "ad9dae11ada0752d0d60cc9380f4ea69da57b7c5f5ba68228dc28da9b7968962",
+          "status": "prototype"
+        }
+      }
+    },
+    "attacks/fireball-living-flame": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/fireball-living-flame/versions/1.0.0/manifest.json",
+          "sha256": "6ceab3c56dab9a3539d47a68648c44a1806ae36110fc7c7f83a103d89f2da8d2",
+          "status": "prototype"
+        }
+      }
+    },
+    "attacks/fireball-umbral-cast": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/fireball-umbral-cast/versions/1.0.0/manifest.json",
+          "sha256": "310b682c35dae1f6ef04b934fbb1bf25f2650e02f238adbefcef3bed7de88011",
+          "status": "prototype"
+        }
+      }
+    },
+    "attacks/flame-guard": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/flame-guard/versions/1.0.0/manifest.json",
+          "sha256": "0cd6de5adb1f62409a46c65fd695eb8d2e84491174d86d05c907227fb07283e7",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/inferno": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/inferno/versions/1.0.0/manifest.json",
+          "sha256": "cb5b288acf9750abdfd5b7d7be4798e84cc88f61773991971de3d0d94f052c9d",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/judgment": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/judgment/versions/1.0.0/manifest.json",
+          "sha256": "18605753f6bced3de8922a58a017e4260ccc08818316732875056bd59f6da37e",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/life-seed": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/life-seed/versions/1.0.0/manifest.json",
+          "sha256": "7bb46cfaa4e60ad00948563f7d5e1b6356cb20380300a47f4884c585693c2858",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/lightning": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/lightning/versions/1.0.0/manifest.json",
+          "sha256": "8dbb47fd4f3e669e2ebe266e353a4e451115880cf1d21de0d0cad2fdea2d47bd",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/rain": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/rain/versions/1.0.0/manifest.json",
+          "sha256": "04536efa3eeac46e7a5943c5d4ba2feea0367a30be33f39896f737ae01b508d4",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/root-wall": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/root-wall/versions/1.0.0/manifest.json",
+          "sha256": "1c5ffecd2e655d07b2d4e4fbaad21d09b367882c282f40a248ba017641710631",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/sanctuary": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/sanctuary/versions/1.0.0/manifest.json",
+          "sha256": "737d5660c87ed7c7d0945a916246293a489f364b54e381722750ce102c6935c3",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/splash": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/splash/versions/1.0.0/manifest.json",
+          "sha256": "aa0d65931439ae00fd43cbcfee05915a824642ec9b2bcebd19521f246a7439eb",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/static-veil": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/static-veil/versions/1.0.0/manifest.json",
+          "sha256": "2dbfc13f3d2a0e727f9c04c2ad48fd566054b2039543a06d9192b45c91de6a9e",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/storm-dive": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/storm-dive/versions/1.0.0/manifest.json",
+          "sha256": "9ae00ff74cabeee6376d08cea2573a05506acb9f588a0cdf275cc2eb54a715cc",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/thorn-lash": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/thorn-lash/versions/1.0.0/manifest.json",
+          "sha256": "dd3cc10df4e504b7d4def3defa41cfc85636a77147d5e140f750f491ab60f772",
+          "status": "production"
+        }
+      }
+    },
+    "audio/ambience": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/ambience/versions/1.0.0/manifest.json",
+          "sha256": "2d2be2b1797b363212e1e1932af165365077da901a1c463eb6097c518b4c45bb",
+          "status": "production"
+        }
+      }
+    },
+    "audio/boss-pulse": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/boss-pulse/versions/1.0.0/manifest.json",
+          "sha256": "45268a304a4202dcbceaf85998c698bcfd6eaccb7f87cad3d7d4a4a540e0dc6a",
+          "status": "production"
+        }
+      }
+    },
+    "audio/capture": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/capture/versions/1.0.0/manifest.json",
+          "sha256": "7c07b95f4be768041d01776c4669a43cd878adb645aa0980247f3ebf47c7f1cb",
+          "status": "production"
+        }
+      }
+    },
+    "audio/draw": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/draw/versions/1.0.0/manifest.json",
+          "sha256": "11325ef62d68ba7b873068f041343c862f734725d8c531ca3cb45d5b35505eeb",
+          "status": "production"
+        }
+      }
+    },
+    "audio/evolve": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/evolve/versions/1.0.0/manifest.json",
+          "sha256": "ccfb932f30b9294b221364b5242b4aef1d4ec4d96a1af432741cd32511d535cd",
+          "status": "production"
+        }
+      }
+    },
+    "audio/fire": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/fire/versions/1.0.0/manifest.json",
+          "sha256": "8d2d886c7a52d203df80249e542f389439bcdf50f5cd56f856e61fb8d0abff0d",
+          "status": "production"
+        }
+      }
+    },
+    "audio/hover": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/hover/versions/1.0.0/manifest.json",
+          "sha256": "53878d1d6ca13cbb347ae7b5456cf5750546e4dc5e27120dde4d049d662cb36f",
+          "status": "production"
+        }
+      }
+    },
+    "audio/impact": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/impact/versions/1.0.0/manifest.json",
+          "sha256": "9a37c2604085f41952acb4d5401df0153c01d3f9ac472a1614f0f641db8c88d5",
+          "status": "production"
+        }
+      }
+    },
+    "audio/leaf": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/leaf/versions/1.0.0/manifest.json",
+          "sha256": "66d9fd278e308eca37e2bdeac8d3d77730b9e42fe0378534281ec0f291c3f532",
+          "status": "production"
+        }
+      }
+    },
+    "audio/play": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/play/versions/1.0.0/manifest.json",
+          "sha256": "70af5b5a6e1aede37dd64d0bc690233003ea60c4eacfd9a84f199b4383b94715",
+          "status": "production"
+        }
+      }
+    },
+    "audio/reward": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/reward/versions/1.0.0/manifest.json",
+          "sha256": "80759f903e0f4fb04bd1e0464b079adbd9c2ed0af06fc74e5f9a2a2d093e007e",
+          "status": "production"
+        }
+      }
+    },
+    "audio/select": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/select/versions/1.0.0/manifest.json",
+          "sha256": "ce7b0df460ac79b636a893fe9c4a1ee8409442404446b9a403639e6b287a29de",
+          "status": "production"
+        }
+      }
+    },
+    "audio/storm": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/storm/versions/1.0.0/manifest.json",
+          "sha256": "491d234f78ce90f81e48d7ab3777c4c3b6f943436548f7e79481268f287a061d",
+          "status": "production"
+        }
+      }
+    },
+    "characters/battle-creatures": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/battle-creatures/versions/1.0.0/manifest.json",
+          "sha256": "6b5289bcf3052a9dbcf0879fb98980e6648f2e12b56f06ce59202945973516d1",
+          "status": "production"
+        }
+      }
+    },
+    "characters/battle-evolved": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/battle-evolved/versions/1.0.0/manifest.json",
+          "sha256": "9f0810a44baa2ca58a8d74a0119ef255a3673366a899af12909aedcd0ddd2e31",
+          "status": "production"
+        }
+      }
+    },
+    "characters/demo-acrobat": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/demo-acrobat/versions/1.0.0/manifest.json",
+          "sha256": "23a0eb82266ef9019f7231acaa504097d1a89d27d2e19566cffd2af685825479",
+          "status": "prototype"
+        }
+      }
+    },
+    "characters/demo-athlete": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/demo-athlete/versions/1.0.0/manifest.json",
+          "sha256": "1a7db89dced6673afe52ecdf5521fc478918d772a9e86412892d98d6157d12f8",
+          "status": "prototype"
+        }
+      }
+    },
+    "characters/demo-beast": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/demo-beast/versions/1.0.0/manifest.json",
+          "sha256": "9e760f69fca36c66d2233b4dc97cdc91b2e3a1cac0176fd7c16515342b52a0fb",
+          "status": "prototype"
+        }
+      }
+    },
+    "characters/demo-caster": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/demo-caster/versions/1.0.0/manifest.json",
+          "sha256": "c429a04d3f2a615023b87c6d392851662d643aedb017be520c926bbda2fd73aa",
+          "status": "prototype"
+        }
+      }
+    },
+    "characters/owl": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/owl/versions/1.0.0/manifest.json",
+          "sha256": "34d6ac943ca3bdff92c436a297092dff663da93cc5463df53c0a14b7930d7504",
+          "status": "production"
+        }
+      }
+    },
+    "characters/spore": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/spore/versions/1.0.0/manifest.json",
+          "sha256": "f1d2f07aee357a355234f5c8676799b5aca90fc52a55c5ae423f0a21320dc73c",
+          "status": "production"
+        }
+      }
+    },
+    "characters/stag": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/stag/versions/1.0.0/manifest.json",
+          "sha256": "49a34a39786fd5718ff81332ad6357c2b93a5da7737f4159a1b5d844072dcdf2",
+          "status": "production"
+        }
+      }
+    },
+    "fonts/dejavu": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/fonts/dejavu/versions/1.0.0/manifest.json",
+          "sha256": "c8960a991c17a572c3f545377a13c151b1abea75da3382137c1339f62cb10fb1",
+          "status": "production"
+        }
+      }
+    },
+    "ui/backpack": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/ui/backpack/versions/1.0.0/manifest.json",
+          "sha256": "2d7f32918ba82e3afa3e2581045226a8a110c4cadfc8b02a316cf304976e6183",
+          "status": "production"
+        }
+      }
+    },
+    "umbrals/dew": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/umbrals/dew/versions/1.0.0/manifest.json",
+          "sha256": "41edb4cd01cfe1b3ae49c38b2ffef4f9567bfe32a8acd3b3a37f3818682704a0",
+          "status": "production"
+        }
+      }
+    },
+    "umbrals/ember": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/umbrals/ember/versions/1.0.0/manifest.json",
+          "sha256": "0608976444fa82e5c013b3f684495e3a0e3144a4e97e3d54e50dd43b14ffe455",
+          "status": "production"
+        }
+      }
+    },
+    "umbrals/ignivar": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/umbrals/ignivar/versions/1.0.0/manifest.json",
+          "sha256": "428fed5cf86da5a9aab9ce83819133a5de9182ec35911deb414f58a053865b5a",
+          "status": "production"
+        }
+      }
+    },
+    "umbrals/mareveu": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/umbrals/mareveu/versions/1.0.0/manifest.json",
+          "sha256": "713537d21544ed08f9624adbb757a23f5ec317aaf959e2937fe15ba10bcd7080",
+          "status": "production"
+        }
+      }
+    },
+    "umbrals/moss": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/umbrals/moss/versions/1.0.0/manifest.json",
+          "sha256": "fbcb32b0f429dc195f20d547d967bd61fd7b4f309b72e17cba3a6e8324d024da",
+          "status": "production"
+        }
+      }
+    },
+    "umbrals/tempestral": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/umbrals/tempestral/versions/1.0.0/manifest.json",
+          "sha256": "71455e2da03d282d5296c1565cf3c5bf7356064a641c0aa163569d674429f5e0",
+          "status": "production"
+        }
+      }
+    },
+    "umbrals/verdalio": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/umbrals/verdalio/versions/1.0.0/manifest.json",
+          "sha256": "35244c77505eaa9b0a92ce107988d285d909d986fda0c5dc7a50e6bdd87e032f",
+          "status": "production"
+        }
+      }
+    },
+    "umbrals/volt": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/umbrals/volt/versions/1.0.0/manifest.json",
+          "sha256": "2566856b6a7db68a0c7b645056937c0cdc30a41ca8a787c0acde7c9876bce3c2",
+          "status": "production"
+        }
+      }
+    },
+    "world/battle-clearing": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/world/battle-clearing/versions/1.0.0/manifest.json",
+          "sha256": "7f1a6f8bcc5f0052ffa874aade73357209d4022615218055b6486c292d845e7d",
+          "status": "production"
+        }
+      }
+    },
+    "world/battle-clearing-depth": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/world/battle-clearing-depth/versions/1.0.0/manifest.json",
+          "sha256": "5d21ba0a466d7ebbf67f6366a7dd5d45e9c4a4cc8260dd7c35f6bc65e024af1b",
+          "status": "production"
+        }
+      }
+    },
+    "world/moonlit-clearing": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/world/moonlit-clearing/versions/1.0.0/manifest.json",
+          "sha256": "ac02a8674e099bc79670d2d48ba68312686e173ce7ae0c0026811cd55451f1b1",
+          "status": "production"
+        }
+      }
+    }
+  },
+  "schema_version": 1
+}

@@ -1,4 +1,5 @@
 extends Control
+const Assets = preload("res://scripts/assets/catalog.gd")
 ## Battle composition and controls. Emits commands; never reads or mutates rules.
 signal command_requested(command: String)
 signal slot_requested(side: String, slot: int)
@@ -156,7 +157,7 @@ func build(user_interface: RefCounted, safe_margin: Callable) -> void:
 	pile_column.custom_minimum_size.x = 112
 	hud.add_child(pile_column)
 	var pouch: Button = _button(pile_column, "", "pouch", "hud.backpack")
-	pouch.icon = load("res://assets/icons/backpack.svg")
+	pouch.icon = Assets.texture("ui/backpack")
 	pouch.expand_icon = true
 	pouch.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	pouch.add_theme_constant_override("icon_max_width", 47)

@@ -1,0 +1,248 @@
+{
+  "additional_sources": [
+    {
+      "description": "Battle atlas images, arenas, water portraits and power icons, and backpack icon added from the collective battle branch.",
+      "source_asset_count": 10,
+      "source_commit": "3cf0cd43ff86b1ef8ebe44af15183579137d7130"
+    }
+  ],
+  "files": [
+    {
+      "from": "assets/ambience.wav",
+      "sha256": "0bad521c5eef309e617115c6f08cf27d45723615b82364e3be07d4ece365ae9e",
+      "to": "assets/audio/ambience/versions/1.0.0/sound.wav"
+    },
+    {
+      "from": "assets/body.ttf",
+      "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e",
+      "to": "assets/fonts/dejavu/versions/1.0.0/body.ttf"
+    },
+    {
+      "from": "assets/boss_pulse.wav",
+      "sha256": "a294e04b4f22f575e22006b974bca9baabd61cfa65cee7d9bf4547549d3484ab",
+      "to": "assets/audio/boss-pulse/versions/1.0.0/sound.wav"
+    },
+    {
+      "from": "assets/capture.wav",
+      "sha256": "09dafa093dd15b231634f789d37449313cfeec4fdb809ac5b0686217cdec21ef",
+      "to": "assets/audio/capture/versions/1.0.0/sound.wav"
+    },
+    {
+      "from": "assets/display.ttf",
+      "sha256": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7",
+      "to": "assets/fonts/dejavu/versions/1.0.0/display.ttf"
+    },
+    {
+      "from": "assets/draw.wav",
+      "sha256": "b5bbae326d1ed060ee9bbe3d99e9078308b64e2207b2cb3145b1c1eebe009a28",
+      "to": "assets/audio/draw/versions/1.0.0/sound.wav"
+    },
+    {
+      "from": "assets/ember.svg",
+      "sha256": "ad847d5b7ead36e3d172c70ca0054c416c85bfa95deb696d5efabb9181b3c66c",
+      "to": "assets/umbrals/ember/versions/1.0.0/portrait.svg"
+    },
+    {
+      "from": "assets/evolve.wav",
+      "sha256": "bb332cb19af7529024f5c7515dc6fd42023477ac7028cc5c61c77cf0a60899c8",
+      "to": "assets/audio/evolve/versions/1.0.0/sound.wav"
+    },
+    {
+      "from": "assets/fire.wav",
+      "sha256": "3893d43513add42188989793dac8830ce2b975899b839e165dfb00ce17ff4f94",
+      "to": "assets/audio/fire/versions/1.0.0/sound.wav"
+    },
+    {
+      "from": "assets/hover.wav",
+      "sha256": "f3f5adcddabd142c696d58b9ad7013c7c22deb64ac7369604306a9abab1712fe",
+      "to": "assets/audio/hover/versions/1.0.0/sound.wav"
+    },
+    {
+      "from": "assets/ignivar.svg",
+      "sha256": "e7c898f62cd2585e1f42900fe97981c050f8d46815c2db74dfa64c210a72f362",
+      "to": "assets/umbrals/ignivar/versions/1.0.0/portrait.svg"
+    },
+    {
+      "from": "assets/impact.wav",
+      "sha256": "b05c2a33e106b40aaa006d645a4cb5dcbd0ade59ac914ab5b120e44333f062c3",
+      "to": "assets/audio/impact/versions/1.0.0/sound.wav"
+    },
+    {
+      "from": "assets/leaf.wav",
+      "sha256": "5fdb1b9660c9c43f57d17bed37b60bd8f297db5932de2c38065514edf91370b7",
+      "to": "assets/audio/leaf/versions/1.0.0/sound.wav"
+    },
+    {
+      "from": "assets/moss.svg",
+      "sha256": "cd817966197d9cfbac2ff1a1f41189f9e9716a909b5f7cbb266220e333368b1a",
+      "to": "assets/umbrals/moss/versions/1.0.0/portrait.svg"
+    },
+    {
+      "from": "assets/owl.svg",
+      "sha256": "b27e17b2961498669ada331e0efa5551a50b4bcf67110ebea9353ed2a05151b8",
+      "to": "assets/characters/owl/versions/1.0.0/portrait.svg"
+    },
+    {
+      "from": "assets/play.wav",
+      "sha256": "7d6ac577ee8dcde1ffcf30f32910238da41bab368898ff388132f9243ac69d2a",
+      "to": "assets/audio/play/versions/1.0.0/sound.wav"
+    },
+    {
+      "from": "assets/powers/claw.svg",
+      "sha256": "5099fdffa8c09dea136dcfd7bea251adfbeeb8d6c6928f81c65d3bff498bdc3b",
+      "to": "assets/attacks/cinder-claw/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/dive.svg",
+      "sha256": "1f36d281534b5da29f45a60472756413a3cd62b43501dd61c36e81825c210bfd",
+      "to": "assets/attacks/storm-dive/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/fire_guard.svg",
+      "sha256": "213a551821c5e93603ccc52ac0f6e34134a898d14d8b5b91e047badb187ccd91",
+      "to": "assets/attacks/flame-guard/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/fireball.svg",
+      "sha256": "b7629623edd4d41100de28043691ea03ef3b35b04e692c7a70c2ce2404b947b3",
+      "to": "assets/attacks/fireball/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/inferno.svg",
+      "sha256": "393092fae3ebce20fac6caf24c6cb5878a320185605bd09be94b1a9bca393f05",
+      "to": "assets/attacks/inferno/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/judgment.svg",
+      "sha256": "cb99c620a7ba1d125faf03d9ff49b2a7a746e2899107773732af74fe66b224f4",
+      "to": "assets/attacks/judgment/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/lightning.svg",
+      "sha256": "3093b273f4dec9995146b131f70b21de098137d7cd68ce8c31de8839216c7cf4",
+      "to": "assets/attacks/lightning/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/roots.svg",
+      "sha256": "ace16265c5f20bfc5bb39b4824429274b6aa7d1c9b1a30f3e3e2a699a767594d",
+      "to": "assets/attacks/root-wall/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/sanctuary.svg",
+      "sha256": "76e8c696a74c53f4a7b862f5b738b6f3ad3def4e2544687a48e9e4eede7e41d4",
+      "to": "assets/attacks/sanctuary/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/seed.svg",
+      "sha256": "5a872a3ce556735163d6b8621049f658b7378474ba64996aefdec41858e14caf",
+      "to": "assets/attacks/life-seed/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/storm_guard.svg",
+      "sha256": "42d7e606e0fb33195a025a148f4355c2585520d83755ccc53e90082e87a7171c",
+      "to": "assets/attacks/static-veil/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/thorns.svg",
+      "sha256": "04c58fff50bcaa629b3df76132c70b53ac26a1ee732476547e0b6cf91b5d8462",
+      "to": "assets/attacks/thorn-lash/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/reward.wav",
+      "sha256": "1b7bfede7918906d097ed82cc925ad8e89abc39e29c87f8de2fd5a0dc4935cb9",
+      "to": "assets/audio/reward/versions/1.0.0/sound.wav"
+    },
+    {
+      "from": "assets/select.wav",
+      "sha256": "731845c7fde1acc40e58d6b2910af51ec554d2d8a5beb7b86764010a751a14b0",
+      "to": "assets/audio/select/versions/1.0.0/sound.wav"
+    },
+    {
+      "from": "assets/spore.svg",
+      "sha256": "892b791ac0e85c15e38d41f18ca32a365b6f96c5d7dacc43995c1a087b7f8880",
+      "to": "assets/characters/spore/versions/1.0.0/portrait.svg"
+    },
+    {
+      "from": "assets/stag.svg",
+      "sha256": "13c5ec00b429e2490d1aa79a9335d4f51e065c458dacbafba9cea07c7e52decd",
+      "to": "assets/characters/stag/versions/1.0.0/portrait.svg"
+    },
+    {
+      "from": "assets/storm.wav",
+      "sha256": "d56e2cd9533ac7f817e7fbba9526453fce1c927a1cd04021b56bef332582fb59",
+      "to": "assets/audio/storm/versions/1.0.0/sound.wav"
+    },
+    {
+      "from": "assets/tempestral.svg",
+      "sha256": "67706908ab5d5fb285848cdc47546034b3065e73fc75b942083d81584c3e0c12",
+      "to": "assets/umbrals/tempestral/versions/1.0.0/portrait.svg"
+    },
+    {
+      "from": "assets/verdalio.svg",
+      "sha256": "3bb474996e2274e691abe7d24911c53d36f54fd3d2683c98e8836cf68f0e8ccb",
+      "to": "assets/umbrals/verdalio/versions/1.0.0/portrait.svg"
+    },
+    {
+      "from": "assets/volt.svg",
+      "sha256": "fe12c24c74a852c1ac0551e1ecb7f1bd7fe88d35ccc812a5e9b6eba04c5ef7a5",
+      "to": "assets/umbrals/volt/versions/1.0.0/portrait.svg"
+    },
+    {
+      "from": "assets/world/clearing.png",
+      "sha256": "e117d4f995c69c9a72ac5dbbeb3ce8e0b49aea98249d2c1536279dacb4a8729b",
+      "to": "assets/world/moonlit-clearing/versions/1.0.0/background.png"
+    },
+    {
+      "from": "assets/battle/creatures.png",
+      "sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+      "to": "assets/characters/battle-creatures/versions/1.0.0/texture.png"
+    },
+    {
+      "from": "assets/battle/evolved.png",
+      "sha256": "6a227222f7a02cbd60ef30c746627df9e6bffb42dc4f7bbfd57d067342980c43",
+      "to": "assets/characters/battle-evolved/versions/1.0.0/texture.png"
+    },
+    {
+      "from": "assets/world/battle_clearing.png",
+      "sha256": "5e29951838bf65faffa4baa1676c460154207485a42a28c3e44d742b18b9413d",
+      "to": "assets/world/battle-clearing/versions/1.0.0/background.png"
+    },
+    {
+      "from": "assets/world/battle_clearing_depth.png",
+      "sha256": "18aa3cbb9d6f0541054180c1cfa91c8e1b2dcca8869a4da48e0e44c815f655bf",
+      "to": "assets/world/battle-clearing-depth/versions/1.0.0/background.png"
+    },
+    {
+      "from": "assets/dew.svg",
+      "sha256": "a3c3d1217a3e02cc1cae522148663bb53e4ca23dfc4fef14b3450fc91994d148",
+      "to": "assets/umbrals/dew/versions/1.0.0/portrait.svg"
+    },
+    {
+      "from": "assets/mareveu.svg",
+      "sha256": "7f01017c3e1d4a624525eb0fd80941df5a033d119bb9b9b176f32c8bbc39eb5c",
+      "to": "assets/umbrals/mareveu/versions/1.0.0/portrait.svg"
+    },
+    {
+      "from": "assets/powers/splash.svg",
+      "sha256": "be84aff462b0e95143da3e130bceea3ec2b59dc3edca4502d9663563b849ea27",
+      "to": "assets/attacks/splash/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/rain.svg",
+      "sha256": "4dc2ea8ccc0d73e49a2544035f6e6fae04b0f966d05f59abde210a1519ff385b",
+      "to": "assets/attacks/rain/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/dew_mend.svg",
+      "sha256": "52113567a90381fc10bebb968cd8d10b42e53def0d1c4a8bbc82bf80c452ae3b",
+      "to": "assets/attacks/dew-mend/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/icons/backpack.svg",
+      "sha256": "36ee9f46ccb5a9c760dad29ab184d3dc48e47e0ef21ca75f7682e009293b6c98",
+      "to": "assets/ui/backpack/versions/1.0.0/icon.svg"
+    }
+  ],
+  "source_asset_count": 47,
+  "source_commit": "c928126a41148e3bf8ef75dac219ffbff83af26f"
+}

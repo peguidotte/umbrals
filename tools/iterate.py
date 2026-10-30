@@ -220,7 +220,7 @@ def main():
                 status = run_command(argv, log)
             report['steps'].append({'name':name,'exit_code':status,'seconds':round(time.monotonic()-step_start,2),'command':argv})
             if name == 'rules-and-ui':
-                for filename in ['asset-report.json','rules.log','mutation-report.json','ui-report.json','ui_state_test.log','ui_flow_test.log','startup_smoke.log','import.log','expedition-report.json','expedition-rules.log','expedition-save.log','expedition-ui.log']:
+                for filename in ['asset-report.json','asset-unit-report.json','asset_catalog_test.log','rules.log','mutation-report.json','ui-report.json','ui_state_test.log','ui_flow_test.log','startup_smoke.log','import.log','expedition-report.json','expedition-rules.log','expedition-save.log','expedition-ui.log']:
                     if (ROOT / 'test-results' / filename).exists():
                         shutil.copy2(ROOT / 'test-results' / filename, out / 'logs' / filename)
             if name == 'web-export' and status == 0:
@@ -236,7 +236,7 @@ def main():
         failed = True
         report['failure'] = str(exception)
     finally:
-        for key, path in [('assets',out / 'logs/asset-report.json'),('ui',out / 'logs/ui-report.json'),('mutations',out / 'logs/mutation-report.json'),('browser',out / 'browser/browser-report.json'),('expedition_browser',out / 'expedition-browser/browser-report.json'),('expedition',out / 'logs/expedition-report.json')]:
+        for key, path in [('assets',out / 'logs/asset-report.json'),('asset_units',out / 'logs/asset-unit-report.json'),('ui',out / 'logs/ui-report.json'),('mutations',out / 'logs/mutation-report.json'),('browser',out / 'browser/browser-report.json'),('expedition_browser',out / 'expedition-browser/browser-report.json'),('expedition',out / 'logs/expedition-report.json')]:
             if path.exists():
                 report[key] = json.loads(path.read_text())
         if (out / 'logs/rules.log').exists():

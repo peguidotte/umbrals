@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.png binary
+*.webp binary
+*.gif binary
+*.mp4 binary
+*.wav binary
+*.ttf binary
+# Preserve the upstream license verbatim, including trailing spaces.
+assets/fonts/**/license.txt -whitespace

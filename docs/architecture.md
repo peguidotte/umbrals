@@ -8,6 +8,7 @@ The working tree integrates the first v0.4 battle slice while the product versio
 - `scripts/rules.gd`: deterministic state machine, individuals, owned power instances, persistent owned card zones, speed initiative, individual HP, target slots, status effects, substitutions and rewards.
 - `scripts/main.gd`: session coordinator, screen construction, feedback events, local statistics and opt-in read-only browser state.
 - `scripts/ui/`: screen stack, named input, atomic preferences, theme/buttons, persistent cards/hand, actors, world, health display, bounded effects and audio.
+- `scripts/assets/`: exact production resource bindings and version-explicit animation loading. Assets are independently versioned modules; gameplay content stores logical art IDs. See `docs/assets/README.md` for ownership, immutable releases, authoring and CI validation.
 
 The tactical revision delegates pure combat helpers from `rules.gd` to
 `scripts/battle/`: `targeting.gd` is the single source for slot masks and eligible

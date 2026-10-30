@@ -1,0 +1,58 @@
+{
+  "name": "CHAMA VIVA",
+  "version": 2,
+  "direction": "right",
+  "durationMs": 3600.0,
+  "timing": {
+    "chargeMs": 800.0,
+    "flightMs": 933.3333333333334,
+    "impactMs": 1400.0,
+    "pauseMs": 466.6666666666667
+  },
+  "preview": {
+    "projectileScale": 0.84,
+    "curve": 55,
+    "progressExponent": 0.94,
+    "chargeScale": 0.94,
+    "impactScale": 0.88
+  },
+  "charge": {
+    "image": "assets/charge.png",
+    "frameWidth": 384,
+    "frameHeight": 384,
+    "columns": 6,
+    "frames": 24,
+    "fps": 30,
+    "anchor": {
+      "x": 192,
+      "y": 192
+    },
+    "loop": false
+  },
+  "projectile": {
+    "image": "assets/projectile.png",
+    "frameWidth": 640,
+    "frameHeight": 384,
+    "columns": 8,
+    "frames": 32,
+    "fps": 30,
+    "anchor": {
+      "x": 454,
+      "y": 192
+    },
+    "loop": true
+  },
+  "impact": {
+    "image": "assets/impact.png",
+    "frameWidth": 640,
+    "frameHeight": 640,
+    "columns": 8,
+    "frames": 42,
+    "fps": 30,
+    "anchor": {
+      "x": 320,
+      "y": 320
+    },
+    "loop": false
+  }
+}

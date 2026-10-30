@@ -5,7 +5,17 @@ source tools/environment.sh
 mkdir -p test-results
 touch test-results/.gdignore
 # Root reports describe this attempt; earlier iteration evidence stays in artifacts/.
-rm -f test-results/{asset-report.json,rules.log,mutation-report.json,ui-report.json,ui_state_test.log,ui_flow_test.log,startup_smoke.log,import.log}
+rm -f test-results/{asset-report.json,asset-unit-report.json,asset_catalog_test.log,rules.log,mutation-report.json,ui-report.json,ui_state_test.log,ui_flow_test.log,startup_smoke.log,import.log}
+python - <<'PY'
+import json, unittest
+from pathlib import Path
+suite = unittest.defaultTestLoader.discover('tests', pattern='test_asset_pipeline.py')
+if not suite.countTestCases():
+    raise SystemExit('Asset tests did not execute')
+result = unittest.TextTestRunner(verbosity=2).run(suite)
+Path('test-results/asset-unit-report.json').write_text(json.dumps({'checks':result.testsRun,'failed':len(result.failures)+len(result.errors)}))
+if not result.wasSuccessful(): raise SystemExit(1)
+PY
 python tools/asset_checks.py
 godot --headless --path . --editor --import --quit >test-results/import.log 2>&1
 if rg -n 'SCRIPT ERROR:|^ERROR:' test-results/import.log; then exit 1; fi

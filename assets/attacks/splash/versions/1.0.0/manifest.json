@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "Original power icon",
+  "files": {
+    "icon": {
+      "bytes": 794,
+      "kind": "texture",
+      "path": "icon.svg",
+      "provenance": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "license": "Original project asset; no external artwork.",
+        "tool": "authored directly for the battle content slice"
+      },
+      "sha256": "be84aff462b0e95143da3e130bceea3ec2b59dc3edca4502d9663563b849ea27",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "attacks/splash",
+  "provenance": {
+    "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+    "license": "Original project asset; no external artwork.",
+    "tool": "authored directly for the battle content slice"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

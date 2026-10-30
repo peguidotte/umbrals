@@ -98,7 +98,12 @@ Publicação privada concluída; audiência preservada. O commit da cópia Sites
 `2fb85d4a7a7a0fb15992bba2cf150fd03e19e191`. Proveniência em `private-deployment.json`.
 A política de rede do executor impede uma visita autenticada ao host publicado;
 o status terminal do Sites e o pacote final por HTTP local foram verificados.
-Nenhum commit/push foi feito no repositório principal.
+Na entrega privada original, o repositório principal ainda não tinha recebido commit/push.
+O trabalho está sendo integrado à main por PR a pedido do usuário, preservando
+o catálogo modular do PR #1. A junção passou novamente por 14.413 regras,
+656 verificações de UI/catálogo/cena, 109 expedição/save e 23 testes Python
+do pipeline de assets. O gate de navegador acima é anterior à migração dos
+paths; a nova execução completa fica no workflow do PR.
 
 ## Ajustes de UX ainda recomendados
 

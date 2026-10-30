@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "Original backpack icon",
+  "files": {
+    "icon": {
+      "bytes": 469,
+      "kind": "texture",
+      "path": "icon.svg",
+      "provenance": {
+        "kind": "authored original SVG icon",
+        "license": "Original project asset; no external artwork.",
+        "tool": "authored directly for the battle HUD"
+      },
+      "sha256": "36ee9f46ccb5a9c760dad29ab184d3dc48e47e0ef21ca75f7682e009293b6c98",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "ui/backpack",
+  "provenance": {
+    "kind": "authored original SVG icon",
+    "license": "Original project asset; no external artwork.",
+    "tool": "authored directly for the battle HUD"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

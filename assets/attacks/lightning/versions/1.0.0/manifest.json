@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "power illustration",
+  "files": {
+    "icon": {
+      "bytes": 617,
+      "kind": "texture",
+      "path": "icon.svg",
+      "provenance": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "sha256": "3093b273f4dec9995146b131f70b21de098137d7cd68ce8c31de8839216c7cf4",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "attacks/lightning",
+  "provenance": {
+    "kind": "authored original vector",
+    "license": "Original project asset; no external samples or game artwork.",
+    "tool": "tools/generate_assets.py"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

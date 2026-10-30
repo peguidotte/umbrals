@@ -1,8 +1,9 @@
 class_name UmbralWorld
 extends Control
 ## Only scenery animates here. No gameplay state is polled or mutated.
-const BACKGROUND = preload("res://assets/world/clearing.png")
-const BATTLE_BACKGROUND_PATH = "res://assets/world/battle_clearing_depth.png"
+const Paths = preload("res://scripts/assets/binding_paths.gd")
+const BACKGROUND = preload(Paths.WORLD_MOONLIT_CLEARING)
+const BATTLE_BACKGROUND_PATH = Paths.WORLD_BATTLE_CLEARING_DEPTH
 var battle_background: Texture2D
 var battle_bottom_inset: float = 254.0
 var clock: float = 0.0

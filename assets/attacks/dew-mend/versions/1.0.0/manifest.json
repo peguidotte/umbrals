@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "Original power icon",
+  "files": {
+    "icon": {
+      "bytes": 670,
+      "kind": "texture",
+      "path": "icon.svg",
+      "provenance": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "license": "Original project asset; no external artwork.",
+        "tool": "authored directly for the battle content slice"
+      },
+      "sha256": "52113567a90381fc10bebb968cd8d10b42e53def0d1c4a8bbc82bf80c452ae3b",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "attacks/dew-mend",
+  "provenance": {
+    "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+    "license": "Original project asset; no external artwork.",
+    "tool": "authored directly for the battle content slice"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

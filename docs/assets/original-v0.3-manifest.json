@@ -1,0 +1,746 @@
+{
+  "schema_version": 1,
+  "art_direction_brief": "docs/art-direction-v0.3.md",
+  "review_record": "docs/visual-review-v0.3.md",
+  "assets": [
+    {
+      "id": "ambience",
+      "path": "assets/ambience.wav",
+      "sha256": "0bad521c5eef309e617115c6f08cf27d45723615b82364e3be07d4ece365ae9e",
+      "bytes": 529244,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "ambience loop",
+      "technical": {
+        "sample_rate": 22050,
+        "channels": 1,
+        "bits": 16,
+        "seconds": 12.0
+      },
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "tool": "tools/generate_audio.py",
+        "license": "Original project asset; no external samples."
+      }
+    },
+    {
+      "id": "body",
+      "path": "assets/body.ttf",
+      "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e",
+      "bytes": 759720,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "native UI font",
+      "source": {
+        "kind": "third-party font",
+        "source": "Debian font package: DejaVu Sans / DejaVu Serif",
+        "license_record": "assets/FONT-LICENSE.txt"
+      }
+    },
+    {
+      "id": "boss_pulse",
+      "path": "assets/boss_pulse.wav",
+      "sha256": "a294e04b4f22f575e22006b974bca9baabd61cfa65cee7d9bf4547549d3484ab",
+      "bytes": 529244,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "ambience loop",
+      "technical": {
+        "sample_rate": 22050,
+        "channels": 1,
+        "bits": 16,
+        "seconds": 12.0
+      },
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "tool": "tools/generate_audio.py",
+        "license": "Original project asset; no external samples."
+      }
+    },
+    {
+      "id": "capture",
+      "path": "assets/capture.wav",
+      "sha256": "09dafa093dd15b231634f789d37449313cfeec4fdb809ac5b0686217cdec21ef",
+      "bytes": 22094,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "event sound",
+      "technical": {
+        "sample_rate": 22050,
+        "channels": 1,
+        "bits": 16,
+        "seconds": 0.5
+      },
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "tool": "tools/generate_audio.py",
+        "license": "Original project asset; no external samples."
+      }
+    },
+    {
+      "id": "display",
+      "path": "assets/display.ttf",
+      "sha256": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7",
+      "bytes": 380660,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "native UI font",
+      "source": {
+        "kind": "third-party font",
+        "source": "Debian font package: DejaVu Sans / DejaVu Serif",
+        "license_record": "assets/FONT-LICENSE.txt"
+      }
+    },
+    {
+      "id": "draw",
+      "path": "assets/draw.wav",
+      "sha256": "b5bbae326d1ed060ee9bbe3d99e9078308b64e2207b2cb3145b1c1eebe009a28",
+      "bytes": 7100,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "event sound",
+      "technical": {
+        "sample_rate": 22050,
+        "channels": 1,
+        "bits": 16,
+        "seconds": 0.16
+      },
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "tool": "tools/generate_audio.py",
+        "license": "Original project asset; no external samples."
+      }
+    },
+    {
+      "id": "ember",
+      "path": "assets/ember.svg",
+      "sha256": "ad847d5b7ead36e3d172c70ca0054c416c85bfa95deb696d5efabb9181b3c66c",
+      "bytes": 1752,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "creature portrait",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "evolve",
+      "path": "assets/evolve.wav",
+      "sha256": "bb332cb19af7529024f5c7515dc6fd42023477ac7028cc5c61c77cf0a60899c8",
+      "bytes": 30912,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "event sound",
+      "technical": {
+        "sample_rate": 22050,
+        "channels": 1,
+        "bits": 16,
+        "seconds": 0.7
+      },
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "tool": "tools/generate_audio.py",
+        "license": "Original project asset; no external samples."
+      }
+    },
+    {
+      "id": "fire",
+      "path": "assets/fire.wav",
+      "sha256": "3893d43513add42188989793dac8830ce2b975899b839e165dfb00ce17ff4f94",
+      "bytes": 10628,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "event sound",
+      "technical": {
+        "sample_rate": 22050,
+        "channels": 1,
+        "bits": 16,
+        "seconds": 0.24
+      },
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "tool": "tools/generate_audio.py",
+        "license": "Original project asset; no external samples."
+      }
+    },
+    {
+      "id": "hover",
+      "path": "assets/hover.wav",
+      "sha256": "f3f5adcddabd142c696d58b9ad7013c7c22deb64ac7369604306a9abab1712fe",
+      "bytes": 2248,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "event sound",
+      "technical": {
+        "sample_rate": 22050,
+        "channels": 1,
+        "bits": 16,
+        "seconds": 0.05
+      },
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "tool": "tools/generate_audio.py",
+        "license": "Original project asset; no external samples."
+      }
+    },
+    {
+      "id": "ignivar",
+      "path": "assets/ignivar.svg",
+      "sha256": "e7c898f62cd2585e1f42900fe97981c050f8d46815c2db74dfa64c210a72f362",
+      "bytes": 1821,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "creature portrait",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "impact",
+      "path": "assets/impact.wav",
+      "sha256": "b05c2a33e106b40aaa006d645a4cb5dcbd0ade59ac914ab5b120e44333f062c3",
+      "bytes": 11068,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "event sound",
+      "technical": {
+        "sample_rate": 22050,
+        "channels": 1,
+        "bits": 16,
+        "seconds": 0.25
+      },
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "tool": "tools/generate_audio.py",
+        "license": "Original project asset; no external samples."
+      }
+    },
+    {
+      "id": "leaf",
+      "path": "assets/leaf.wav",
+      "sha256": "5fdb1b9660c9c43f57d17bed37b60bd8f297db5932de2c38065514edf91370b7",
+      "bytes": 9746,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "event sound",
+      "technical": {
+        "sample_rate": 22050,
+        "channels": 1,
+        "bits": 16,
+        "seconds": 0.22
+      },
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "tool": "tools/generate_audio.py",
+        "license": "Original project asset; no external samples."
+      }
+    },
+    {
+      "id": "moss",
+      "path": "assets/moss.svg",
+      "sha256": "cd817966197d9cfbac2ff1a1f41189f9e9716a909b5f7cbb266220e333368b1a",
+      "bytes": 1699,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "creature portrait",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "owl",
+      "path": "assets/owl.svg",
+      "sha256": "b27e17b2961498669ada331e0efa5551a50b4bcf67110ebea9353ed2a05151b8",
+      "bytes": 1416,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "creature portrait",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "play",
+      "path": "assets/play.wav",
+      "sha256": "7d6ac577ee8dcde1ffcf30f32910238da41bab368898ff388132f9243ac69d2a",
+      "bytes": 8864,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "event sound",
+      "technical": {
+        "sample_rate": 22050,
+        "channels": 1,
+        "bits": 16,
+        "seconds": 0.2
+      },
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples."
+      }
+    },
+    {
+      "id": "powers-claw",
+      "path": "assets/powers/claw.svg",
+      "sha256": "5099fdffa8c09dea136dcfd7bea251adfbeeb8d6c6928f81c65d3bff498bdc3b",
+      "bytes": 593,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-dive",
+      "path": "assets/powers/dive.svg",
+      "sha256": "1f36d281534b5da29f45a60472756413a3cd62b43501dd61c36e81825c210bfd",
+      "bytes": 657,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-fire_guard",
+      "path": "assets/powers/fire_guard.svg",
+      "sha256": "213a551821c5e93603ccc52ac0f6e34134a898d14d8b5b91e047badb187ccd91",
+      "bytes": 681,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-fireball",
+      "path": "assets/powers/fireball.svg",
+      "sha256": "b7629623edd4d41100de28043691ea03ef3b35b04e692c7a70c2ce2404b947b3",
+      "bytes": 710,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-inferno",
+      "path": "assets/powers/inferno.svg",
+      "sha256": "393092fae3ebce20fac6caf24c6cb5878a320185605bd09be94b1a9bca393f05",
+      "bytes": 758,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-judgment",
+      "path": "assets/powers/judgment.svg",
+      "sha256": "cb99c620a7ba1d125faf03d9ff49b2a7a746e2899107773732af74fe66b224f4",
+      "bytes": 701,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-lightning",
+      "path": "assets/powers/lightning.svg",
+      "sha256": "3093b273f4dec9995146b131f70b21de098137d7cd68ce8c31de8839216c7cf4",
+      "bytes": 617,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-roots",
+      "path": "assets/powers/roots.svg",
+      "sha256": "ace16265c5f20bfc5bb39b4824429274b6aa7d1c9b1a30f3e3e2a699a767594d",
+      "bytes": 691,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-sanctuary",
+      "path": "assets/powers/sanctuary.svg",
+      "sha256": "76e8c696a74c53f4a7b862f5b738b6f3ad3def4e2544687a48e9e4eede7e41d4",
+      "bytes": 721,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-seed",
+      "path": "assets/powers/seed.svg",
+      "sha256": "5a872a3ce556735163d6b8621049f658b7378474ba64996aefdec41858e14caf",
+      "bytes": 686,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-storm_guard",
+      "path": "assets/powers/storm_guard.svg",
+      "sha256": "42d7e606e0fb33195a025a148f4355c2585520d83755ccc53e90082e87a7171c",
+      "bytes": 651,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-thorns",
+      "path": "assets/powers/thorns.svg",
+      "sha256": "04c58fff50bcaa629b3df76132c70b53ac26a1ee732476547e0b6cf91b5d8462",
+      "bytes": 682,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "reward",
+      "path": "assets/reward.wav",
+      "sha256": "1b7bfede7918906d097ed82cc925ad8e89abc39e29c87f8de2fd5a0dc4935cb9",
+      "bytes": 18566,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "event sound",
+      "technical": {
+        "sample_rate": 22050,
+        "channels": 1,
+        "bits": 16,
+        "seconds": 0.42
+      },
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples."
+      }
+    },
+    {
+      "id": "select",
+      "path": "assets/select.wav",
+      "sha256": "731845c7fde1acc40e58d6b2910af51ec554d2d8a5beb7b86764010a751a14b0",
+      "bytes": 2910,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "event sound",
+      "technical": {
+        "sample_rate": 22050,
+        "channels": 1,
+        "bits": 16,
+        "seconds": 0.065
+      },
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples."
+      }
+    },
+    {
+      "id": "spore",
+      "path": "assets/spore.svg",
+      "sha256": "892b791ac0e85c15e38d41f18ca32a365b6f96c5d7dacc43995c1a087b7f8880",
+      "bytes": 1436,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "creature portrait",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "stag",
+      "path": "assets/stag.svg",
+      "sha256": "13c5ec00b429e2490d1aa79a9335d4f51e065c458dacbafba9cea07c7e52decd",
+      "bytes": 1547,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "creature portrait",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "storm",
+      "path": "assets/storm.wav",
+      "sha256": "d56e2cd9533ac7f817e7fbba9526453fce1c927a1cd04021b56bef332582fb59",
+      "bytes": 7982,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "event sound",
+      "technical": {
+        "sample_rate": 22050,
+        "channels": 1,
+        "bits": 16,
+        "seconds": 0.18
+      },
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "tool": "tools/generate_audio.py",
+        "license": "Original project asset; no external samples."
+      }
+    },
+    {
+      "id": "tempestral",
+      "path": "assets/tempestral.svg",
+      "sha256": "67706908ab5d5fb285848cdc47546034b3065e73fc75b942083d81584c3e0c12",
+      "bytes": 1571,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "creature portrait",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "verdalio",
+      "path": "assets/verdalio.svg",
+      "sha256": "3bb474996e2274e691abe7d24911c53d36f54fd3d2683c98e8836cf68f0e8ccb",
+      "bytes": 1718,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "creature portrait",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "volt",
+      "path": "assets/volt.svg",
+      "sha256": "fe12c24c74a852c1ac0551e1ecb7f1bd7fe88d35ccc812a5e9b6eba04c5ef7a5",
+      "bytes": 1536,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "creature portrait",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "world-clearing",
+      "path": "assets/world/clearing.png",
+      "sha256": "e117d4f995c69c9a72ac5dbbeb3ce8e0b49aea98249d2c1536279dacb4a8729b",
+      "bytes": 2303981,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "moonlit forest background",
+      "technical": {
+        "dimensions": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "alpha": false,
+        "anchor": "aspect-cover center",
+        "frames": 1,
+        "filtering": "linear",
+        "mipmaps": false
+      },
+      "source": {
+        "kind": "generated original",
+        "tool": "OpenAI Image Gen tool",
+        "model_version": "not exposed by the tool",
+        "recorded_date_utc": "2026-10-14",
+        "brief": "Illustrated blue-green moonlit forest clearing, ancient stone arch, layered botanical silhouettes, quiet dark foreground and lower area for native cards; light from upper right; no text, UI, characters or logos.",
+        "edit_history": "Copied the original PNG without resampling, cropping, recompression or metadata stripping. Aspect-cover happens only at render time.",
+        "license_record": "Generated service output under applicable service terms; no third-party game asset source.",
+        "original_sha256": "e117d4f995c69c9a72ac5dbbeb3ce8e0b49aea98249d2c1536279dacb4a8729b"
+      }
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "bindings": {
+    "attacks/cinder-claw": {
+      "file": "icon",
+      "id": "attacks/cinder-claw",
+      "version": "1.0.0"
+    },
+    "attacks/dew-mend": {
+      "file": "icon",
+      "id": "attacks/dew-mend",
+      "version": "1.0.0"
+    },
+    "attacks/fireball": {
+      "file": "icon",
+      "id": "attacks/fireball",
+      "version": "1.0.0"
+    },
+    "attacks/flame-guard": {
+      "file": "icon",
+      "id": "attacks/flame-guard",
+      "version": "1.0.0"
+    },
+    "attacks/inferno": {
+      "file": "icon",
+      "id": "attacks/inferno",
+      "version": "1.0.0"
+    },
+    "attacks/judgment": {
+      "file": "icon",
+      "id": "attacks/judgment",
+      "version": "1.0.0"
+    },
+    "attacks/life-seed": {
+      "file": "icon",
+      "id": "attacks/life-seed",
+      "version": "1.0.0"
+    },
+    "attacks/lightning": {
+      "file": "icon",
+      "id": "attacks/lightning",
+      "version": "1.0.0"
+    },
+    "attacks/rain": {
+      "file": "icon",
+      "id": "attacks/rain",
+      "version": "1.0.0"
+    },
+    "attacks/root-wall": {
+      "file": "icon",
+      "id": "attacks/root-wall",
+      "version": "1.0.0"
+    },
+    "attacks/sanctuary": {
+      "file": "icon",
+      "id": "attacks/sanctuary",
+      "version": "1.0.0"
+    },
+    "attacks/splash": {
+      "file": "icon",
+      "id": "attacks/splash",
+      "version": "1.0.0"
+    },
+    "attacks/static-veil": {
+      "file": "icon",
+      "id": "attacks/static-veil",
+      "version": "1.0.0"
+    },
+    "attacks/storm-dive": {
+      "file": "icon",
+      "id": "attacks/storm-dive",
+      "version": "1.0.0"
+    },
+    "attacks/thorn-lash": {
+      "file": "icon",
+      "id": "attacks/thorn-lash",
+      "version": "1.0.0"
+    },
+    "audio/ambience": {
+      "file": "sound",
+      "id": "audio/ambience",
+      "version": "1.0.0"
+    },
+    "audio/boss-pulse": {
+      "file": "sound",
+      "id": "audio/boss-pulse",
+      "version": "1.0.0"
+    },
+    "audio/capture": {
+      "file": "sound",
+      "id": "audio/capture",
+      "version": "1.0.0"
+    },
+    "audio/draw": {
+      "file": "sound",
+      "id": "audio/draw",
+      "version": "1.0.0"
+    },
+    "audio/evolve": {
+      "file": "sound",
+      "id": "audio/evolve",
+      "version": "1.0.0"
+    },
+    "audio/fire": {
+      "file": "sound",
+      "id": "audio/fire",
+      "version": "1.0.0"
+    },
+    "audio/hover": {
+      "file": "sound",
+      "id": "audio/hover",
+      "version": "1.0.0"
+    },
+    "audio/impact": {
+      "file": "sound",
+      "id": "audio/impact",
+      "version": "1.0.0"
+    },
+    "audio/leaf": {
+      "file": "sound",
+      "id": "audio/leaf",
+      "version": "1.0.0"
+    },
+    "audio/play": {
+      "file": "sound",
+      "id": "audio/play",
+      "version": "1.0.0"
+    },
+    "audio/reward": {
+      "file": "sound",
+      "id": "audio/reward",
+      "version": "1.0.0"
+    },
+    "audio/select": {
+      "file": "sound",
+      "id": "audio/select",
+      "version": "1.0.0"
+    },
+    "audio/storm": {
+      "file": "sound",
+      "id": "audio/storm",
+      "version": "1.0.0"
+    },
+    "characters/battle-creatures": {
+      "file": "texture",
+      "id": "characters/battle-creatures",
+      "version": "1.0.0"
+    },
+    "characters/battle-evolved": {
+      "file": "texture",
+      "id": "characters/battle-evolved",
+      "version": "1.0.0"
+    },
+    "characters/owl": {
+      "file": "portrait",
+      "id": "characters/owl",
+      "version": "1.0.0"
+    },
+    "characters/spore": {
+      "file": "portrait",
+      "id": "characters/spore",
+      "version": "1.0.0"
+    },
+    "characters/stag": {
+      "file": "portrait",
+      "id": "characters/stag",
+      "version": "1.0.0"
+    },
+    "fonts/body": {
+      "file": "body",
+      "id": "fonts/dejavu",
+      "version": "1.0.0"
+    },
+    "fonts/display": {
+      "file": "display",
+      "id": "fonts/dejavu",
+      "version": "1.0.0"
+    },
+    "ui/backpack": {
+      "file": "icon",
+      "id": "ui/backpack",
+      "version": "1.0.0"
+    },
+    "umbrals/dew": {
+      "file": "portrait",
+      "id": "umbrals/dew",
+      "version": "1.0.0"
+    },
+    "umbrals/ember": {
+      "file": "portrait",
+      "id": "umbrals/ember",
+      "version": "1.0.0"
+    },
+    "umbrals/ignivar": {
+      "file": "portrait",
+      "id": "umbrals/ignivar",
+      "version": "1.0.0"
+    },
+    "umbrals/mareveu": {
+      "file": "portrait",
+      "id": "umbrals/mareveu",
+      "version": "1.0.0"
+    },
+    "umbrals/moss": {
+      "file": "portrait",
+      "id": "umbrals/moss",
+      "version": "1.0.0"
+    },
+    "umbrals/tempestral": {
+      "file": "portrait",
+      "id": "umbrals/tempestral",
+      "version": "1.0.0"
+    },
+    "umbrals/verdalio": {
+      "file": "portrait",
+      "id": "umbrals/verdalio",
+      "version": "1.0.0"
+    },
+    "umbrals/volt": {
+      "file": "portrait",
+      "id": "umbrals/volt",
+      "version": "1.0.0"
+    },
+    "world/battle-clearing": {
+      "file": "background",
+      "id": "world/battle-clearing",
+      "version": "1.0.0"
+    },
+    "world/battle-clearing-depth": {
+      "file": "background",
+      "id": "world/battle-clearing-depth",
+      "version": "1.0.0"
+    },
+    "world/moonlit-clearing": {
+      "file": "background",
+      "id": "world/moonlit-clearing",
+      "version": "1.0.0"
+    }
+  },
+  "schema_version": 1
+}

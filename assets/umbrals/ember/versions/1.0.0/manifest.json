@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "creature portrait",
+  "files": {
+    "portrait": {
+      "bytes": 1752,
+      "kind": "texture",
+      "path": "portrait.svg",
+      "provenance": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "sha256": "ad847d5b7ead36e3d172c70ca0054c416c85bfa95deb696d5efabb9181b3c66c",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "umbrals/ember",
+  "provenance": {
+    "kind": "authored original vector",
+    "license": "Original project asset; no external samples or game artwork.",
+    "tool": "tools/generate_assets.py"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

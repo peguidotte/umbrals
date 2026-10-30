@@ -23,10 +23,10 @@ const CAPTURE_ROUTES = {
 }
 const STAT_GROWTH = {"max_hp": 12, "attack": 3, "defense": 1, "speed": 2}
 const SPECIES = {
-	"ember": {"nature": "fire", "secondary_natures": ["", ""], "resistances": {"fire": 25}, "names": ["Brasa", "Ignivar"], "element": "Fogo", "color": "ef987b", "art": ["ember", "ignivar"], "trait": "Combustão", "trait_description": "Ataques aplicam %d queimadura.", "trait_values": [2, 4], "powers": ["fireball", "cinder_claw", "flame_guard"], "signature": "inferno", "stats": {"max_hp": 40, "attack": 10, "defense": 2, "speed": 14}},
-	"moss": {"nature": "forest", "secondary_natures": ["", ""], "resistances": {"forest": 25}, "names": ["Musgo", "Verdálio"], "element": "Bosque", "color": "91c8a1", "art": ["moss", "verdalio"], "trait": "Raízes Vivas", "trait_description": "Ao proteger, cura %d por rodada.", "trait_values": [2, 4], "powers": ["thorn_lash", "root_wall", "sowing"], "signature": "sanctuary", "stats": {"max_hp": 48, "attack": 8, "defense": 4, "speed": 8}},
-	"volt": {"nature": "lightning", "secondary_natures": ["", "water"], "resistances": {"lightning": 25}, "names": ["Faísca", "Tempestral"], "element": "Raio", "color": "e8cf81", "art": ["volt", "tempestral"], "trait": "Circuito Vivo", "trait_description": "Ataques: +%d dano por outro aliado ativo.", "trait_values": [4, 7], "powers": ["lightning", "interference", "storm_dive"], "signature": "judgment", "stats": {"max_hp": 36, "attack": 11, "defense": 1, "speed": 18}},
-	"dew": {"nature": "water", "secondary_natures": ["", ""], "resistances": {"water": 25}, "names": ["Orvalho", "Marevéu"], "element": "Água", "color": "80d7e5", "art": ["dew", "mareveu"], "trait": "Maré Marcada", "trait_description": "Poderes de água deixam Encharcado por %d rodadas.", "trait_values": [2, 3], "powers": ["tidal_splash", "rain_sweep", "dew_mend"], "signature": "moon_tide", "stats": {"max_hp": 42, "attack": 9, "defense": 2, "speed": 20}},
+	"ember": {"nature": "fire", "secondary_natures": ["", ""], "resistances": {"fire": 25}, "names": ["Brasa", "Ignivar"], "element": "Fogo", "color": "ef987b", "art": ["umbrals/ember", "umbrals/ignivar"], "trait": "Combustão", "trait_description": "Ataques aplicam %d queimadura.", "trait_values": [2, 4], "powers": ["fireball", "cinder_claw", "flame_guard"], "signature": "inferno", "stats": {"max_hp": 40, "attack": 10, "defense": 2, "speed": 14}},
+	"moss": {"nature": "forest", "secondary_natures": ["", ""], "resistances": {"forest": 25}, "names": ["Musgo", "Verdálio"], "element": "Bosque", "color": "91c8a1", "art": ["umbrals/moss", "umbrals/verdalio"], "trait": "Raízes Vivas", "trait_description": "Ao proteger, cura %d por rodada.", "trait_values": [2, 4], "powers": ["thorn_lash", "root_wall", "sowing"], "signature": "sanctuary", "stats": {"max_hp": 48, "attack": 8, "defense": 4, "speed": 8}},
+	"volt": {"nature": "lightning", "secondary_natures": ["", "water"], "resistances": {"lightning": 25}, "names": ["Faísca", "Tempestral"], "element": "Raio", "color": "e8cf81", "art": ["umbrals/volt", "umbrals/tempestral"], "trait": "Circuito Vivo", "trait_description": "Ataques: +%d dano por outro aliado ativo.", "trait_values": [4, 7], "powers": ["lightning", "interference", "storm_dive"], "signature": "judgment", "stats": {"max_hp": 36, "attack": 11, "defense": 1, "speed": 18}},
+	"dew": {"nature": "water", "secondary_natures": ["", ""], "resistances": {"water": 25}, "names": ["Orvalho", "Marevéu"], "element": "Água", "color": "80d7e5", "art": ["umbrals/dew", "umbrals/mareveu"], "trait": "Maré Marcada", "trait_description": "Poderes de água deixam Encharcado por %d rodadas.", "trait_values": [2, 3], "powers": ["tidal_splash", "rain_sweep", "dew_mend"], "signature": "moon_tide", "stats": {"max_hp": 42, "attack": 9, "defense": 2, "speed": 20}},
 }
 const PASSIVES = {
 	"fierce": {"name": "Feroz", "description": "Ataques ganham +3 dano."},
@@ -46,32 +46,32 @@ const PASSIVE_POOLS = {
 # Larger priority resolves first. Order is only a stable per-power tiebreaker;
 # water does not receive an implicit phase ahead of faster lightning owners.
 const POWERS = {
-	"sowing": {"nature": "forest", "learning": "nature", "conditions": {"seed": 3}, "name": "Semeadura", "cost": 1, "damage": 6, "block": 0, "heal": 0, "art": "seed", "target": "enemy", "scope": "single", "priority": 0, "order": 60},
-	"interference": {"nature": "lightning", "learning": "nature", "conditions": {"electrified": 2}, "name": "Interferência", "cost": 1, "damage": 4, "block": 0, "heal": 0, "art": "lightning", "target": "enemy", "scope": "single", "priority": 0, "order": 80},
-	"fireball": {"nature": "fire", "learning": "nature", "conditions": {}, "name": "Bola de\nfogo", "cost": 1, "damage": 12, "block": 0, "heal": 0, "art": "fireball", "target": "enemy", "scope": "single", "priority": 0, "order": 10},
-	"cinder_claw": {"nature": "fire", "learning": "nature", "conditions": {"burn": 3}, "name": "Garra de\nbrasas", "cost": 1, "damage": 8, "block": 0, "heal": 0, "art": "claw", "target": "enemy", "scope": "upper_pair", "priority": 0, "order": 20},
-	"flame_guard": {"nature": "fire", "learning": "nature", "conditions": {}, "name": "Manto de\ncinzas", "cost": 1, "damage": 0, "block": 8, "heal": 0, "art": "fire_guard", "target": "self", "scope": "single", "priority": 1, "order": 30},
-	"thorn_lash": {"nature": "forest", "learning": "nature", "conditions": {}, "name": "Chicote de\nespinhos", "cost": 1, "damage": 8, "block": 4, "heal": 0, "art": "thorns", "target": "enemy", "scope": "lower_pair", "priority": 0, "order": 40},
-	"root_wall": {"nature": "forest", "learning": "nature", "conditions": {"taunt": 1}, "name": "Muralha de\nraízes", "cost": 1, "damage": 0, "block": 12, "heal": 0, "art": "roots", "target": "self", "scope": "single", "priority": 1, "order": 50},
-	"life_seed": {"nature": "forest", "learning": "nature", "conditions": {}, "name": "Semente\nvital", "cost": 1, "damage": 0, "block": 0, "heal": 6, "art": "seed", "target": "ally", "scope": "single", "priority": 0, "order": 60},
-	"lightning": {"nature": "lightning", "learning": "nature", "conditions": {}, "name": "Arco\nelétrico", "cost": 1, "damage": 11, "block": 0, "heal": 0, "art": "lightning", "target": "enemy", "scope": "single", "priority": 0, "order": 70},
-	"static_veil": {"nature": "lightning", "learning": "nature", "conditions": {}, "name": "Véu\nestático", "cost": 1, "damage": 4, "block": 8, "heal": 0, "art": "storm_guard", "target": "enemy", "scope": "single", "priority": 1, "order": 80},
-	"storm_dive": {"nature": "lightning", "learning": "nature", "conditions": {}, "name": "Mergulho\ntrovão", "cost": 2, "damage": 25, "block": 0, "heal": 0, "art": "dive", "target": "enemy", "scope": "single", "priority": 0, "order": 90},
-	"tidal_splash": {"nature": "water", "learning": "nature", "conditions": {"wet": 2}, "name": "Jato de\norvalho", "cost": 1, "damage": 8, "block": 0, "heal": 0, "art": "splash", "target": "enemy", "scope": "single", "priority": 0, "order": 100},
-	"rain_sweep": {"nature": "water", "learning": "nature", "conditions": {"wet": 2}, "name": "Chuva\nlateral", "cost": 1, "damage": 4, "block": 0, "heal": 0, "art": "rain", "target": "enemy", "scope": "upper_pair", "priority": 0, "order": 110},
-	"dew_mend": {"nature": "water", "learning": "nature", "conditions": {}, "name": "Gota\nserena", "cost": 1, "damage": 0, "block": 0, "heal": 6, "art": "dew_mend", "target": "ally", "scope": "single", "priority": 0, "order": 120},
-	"inferno": {"nature": "fire", "learning": "lineage", "conditions": {"burn": 5}, "name": "Sol\ndevorador", "cost": 2, "damage": 27, "block": 0, "heal": 0, "art": "inferno", "target": "enemy", "scope": "all", "priority": 0, "order": 130},
-	"sanctuary": {"nature": "forest", "learning": "lineage", "conditions": {}, "name": "Santuário\nancestral", "cost": 2, "damage": 0, "block": 18, "heal": 6, "art": "sanctuary", "target": "ally", "scope": "all", "priority": 1, "order": 140},
-	"judgment": {"nature": "lightning", "learning": "lineage", "conditions": {}, "name": "Juízo da\ntempestade", "cost": 2, "damage": 30, "block": 5, "heal": 0, "art": "judgment", "target": "enemy", "scope": "all", "priority": 0, "order": 150},
-	"moon_tide": {"nature": "water", "learning": "lineage", "conditions": {"wet": 2}, "name": "Maré\nlunar", "cost": 2, "damage": 12, "block": 0, "heal": 0, "art": "rain", "target": "enemy", "scope": "all", "priority": 0, "order": 160},
+	"sowing": {"nature": "forest", "learning": "nature", "conditions": {"seed": 3}, "name": "Semeadura", "cost": 1, "damage": 6, "block": 0, "heal": 0, "art": "attacks/life-seed", "target": "enemy", "scope": "single", "priority": 0, "order": 60},
+	"interference": {"nature": "lightning", "learning": "nature", "conditions": {"electrified": 2}, "name": "Interferência", "cost": 1, "damage": 4, "block": 0, "heal": 0, "art": "attacks/lightning", "target": "enemy", "scope": "single", "priority": 0, "order": 80},
+	"fireball": {"nature": "fire", "learning": "nature", "conditions": {}, "name": "Bola de\nfogo", "cost": 1, "damage": 12, "block": 0, "heal": 0, "art": "attacks/fireball", "target": "enemy", "scope": "single", "priority": 0, "order": 10},
+	"cinder_claw": {"nature": "fire", "learning": "nature", "conditions": {"burn": 3}, "name": "Garra de\nbrasas", "cost": 1, "damage": 8, "block": 0, "heal": 0, "art": "attacks/cinder-claw", "target": "enemy", "scope": "upper_pair", "priority": 0, "order": 20},
+	"flame_guard": {"nature": "fire", "learning": "nature", "conditions": {}, "name": "Manto de\ncinzas", "cost": 1, "damage": 0, "block": 8, "heal": 0, "art": "attacks/flame-guard", "target": "self", "scope": "single", "priority": 1, "order": 30},
+	"thorn_lash": {"nature": "forest", "learning": "nature", "conditions": {}, "name": "Chicote de\nespinhos", "cost": 1, "damage": 8, "block": 4, "heal": 0, "art": "attacks/thorn-lash", "target": "enemy", "scope": "lower_pair", "priority": 0, "order": 40},
+	"root_wall": {"nature": "forest", "learning": "nature", "conditions": {"taunt": 1}, "name": "Muralha de\nraízes", "cost": 1, "damage": 0, "block": 12, "heal": 0, "art": "attacks/root-wall", "target": "self", "scope": "single", "priority": 1, "order": 50},
+	"life_seed": {"nature": "forest", "learning": "nature", "conditions": {}, "name": "Semente\nvital", "cost": 1, "damage": 0, "block": 0, "heal": 6, "art": "attacks/life-seed", "target": "ally", "scope": "single", "priority": 0, "order": 60},
+	"lightning": {"nature": "lightning", "learning": "nature", "conditions": {}, "name": "Arco\nelétrico", "cost": 1, "damage": 11, "block": 0, "heal": 0, "art": "attacks/lightning", "target": "enemy", "scope": "single", "priority": 0, "order": 70},
+	"static_veil": {"nature": "lightning", "learning": "nature", "conditions": {}, "name": "Véu\nestático", "cost": 1, "damage": 4, "block": 8, "heal": 0, "art": "attacks/static-veil", "target": "enemy", "scope": "single", "priority": 1, "order": 80},
+	"storm_dive": {"nature": "lightning", "learning": "nature", "conditions": {}, "name": "Mergulho\ntrovão", "cost": 2, "damage": 25, "block": 0, "heal": 0, "art": "attacks/storm-dive", "target": "enemy", "scope": "single", "priority": 0, "order": 90},
+	"tidal_splash": {"nature": "water", "learning": "nature", "conditions": {"wet": 2}, "name": "Jato de\norvalho", "cost": 1, "damage": 8, "block": 0, "heal": 0, "art": "attacks/splash", "target": "enemy", "scope": "single", "priority": 0, "order": 100},
+	"rain_sweep": {"nature": "water", "learning": "nature", "conditions": {"wet": 2}, "name": "Chuva\nlateral", "cost": 1, "damage": 4, "block": 0, "heal": 0, "art": "attacks/rain", "target": "enemy", "scope": "upper_pair", "priority": 0, "order": 110},
+	"dew_mend": {"nature": "water", "learning": "nature", "conditions": {}, "name": "Gota\nserena", "cost": 1, "damage": 0, "block": 0, "heal": 6, "art": "attacks/dew-mend", "target": "ally", "scope": "single", "priority": 0, "order": 120},
+	"inferno": {"nature": "fire", "learning": "lineage", "conditions": {"burn": 5}, "name": "Sol\ndevorador", "cost": 2, "damage": 27, "block": 0, "heal": 0, "art": "attacks/inferno", "target": "enemy", "scope": "all", "priority": 0, "order": 130},
+	"sanctuary": {"nature": "forest", "learning": "lineage", "conditions": {}, "name": "Santuário\nancestral", "cost": 2, "damage": 0, "block": 18, "heal": 6, "art": "attacks/sanctuary", "target": "ally", "scope": "all", "priority": 1, "order": 140},
+	"judgment": {"nature": "lightning", "learning": "lineage", "conditions": {}, "name": "Juízo da\ntempestade", "cost": 2, "damage": 30, "block": 5, "heal": 0, "art": "attacks/judgment", "target": "enemy", "scope": "all", "priority": 0, "order": 150},
+	"moon_tide": {"nature": "water", "learning": "lineage", "conditions": {"wet": 2}, "name": "Maré\nlunar", "cost": 2, "damage": 12, "block": 0, "heal": 0, "art": "attacks/rain", "target": "enemy", "scope": "all", "priority": 0, "order": 160},
 }
 # Legacy summary fields remain available to screens and migrated records. The
 # playable battle uses individual enemies, not the legacy aggregate hp/intents.
 const ENCOUNTERS = [
 	{
-		"id": "clearing", "name": "Esporo errante", "subtitle": "A FLORESTA EXPERIMENTA SEUS VÍNCULOS", "hp": 105, "intents": [7, 9, 6], "art": "spore",
+		"id": "clearing", "name": "Esporo errante", "subtitle": "A FLORESTA EXPERIMENTA SEUS VÍNCULOS", "hp": 105, "intents": [7, 9, 6], "art": "characters/spore",
 		"enemies": [
-			{"uid": 1001, "species": "moss", "name": "Esporo errante", "art": "spore", "stage": 1, "max_hp": 58, "hp": 58, "attack": 10, "defense": 0, "speed": 8, "slot": 1, "pattern": [
+			{"uid": 1001, "species": "moss", "name": "Esporo errante", "art": "characters/spore", "stage": 1, "max_hp": 58, "hp": 58, "attack": 10, "defense": 0, "speed": 8, "slot": 1, "pattern": [
 				{"nature": "forest", "conditions": {}, "category": "attack", "damage": 8, "block": 0, "wet": 0, "scope": "single"},
 				{"nature": "forest", "conditions": {}, "category": "defend", "damage": 0, "block": 7, "wet": 0, "scope": "single", "priority": 1},
 				{"nature": "forest", "conditions": {}, "category": "attack", "damage": 11, "block": 0, "wet": 0, "scope": "single", "target_policy": "weakest"},
@@ -79,14 +79,14 @@ const ENCOUNTERS = [
 		],
 	},
 	{
-		"id": "thicket", "name": "Coruja dos espinhos", "subtitle": "UMBRALS NÃO LUTAM SOZINHOS", "hp": 170, "intents": [9, 12, 8], "art": "owl",
+		"id": "thicket", "name": "Coruja dos espinhos", "subtitle": "UMBRALS NÃO LUTAM SOZINHOS", "hp": 170, "intents": [9, 12, 8], "art": "characters/owl",
 		"enemies": [
-			{"uid": 2001, "species": "volt", "name": "Coruja dos espinhos", "art": "owl", "stage": 1, "max_hp": 46, "hp": 46, "attack": 10, "defense": 1, "speed": 14, "slot": 0, "pattern": [
+			{"uid": 2001, "species": "volt", "name": "Coruja dos espinhos", "art": "characters/owl", "stage": 1, "max_hp": 46, "hp": 46, "attack": 10, "defense": 1, "speed": 14, "slot": 0, "pattern": [
 				{"nature": "lightning", "conditions": {}, "category": "prepare", "charge": 6, "damage": 0, "block": 0, "wet": 0, "scope": "single"},
 				{"nature": "lightning", "conditions": {}, "category": "attack", "damage": 7, "block": 0, "wet": 0, "scope": "upper_pair"},
 				{"nature": "lightning", "conditions": {"electrified": 2}, "category": "attack", "damage": 6, "block": 0, "wet": 0, "scope": "single", "target_policy": "weakest"},
 			]},
-			{"uid": 2002, "species": "moss", "name": "Esporo vigia", "art": "spore", "stage": 1, "max_hp": 40, "hp": 40, "attack": 10, "defense": 1, "speed": 8, "slot": 2, "pattern": [
+			{"uid": 2002, "species": "moss", "name": "Esporo vigia", "art": "characters/spore", "stage": 1, "max_hp": 40, "hp": 40, "attack": 10, "defense": 1, "speed": 8, "slot": 2, "pattern": [
 				{"nature": "forest", "conditions": {"seed": 3}, "category": "attack", "damage": 4, "block": 0, "wet": 0, "scope": "single"},
 				{"nature": "forest", "conditions": {}, "category": "defend", "damage": 0, "block": 8, "wet": 0, "scope": "single", "priority": 1},
 				{"nature": "forest", "conditions": {}, "category": "attack", "damage": 6, "block": 0, "wet": 0, "scope": "lower_pair"},
@@ -94,19 +94,19 @@ const ENCOUNTERS = [
 		],
 	},
 	{
-		"id": "boss", "name": "O Rei sem Aurora", "subtitle": "O ÚLTIMO ECO DO BOSQUE", "hp": 255, "intents": [11, 15, 9], "art": "stag",
+		"id": "boss", "name": "O Rei sem Aurora", "subtitle": "O ÚLTIMO ECO DO BOSQUE", "hp": 255, "intents": [11, 15, 9], "art": "characters/stag",
 		"enemies": [
-			{"uid": 3001, "species": "ember", "name": "O Rei sem Aurora", "art": "stag", "stage": 2, "max_hp": 76, "hp": 76, "attack": 12, "defense": 2, "speed": 11, "slot": 1, "pattern": [
+			{"uid": 3001, "species": "ember", "name": "O Rei sem Aurora", "art": "characters/stag", "stage": 2, "max_hp": 76, "hp": 76, "attack": 12, "defense": 2, "speed": 11, "slot": 1, "pattern": [
 				{"nature": "fire", "conditions": {}, "category": "prepare", "charge": 6, "damage": 0, "block": 0, "wet": 0, "scope": "all"},
 				{"nature": "fire", "conditions": {}, "category": "attack", "damage": 10, "block": 0, "wet": 0, "scope": "all"},
 				{"nature": "fire", "conditions": {}, "category": "defend", "damage": 0, "block": 12, "wet": 0, "scope": "single", "priority": 1},
 			]},
-			{"uid": 3002, "species": "moss", "name": "Raiz do crepúsculo", "art": "spore", "stage": 1, "max_hp": 40, "hp": 40, "attack": 10, "defense": 2, "speed": 6, "slot": 2, "pattern": [
+			{"uid": 3002, "species": "moss", "name": "Raiz do crepúsculo", "art": "characters/spore", "stage": 1, "max_hp": 40, "hp": 40, "attack": 10, "defense": 2, "speed": 6, "slot": 2, "pattern": [
 				{"nature": "forest", "conditions": {}, "category": "defend", "damage": 0, "block": 8, "wet": 0, "scope": "single", "priority": 1},
 				{"nature": "forest", "conditions": {"seed": 3}, "category": "attack", "damage": 4, "block": 0, "wet": 0, "scope": "lower_pair"},
 				{"nature": "forest", "conditions": {}, "category": "attack", "damage": 6, "block": 0, "wet": 0, "scope": "single", "target_policy": "weakest"},
 			]},
-			{"uid": 3003, "species": "volt", "name": "Coruja da fenda", "art": "owl", "stage": 1, "max_hp": 36, "hp": 36, "attack": 10, "defense": 0, "speed": 15, "slot": 0, "pattern": [
+			{"uid": 3003, "species": "volt", "name": "Coruja da fenda", "art": "characters/owl", "stage": 1, "max_hp": 36, "hp": 36, "attack": 10, "defense": 0, "speed": 15, "slot": 0, "pattern": [
 				{"nature": "lightning", "conditions": {}, "category": "attack", "damage": 5, "block": 0, "wet": 0, "scope": "single"},
 				{"nature": "lightning", "conditions": {}, "category": "prepare", "charge": 6, "damage": 0, "block": 0, "wet": 0, "scope": "single"},
 				{"nature": "lightning", "conditions": {}, "category": "attack", "damage": 7, "block": 0, "wet": 0, "scope": "upper_pair"},

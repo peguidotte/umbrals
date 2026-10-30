@@ -1,0 +1,49 @@
+{
+  "dependencies": [],
+  "description": "Moonlit battle arena",
+  "files": {
+    "background": {
+      "bytes": 2836258,
+      "kind": "texture",
+      "path": "background.png",
+      "provenance": {
+        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-a1d2040d-d7f8-4d4c-a4ee-64975ae01633.png",
+        "original_sha256": "5e29951838bf65faffa4baa1676c460154207485a42a28c3e44d742b18b9413d",
+        "prompt": "Create an ORIGINAL production game background image for \"Umbral\", a 2D pixel-art monster roguelike battle. Use the supplied image ONLY as the established composition and color-style reference, then remove ALL creatures, ALL character shadows, ALL attacks, ALL text, ALL panels, ALL cards, ALL HUD, borders and icons. The entire output is arena/environment art edge to edge, with NO UI zone baked in. Landscape PC game scene, wide 16:9. Preserve a slightly elevated horizontal battle camera, we see a LOT of the floor. An enchanting cold moonlit marsh clearing at night in cobalt blue, indigo, pale blue and touches of turquoise; tiny purple crystals and reeds clustered only at the perimeter; distant lake, tiny bright moon high above, long dark pine forest silhouettes. The scenery must be SMALLER in scale than the reference foreground so it supports small game monsters rather than looking oversized. Top 18% a distant horizon and water; remaining 82% an enormous flat legible navy slate mud-and-stone playing field with subtle shallow puddles. Especially leave the entire middle 65% of the picture quiet dark desaturated navy, for fire lightning and water animations. Ground texture very subtle, NO large high-contrast stones in the playing area; no big branches projecting into playable area. Left group will stand around x=20% with y=30%,50%,70%; right group x=80% same y. Ensure ALL six positions have continuous SOLID GROUND with enough room for grounded shadows; not perched on pools or floating islands. Crisp coherent 2D pixel-cluster illustration, readable retro handheld-game style, approximately 480x270 visual pixel resolution, nearest-neighbor enlarged, deliberate 3-tone clusters, beautiful silhouettes and restrained environmental detail. No painted soft shading, no 3D, no isometric grid, no signs, no additional symbols, no people, no fauna, no characters or figures, no attacks, no glows in the center. This is an actual reusable background asset, not a mockup or screenshot.",
+        "recorded_date_utc": "2026-10-18",
+        "tool": "OpenAI Image Gen"
+      },
+      "sha256": "5e29951838bf65faffa4baa1676c460154207485a42a28c3e44d742b18b9413d",
+      "technical": {
+        "alpha": false,
+        "anchor": "aspect-cover center",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "filtering": "nearest for atlas; linear for arena",
+        "frames": 1,
+        "mode": "RGB"
+      }
+    }
+  },
+  "id": "world/battle-clearing",
+  "provenance": {
+    "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+    "kind": "generated original",
+    "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+    "model_version": "Not exposed by tool; none inferred.",
+    "original_output_basename": "exec-a1d2040d-d7f8-4d4c-a4ee-64975ae01633.png",
+    "original_sha256": "5e29951838bf65faffa4baa1676c460154207485a42a28c3e44d742b18b9413d",
+    "prompt": "Create an ORIGINAL production game background image for \"Umbral\", a 2D pixel-art monster roguelike battle. Use the supplied image ONLY as the established composition and color-style reference, then remove ALL creatures, ALL character shadows, ALL attacks, ALL text, ALL panels, ALL cards, ALL HUD, borders and icons. The entire output is arena/environment art edge to edge, with NO UI zone baked in. Landscape PC game scene, wide 16:9. Preserve a slightly elevated horizontal battle camera, we see a LOT of the floor. An enchanting cold moonlit marsh clearing at night in cobalt blue, indigo, pale blue and touches of turquoise; tiny purple crystals and reeds clustered only at the perimeter; distant lake, tiny bright moon high above, long dark pine forest silhouettes. The scenery must be SMALLER in scale than the reference foreground so it supports small game monsters rather than looking oversized. Top 18% a distant horizon and water; remaining 82% an enormous flat legible navy slate mud-and-stone playing field with subtle shallow puddles. Especially leave the entire middle 65% of the picture quiet dark desaturated navy, for fire lightning and water animations. Ground texture very subtle, NO large high-contrast stones in the playing area; no big branches projecting into playable area. Left group will stand around x=20% with y=30%,50%,70%; right group x=80% same y. Ensure ALL six positions have continuous SOLID GROUND with enough room for grounded shadows; not perched on pools or floating islands. Crisp coherent 2D pixel-cluster illustration, readable retro handheld-game style, approximately 480x270 visual pixel resolution, nearest-neighbor enlarged, deliberate 3-tone clusters, beautiful silhouettes and restrained environmental detail. No painted soft shading, no 3D, no isometric grid, no signs, no additional symbols, no people, no fauna, no characters or figures, no attacks, no glows in the center. This is an actual reusable background asset, not a mockup or screenshot.",
+    "recorded_date_utc": "2026-10-18",
+    "tool": "OpenAI Image Gen"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

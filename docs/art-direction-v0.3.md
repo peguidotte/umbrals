@@ -9,7 +9,7 @@ The user delegated the redesign. The selected direction preserves the existing o
 - UI: sharp ornamental frames, engraved labels, rune-shaped highlights and energy gems. Dynamic text stays native, never painted into an image.
 - Composition: protagonists on the left, enemy on the right, spatial enemy health/intention, compact corner HUD, hand in a shallow fan near the bottom. Full traits/passives live in inspection and reward screens.
 - Motion: eased hover/selection, brief anticipation, importance-scaled impact, floating damage and restorative effects. All effects return to rest; reduced motion/flashes are options.
-- Art asset: `assets/world/clearing.png`, original Image Gen output, 1672×941 RGB. Preserve the source file and metadata; use aspect-cover in-engine, without image cropping/editing.
+- Art asset: `assets/world/moonlit-clearing/versions/1.0.0/background.png` (migrated from `assets/world/clearing.png`), original Image Gen output, 1672×941 RGB. Preserve the source file and metadata; use aspect-cover in-engine, without image cropping/editing.
 - Texture budget: background under 3 MB encoded / about 6 MB uncompressed; original SVG portraits/icons remain separate. Filtering is linear; inspect at game scale and all capture resolutions.
 - Acceptance: readable against the actual forest, visible focus without color alone, no clipped actionable controls, short effects without duplicate actions. No generated labels, logos, commercial game art or unrelated visual families.
 

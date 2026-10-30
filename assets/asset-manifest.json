@@ -1,994 +1,2979 @@
 {
-  "schema_version": 1,
-  "art_direction_brief": "docs/art-direction-v0.4.md",
-  "review_record": "docs/visual-review-depth-v0.4.md",
   "assets": [
     {
-      "id": "ambience",
-      "path": "assets/ambience.wav",
+      "bytes": 914226,
+      "id": "attacks/carpado-eclipse@1.0.0:impact",
+      "kind": "texture",
+      "module": "attacks/carpado-eclipse",
+      "path": "assets/attacks/carpado-eclipse/versions/1.0.0/impact.png",
+      "role": "impact",
+      "sha256": "18b27593ace45d02b846ce6fcad87bebf9bdc6db572e86decdaf541bbc947083",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2304,
+          1728
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 332864,
+      "id": "attacks/carpado-eclipse@1.0.0:impact-low",
+      "kind": "texture",
+      "module": "attacks/carpado-eclipse",
+      "path": "assets/attacks/carpado-eclipse/versions/1.0.0/impact-low.png",
+      "role": "impact-low",
+      "sha256": "a0412fdf78e929cf8151f3f3b4d69cec4fd2866335cd781af0261b193f62d478",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1152,
+          864
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 5628206,
+      "id": "attacks/carpado-eclipse@1.0.0:review-attack-transparent-webp",
+      "kind": "review",
+      "module": "attacks/carpado-eclipse",
+      "path": "assets/attacks/carpado-eclipse/versions/1.0.0/review/attack-transparent.webp",
+      "role": "review-attack-transparent-webp",
+      "sha256": "14c459722577ad5bb329db757ccc231cadfa311ed6783b7bf7d29beb74482926",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          960,
+          540
+        ],
+        "frames": 100,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1787962,
+      "id": "attacks/carpado-eclipse@1.0.0:review-preview-gif",
+      "kind": "review",
+      "module": "attacks/carpado-eclipse",
+      "path": "assets/attacks/carpado-eclipse/versions/1.0.0/review/preview.gif",
+      "role": "review-preview-gif",
+      "sha256": "5ce9317882d7674f7e63dfda17a3120418cfcb8f0f7293941948a5671c2dfc4e",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          432
+        ],
+        "frames": 101,
+        "mode": "P"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 234629,
+      "id": "attacks/carpado-eclipse@1.0.0:review-preview-mp4",
+      "kind": "review",
+      "module": "attacks/carpado-eclipse",
+      "path": "assets/attacks/carpado-eclipse/versions/1.0.0/review/preview.mp4",
+      "role": "review-preview-mp4",
+      "sha256": "c0eea248f454a611fd0996f6fbd8b257f0822a4a56b5ac1ff52b58dd67d5205f",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2714122,
+      "id": "attacks/carpado-eclipse@1.0.0:review-vfx-transparent-webp",
+      "kind": "review",
+      "module": "attacks/carpado-eclipse",
+      "path": "assets/attacks/carpado-eclipse/versions/1.0.0/review/vfx-transparent.webp",
+      "role": "review-vfx-transparent-webp",
+      "sha256": "c35142632acabc277c1eda2f6c6ab02642266298383cd06cc09f16a8b9037aad",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          960,
+          540
+        ],
+        "frames": 78,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 53443,
+      "id": "attacks/carpado-eclipse@1.0.0:source-metadata",
+      "kind": "data",
+      "module": "attacks/carpado-eclipse",
+      "path": "assets/attacks/carpado-eclipse/versions/1.0.0/source-metadata.json",
+      "role": "source-metadata",
+      "sha256": "f7578e28c63f9cb83eb3aeefb808895b4a84ec04b9e1760bbe0c97d453a90e8c",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 766,
+      "id": "attacks/carpado-eclipse@1.0.0:standalone-verification",
+      "kind": "data",
+      "module": "attacks/carpado-eclipse",
+      "path": "assets/attacks/carpado-eclipse/versions/1.0.0/standalone-verification.json",
+      "role": "standalone-verification",
+      "sha256": "df746e11663792d26c4b0c89a9363fca1eec073e5863934e18231ba79091b775",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 67688,
+      "id": "attacks/carpado-eclipse@1.0.0:takeoff",
+      "kind": "texture",
+      "module": "attacks/carpado-eclipse",
+      "path": "assets/attacks/carpado-eclipse/versions/1.0.0/takeoff.png",
+      "role": "takeoff",
+      "sha256": "de0bf4a7933146aab53aa87213fa8d5c06f0d3ae243337deb69b1f7b2dc83cee",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          768
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 27335,
+      "id": "attacks/carpado-eclipse@1.0.0:takeoff-low",
+      "kind": "texture",
+      "module": "attacks/carpado-eclipse",
+      "path": "assets/attacks/carpado-eclipse/versions/1.0.0/takeoff-low.png",
+      "role": "takeoff-low",
+      "sha256": "85ab117cd8ecb82ec2d5d9c8e855ce2f5611ddd9c27778ffc188a781ec0a609a",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          384
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 289830,
+      "id": "attacks/carpado-eclipse@1.0.0:trail",
+      "kind": "texture",
+      "module": "attacks/carpado-eclipse",
+      "path": "assets/attacks/carpado-eclipse/versions/1.0.0/trail.png",
+      "role": "trail",
+      "sha256": "265730cb67ce09abcb717ee73f175c23c2c47ff0bb077f9321cd59746656841d",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2048,
+          1280
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 121579,
+      "id": "attacks/carpado-eclipse@1.0.0:trail-low",
+      "kind": "texture",
+      "module": "attacks/carpado-eclipse",
+      "path": "assets/attacks/carpado-eclipse/versions/1.0.0/trail-low.png",
+      "role": "trail-low",
+      "sha256": "b75b9ec1bdfec29d0c82343a3ed266b954e7bc2c2e4ac025f90062c62e1c930f",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          640
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2944,
+      "id": "attacks/carpado-eclipse@1.0.0:vfx-spec",
+      "kind": "data",
+      "module": "attacks/carpado-eclipse",
+      "path": "assets/attacks/carpado-eclipse/versions/1.0.0/vfx-spec.json",
+      "role": "vfx-spec",
+      "sha256": "8cdcaf44b08f346c499850c442206c95a6a74948f2ab14017ead3e409ec66d16",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 593,
+      "id": "attacks/cinder-claw@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/cinder-claw",
+      "path": "assets/attacks/cinder-claw/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "5099fdffa8c09dea136dcfd7bea251adfbeeb8d6c6928f81c65d3bff498bdc3b",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 670,
+      "id": "attacks/dew-mend@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/dew-mend",
+      "path": "assets/attacks/dew-mend/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "52113567a90381fc10bebb968cd8d10b42e53def0d1c4a8bbc82bf80c452ae3b",
+      "source": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "license": "Original project asset; no external artwork.",
+        "tool": "authored directly for the battle content slice"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 710,
+      "id": "attacks/fireball@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/fireball",
+      "path": "assets/attacks/fireball/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "b7629623edd4d41100de28043691ea03ef3b35b04e692c7a70c2ce2404b947b3",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 406918,
+      "id": "attacks/fireball-classic@1.0.0:charge",
+      "kind": "texture",
+      "module": "attacks/fireball-classic",
+      "path": "assets/attacks/fireball-classic/versions/1.0.0/charge.png",
+      "role": "charge",
+      "sha256": "b92741cf78ea7b5a7962849e27361a6632b45a1c17b40c9dd72f7c1a0a0a3006",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1920,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1929372,
+      "id": "attacks/fireball-classic@1.0.0:impact",
+      "kind": "texture",
+      "module": "attacks/fireball-classic",
+      "path": "assets/attacks/fireball-classic/versions/1.0.0/impact.png",
+      "role": "impact",
+      "sha256": "c89703a8546849e733ce77025811f33bbfa40117b7de30d2deb086377d587c2f",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3072,
+          3072
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1107322,
+      "id": "attacks/fireball-classic@1.0.0:projectile",
+      "kind": "texture",
+      "module": "attacks/fireball-classic",
+      "path": "assets/attacks/fireball-classic/versions/1.0.0/projectile.png",
+      "role": "projectile",
+      "sha256": "e3e634843248fd1343fd0f7664b254329b874903cbcbed23f55981af67babe99",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3072,
+          1280
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 998344,
+      "id": "attacks/fireball-classic@1.0.0:review-preview-gif",
+      "kind": "review",
+      "module": "attacks/fireball-classic",
+      "path": "assets/attacks/fireball-classic/versions/1.0.0/review/preview.gif",
+      "role": "review-preview-gif",
+      "sha256": "b79c1f6ecb0e84f2e59833f7ffd342a62e26531ab132de5578549ab94a6e9829",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          432
+        ],
+        "frames": 77,
+        "mode": "P"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 186832,
+      "id": "attacks/fireball-classic@1.0.0:review-preview-mp4",
+      "kind": "review",
+      "module": "attacks/fireball-classic",
+      "path": "assets/attacks/fireball-classic/versions/1.0.0/review/preview.mp4",
+      "role": "review-preview-mp4",
+      "sha256": "83e328b49c88de2ae6ebb86e96cfe9a32a8b0640b1ad0966c8fe138dee6ac233",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 4429700,
+      "id": "attacks/fireball-classic@1.0.0:review-transparent-webp",
+      "kind": "review",
+      "module": "attacks/fireball-classic",
+      "path": "assets/attacks/fireball-classic/versions/1.0.0/review/transparent.webp",
+      "role": "review-transparent-webp",
+      "sha256": "bf17d374bc2b8eaf2b10534b85893abd293643b77562af36be5d6555ec3ff122",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          960,
+          540
+        ],
+        "frames": 80,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 868,
+      "id": "attacks/fireball-classic@1.0.0:source-metadata",
+      "kind": "data",
+      "module": "attacks/fireball-classic",
+      "path": "assets/attacks/fireball-classic/versions/1.0.0/source-metadata.json",
+      "role": "source-metadata",
+      "sha256": "4c6bce4389e1e14d16c6a9800f6dfc0dbc457cd586a148e1fea4c67f666877a9",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 756647,
+      "id": "attacks/fireball-comet@1.0.0:charge",
+      "kind": "texture",
+      "module": "attacks/fireball-comet",
+      "path": "assets/attacks/fireball-comet/versions/1.0.0/charge.png",
+      "role": "charge",
+      "sha256": "21f82e2ee2ea6bdeb23c2d4785438616a443ed98c5b1102cfd95f1a249ba289e",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2304,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 3061086,
+      "id": "attacks/fireball-comet@1.0.0:impact-page-01",
+      "kind": "texture",
+      "module": "attacks/fireball-comet",
+      "path": "assets/attacks/fireball-comet/versions/1.0.0/impact-page-01.png",
+      "role": "impact-page-01",
+      "sha256": "4d4858f8ea5d10fe713712bec0085c5671d69a9ea4ffd02c3df01ff2646f29d1",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "normalization": {
+          "frame_size": [
+            640,
+            640
+          ],
+          "operation": "Unchanged frame pixels; 8 -> 6 columns, 2 page(s).",
+          "original_file": "review/original-impact.png",
+          "original_sha256": "5a152845c08f6d62aecb92cb405693ae855fba046b287f24b2e25b8af42d5764",
+          "source_columns": 8,
+          "tool": "tools/normalize_atlas.py"
+        },
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3840,
+          3840
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 588356,
+      "id": "attacks/fireball-comet@1.0.0:impact-page-02",
+      "kind": "texture",
+      "module": "attacks/fireball-comet",
+      "path": "assets/attacks/fireball-comet/versions/1.0.0/impact-page-02.png",
+      "role": "impact-page-02",
+      "sha256": "cef2a4542d39590ccf7aea4b5449338ba89aa30c05d98926236d88ebc27186ac",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "normalization": {
+          "frame_size": [
+            640,
+            640
+          ],
+          "operation": "Unchanged frame pixels; 8 -> 6 columns, 2 page(s).",
+          "original_file": "review/original-impact.png",
+          "original_sha256": "5a152845c08f6d62aecb92cb405693ae855fba046b287f24b2e25b8af42d5764",
+          "source_columns": 8,
+          "tool": "tools/normalize_atlas.py"
+        },
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3840,
+          1280
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 3673691,
+      "id": "attacks/fireball-comet@1.0.0:original-impact",
+      "kind": "review",
+      "module": "attacks/fireball-comet",
+      "path": "assets/attacks/fireball-comet/versions/1.0.0/review/original-impact.png",
+      "role": "original-impact",
+      "sha256": "5a152845c08f6d62aecb92cb405693ae855fba046b287f24b2e25b8af42d5764",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          5120,
+          3840
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1888383,
+      "id": "attacks/fireball-comet@1.0.0:original-projectile",
+      "kind": "review",
+      "module": "attacks/fireball-comet",
+      "path": "assets/attacks/fireball-comet/versions/1.0.0/review/original-projectile.png",
+      "role": "original-projectile",
+      "sha256": "491dbad2acf9d3c646a3f05006972084b2f2344bc5f3ad463676a780965131d4",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          5120,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1897362,
+      "id": "attacks/fireball-comet@1.0.0:projectile",
+      "kind": "texture",
+      "module": "attacks/fireball-comet",
+      "path": "assets/attacks/fireball-comet/versions/1.0.0/projectile.png",
+      "role": "projectile",
+      "sha256": "3316feba18f866cb8b11defdf89db9dbfbe94cf0ecf1bd305f5598dbeda0d897",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "normalization": {
+          "frame_size": [
+            640,
+            384
+          ],
+          "operation": "Unchanged frame pixels; 8 -> 6 columns, 1 page(s).",
+          "original_file": "review/original-projectile.png",
+          "original_sha256": "491dbad2acf9d3c646a3f05006972084b2f2344bc5f3ad463676a780965131d4",
+          "source_columns": 8,
+          "tool": "tools/normalize_atlas.py"
+        },
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3840,
+          2304
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1542188,
+      "id": "attacks/fireball-comet@1.0.0:review-preview-gif",
+      "kind": "review",
+      "module": "attacks/fireball-comet",
+      "path": "assets/attacks/fireball-comet/versions/1.0.0/review/preview.gif",
+      "role": "review-preview-gif",
+      "sha256": "1a601a99f699e3e0a7184ed3731094ec34b0ce913768a790485788db736cdb8d",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          432
+        ],
+        "frames": 86,
+        "mode": "P"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 288776,
+      "id": "attacks/fireball-comet@1.0.0:review-preview-mp4",
+      "kind": "review",
+      "module": "attacks/fireball-comet",
+      "path": "assets/attacks/fireball-comet/versions/1.0.0/review/preview.mp4",
+      "role": "review-preview-mp4",
+      "sha256": "28eba3d43137a7468288a55fb2aea26f39048a22de82709b2080e031fa80df25",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 6660130,
+      "id": "attacks/fireball-comet@1.0.0:review-transparent-webp",
+      "kind": "review",
+      "module": "attacks/fireball-comet",
+      "path": "assets/attacks/fireball-comet/versions/1.0.0/review/transparent.webp",
+      "role": "review-transparent-webp",
+      "sha256": "db93720a20f967de5422d7a0dcd605b8e95fb8d9b21722f598526c3078c541c2",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          960,
+          540
+        ],
+        "frames": 91,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1045,
+      "id": "attacks/fireball-comet@1.0.0:source-metadata",
+      "kind": "data",
+      "module": "attacks/fireball-comet",
+      "path": "assets/attacks/fireball-comet/versions/1.0.0/source-metadata.json",
+      "role": "source-metadata",
+      "sha256": "3b87b3e80ee98deff22e9142bd5af28a6e88db9c0aa4e64d580660f6987d377d",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 738670,
+      "id": "attacks/fireball-living-flame@1.0.0:charge",
+      "kind": "texture",
+      "module": "attacks/fireball-living-flame",
+      "path": "assets/attacks/fireball-living-flame/versions/1.0.0/charge.png",
+      "role": "charge",
+      "sha256": "47385bd25712c35d5f0df57a82f4e5781ce63061923d9a3c4aac19d44425d5a1",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2304,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 3183616,
+      "id": "attacks/fireball-living-flame@1.0.0:impact-page-01",
+      "kind": "texture",
+      "module": "attacks/fireball-living-flame",
+      "path": "assets/attacks/fireball-living-flame/versions/1.0.0/impact-page-01.png",
+      "role": "impact-page-01",
+      "sha256": "ec79715d1f62bea125ef5886d5aeb8e9f29d39ece9be04450911b1c76f506ece",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "normalization": {
+          "frame_size": [
+            640,
+            640
+          ],
+          "operation": "Unchanged frame pixels; 8 -> 6 columns, 2 page(s).",
+          "original_file": "review/original-impact.png",
+          "original_sha256": "1a9fe1d9f52e461c1c29f19c888576bfead7659bdc7793ac98b8d6b6d6b3d1c3",
+          "source_columns": 8,
+          "tool": "tools/normalize_atlas.py"
+        },
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3840,
+          3840
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 215486,
+      "id": "attacks/fireball-living-flame@1.0.0:impact-page-02",
+      "kind": "texture",
+      "module": "attacks/fireball-living-flame",
+      "path": "assets/attacks/fireball-living-flame/versions/1.0.0/impact-page-02.png",
+      "role": "impact-page-02",
+      "sha256": "0b43fa1faa76fceffa64d21dd0701698608a7c030fb5200e83bcd5b715557ca6",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "normalization": {
+          "frame_size": [
+            640,
+            640
+          ],
+          "operation": "Unchanged frame pixels; 8 -> 6 columns, 2 page(s).",
+          "original_file": "review/original-impact.png",
+          "original_sha256": "1a9fe1d9f52e461c1c29f19c888576bfead7659bdc7793ac98b8d6b6d6b3d1c3",
+          "source_columns": 8,
+          "tool": "tools/normalize_atlas.py"
+        },
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3840,
+          640
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 3434399,
+      "id": "attacks/fireball-living-flame@1.0.0:original-impact",
+      "kind": "review",
+      "module": "attacks/fireball-living-flame",
+      "path": "assets/attacks/fireball-living-flame/versions/1.0.0/review/original-impact.png",
+      "role": "original-impact",
+      "sha256": "1a9fe1d9f52e461c1c29f19c888576bfead7659bdc7793ac98b8d6b6d6b3d1c3",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          5120,
+          3840
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2054116,
+      "id": "attacks/fireball-living-flame@1.0.0:original-projectile",
+      "kind": "review",
+      "module": "attacks/fireball-living-flame",
+      "path": "assets/attacks/fireball-living-flame/versions/1.0.0/review/original-projectile.png",
+      "role": "original-projectile",
+      "sha256": "d8e76df6f075631bfe3c07586849187db6a1cf3ab52db8adcd1d9e5f2ef6762c",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          5120,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2066132,
+      "id": "attacks/fireball-living-flame@1.0.0:projectile",
+      "kind": "texture",
+      "module": "attacks/fireball-living-flame",
+      "path": "assets/attacks/fireball-living-flame/versions/1.0.0/projectile.png",
+      "role": "projectile",
+      "sha256": "4785c84e8b6e090a6e9c2ebf9212ba1d856fe57105d39ef42b4cc435326c11bb",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "normalization": {
+          "frame_size": [
+            640,
+            384
+          ],
+          "operation": "Unchanged frame pixels; 8 -> 6 columns, 1 page(s).",
+          "original_file": "review/original-projectile.png",
+          "original_sha256": "d8e76df6f075631bfe3c07586849187db6a1cf3ab52db8adcd1d9e5f2ef6762c",
+          "source_columns": 8,
+          "tool": "tools/normalize_atlas.py"
+        },
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3840,
+          2304
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1459459,
+      "id": "attacks/fireball-living-flame@1.0.0:review-preview-gif",
+      "kind": "review",
+      "module": "attacks/fireball-living-flame",
+      "path": "assets/attacks/fireball-living-flame/versions/1.0.0/review/preview.gif",
+      "role": "review-preview-gif",
+      "sha256": "5342d51f7fb18c4c6c4a3e39fe723533315cdcabcaa804388d3151de2d8957fc",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          432
+        ],
+        "frames": 86,
+        "mode": "P"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 297832,
+      "id": "attacks/fireball-living-flame@1.0.0:review-preview-mp4",
+      "kind": "review",
+      "module": "attacks/fireball-living-flame",
+      "path": "assets/attacks/fireball-living-flame/versions/1.0.0/review/preview.mp4",
+      "role": "review-preview-mp4",
+      "sha256": "3fac1f4dbe0bb9e3f65f68c2a8bcb85b5b05a5eb4ade248ee33aa6a740948b25",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 6646114,
+      "id": "attacks/fireball-living-flame@1.0.0:review-transparent-webp",
+      "kind": "review",
+      "module": "attacks/fireball-living-flame",
+      "path": "assets/attacks/fireball-living-flame/versions/1.0.0/review/transparent.webp",
+      "role": "review-transparent-webp",
+      "sha256": "d5308da1fef6d793d07f0c68182c3592b49f03b8f712c67c23c538548d9d1e5e",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          960,
+          540
+        ],
+        "frames": 95,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1045,
+      "id": "attacks/fireball-living-flame@1.0.0:source-metadata",
+      "kind": "data",
+      "module": "attacks/fireball-living-flame",
+      "path": "assets/attacks/fireball-living-flame/versions/1.0.0/source-metadata.json",
+      "role": "source-metadata",
+      "sha256": "cf5fe794b12846034ce333ac690c43fbdc161cdd2f1cded936e8c58cf8dc28d4",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 320644,
+      "id": "attacks/fireball-umbral-cast@1.0.0:charge-hand",
+      "kind": "texture",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/charge-hand.png",
+      "role": "charge-hand",
+      "sha256": "1856147315cc3f8fe05b3f0e0f61a6829b1c8846601eb71f1ea60749149c9e15",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 129724,
+      "id": "attacks/fireball-umbral-cast@1.0.0:charge-hand-low",
+      "kind": "texture",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/charge-hand-low.png",
+      "role": "charge-hand-low",
+      "sha256": "cc39609455d9904a498d2168ead09a4c540bbefa2d2e9eb950159d0a67943cbf",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          768
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 298191,
+      "id": "attacks/fireball-umbral-cast@1.0.0:charge-kick",
+      "kind": "texture",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/charge-kick.png",
+      "role": "charge-kick",
+      "sha256": "d89302608843f6ed7e962e4cac96cbf06ac27db5ac819907d7dc385029d15406",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 122625,
+      "id": "attacks/fireball-umbral-cast@1.0.0:charge-kick-low",
+      "kind": "texture",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/charge-kick-low.png",
+      "role": "charge-kick-low",
+      "sha256": "6c4c6dc0fc1947e5305e839452dd61f5aa46c8cb63d2001ac3ef2dfa90b8af8d",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          768
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 202326,
+      "id": "attacks/fireball-umbral-cast@1.0.0:charge-mouth",
+      "kind": "texture",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/charge-mouth.png",
+      "role": "charge-mouth",
+      "sha256": "895b07e23eecdc4b868ec4ef3bbe27c92bfb9f640f0d9a705176ba9fb5a8577c",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 83114,
+      "id": "attacks/fireball-umbral-cast@1.0.0:charge-mouth-low",
+      "kind": "texture",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/charge-mouth-low.png",
+      "role": "charge-mouth-low",
+      "sha256": "22388aa8d14523124e2d284acfe59022d810f39bd1d4bf1e8cc1179322d6fba8",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          768
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1479975,
+      "id": "attacks/fireball-umbral-cast@1.0.0:impact",
+      "kind": "texture",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/impact.png",
+      "role": "impact",
+      "sha256": "9dd10eb753bad96f57dd3d51e510179e3c46614e7f65e92621373c341e66f4ed",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2304,
+          2688
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 499129,
+      "id": "attacks/fireball-umbral-cast@1.0.0:impact-low",
+      "kind": "texture",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/impact-low.png",
+      "role": "impact-low",
+      "sha256": "59520955f84dc4b2a02cac17e3da6948aeca36917fdfc38a57eb479ffb0c1ea4",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1152,
+          1344
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 841759,
+      "id": "attacks/fireball-umbral-cast@1.0.0:projectile",
+      "kind": "texture",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/projectile.png",
+      "role": "projectile",
+      "sha256": "44c54b141fe7fd314a1eaf7b3b8e62b65eb71770d97d19a637d6b595b4bbc78b",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          3072,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 321277,
+      "id": "attacks/fireball-umbral-cast@1.0.0:projectile-low",
+      "kind": "texture",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/projectile-low.png",
+      "role": "projectile-low",
+      "sha256": "9f1633f6a695078590f24a748a0e45376a05c83327c2d5261737a8a38410f142",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 19804,
+      "id": "attacks/fireball-umbral-cast@1.0.0:release",
+      "kind": "texture",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/release.png",
+      "role": "release",
+      "sha256": "7aed92f881a1baa301d95859889a1e765f53bf191d4e3af27ce96e9ffcfc1463",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 7304,
+      "id": "attacks/fireball-umbral-cast@1.0.0:release-low",
+      "kind": "texture",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/release-low.png",
+      "role": "release-low",
+      "sha256": "ac1410bba96b4efdc773868b743cd6bcde42b1a25b51b9fb11280102098b420c",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          256
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2979171,
+      "id": "attacks/fireball-umbral-cast@1.0.0:review-comparison-gif",
+      "kind": "review",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/review/comparison.gif",
+      "role": "review-comparison-gif",
+      "sha256": "8616defd83f25505e25919c1e19f5917dace3ad2fc9f8797f5a02b8d4a78399a",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          840
+        ],
+        "frames": 96,
+        "mode": "P"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 212014,
+      "id": "attacks/fireball-umbral-cast@1.0.0:review-hand-mp4",
+      "kind": "review",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/review/hand.mp4",
+      "role": "review-hand-mp4",
+      "sha256": "4210bb3bb810a84d1eeac84b7dc4f90bb9679efb0499a4505177d03d625903f5",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 4260072,
+      "id": "attacks/fireball-umbral-cast@1.0.0:review-hand-transparent-webp",
+      "kind": "review",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/review/hand-transparent.webp",
+      "role": "review-hand-transparent-webp",
+      "sha256": "ee9c29d88ff2ca0e6effefb36051c4965e86d5deea93e5be59afa02d04eefc46",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          960,
+          540
+        ],
+        "frames": 101,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 212721,
+      "id": "attacks/fireball-umbral-cast@1.0.0:review-kick-mp4",
+      "kind": "review",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/review/kick.mp4",
+      "role": "review-kick-mp4",
+      "sha256": "2e3ef2c4908a1175671a7a26047193ecb18eaad4978fa5efe8698b1deb991461",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 4287538,
+      "id": "attacks/fireball-umbral-cast@1.0.0:review-kick-transparent-webp",
+      "kind": "review",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/review/kick-transparent.webp",
+      "role": "review-kick-transparent-webp",
+      "sha256": "3c6f611725891d551d063a0f2d7054f5f07f0a072b6d3552d071a7dfc5bfcea7",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          960,
+          540
+        ],
+        "frames": 101,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 202911,
+      "id": "attacks/fireball-umbral-cast@1.0.0:review-mouth-mp4",
+      "kind": "review",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/review/mouth.mp4",
+      "role": "review-mouth-mp4",
+      "sha256": "74e7f93f8b4b3da02ccd0da01be765efd28c30fc7f087f8080f37621343f42ce",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 4100614,
+      "id": "attacks/fireball-umbral-cast@1.0.0:review-mouth-transparent-webp",
+      "kind": "review",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/review/mouth-transparent.webp",
+      "role": "review-mouth-transparent-webp",
+      "sha256": "ad6c322191151d351f4e166418df8a6260d029600a080e5b8e83a1dd1a979bf9",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          960,
+          540
+        ],
+        "frames": 101,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 18322,
+      "id": "attacks/fireball-umbral-cast@1.0.0:source-metadata",
+      "kind": "data",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/source-metadata.json",
+      "role": "source-metadata",
+      "sha256": "9e82f83b516305af6e1806d8e19f4ea2cbd6f19888dfb1e5b2cfc7f19122a861",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1880,
+      "id": "attacks/fireball-umbral-cast@1.0.0:standalone-verification",
+      "kind": "data",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/standalone-verification.json",
+      "role": "standalone-verification",
+      "sha256": "167ff9e661f4831dc8460d950fcaf25d7938cd7f97d8df7ab2909c40c48420f1",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 4180,
+      "id": "attacks/fireball-umbral-cast@1.0.0:vfx-spec",
+      "kind": "data",
+      "module": "attacks/fireball-umbral-cast",
+      "path": "assets/attacks/fireball-umbral-cast/versions/1.0.0/vfx-spec.json",
+      "role": "vfx-spec",
+      "sha256": "5aec3f60d1116d1dc006b9c2fe6f2ba50805ef16a5a6d0dbd32e32a808c0f33e",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 681,
+      "id": "attacks/flame-guard@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/flame-guard",
+      "path": "assets/attacks/flame-guard/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "213a551821c5e93603ccc52ac0f6e34134a898d14d8b5b91e047badb187ccd91",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 758,
+      "id": "attacks/inferno@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/inferno",
+      "path": "assets/attacks/inferno/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "393092fae3ebce20fac6caf24c6cb5878a320185605bd09be94b1a9bca393f05",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 701,
+      "id": "attacks/judgment@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/judgment",
+      "path": "assets/attacks/judgment/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "cb99c620a7ba1d125faf03d9ff49b2a7a746e2899107773732af74fe66b224f4",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 686,
+      "id": "attacks/life-seed@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/life-seed",
+      "path": "assets/attacks/life-seed/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "5a872a3ce556735163d6b8621049f658b7378474ba64996aefdec41858e14caf",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 617,
+      "id": "attacks/lightning@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/lightning",
+      "path": "assets/attacks/lightning/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "3093b273f4dec9995146b131f70b21de098137d7cd68ce8c31de8839216c7cf4",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 786,
+      "id": "attacks/rain@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/rain",
+      "path": "assets/attacks/rain/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "4dc2ea8ccc0d73e49a2544035f6e6fae04b0f966d05f59abde210a1519ff385b",
+      "source": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "license": "Original project asset; no external artwork.",
+        "tool": "authored directly for the battle content slice"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 691,
+      "id": "attacks/root-wall@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/root-wall",
+      "path": "assets/attacks/root-wall/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "ace16265c5f20bfc5bb39b4824429274b6aa7d1c9b1a30f3e3e2a699a767594d",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 721,
+      "id": "attacks/sanctuary@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/sanctuary",
+      "path": "assets/attacks/sanctuary/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "76e8c696a74c53f4a7b862f5b738b6f3ad3def4e2544687a48e9e4eede7e41d4",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 794,
+      "id": "attacks/splash@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/splash",
+      "path": "assets/attacks/splash/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "be84aff462b0e95143da3e130bceea3ec2b59dc3edca4502d9663563b849ea27",
+      "source": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "license": "Original project asset; no external artwork.",
+        "tool": "authored directly for the battle content slice"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 651,
+      "id": "attacks/static-veil@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/static-veil",
+      "path": "assets/attacks/static-veil/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "42d7e606e0fb33195a025a148f4355c2585520d83755ccc53e90082e87a7171c",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 657,
+      "id": "attacks/storm-dive@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/storm-dive",
+      "path": "assets/attacks/storm-dive/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "1f36d281534b5da29f45a60472756413a3cd62b43501dd61c36e81825c210bfd",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 682,
+      "id": "attacks/thorn-lash@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/thorn-lash",
+      "path": "assets/attacks/thorn-lash/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "04c58fff50bcaa629b3df76132c70b53ac26a1ee732476547e0b6cf91b5d8462",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 529244,
+      "id": "audio/ambience@1.0.0:sound",
+      "kind": "audio",
+      "module": "audio/ambience",
+      "path": "assets/audio/ambience/versions/1.0.0/sound.wav",
+      "role": "sound",
       "sha256": "0bad521c5eef309e617115c6f08cf27d45723615b82364e3be07d4ece365ae9e",
-      "bytes": 529244,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "ambience loop",
-      "technical": {
-        "sample_rate": 22050,
-        "channels": 1,
-        "bits": 16,
-        "seconds": 12.0
-      },
       "source": {
         "kind": "original deterministic PCM synthesis",
-        "tool": "tools/generate_audio.py",
-        "license": "Original project asset; no external samples."
-      }
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
+      },
+      "status": "production",
+      "technical": {
+        "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
+        "seconds": 12.0
+      },
+      "version": "1.0.0"
     },
     {
-      "id": "body",
-      "path": "assets/body.ttf",
-      "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e",
-      "bytes": 759720,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "native UI font",
-      "source": {
-        "kind": "third-party font",
-        "source": "Debian font package: DejaVu Sans / DejaVu Serif",
-        "license_record": "assets/FONT-LICENSE.txt"
-      }
-    },
-    {
-      "id": "boss_pulse",
-      "path": "assets/boss_pulse.wav",
+      "bytes": 529244,
+      "id": "audio/boss-pulse@1.0.0:sound",
+      "kind": "audio",
+      "module": "audio/boss-pulse",
+      "path": "assets/audio/boss-pulse/versions/1.0.0/sound.wav",
+      "role": "sound",
       "sha256": "a294e04b4f22f575e22006b974bca9baabd61cfa65cee7d9bf4547549d3484ab",
-      "bytes": 529244,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "ambience loop",
-      "technical": {
-        "sample_rate": 22050,
-        "channels": 1,
-        "bits": 16,
-        "seconds": 12.0
-      },
       "source": {
         "kind": "original deterministic PCM synthesis",
-        "tool": "tools/generate_audio.py",
-        "license": "Original project asset; no external samples."
-      }
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
+      },
+      "status": "production",
+      "technical": {
+        "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
+        "seconds": 12.0
+      },
+      "version": "1.0.0"
     },
     {
-      "id": "capture",
-      "path": "assets/capture.wav",
-      "sha256": "09dafa093dd15b231634f789d37449313cfeec4fdb809ac5b0686217cdec21ef",
       "bytes": 22094,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "event sound",
+      "id": "audio/capture@1.0.0:sound",
+      "kind": "audio",
+      "module": "audio/capture",
+      "path": "assets/audio/capture/versions/1.0.0/sound.wav",
+      "role": "sound",
+      "sha256": "09dafa093dd15b231634f789d37449313cfeec4fdb809ac5b0686217cdec21ef",
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
+      },
+      "status": "production",
       "technical": {
-        "sample_rate": 22050,
-        "channels": 1,
         "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
         "seconds": 0.5
       },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 7100,
+      "id": "audio/draw@1.0.0:sound",
+      "kind": "audio",
+      "module": "audio/draw",
+      "path": "assets/audio/draw/versions/1.0.0/sound.wav",
+      "role": "sound",
+      "sha256": "b5bbae326d1ed060ee9bbe3d99e9078308b64e2207b2cb3145b1c1eebe009a28",
       "source": {
         "kind": "original deterministic PCM synthesis",
-        "tool": "tools/generate_audio.py",
-        "license": "Original project asset; no external samples."
-      }
-    },
-    {
-      "id": "display",
-      "path": "assets/display.ttf",
-      "sha256": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7",
-      "bytes": 380660,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "native UI font",
-      "source": {
-        "kind": "third-party font",
-        "source": "Debian font package: DejaVu Sans / DejaVu Serif",
-        "license_record": "assets/FONT-LICENSE.txt"
-      }
-    },
-    {
-      "id": "draw",
-      "path": "assets/draw.wav",
-      "sha256": "b5bbae326d1ed060ee9bbe3d99e9078308b64e2207b2cb3145b1c1eebe009a28",
-      "bytes": 7100,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "event sound",
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
+      },
+      "status": "production",
       "technical": {
-        "sample_rate": 22050,
-        "channels": 1,
         "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
         "seconds": 0.16
       },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 30912,
+      "id": "audio/evolve@1.0.0:sound",
+      "kind": "audio",
+      "module": "audio/evolve",
+      "path": "assets/audio/evolve/versions/1.0.0/sound.wav",
+      "role": "sound",
+      "sha256": "bb332cb19af7529024f5c7515dc6fd42023477ac7028cc5c61c77cf0a60899c8",
       "source": {
         "kind": "original deterministic PCM synthesis",
-        "tool": "tools/generate_audio.py",
-        "license": "Original project asset; no external samples."
-      }
-    },
-    {
-      "id": "ember",
-      "path": "assets/ember.svg",
-      "sha256": "ad847d5b7ead36e3d172c70ca0054c416c85bfa95deb696d5efabb9181b3c66c",
-      "bytes": 1752,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "creature portrait",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
       },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "evolve",
-      "path": "assets/evolve.wav",
-      "sha256": "bb332cb19af7529024f5c7515dc6fd42023477ac7028cc5c61c77cf0a60899c8",
-      "bytes": 30912,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "event sound",
+      "status": "production",
       "technical": {
-        "sample_rate": 22050,
-        "channels": 1,
         "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
         "seconds": 0.7
       },
-      "source": {
-        "kind": "original deterministic PCM synthesis",
-        "tool": "tools/generate_audio.py",
-        "license": "Original project asset; no external samples."
-      }
+      "version": "1.0.0"
     },
     {
-      "id": "fire",
-      "path": "assets/fire.wav",
-      "sha256": "3893d43513add42188989793dac8830ce2b975899b839e165dfb00ce17ff4f94",
       "bytes": 10628,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "event sound",
+      "id": "audio/fire@1.0.0:sound",
+      "kind": "audio",
+      "module": "audio/fire",
+      "path": "assets/audio/fire/versions/1.0.0/sound.wav",
+      "role": "sound",
+      "sha256": "3893d43513add42188989793dac8830ce2b975899b839e165dfb00ce17ff4f94",
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
+      },
+      "status": "production",
       "technical": {
-        "sample_rate": 22050,
-        "channels": 1,
         "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
         "seconds": 0.24
       },
-      "source": {
-        "kind": "original deterministic PCM synthesis",
-        "tool": "tools/generate_audio.py",
-        "license": "Original project asset; no external samples."
-      }
+      "version": "1.0.0"
     },
     {
-      "id": "hover",
-      "path": "assets/hover.wav",
-      "sha256": "f3f5adcddabd142c696d58b9ad7013c7c22deb64ac7369604306a9abab1712fe",
       "bytes": 2248,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "event sound",
+      "id": "audio/hover@1.0.0:sound",
+      "kind": "audio",
+      "module": "audio/hover",
+      "path": "assets/audio/hover/versions/1.0.0/sound.wav",
+      "role": "sound",
+      "sha256": "f3f5adcddabd142c696d58b9ad7013c7c22deb64ac7369604306a9abab1712fe",
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
+      },
+      "status": "production",
       "technical": {
-        "sample_rate": 22050,
-        "channels": 1,
         "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
         "seconds": 0.05
       },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 11068,
+      "id": "audio/impact@1.0.0:sound",
+      "kind": "audio",
+      "module": "audio/impact",
+      "path": "assets/audio/impact/versions/1.0.0/sound.wav",
+      "role": "sound",
+      "sha256": "b05c2a33e106b40aaa006d645a4cb5dcbd0ade59ac914ab5b120e44333f062c3",
       "source": {
         "kind": "original deterministic PCM synthesis",
-        "tool": "tools/generate_audio.py",
-        "license": "Original project asset; no external samples."
-      }
-    },
-    {
-      "id": "ignivar",
-      "path": "assets/ignivar.svg",
-      "sha256": "e7c898f62cd2585e1f42900fe97981c050f8d46815c2db74dfa64c210a72f362",
-      "bytes": 1821,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "creature portrait",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
       },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "impact",
-      "path": "assets/impact.wav",
-      "sha256": "b05c2a33e106b40aaa006d645a4cb5dcbd0ade59ac914ab5b120e44333f062c3",
-      "bytes": 11068,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "event sound",
+      "status": "production",
       "technical": {
-        "sample_rate": 22050,
-        "channels": 1,
         "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
         "seconds": 0.25
       },
-      "source": {
-        "kind": "original deterministic PCM synthesis",
-        "tool": "tools/generate_audio.py",
-        "license": "Original project asset; no external samples."
-      }
+      "version": "1.0.0"
     },
     {
-      "id": "leaf",
-      "path": "assets/leaf.wav",
-      "sha256": "5fdb1b9660c9c43f57d17bed37b60bd8f297db5932de2c38065514edf91370b7",
       "bytes": 9746,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "event sound",
+      "id": "audio/leaf@1.0.0:sound",
+      "kind": "audio",
+      "module": "audio/leaf",
+      "path": "assets/audio/leaf/versions/1.0.0/sound.wav",
+      "role": "sound",
+      "sha256": "5fdb1b9660c9c43f57d17bed37b60bd8f297db5932de2c38065514edf91370b7",
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
+      },
+      "status": "production",
       "technical": {
-        "sample_rate": 22050,
-        "channels": 1,
         "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
         "seconds": 0.22
       },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 8864,
+      "id": "audio/play@1.0.0:sound",
+      "kind": "audio",
+      "module": "audio/play",
+      "path": "assets/audio/play/versions/1.0.0/sound.wav",
+      "role": "sound",
+      "sha256": "7d6ac577ee8dcde1ffcf30f32910238da41bab368898ff388132f9243ac69d2a",
       "source": {
         "kind": "original deterministic PCM synthesis",
-        "tool": "tools/generate_audio.py",
-        "license": "Original project asset; no external samples."
-      }
-    },
-    {
-      "id": "moss",
-      "path": "assets/moss.svg",
-      "sha256": "cd817966197d9cfbac2ff1a1f41189f9e9716a909b5f7cbb266220e333368b1a",
-      "bytes": 1699,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "creature portrait",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_assets.py"
       },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "owl",
-      "path": "assets/owl.svg",
-      "sha256": "b27e17b2961498669ada331e0efa5551a50b4bcf67110ebea9353ed2a05151b8",
-      "bytes": 1416,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "creature portrait",
+      "status": "production",
       "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "play",
-      "path": "assets/play.wav",
-      "sha256": "7d6ac577ee8dcde1ffcf30f32910238da41bab368898ff388132f9243ac69d2a",
-      "bytes": 8864,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "event sound",
-      "technical": {
-        "sample_rate": 22050,
-        "channels": 1,
         "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
         "seconds": 0.2
       },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 18566,
+      "id": "audio/reward@1.0.0:sound",
+      "kind": "audio",
+      "module": "audio/reward",
+      "path": "assets/audio/reward/versions/1.0.0/sound.wav",
+      "role": "sound",
+      "sha256": "1b7bfede7918906d097ed82cc925ad8e89abc39e29c87f8de2fd5a0dc4935cb9",
       "source": {
         "kind": "original deterministic PCM synthesis",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples."
-      }
-    },
-    {
-      "id": "powers-claw",
-      "path": "assets/powers/claw.svg",
-      "sha256": "5099fdffa8c09dea136dcfd7bea251adfbeeb8d6c6928f81c65d3bff498bdc3b",
-      "bytes": 593,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_assets.py"
       },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "powers-dive",
-      "path": "assets/powers/dive.svg",
-      "sha256": "1f36d281534b5da29f45a60472756413a3cd62b43501dd61c36e81825c210bfd",
-      "bytes": 657,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "power illustration",
+      "status": "production",
       "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "powers-fire_guard",
-      "path": "assets/powers/fire_guard.svg",
-      "sha256": "213a551821c5e93603ccc52ac0f6e34134a898d14d8b5b91e047badb187ccd91",
-      "bytes": 681,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "powers-fireball",
-      "path": "assets/powers/fireball.svg",
-      "sha256": "b7629623edd4d41100de28043691ea03ef3b35b04e692c7a70c2ce2404b947b3",
-      "bytes": 710,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "powers-inferno",
-      "path": "assets/powers/inferno.svg",
-      "sha256": "393092fae3ebce20fac6caf24c6cb5878a320185605bd09be94b1a9bca393f05",
-      "bytes": 758,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "powers-judgment",
-      "path": "assets/powers/judgment.svg",
-      "sha256": "cb99c620a7ba1d125faf03d9ff49b2a7a746e2899107773732af74fe66b224f4",
-      "bytes": 701,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "powers-lightning",
-      "path": "assets/powers/lightning.svg",
-      "sha256": "3093b273f4dec9995146b131f70b21de098137d7cd68ce8c31de8839216c7cf4",
-      "bytes": 617,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "powers-roots",
-      "path": "assets/powers/roots.svg",
-      "sha256": "ace16265c5f20bfc5bb39b4824429274b6aa7d1c9b1a30f3e3e2a699a767594d",
-      "bytes": 691,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "powers-sanctuary",
-      "path": "assets/powers/sanctuary.svg",
-      "sha256": "76e8c696a74c53f4a7b862f5b738b6f3ad3def4e2544687a48e9e4eede7e41d4",
-      "bytes": 721,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "powers-seed",
-      "path": "assets/powers/seed.svg",
-      "sha256": "5a872a3ce556735163d6b8621049f658b7378474ba64996aefdec41858e14caf",
-      "bytes": 686,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "powers-storm_guard",
-      "path": "assets/powers/storm_guard.svg",
-      "sha256": "42d7e606e0fb33195a025a148f4355c2585520d83755ccc53e90082e87a7171c",
-      "bytes": 651,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "powers-thorns",
-      "path": "assets/powers/thorns.svg",
-      "sha256": "04c58fff50bcaa629b3df76132c70b53ac26a1ee732476547e0b6cf91b5d8462",
-      "bytes": 682,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "reward",
-      "path": "assets/reward.wav",
-      "sha256": "1b7bfede7918906d097ed82cc925ad8e89abc39e29c87f8de2fd5a0dc4935cb9",
-      "bytes": 18566,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "event sound",
-      "technical": {
-        "sample_rate": 22050,
-        "channels": 1,
         "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
         "seconds": 0.42
       },
-      "source": {
-        "kind": "original deterministic PCM synthesis",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples."
-      }
+      "version": "1.0.0"
     },
     {
-      "id": "select",
-      "path": "assets/select.wav",
-      "sha256": "731845c7fde1acc40e58d6b2910af51ec554d2d8a5beb7b86764010a751a14b0",
       "bytes": 2910,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "event sound",
+      "id": "audio/select@1.0.0:sound",
+      "kind": "audio",
+      "module": "audio/select",
+      "path": "assets/audio/select/versions/1.0.0/sound.wav",
+      "role": "sound",
+      "sha256": "731845c7fde1acc40e58d6b2910af51ec554d2d8a5beb7b86764010a751a14b0",
+      "source": {
+        "kind": "original deterministic PCM synthesis",
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
       "technical": {
-        "sample_rate": 22050,
-        "channels": 1,
         "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
         "seconds": 0.065
       },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 7982,
+      "id": "audio/storm@1.0.0:sound",
+      "kind": "audio",
+      "module": "audio/storm",
+      "path": "assets/audio/storm/versions/1.0.0/sound.wav",
+      "role": "sound",
+      "sha256": "d56e2cd9533ac7f817e7fbba9526453fce1c927a1cd04021b56bef332582fb59",
       "source": {
         "kind": "original deterministic PCM synthesis",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples."
-      }
-    },
-    {
-      "id": "spore",
-      "path": "assets/spore.svg",
-      "sha256": "892b791ac0e85c15e38d41f18ca32a365b6f96c5d7dacc43995c1a087b7f8880",
-      "bytes": 1436,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "creature portrait",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
+        "license": "Original project asset; no external samples.",
+        "tool": "tools/generate_audio.py"
       },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "stag",
-      "path": "assets/stag.svg",
-      "sha256": "13c5ec00b429e2490d1aa79a9335d4f51e065c458dacbafba9cea07c7e52decd",
-      "bytes": 1547,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "creature portrait",
+      "status": "production",
       "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "storm",
-      "path": "assets/storm.wav",
-      "sha256": "d56e2cd9533ac7f817e7fbba9526453fce1c927a1cd04021b56bef332582fb59",
-      "bytes": 7982,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "event sound",
-      "technical": {
-        "sample_rate": 22050,
-        "channels": 1,
         "bits": 16,
+        "channels": 1,
+        "sample_rate": 22050,
         "seconds": 0.18
       },
-      "source": {
-        "kind": "original deterministic PCM synthesis",
-        "tool": "tools/generate_audio.py",
-        "license": "Original project asset; no external samples."
-      }
+      "version": "1.0.0"
     },
     {
-      "id": "tempestral",
-      "path": "assets/tempestral.svg",
-      "sha256": "67706908ab5d5fb285848cdc47546034b3065e73fc75b942083d81584c3e0c12",
-      "bytes": 1571,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "creature portrait",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
+      "bytes": 1585,
+      "id": "characters/battle-creatures@1.0.0:atlas",
+      "kind": "data",
+      "module": "characters/battle-creatures",
+      "path": "assets/characters/battle-creatures/versions/1.0.0/atlas.json",
+      "role": "atlas",
+      "sha256": "c1243fba5c348dbd53e7593b4f965202dbb8b6ba1fa88b8e2424c2fe1b388247",
       "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "verdalio",
-      "path": "assets/verdalio.svg",
-      "sha256": "3bb474996e2274e691abe7d24911c53d36f54fd3d2683c98e8836cf68f0e8ccb",
-      "bytes": 1718,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "creature portrait",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "volt",
-      "path": "assets/volt.svg",
-      "sha256": "fe12c24c74a852c1ac0551e1ecb7f1bd7fe88d35ccc812a5e9b6eba04c5ef7a5",
-      "bytes": 1536,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "creature portrait",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "authored original vector",
-        "tool": "tools/generate_assets.py",
-        "license": "Original project asset; no external samples or game artwork."
-      }
-    },
-    {
-      "id": "world-clearing",
-      "path": "assets/world/clearing.png",
-      "sha256": "e117d4f995c69c9a72ac5dbbeb3ce8e0b49aea98249d2c1536279dacb4a8729b",
-      "bytes": 2303981,
-      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
-      "collision": "none; visual/audio only",
-      "role": "moonlit forest background",
-      "technical": {
-        "dimensions": [
-          1672,
-          941
-        ],
-        "mode": "RGB",
-        "alpha": false,
-        "anchor": "aspect-cover center",
-        "frames": 1,
-        "filtering": "linear",
-        "mipmaps": false
-      },
-      "source": {
-        "kind": "generated original",
-        "tool": "OpenAI Image Gen tool",
-        "model_version": "not exposed by the tool",
-        "recorded_date_utc": "2026-10-14",
-        "brief": "Illustrated blue-green moonlit forest clearing, ancient stone arch, layered botanical silhouettes, quiet dark foreground and lower area for native cards; light from upper right; no text, UI, characters or logos.",
-        "edit_history": "Copied the original PNG without resampling, cropping, recompression or metadata stripping. Aspect-cover happens only at render time.",
-        "license_record": "Generated service output under applicable service terms; no third-party game asset source.",
-        "original_sha256": "e117d4f995c69c9a72ac5dbbeb3ce8e0b49aea98249d2c1536279dacb4a8729b"
-      }
-    },
-    {
-      "id": "dew",
-      "path": "assets/dew.svg",
-      "sha256": "a3c3d1217a3e02cc1cae522148663bb53e4ca23dfc4fef14b3450fc91994d148",
-      "bytes": 2369,
-      "status": "prototype; native battle review pending",
-      "collision": "none; visual only",
-      "role": "creature portrait fallback",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
-        "tool": "authored directly for the battle content slice",
-        "license": "Original project asset; no external artwork."
-      }
-    },
-    {
-      "id": "mareveu",
-      "path": "assets/mareveu.svg",
-      "sha256": "7f01017c3e1d4a624525eb0fd80941df5a033d119bb9b9b176f32c8bbc39eb5c",
-      "bytes": 2409,
-      "status": "prototype; native battle review pending",
-      "collision": "none; visual only",
-      "role": "creature portrait fallback",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
-        "tool": "authored directly for the battle content slice",
-        "license": "Original project asset; no external artwork."
-      }
-    },
-    {
-      "id": "powers-splash",
-      "path": "assets/powers/splash.svg",
-      "sha256": "be84aff462b0e95143da3e130bceea3ec2b59dc3edca4502d9663563b849ea27",
-      "bytes": 794,
-      "status": "prototype; native battle review pending",
-      "collision": "none; visual only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
-        "tool": "authored directly for the battle content slice",
-        "license": "Original project asset; no external artwork."
-      }
-    },
-    {
-      "id": "powers-rain",
-      "path": "assets/powers/rain.svg",
-      "sha256": "4dc2ea8ccc0d73e49a2544035f6e6fae04b0f966d05f59abde210a1519ff385b",
-      "bytes": 786,
-      "status": "prototype; native battle review pending",
-      "collision": "none; visual only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
-        "tool": "authored directly for the battle content slice",
-        "license": "Original project asset; no external artwork."
-      }
-    },
-    {
-      "id": "powers-dew_mend",
-      "path": "assets/powers/dew_mend.svg",
-      "sha256": "52113567a90381fc10bebb968cd8d10b42e53def0d1c4a8bbc82bf80c452ae3b",
-      "bytes": 670,
-      "status": "prototype; native battle review pending",
-      "collision": "none; visual only",
-      "role": "power illustration",
-      "technical": {
-        "format": "SVG",
-        "filtering": "linear",
-        "anchor": "center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
-        "tool": "authored directly for the battle content slice",
-        "license": "Original project asset; no external artwork."
-      }
-    },
-    {
-      "id": "battle-clearing",
-      "path": "assets/world/battle_clearing.png",
-      "sha256": "5e29951838bf65faffa4baa1676c460154207485a42a28c3e44d742b18b9413d",
-      "bytes": 2836258,
-      "status": "source inspected; native battle review pending",
-      "collision": "none; visual only",
-      "role": "Elevated horizontal moonlit cold-marsh arena; no UI, creatures or attack effects.",
-      "technical": {
-        "dimensions": [
-          1672,
-          941
-        ],
-        "mode": "RGB",
-        "alpha": false,
-        "filtering": "nearest for atlas; linear for arena",
-        "anchor": "aspect-cover center",
-        "frames": 1
-      },
-      "source": {
-        "kind": "generated original",
-        "tool": "OpenAI Image Gen",
-        "model_version": "Not exposed by tool; none inferred.",
-        "recorded_date_utc": "2026-10-18",
-        "prompt": "Create an ORIGINAL production game background image for \"Umbral\", a 2D pixel-art monster roguelike battle. Use the supplied image ONLY as the established composition and color-style reference, then remove ALL creatures, ALL character shadows, ALL attacks, ALL text, ALL panels, ALL cards, ALL HUD, borders and icons. The entire output is arena/environment art edge to edge, with NO UI zone baked in. Landscape PC game scene, wide 16:9. Preserve a slightly elevated horizontal battle camera, we see a LOT of the floor. An enchanting cold moonlit marsh clearing at night in cobalt blue, indigo, pale blue and touches of turquoise; tiny purple crystals and reeds clustered only at the perimeter; distant lake, tiny bright moon high above, long dark pine forest silhouettes. The scenery must be SMALLER in scale than the reference foreground so it supports small game monsters rather than looking oversized. Top 18% a distant horizon and water; remaining 82% an enormous flat legible navy slate mud-and-stone playing field with subtle shallow puddles. Especially leave the entire middle 65% of the picture quiet dark desaturated navy, for fire lightning and water animations. Ground texture very subtle, NO large high-contrast stones in the playing area; no big branches projecting into playable area. Left group will stand around x=20% with y=30%,50%,70%; right group x=80% same y. Ensure ALL six positions have continuous SOLID GROUND with enough room for grounded shadows; not perched on pools or floating islands. Crisp coherent 2D pixel-cluster illustration, readable retro handheld-game style, approximately 480x270 visual pixel resolution, nearest-neighbor enlarged, deliberate 3-tone clusters, beautiful silhouettes and restrained environmental detail. No painted soft shading, no 3D, no isometric grid, no signs, no additional symbols, no people, no fauna, no characters or figures, no attacks, no glows in the center. This is an actual reusable background asset, not a mockup or screenshot.",
         "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
-        "original_output_basename": "exec-a1d2040d-d7f8-4d4c-a4ee-64975ae01633.png",
-        "original_sha256": "5e29951838bf65faffa4baa1676c460154207485a42a28c3e44d742b18b9413d",
-        "license_record": "Original artwork generated for Umbral; no third-party game artwork included."
-      }
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-1f7d5657-bbf3-4357-8e5f-ed27875012ed.png",
+        "original_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+        "prompt": "Create ONE transparent PNG sprite atlas for an ORIGINAL pixel-art monster game named Umbral. This is actual reusable character art, NOT a scene or UI or diagram. EXACTLY 7 full-body creatures in a perfectly regular grid of FOUR COLUMNS and TWO ROWS, all cells same size; last bottom-right cell EMPTY TRANSPARENT. Landscape atlas approx 2048x1024. Do not draw grid lines or labels; every cell's background is fully transparent with generous transparent padding on all sides. Every sprite centered horizontally in its cell, feet aligned to a common baseline at 85% cell height, whole silhouette within inner 80% of cell. No overlap between cells. Characters occupy roughly 65-75% cell height; NO ground shadows, NO scenery, NO text. Side/three-quarter view appropriate to a slightly elevated horizontal battle camera. Cohesive crisp pixel art with bold near-black colored outlines, deliberate small square pixel clusters, clean 3-5 tones per material, charming highly memorable silhouettes reminiscent of the readability of classic handheld monster games, but entirely original species. A sprite should read at 100px tall. Bright elemental accents and expressive eyes. No blur or painted gradients, no photorealism, no 3D. Every creature is a complete grounded creature with visible feet.\n\nROW ONE, from LEFT to RIGHT (all allies facing RIGHT, toward their enemy, their heads and eyes directed right):\nCell 1: BRASA — a small stocky charcoal-black ember squirrel, a magnificent thick curled orange-red tail rising behind its body into a spiral, warm amber eyes, glowing tiny orange fissures on forepaws. Compact crouching biped, alert playful stubborn expression. Mouth not firing. Strong clean orange tail/black body silhouette.\nCell 2: MUSGO — a squat round bark-and-moss guardian creature, broad brown trunk torso with a friendly pale wooden owl-like face set into a trunk hollow, green layered moss canopy and 3 small cream flowers on its back, four short sturdy root legs planted on ground, kindly protective guardian. Wider than tall, absolutely not a human standing upright.\nCell 3: FAÍSCA — a small golden-and-charcoal circuit beetle, shiny amber segmented shell etched with very simple cyan circuit markings, two curved slender antennae, six short black legs, a tiny glowing spark between the antenna tips. Alert jewel-like cyan eyes, low rounded profile, no wings open.\nCell 4: ORVALHO — a turquoise amphibian with four frog-like feet, large expressive dark-teal eyes, translucent blue round water globe mounted on its back containing two pale ripples, small liquid ribbon tail and two drop-shaped fins. Cute grounded poised frog/salamander, pale aqua belly, globe has crisp highlights and internal water dots, not firing an attack.\n\nROW TWO, from LEFT to RIGHT (all enemies facing LEFT, toward allies, heads and eyes directed left):\nCell 1: SPORE — a round plum-purple forest mushroom creature with a wide rich burgundy cap speckled turquoise, tiny stocky stalk body, short root feet, mischievous narrowed golden eyes beneath the cap, two tiny luminous green spore growths. Memorable broad cap silhouette.\nCell 2: OWL — a thorn owl, dark periwinkle and slate-blue rounded feather body, forward-leaning perched battle stance ON its two visible talons with NO branch, two swept-back twig/leaf ear tufts, broad folded wings with rust-gold thorn edging, sharp amber eyes and pale small face disk. Distinct small stout bird, no spread flight wings.\nCell 3: STAG — a medium stately shadow stag with midnight blue fur, pale teal muzzle and chest markings, four well-planted slender legs and cloven hooves, sweeping branching antlers tipped with a very few violet crystal shards, faint turquoise line along the spine. Proud left-facing three-quarter silhouette. Fit FULL antlers and every hoof inside the cell, no cropping. Slightly taller than other first-stage creatures but comparable atlas occupancy.\nCell 4: completely EMPTY with transparent background.\n\nStrictly preserve this 4x2 cell arrangement and left/right facing. No letters or numbers anywhere. Genuine transparent alpha background, not a painted checkerboard.",
+        "recorded_date_utc": "2026-10-18",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
     },
     {
-      "id": "battle-creatures",
-      "path": "assets/battle/creatures.png",
-      "sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+      "bytes": 2184,
+      "id": "characters/battle-creatures@1.0.0:panorama-prompt",
+      "kind": "data",
+      "module": "characters/battle-creatures",
+      "path": "assets/characters/battle-creatures/versions/1.0.0/depth-background-panorama-prompt.txt",
+      "role": "panorama-prompt",
+      "sha256": "4a6cc2e477149ab878b6e604a499f3b1abb75421d5ce16cf2b8cad4a76f967cf",
+      "source": {
+        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-1f7d5657-bbf3-4357-8e5f-ed27875012ed.png",
+        "original_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+        "prompt": "Create ONE transparent PNG sprite atlas for an ORIGINAL pixel-art monster game named Umbral. This is actual reusable character art, NOT a scene or UI or diagram. EXACTLY 7 full-body creatures in a perfectly regular grid of FOUR COLUMNS and TWO ROWS, all cells same size; last bottom-right cell EMPTY TRANSPARENT. Landscape atlas approx 2048x1024. Do not draw grid lines or labels; every cell's background is fully transparent with generous transparent padding on all sides. Every sprite centered horizontally in its cell, feet aligned to a common baseline at 85% cell height, whole silhouette within inner 80% of cell. No overlap between cells. Characters occupy roughly 65-75% cell height; NO ground shadows, NO scenery, NO text. Side/three-quarter view appropriate to a slightly elevated horizontal battle camera. Cohesive crisp pixel art with bold near-black colored outlines, deliberate small square pixel clusters, clean 3-5 tones per material, charming highly memorable silhouettes reminiscent of the readability of classic handheld monster games, but entirely original species. A sprite should read at 100px tall. Bright elemental accents and expressive eyes. No blur or painted gradients, no photorealism, no 3D. Every creature is a complete grounded creature with visible feet.\n\nROW ONE, from LEFT to RIGHT (all allies facing RIGHT, toward their enemy, their heads and eyes directed right):\nCell 1: BRASA — a small stocky charcoal-black ember squirrel, a magnificent thick curled orange-red tail rising behind its body into a spiral, warm amber eyes, glowing tiny orange fissures on forepaws. Compact crouching biped, alert playful stubborn expression. Mouth not firing. Strong clean orange tail/black body silhouette.\nCell 2: MUSGO — a squat round bark-and-moss guardian creature, broad brown trunk torso with a friendly pale wooden owl-like face set into a trunk hollow, green layered moss canopy and 3 small cream flowers on its back, four short sturdy root legs planted on ground, kindly protective guardian. Wider than tall, absolutely not a human standing upright.\nCell 3: FAÍSCA — a small golden-and-charcoal circuit beetle, shiny amber segmented shell etched with very simple cyan circuit markings, two curved slender antennae, six short black legs, a tiny glowing spark between the antenna tips. Alert jewel-like cyan eyes, low rounded profile, no wings open.\nCell 4: ORVALHO — a turquoise amphibian with four frog-like feet, large expressive dark-teal eyes, translucent blue round water globe mounted on its back containing two pale ripples, small liquid ribbon tail and two drop-shaped fins. Cute grounded poised frog/salamander, pale aqua belly, globe has crisp highlights and internal water dots, not firing an attack.\n\nROW TWO, from LEFT to RIGHT (all enemies facing LEFT, toward allies, heads and eyes directed left):\nCell 1: SPORE — a round plum-purple forest mushroom creature with a wide rich burgundy cap speckled turquoise, tiny stocky stalk body, short root feet, mischievous narrowed golden eyes beneath the cap, two tiny luminous green spore growths. Memorable broad cap silhouette.\nCell 2: OWL — a thorn owl, dark periwinkle and slate-blue rounded feather body, forward-leaning perched battle stance ON its two visible talons with NO branch, two swept-back twig/leaf ear tufts, broad folded wings with rust-gold thorn edging, sharp amber eyes and pale small face disk. Distinct small stout bird, no spread flight wings.\nCell 3: STAG — a medium stately shadow stag with midnight blue fur, pale teal muzzle and chest markings, four well-planted slender legs and cloven hooves, sweeping branching antlers tipped with a very few violet crystal shards, faint turquoise line along the spine. Proud left-facing three-quarter silhouette. Fit FULL antlers and every hoof inside the cell, no cropping. Slightly taller than other first-stage creatures but comparable atlas occupancy.\nCell 4: completely EMPTY with transparent background.\n\nStrictly preserve this 4x2 cell arrangement and left/right facing. No letters or numbers anywhere. Genuine transparent alpha background, not a painted checkerboard.",
+        "recorded_date_utc": "2026-10-18",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2613,
+      "id": "characters/battle-creatures@1.0.0:prompt",
+      "kind": "data",
+      "module": "characters/battle-creatures",
+      "path": "assets/characters/battle-creatures/versions/1.0.0/depth-background-prompt.txt",
+      "role": "prompt",
+      "sha256": "77b15062a334fdfd51b3e4784a0fde53d6bbbee3cb40e8575872e7a66eba0211",
+      "source": {
+        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-1f7d5657-bbf3-4357-8e5f-ed27875012ed.png",
+        "original_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+        "prompt": "Create ONE transparent PNG sprite atlas for an ORIGINAL pixel-art monster game named Umbral. This is actual reusable character art, NOT a scene or UI or diagram. EXACTLY 7 full-body creatures in a perfectly regular grid of FOUR COLUMNS and TWO ROWS, all cells same size; last bottom-right cell EMPTY TRANSPARENT. Landscape atlas approx 2048x1024. Do not draw grid lines or labels; every cell's background is fully transparent with generous transparent padding on all sides. Every sprite centered horizontally in its cell, feet aligned to a common baseline at 85% cell height, whole silhouette within inner 80% of cell. No overlap between cells. Characters occupy roughly 65-75% cell height; NO ground shadows, NO scenery, NO text. Side/three-quarter view appropriate to a slightly elevated horizontal battle camera. Cohesive crisp pixel art with bold near-black colored outlines, deliberate small square pixel clusters, clean 3-5 tones per material, charming highly memorable silhouettes reminiscent of the readability of classic handheld monster games, but entirely original species. A sprite should read at 100px tall. Bright elemental accents and expressive eyes. No blur or painted gradients, no photorealism, no 3D. Every creature is a complete grounded creature with visible feet.\n\nROW ONE, from LEFT to RIGHT (all allies facing RIGHT, toward their enemy, their heads and eyes directed right):\nCell 1: BRASA — a small stocky charcoal-black ember squirrel, a magnificent thick curled orange-red tail rising behind its body into a spiral, warm amber eyes, glowing tiny orange fissures on forepaws. Compact crouching biped, alert playful stubborn expression. Mouth not firing. Strong clean orange tail/black body silhouette.\nCell 2: MUSGO — a squat round bark-and-moss guardian creature, broad brown trunk torso with a friendly pale wooden owl-like face set into a trunk hollow, green layered moss canopy and 3 small cream flowers on its back, four short sturdy root legs planted on ground, kindly protective guardian. Wider than tall, absolutely not a human standing upright.\nCell 3: FAÍSCA — a small golden-and-charcoal circuit beetle, shiny amber segmented shell etched with very simple cyan circuit markings, two curved slender antennae, six short black legs, a tiny glowing spark between the antenna tips. Alert jewel-like cyan eyes, low rounded profile, no wings open.\nCell 4: ORVALHO — a turquoise amphibian with four frog-like feet, large expressive dark-teal eyes, translucent blue round water globe mounted on its back containing two pale ripples, small liquid ribbon tail and two drop-shaped fins. Cute grounded poised frog/salamander, pale aqua belly, globe has crisp highlights and internal water dots, not firing an attack.\n\nROW TWO, from LEFT to RIGHT (all enemies facing LEFT, toward allies, heads and eyes directed left):\nCell 1: SPORE — a round plum-purple forest mushroom creature with a wide rich burgundy cap speckled turquoise, tiny stocky stalk body, short root feet, mischievous narrowed golden eyes beneath the cap, two tiny luminous green spore growths. Memorable broad cap silhouette.\nCell 2: OWL — a thorn owl, dark periwinkle and slate-blue rounded feather body, forward-leaning perched battle stance ON its two visible talons with NO branch, two swept-back twig/leaf ear tufts, broad folded wings with rust-gold thorn edging, sharp amber eyes and pale small face disk. Distinct small stout bird, no spread flight wings.\nCell 3: STAG — a medium stately shadow stag with midnight blue fur, pale teal muzzle and chest markings, four well-planted slender legs and cloven hooves, sweeping branching antlers tipped with a very few violet crystal shards, faint turquoise line along the spine. Proud left-facing three-quarter silhouette. Fit FULL antlers and every hoof inside the cell, no cropping. Slightly taller than other first-stage creatures but comparable atlas occupancy.\nCell 4: completely EMPTY with transparent background.\n\nStrictly preserve this 4x2 cell arrangement and left/right facing. No letters or numbers anywhere. Genuine transparent alpha background, not a painted checkerboard.",
+        "recorded_date_utc": "2026-10-18",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 17169,
+      "id": "characters/battle-creatures@1.0.0:provenance",
+      "kind": "data",
+      "module": "characters/battle-creatures",
+      "path": "assets/characters/battle-creatures/versions/1.0.0/provenance.json",
+      "role": "provenance",
+      "sha256": "be3e63fbfa42169e48bbde1ab652373de216cc6d11a5525b60da6d184186f691",
+      "source": {
+        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-1f7d5657-bbf3-4357-8e5f-ed27875012ed.png",
+        "original_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+        "prompt": "Create ONE transparent PNG sprite atlas for an ORIGINAL pixel-art monster game named Umbral. This is actual reusable character art, NOT a scene or UI or diagram. EXACTLY 7 full-body creatures in a perfectly regular grid of FOUR COLUMNS and TWO ROWS, all cells same size; last bottom-right cell EMPTY TRANSPARENT. Landscape atlas approx 2048x1024. Do not draw grid lines or labels; every cell's background is fully transparent with generous transparent padding on all sides. Every sprite centered horizontally in its cell, feet aligned to a common baseline at 85% cell height, whole silhouette within inner 80% of cell. No overlap between cells. Characters occupy roughly 65-75% cell height; NO ground shadows, NO scenery, NO text. Side/three-quarter view appropriate to a slightly elevated horizontal battle camera. Cohesive crisp pixel art with bold near-black colored outlines, deliberate small square pixel clusters, clean 3-5 tones per material, charming highly memorable silhouettes reminiscent of the readability of classic handheld monster games, but entirely original species. A sprite should read at 100px tall. Bright elemental accents and expressive eyes. No blur or painted gradients, no photorealism, no 3D. Every creature is a complete grounded creature with visible feet.\n\nROW ONE, from LEFT to RIGHT (all allies facing RIGHT, toward their enemy, their heads and eyes directed right):\nCell 1: BRASA — a small stocky charcoal-black ember squirrel, a magnificent thick curled orange-red tail rising behind its body into a spiral, warm amber eyes, glowing tiny orange fissures on forepaws. Compact crouching biped, alert playful stubborn expression. Mouth not firing. Strong clean orange tail/black body silhouette.\nCell 2: MUSGO — a squat round bark-and-moss guardian creature, broad brown trunk torso with a friendly pale wooden owl-like face set into a trunk hollow, green layered moss canopy and 3 small cream flowers on its back, four short sturdy root legs planted on ground, kindly protective guardian. Wider than tall, absolutely not a human standing upright.\nCell 3: FAÍSCA — a small golden-and-charcoal circuit beetle, shiny amber segmented shell etched with very simple cyan circuit markings, two curved slender antennae, six short black legs, a tiny glowing spark between the antenna tips. Alert jewel-like cyan eyes, low rounded profile, no wings open.\nCell 4: ORVALHO — a turquoise amphibian with four frog-like feet, large expressive dark-teal eyes, translucent blue round water globe mounted on its back containing two pale ripples, small liquid ribbon tail and two drop-shaped fins. Cute grounded poised frog/salamander, pale aqua belly, globe has crisp highlights and internal water dots, not firing an attack.\n\nROW TWO, from LEFT to RIGHT (all enemies facing LEFT, toward allies, heads and eyes directed left):\nCell 1: SPORE — a round plum-purple forest mushroom creature with a wide rich burgundy cap speckled turquoise, tiny stocky stalk body, short root feet, mischievous narrowed golden eyes beneath the cap, two tiny luminous green spore growths. Memorable broad cap silhouette.\nCell 2: OWL — a thorn owl, dark periwinkle and slate-blue rounded feather body, forward-leaning perched battle stance ON its two visible talons with NO branch, two swept-back twig/leaf ear tufts, broad folded wings with rust-gold thorn edging, sharp amber eyes and pale small face disk. Distinct small stout bird, no spread flight wings.\nCell 3: STAG — a medium stately shadow stag with midnight blue fur, pale teal muzzle and chest markings, four well-planted slender legs and cloven hooves, sweeping branching antlers tipped with a very few violet crystal shards, faint turquoise line along the spine. Proud left-facing three-quarter silhouette. Fit FULL antlers and every hoof inside the cell, no cropping. Slightly taller than other first-stage creatures but comparable atlas occupancy.\nCell 4: completely EMPTY with transparent background.\n\nStrictly preserve this 4x2 cell arrangement and left/right facing. No letters or numbers anywhere. Genuine transparent alpha background, not a painted checkerboard.",
+        "recorded_date_utc": "2026-10-18",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
       "bytes": 1279819,
-      "status": "source inspected; native battle review pending",
-      "collision": "none; visual only",
-      "role": "Seven original grounded idle silhouettes: ember, moss, volt, dew facing right; spore, owl, stag facing left.",
+      "id": "characters/battle-creatures@1.0.0:texture",
+      "kind": "texture",
+      "module": "characters/battle-creatures",
+      "path": "assets/characters/battle-creatures/versions/1.0.0/texture.png",
+      "role": "texture",
+      "sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+      "source": {
+        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-1f7d5657-bbf3-4357-8e5f-ed27875012ed.png",
+        "original_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+        "prompt": "Create ONE transparent PNG sprite atlas for an ORIGINAL pixel-art monster game named Umbral. This is actual reusable character art, NOT a scene or UI or diagram. EXACTLY 7 full-body creatures in a perfectly regular grid of FOUR COLUMNS and TWO ROWS, all cells same size; last bottom-right cell EMPTY TRANSPARENT. Landscape atlas approx 2048x1024. Do not draw grid lines or labels; every cell's background is fully transparent with generous transparent padding on all sides. Every sprite centered horizontally in its cell, feet aligned to a common baseline at 85% cell height, whole silhouette within inner 80% of cell. No overlap between cells. Characters occupy roughly 65-75% cell height; NO ground shadows, NO scenery, NO text. Side/three-quarter view appropriate to a slightly elevated horizontal battle camera. Cohesive crisp pixel art with bold near-black colored outlines, deliberate small square pixel clusters, clean 3-5 tones per material, charming highly memorable silhouettes reminiscent of the readability of classic handheld monster games, but entirely original species. A sprite should read at 100px tall. Bright elemental accents and expressive eyes. No blur or painted gradients, no photorealism, no 3D. Every creature is a complete grounded creature with visible feet.\n\nROW ONE, from LEFT to RIGHT (all allies facing RIGHT, toward their enemy, their heads and eyes directed right):\nCell 1: BRASA — a small stocky charcoal-black ember squirrel, a magnificent thick curled orange-red tail rising behind its body into a spiral, warm amber eyes, glowing tiny orange fissures on forepaws. Compact crouching biped, alert playful stubborn expression. Mouth not firing. Strong clean orange tail/black body silhouette.\nCell 2: MUSGO — a squat round bark-and-moss guardian creature, broad brown trunk torso with a friendly pale wooden owl-like face set into a trunk hollow, green layered moss canopy and 3 small cream flowers on its back, four short sturdy root legs planted on ground, kindly protective guardian. Wider than tall, absolutely not a human standing upright.\nCell 3: FAÍSCA — a small golden-and-charcoal circuit beetle, shiny amber segmented shell etched with very simple cyan circuit markings, two curved slender antennae, six short black legs, a tiny glowing spark between the antenna tips. Alert jewel-like cyan eyes, low rounded profile, no wings open.\nCell 4: ORVALHO — a turquoise amphibian with four frog-like feet, large expressive dark-teal eyes, translucent blue round water globe mounted on its back containing two pale ripples, small liquid ribbon tail and two drop-shaped fins. Cute grounded poised frog/salamander, pale aqua belly, globe has crisp highlights and internal water dots, not firing an attack.\n\nROW TWO, from LEFT to RIGHT (all enemies facing LEFT, toward allies, heads and eyes directed left):\nCell 1: SPORE — a round plum-purple forest mushroom creature with a wide rich burgundy cap speckled turquoise, tiny stocky stalk body, short root feet, mischievous narrowed golden eyes beneath the cap, two tiny luminous green spore growths. Memorable broad cap silhouette.\nCell 2: OWL — a thorn owl, dark periwinkle and slate-blue rounded feather body, forward-leaning perched battle stance ON its two visible talons with NO branch, two swept-back twig/leaf ear tufts, broad folded wings with rust-gold thorn edging, sharp amber eyes and pale small face disk. Distinct small stout bird, no spread flight wings.\nCell 3: STAG — a medium stately shadow stag with midnight blue fur, pale teal muzzle and chest markings, four well-planted slender legs and cloven hooves, sweeping branching antlers tipped with a very few violet crystal shards, faint turquoise line along the spine. Proud left-facing three-quarter silhouette. Fit FULL antlers and every hoof inside the cell, no cropping. Slightly taller than other first-stage creatures but comparable atlas occupancy.\nCell 4: completely EMPTY with transparent background.\n\nStrictly preserve this 4x2 cell arrangement and left/right facing. No letters or numbers anywhere. Genuine transparent alpha background, not a painted checkerboard.",
+        "recorded_date_utc": "2026-10-18",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
       "technical": {
+        "alpha": true,
+        "anchor": "grounded sprite region",
         "dimensions": [
           1774,
           887
         ],
-        "mode": "RGBA",
-        "alpha": true,
         "filtering": "nearest for atlas; linear for arena",
-        "anchor": "grounded sprite region",
-        "frames": 1
+        "frames": 1,
+        "mode": "RGBA"
       },
-      "source": {
-        "kind": "generated original",
-        "tool": "OpenAI Image Gen",
-        "model_version": "Not exposed by tool; none inferred.",
-        "recorded_date_utc": "2026-10-18",
-        "prompt": "Create ONE transparent PNG sprite atlas for an ORIGINAL pixel-art monster game named Umbral. This is actual reusable character art, NOT a scene or UI or diagram. EXACTLY 7 full-body creatures in a perfectly regular grid of FOUR COLUMNS and TWO ROWS, all cells same size; last bottom-right cell EMPTY TRANSPARENT. Landscape atlas approx 2048x1024. Do not draw grid lines or labels; every cell's background is fully transparent with generous transparent padding on all sides. Every sprite centered horizontally in its cell, feet aligned to a common baseline at 85% cell height, whole silhouette within inner 80% of cell. No overlap between cells. Characters occupy roughly 65-75% cell height; NO ground shadows, NO scenery, NO text. Side/three-quarter view appropriate to a slightly elevated horizontal battle camera. Cohesive crisp pixel art with bold near-black colored outlines, deliberate small square pixel clusters, clean 3-5 tones per material, charming highly memorable silhouettes reminiscent of the readability of classic handheld monster games, but entirely original species. A sprite should read at 100px tall. Bright elemental accents and expressive eyes. No blur or painted gradients, no photorealism, no 3D. Every creature is a complete grounded creature with visible feet.\n\nROW ONE, from LEFT to RIGHT (all allies facing RIGHT, toward their enemy, their heads and eyes directed right):\nCell 1: BRASA — a small stocky charcoal-black ember squirrel, a magnificent thick curled orange-red tail rising behind its body into a spiral, warm amber eyes, glowing tiny orange fissures on forepaws. Compact crouching biped, alert playful stubborn expression. Mouth not firing. Strong clean orange tail/black body silhouette.\nCell 2: MUSGO — a squat round bark-and-moss guardian creature, broad brown trunk torso with a friendly pale wooden owl-like face set into a trunk hollow, green layered moss canopy and 3 small cream flowers on its back, four short sturdy root legs planted on ground, kindly protective guardian. Wider than tall, absolutely not a human standing upright.\nCell 3: FAÍSCA — a small golden-and-charcoal circuit beetle, shiny amber segmented shell etched with very simple cyan circuit markings, two curved slender antennae, six short black legs, a tiny glowing spark between the antenna tips. Alert jewel-like cyan eyes, low rounded profile, no wings open.\nCell 4: ORVALHO — a turquoise amphibian with four frog-like feet, large expressive dark-teal eyes, translucent blue round water globe mounted on its back containing two pale ripples, small liquid ribbon tail and two drop-shaped fins. Cute grounded poised frog/salamander, pale aqua belly, globe has crisp highlights and internal water dots, not firing an attack.\n\nROW TWO, from LEFT to RIGHT (all enemies facing LEFT, toward allies, heads and eyes directed left):\nCell 1: SPORE — a round plum-purple forest mushroom creature with a wide rich burgundy cap speckled turquoise, tiny stocky stalk body, short root feet, mischievous narrowed golden eyes beneath the cap, two tiny luminous green spore growths. Memorable broad cap silhouette.\nCell 2: OWL — a thorn owl, dark periwinkle and slate-blue rounded feather body, forward-leaning perched battle stance ON its two visible talons with NO branch, two swept-back twig/leaf ear tufts, broad folded wings with rust-gold thorn edging, sharp amber eyes and pale small face disk. Distinct small stout bird, no spread flight wings.\nCell 3: STAG — a medium stately shadow stag with midnight blue fur, pale teal muzzle and chest markings, four well-planted slender legs and cloven hooves, sweeping branching antlers tipped with a very few violet crystal shards, faint turquoise line along the spine. Proud left-facing three-quarter silhouette. Fit FULL antlers and every hoof inside the cell, no cropping. Slightly taller than other first-stage creatures but comparable atlas occupancy.\nCell 4: completely EMPTY with transparent background.\n\nStrictly preserve this 4x2 cell arrangement and left/right facing. No letters or numbers anywhere. Genuine transparent alpha background, not a painted checkerboard.",
-        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
-        "original_output_basename": "exec-1f7d5657-bbf3-4357-8e5f-ed27875012ed.png",
-        "original_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
-        "license_record": "Original artwork generated for Umbral; no third-party game artwork included."
-      }
+      "version": "1.0.0"
     },
     {
-      "id": "evolved",
-      "path": "assets/battle/evolved.png",
-      "sha256": "6a227222f7a02cbd60ef30c746627df9e6bffb42dc4f7bbfd57d067342980c43",
+      "bytes": 1072,
+      "id": "characters/battle-evolved@1.0.0:atlas",
+      "kind": "data",
+      "module": "characters/battle-evolved",
+      "path": "assets/characters/battle-evolved/versions/1.0.0/atlas.json",
+      "role": "atlas",
+      "sha256": "714f4b1e92485b6511df54fecbc27a626bf3ba74483413454c8ff1a57c5d009f",
+      "source": {
+        "brief": "Matching evolved forms of the first-stage atlas. Image Gen spacing edit preserved the designs and added generous transparent gutters to isolate each creature. Exact edit prompt was not available after the delegated turn ended.",
+        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-fc0c3e7f-230d-4a4b-ad76-10a5c6835e8f.png",
+        "original_sha256": "6a227222f7a02cbd60ef30c746627df9e6bffb42dc4f7bbfd57d067342980c43",
+        "recorded_date_utc": "2026-10-18",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
       "bytes": 973669,
-      "status": "source inspected; runtime review pending",
-      "collision": "none; visual only",
-      "role": "Four evolved original creatures facing right: Ignivar, Verdálio, Tempestral, Marevéu.",
+      "id": "characters/battle-evolved@1.0.0:texture",
+      "kind": "texture",
+      "module": "characters/battle-evolved",
+      "path": "assets/characters/battle-evolved/versions/1.0.0/texture.png",
+      "role": "texture",
+      "sha256": "6a227222f7a02cbd60ef30c746627df9e6bffb42dc4f7bbfd57d067342980c43",
+      "source": {
+        "brief": "Matching evolved forms of the first-stage atlas. Image Gen spacing edit preserved the designs and added generous transparent gutters to isolate each creature. Exact edit prompt was not available after the delegated turn ended.",
+        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-fc0c3e7f-230d-4a4b-ad76-10a5c6835e8f.png",
+        "original_sha256": "6a227222f7a02cbd60ef30c746627df9e6bffb42dc4f7bbfd57d067342980c43",
+        "recorded_date_utc": "2026-10-18",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
       "technical": {
+        "alpha": true,
+        "anchor": "grounded atlas region",
         "dimensions": [
           1254,
           1254
         ],
-        "mode": "RGBA",
-        "alpha": true,
         "filtering": "nearest",
-        "anchor": "grounded atlas region",
-        "frames": 1
+        "frames": 1,
+        "mode": "RGBA"
       },
-      "source": {
-        "kind": "generated original",
-        "tool": "OpenAI Image Gen",
-        "model_version": "Not exposed by tool; none inferred.",
-        "recorded_date_utc": "2026-10-18",
-        "brief": "Matching evolved forms of the first-stage atlas. Image Gen spacing edit preserved the designs and added generous transparent gutters to isolate each creature. Exact edit prompt was not available after the delegated turn ended.",
-        "original_output_basename": "exec-fc0c3e7f-230d-4a4b-ad76-10a5c6835e8f.png",
-        "original_sha256": "6a227222f7a02cbd60ef30c746627df9e6bffb42dc4f7bbfd57d067342980c43",
-        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
-        "license_record": "Original artwork generated for Umbral; no third-party game artwork included."
-      }
+      "version": "1.0.0"
     },
     {
-      "id": "backpack",
-      "path": "assets/icons/backpack.svg",
-      "sha256": "36ee9f46ccb5a9c760dad29ab184d3dc48e47e0ef21ca75f7682e009293b6c98",
-      "bytes": 469,
-      "status": "source inspected; runtime review pending",
-      "collision": "none; visual only",
-      "role": "backpack UI icon",
+      "bytes": 1241875,
+      "id": "characters/demo-acrobat@1.0.0:pike-somersault",
+      "kind": "texture",
+      "module": "characters/demo-acrobat",
+      "path": "assets/characters/demo-acrobat/versions/1.0.0/pike-somersault.png",
+      "role": "pike-somersault",
+      "sha256": "c41d4d48e1f6f3a8c39b37026242b61081b774045e5b6237189cee812820d4e6",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
       "technical": {
-        "format": "SVG",
-        "filtering": "linear",
+        "alpha": true,
+        "dimensions": [
+          2048,
+          4096
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 462047,
+      "id": "characters/demo-acrobat@1.0.0:pike-somersault-low",
+      "kind": "texture",
+      "module": "characters/demo-acrobat",
+      "path": "assets/characters/demo-acrobat/versions/1.0.0/pike-somersault-low.png",
+      "role": "pike-somersault-low",
+      "sha256": "6f6c31775ec4781b0af1e7a60dc029294b5050d39a6e57e84a5efe9423119e9b",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          2048
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 396986,
+      "id": "characters/demo-athlete@1.0.0:fireball-cast",
+      "kind": "texture",
+      "module": "characters/demo-athlete",
+      "path": "assets/characters/demo-athlete/versions/1.0.0/fireball-cast.png",
+      "role": "fireball-cast",
+      "sha256": "4894e84ebfe96fd22f38608446d97c8368b19e674a889985d341110af32a2a02",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2048,
+          2048
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 151583,
+      "id": "characters/demo-athlete@1.0.0:fireball-cast-low",
+      "kind": "texture",
+      "module": "characters/demo-athlete",
+      "path": "assets/characters/demo-athlete/versions/1.0.0/fireball-cast-low.png",
+      "role": "fireball-cast-low",
+      "sha256": "b21ff9350ad762e9d652f62e4106cef61bc46cbacfadf0336a4e206b95819906",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 461042,
+      "id": "characters/demo-beast@1.0.0:fireball-cast",
+      "kind": "texture",
+      "module": "characters/demo-beast",
+      "path": "assets/characters/demo-beast/versions/1.0.0/fireball-cast.png",
+      "role": "fireball-cast",
+      "sha256": "d1f89d833e73d2e2308d71d8962990b9a7cb981c27d37b95169f880ba7cd5bb5",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2048,
+          2048
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 179008,
+      "id": "characters/demo-beast@1.0.0:fireball-cast-low",
+      "kind": "texture",
+      "module": "characters/demo-beast",
+      "path": "assets/characters/demo-beast/versions/1.0.0/fireball-cast-low.png",
+      "role": "fireball-cast-low",
+      "sha256": "b566cf97fe8b6d7913a0be0f73f632a86190af0c730bcfbe0c26c33f6f175250",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 294390,
+      "id": "characters/demo-caster@1.0.0:fireball-cast",
+      "kind": "texture",
+      "module": "characters/demo-caster",
+      "path": "assets/characters/demo-caster/versions/1.0.0/fireball-cast.png",
+      "role": "fireball-cast",
+      "sha256": "2b8a7dacc96c3181b802270b366ffe9491c04e7d6e9f829ff14ab75807669e11",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2048,
+          2048
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 109184,
+      "id": "characters/demo-caster@1.0.0:fireball-cast-low",
+      "kind": "texture",
+      "module": "characters/demo-caster",
+      "path": "assets/characters/demo-caster/versions/1.0.0/fireball-cast-low.png",
+      "role": "fireball-cast-low",
+      "sha256": "2875c257c782bd1fae9c13a8041aaaabfefb40273c19f1604eb29afa92fe4017",
+      "source": {
+        "kind": "original procedural 2D VFX",
+        "license": "Original session-authored art; no external game sprites.",
+        "review_context": "Standalone animation study, not final Umbrals species art.",
+        "tool": "tools/asset_authoring"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1416,
+      "id": "characters/owl@1.0.0:portrait",
+      "kind": "texture",
+      "module": "characters/owl",
+      "path": "assets/characters/owl/versions/1.0.0/portrait.svg",
+      "role": "portrait",
+      "sha256": "b27e17b2961498669ada331e0efa5551a50b4bcf67110ebea9353ed2a05151b8",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
         "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
         "frames": 1
       },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1436,
+      "id": "characters/spore@1.0.0:portrait",
+      "kind": "texture",
+      "module": "characters/spore",
+      "path": "assets/characters/spore/versions/1.0.0/portrait.svg",
+      "role": "portrait",
+      "sha256": "892b791ac0e85c15e38d41f18ca32a365b6f96c5d7dacc43995c1a087b7f8880",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1547,
+      "id": "characters/stag@1.0.0:portrait",
+      "kind": "texture",
+      "module": "characters/stag",
+      "path": "assets/characters/stag/versions/1.0.0/portrait.svg",
+      "role": "portrait",
+      "sha256": "13c5ec00b429e2490d1aa79a9335d4f51e065c458dacbafba9cea07c7e52decd",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 759720,
+      "id": "fonts/dejavu@1.0.0:body",
+      "kind": "font",
+      "module": "fonts/dejavu",
+      "path": "assets/fonts/dejavu/versions/1.0.0/body.ttf",
+      "role": "body",
+      "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e",
+      "source": {
+        "kind": "third-party font",
+        "license_record": "assets/FONT-LICENSE.txt",
+        "source": "Debian font package: DejaVu Sans / DejaVu Serif"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 380660,
+      "id": "fonts/dejavu@1.0.0:display",
+      "kind": "font",
+      "module": "fonts/dejavu",
+      "path": "assets/fonts/dejavu/versions/1.0.0/display.ttf",
+      "role": "display",
+      "sha256": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7",
+      "source": {
+        "kind": "third-party font",
+        "license_record": "assets/FONT-LICENSE.txt",
+        "source": "Debian font package: DejaVu Sans / DejaVu Serif"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 3859,
+      "id": "fonts/dejavu@1.0.0:license",
+      "kind": "license",
+      "module": "fonts/dejavu",
+      "path": "assets/fonts/dejavu/versions/1.0.0/license.txt",
+      "role": "license",
+      "sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+      "source": {
+        "kind": "third-party font",
+        "license_record": "assets/FONT-LICENSE.txt",
+        "source": "Debian font package: DejaVu Sans / DejaVu Serif"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 469,
+      "id": "ui/backpack@1.0.0:icon",
+      "kind": "texture",
+      "module": "ui/backpack",
+      "path": "assets/ui/backpack/versions/1.0.0/icon.svg",
+      "role": "icon",
+      "sha256": "36ee9f46ccb5a9c760dad29ab184d3dc48e47e0ef21ca75f7682e009293b6c98",
       "source": {
         "kind": "authored original SVG icon",
-        "tool": "authored directly for the battle HUD",
-        "license": "Original project asset; no external artwork."
-      }
+        "license": "Original project asset; no external artwork.",
+        "tool": "authored directly for the battle HUD"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
     },
     {
-      "id": "battle-clearing-depth",
-      "path": "assets/world/battle_clearing_depth.png",
-      "sha256": "18aa3cbb9d6f0541054180c1cfa91c8e1b2dcca8869a4da48e0e44c815f655bf",
-      "bytes": 1958730,
-      "status": "local in-engine review recorded in docs/visual-review-depth-v0.4.md; player feedback pending",
-      "collision": "none; visual only",
-      "role": "Cleaner wide moonlit clearing; continuous solid floor, low-noise pixel clusters and distant horizon.",
+      "bytes": 2369,
+      "id": "umbrals/dew@1.0.0:portrait",
+      "kind": "texture",
+      "module": "umbrals/dew",
+      "path": "assets/umbrals/dew/versions/1.0.0/portrait.svg",
+      "role": "portrait",
+      "sha256": "a3c3d1217a3e02cc1cae522148663bb53e4ca23dfc4fef14b3450fc91994d148",
+      "source": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "license": "Original project asset; no external artwork.",
+        "tool": "authored directly for the battle content slice"
+      },
+      "status": "production",
       "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1752,
+      "id": "umbrals/ember@1.0.0:portrait",
+      "kind": "texture",
+      "module": "umbrals/ember",
+      "path": "assets/umbrals/ember/versions/1.0.0/portrait.svg",
+      "role": "portrait",
+      "sha256": "ad847d5b7ead36e3d172c70ca0054c416c85bfa95deb696d5efabb9181b3c66c",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1821,
+      "id": "umbrals/ignivar@1.0.0:portrait",
+      "kind": "texture",
+      "module": "umbrals/ignivar",
+      "path": "assets/umbrals/ignivar/versions/1.0.0/portrait.svg",
+      "role": "portrait",
+      "sha256": "e7c898f62cd2585e1f42900fe97981c050f8d46815c2db74dfa64c210a72f362",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2409,
+      "id": "umbrals/mareveu@1.0.0:portrait",
+      "kind": "texture",
+      "module": "umbrals/mareveu",
+      "path": "assets/umbrals/mareveu/versions/1.0.0/portrait.svg",
+      "role": "portrait",
+      "sha256": "7f01017c3e1d4a624525eb0fd80941df5a033d119bb9b9b176f32c8bbc39eb5c",
+      "source": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "license": "Original project asset; no external artwork.",
+        "tool": "authored directly for the battle content slice"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1699,
+      "id": "umbrals/moss@1.0.0:portrait",
+      "kind": "texture",
+      "module": "umbrals/moss",
+      "path": "assets/umbrals/moss/versions/1.0.0/portrait.svg",
+      "role": "portrait",
+      "sha256": "cd817966197d9cfbac2ff1a1f41189f9e9716a909b5f7cbb266220e333368b1a",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1571,
+      "id": "umbrals/tempestral@1.0.0:portrait",
+      "kind": "texture",
+      "module": "umbrals/tempestral",
+      "path": "assets/umbrals/tempestral/versions/1.0.0/portrait.svg",
+      "role": "portrait",
+      "sha256": "67706908ab5d5fb285848cdc47546034b3065e73fc75b942083d81584c3e0c12",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1718,
+      "id": "umbrals/verdalio@1.0.0:portrait",
+      "kind": "texture",
+      "module": "umbrals/verdalio",
+      "path": "assets/umbrals/verdalio/versions/1.0.0/portrait.svg",
+      "role": "portrait",
+      "sha256": "3bb474996e2274e691abe7d24911c53d36f54fd3d2683c98e8836cf68f0e8ccb",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1536,
+      "id": "umbrals/volt@1.0.0:portrait",
+      "kind": "texture",
+      "module": "umbrals/volt",
+      "path": "assets/umbrals/volt/versions/1.0.0/portrait.svg",
+      "role": "portrait",
+      "sha256": "fe12c24c74a852c1ac0551e1ecb7f1bd7fe88d35ccc812a5e9b6eba04c5ef7a5",
+      "source": {
+        "kind": "authored original vector",
+        "license": "Original project asset; no external samples or game artwork.",
+        "tool": "tools/generate_assets.py"
+      },
+      "status": "production",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2836258,
+      "id": "world/battle-clearing@1.0.0:background",
+      "kind": "texture",
+      "module": "world/battle-clearing",
+      "path": "assets/world/battle-clearing/versions/1.0.0/background.png",
+      "role": "background",
+      "sha256": "5e29951838bf65faffa4baa1676c460154207485a42a28c3e44d742b18b9413d",
+      "source": {
+        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-a1d2040d-d7f8-4d4c-a4ee-64975ae01633.png",
+        "original_sha256": "5e29951838bf65faffa4baa1676c460154207485a42a28c3e44d742b18b9413d",
+        "prompt": "Create an ORIGINAL production game background image for \"Umbral\", a 2D pixel-art monster roguelike battle. Use the supplied image ONLY as the established composition and color-style reference, then remove ALL creatures, ALL character shadows, ALL attacks, ALL text, ALL panels, ALL cards, ALL HUD, borders and icons. The entire output is arena/environment art edge to edge, with NO UI zone baked in. Landscape PC game scene, wide 16:9. Preserve a slightly elevated horizontal battle camera, we see a LOT of the floor. An enchanting cold moonlit marsh clearing at night in cobalt blue, indigo, pale blue and touches of turquoise; tiny purple crystals and reeds clustered only at the perimeter; distant lake, tiny bright moon high above, long dark pine forest silhouettes. The scenery must be SMALLER in scale than the reference foreground so it supports small game monsters rather than looking oversized. Top 18% a distant horizon and water; remaining 82% an enormous flat legible navy slate mud-and-stone playing field with subtle shallow puddles. Especially leave the entire middle 65% of the picture quiet dark desaturated navy, for fire lightning and water animations. Ground texture very subtle, NO large high-contrast stones in the playing area; no big branches projecting into playable area. Left group will stand around x=20% with y=30%,50%,70%; right group x=80% same y. Ensure ALL six positions have continuous SOLID GROUND with enough room for grounded shadows; not perched on pools or floating islands. Crisp coherent 2D pixel-cluster illustration, readable retro handheld-game style, approximately 480x270 visual pixel resolution, nearest-neighbor enlarged, deliberate 3-tone clusters, beautiful silhouettes and restrained environmental detail. No painted soft shading, no 3D, no isometric grid, no signs, no additional symbols, no people, no fauna, no characters or figures, no attacks, no glows in the center. This is an actual reusable background asset, not a mockup or screenshot.",
+        "recorded_date_utc": "2026-10-18",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "anchor": "aspect-cover center",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "filtering": "nearest for atlas; linear for arena",
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1958730,
+      "id": "world/battle-clearing-depth@1.0.0:background",
+      "kind": "texture",
+      "module": "world/battle-clearing-depth",
+      "path": "assets/world/battle-clearing-depth/versions/1.0.0/background.png",
+      "role": "background",
+      "sha256": "18aa3cbb9d6f0541054180c1cfa91c8e1b2dcca8869a4da48e0e44c815f655bf",
+      "source": {
+        "edit_history": "Image Gen horizontal panorama expansion from the first cleaner arena, clearing foliage under lower foot positions. Both originals preserved; runtime PNG byte-identical to final output. No offline pixel edits.",
+        "editor_input_original_sha256": "51db539f2daa08fa6c6fa90d3d06a410477889ab9bc8fd6dd9d658a2dd6d6546",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-075f8588-dd26-4357-ad20-714cf085f5cf.png",
+        "original_sha256": "18aa3cbb9d6f0541054180c1cfa91c8e1b2dcca8869a4da48e0e44c815f655bf",
+        "prompt": "Edit and HORIZONTALLY OUTPAINT this original Umbral arena into an EXTRA WIDE 4:1 panoramic game background (approximately 3072x768, much wider than the input). Preserve the lovely clean pixel-art style, colors, tiny warm moon, lake and distant blue pine forest. The result is a reusable background ONLY, no characters, no UI. Extend both sides with natural ASYMMETRIC original environment, never mirrored or repeated patches. One moon only, near the upper center. The key art correction is CLEAR GROUND FOR CREATURE FEET: remove ALL tall foreground reeds, grass clumps, large stones and flowers from the playable rectangle x=12% to88%, y=20% to97%. That entire immense rectangle must be uninterrupted dark desaturated slate/teal earth, with very subtle flat pixel-cluster soil texture only. No foreground vegetation silhouettes rising into that rectangle. No rocks, objects, pools, isolated islands, platforms, drawn circles or character shadows in the playable ground. Especially protect the lower left and lower right contact zones from foliage. Keep small framing rocks/flowers ONLY at the extreme 3% left/right edges and the lowest 2% bottom rim. A few edge trees may frame the far corners but must not intrude behind character silhouettes. Top 16% contains the distant forest, narrow lake and moon, with actual solid earth already established at y=18%. The majority of the image is quiet dry ground, with gradual material/value changes and small perspective clusters establishing depth: tiny near the top, subtly broader toward bottom. Strong flat readable 16-bit pixel clusters, no fine grain, no dithering, no micro sparkles, no blurry painting, no 3D. Preserve the input's much cleaner ground quality and restrained palette; no electric blue noise. The previous version was too narrow for ultrawide and the bottom bushes intruded under creatures: this revised real wide panorama must solve both while keeping the same identity. Terrain edges must be varied naturally rather than symmetrical. NO monsters, people, animals, words, labels, cards, HUD, grid, borders, attack effects, glyphs, cast shadows or mockup presentation. Output only the wide environment art edge to edge.",
+        "recorded_date_utc": "2026-10-20",
+        "references": [
+          "artifacts/battle-depth-source-20261020/clearing-first-edit.png"
+        ],
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "anchor": "fit visible arena height after 4% sky trim; centered side crop; minimal mirrored edge extension only beyond panorama width",
         "dimensions": [
           2172,
           724
         ],
-        "mode": "RGB",
-        "alpha": false,
         "filtering": "nearest; no generated mipmaps; source PNG unchanged",
-        "anchor": "fit visible arena height after 4% sky trim; centered side crop; minimal mirrored edge extension only beyond panorama width",
-        "frames": 1
+        "frames": 1,
+        "mode": "RGB"
       },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2303981,
+      "id": "world/moonlit-clearing@1.0.0:background",
+      "kind": "texture",
+      "module": "world/moonlit-clearing",
+      "path": "assets/world/moonlit-clearing/versions/1.0.0/background.png",
+      "role": "background",
+      "sha256": "e117d4f995c69c9a72ac5dbbeb3ce8e0b49aea98249d2c1536279dacb4a8729b",
       "source": {
+        "brief": "Illustrated blue-green moonlit forest clearing, ancient stone arch, layered botanical silhouettes, quiet dark foreground and lower area for native cards; light from upper right; no text, UI, characters or logos.",
+        "edit_history": "Copied the original PNG without resampling, cropping, recompression or metadata stripping. Aspect-cover happens only at render time.",
         "kind": "generated original",
-        "tool": "OpenAI Image Gen",
-        "model_version": "Not exposed by tool; none inferred.",
-        "recorded_date_utc": "2026-10-20",
-        "prompt": "Edit and HORIZONTALLY OUTPAINT this original Umbral arena into an EXTRA WIDE 4:1 panoramic game background (approximately 3072x768, much wider than the input). Preserve the lovely clean pixel-art style, colors, tiny warm moon, lake and distant blue pine forest. The result is a reusable background ONLY, no characters, no UI. Extend both sides with natural ASYMMETRIC original environment, never mirrored or repeated patches. One moon only, near the upper center. The key art correction is CLEAR GROUND FOR CREATURE FEET: remove ALL tall foreground reeds, grass clumps, large stones and flowers from the playable rectangle x=12% to88%, y=20% to97%. That entire immense rectangle must be uninterrupted dark desaturated slate/teal earth, with very subtle flat pixel-cluster soil texture only. No foreground vegetation silhouettes rising into that rectangle. No rocks, objects, pools, isolated islands, platforms, drawn circles or character shadows in the playable ground. Especially protect the lower left and lower right contact zones from foliage. Keep small framing rocks/flowers ONLY at the extreme 3% left/right edges and the lowest 2% bottom rim. A few edge trees may frame the far corners but must not intrude behind character silhouettes. Top 16% contains the distant forest, narrow lake and moon, with actual solid earth already established at y=18%. The majority of the image is quiet dry ground, with gradual material/value changes and small perspective clusters establishing depth: tiny near the top, subtly broader toward bottom. Strong flat readable 16-bit pixel clusters, no fine grain, no dithering, no micro sparkles, no blurry painting, no 3D. Preserve the input's much cleaner ground quality and restrained palette; no electric blue noise. The previous version was too narrow for ultrawide and the bottom bushes intruded under creatures: this revised real wide panorama must solve both while keeping the same identity. Terrain edges must be varied naturally rather than symmetrical. NO monsters, people, animals, words, labels, cards, HUD, grid, borders, attack effects, glyphs, cast shadows or mockup presentation. Output only the wide environment art edge to edge.",
-        "edit_history": "Image Gen horizontal panorama expansion from the first cleaner arena, clearing foliage under lower foot positions. Both originals preserved; runtime PNG byte-identical to final output. No offline pixel edits.",
-        "original_output_basename": "exec-075f8588-dd26-4357-ad20-714cf085f5cf.png",
-        "original_sha256": "18aa3cbb9d6f0541054180c1cfa91c8e1b2dcca8869a4da48e0e44c815f655bf",
-        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
-        "references": [
-          "artifacts/battle-depth-source-20261020/clearing-first-edit.png"
+        "license_record": "Generated service output under applicable service terms; no third-party game asset source.",
+        "model_version": "not exposed by the tool",
+        "original_sha256": "e117d4f995c69c9a72ac5dbbeb3ce8e0b49aea98249d2c1536279dacb4a8729b",
+        "recorded_date_utc": "2026-10-14",
+        "tool": "OpenAI Image Gen tool"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "anchor": "aspect-cover center",
+        "dimensions": [
+          1672,
+          941
         ],
-        "editor_input_original_sha256": "51db539f2daa08fa6c6fa90d3d06a410477889ab9bc8fd6dd9d658a2dd6d6546"
-      }
+        "filtering": "linear",
+        "frames": 1,
+        "mipmaps": false,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
     }
-  ]
+  ],
+  "generated_by": "tools/assets.py build",
+  "schema_version": 2
 }

@@ -19,6 +19,7 @@ def main():
 
     rows = [
         ('Assets', report.get('assets', {}), 'source_assets'),
+        ('Asset contracts', report.get('asset_units', {}), 'checks'),
         ('Rules', report.get('rules', {}), 'checks'),
         ('UI / input', report.get('ui', {}), 'checks'),
         ('Browser', report.get('browser', {}), 'checks'),
