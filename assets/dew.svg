@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320">
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#80d7e5" stop-opacity=".21"/><stop offset="1" stop-color="#80d7e5" stop-opacity="0"/></radialGradient>
+    <linearGradient id="body" x1="0" y1="0" x2=".7" y2="1"><stop stop-color="#80d7e5"/><stop offset="1" stop-color="#2c6872"/></linearGradient>
+    <radialGradient id="orb" cx=".35" cy=".25"><stop stop-color="#e0fbf6"/><stop offset=".45" stop-color="#80d7e5"/><stop offset="1" stop-color="#267c9a"/></radialGradient>
+  </defs>
+  <circle cx="160" cy="167" r="153" fill="url(#glow)"/>
+  <circle cx="160" cy="164" r="115" fill="none" stroke="#80d7e5" stroke-opacity=".2"/>
+  <path d="M160 29v12M160 287v12M25 164h12M283 164h12" stroke="#80d7e5" stroke-opacity=".6"/>
+  <ellipse cx="160" cy="266" rx="82" ry="10" fill="#000" opacity=".22"/>
+  <path d="M116 217Q48 248 61 173Q46 183 48 213Q44 268 122 241" fill="#4498a6" stroke="#80d7e5" stroke-width="3"/>
+  <path d="M106 188Q72 167 65 201Q62 224 84 243L113 244M209 192Q248 173 250 206Q249 230 229 246L204 245" fill="url(#body)" stroke="#a1e4e6" stroke-width="3"/>
+  <path d="M106 170Q95 213 120 247L201 247Q225 220 210 169" fill="url(#body)"/>
+  <path d="M131 190Q115 231 145 247L178 247Q205 222 188 190" fill="#ccece0"/>
+  <path d="M119 139Q95 124 99 103Q103 83 127 88Q145 93 141 114M180 112Q176 88 199 87Q225 86 226 107Q226 128 206 140" fill="url(#body)" stroke="#a1e4e6" stroke-width="3"/>
+  <path d="M94 143Q105 113 157 116Q213 112 229 143L218 178Q162 201 104 178Z" fill="url(#body)"/>
+  <path d="M118 137v14M200 136v15" stroke="#173d48" stroke-width="7" stroke-linecap="round"/>
+  <path d="M145 168Q162 179 179 166" fill="none" stroke="#265866" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="106" cy="166" r="6" fill="#e1ede0"/><circle cx="216" cy="165" r="6" fill="#e1ede0"/>
+  <path d="M122 247l-14 13h30M198 246l15 14h-32" fill="none" stroke="#b9e8df" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M160 64Q124 105 138 119Q159 139 182 119Q196 101 160 64Z" fill="url(#orb)" stroke="#d5f4e9" stroke-width="3"/>
+  <path d="M150 96q-13 19 2 25" fill="none" stroke="#effcf4" stroke-width="5" stroke-linecap="round"/>
+  <path d="M71 137l5-11 5 11-5 8zM253 148l4-9 4 9-4 7zM237 254l3-7 3 7-3 6z" fill="#80d7e5" opacity=".8"/>
+</svg>

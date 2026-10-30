@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "art_direction_brief": "docs/art-direction-v0.3.md",
-  "review_record": "docs/visual-review-v0.3.md",
+  "art_direction_brief": "docs/art-direction-v0.4.md",
+  "review_record": "docs/visual-review-depth-v0.4.md",
   "assets": [
     {
       "id": "ambience",
@@ -740,6 +740,254 @@
         "edit_history": "Copied the original PNG without resampling, cropping, recompression or metadata stripping. Aspect-cover happens only at render time.",
         "license_record": "Generated service output under applicable service terms; no third-party game asset source.",
         "original_sha256": "e117d4f995c69c9a72ac5dbbeb3ce8e0b49aea98249d2c1536279dacb4a8729b"
+      }
+    },
+    {
+      "id": "dew",
+      "path": "assets/dew.svg",
+      "sha256": "a3c3d1217a3e02cc1cae522148663bb53e4ca23dfc4fef14b3450fc91994d148",
+      "bytes": 2369,
+      "status": "prototype; native battle review pending",
+      "collision": "none; visual only",
+      "role": "creature portrait fallback",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "tool": "authored directly for the battle content slice",
+        "license": "Original project asset; no external artwork."
+      }
+    },
+    {
+      "id": "mareveu",
+      "path": "assets/mareveu.svg",
+      "sha256": "7f01017c3e1d4a624525eb0fd80941df5a033d119bb9b9b176f32c8bbc39eb5c",
+      "bytes": 2409,
+      "status": "prototype; native battle review pending",
+      "collision": "none; visual only",
+      "role": "creature portrait fallback",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "tool": "authored directly for the battle content slice",
+        "license": "Original project asset; no external artwork."
+      }
+    },
+    {
+      "id": "powers-splash",
+      "path": "assets/powers/splash.svg",
+      "sha256": "be84aff462b0e95143da3e130bceea3ec2b59dc3edca4502d9663563b849ea27",
+      "bytes": 794,
+      "status": "prototype; native battle review pending",
+      "collision": "none; visual only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "tool": "authored directly for the battle content slice",
+        "license": "Original project asset; no external artwork."
+      }
+    },
+    {
+      "id": "powers-rain",
+      "path": "assets/powers/rain.svg",
+      "sha256": "4dc2ea8ccc0d73e49a2544035f6e6fae04b0f966d05f59abde210a1519ff385b",
+      "bytes": 786,
+      "status": "prototype; native battle review pending",
+      "collision": "none; visual only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "tool": "authored directly for the battle content slice",
+        "license": "Original project asset; no external artwork."
+      }
+    },
+    {
+      "id": "powers-dew_mend",
+      "path": "assets/powers/dew_mend.svg",
+      "sha256": "52113567a90381fc10bebb968cd8d10b42e53def0d1c4a8bbc82bf80c452ae3b",
+      "bytes": 670,
+      "status": "prototype; native battle review pending",
+      "collision": "none; visual only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "tool": "authored directly for the battle content slice",
+        "license": "Original project asset; no external artwork."
+      }
+    },
+    {
+      "id": "battle-clearing",
+      "path": "assets/world/battle_clearing.png",
+      "sha256": "5e29951838bf65faffa4baa1676c460154207485a42a28c3e44d742b18b9413d",
+      "bytes": 2836258,
+      "status": "source inspected; native battle review pending",
+      "collision": "none; visual only",
+      "role": "Elevated horizontal moonlit cold-marsh arena; no UI, creatures or attack effects.",
+      "technical": {
+        "dimensions": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "alpha": false,
+        "filtering": "nearest for atlas; linear for arena",
+        "anchor": "aspect-cover center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "generated original",
+        "tool": "OpenAI Image Gen",
+        "model_version": "Not exposed by tool; none inferred.",
+        "recorded_date_utc": "2026-10-18",
+        "prompt": "Create an ORIGINAL production game background image for \"Umbral\", a 2D pixel-art monster roguelike battle. Use the supplied image ONLY as the established composition and color-style reference, then remove ALL creatures, ALL character shadows, ALL attacks, ALL text, ALL panels, ALL cards, ALL HUD, borders and icons. The entire output is arena/environment art edge to edge, with NO UI zone baked in. Landscape PC game scene, wide 16:9. Preserve a slightly elevated horizontal battle camera, we see a LOT of the floor. An enchanting cold moonlit marsh clearing at night in cobalt blue, indigo, pale blue and touches of turquoise; tiny purple crystals and reeds clustered only at the perimeter; distant lake, tiny bright moon high above, long dark pine forest silhouettes. The scenery must be SMALLER in scale than the reference foreground so it supports small game monsters rather than looking oversized. Top 18% a distant horizon and water; remaining 82% an enormous flat legible navy slate mud-and-stone playing field with subtle shallow puddles. Especially leave the entire middle 65% of the picture quiet dark desaturated navy, for fire lightning and water animations. Ground texture very subtle, NO large high-contrast stones in the playing area; no big branches projecting into playable area. Left group will stand around x=20% with y=30%,50%,70%; right group x=80% same y. Ensure ALL six positions have continuous SOLID GROUND with enough room for grounded shadows; not perched on pools or floating islands. Crisp coherent 2D pixel-cluster illustration, readable retro handheld-game style, approximately 480x270 visual pixel resolution, nearest-neighbor enlarged, deliberate 3-tone clusters, beautiful silhouettes and restrained environmental detail. No painted soft shading, no 3D, no isometric grid, no signs, no additional symbols, no people, no fauna, no characters or figures, no attacks, no glows in the center. This is an actual reusable background asset, not a mockup or screenshot.",
+        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+        "original_output_basename": "exec-a1d2040d-d7f8-4d4c-a4ee-64975ae01633.png",
+        "original_sha256": "5e29951838bf65faffa4baa1676c460154207485a42a28c3e44d742b18b9413d",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included."
+      }
+    },
+    {
+      "id": "battle-creatures",
+      "path": "assets/battle/creatures.png",
+      "sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+      "bytes": 1279819,
+      "status": "source inspected; native battle review pending",
+      "collision": "none; visual only",
+      "role": "Seven original grounded idle silhouettes: ember, moss, volt, dew facing right; spore, owl, stag facing left.",
+      "technical": {
+        "dimensions": [
+          1774,
+          887
+        ],
+        "mode": "RGBA",
+        "alpha": true,
+        "filtering": "nearest for atlas; linear for arena",
+        "anchor": "grounded sprite region",
+        "frames": 1
+      },
+      "source": {
+        "kind": "generated original",
+        "tool": "OpenAI Image Gen",
+        "model_version": "Not exposed by tool; none inferred.",
+        "recorded_date_utc": "2026-10-18",
+        "prompt": "Create ONE transparent PNG sprite atlas for an ORIGINAL pixel-art monster game named Umbral. This is actual reusable character art, NOT a scene or UI or diagram. EXACTLY 7 full-body creatures in a perfectly regular grid of FOUR COLUMNS and TWO ROWS, all cells same size; last bottom-right cell EMPTY TRANSPARENT. Landscape atlas approx 2048x1024. Do not draw grid lines or labels; every cell's background is fully transparent with generous transparent padding on all sides. Every sprite centered horizontally in its cell, feet aligned to a common baseline at 85% cell height, whole silhouette within inner 80% of cell. No overlap between cells. Characters occupy roughly 65-75% cell height; NO ground shadows, NO scenery, NO text. Side/three-quarter view appropriate to a slightly elevated horizontal battle camera. Cohesive crisp pixel art with bold near-black colored outlines, deliberate small square pixel clusters, clean 3-5 tones per material, charming highly memorable silhouettes reminiscent of the readability of classic handheld monster games, but entirely original species. A sprite should read at 100px tall. Bright elemental accents and expressive eyes. No blur or painted gradients, no photorealism, no 3D. Every creature is a complete grounded creature with visible feet.\n\nROW ONE, from LEFT to RIGHT (all allies facing RIGHT, toward their enemy, their heads and eyes directed right):\nCell 1: BRASA — a small stocky charcoal-black ember squirrel, a magnificent thick curled orange-red tail rising behind its body into a spiral, warm amber eyes, glowing tiny orange fissures on forepaws. Compact crouching biped, alert playful stubborn expression. Mouth not firing. Strong clean orange tail/black body silhouette.\nCell 2: MUSGO — a squat round bark-and-moss guardian creature, broad brown trunk torso with a friendly pale wooden owl-like face set into a trunk hollow, green layered moss canopy and 3 small cream flowers on its back, four short sturdy root legs planted on ground, kindly protective guardian. Wider than tall, absolutely not a human standing upright.\nCell 3: FAÍSCA — a small golden-and-charcoal circuit beetle, shiny amber segmented shell etched with very simple cyan circuit markings, two curved slender antennae, six short black legs, a tiny glowing spark between the antenna tips. Alert jewel-like cyan eyes, low rounded profile, no wings open.\nCell 4: ORVALHO — a turquoise amphibian with four frog-like feet, large expressive dark-teal eyes, translucent blue round water globe mounted on its back containing two pale ripples, small liquid ribbon tail and two drop-shaped fins. Cute grounded poised frog/salamander, pale aqua belly, globe has crisp highlights and internal water dots, not firing an attack.\n\nROW TWO, from LEFT to RIGHT (all enemies facing LEFT, toward allies, heads and eyes directed left):\nCell 1: SPORE — a round plum-purple forest mushroom creature with a wide rich burgundy cap speckled turquoise, tiny stocky stalk body, short root feet, mischievous narrowed golden eyes beneath the cap, two tiny luminous green spore growths. Memorable broad cap silhouette.\nCell 2: OWL — a thorn owl, dark periwinkle and slate-blue rounded feather body, forward-leaning perched battle stance ON its two visible talons with NO branch, two swept-back twig/leaf ear tufts, broad folded wings with rust-gold thorn edging, sharp amber eyes and pale small face disk. Distinct small stout bird, no spread flight wings.\nCell 3: STAG — a medium stately shadow stag with midnight blue fur, pale teal muzzle and chest markings, four well-planted slender legs and cloven hooves, sweeping branching antlers tipped with a very few violet crystal shards, faint turquoise line along the spine. Proud left-facing three-quarter silhouette. Fit FULL antlers and every hoof inside the cell, no cropping. Slightly taller than other first-stage creatures but comparable atlas occupancy.\nCell 4: completely EMPTY with transparent background.\n\nStrictly preserve this 4x2 cell arrangement and left/right facing. No letters or numbers anywhere. Genuine transparent alpha background, not a painted checkerboard.",
+        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+        "original_output_basename": "exec-1f7d5657-bbf3-4357-8e5f-ed27875012ed.png",
+        "original_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included."
+      }
+    },
+    {
+      "id": "evolved",
+      "path": "assets/battle/evolved.png",
+      "sha256": "6a227222f7a02cbd60ef30c746627df9e6bffb42dc4f7bbfd57d067342980c43",
+      "bytes": 973669,
+      "status": "source inspected; runtime review pending",
+      "collision": "none; visual only",
+      "role": "Four evolved original creatures facing right: Ignivar, Verdálio, Tempestral, Marevéu.",
+      "technical": {
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alpha": true,
+        "filtering": "nearest",
+        "anchor": "grounded atlas region",
+        "frames": 1
+      },
+      "source": {
+        "kind": "generated original",
+        "tool": "OpenAI Image Gen",
+        "model_version": "Not exposed by tool; none inferred.",
+        "recorded_date_utc": "2026-10-18",
+        "brief": "Matching evolved forms of the first-stage atlas. Image Gen spacing edit preserved the designs and added generous transparent gutters to isolate each creature. Exact edit prompt was not available after the delegated turn ended.",
+        "original_output_basename": "exec-fc0c3e7f-230d-4a4b-ad76-10a5c6835e8f.png",
+        "original_sha256": "6a227222f7a02cbd60ef30c746627df9e6bffb42dc4f7bbfd57d067342980c43",
+        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included."
+      }
+    },
+    {
+      "id": "backpack",
+      "path": "assets/icons/backpack.svg",
+      "sha256": "36ee9f46ccb5a9c760dad29ab184d3dc48e47e0ef21ca75f7682e009293b6c98",
+      "bytes": 469,
+      "status": "source inspected; runtime review pending",
+      "collision": "none; visual only",
+      "role": "backpack UI icon",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original SVG icon",
+        "tool": "authored directly for the battle HUD",
+        "license": "Original project asset; no external artwork."
+      }
+    },
+    {
+      "id": "battle-clearing-depth",
+      "path": "assets/world/battle_clearing_depth.png",
+      "sha256": "18aa3cbb9d6f0541054180c1cfa91c8e1b2dcca8869a4da48e0e44c815f655bf",
+      "bytes": 1958730,
+      "status": "local in-engine review recorded in docs/visual-review-depth-v0.4.md; player feedback pending",
+      "collision": "none; visual only",
+      "role": "Cleaner wide moonlit clearing; continuous solid floor, low-noise pixel clusters and distant horizon.",
+      "technical": {
+        "dimensions": [
+          2172,
+          724
+        ],
+        "mode": "RGB",
+        "alpha": false,
+        "filtering": "nearest; no generated mipmaps; source PNG unchanged",
+        "anchor": "fit visible arena height after 4% sky trim; centered side crop; minimal mirrored edge extension only beyond panorama width",
+        "frames": 1
+      },
+      "source": {
+        "kind": "generated original",
+        "tool": "OpenAI Image Gen",
+        "model_version": "Not exposed by tool; none inferred.",
+        "recorded_date_utc": "2026-10-20",
+        "prompt": "Edit and HORIZONTALLY OUTPAINT this original Umbral arena into an EXTRA WIDE 4:1 panoramic game background (approximately 3072x768, much wider than the input). Preserve the lovely clean pixel-art style, colors, tiny warm moon, lake and distant blue pine forest. The result is a reusable background ONLY, no characters, no UI. Extend both sides with natural ASYMMETRIC original environment, never mirrored or repeated patches. One moon only, near the upper center. The key art correction is CLEAR GROUND FOR CREATURE FEET: remove ALL tall foreground reeds, grass clumps, large stones and flowers from the playable rectangle x=12% to88%, y=20% to97%. That entire immense rectangle must be uninterrupted dark desaturated slate/teal earth, with very subtle flat pixel-cluster soil texture only. No foreground vegetation silhouettes rising into that rectangle. No rocks, objects, pools, isolated islands, platforms, drawn circles or character shadows in the playable ground. Especially protect the lower left and lower right contact zones from foliage. Keep small framing rocks/flowers ONLY at the extreme 3% left/right edges and the lowest 2% bottom rim. A few edge trees may frame the far corners but must not intrude behind character silhouettes. Top 16% contains the distant forest, narrow lake and moon, with actual solid earth already established at y=18%. The majority of the image is quiet dry ground, with gradual material/value changes and small perspective clusters establishing depth: tiny near the top, subtly broader toward bottom. Strong flat readable 16-bit pixel clusters, no fine grain, no dithering, no micro sparkles, no blurry painting, no 3D. Preserve the input's much cleaner ground quality and restrained palette; no electric blue noise. The previous version was too narrow for ultrawide and the bottom bushes intruded under creatures: this revised real wide panorama must solve both while keeping the same identity. Terrain edges must be varied naturally rather than symmetrical. NO monsters, people, animals, words, labels, cards, HUD, grid, borders, attack effects, glyphs, cast shadows or mockup presentation. Output only the wide environment art edge to edge.",
+        "edit_history": "Image Gen horizontal panorama expansion from the first cleaner arena, clearing foliage under lower foot positions. Both originals preserved; runtime PNG byte-identical to final output. No offline pixel edits.",
+        "original_output_basename": "exec-075f8588-dd26-4357-ad20-714cf085f5cf.png",
+        "original_sha256": "18aa3cbb9d6f0541054180c1cfa91c8e1b2dcca8869a4da48e0e44c815f655bf",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "references": [
+          "artifacts/battle-depth-source-20261020/clearing-first-edit.png"
+        ],
+        "editor_input_original_sha256": "51db539f2daa08fa6c6fa90d3d06a410477889ab9bc8fd6dd9d658a2dd6d6546"
       }
     }
   ]

@@ -1,5 +1,6 @@
-"""Prove the rule suite detects two representative gameplay regressions."""
+"""Prove the rule suite detects eight representative gameplay regressions."""
 import json
+import shutil
 from pathlib import Path
 import subprocess
 import tempfile
@@ -7,8 +8,14 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 original = (ROOT / "scripts/rules.gd").read_text()
 mutations = {
-    "Combustão removed": ("burn += trait_value", "burn += 0"),
-    "Fourth energy incorrectly allowed": ("result.valid = int(result.energy) <= ENERGY", "result.valid = int(result.energy) <= ENERGY + 1"),
+    "Combustão removed": ('if species == "ember" and damage > 0: burn += strength', 'if species == "ember" and damage > 0: burn += 0'),
+    "Fourth shared action incorrectly allowed": ("const ENERGY = 3", "const ENERGY = 4"),
+    "Seed reaction consumption removed": ('if not reaction.is_empty() and bool(reaction.consume): Conditions.consume(target, str(reaction.condition))', 'if false: Conditions.consume(target, str(reaction.condition))'),
+    "Reserve cards reinserted as one owner block": ('for incoming in returning: _interleave_draw(incoming)', 'for incoming in returning: deck = incoming + deck'),
+    "Explicit capture destination ignored": ('destination = capture_slot', 'destination = -1'),
+    "Partial KO ignored at encounter start": ('\tif _needs_replacement():\n\t\tphase = "replacement"', '\tif active_party(true).is_empty() and not reserves().is_empty():\n\t\tphase = "replacement"'),
+    "Declined replacement prompt repeated": ('and not declined_replacements.has(int(individual.uid))', ''),
+    "Delayed voluntary KO replacement blocked": ('if outgoing.is_empty() or int(outgoing.get("slot", -1)) < 0: return false', 'if outgoing.is_empty() or int(outgoing.get("slot", -1)) < 0 or int(outgoing.hp) <= 0: return false'),
 }
 detected = []
 for name, (before, after) in mutations.items():
@@ -17,6 +24,7 @@ for name, (before, after) in mutations.items():
     with tempfile.TemporaryDirectory(prefix="umbral-mutation-") as directory:
         folder = Path(directory)
         (folder / "scripts").mkdir()
+        shutil.copytree(ROOT / "scripts/battle", folder / "scripts/battle")
         (folder / "tests").mkdir()
         (folder / "project.godot").write_text('config_version=5\n[application]\nconfig/name="Umbral isolated mutation test"\n')
         (folder / "scripts/rules.gd").write_text(original.replace(before, after))

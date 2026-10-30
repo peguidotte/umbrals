@@ -20,4 +20,5 @@ assert report['checks'] > 0 and report['failed'] == 0, report
 PY
 python tools/mutation_smoke.py
 python tools/ui_checks.py
+python tools/expedition_checks.py
 echo "Rules and scene startup passed."

@@ -23,7 +23,11 @@ O comando regenera HTML/ZIP, preserva o HTML anterior como `review-legacy.html` 
 
 Os objetivos e a rubrica estão em `docs/ux-contracts.json`. O navegador usa cliques e teclas reais sobre o canvas; a ponte `?test=1` é somente leitura. Cada clique espera a confirmação de interação pelo próprio Control, evitando atrasos fixos frágeis no renderizador da nuvem. `&visual=1` congela apenas respiração/vagalumes ambientais para capturas repetíveis; animações de combate continuam ativas. Não há métodos para alterar o jogo a partir do teste.
 
-Os gates incluem orçamento de energia, efeitos sem dupla conjuração, cancelamentos preservando a run, captura/evolução/substituição, foco, ordem das camadas, títulos das cartas, contraste de botões sólidos, persistência, opções aplicadas às cartas atuais e pools limitados. Cinco formatos são exercitados em menu, combate, pausa, opções e texto ampliado. A suíte Godot injeta eventos de controle para testar roteamento; não comprova controle físico. Erros e testes vazios falham, e fontes modificadas durante a execução invalidam a tentativa.
+Os gates incluem orçamento de ações, efeitos sem dupla conjuração, cancelamentos preservando a run, captura/evolução/substituição, foco, ordem das camadas, títulos das cartas, contraste de botões sólidos, persistência, opções aplicadas às cartas atuais e pools limitados. A mão conjurada permanece visível até terminar a resolução. Cinco formatos são exercitados em menu, combate, pausa, opções e texto ampliado. A suíte Godot injeta eventos de controle para testar roteamento; não comprova controle físico. Erros e testes vazios falham, e fontes modificadas durante a execução invalidam a tentativa.
+
+Cada etapa tem limite de 30 minutos: quatro percursos, cinco formatos de tela e gravação em WebGL por software podem ultrapassar 15 minutos nesta nuvem. Esse limite não reduz a cobertura nem altera as condições de aprovação. A fatia
+elemental acrescenta os percursos de Musgo e Faísca; o job completo do CI tem
+45 minutos para incluir instalação, quatro percursos, matriz e exports nativos.
 
 O relatório distingue gates automáticos de revisão estética. Observe renders em tamanho real e o vídeo: prioridade da arena, colisões de texto, escolhas claras, duração de feedback e consequências das recompensas. Compare com a versão anterior e registre o que melhorou e o que piorou. Uma diferença de pixels só mostra mudança. Beleza, diversão, acessibilidade completa e performance em hardware exigem avaliação própria; não recebem um número automático.
 
@@ -41,3 +45,26 @@ python -m playwright install chromium
 O Playwright instala seu encoder de vídeo junto do browser. Nesta nuvem, Chromium e FFmpeg já são ferramentas do sistema; o encoder existente foi ligado ao cache de Playwright, sem download. `--video` exige um encoder acessível no cache indicado por `PLAYWRIGHT_BROWSERS_PATH`. O vídeo é evidência visual, sem captura do áudio; sons têm QA de PCM/clipping e precisam também de audição em hardware.
 
 Para diagnóstico rápido após uma falha, `python tools/browser_smoke.py --output test-results/diagnostico --no-matrix` é explícito e marca a matriz como não executada. A aceitação completa usa `iterate.py`; ele não tem um atalho que apresente verificações omitidas como aprovadas. O CI executa o mesmo comando e publica as evidências como artifact, sem publicar o jogo.
+
+As revisões V04-BAT-04A/B acrescentam destino de captura com cancelamento, captura
+direta no campo, faixa de comandos e histórico da última rodada. As mutações
+incluem reinserção em bloco e destino ignorado, além das três
+regressões elementais/orçamento. O roteiro elemental prepara uma única semente
+antes do Fogo e respeita a Provocação visível, sem enfraquecer a exigência das
+quatro reações no navegador.
+
+As outras duas mutações cobrem reposição parcial no início do encontro e
+repetição de uma reposição recusada. Alvos de cura no roteiro carregam o lado
+aliado e são reproduzidos por cliques reais em aliados, sem alterar a ponte
+somente leitura ou relaxar a igualdade da mão.
+
+V04-BAT-04B acrescenta a oitava mutação: bloquear indevidamente uma troca
+voluntária depois de recusar a reposição. A captura de vídeo de 04A segue
+registrada; 04B altera elegibilidade/copy, sem mudar código de movimento.
+
+V05-RUN-01/SAVE-02 acrescenta `tools/expedition_checks.py` ao gate e um segundo
+percurso de navegador em `tools/expedition_browser_smoke.py`. A suíte antiga
+continua exercitando o treino de batalha; a nova usa o fluxo principal com mapa,
+as duas rotas, descanso, save/reload, toque/teclado e formatos de mapa.
+`run.json` separa `browser` e `expedition_browser`; a página de revisão incorpora
+as duas galerias, sem misturar capturas simuladas com renders reais.

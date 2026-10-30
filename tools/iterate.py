@@ -34,7 +34,9 @@ def run_command(command, log):
     # Arguments remain argv entries. The shell only sources the writable tool environment.
     result = subprocess.run(['bash', '-c', 'set -euo pipefail; source tools/environment.sh; exec "$@"',
                              'umbral-iteration', *command], cwd=ROOT, stdout=log, stderr=subprocess.STDOUT,
-                            timeout=900)
+                            # Both battle routes plus five software-rendered viewports
+                            # and video exceed 15 minutes on the cloud runner.
+                            timeout=1800)
     return result.returncode
 
 
@@ -107,13 +109,13 @@ def write_review(out, report):
 
     for portable, filename in [(True, 'review.html'), (False, 'review-full.html')]:
         cards = []
-        for item in browser.get('captures', []):
+        for item in ([dict(capture, folder='browser') for capture in browser.get('captures', [])] + [dict(capture, folder='expedition-browser') for capture in report.get('expedition_browser', {}).get('captures', [])]):
             name = html.escape(item['name'])
             pair = pairs.get(item['name'])
             before = ('<figure><figcaption>Anterior</figcaption>' + picture(pair['before'], item['name'] + ' Anterior', portable) + '</figure>') if pair else ''
             diagnostic = ('<details><summary>Diferença de pixels (não mede qualidade)</summary>' + picture(pair['pixel_diff'], item['name'] + ' Diferença', portable) + '</details>') if pair and pair.get('pixel_diff') else ''
             cards.append(f'<article><h2>{name}</h2><div class="pair">{before}<figure><figcaption>Atual</figcaption>'
-                         + picture('browser/' + item['file'], item['name'] + ' Atual', portable) + f'</figure></div>{diagnostic}</article>')
+                         + picture(item['folder'] + '/' + item['file'], item['name'] + ' Atual', portable) + f'</figure></div>{diagnostic}</article>')
         video = ''
         if (out / 'browser/gameplay.webm').exists():
             video = ('<p>O vídeo está no pacote completo de evidências. Extraia o ZIP e abra <code>index.html</code> para assisti-lo.</p>'
@@ -126,7 +128,7 @@ def write_review(out, report):
 <style>body{{margin:0 auto;padding:32px;max-width:1500px;background:#101c23;color:#f3e6c5;font:18px/1.5 system-ui}}h1,h2{{font-family:Georgia,serif}}a{{color:#dec88d}}article{{margin:40px 0;padding-top:16px;border-top:1px solid #bac6b6}}.pair{{display:flex;gap:20px}}figure{{margin:0;flex:1;min-width:0}}img,video{{width:100%;height:auto}}video{{max-height:75vh}}figcaption{{margin:8px 0}}label{{display:block;margin:24px 0}}textarea{{display:block;box-sizing:border-box;width:100%;min-height:90px;background:#1a2933;color:#f3e6c5;font:inherit;padding:12px}}button{{padding:12px;font:inherit}}.zoom{{display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in}}button:focus-visible,a:focus-visible{{outline:3px solid #dec88d;outline-offset:4px}}dialog{{width:min(1600px,94vw);max-width:calc(100vw - 32px);max-height:calc(100vh - 32px);box-sizing:border-box;background:#101c23;color:#f3e6c5;border:1px solid #dec88d}}dialog::backdrop{{background:#000c}}.viewer-actions{{display:flex;gap:24px;align-items:center;margin-bottom:16px}}pre{{white-space:pre-wrap}}@media(max-width:800px){{.pair{{display:block}}}}</style>
 <h1>Umbral {report['version']} — {html.escape(report['label'])}</h1>
 <p>{html.escape(report['goal'])}</p><p>Resultado automático: <strong>{report['status']}</strong>.
-Regras: {rules.get('checks','não executado')} verificações; UI: {ui.get('checks','não executado')}; navegador: {browser.get('checks','não executado')}.
+Regras: {rules.get('checks','não executado')} verificações; UI: {ui.get('checks','não executado')}; navegador de batalha: {browser.get('checks','não executado')}; expedição: {report.get('expedition_browser',{}).get('checks','não executado')}.
 <a href="{run_href}" download="run.json">Baixar relatório e limites</a> · <a href="{source_href}" download="source-manifest.json">Baixar hash das fontes</a></p>
 {portability}
 <p>Capturas atuais são renders do jogo. Diferenças de pixels mostram mudança, não beleza. Revise o vídeo e os estados abaixo antes de aceitar a direção.</p>
@@ -193,7 +195,7 @@ def main():
     sources = source_manifest()
     (out / 'source-manifest.json').write_text(json.dumps(sources, indent=2))
     shutil.copy2(ROOT / 'skills-lock.json', out / 'skills-lock.json')
-    for file in ['ux-contracts.json','art-direction-v0.3.md']:
+    for file in ['ux-contracts.json','art-direction-v0.3.md','art-direction-v0.4.md']:
         shutil.copy2(ROOT / 'docs' / file, out / file)
     started = time.monotonic()
     engine = subprocess.run(['bash','-c','source tools/environment.sh; godot --version'],cwd=ROOT,capture_output=True,text=True,check=True).stdout.strip()
@@ -208,7 +210,7 @@ def main():
     command = [sys.executable,'tools/browser_smoke.py','--output',str(out / 'browser')]
     if args.video:
         command.append('--video')
-    steps = [('rules-and-ui',['bash','tools/check.sh']),('web-export',['bash','tools/build.sh','Web']),('browser-experience',command)]
+    steps = [('rules-and-ui',['bash','tools/check.sh']),('web-export',['bash','tools/build.sh','Web']),('browser-experience',command),('expedition-experience',[sys.executable,'tools/expedition_browser_smoke.py','--output',str(out / 'expedition-browser')])]
     failed = False
     try:
         for name, argv in steps:
@@ -218,7 +220,7 @@ def main():
                 status = run_command(argv, log)
             report['steps'].append({'name':name,'exit_code':status,'seconds':round(time.monotonic()-step_start,2),'command':argv})
             if name == 'rules-and-ui':
-                for filename in ['asset-report.json','rules.log','mutation-report.json','ui-report.json','ui_state_test.log','ui_flow_test.log','startup_smoke.log','import.log']:
+                for filename in ['asset-report.json','rules.log','mutation-report.json','ui-report.json','ui_state_test.log','ui_flow_test.log','startup_smoke.log','import.log','expedition-report.json','expedition-rules.log','expedition-save.log','expedition-ui.log']:
                     if (ROOT / 'test-results' / filename).exists():
                         shutil.copy2(ROOT / 'test-results' / filename, out / 'logs' / filename)
             if name == 'web-export' and status == 0:
@@ -234,7 +236,7 @@ def main():
         failed = True
         report['failure'] = str(exception)
     finally:
-        for key, path in [('assets',out / 'logs/asset-report.json'),('ui',out / 'logs/ui-report.json'),('mutations',out / 'logs/mutation-report.json'),('browser',out / 'browser/browser-report.json')]:
+        for key, path in [('assets',out / 'logs/asset-report.json'),('ui',out / 'logs/ui-report.json'),('mutations',out / 'logs/mutation-report.json'),('browser',out / 'browser/browser-report.json'),('expedition_browser',out / 'expedition-browser/browser-report.json'),('expedition',out / 'logs/expedition-report.json')]:
             if path.exists():
                 report[key] = json.loads(path.read_text())
         if (out / 'logs/rules.log').exists():
@@ -247,7 +249,7 @@ def main():
         if failed and not report.get('failure'):
             step = next((item for item in report['steps'] if item['exit_code'] != 0), {})
             report['failed_step'] = step.get('name', 'iteration')
-            report['failure'] = report.get('browser', {}).get('failure') or f"{report['failed_step']} exited with code {step.get('exit_code', 'unknown')}; inspect its preserved log."
+            report['failure'] = report.get('expedition_browser', {}).get('failure') or report.get('browser', {}).get('failure') or f"{report['failed_step']} exited with code {step.get('exit_code', 'unknown')}; inspect its preserved log."
         report['seconds'] = round(time.monotonic()-started,2)
         report['comparisons'] = compare_images(report.get('browser',{}),baseline,out)
         (out / 'run.json').write_text(json.dumps(report,indent=2,ensure_ascii=False))

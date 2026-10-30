@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-18",
+  "source_tool": "OpenAI Image Gen",
+  "model_version": "Not exposed by tool; none inferred.",
+  "reference": "docs/references/battle/00-aprovada/battle.png",
+  "license": "Original artwork generated for Umbral; no third-party game artwork included.",
+  "preservation": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+  "assets": [
+    {
+      "id": "battle_clearing",
+      "path": "assets/world/battle_clearing.png",
+      "original_output_basename": "exec-a1d2040d-d7f8-4d4c-a4ee-64975ae01633.png",
+      "sha256": "5e29951838bf65faffa4baa1676c460154207485a42a28c3e44d742b18b9413d",
+      "bytes": 2836258,
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "role": "Elevated horizontal moonlit cold-marsh arena; no UI, creatures or attack effects.",
+      "prompt": "Create an ORIGINAL production game background image for \"Umbral\", a 2D pixel-art monster roguelike battle. Use the supplied image ONLY as the established composition and color-style reference, then remove ALL creatures, ALL character shadows, ALL attacks, ALL text, ALL panels, ALL cards, ALL HUD, borders and icons. The entire output is arena/environment art edge to edge, with NO UI zone baked in. Landscape PC game scene, wide 16:9. Preserve a slightly elevated horizontal battle camera, we see a LOT of the floor. An enchanting cold moonlit marsh clearing at night in cobalt blue, indigo, pale blue and touches of turquoise; tiny purple crystals and reeds clustered only at the perimeter; distant lake, tiny bright moon high above, long dark pine forest silhouettes. The scenery must be SMALLER in scale than the reference foreground so it supports small game monsters rather than looking oversized. Top 18% a distant horizon and water; remaining 82% an enormous flat legible navy slate mud-and-stone playing field with subtle shallow puddles. Especially leave the entire middle 65% of the picture quiet dark desaturated navy, for fire lightning and water animations. Ground texture very subtle, NO large high-contrast stones in the playing area; no big branches projecting into playable area. Left group will stand around x=20% with y=30%,50%,70%; right group x=80% same y. Ensure ALL six positions have continuous SOLID GROUND with enough room for grounded shadows; not perched on pools or floating islands. Crisp coherent 2D pixel-cluster illustration, readable retro handheld-game style, approximately 480x270 visual pixel resolution, nearest-neighbor enlarged, deliberate 3-tone clusters, beautiful silhouettes and restrained environmental detail. No painted soft shading, no 3D, no isometric grid, no signs, no additional symbols, no people, no fauna, no characters or figures, no attacks, no glows in the center. This is an actual reusable background asset, not a mockup or screenshot.",
+      "review": "Inspected full image: distant moon/lake above continuous dark floor, perimeter reeds/crystals, quiet center for attacks. Some fine ground texture remains; actual UI readability requires in-engine review."
+    },
+    {
+      "id": "battle_creatures",
+      "path": "assets/battle/creatures.png",
+      "original_output_basename": "exec-1f7d5657-bbf3-4357-8e5f-ed27875012ed.png",
+      "sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+      "bytes": 1279819,
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "role": "Seven original grounded idle silhouettes: ember, moss, volt, dew facing right; spore, owl, stag facing left.",
+      "atlas": "assets/battle/atlas.json",
+      "prompt": "Create ONE transparent PNG sprite atlas for an ORIGINAL pixel-art monster game named Umbral. This is actual reusable character art, NOT a scene or UI or diagram. EXACTLY 7 full-body creatures in a perfectly regular grid of FOUR COLUMNS and TWO ROWS, all cells same size; last bottom-right cell EMPTY TRANSPARENT. Landscape atlas approx 2048x1024. Do not draw grid lines or labels; every cell's background is fully transparent with generous transparent padding on all sides. Every sprite centered horizontally in its cell, feet aligned to a common baseline at 85% cell height, whole silhouette within inner 80% of cell. No overlap between cells. Characters occupy roughly 65-75% cell height; NO ground shadows, NO scenery, NO text. Side/three-quarter view appropriate to a slightly elevated horizontal battle camera. Cohesive crisp pixel art with bold near-black colored outlines, deliberate small square pixel clusters, clean 3-5 tones per material, charming highly memorable silhouettes reminiscent of the readability of classic handheld monster games, but entirely original species. A sprite should read at 100px tall. Bright elemental accents and expressive eyes. No blur or painted gradients, no photorealism, no 3D. Every creature is a complete grounded creature with visible feet.\n\nROW ONE, from LEFT to RIGHT (all allies facing RIGHT, toward their enemy, their heads and eyes directed right):\nCell 1: BRASA — a small stocky charcoal-black ember squirrel, a magnificent thick curled orange-red tail rising behind its body into a spiral, warm amber eyes, glowing tiny orange fissures on forepaws. Compact crouching biped, alert playful stubborn expression. Mouth not firing. Strong clean orange tail/black body silhouette.\nCell 2: MUSGO — a squat round bark-and-moss guardian creature, broad brown trunk torso with a friendly pale wooden owl-like face set into a trunk hollow, green layered moss canopy and 3 small cream flowers on its back, four short sturdy root legs planted on ground, kindly protective guardian. Wider than tall, absolutely not a human standing upright.\nCell 3: FAÍSCA — a small golden-and-charcoal circuit beetle, shiny amber segmented shell etched with very simple cyan circuit markings, two curved slender antennae, six short black legs, a tiny glowing spark between the antenna tips. Alert jewel-like cyan eyes, low rounded profile, no wings open.\nCell 4: ORVALHO — a turquoise amphibian with four frog-like feet, large expressive dark-teal eyes, translucent blue round water globe mounted on its back containing two pale ripples, small liquid ribbon tail and two drop-shaped fins. Cute grounded poised frog/salamander, pale aqua belly, globe has crisp highlights and internal water dots, not firing an attack.\n\nROW TWO, from LEFT to RIGHT (all enemies facing LEFT, toward allies, heads and eyes directed left):\nCell 1: SPORE — a round plum-purple forest mushroom creature with a wide rich burgundy cap speckled turquoise, tiny stocky stalk body, short root feet, mischievous narrowed golden eyes beneath the cap, two tiny luminous green spore growths. Memorable broad cap silhouette.\nCell 2: OWL — a thorn owl, dark periwinkle and slate-blue rounded feather body, forward-leaning perched battle stance ON its two visible talons with NO branch, two swept-back twig/leaf ear tufts, broad folded wings with rust-gold thorn edging, sharp amber eyes and pale small face disk. Distinct small stout bird, no spread flight wings.\nCell 3: STAG — a medium stately shadow stag with midnight blue fur, pale teal muzzle and chest markings, four well-planted slender legs and cloven hooves, sweeping branching antlers tipped with a very few violet crystal shards, faint turquoise line along the spine. Proud left-facing three-quarter silhouette. Fit FULL antlers and every hoof inside the cell, no cropping. Slightly taller than other first-stage creatures but comparable atlas occupancy.\nCell 4: completely EMPTY with transparent background.\n\nStrictly preserve this 4x2 cell arrangement and left/right facing. No letters or numbers anywhere. Genuine transparent alpha background, not a painted checkerboard.",
+      "review": "Inspected full atlas: all seven full bodies present, clear elemental silhouettes and correct left/right facing. Exact 4x2 cell alignment was not achieved: stag antlers slightly cross half-height and low alpha=1 speckles exist outside characters, including nominal empty cell. Runtime rectangular regions isolate each visible silhouette with transparent margin. No extra sprite inferred from blank cell. Static idle poses only; evolved sprites retain existing SVG fallback.",
+      "alpha_analysis": "Alpha range 0–255. Seven substantial connected visible silhouettes. Bottom-right nominal empty cell has zero pixels at alpha>=128; maximum alpha there is 1. Atlas rectangles include complete major connected silhouettes identified at alpha>=1, plus 7px padding.",
+      "regions": {
+        "ember": [
+          40,
+          54,
+          371,
+          364
+        ],
+        "moss": [
+          458,
+          53,
+          424,
+          363
+        ],
+        "volt": [
+          921,
+          105,
+          399,
+          317
+        ],
+        "dew": [
+          1338,
+          71,
+          414,
+          346
+        ],
+        "spore": [
+          15,
+          482,
+          412,
+          365
+        ],
+        "owl": [
+          502,
+          458,
+          372,
+          390
+        ],
+        "stag": [
+          927,
+          428,
+          358,
+          435
+        ]
+      }
+    },
+    {
+      "id": "battle_evolved",
+      "path": "assets/battle/evolved.png",
+      "original_output_basename": "exec-fc0c3e7f-230d-4a4b-ad76-10a5c6835e8f.png",
+      "sha256": "6a227222f7a02cbd60ef30c746627df9e6bffb42dc4f7bbfd57d067342980c43",
+      "bytes": 973669,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "role": "Four evolved original creatures facing right: Ignivar, Verdálio, Tempestral, Marevéu.",
+      "atlas": "assets/battle/evolved-atlas.json",
+      "brief": "Matching evolved forms of the first-stage atlas. Image Gen spacing edit preserved the designs and added generous transparent gutters to isolate each creature. Exact edit prompt was not available after the delegated turn ended.",
+      "review": "Root inspected the spacing edit at full size: four complete independent silhouettes, feet and tails contained within separate quadrants. Tight preceding candidate preserved in ignored runtime art evidence; runtime source is the unmodified spacing edit.",
+      "regions": {
+        "ignivar": [
+          130,
+          190,
+          403,
+          347
+        ],
+        "verdalio": [
+          729,
+          188,
+          413,
+          350
+        ],
+        "tempestral": [
+          121,
+          771,
+          406,
+          328
+        ],
+        "mareveu": [
+          736,
+          765,
+          401,
+          338
+        ]
+      }
+    },
+    {
+      "id": "battle_clearing_depth",
+      "path": "assets/world/battle_clearing_depth.png",
+      "original_output_basename": "exec-075f8588-dd26-4357-ad20-714cf085f5cf.png",
+      "sha256": "18aa3cbb9d6f0541054180c1cfa91c8e1b2dcca8869a4da48e0e44c815f655bf",
+      "bytes": 1958730,
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "prompt": "Edit and HORIZONTALLY OUTPAINT this original Umbral arena into an EXTRA WIDE 4:1 panoramic game background (approximately 3072x768, much wider than the input). Preserve the lovely clean pixel-art style, colors, tiny warm moon, lake and distant blue pine forest. The result is a reusable background ONLY, no characters, no UI. Extend both sides with natural ASYMMETRIC original environment, never mirrored or repeated patches. One moon only, near the upper center. The key art correction is CLEAR GROUND FOR CREATURE FEET: remove ALL tall foreground reeds, grass clumps, large stones and flowers from the playable rectangle x=12% to88%, y=20% to97%. That entire immense rectangle must be uninterrupted dark desaturated slate/teal earth, with very subtle flat pixel-cluster soil texture only. No foreground vegetation silhouettes rising into that rectangle. No rocks, objects, pools, isolated islands, platforms, drawn circles or character shadows in the playable ground. Especially protect the lower left and lower right contact zones from foliage. Keep small framing rocks/flowers ONLY at the extreme 3% left/right edges and the lowest 2% bottom rim. A few edge trees may frame the far corners but must not intrude behind character silhouettes. Top 16% contains the distant forest, narrow lake and moon, with actual solid earth already established at y=18%. The majority of the image is quiet dry ground, with gradual material/value changes and small perspective clusters establishing depth: tiny near the top, subtly broader toward bottom. Strong flat readable 16-bit pixel clusters, no fine grain, no dithering, no micro sparkles, no blurry painting, no 3D. Preserve the input's much cleaner ground quality and restrained palette; no electric blue noise. The previous version was too narrow for ultrawide and the bottom bushes intruded under creatures: this revised real wide panorama must solve both while keeping the same identity. Terrain edges must be varied naturally rather than symmetrical. NO monsters, people, animals, words, labels, cards, HUD, grid, borders, attack effects, glyphs, cast shadows or mockup presentation. Output only the wide environment art edge to edge.",
+      "references": [
+        "artifacts/battle-depth-source-20261020/clearing-first-edit.png"
+      ],
+      "review": "In-engine solo/duo/trio and actual trio at normal/720p/4:3/ultrawide reviewed. Stable horizon after runtime 4% sky trim; quiet dry floor under all six supports. Full local iteration passed; static poses and human playtesting remain future."
+    }
+  ],
+  "engine_review": "Source inspection only at delivery; main implementation agent owns rendered runtime and accessibility validation.",
+  "revision_history": [
+    {
+      "id": "battle_clearing_depth",
+      "path": "assets/world/battle_clearing_depth.png",
+      "original_output_basename": "exec-36c8a561-2a3b-4497-8ee6-ae993935a359.png",
+      "sha256": "51db539f2daa08fa6c6fa90d3d06a410477889ab9bc8fd6dd9d658a2dd6d6546",
+      "bytes": 1960201,
+      "width": 1942,
+      "height": 809,
+      "mode": "RGB",
+      "prompt": "Edit the FIRST reference into a cleaner ORIGINAL production battle background for Umbral. The SECOND reference is our creature sprite atlas: match its deliberate pixel clusters, clean shapes and restrained shading. Deliver ONLY the environment, no creatures or UI. Preserve the identity: moonlit forest marsh, distant lake, small violet crystals at the outer edges, elevated horizontal confrontation camera, left and right groups facing across an open clearing. Main correction: remove the dense noisy pebble texture, sparkling speckles and oversaturated electric blue everywhere. The previous image looks grainy and overwhelms the creatures. Use beautiful simple 16-bit pixel-art clusters, broad QUIET areas of cool desaturated slate/teal earth, moss edges and a few readable flat stones; no dithering, no film grain, no tiny scattered highlights, no painterly blur or photorealism. Clean coherent readable retro monster-game scenery. Rich navy forest silhouettes, a tiny warm moon, muted cyan distance; purple and saturated blue reserved for very sparse edge accents. Soft moonlight value structure, foreground slightly warmer/clearer, far trees paler with atmospheric depth. The middle 70% must be subdued empty ground for characters and attack animation. Create ONE broad connected SOLID LAND clearing, not floating islands, platforms, circles or puddles under the six creature positions. Preserve a clear perspective: small tightly spaced ground shapes near the distant edge, a few larger subtle shapes nearer the viewer, but no grid and no converging road stealing focus. IMPORTANT COMPOSITION: widescreen PC battlefield panorama approximately 5:2 aspect ratio, with the lake and forest confined to the TOP 12% of the picture. By y=15% the ground is already unambiguously dry solid earth across the full playable width. Upper character contact points are at x=24% and76%, y=25%; middle y=55%; lower y=85%, all must be solid ground with quiet texture. Do not draw characters or their shadows. Leave 12% margin around every character contact zone, no reeds, pools, rocks or crystals there. Keep all foreground decoration only along the extreme left/right edges and bottom rim. No vignette bands, no baked HUD, no text, no letters, no borders, no attack effects. This must feel like the same enchanting Umbral clearing with much cleaner art and better depth, not a generic new biome. Crisp pixel art as though authored on a 480x200 logical grid and enlarged uniformly; nearest-neighbor looking edges, limited material shades, no anti-aliased fine detail. Output a polished game environment asset edge to edge.",
+      "references": [
+        "assets/world/battle_clearing.png",
+        "assets/battle/creatures.png"
+      ],
+      "review": "Generated source inspected: quieter slate/teal ground, no isolated platforms, wide panorama. Engine composition review pending.",
+      "archived_path": "artifacts/battle-depth-source-20261020/clearing-first-edit.png"
+    }
+  ]
+}

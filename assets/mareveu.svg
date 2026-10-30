@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320">
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#80d7e5" stop-opacity=".24"/><stop offset="1" stop-color="#80d7e5" stop-opacity="0"/></radialGradient>
+    <linearGradient id="body" x1="0" y1="0" x2=".7" y2="1"><stop stop-color="#9fe5e8"/><stop offset="1" stop-color="#276677"/></linearGradient>
+    <radialGradient id="orb" cx=".35" cy=".25"><stop stop-color="#f0fff4"/><stop offset=".5" stop-color="#80d7e5"/><stop offset="1" stop-color="#267c9a"/></radialGradient>
+  </defs>
+  <circle cx="160" cy="164" r="153" fill="url(#glow)"/>
+  <circle cx="160" cy="164" r="115" fill="none" stroke="#80d7e5" stroke-opacity=".2"/>
+  <path d="M160 22v12M160 294v12M18 164h12M290 164h12" stroke="#80d7e5" stroke-opacity=".6"/>
+  <ellipse cx="160" cy="271" rx="109" ry="11" fill="#000" opacity=".22"/>
+  <path d="M123 216Q39 186 52 120Q18 150 33 195Q45 246 126 249M124 231Q45 237 63 274Q85 250 130 259" fill="#3c94a9" stroke="#9fe5e8" stroke-width="3"/>
+  <path d="M106 159Q61 170 64 209L93 246L125 230M214 162Q259 170 256 208L225 249L196 229" fill="url(#body)" stroke="#c3efed" stroke-width="3"/>
+  <path d="M95 181Q91 227 120 258L203 258Q232 225 220 178" fill="url(#body)"/>
+  <path d="M132 183Q113 235 145 259L178 259Q209 231 188 183" fill="#ccece0"/>
+  <path d="M92 147Q77 128 84 106Q98 85 122 102L145 134M177 134L199 100Q222 84 235 106Q245 133 222 149" fill="url(#body)" stroke="#b1e7e7" stroke-width="3"/>
+  <path d="M83 151Q100 119 158 123Q217 119 237 151L222 186Q162 212 100 185Z" fill="url(#body)"/>
+  <path d="M105 147l28 6M190 153l28-7" stroke="#173d48" stroke-width="7" stroke-linecap="round"/>
+  <path d="M144 177Q162 188 182 175" fill="none" stroke="#265866" stroke-width="4" stroke-linecap="round"/>
+  <path d="M119 257l-22 15h44M200 257l24 15h-44" fill="none" stroke="#b9e8df" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M160 39Q116 89 131 114Q159 141 191 113Q207 88 160 39Z" fill="url(#orb)" stroke="#d5f4e9" stroke-width="4"/>
+  <path d="M145 77q-18 24 2 40" fill="none" stroke="#effcf4" stroke-width="6" stroke-linecap="round"/>
+  <path d="M94 159Q68 155 70 133M225 159Q251 155 250 133" fill="none" stroke="#e0f7ee" stroke-width="6" stroke-linecap="round"/>
+  <path d="M57 93l5-11 5 11-5 9zM261 105l5-11 5 11-5 9zM276 234l4-9 4 9-4 8z" fill="#80d7e5" opacity=".8"/>
+</svg>
