@@ -1,0 +1,64 @@
+{
+  "texture": "res://assets/characters/battle-evolved/versions/1.0.0/texture.png",
+  "regions": {
+    "ignivar": [
+      130,
+      190,
+      403,
+      347
+    ],
+    "verdalio": [
+      729,
+      188,
+      413,
+      350
+    ],
+    "tempestral": [
+      121,
+      771,
+      406,
+      328
+    ],
+    "mareveu": [
+      736,
+      765,
+      401,
+      338
+    ]
+  },
+  "grounding": {
+    "ignivar": {
+      "foot": [
+        246.0,
+        338
+      ],
+      "width": 298,
+      "visible_top": 8
+    },
+    "verdalio": {
+      "foot": [
+        216.5,
+        341
+      ],
+      "width": 377,
+      "visible_top": 8
+    },
+    "tempestral": {
+      "foot": [
+        193.0,
+        319
+      ],
+      "width": 368,
+      "visible_top": 8
+    },
+    "mareveu": {
+      "foot": [
+        230.5,
+        329
+      ],
+      "width": 325,
+      "visible_top": 8
+    }
+  },
+  "grounding_method": "Opaque alpha >=128; horizontal support over the lowest 8% of the visible silhouette; bottom opaque pixel is the floor pivot. Runtime layout only; original PNG unchanged."
+}

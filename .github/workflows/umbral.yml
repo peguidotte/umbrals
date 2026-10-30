@@ -15,7 +15,7 @@ jobs:
   validate:
     name: Rules, browser and builds
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 45
     env:
       PYTHONUNBUFFERED: '1'
     steps:

@@ -18,6 +18,15 @@
         }
       }
     },
+    "attacks/dew-mend": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/dew-mend/versions/1.0.0/manifest.json",
+          "sha256": "58abf63c9395e8c555e881c0c424073e12da19ea12919be0c81fb41d537dc312",
+          "status": "production"
+        }
+      }
+    },
     "attacks/fireball": {
       "versions": {
         "1.0.0": {
@@ -108,6 +117,15 @@
         }
       }
     },
+    "attacks/rain": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/rain/versions/1.0.0/manifest.json",
+          "sha256": "04536efa3eeac46e7a5943c5d4ba2feea0367a30be33f39896f737ae01b508d4",
+          "status": "production"
+        }
+      }
+    },
     "attacks/root-wall": {
       "versions": {
         "1.0.0": {
@@ -122,6 +140,15 @@
         "1.0.0": {
           "manifest": "assets/attacks/sanctuary/versions/1.0.0/manifest.json",
           "sha256": "737d5660c87ed7c7d0945a916246293a489f364b54e381722750ce102c6935c3",
+          "status": "production"
+        }
+      }
+    },
+    "attacks/splash": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/splash/versions/1.0.0/manifest.json",
+          "sha256": "aa0d65931439ae00fd43cbcfee05915a824642ec9b2bcebd19521f246a7439eb",
           "status": "production"
         }
       }
@@ -270,6 +297,24 @@
         }
       }
     },
+    "characters/battle-creatures": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/battle-creatures/versions/1.0.0/manifest.json",
+          "sha256": "6b5289bcf3052a9dbcf0879fb98980e6648f2e12b56f06ce59202945973516d1",
+          "status": "production"
+        }
+      }
+    },
+    "characters/battle-evolved": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/battle-evolved/versions/1.0.0/manifest.json",
+          "sha256": "9f0810a44baa2ca58a8d74a0119ef255a3673366a899af12909aedcd0ddd2e31",
+          "status": "production"
+        }
+      }
+    },
     "characters/demo-acrobat": {
       "versions": {
         "1.0.0": {
@@ -342,6 +387,24 @@
         }
       }
     },
+    "ui/backpack": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/ui/backpack/versions/1.0.0/manifest.json",
+          "sha256": "2d7f32918ba82e3afa3e2581045226a8a110c4cadfc8b02a316cf304976e6183",
+          "status": "production"
+        }
+      }
+    },
+    "umbrals/dew": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/umbrals/dew/versions/1.0.0/manifest.json",
+          "sha256": "41edb4cd01cfe1b3ae49c38b2ffef4f9567bfe32a8acd3b3a37f3818682704a0",
+          "status": "production"
+        }
+      }
+    },
     "umbrals/ember": {
       "versions": {
         "1.0.0": {
@@ -356,6 +419,15 @@
         "1.0.0": {
           "manifest": "assets/umbrals/ignivar/versions/1.0.0/manifest.json",
           "sha256": "428fed5cf86da5a9aab9ce83819133a5de9182ec35911deb414f58a053865b5a",
+          "status": "production"
+        }
+      }
+    },
+    "umbrals/mareveu": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/umbrals/mareveu/versions/1.0.0/manifest.json",
+          "sha256": "713537d21544ed08f9624adbb757a23f5ec317aaf959e2937fe15ba10bcd7080",
           "status": "production"
         }
       }
@@ -392,6 +464,24 @@
         "1.0.0": {
           "manifest": "assets/umbrals/volt/versions/1.0.0/manifest.json",
           "sha256": "2566856b6a7db68a0c7b645056937c0cdc30a41ca8a787c0acde7c9876bce3c2",
+          "status": "production"
+        }
+      }
+    },
+    "world/battle-clearing": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/world/battle-clearing/versions/1.0.0/manifest.json",
+          "sha256": "7f1a6f8bcc5f0052ffa874aade73357209d4022615218055b6486c292d845e7d",
+          "status": "production"
+        }
+      }
+    },
+    "world/battle-clearing-depth": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/world/battle-clearing-depth/versions/1.0.0/manifest.json",
+          "sha256": "5d21ba0a466d7ebbf67f6366a7dd5d45e9c4a4cc8260dd7c35f6bc65e024af1b",
           "status": "production"
         }
       }

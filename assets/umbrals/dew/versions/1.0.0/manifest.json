@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "Original creature portrait fallback",
+  "files": {
+    "portrait": {
+      "bytes": 2369,
+      "kind": "texture",
+      "path": "portrait.svg",
+      "provenance": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "license": "Original project asset; no external artwork.",
+        "tool": "authored directly for the battle content slice"
+      },
+      "sha256": "a3c3d1217a3e02cc1cae522148663bb53e4ca23dfc4fef14b3450fc91994d148",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "umbrals/dew",
+  "provenance": {
+    "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+    "license": "Original project asset; no external artwork.",
+    "tool": "authored directly for the battle content slice"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

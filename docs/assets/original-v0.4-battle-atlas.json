@@ -1,0 +1,106 @@
+{
+  "texture": "res://assets/battle/creatures.png",
+  "regions": {
+    "ember": [
+      40,
+      54,
+      371,
+      364
+    ],
+    "moss": [
+      458,
+      53,
+      424,
+      363
+    ],
+    "volt": [
+      921,
+      105,
+      399,
+      317
+    ],
+    "dew": [
+      1338,
+      71,
+      414,
+      346
+    ],
+    "spore": [
+      15,
+      482,
+      412,
+      365
+    ],
+    "owl": [
+      502,
+      458,
+      372,
+      390
+    ],
+    "stag": [
+      927,
+      428,
+      358,
+      435
+    ]
+  },
+  "grounding": {
+    "ember": {
+      "foot": [
+        210.0,
+        350
+      ],
+      "width": 230,
+      "visible_top": 11
+    },
+    "moss": {
+      "foot": [
+        210.0,
+        350
+      ],
+      "width": 398,
+      "visible_top": 13
+    },
+    "volt": {
+      "foot": [
+        170.5,
+        298
+      ],
+      "width": 313,
+      "visible_top": 23
+    },
+    "dew": {
+      "foot": [
+        231.0,
+        332
+      ],
+      "width": 292,
+      "visible_top": 10
+    },
+    "spore": {
+      "foot": [
+        218.5,
+        349
+      ],
+      "width": 293,
+      "visible_top": 14
+    },
+    "owl": {
+      "foot": [
+        183.5,
+        378
+      ],
+      "width": 269,
+      "visible_top": 16
+    },
+    "stag": {
+      "foot": [
+        208.0,
+        416
+      ],
+      "width": 272,
+      "visible_top": 18
+    }
+  },
+  "grounding_method": "Opaque alpha >=128; horizontal support over the lowest 8% of the visible silhouette; bottom opaque pixel is the floor pivot. Runtime layout only; original PNG unchanged."
+}

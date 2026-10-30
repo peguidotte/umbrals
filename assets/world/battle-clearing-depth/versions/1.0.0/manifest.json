@@ -1,0 +1,57 @@
+{
+  "dependencies": [],
+  "description": "Moonlit battle arena",
+  "files": {
+    "background": {
+      "bytes": 1958730,
+      "kind": "texture",
+      "path": "background.png",
+      "provenance": {
+        "edit_history": "Image Gen horizontal panorama expansion from the first cleaner arena, clearing foliage under lower foot positions. Both originals preserved; runtime PNG byte-identical to final output. No offline pixel edits.",
+        "editor_input_original_sha256": "51db539f2daa08fa6c6fa90d3d06a410477889ab9bc8fd6dd9d658a2dd6d6546",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-075f8588-dd26-4357-ad20-714cf085f5cf.png",
+        "original_sha256": "18aa3cbb9d6f0541054180c1cfa91c8e1b2dcca8869a4da48e0e44c815f655bf",
+        "prompt": "Edit and HORIZONTALLY OUTPAINT this original Umbral arena into an EXTRA WIDE 4:1 panoramic game background (approximately 3072x768, much wider than the input). Preserve the lovely clean pixel-art style, colors, tiny warm moon, lake and distant blue pine forest. The result is a reusable background ONLY, no characters, no UI. Extend both sides with natural ASYMMETRIC original environment, never mirrored or repeated patches. One moon only, near the upper center. The key art correction is CLEAR GROUND FOR CREATURE FEET: remove ALL tall foreground reeds, grass clumps, large stones and flowers from the playable rectangle x=12% to88%, y=20% to97%. That entire immense rectangle must be uninterrupted dark desaturated slate/teal earth, with very subtle flat pixel-cluster soil texture only. No foreground vegetation silhouettes rising into that rectangle. No rocks, objects, pools, isolated islands, platforms, drawn circles or character shadows in the playable ground. Especially protect the lower left and lower right contact zones from foliage. Keep small framing rocks/flowers ONLY at the extreme 3% left/right edges and the lowest 2% bottom rim. A few edge trees may frame the far corners but must not intrude behind character silhouettes. Top 16% contains the distant forest, narrow lake and moon, with actual solid earth already established at y=18%. The majority of the image is quiet dry ground, with gradual material/value changes and small perspective clusters establishing depth: tiny near the top, subtly broader toward bottom. Strong flat readable 16-bit pixel clusters, no fine grain, no dithering, no micro sparkles, no blurry painting, no 3D. Preserve the input's much cleaner ground quality and restrained palette; no electric blue noise. The previous version was too narrow for ultrawide and the bottom bushes intruded under creatures: this revised real wide panorama must solve both while keeping the same identity. Terrain edges must be varied naturally rather than symmetrical. NO monsters, people, animals, words, labels, cards, HUD, grid, borders, attack effects, glyphs, cast shadows or mockup presentation. Output only the wide environment art edge to edge.",
+        "recorded_date_utc": "2026-10-20",
+        "references": [
+          "artifacts/battle-depth-source-20261020/clearing-first-edit.png"
+        ],
+        "tool": "OpenAI Image Gen"
+      },
+      "sha256": "18aa3cbb9d6f0541054180c1cfa91c8e1b2dcca8869a4da48e0e44c815f655bf",
+      "technical": {
+        "alpha": false,
+        "anchor": "fit visible arena height after 4% sky trim; centered side crop; minimal mirrored edge extension only beyond panorama width",
+        "dimensions": [
+          2172,
+          724
+        ],
+        "filtering": "nearest; no generated mipmaps; source PNG unchanged",
+        "frames": 1,
+        "mode": "RGB"
+      }
+    }
+  },
+  "id": "world/battle-clearing-depth",
+  "provenance": {
+    "edit_history": "Image Gen horizontal panorama expansion from the first cleaner arena, clearing foliage under lower foot positions. Both originals preserved; runtime PNG byte-identical to final output. No offline pixel edits.",
+    "editor_input_original_sha256": "51db539f2daa08fa6c6fa90d3d06a410477889ab9bc8fd6dd9d658a2dd6d6546",
+    "kind": "generated original",
+    "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+    "model_version": "Not exposed by tool; none inferred.",
+    "original_output_basename": "exec-075f8588-dd26-4357-ad20-714cf085f5cf.png",
+    "original_sha256": "18aa3cbb9d6f0541054180c1cfa91c8e1b2dcca8869a4da48e0e44c815f655bf",
+    "prompt": "Edit and HORIZONTALLY OUTPAINT this original Umbral arena into an EXTRA WIDE 4:1 panoramic game background (approximately 3072x768, much wider than the input). Preserve the lovely clean pixel-art style, colors, tiny warm moon, lake and distant blue pine forest. The result is a reusable background ONLY, no characters, no UI. Extend both sides with natural ASYMMETRIC original environment, never mirrored or repeated patches. One moon only, near the upper center. The key art correction is CLEAR GROUND FOR CREATURE FEET: remove ALL tall foreground reeds, grass clumps, large stones and flowers from the playable rectangle x=12% to88%, y=20% to97%. That entire immense rectangle must be uninterrupted dark desaturated slate/teal earth, with very subtle flat pixel-cluster soil texture only. No foreground vegetation silhouettes rising into that rectangle. No rocks, objects, pools, isolated islands, platforms, drawn circles or character shadows in the playable ground. Especially protect the lower left and lower right contact zones from foliage. Keep small framing rocks/flowers ONLY at the extreme 3% left/right edges and the lowest 2% bottom rim. A few edge trees may frame the far corners but must not intrude behind character silhouettes. Top 16% contains the distant forest, narrow lake and moon, with actual solid earth already established at y=18%. The majority of the image is quiet dry ground, with gradual material/value changes and small perspective clusters establishing depth: tiny near the top, subtly broader toward bottom. Strong flat readable 16-bit pixel clusters, no fine grain, no dithering, no micro sparkles, no blurry painting, no 3D. Preserve the input's much cleaner ground quality and restrained palette; no electric blue noise. The previous version was too narrow for ultrawide and the bottom bushes intruded under creatures: this revised real wide panorama must solve both while keeping the same identity. Terrain edges must be varied naturally rather than symmetrical. NO monsters, people, animals, words, labels, cards, HUD, grid, borders, attack effects, glyphs, cast shadows or mockup presentation. Output only the wide environment art edge to edge.",
+    "recorded_date_utc": "2026-10-20",
+    "references": [
+      "artifacts/battle-depth-source-20261020/clearing-first-edit.png"
+    ],
+    "tool": "OpenAI Image Gen"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

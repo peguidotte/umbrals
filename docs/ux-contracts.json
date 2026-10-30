@@ -1,7 +1,31 @@
 {
   "schema_version": 1,
-  "reference": [1600, 900],
-  "viewports": [[1280, 720], [1440, 900], [1920, 1080], [1024, 768], [2560, 1080]],
+  "reference": [
+    1600,
+    900
+  ],
+  "viewports": [
+    [
+      1280,
+      720
+    ],
+    [
+      1440,
+      900
+    ],
+    [
+      1920,
+      1080
+    ],
+    [
+      1024,
+      768
+    ],
+    [
+      2560,
+      1080
+    ]
+  ],
   "automatic_contracts": [
     "Menu, pause, options and inspection have initial focus and a working back path.",
     "Power selection retains node identity and selection across pause/options.",
@@ -9,18 +33,33 @@
     "Actionable targets remain in the canvas; power titles fit their cards.",
     "Solid button foreground/background text contrast is at least 4.5:1.",
     "Illegal casts have no gameplay side effects; repeated input cannot double-cast.",
+    "Individual HP, upper/middle/lower targets and speed initiative remain legible with one to three actors per side.",
+    "Healthy reserves do not enter the active card cycle; incapacitated owners keep blocked cards.",
+    "Partial and hidden information never expose the secret enemy queue through preview, inspection or the test bridge.",
     "Preferences and completed-run statistics persist after reload.",
     "Reduced motion updates current cards and clears transient effects.",
     "Particles and SFX voices are bounded; impact shake returns to rest.",
-    "A browser-input run reaches victory, captures, evolves and explicitly replaces an individual.",
-    "No Godot runtime errors, empty test passes, or source changes during evidence capture."
+    "Browser-input runs reach victory, capture, evolve, deploy reserves and show an actual three-versus-three battle; full-roster release is covered separately by rule tests.",
+    "No Godot runtime errors, empty test passes, or source changes during evidence capture.",
+    "Editing targets preserves card nodes; clearing or removing commands never spends a round, item or RNG.",
+    "Player plan and pile inspection expose no private enemy queue or future draw order.",
+    "Preparation stores visible charge and spends it only on the next damaging technique.",
+    "Starter selection begins with one individual and six owned cards; back cancels without a run.",
+    "Move nature is explicit; condition source/duration, species resistances and reaction names are inspectable.",
+    "Legal browser routes execute Brotação, Floração, Incêndio, Condução and electrical Interferência.",
+    "Capture explicitly chooses a vacant field slot or reserve; canceling preserves offers, individuals and RNG.",
+    "Entering reserve cards interleave with the remaining draw; exhausted draw recycles normally without guaranteed owner blocks or extra draws.",
+    "Own-command readout and last-round history expose no private future queue; touch can inspect powers through Plan.",
+    "Expedition map selection is pure, confirmation enters only reachable unfinished nodes and choosing one branch closes its alternative.",
+    "Checkpoints preserve exact stable battle cards, roster, committed plan and RNG; canceling New and practice leave the saved expedition intact.",
+    "Completed or replaced expeditions cannot resurrect from an older checkpoint; results count once and storage failures are surfaced."
   ],
   "review_questions": [
-    "Em cinco segundos, consigo localizar fôlego, intenção, energia e a próxima ação?",
+    "Em cinco segundos, consigo localizar HP individual, intenção, ações e a próxima escolha?",
     "As criaturas e a arena têm prioridade visual, com textos sem colisões ou cortes?",
     "Seleção, foco, erro e poder desbloqueado são distinguíveis sem depender só de cor?",
     "O impacto comunica a ação e volta ao repouso rapidamente? Compare com movimento reduzido.",
-    "Captura, evolução e substituição explicam as consequências antes da confirmação?",
+    "Captura, evolução, troca e reanimação explicam custo, alvo e timing antes da confirmação?",
     "A melhoria atende ao objetivo desta iteração? Registre uma comparação concreta e qualquer regressão.",
     "Que decisão tornou a partida mais interessante? Registre a hipótese de playtest; testes não provam diversão."
   ]

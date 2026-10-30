@@ -1,4 +1,11 @@
 {
+  "additional_sources": [
+    {
+      "description": "Battle atlas images, arenas, water portraits and power icons, and backpack icon added from the collective battle branch.",
+      "source_asset_count": 10,
+      "source_commit": "3cf0cd43ff86b1ef8ebe44af15183579137d7130"
+    }
+  ],
   "files": [
     {
       "from": "assets/ambience.wav",
@@ -184,8 +191,58 @@
       "from": "assets/world/clearing.png",
       "sha256": "e117d4f995c69c9a72ac5dbbeb3ce8e0b49aea98249d2c1536279dacb4a8729b",
       "to": "assets/world/moonlit-clearing/versions/1.0.0/background.png"
+    },
+    {
+      "from": "assets/battle/creatures.png",
+      "sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+      "to": "assets/characters/battle-creatures/versions/1.0.0/texture.png"
+    },
+    {
+      "from": "assets/battle/evolved.png",
+      "sha256": "6a227222f7a02cbd60ef30c746627df9e6bffb42dc4f7bbfd57d067342980c43",
+      "to": "assets/characters/battle-evolved/versions/1.0.0/texture.png"
+    },
+    {
+      "from": "assets/world/battle_clearing.png",
+      "sha256": "5e29951838bf65faffa4baa1676c460154207485a42a28c3e44d742b18b9413d",
+      "to": "assets/world/battle-clearing/versions/1.0.0/background.png"
+    },
+    {
+      "from": "assets/world/battle_clearing_depth.png",
+      "sha256": "18aa3cbb9d6f0541054180c1cfa91c8e1b2dcca8869a4da48e0e44c815f655bf",
+      "to": "assets/world/battle-clearing-depth/versions/1.0.0/background.png"
+    },
+    {
+      "from": "assets/dew.svg",
+      "sha256": "a3c3d1217a3e02cc1cae522148663bb53e4ca23dfc4fef14b3450fc91994d148",
+      "to": "assets/umbrals/dew/versions/1.0.0/portrait.svg"
+    },
+    {
+      "from": "assets/mareveu.svg",
+      "sha256": "7f01017c3e1d4a624525eb0fd80941df5a033d119bb9b9b176f32c8bbc39eb5c",
+      "to": "assets/umbrals/mareveu/versions/1.0.0/portrait.svg"
+    },
+    {
+      "from": "assets/powers/splash.svg",
+      "sha256": "be84aff462b0e95143da3e130bceea3ec2b59dc3edca4502d9663563b849ea27",
+      "to": "assets/attacks/splash/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/rain.svg",
+      "sha256": "4dc2ea8ccc0d73e49a2544035f6e6fae04b0f966d05f59abde210a1519ff385b",
+      "to": "assets/attacks/rain/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/powers/dew_mend.svg",
+      "sha256": "52113567a90381fc10bebb968cd8d10b42e53def0d1c4a8bbc82bf80c452ae3b",
+      "to": "assets/attacks/dew-mend/versions/1.0.0/icon.svg"
+    },
+    {
+      "from": "assets/icons/backpack.svg",
+      "sha256": "36ee9f46ccb5a9c760dad29ab184d3dc48e47e0ef21ca75f7682e009293b6c98",
+      "to": "assets/ui/backpack/versions/1.0.0/icon.svg"
     }
   ],
-  "source_asset_count": 37,
+  "source_asset_count": 47,
   "source_commit": "c928126a41148e3bf8ef75dac219ffbff83af26f"
 }

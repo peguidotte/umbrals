@@ -5,6 +5,11 @@
       "id": "attacks/cinder-claw",
       "version": "1.0.0"
     },
+    "attacks/dew-mend": {
+      "file": "icon",
+      "id": "attacks/dew-mend",
+      "version": "1.0.0"
+    },
     "attacks/fireball": {
       "file": "icon",
       "id": "attacks/fireball",
@@ -35,6 +40,11 @@
       "id": "attacks/lightning",
       "version": "1.0.0"
     },
+    "attacks/rain": {
+      "file": "icon",
+      "id": "attacks/rain",
+      "version": "1.0.0"
+    },
     "attacks/root-wall": {
       "file": "icon",
       "id": "attacks/root-wall",
@@ -43,6 +53,11 @@
     "attacks/sanctuary": {
       "file": "icon",
       "id": "attacks/sanctuary",
+      "version": "1.0.0"
+    },
+    "attacks/splash": {
+      "file": "icon",
+      "id": "attacks/splash",
       "version": "1.0.0"
     },
     "attacks/static-veil": {
@@ -125,6 +140,16 @@
       "id": "audio/storm",
       "version": "1.0.0"
     },
+    "characters/battle-creatures": {
+      "file": "texture",
+      "id": "characters/battle-creatures",
+      "version": "1.0.0"
+    },
+    "characters/battle-evolved": {
+      "file": "texture",
+      "id": "characters/battle-evolved",
+      "version": "1.0.0"
+    },
     "characters/owl": {
       "file": "portrait",
       "id": "characters/owl",
@@ -150,6 +175,16 @@
       "id": "fonts/dejavu",
       "version": "1.0.0"
     },
+    "ui/backpack": {
+      "file": "icon",
+      "id": "ui/backpack",
+      "version": "1.0.0"
+    },
+    "umbrals/dew": {
+      "file": "portrait",
+      "id": "umbrals/dew",
+      "version": "1.0.0"
+    },
     "umbrals/ember": {
       "file": "portrait",
       "id": "umbrals/ember",
@@ -158,6 +193,11 @@
     "umbrals/ignivar": {
       "file": "portrait",
       "id": "umbrals/ignivar",
+      "version": "1.0.0"
+    },
+    "umbrals/mareveu": {
+      "file": "portrait",
+      "id": "umbrals/mareveu",
       "version": "1.0.0"
     },
     "umbrals/moss": {
@@ -178,6 +218,16 @@
     "umbrals/volt": {
       "file": "portrait",
       "id": "umbrals/volt",
+      "version": "1.0.0"
+    },
+    "world/battle-clearing": {
+      "file": "background",
+      "id": "world/battle-clearing",
+      "version": "1.0.0"
+    },
+    "world/battle-clearing-depth": {
+      "file": "background",
+      "id": "world/battle-clearing-depth",
       "version": "1.0.0"
     },
     "world/moonlit-clearing": {

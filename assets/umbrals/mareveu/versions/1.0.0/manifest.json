@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "Original creature portrait fallback",
+  "files": {
+    "portrait": {
+      "bytes": 2409,
+      "kind": "texture",
+      "path": "portrait.svg",
+      "provenance": {
+        "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+        "license": "Original project asset; no external artwork.",
+        "tool": "authored directly for the battle content slice"
+      },
+      "sha256": "7f01017c3e1d4a624525eb0fd80941df5a033d119bb9b9b176f32c8bbc39eb5c",
+      "technical": {
+        "anchor": "center",
+        "filtering": "linear",
+        "format": "SVG",
+        "frames": 1
+      }
+    }
+  },
+  "id": "umbrals/mareveu",
+  "provenance": {
+    "kind": "original SVG paths authored for Umbral; prototype matching existing vector family",
+    "license": "Original project asset; no external artwork.",
+    "tool": "authored directly for the battle content slice"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

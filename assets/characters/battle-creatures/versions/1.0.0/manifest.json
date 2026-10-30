@@ -1,0 +1,73 @@
+{
+  "dependencies": [],
+  "description": "First-stage battle creature atlas and source records",
+  "files": {
+    "atlas": {
+      "bytes": 1585,
+      "kind": "data",
+      "path": "atlas.json",
+      "sha256": "c1243fba5c348dbd53e7593b4f965202dbb8b6ba1fa88b8e2424c2fe1b388247"
+    },
+    "panorama-prompt": {
+      "bytes": 2184,
+      "kind": "data",
+      "path": "depth-background-panorama-prompt.txt",
+      "sha256": "4a6cc2e477149ab878b6e604a499f3b1abb75421d5ce16cf2b8cad4a76f967cf"
+    },
+    "prompt": {
+      "bytes": 2613,
+      "kind": "data",
+      "path": "depth-background-prompt.txt",
+      "sha256": "77b15062a334fdfd51b3e4784a0fde53d6bbbee3cb40e8575872e7a66eba0211"
+    },
+    "provenance": {
+      "bytes": 17169,
+      "kind": "data",
+      "path": "provenance.json",
+      "sha256": "be3e63fbfa42169e48bbde1ab652373de216cc6d11a5525b60da6d184186f691"
+    },
+    "texture": {
+      "bytes": 1279819,
+      "kind": "texture",
+      "path": "texture.png",
+      "provenance": {
+        "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-1f7d5657-bbf3-4357-8e5f-ed27875012ed.png",
+        "original_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+        "prompt": "Create ONE transparent PNG sprite atlas for an ORIGINAL pixel-art monster game named Umbral. This is actual reusable character art, NOT a scene or UI or diagram. EXACTLY 7 full-body creatures in a perfectly regular grid of FOUR COLUMNS and TWO ROWS, all cells same size; last bottom-right cell EMPTY TRANSPARENT. Landscape atlas approx 2048x1024. Do not draw grid lines or labels; every cell's background is fully transparent with generous transparent padding on all sides. Every sprite centered horizontally in its cell, feet aligned to a common baseline at 85% cell height, whole silhouette within inner 80% of cell. No overlap between cells. Characters occupy roughly 65-75% cell height; NO ground shadows, NO scenery, NO text. Side/three-quarter view appropriate to a slightly elevated horizontal battle camera. Cohesive crisp pixel art with bold near-black colored outlines, deliberate small square pixel clusters, clean 3-5 tones per material, charming highly memorable silhouettes reminiscent of the readability of classic handheld monster games, but entirely original species. A sprite should read at 100px tall. Bright elemental accents and expressive eyes. No blur or painted gradients, no photorealism, no 3D. Every creature is a complete grounded creature with visible feet.\n\nROW ONE, from LEFT to RIGHT (all allies facing RIGHT, toward their enemy, their heads and eyes directed right):\nCell 1: BRASA — a small stocky charcoal-black ember squirrel, a magnificent thick curled orange-red tail rising behind its body into a spiral, warm amber eyes, glowing tiny orange fissures on forepaws. Compact crouching biped, alert playful stubborn expression. Mouth not firing. Strong clean orange tail/black body silhouette.\nCell 2: MUSGO — a squat round bark-and-moss guardian creature, broad brown trunk torso with a friendly pale wooden owl-like face set into a trunk hollow, green layered moss canopy and 3 small cream flowers on its back, four short sturdy root legs planted on ground, kindly protective guardian. Wider than tall, absolutely not a human standing upright.\nCell 3: FAÍSCA — a small golden-and-charcoal circuit beetle, shiny amber segmented shell etched with very simple cyan circuit markings, two curved slender antennae, six short black legs, a tiny glowing spark between the antenna tips. Alert jewel-like cyan eyes, low rounded profile, no wings open.\nCell 4: ORVALHO — a turquoise amphibian with four frog-like feet, large expressive dark-teal eyes, translucent blue round water globe mounted on its back containing two pale ripples, small liquid ribbon tail and two drop-shaped fins. Cute grounded poised frog/salamander, pale aqua belly, globe has crisp highlights and internal water dots, not firing an attack.\n\nROW TWO, from LEFT to RIGHT (all enemies facing LEFT, toward allies, heads and eyes directed left):\nCell 1: SPORE — a round plum-purple forest mushroom creature with a wide rich burgundy cap speckled turquoise, tiny stocky stalk body, short root feet, mischievous narrowed golden eyes beneath the cap, two tiny luminous green spore growths. Memorable broad cap silhouette.\nCell 2: OWL — a thorn owl, dark periwinkle and slate-blue rounded feather body, forward-leaning perched battle stance ON its two visible talons with NO branch, two swept-back twig/leaf ear tufts, broad folded wings with rust-gold thorn edging, sharp amber eyes and pale small face disk. Distinct small stout bird, no spread flight wings.\nCell 3: STAG — a medium stately shadow stag with midnight blue fur, pale teal muzzle and chest markings, four well-planted slender legs and cloven hooves, sweeping branching antlers tipped with a very few violet crystal shards, faint turquoise line along the spine. Proud left-facing three-quarter silhouette. Fit FULL antlers and every hoof inside the cell, no cropping. Slightly taller than other first-stage creatures but comparable atlas occupancy.\nCell 4: completely EMPTY with transparent background.\n\nStrictly preserve this 4x2 cell arrangement and left/right facing. No letters or numbers anywhere. Genuine transparent alpha background, not a painted checkerboard.",
+        "recorded_date_utc": "2026-10-18",
+        "tool": "OpenAI Image Gen"
+      },
+      "sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+      "technical": {
+        "alpha": true,
+        "anchor": "grounded sprite region",
+        "dimensions": [
+          1774,
+          887
+        ],
+        "filtering": "nearest for atlas; linear for arena",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/battle-creatures",
+  "provenance": {
+    "edit_history": "Runtime PNGs are byte-identical copies of original generated PNGs. No resizing, cropping, alpha repair or metadata edits performed. Atlas regions are runtime rectangles, not cropped files.",
+    "kind": "generated original",
+    "license_record": "Original artwork generated for Umbral; no third-party game artwork included.",
+    "model_version": "Not exposed by tool; none inferred.",
+    "original_output_basename": "exec-1f7d5657-bbf3-4357-8e5f-ed27875012ed.png",
+    "original_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+    "prompt": "Create ONE transparent PNG sprite atlas for an ORIGINAL pixel-art monster game named Umbral. This is actual reusable character art, NOT a scene or UI or diagram. EXACTLY 7 full-body creatures in a perfectly regular grid of FOUR COLUMNS and TWO ROWS, all cells same size; last bottom-right cell EMPTY TRANSPARENT. Landscape atlas approx 2048x1024. Do not draw grid lines or labels; every cell's background is fully transparent with generous transparent padding on all sides. Every sprite centered horizontally in its cell, feet aligned to a common baseline at 85% cell height, whole silhouette within inner 80% of cell. No overlap between cells. Characters occupy roughly 65-75% cell height; NO ground shadows, NO scenery, NO text. Side/three-quarter view appropriate to a slightly elevated horizontal battle camera. Cohesive crisp pixel art with bold near-black colored outlines, deliberate small square pixel clusters, clean 3-5 tones per material, charming highly memorable silhouettes reminiscent of the readability of classic handheld monster games, but entirely original species. A sprite should read at 100px tall. Bright elemental accents and expressive eyes. No blur or painted gradients, no photorealism, no 3D. Every creature is a complete grounded creature with visible feet.\n\nROW ONE, from LEFT to RIGHT (all allies facing RIGHT, toward their enemy, their heads and eyes directed right):\nCell 1: BRASA — a small stocky charcoal-black ember squirrel, a magnificent thick curled orange-red tail rising behind its body into a spiral, warm amber eyes, glowing tiny orange fissures on forepaws. Compact crouching biped, alert playful stubborn expression. Mouth not firing. Strong clean orange tail/black body silhouette.\nCell 2: MUSGO — a squat round bark-and-moss guardian creature, broad brown trunk torso with a friendly pale wooden owl-like face set into a trunk hollow, green layered moss canopy and 3 small cream flowers on its back, four short sturdy root legs planted on ground, kindly protective guardian. Wider than tall, absolutely not a human standing upright.\nCell 3: FAÍSCA — a small golden-and-charcoal circuit beetle, shiny amber segmented shell etched with very simple cyan circuit markings, two curved slender antennae, six short black legs, a tiny glowing spark between the antenna tips. Alert jewel-like cyan eyes, low rounded profile, no wings open.\nCell 4: ORVALHO — a turquoise amphibian with four frog-like feet, large expressive dark-teal eyes, translucent blue round water globe mounted on its back containing two pale ripples, small liquid ribbon tail and two drop-shaped fins. Cute grounded poised frog/salamander, pale aqua belly, globe has crisp highlights and internal water dots, not firing an attack.\n\nROW TWO, from LEFT to RIGHT (all enemies facing LEFT, toward allies, heads and eyes directed left):\nCell 1: SPORE — a round plum-purple forest mushroom creature with a wide rich burgundy cap speckled turquoise, tiny stocky stalk body, short root feet, mischievous narrowed golden eyes beneath the cap, two tiny luminous green spore growths. Memorable broad cap silhouette.\nCell 2: OWL — a thorn owl, dark periwinkle and slate-blue rounded feather body, forward-leaning perched battle stance ON its two visible talons with NO branch, two swept-back twig/leaf ear tufts, broad folded wings with rust-gold thorn edging, sharp amber eyes and pale small face disk. Distinct small stout bird, no spread flight wings.\nCell 3: STAG — a medium stately shadow stag with midnight blue fur, pale teal muzzle and chest markings, four well-planted slender legs and cloven hooves, sweeping branching antlers tipped with a very few violet crystal shards, faint turquoise line along the spine. Proud left-facing three-quarter silhouette. Fit FULL antlers and every hoof inside the cell, no cropping. Slightly taller than other first-stage creatures but comparable atlas occupancy.\nCell 4: completely EMPTY with transparent background.\n\nStrictly preserve this 4x2 cell arrangement and left/right facing. No letters or numbers anywhere. Genuine transparent alpha background, not a painted checkerboard.",
+    "recorded_date_utc": "2026-10-18",
+    "tool": "OpenAI Image Gen"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

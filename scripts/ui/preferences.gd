@@ -5,7 +5,7 @@ signal changed
 const Storage = preload("res://scripts/storage.gd")
 const PATH = "user://umbral_preferences_v1.json"
 const WEB_KEY = "umbral.preferences.v1"
-var values: Dictionary = {"music": 0.55, "sfx": 0.8, "reduced_motion": false, "flashes": false, "large_text": false}
+var values: Dictionary = {"music": 0.55, "sfx": 0.8, "reduced_motion": false, "flashes": false, "large_text": false, "information_mode": "partial"}
 
 func load_saved() -> void:
 	var data: Dictionary = Storage.read_json(PATH, WEB_KEY)
@@ -14,12 +14,16 @@ func load_saved() -> void:
 			if key in ["music", "sfx"] and (data.get(key) is float or data.get(key) is int):
 				values[key] = clampf(float(data[key]), 0.0, 1.0)
 			elif values[key] is bool and data.get(key) is bool: values[key] = data[key]
+			elif key == "information_mode" and data.get(key) in ["hidden", "partial", "full"]: values[key] = data[key]
 
 func set_value(key: String, value: Variant) -> bool:
 	if not values.has(key): return false
 	if key in ["music", "sfx"]:
 		if not (value is float or value is int): return false
 		values[key] = clampf(float(value), 0.0, 1.0)
+	elif key == "information_mode":
+		if not value in ["hidden", "partial", "full"]: return false
+		values[key] = value
 	else:
 		if not value is bool: return false
 		values[key] = value

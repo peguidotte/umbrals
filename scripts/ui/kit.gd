@@ -1,6 +1,7 @@
 class_name UmbralUI
 extends RefCounted
 const RuneButton = preload("res://scripts/ui/rune_button.gd")
+const BattleArt = preload("res://scripts/ui/battle_art.gd")
 const Assets = preload("res://scripts/assets/catalog.gd")
 const Paths = preload("res://scripts/assets/binding_paths.gd")
 const BODY = preload(Paths.FONTS_BODY)
@@ -28,6 +29,12 @@ func make_theme() -> Theme:
 	theme.set_stylebox("focus", "Button", focus_style())
 	theme.set_color("font_disabled_color", "Button", Color("8c9a8d"))
 	theme.set_stylebox("panel", "PanelContainer", style(Color(0.045, 0.08, 0.10, 0.98), Color("9e936c"), 24))
+	theme.set_stylebox("panel", "PopupMenu", style(INK, GOLD, 8))
+	theme.set_stylebox("hover", "PopupMenu", style(GOLD, PAPER, 5))
+	theme.set_font_size("font_size", "PopupMenu", int(18 * text_scale))
+	theme.set_color("font_color", "PopupMenu", PAPER)
+	theme.set_color("font_hover_color", "PopupMenu", INK)
+	theme.set_color("font_disabled_color", "PopupMenu", MUTED)
 	return theme
 
 func style(background: Color, border: Color, padding: int = 16) -> StyleBoxFlat:
@@ -111,7 +118,8 @@ static func art(asset_id: String, minimum: Vector2) -> TextureRect:
 	var result = TextureRect.new()
 	result.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	result.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	result.texture = Assets.texture(asset_id)
+	result.texture = Assets.texture(asset_id) if asset_id.begins_with("attacks/") or asset_id.begins_with("ui/") else BattleArt.texture(asset_id)
+	result.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST if result.texture is AtlasTexture else CanvasItem.TEXTURE_FILTER_LINEAR
 	result.custom_minimum_size = minimum
 	result.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return result
