@@ -396,6 +396,24 @@
         }
       }
     },
+    "ui/title-logo": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/ui/title-logo/versions/1.0.0/manifest.json",
+          "sha256": "aaf8ec165bf2a424c0c6db1b0605ba10608d30f6b20e4d2d71e76e2d789a2bf2",
+          "status": "production"
+        }
+      }
+    },
+    "ui/title-menu": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/ui/title-menu/versions/1.0.0/manifest.json",
+          "sha256": "c365e5ecff86f15a69de1943074202ef7a7ea95a205aa7720ad09d28aed63a05",
+          "status": "production"
+        }
+      }
+    },
     "umbrals/dew": {
       "versions": {
         "1.0.0": {
@@ -491,6 +509,15 @@
         "1.0.0": {
           "manifest": "assets/world/moonlit-clearing/versions/1.0.0/manifest.json",
           "sha256": "ac02a8674e099bc79670d2d48ba68312686e173ce7ae0c0026811cd55451f1b1",
+          "status": "production"
+        }
+      }
+    },
+    "world/title-forest": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/world/title-forest/versions/1.0.0/manifest.json",
+          "sha256": "7294b599b7cc62034140fe869a7a2d42e68f5989e4ec99fc10f76a22b02f8728",
           "status": "production"
         }
       }

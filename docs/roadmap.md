@@ -85,6 +85,9 @@ Tom: mistério acolhedor, criaturas marcantes e melancolia com esperança. Flore
 | D43 | Controle principalmente por enfraquecimento e iniciativa, preservando respostas e runs solo. | **Confirmada pelo usuário, opção A.** Desenvolver redução da potência do próximo ataque e alterações de Velocidade na próxima fila; interrupções específicas exigem regra explícita. Perda universal de turnos não é padrão de Raio/Gelo. |
 | D44 | Captura permite escolher Campo ou Reserva, sugerindo uma vaga livre. | **Confirmada em 29/10/2026, opção recomendada.** Confirmar envia ao destino; voltar preserva o sorteio. Capturar no campo entre encontros não custa ação, não preenche as outras vagas e não elimina runs solo. Ver [revisão](battle-closeout-v0.4.md). |
 | D45 | Reduzir texto permanente, ampliar comunicação por imagens e dar identidade própria ao HUD, cores e mapa. | **Direção explícita do usuário** após RM-UX-28. Retratos, arte de poderes e mapa ilustrado são propostas de execução; paleta específica ainda deve ser vista em composição. [Direção e critérios](ux-polish-next.md). |
+| D46 | Uma pessoa comum usa uma carta mágica para capturar um Umbral; o vínculo concede cartas de poderes. | Fantasia de apresentação explicitada pelo usuário. Esta fatia comunica a ligação na abertura, sem mudar regras, custo ou momento da captura. |
+| D47 | Logo somente UMBRAL, roxo/branco; terceira revisão de abertura com botões compactos, ícones sombreados e bosque/cartas. | Seleção explícita do usuário. Quatro comandos na home; Nova/Continuar/Treino dentro de Jogar é implementação adotada por delegação. [Plano e resultados](title-menu-v04-05b.md). |
+| D48 | Refinar as seis frentes do menu em conjunto: Jogar, botões, cartas em camadas, responsividade, transições e áudio. | Aprovação explícita do usuário; validação focada no que foi afetado, sem repetir a suíte completa demorada. [Plano e evidências](title-menu-v04-05c.md). |
 
 
 D01 está definida: cada nova expedição monta um novo time a partir das possibilidades desbloqueadas. Códice e desbloqueios ficam no perfil permanente; capturas e evoluções daquele time ficam no estado da run. **Retomar uma expedição salva mantém os mesmos indivíduos, passivas, evoluções e progresso**, sem iniciar outro time. O save deve separar perfil permanente e expedição em andamento. Os desbloqueios específicos ainda serão desenhados nos marcos correspondentes.
@@ -326,17 +329,39 @@ sem confundir software testado com equilíbrio final. Isso pode avançar em para
 à [implementação da primeira expedição, V05-RUN-01](expedition-implementation-v0.5.md):
 um mapa com escolhas ligando os encontros existentes. Produto **0.3.0**.
 
-## Prioridade atual: V04-UX-05A — UX e acabamento visual
+## Prioridade atual: V04-UX-05D — abertura Web no iPhone
 
-O usuário redirecionou a próxima entrega para UX e qualidade visual. Adiar a
-implementação do mercador e estabelecer uma batalha de referência: linguagem
-visual consistente, cartas/donos legíveis, seleção/alvos claros, ações e comandos
-fáceis de acompanhar, execução compreensível. Preservar a composição aprovada.
-Depois, aplicar os mesmos componentes a mapa, formação e recompensas.
-D45 reforça mapas ilustrados, retratos, arte dos poderes, símbolos e HUD com
-identidade própria, reduzindo texto permanente. Detalhes seguem acessíveis por
-toque/teclado/inspeção. Ver [plano, sequência e critérios](ux-polish-next.md). Esta rodada muda a
-prioridade e documenta o plano; não implementa ou valida um redesign.
+O usuário reportou encerramentos repetidos do Safari após a publicação de 05C.
+Mitigações publicadas, com confirmação física pendente: framebuffer Web em resolução CSS, remonta do
+pack sem buffers completos por parte e compilação separada do preload. Medição
+DPR 3: 1179×2556 → 393×852, mantendo layout. Dez verificações de loader e 13 de
+boot/toque/rotação/reload/save passaram em Chromium; iPhone físico segue pendente.
+[Diagnóstico, escopo e limites](web-ios-startup-v04-05d.md).
+
+### Entrega anterior: V04-UX-05C — seis refinamentos do menu
+
+Implementadas as seis melhorias aprovadas: Jogar com equipe/ponto salvo, botões
+com foco chanfrado/pressão, cartas independentes, formatos e toque, transições
+curtas e água/cristal/magia. Validação focada autorizada: 245 nativas, 135 de
+fluxo/apresentação, 18 do ajuste final de leitura e abertura do adaptador Site.
+Os complementos identificam seus pacotes; não constituem uma suíte integral no
+último hash. A mesma prévia privada foi atualizada (publicação confirmada). [Implementação, capturas e limites](title-menu-v04-05c.md).
+
+A entrega anterior foi V04-UX-05B:
+
+A terceira revisão escolhida foi implementada: logo UMBRAL, quatro comandos
+roxo/branco com ícones sombreados, bosque e cartas com efeito. O estado inicial
+em 1672×941 foi comparado ao original: zero pixels diferentes. Jogar reúne
+Nova, Continuar e Treino. [Implementação, evidências e limites](title-menu-v04-05b.md).
+
+Validação por suítes no mesmo pacote: regras/UI, batalha com quatro roteiros e
+cinco formatos, duas rotas de expedição e menu com toque. As duas tentativas
+integrais do orquestrador permanecem failed, documentadas sem substituir seus
+resultados. [QA visual](../design-qa.md). Produto permanece 0.3.0.
+
+Após avaliar o menu refinado, a próxima tela será escolhida com o usuário. Legibilidade da batalha no
+celular, arte dedicada e sessões humanas continuam pendentes. UX permanece
+antes do mercador V05-ECON-03.
 
 ## Última entrega: V05-RUN-01 / V05-SAVE-02 — expedição e continuidade
 
@@ -422,8 +447,11 @@ Use o harness existente: `python tools/iterate.py --label V04-BAT-01 --goal '<re
 | RM-BATTLE-26 | V04-BAT-04B: recusar a reposição não bloqueia uma troca voluntária posterior por uma ação; reanimação explicita necessidade de estar em campo. | 04B aprovada: 14.413 regras, 443 UI, 1.628 navegador, oito mutações; 76 capturas e cinco formatos em `artifacts/V04-BAT-04B-late-replacement-20261029T053548186461Z`. Web/Windows/Linux e startup Linux aprovados; dois percursos por toque e prévia privada atualizada. [Contrato e revisão](battle-closeout-v0.4.md). | Cinco primeiras sessões, ritmo e UX mobile; conteúdo de expedição nas fases próprias. Produto 0.3.0; critérios humanos de 0.4 abertos. |
 | RM-PLAN-27 | Documentação reconciliada com V04-BAT-04A/B; bloco estrutural de batalha encerrado e V05-RUN-01 proposta como próxima implementação. Fluxo/mapa/save separados por contrato; UX/playtests em paralelo. | Leitura de código, fechamento validado e [plano da primeira expedição](first-expedition-plan-v0.5.md). Alteração apenas documental, sem nova validação ou implementação de gameplay. | Fixar contrato de expedição e executar RUN-01; cinco primeiras sessões seguem gate de 0.4. Produto 0.3.0. |
 | V05-RUN-01 / V05-SAVE-02 | Expedição com bifurcação, descanso, IDs de encontros e save/continuar; menu separa expedição e treino. Trabalho paralelo TERRA 6.1/LUNA integrado. | Gate completo aprovado: 14413 batalha, 444 UI, 109 expedição; 1641 navegador de treino e 383 de expedição. Duas rotas até vitória, retomada, três exports e prévia privada atualizada. [Contrato e evidências](expedition-implementation-v0.5.md). | Próxima fatia: V05-ECON-03. Produto 0.3.0; critérios humanos e demais conteúdos de 0.5 abertos. |
-
 | RM-UX-28 | Usuário prioriza UX e acabamento antes da economia. Próxima fatia V04-UX-05A: batalha de referência, clareza de seleção/alvos/comandos e base visual comum; mapa/recompensas depois. | Direção explícita do usuário; revisão de código e referência aprovada. [Plano](ux-polish-next.md). Sem nova auditoria visual, implementação ou publicação nesta rodada. | Fixar proposta e estados da batalha, implementar e avaliar no jogo; V05-ECON-03 depois. Produto 0.3.0. |
+| V04-UX-05A | Base noturna comum; cartas com arte maior, retrato/UID, cristal de custo e ALVO; ações visuais; mão ampliada com rolagem; mapa ilustrado com trilha e marcos. Mesma batalha em três estados, implementada e avaliada. | Gate completo: 14413 regras, 454 UI/fluxo/boot (+212 catálogo), 109 expedição/save/cena, 1802 navegador de batalha, 383 de expedição, 8 mutações. `artifacts/V04-UX-05A-ready-20261031T000348103949Z`. [Revisão e limites](ux-reference-v04-05a.md). | Aceitação visual aberta: texto pequeno em 844×390, arte dedicada e rótulos de impacto. Recomenda-se V04-UX-05B antes do mercador; cinco sessões humanas pendentes. Produto 0.3.0. |
+| V04-UX-05B | Tela inicial escolhida reproduzida, quatro controles reais e cartas com efeito; escolhas de expedição reunidas em Jogar. | Zero diferença no frame 1672×941. Regras 14413, UI/catálogo 673, expedição nativa 113, batalha 1855, expedição browser 393, menu 22. Validação por suítes no mesmo pacote; duas tentativas integrais failed preservadas. [Resultados](title-menu-v04-05b.md). | Próxima tela a definir com o usuário; aparelho físico e sessões humanas pendentes. Produto 0.3.0. |
+| V04-UX-05C | As seis melhorias do menu: Jogar com checkpoint visual, feedback de botões, cartas separadas, responsividade/toque, transições e áudio. | 245 verificações nativas, 135 de fluxo/menu, 18 do texto mobile; assets e adaptador Site passaram. Complementos por alteração, com hashes explícitos. [Capturas e limites](title-menu-v04-05c.md). | Suíte completa dispensada pelo usuário; telefone/controle físicos e escuta humana pendentes. UX continua antes do mercador. Produto 0.3.0. |
+| V04-UX-05D | Mitigar encerramento Web reportado no Safari: resolução CSS, streaming direto ao pack e startup serial. | Export Web; 10 checks do loader; 13 de DPR 3/2, toque, rotação e checkpoint após reload. [Resultados](web-ios-startup-v04-05d.md). | Nenhum teste em Safari/iPhone físico; causa exata do encerramento não comprovada. Aguardar confirmação no aparelho. |
 
 Validação de RM-PLAN-01: oito marcos exercitados por interação real, ativação por teclado, render em 1440×1100 e 390×844, sem overflow horizontal, erro de JavaScript ou requisições externas. Capturas e relatório ficam em `test-results/roadmap/`, ignorado no Git. O mapa foi servido por HTTP interno durante a validação; a política do Chromium gerenciado impede navegação `file://`. O HTML é autossuficiente para abertura offline em um navegador comum. Revisão visual: rota e seleção distinguíveis no desktop; celular usa ordem crescente em duas colunas e detalhes em uma coluna. Esta tarefa não altera gameplay nem comprova novos marcos do jogo.
 
@@ -478,3 +506,13 @@ humanos de 0.4 e economia/conteúdo de 0.5 permanecem abertos.
 Direção atualizada em RM-UX-28: a recomendação de economia acima registra o
 fechamento anterior. A próxima entrega agora é V04-UX-05A, conforme a prioridade
 de UX e acabamento expressa pelo usuário.
+
+
+Atualização de V04-UX-05A em 31/10/2026: a base foi implementada e o gate
+completo passou. Isso não encerra o acabamento nem o marco 0.4. A recomendação
+seguinte é V04-UX-05B (HUD compacto para celular, arte dedicada e resultados),
+preservando UX antes de V05-ECON-03. As capturas e o relatório distinguem
+propostas, implementação, verificação automática e revisão visual da IA.
+
+Direção posterior a 05A: a seleção explícita do usuário restringe V04-UX-05B à
+tela inicial; a recomendação anterior de HUD móvel permanece posterior.

@@ -40,15 +40,20 @@ func _run() -> void:
 	await process_frame
 	expect(focus_key() == "menu.play", "Title gives initial focus to Play")
 	await pad(JOY_BUTTON_DPAD_DOWN)
-	if focus_key() == "menu.continue":
-		await pad(JOY_BUTTON_DPAD_DOWN)
-	expect(focus_key() == "menu.practice", "Controller d-pad moves from expedition to practice")
-	await pad(JOY_BUTTON_DPAD_DOWN)
-	expect(focus_key() == "menu.codex", "Controller d-pad continues through title choices")
+	expect(focus_key() == "menu.codex", "Controller d-pad moves from Play to codex")
 	await pad(JOY_BUTTON_A)
 	expect(app.screens.top() == "codex" and focus_key() == "codex.back", "Controller A opens the focused codex")
 	await pad(JOY_BUTTON_B)
 	expect(app.screens.top() == "menu" and focus_key() == "menu.codex", "Controller B restores the previous menu focus")
+	# Presentation unit check: send a card press directly to the title control.
+	var card_press := InputEventMouseButton.new()
+	card_press.button_index = MOUSE_BUTTON_LEFT
+	card_press.pressed = true
+	# Use the rendered card center, including composition scale and its current float.
+	card_press.position = app.menu_root.composition.get_transform() * app.menu_root.cards[0].position
+	app.menu_root._gui_input(card_press)
+	expect(app.menu_root.effect_state().pulse_age == 0.0, "Card press starts the title presentation pulse")
+	var before_motion: String = JSON.stringify([app.game.rng.state, app.run_save.load_snapshot()])
 	await key(KEY_DOWN)
 	await key(KEY_ENTER)
 	expect(app.screens.entries == ["menu", "settings"], "Keyboard opens options from title")
@@ -57,15 +62,33 @@ func _run() -> void:
 	expect(focus_key() == "settings.reduced_motion", "Tab reaches reduced-motion without escaping the modal")
 	await key(KEY_ENTER)
 	expect(app.preferences.values.reduced_motion, "Keyboard toggles and persists reduced motion")
+	var title_effect: Dictionary = app.menu_root.effect_state()
+	expect(title_effect.reduced_motion and title_effect.clock == 0.0 and title_effect.pulse_age == 10.0, "Reduced motion immediately rests the title effect")
+	await key(KEY_ENTER)
+	await key(KEY_ENTER)
+	title_effect = app.menu_root.effect_state()
+	expect(title_effect.reduced_motion and title_effect.clock == 0.0 and title_effect.pulse_age == 10.0 and JSON.stringify([app.game.rng.state, app.run_save.load_snapshot()]) == before_motion, "Re-enabling reduced motion clears the effect without changing game RNG or save")
 	await key(KEY_ESCAPE)
 	expect(app.screens.top() == "menu" and focus_key() == "menu.settings", "Back from options restores title focus")
-	app.registry["menu.practice"].grab_focus()
+	app.registry["menu.help"].grab_focus()
+	await key(KEY_ENTER)
+	app.registry["help.credits"].grab_focus()
+	await key(KEY_ENTER)
+	expect(app.screens.top() == "credits" and focus_key() == "credits.back", "Guide opens credits with focused back action")
+	await key(KEY_ESCAPE)
+	expect(app.screens.top() == "help" and focus_key() == "help.credits", "Back from credits restores guide focus")
+	await key(KEY_ESCAPE)
+	expect(app.screens.top() == "menu" and focus_key() == "menu.help", "Back from guide restores title focus")
+	app.registry["menu.play"].grab_focus()
+	await key(KEY_ENTER)
+	expect(app.screens.top() == "journey", "Play opens the expedition choices")
+	app.registry["journey.practice"].grab_focus()
 	await key(KEY_ENTER)
 	await process_frame
 	expect(app.screens.top() == "starter" and focus_key() == "starter.ember", "Starting opens the four-species choice with keyboard focus")
 	var before_choice: String = JSON.stringify([app.game.party, app.game.rng.state, app.session_active])
 	await key(KEY_ESCAPE)
-	expect(app.screens.top() == "menu" and JSON.stringify([app.game.party, app.game.rng.state, app.session_active]) == before_choice, "Canceling starter selection leaves individuals, run and RNG untouched")
+	expect(app.screens.top() == "journey" and focus_key() == "journey.practice" and JSON.stringify([app.game.party, app.game.rng.state, app.session_active]) == before_choice, "Canceling starter selection restores practice focus and leaves individuals, run and RNG untouched")
 	await key(KEY_ENTER)
 	await key(KEY_ENTER)
 	await process_frame
@@ -262,6 +285,28 @@ func _run() -> void:
 	expect(app.busy and app.phase_label.text.begins_with("EXECUTANDO"), "A valid plan can be committed directly from its editor, with a distinct execution phase")
 	await create_timer(0.6).timeout
 	expect(not app.busy and not app.command_strip.visible, "Resolved commands leave the strip before the next plan")
+	# Expanded hands keep their cards readable and reachable through real focus.
+	app.game.new_run(42013)
+	for slot in [0, 2]:
+		var extra: Dictionary = app.game.make_umbral("moss" if slot == 0 else "dew", "resilient", slot + 2)
+		extra.slot = slot
+		app.game.party.append(extra)
+	app.game.hand_size_modifier = 12
+	app.game.start_encounter()
+	app._sync_battle()
+	var expanded_state: String = JSON.stringify([app.game.hand, app.game.deck, app.game.rng.state, app.game.round_number])
+	app.cards.back().grab_focus()
+	await process_frame
+	await process_frame
+	await process_frame
+	var hand_scroll: ScrollContainer = app.hand_view.get_parent()
+	expect(app.cards.size() == 18 and app.cards.back().size.x >= 128, "An eighteen-card modified hand preserves readable card width")
+	expect(hand_scroll.scroll_horizontal > 0 and hand_scroll.get_global_rect().has_point(app.cards.back().get_global_rect().get_center()), "Keyboard focus reveals the final card of an expanded hand")
+	app.cards.front().grab_focus()
+	await process_frame
+	await process_frame
+	expect(hand_scroll.get_global_rect().has_point(app.cards.front().get_global_rect().get_center()), "Keyboard focus can return to the first card")
+	expect(JSON.stringify([app.game.hand, app.game.deck, app.game.rng.state, app.game.round_number]) == expanded_state, "Browsing a modified hand preserves cards, RNG and turn")
 	# Six-member flows use real controls and scroll/focus, including large text.
 	app.game.new_run(42013)
 	for uid in range(2, 7):
@@ -334,6 +379,11 @@ func _run() -> void:
 	app.game.phase = "reward"
 	app._sync_selection()
 	expect(app.cards.map(func(card): return card.card.instance_id) == displayed_hand and app.registry["hud.backpack"].disabled, "A finishing queue keeps its hand visible and blocks item planning before rewards")
+	await process_frame
+	await process_frame
+	for control_id in ["hud.cast", "hud.redraw", "hud.plan", "hud.history", "hud.draw", "hud.discard"]:
+		expect(app.registry[control_id].get_global_rect().end.y <= app.size.y + 1, "Busy-state controls stay inside the viewport: " + control_id)
+
 	print(JSON.stringify({"suite": "ui_input_flow", "checks": checks, "failed": failed, "device_validation": "synthetic Godot keyboard/gamepad events"}))
 	app.audio.shutdown()
 	await create_timer(0.12).timeout

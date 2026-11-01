@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "world/title-forest",
+  "version": "1.0.0",
+  "status": "production",
+  "description": "Clean forest plate derived from selected title; same ruins, moon and violet crystals.",
+  "provenance": {
+    "kind": "Image Gen original preserved byte-for-byte",
+    "tool": "OpenAI Image Gen",
+    "generation_id": "exec-eec7c2ef-f5be-4941-89d7-d4ac88254736",
+    "license": "Original artwork generated for Umbral in this conversation.",
+    "selection": "Existing approved composition; clean background derived for independent runtime layers."
+  },
+  "dependencies": [],
+  "files": {
+    "texture": {
+      "kind": "texture",
+      "path": "texture.png",
+      "sha256": "94833e9336b1727891ab48017149d5d89d145d01e8b28e67c47a3d1739eedc17",
+      "bytes": 2627978,
+      "technical": {
+        "dimensions": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "alpha": false,
+        "filtering": "nearest",
+        "frames": 1,
+        "anchor": "full-frame"
+      }
+    }
+  },
+  "metadata": {
+    "consumer": "scripts/ui/title_menu.gd",
+    "notes": "Original retained with embedded metadata. Runtime region/masking, no raster edits."
+  }
+}

@@ -7,6 +7,7 @@ signal control_created(control: Control, key: String)
 const UI = preload("res://scripts/ui/kit.gd")
 const Actor = preload("res://scripts/ui/actor.gd")
 const Effects = preload("res://scripts/ui/effects.gd")
+const ActionMeter = preload("res://scripts/ui/action_meter.gd")
 const Hand = preload("res://scripts/ui/hand.gd")
 var ui: RefCounted
 var visual_layer: Control
@@ -82,8 +83,8 @@ func build(user_interface: RefCounted, safe_margin: Callable) -> void:
 		command.clip_text = true
 		command.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 		command.add_theme_font_size_override("font_size", int(16 * ui.text_scale))
-		for state in ["normal", "hover", "pressed"]:
-			command.add_theme_stylebox_override(state, ui.style(Color("102233"), Color("566283"), 8))
+		for state in ["normal", "hover", "pressed", "disabled"]:
+			command.add_theme_stylebox_override(state, ui.style(UI.SURFACE, UI.BORDER, 8))
 		command_buttons.append(command)
 	var hints: VBoxContainer = UI.column(2)
 	_at(hints, self, Vector2(0.5, 1), Vector2(600, 48))
@@ -99,7 +100,7 @@ func build(user_interface: RefCounted, safe_margin: Callable) -> void:
 	self.add_child(hud_panel)
 	hud_panel.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
 	hud_panel.offset_top = -242
-	hud_panel.add_theme_stylebox_override("panel", ui.style(Color("081523"), Color("566283"), 12))
+	hud_panel.add_theme_stylebox_override("panel", ui.style(UI.INK, UI.BORDER, 12))
 	var hud: HBoxContainer = UI.row(15)
 	hud_panel.add_child(hud)
 	var reserves: VBoxContainer = UI.column(8)
@@ -120,27 +121,38 @@ func build(user_interface: RefCounted, safe_margin: Callable) -> void:
 		button.expand_icon = true
 		button.add_theme_constant_override("icon_max_width", 42)
 		for state in ["normal", "hover", "pressed", "disabled"]:
-			button.add_theme_stylebox_override(state, ui.style(Color("0c1b2d"), Color("4d5c7b"), 2))
+			button.add_theme_stylebox_override(state, ui.style(UI.SURFACE, UI.BORDER, 2))
 		reserve_buttons.append(button)
+	var hand_scroll := ScrollContainer.new()
+	hand_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hand_scroll.custom_minimum_size = Vector2(540, 208)
+	hand_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	hand_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	hand_scroll.follow_focus = true
+	hud.add_child(hand_scroll)
 	hand_view = Hand.new()
 	hand_view.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hand_view.custom_minimum_size = Vector2(540, 208)
-	hud.add_child(hand_view)
-	var actions: VBoxContainer = UI.column(9)
+	hand_scroll.add_child(hand_view)
+	var actions: VBoxContainer = UI.column(6)
 	actions.custom_minimum_size.x = 211
 	hud.add_child(actions)
-	energy_label = ui.label("", 18, UI.GOLD, false, true)
+	energy_label = ActionMeter.new()
+	energy_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	energy_label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+	energy_label.custom_minimum_size.y = 44
 	actions.add_child(energy_label)
 	cast_button = _button(actions, "CONJURAR", "cast", "hud.cast", true)
-	cast_button.custom_minimum_size.y = 64
-	cast_button.add_theme_stylebox_override("normal", ui.style(Color("ef987b"), UI.GOLD, 12))
-	cast_button.add_theme_stylebox_override("hover", ui.style(Color("ffb497"), UI.PAPER, 12))
-	cast_button.add_theme_stylebox_override("pressed", ui.style(Color("d98266"), UI.GOLD, 12))
+	cast_button.custom_minimum_size.y = 60
+	cast_button.add_theme_stylebox_override("normal", ui.style(UI.GOLD, UI.GOLD, 12))
+	cast_button.add_theme_stylebox_override("hover", ui.style(Color("ffdb9e"), UI.PAPER, 12))
+	cast_button.add_theme_stylebox_override("pressed", ui.style(Color("d5a059"), UI.GOLD, 12))
+	cast_button.add_theme_stylebox_override("disabled", ui.style(UI.INK, UI.BORDER, 12))
 	redraw_button = _button(actions, "RESORTEAR", "redraw", "hud.redraw")
-	redraw_button.custom_minimum_size.y = 56
+	redraw_button.custom_minimum_size.y = 52
 	redraw_button.add_theme_font_size_override("font_size", int(17 * ui.text_scale))
-	for state in ["normal", "hover", "pressed"]:
-		redraw_button.add_theme_stylebox_override(state, ui.style(Color("10201f"), Color("57604d"), 4))
+	for state in ["normal", "hover", "pressed", "disabled"]:
+		redraw_button.add_theme_stylebox_override(state, ui.style(UI.SURFACE, UI.BORDER, 4))
 	redraw_button.tooltip_text = "Descarta a mão inteira e passa a rodada. Os inimigos executam suas intenções."
 	var tools: HBoxContainer = UI.row(6)
 	actions.add_child(tools)
@@ -151,8 +163,8 @@ func build(user_interface: RefCounted, safe_margin: Callable) -> void:
 		tool.clip_text = true
 		tool.custom_minimum_size.y = 35
 		tool.add_theme_font_size_override("font_size", 15)
-		for state in ["normal", "hover", "pressed"]:
-			tool.add_theme_stylebox_override(state, ui.style(Color("102233"), Color("566283"), 4))
+		for state in ["normal", "hover", "pressed", "disabled"]:
+			tool.add_theme_stylebox_override(state, ui.style(UI.SURFACE, UI.BORDER, 4))
 	var pile_column: VBoxContainer = UI.column(10)
 	pile_column.custom_minimum_size.x = 112
 	hud.add_child(pile_column)
@@ -170,8 +182,8 @@ func build(user_interface: RefCounted, safe_margin: Callable) -> void:
 		pile.add_theme_font_size_override("font_size", 16)
 		pile.custom_minimum_size.y = 52
 		pile.tooltip_text = "Consultar os poderes nesta pilha é grátis. A ordem da compra não é revelada."
-		for state in ["normal", "hover", "pressed"]:
-			pile.add_theme_stylebox_override(state, ui.style(Color("0c1b2d"), Color("4d5c7b"), 2))
+		for state in ["normal", "hover", "pressed", "disabled"]:
+			pile.add_theme_stylebox_override(state, ui.style(UI.SURFACE, UI.BORDER, 2))
 
 func _button(parent: Node, text: String, command: String, key: String, primary: bool = false) -> Button:
 	var button: Button = ui.button(text, func(): command_requested.emit(command), key, primary)

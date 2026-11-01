@@ -26,8 +26,21 @@ func run() -> void:
 	root.add_child(app)
 	await process_frame
 	expect(app.screens.top() == "menu" and root.gui_get_focus_owner().get_meta("ui_id", "") == "menu.play", "Default focus is expedition")
+	var home_ids: Array = []
+	for id in app.registry:
+		var control = app.registry[id]
+		if is_instance_valid(control) and control is BaseButton and control.is_visible_in_tree() and control.get_meta("ui_screen", "") == "menu": home_ids.append(id)
+	home_ids.sort()
+	expect(home_ids == ["menu.codex", "menu.help", "menu.play", "menu.settings"], "Home exposes exactly four choices")
+	expect(not app.registry.has("menu.practice") and not app.registry.has("menu.continue") and not app.registry.has("menu.credits"), "Home has no legacy hidden aliases")
+	var before_journey: String = JSON.stringify(app.run_save.load_snapshot())
 	await press("menu.play")
-	expect(app.screens.top() == "starter", "Play opens starter choice")
+	expect(app.screens.top() == "journey" and app.registry["journey.continue"].disabled, "Play opens expedition choices with Continue disabled without a save")
+	await press("journey.back")
+	expect(app.screens.top() == "menu" and root.gui_get_focus_owner().get_meta("ui_id", "") == "menu.play" and JSON.stringify(app.run_save.load_snapshot()) == before_journey, "Canceling expedition choices restores focus and preserves save")
+	await press("menu.play")
+	await press("journey.new")
+	expect(app.screens.top() == "starter", "New expedition opens starter choice")
 	await press("starter.ember")
 	expect(app.screens.top() == "map" and app.expedition.phase == "map", "Starter opens expedition map")
 	var initial: String = JSON.stringify(app.expedition.snapshot())
@@ -51,18 +64,20 @@ func run() -> void:
 	app = load("res://scenes/main.tscn").instantiate()
 	root.add_child(app)
 	await process_frame
-	expect(not app.registry["menu.continue"].disabled, "Reconstructed app offers Continue")
 	await press("menu.play")
+	expect(not app.registry["journey.continue"].disabled, "Reconstructed app offers Continue")
+	await press("journey.new")
 	expect(app.screens.top() == "confirm_new", "New run asks before replacing checkpoint")
 	await press("new.cancel")
 	expect(JSON.stringify(app.run_save.load_snapshot()) == save_before, "Cancel new preserves saved state and RNG")
-	await press("menu.practice")
+	await press("journey.practice")
 	await press("starter.ember")
 	expect(app.screens.top() == "battle" and not app.expedition_active, "Practice opens battle independently")
 	expect(JSON.stringify(app.run_save.load_snapshot()) == save_before, "Practice leaves expedition checkpoint intact")
 	app._return_menu()
 	await process_frame
-	await press("menu.continue")
+	await press("menu.play")
+	await press("journey.continue")
 	expect(app.screens.top() == "battle" and JSON.stringify(app.expedition.snapshot()) == stable, "Continue restores exact committed battle, hand and RNG")
 	# Play a legal clearing and accept its capture through the scene before testing map navigation.
 	var turns: int = 0
@@ -108,6 +123,7 @@ func run() -> void:
 	app._return_menu()
 	await process_frame
 	await press("menu.play")
+	await press("journey.new")
 	await press("new.confirm")
 	await press("starter.moss")
 	expect(app.screens.top() == "map" and app.game.starter_species == "moss", "Confirmed new run B starts after run A")
@@ -130,7 +146,8 @@ func run() -> void:
 	app._record_result()
 	app._return_menu()
 	await process_frame
-	expect(app.registry["menu.continue"].disabled and app.saved_checkpoint.is_empty(), "A completed checkpoint ID cannot Continue from an old nonterminal checkpoint")
+	await press("menu.play")
+	expect(app.registry["journey.continue"].disabled and app.saved_checkpoint.is_empty(), "A completed checkpoint ID cannot Continue from an old nonterminal checkpoint")
 	app.queue_free()
 	app = null
 	await process_frame

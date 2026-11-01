@@ -1,8 +1,10 @@
 # Próxima fatia: V04-UX-05A — batalha de referência
 
 Prioridade revisada pelo usuário em 30/10/2026: dedicar o próximo incremento à
-UX e ao acabamento visual antes de V05-ECON-03. Este documento é um plano;
-nenhum redesign foi implementado ou publicado nesta rodada. Produto 0.3.0.
+UX e ao acabamento visual antes de V05-ECON-03. O plano abaixo orientou a base
+visual agora implementada e avaliada localmente.
+Veja [implementação, capturas, validação e pendências](ux-reference-v04-05a.md).
+A aceitação de acabamento permanece aberta, sobretudo no celular. Produto 0.3.0.
 
 ## Resultado que buscamos
 
@@ -47,10 +49,10 @@ teclado, não só por hover. Ícones novos recebem rótulos contextuais e podem 
 legenda curta na primeira apresentação. Não reduzir fontes para caber nem
 eliminar a explicação de combos para produzir uma tela aparentemente limpa.
 
-## Base da recomendação
+## Base da recomendação (planejamento de 30/10)
 
-Revisão de código e referência aprovada, sem nova auditoria visual. A ferramenta
-de captura de navegador não está disponível nesta sessão. Capturas antigas não
+Revisão de código e referência aprovada, sem nova auditoria visual. Na rodada de
+planejamento não havia ferramenta de captura disponível. Capturas antigas não
 foram usadas como se pertencessem a uma nova auditoria. Uma implementação deve
 ser avaliada por capturas atuais e interação real antes de ser aceita.
 
@@ -127,3 +129,13 @@ Um integrador mantém a composição do HUD e as interfaces compartilhadas. Não
 editar `kit.gd` ou o mesmo componente em múltiplas frentes ao mesmo tempo.
 Mapa/recompensas entram quando essa base estiver utilizável, evitando estilos
 diferentes sendo inventados em paralelo. Não alterar regras para simplificar UI.
+
+## Direção posterior: uma tela por vez
+
+Após 05A, o usuário restringiu 05B à abertura e escolheu a terceira revisão do
+menu, com logo UMBRAL, branco/roxo, ícones sombreados, bosque e cartas mágicas.
+Essa tela foi implementada e verificada; [evidências e limites](title-menu-v04-05b.md).
+A recomendação anterior de usar 05B para o HUD móvel é histórica. A próxima
+tela será definida após avaliar esta entrega; o mercador permanece posterior
+ao trabalho de UX. Não se atribui a esta fatia um redesign do Grimório inteiro,
+do HUD, da formação ou das recompensas.

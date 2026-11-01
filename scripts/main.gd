@@ -23,6 +23,10 @@ const BattleReadout = preload("res://scripts/ui/battle_readout.gd")
 const Expedition = preload("res://scripts/expedition/expedition.gd")
 const ExpeditionMap = preload("res://scripts/ui/expedition_map.gd")
 const RunSave = preload("res://scripts/expedition/run_save.gd")
+const TitleMenu = preload("res://scripts/ui/title_menu.gd")
+const JourneyMenu = preload("res://scripts/ui/journey_menu.gd")
+const TitleTheme = preload("res://scripts/ui/title_theme.gd")
+const TitleButton = preload("res://scripts/ui/title_button.gd")
 const SAVE_PATH = "user://umbral_stats_v1.json"
 const LEGACY_SAVE_PATH = "user://feral_hand_stats.json"
 const WEB_STATS_KEY = "umbral.stats.v1"
@@ -54,6 +58,7 @@ var audio: Node
 var menu_root: Control
 var battle_root: Control
 var modal_root: Control
+var title_entrance: Tween
 var visual_layer: Control
 var effects: Control
 var actors: Array = []
@@ -171,7 +176,12 @@ func _register(node: Control, key: String, screen: String) -> Control:
 			last_card_index = index
 			_aim_card(index))
 	if node is BaseButton:
-		node.pressed.connect(func(): audio.play("hover", true))
+		node.pressed.connect(func():
+			if screens.root() == "menu": audio.confirm()
+			else: audio.play("hover", true))
+		if screens.root() == "menu" and screen != "menu":
+			node.focus_entered.connect(audio.navigate)
+			node.mouse_entered.connect(audio.navigate)
 		if browser_test:
 			node.pressed.connect(func():
 				interaction_serial += 1
@@ -180,7 +190,15 @@ func _register(node: Control, key: String, screen: String) -> Control:
 	return node
 
 func _button(parent: Node, text: String, callback: Callable, key: String, screen: String, primary: bool = false) -> Button:
-	var button: Button = ui.button(text, callback, key, primary)
+	var button: Button
+	if screens.root() == "menu":
+		button = TitleButton.new()
+		button.text = text
+		button.primary = primary
+		button.reduced_motion = bool(preferences.values.reduced_motion) or visual_capture
+		button.custom_minimum_size.y = 56
+		button.pressed.connect(callback)
+	else: button = ui.button(text, callback, key, primary)
 	parent.add_child(button)
 	_register(button, key, screen)
 	return button
@@ -196,59 +214,34 @@ func _reveal_focused_control(control: Control) -> void:
 	_queue_debug()
 
 func _build_menu() -> void:
-	menu_root = Control.new()
-	menu_root.name = "TitleScreen"
-	_full(menu_root, self)
-	var column: VBoxContainer = UI.column(7)
-	menu_root.add_child(column)
-	column.anchor_left = 0.12
-	column.anchor_right = 0.12
-	column.anchor_top = 0.07
-	column.anchor_bottom = 0.92
-	column.offset_right = 650
-	column.add_child(ui.label("U M B R A L", 78, UI.PAPER, true))
-	column.add_child(ui.label("E C O S   D O   B O S Q U E", 22, UI.GOLD))
-	var breathing = Control.new()
-	breathing.custom_minimum_size.y = 20
-	column.add_child(breathing)
-	var primary: Button = _button(column, "INICIAR EXPEDIÇÃO", _choose_starter.bind(42013), "menu.play", "menu", true)
-	primary.custom_minimum_size.x = 410
-	continue_button = _button(column, "CONTINUAR EXPEDIÇÃO", _continue_expedition, "menu.continue", "menu")
-	continue_button.disabled = saved_checkpoint.is_empty()
-	_button(column, "TREINO DE BATALHA", _choose_starter.bind(42013, true), "menu.practice", "menu")
-	_button(column, "GRIMÓRIO DOS UMBRALS", _push.bind("codex"), "menu.codex", "menu")
-	_button(column, "OPÇÕES", _push.bind("settings"), "menu.settings", "menu")
-	_button(column, "COMO JOGAR", _push.bind("help"), "menu.help", "menu")
-	_button(column, "CRÉDITOS", _push.bind("credits"), "menu.credits", "menu")
-	if not OS.has_feature("web"):
-		_button(column, "SAIR", _quit, "menu.quit", "menu")
-	menu_notice = ui.paragraph(save_notice if not save_notice.is_empty() else "Escolha sua rota. Preserve seus vínculos.", 18, UI.MUTED)
-	column.add_child(menu_notice)
-	for child in column.get_children():
-		if child is Button:
-			child.alignment = HORIZONTAL_ALIGNMENT_LEFT
-			child.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-			child.custom_minimum_size.x = 450
-			child.add_theme_font_size_override("font_size", int(24 * preferences.text_scale()))
-			if child != primary:
-				child.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
-				child.add_theme_stylebox_override("hover", ui.style(Color(0.035, 0.07, 0.075, 0.45), Color.TRANSPARENT))
-	var hero: TextureRect = UI.art("umbrals/ignivar", Vector2(390, 390))
-	_at(hero, menu_root, Vector2(0.76, 0.57), Vector2(390, 390))
-	menu_stats = ui.label("", 18, UI.MUTED)
-	menu_root.add_child(menu_stats)
-	menu_stats.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
-	menu_stats.offset_left = 34
-	menu_stats.offset_top = -37
-	menu_stats.offset_right = 800
-	_update_menu_stats()
-	var version: Label = ui.label("v" + Content.VERSION, 18, UI.GOLD)
-	menu_root.add_child(version)
-	version.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
-	version.offset_left = -140
-	version.offset_top = -37
-	version.offset_right = -30
+	var title = TitleMenu.new()
+	menu_root = title
+	_full(title, self)
+	var callbacks: Array[Callable] = [_push.bind("journey"), _push.bind("codex"), _push.bind("settings"), _push.bind("help")]
+	title.build(callbacks, _register)
+	title.apply_preferences(preferences.values.reduced_motion, visual_capture, preferences.text_scale())
+	title.navigation_requested.connect(audio.navigate)
+	title.card_awakened.connect(func():
+		audio.awaken()
+		if browser_test:
+			interaction_serial += 1
+			last_interaction = "menu.card"
+		_queue_debug())
 	_set_group("menu")
+
+func _journey_menu() -> void:
+	var checkpoint: Dictionary = {}
+	if not saved_checkpoint.is_empty():
+		var candidate = Expedition.new()
+		if candidate.restore(saved_checkpoint): checkpoint = candidate.public_state()
+	var journey = JourneyMenu.new()
+	modal_root = journey
+	_full(journey, self)
+	journey.z_index = 100
+	var callbacks: Array[Callable] = [_continue_expedition, _choose_starter.bind(42013), _choose_starter.bind(42013, true), _pop]
+	journey.build(ui, checkpoint, save_notice, callbacks, _register, bool(preferences.values.reduced_motion) or visual_capture)
+	continue_button = journey.continue_button
+	menu_notice = journey.notice
 
 func _build_battle() -> void:
 	var hud = BattleHUD.new()
@@ -403,8 +396,10 @@ func _sync_selection() -> void:
 		_queue_debug()
 		return
 	var score: Dictionary = game.preview()
-	phase_label.text = {"battle": "PLANEJAMENTO · selecione, escolha alvos e conjure", "replacement": "REPOSIÇÃO · escolha quem continua", "reward": "ENCONTRO VENCIDO · escolha uma recompensa", "victory": "EXPEDIÇÃO CONCLUÍDA", "defeat": "EXPEDIÇÃO ENCERRADA"}.get(game.phase, "BATALHA")
+	phase_label.text = {"battle": "PLANEJAR  →  MIRAR  →  CONJURAR", "replacement": "REPOSIÇÃO · escolha quem continua", "reward": "ENCONTRO VENCIDO · escolha uma recompensa", "victory": "EXPEDIÇÃO CONCLUÍDA", "defeat": "EXPEDIÇÃO ENCERRADA"}.get(game.phase, "BATALHA")
 	var entries: Array = game.planned_actions()
+	var planned_cost: int = int(score.get("actions", 0))
+	var own_cost: int = int(Rules.evaluate(game.selected_cards(), game.party).actions)
 	command_strip.visible = not entries.is_empty() and game.phase == "battle"
 	for i in range(command_buttons.size()):
 		var button: Button = command_buttons[i]
@@ -426,15 +421,19 @@ func _sync_selection() -> void:
 		cards[i].disabled = busy or game.phase != "battle" or cards[i].blocked
 		var scope: String = str(Content.POWERS[game.hand[i].power].get("scope", "single"))
 		cards[i].target_caption = "→ " + (["superior", "centro", "inferior"][clampi(int(game.hand[i].get("target_slot", 1)), 0, 2)] if scope == "single" else {"upper_pair": "sup + centro", "lower_pair": "centro + inf", "all": "todos"}.get(scope, "todos"))
-		cards[i].set_chosen(i in game.selected)
+		if Content.POWERS[game.hand[i].power].get("target", "enemy") == "self": cards[i].target_caption = "Si próprio"
+		var hypothetical: Array = game.selected_cards().duplicate()
+		hypothetical.append(game.hand[i])
+		cards[i].insufficient_actions = not i in game.selected and not cards[i].blocked and planned_cost + int(Rules.evaluate(hypothetical, game.party).actions) - own_cost > game.action_budget()
 		cards[i].aiming = i == targeting_index
+		cards[i].set_chosen(i in game.selected)
 		if cards[i].blocked: cards[i].tooltip_text = reason
 	cast_button.disabled = busy or not score.valid or game.phase != "battle"
 	redraw_button.disabled = busy or game.phase != "battle"
 	cast_button.text = "CONJURANDO…" if busy else "CONJURAR"
 	redraw_button.text = "RESORTEAR · R\nPassa a rodada"
 	var cost: int = int(score.get("actions", score.get("energy", 0)))
-	energy_label.text = "%d/%d no plano · %d livre(s)" % [cost, game.action_budget(), maxi(0, game.action_budget() - cost)]
+	energy_label.configure(game.action_budget(), cost)
 	energy_label.add_theme_font_size_override("font_size", int(16 * preferences.text_scale()))
 	energy_label.tooltip_text = "%d de %d ações planejadas" % [cost, game.action_budget()]
 	energy_label.add_theme_color_override("font_color", UI.FIRE if cost > game.action_budget() else UI.GOLD)
@@ -737,11 +736,14 @@ func _sync_phase() -> void:
 	elif game.phase in ["reward", "victory", "defeat"]: _push(game.phase)
 
 func _on_screen_changed() -> void:
+	if is_instance_valid(title_entrance): title_entrance.kill()
+	menu_root.modulate = Color.WHITE
 	var battle: bool = screens.root() == "battle"
 	world.title_mode = not battle
 	world.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR if not battle else CanvasItem.TEXTURE_FILTER_NEAREST
 	world.queue_redraw()
 	menu_root.visible = screens.root() == "menu"
+	menu_root.input_active = screens.top() == "menu"
 	if is_instance_valid(map_root): map_root.visible = screens.root() == "map"
 	if is_instance_valid(battle_root): battle_root.visible = battle
 	if is_instance_valid(modal_root):
@@ -754,6 +756,16 @@ func _on_screen_changed() -> void:
 	elif screens.top() not in ["menu", "battle"]: _build_modal(screens.top())
 	_set_group(screens.top())
 	_focus(focus_memory.get(screens.top(), ""), screens.top())
+	if screens.root() == "menu":
+		audio.set_title(true)
+		var arriving: Control = menu_root if screens.top() == "menu" else modal_root
+		if is_instance_valid(arriving):
+			arriving.modulate = Color.WHITE
+			if not preferences.values.reduced_motion and not visual_capture:
+				arriving.modulate.a = 0.0
+				title_entrance = arriving.create_tween()
+				title_entrance.tween_property(arriving, "modulate:a", 1.0, 0.16).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	else: audio.set_title(false)
 	_queue_debug()
 	_sync_phase()
 
@@ -772,16 +784,18 @@ func _modal_frame(title: String, subtitle: String = "", width: float = 850) -> V
 	center.offset_right = -32
 	center.offset_bottom = -24
 	var panel = PanelContainer.new()
+	if screens.root() == "menu": panel.theme = TitleTheme.make_theme(ui.make_theme())
 	panel.custom_minimum_size.x = minf(width, size.x - 96)
 	center.add_child(panel)
 	var column: VBoxContainer = UI.column(18)
 	panel.add_child(column)
-	column.add_child(ui.label(title, 40, UI.PAPER, true, true))
+	column.add_child(ui.label(title, 40, UI.PAPER, screens.root() != "menu", true))
 	if not subtitle.is_empty(): column.add_child(ui.paragraph(subtitle, 22, UI.MUTED))
 	return column
 
 func _build_modal(screen: String) -> void:
 	match screen:
+		"journey": _journey_menu()
 		"starter": _starter_choices()
 		"confirm_new":
 			var body: VBoxContainer = _modal_frame("Começar uma nova expedição?", "A expedição salva será substituída ao escolher o primeiro vínculo. Voltar mantém o progresso atual.", 850)
@@ -898,6 +912,7 @@ func _help() -> void:
 	body.add_child(ui.label("Time e recursos", 25, UI.GOLD))
 	body.add_child(ui.paragraph("Comece com 1; até 3 no campo e 6 no time. Capture para uma vaga livre ou para a reserva, por escolha. Cartas de reservas aptos ficam fora do baralho; a entrada custa 1 ação e mistura suas cartas na próxima compra normal. O substituto recebe o golpe da vaga.\nNa mochila, você começa com 2 poções e 1 reanimação. Usar custa 1 ação; consultar é grátis. Reanimar devolve HP agora; se estiver em campo, age na próxima rodada. Reposição após nocaute é gratuita ao terminar a fila; cartas do incapacitado continuam bloqueadas.\nRESORTEAR passa a rodada inteira: nenhum comando aliado executa, os inimigos agem e a mão se renova.", 22))
 	body.add_child(ui.paragraph("1–6: poderes · Espaço: conjurar · Q/E: alvo · P: plano\nBackspace: limpar · C: inspecionar · Esc: voltar\nControle: A seleciona, X conjura, RB resorteia, Y inspeciona, LB abre o plano e B volta.", 19, UI.GOLD))
+	_button(frame, "CRÉDITOS", _push.bind("credits"), "help.credits", "help")
 	_button(frame, "VOLTAR", _pop, "help.back", "help", true)
 	_register(scroll, "help.content", "help")
 
@@ -1460,6 +1475,15 @@ func _quit() -> void:
 func _on_preferences_changed() -> void:
 	audio.apply(preferences.values)
 	world.still = visual_capture or preferences.values.reduced_motion
+	menu_root.apply_preferences(preferences.values.reduced_motion, visual_capture, preferences.text_scale())
+	for control in registry.values():
+		if is_instance_valid(control) and control is TitleButton:
+			control.reduced_motion = bool(preferences.values.reduced_motion) or visual_capture
+			control.queue_redraw()
+	if preferences.values.reduced_motion:
+		if is_instance_valid(title_entrance): title_entrance.kill()
+		menu_root.modulate = Color.WHITE
+		if is_instance_valid(modal_root): modal_root.modulate = Color.WHITE
 	if is_instance_valid(effects): effects.reduced_motion = preferences.values.reduced_motion
 	if preferences.values.reduced_motion and is_instance_valid(effects): effects.clear()
 	if session_active: game.set_information_mode(str(preferences.values.information_mode))
@@ -1594,6 +1618,11 @@ func _publish_test_state() -> void:
 	state["card_max_z"] = 6
 	state["audio"] = {"voice_pool": audio.voices.size(), "music_muted": AudioServer.is_bus_mute(AudioServer.get_bus_index("Music")), "music_db": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))}
 	state["node_count"] = get_tree().get_node_count()
+	state["title_effect"] = menu_root.effect_state()
+	state["title_audio"] = {"active": audio.title_active, "navigation_count": audio.navigation_count, "awakening_count": audio.awakening_count, "ui_muted": AudioServer.is_bus_mute(AudioServer.get_bus_index("UI"))}
+	if is_instance_valid(modal_root) and modal_root is JourneyMenu:
+		state["journey_summary"] = JourneyMenu.checkpoint_summary(modal_root.public_checkpoint) if not modal_root.public_checkpoint.is_empty() else ""
+		state["journey_party"] = modal_root.public_checkpoint.get("party", []).map(func(individual: Dictionary) -> Dictionary: return _public_individual(individual))
 	state["input_serial"] = input_serial
 	state["interaction_serial"] = interaction_serial
 	state["last_interaction"] = last_interaction
@@ -1633,7 +1662,9 @@ func _refresh_checkpoint() -> void:
 
 func _update_continue_button() -> void:
 	if is_instance_valid(continue_button): continue_button.disabled = saved_checkpoint.is_empty()
-	if is_instance_valid(menu_notice): menu_notice.text = save_notice if not save_notice.is_empty() else "Escolha sua rota. Preserve seus vínculos."
+	if is_instance_valid(menu_notice):
+		menu_notice.text = save_notice
+		menu_notice.visible = not save_notice.is_empty()
 
 func _checkpoint_expedition() -> void:
 	if not expedition_active: return
@@ -1797,4 +1828,5 @@ func _record_result() -> void:
 	_log("run_finished", {"outcome": game.phase, "damage": game.total_damage})
 
 func _update_menu_stats() -> void:
+	if not is_instance_valid(menu_stats): return
 	menu_stats.text = "%d vitórias  ·  %d expedições  ·  novos instintos a cada semente" % [stats.wins, stats.runs]
