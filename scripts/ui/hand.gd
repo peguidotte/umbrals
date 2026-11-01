@@ -7,6 +7,9 @@ func _notification(what: int) -> void:
 func layout_cards() -> void:
 	var cards: Array = get_children()
 	if cards.is_empty(): return
+	# Modified hands keep a readable card width and scroll through the same nodes.
+	var minimum_width: float = maxf(540, cards.size() * 137.0 - 9.0) if cards.size() > 6 else 540.0
+	if custom_minimum_size.x != minimum_width: custom_minimum_size.x = minimum_width
 	var gap: float = 9.0
 	var width: float = minf(160.0, maxf(56.0, (size.x - gap * (cards.size() - 1)) / cards.size()))
 	var height: float = minf(208.0, size.y - 15)

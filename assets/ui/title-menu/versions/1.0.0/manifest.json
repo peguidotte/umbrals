@@ -1,0 +1,49 @@
+{
+  "dependencies": [],
+  "description": "Selected UMBRAL title composition, raster wordmark and four illustrated controls.",
+  "files": {
+    "texture": {
+      "bytes": 2579931,
+      "kind": "texture",
+      "path": "texture.png",
+      "sha256": "992c78c3fc5e886bf201b6171c495ccee3f37fa6c505cbb86f1b14400b545cd7",
+      "technical": {
+        "alpha": false,
+        "anchor": "full-frame",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGB"
+      }
+    }
+  },
+  "id": "ui/title-menu",
+  "metadata": {
+    "artwork_text": [
+      "UMBRAL",
+      "JOGAR",
+      "GRIMÓRIO",
+      "OPÇÕES",
+      "COMO JOGAR"
+    ],
+    "consumer": "scripts/ui/title_menu.gd",
+    "notes": "Original concept is the runtime art source; real focusable buttons map to artwork regions. Localized animated light effects do not mutate game RNG.",
+    "reference_dimensions": [
+      1672,
+      941
+    ]
+  },
+  "provenance": {
+    "generation_id": "exec-c4063f14-d989-4041-b562-a3b96fe10f92",
+    "kind": "Image Gen selected concept, preserved byte-for-byte",
+    "license": "Original artwork generated for Umbral; selected by the user in this conversation.",
+    "selection": "Third displayed revision with compact shaded violet menu; selected for implementation.",
+    "tool": "OpenAI Image Gen"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

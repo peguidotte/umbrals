@@ -6,12 +6,16 @@ const Assets = preload("res://scripts/assets/catalog.gd")
 const Paths = preload("res://scripts/assets/binding_paths.gd")
 const BODY = preload(Paths.FONTS_BODY)
 const DISPLAY = preload(Paths.FONTS_DISPLAY)
-const INK = Color("101c23")
-const PAPER = Color("f3e6c5")
-const GOLD = Color("dec88d")
-const MUTED = Color("bac6b6")
+const INK = Color("0c1026")
+const PAPER = Color("eeeaf7")
+const GOLD = Color("f2bd70")
+const MUTED = Color("aab6d5")
 const FIRE = Color("ef987b")
 const LEAF = Color("91c8a1")
+const SURFACE = Color("141b36")
+const RAISED = Color("242c4c")
+const BORDER = Color("59658f")
+const CRYSTAL = Color("b5a0fa")
 var text_scale: float = 1.0
 
 func make_theme() -> Theme:
@@ -22,13 +26,13 @@ func make_theme() -> Theme:
 	theme.set_color("font_color", "Button", PAPER)
 	theme.set_color("font_focus_color", "Button", PAPER)
 	theme.set_font_size("font_size", "Button", int(22 * text_scale))
-	theme.set_stylebox("normal", "Button", style(Color(0.055, 0.10, 0.11, 0.90), Color("57604d")))
-	theme.set_stylebox("hover", "Button", style(Color("263c35"), GOLD))
-	theme.set_stylebox("pressed", "Button", style(Color("344437"), GOLD))
-	theme.set_stylebox("disabled", "Button", style(Color("162021"), Color("3d4b45")))
+	theme.set_stylebox("normal", "Button", style(SURFACE, BORDER))
+	theme.set_stylebox("hover", "Button", style(RAISED, GOLD))
+	theme.set_stylebox("pressed", "Button", style(Color("353657"), GOLD))
+	theme.set_stylebox("disabled", "Button", style(INK, Color("414b6b")))
 	theme.set_stylebox("focus", "Button", focus_style())
-	theme.set_color("font_disabled_color", "Button", Color("8c9a8d"))
-	theme.set_stylebox("panel", "PanelContainer", style(Color(0.045, 0.08, 0.10, 0.98), Color("9e936c"), 24))
+	theme.set_color("font_disabled_color", "Button", MUTED)
+	theme.set_stylebox("panel", "PanelContainer", style(INK, BORDER, 24))
 	theme.set_stylebox("panel", "PopupMenu", style(INK, GOLD, 8))
 	theme.set_stylebox("hover", "PopupMenu", style(GOLD, PAPER, 5))
 	theme.set_font_size("font_size", "PopupMenu", int(18 * text_scale))
@@ -42,7 +46,8 @@ func style(background: Color, border: Color, padding: int = 16) -> StyleBoxFlat:
 	box.bg_color = background
 	box.border_color = border
 	box.set_border_width_all(1)
-	box.set_corner_radius_all(2)
+	box.set_corner_radius_all(0)
+	box.border_width_top = 2
 	box.content_margin_left = padding + 8
 	box.content_margin_right = padding + 8
 	box.content_margin_top = padding
@@ -91,8 +96,8 @@ func button(text: String, callback: Callable, key: String, primary: bool = false
 	if primary:
 		result.accent = INK
 		result.add_theme_stylebox_override("normal", style(GOLD, PAPER))
-		result.add_theme_stylebox_override("hover", style(Color("eee0ae"), PAPER))
-		result.add_theme_stylebox_override("pressed", style(Color("b8a778"), GOLD))
+		result.add_theme_stylebox_override("hover", style(Color("ffdb9e"), PAPER))
+		result.add_theme_stylebox_override("pressed", style(Color("d5a059"), GOLD))
 		result.add_theme_color_override("font_color", INK)
 		result.add_theme_color_override("font_hover_color", INK)
 		result.add_theme_color_override("font_pressed_color", INK)

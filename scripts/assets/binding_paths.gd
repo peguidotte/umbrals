@@ -36,6 +36,8 @@ const CHARACTERS_STAG: String = "res://assets/characters/stag/versions/1.0.0/por
 const FONTS_BODY: String = "res://assets/fonts/dejavu/versions/1.0.0/body.ttf"
 const FONTS_DISPLAY: String = "res://assets/fonts/dejavu/versions/1.0.0/display.ttf"
 const UI_BACKPACK: String = "res://assets/ui/backpack/versions/1.0.0/icon.svg"
+const UI_TITLE_LOGO: String = "res://assets/ui/title-logo/versions/1.0.0/texture.png"
+const UI_TITLE_MENU: String = "res://assets/ui/title-menu/versions/1.0.0/texture.png"
 const UMBRALS_DEW: String = "res://assets/umbrals/dew/versions/1.0.0/portrait.svg"
 const UMBRALS_EMBER: String = "res://assets/umbrals/ember/versions/1.0.0/portrait.svg"
 const UMBRALS_IGNIVAR: String = "res://assets/umbrals/ignivar/versions/1.0.0/portrait.svg"
@@ -47,6 +49,7 @@ const UMBRALS_VOLT: String = "res://assets/umbrals/volt/versions/1.0.0/portrait.
 const WORLD_BATTLE_CLEARING: String = "res://assets/world/battle-clearing/versions/1.0.0/background.png"
 const WORLD_BATTLE_CLEARING_DEPTH: String = "res://assets/world/battle-clearing-depth/versions/1.0.0/background.png"
 const WORLD_MOONLIT_CLEARING: String = "res://assets/world/moonlit-clearing/versions/1.0.0/background.png"
+const WORLD_TITLE_FOREST: String = "res://assets/world/title-forest/versions/1.0.0/texture.png"
 
 const PATHS: Dictionary = {
 	"attacks/cinder-claw": ATTACKS_CINDER_CLAW,
@@ -85,6 +88,8 @@ const PATHS: Dictionary = {
 	"fonts/body": FONTS_BODY,
 	"fonts/display": FONTS_DISPLAY,
 	"ui/backpack": UI_BACKPACK,
+	"ui/title-logo": UI_TITLE_LOGO,
+	"ui/title-menu": UI_TITLE_MENU,
 	"umbrals/dew": UMBRALS_DEW,
 	"umbrals/ember": UMBRALS_EMBER,
 	"umbrals/ignivar": UMBRALS_IGNIVAR,
@@ -96,4 +101,5 @@ const PATHS: Dictionary = {
 	"world/battle-clearing": WORLD_BATTLE_CLEARING,
 	"world/battle-clearing-depth": WORLD_BATTLE_CLEARING_DEPTH,
 	"world/moonlit-clearing": WORLD_MOONLIT_CLEARING,
+	"world/title-forest": WORLD_TITLE_FOREST,
 }

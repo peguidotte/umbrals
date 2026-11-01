@@ -16,8 +16,10 @@ var home_rotation: float = 0.0
 var reduced_motion: bool = false
 var text_scale: float = 1.0
 var movement: Tween
+var owner_texture: Texture2D
 var art_texture: Texture2D
 var placed: bool = false
+var insufficient_actions: bool = false
 var blocked: bool = false
 var blocked_caption: String = "INDISPONÍVEL"
 var target_caption: String = ""
@@ -38,6 +40,7 @@ func configure(data: Dictionary, umbral: Dictionary, team: Array, large: float, 
 	var able_count: int = team.filter(func(member: Dictionary) -> bool: return int(member.get("slot", -1)) >= 0 and int(member.hp) > 0).size()
 	effect = Rules.power_effect(card, individual, able_count)
 	art_texture = Assets.texture(power.art)
+	owner_texture = UI.BattleArt.texture(Content.SPECIES[individual.species].art[int(individual.stage) - 1])
 	text_scale = large
 	reduced_motion = reduce
 	tooltip_text = "%s — %s\n%d ação(ões) · %d potência · %d escudo · %d cura\n%s\nSelecione e clique em uma vaga para mudar o alvo. Q/E: alvo. P: plano. C: detalhes." % [str(power.name).replace("\n", " "), Content.display_name(individual), int(power.cost), int(effect.get("damage", 0)), int(effect.get("block", 0)), int(effect.get("heal", 0)), _scope_label()]
@@ -90,18 +93,26 @@ func _react() -> void:
 	queue_redraw()
 
 func _title_size() -> int:
-	var point_size: int = int(18 * text_scale)
-	for line in str(power.get("name", "")).split("\n"):
-		while point_size > 11 and UI.BODY.get_string_size(line, HORIZONTAL_ALIGNMENT_LEFT, -1, point_size).x > size.x - 12:
-			point_size -= 1
-	return point_size
+	return int(16 * text_scale)
+
+func _title_lines() -> Array[String]:
+	var lines: Array[String] = []
+	var line: String = ""
+	for word in str(power.get("name", "")).replace("\n", " ").split(" "):
+		var candidate: String = word if line.is_empty() else line + " " + word
+		if not line.is_empty() and UI.BODY.get_string_size(candidate, HORIZONTAL_ALIGNMENT_LEFT, -1, _title_size()).x > size.x - 12:
+			lines.append(line)
+			line = word
+		else: line = candidate
+	if not line.is_empty(): lines.append(line)
+	return lines
 
 func _center_text(value: String, y: float, font_size: int, color: Color) -> void:
 	var width: float = UI.BODY.get_string_size(value, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
 	draw_string(UI.BODY, Vector2((size.x - width) * 0.5, y), value, HORIZONTAL_ALIGNMENT_LEFT, size.x - 10, font_size, color)
 
 func title_fits() -> bool:
-	for line in str(power.get("name", "")).split("\n"):
+	for line in _title_lines():
 		if UI.BODY.get_string_size(line, HORIZONTAL_ALIGNMENT_LEFT, -1, _title_size()).x > size.x - 10: return false
 	return true
 
@@ -109,22 +120,31 @@ func _draw() -> void:
 	if card.is_empty(): return
 	var color: Color = Color(Content.SPECIES[individual.species].color)
 	var contour: PackedVector2Array = PackedVector2Array([Vector2(0, 8), Vector2(8, 0), Vector2(size.x - 8, 0), Vector2(size.x, 8), Vector2(size.x, size.y - 8), Vector2(size.x - 8, size.y), Vector2(8, size.y), Vector2(0, size.y - 8), Vector2(0, 8)])
-	draw_colored_polygon(contour, Color("17233b") if chosen else Color("0b1728"))
-	draw_polyline(contour, UI.GOLD if chosen else Color("58607d"), 3 if chosen else 2, true)
+	draw_colored_polygon(contour, UI.RAISED if chosen else UI.INK)
+	draw_polyline(contour, UI.GOLD if chosen else UI.BORDER, 3 if chosen else 2, true)
 	if has_focus(): draw_polyline(contour, UI.PAPER, 3, true)
-	draw_circle(Vector2(19, 19), 13, Color("242640"))
+	var gem := PackedVector2Array([Vector2(7, 6), Vector2(30, 6), Vector2(34, 19), Vector2(19, 33), Vector2(4, 19), Vector2(7, 6)])
+	draw_colored_polygon(gem, UI.RAISED)
+	draw_polyline(gem, UI.FIRE if insufficient_actions else UI.CRYSTAL, 2)
 	draw_string(UI.BODY, Vector2(13, 25), str(power.cost), HORIZONTAL_ALIGNMENT_LEFT, -1, 18, UI.PAPER)
-	if chosen: draw_string(UI.BODY, Vector2(size.x - 26, 25), "✓", HORIZONTAL_ALIGNMENT_LEFT, -1, 19, UI.GOLD)
-	if chosen and aiming: draw_line(Vector2(10, 30), Vector2(size.x - 10, 30), UI.GOLD, 2)
+	if chosen:
+		if aiming: draw_string(UI.BODY, Vector2(size.x - 37, 23), "ALVO", HORIZONTAL_ALIGNMENT_LEFT, -1, 11, UI.GOLD)
+		else: draw_string(UI.BODY, Vector2(size.x - 26, 25), "✓", HORIZONTAL_ALIGNMENT_LEFT, -1, 19, UI.GOLD)
+	if chosen and aiming:
+		draw_rect(Rect2(5, 31, size.x - 10, 3), UI.GOLD)
 	draw_string(UI.BODY, Vector2(38, 24), Content.NATURES[power.nature].name, HORIZONTAL_ALIGNMENT_LEFT, size.x - 45, 12, Color(Content.NATURES[power.nature].color))
-	var art_size: float = minf(64, size.x * 0.55)
+	var art_size: float = minf(82, size.x * 0.74)
 	draw_texture_rect(art_texture, Rect2(Vector2((size.x - art_size) * 0.5, 33), Vector2.ONE * art_size), false, Color(1, 1, 1, 0.35) if blocked else Color.WHITE)
-	var y: float = 111
+	var y: float = 125
 	var title_size: int = _title_size()
-	for line in str(power.name).split("\n"):
+	for line in _title_lines():
 		_center_text(line, y, title_size, UI.MUTED if blocked else UI.PAPER)
 		y += title_size + 2
 	var first: String = "%d poder" % floori(float(effect.damage) * float(effect.get("attack_multiplier", 1.0))) if int(effect.get("damage", 0)) > 0 else "%d escudo" % int(effect.block) if int(effect.get("block", 0)) > 0 else "%d cura" % int(effect.get("heal", 0))
-	_center_text(blocked_caption if blocked else first, size.y - 43, mini(14, int(size.x / 8)), UI.FIRE if blocked else color)
-	_center_text(target_caption if chosen and not target_caption.is_empty() else _scope_label(), size.y - 25, mini(12, int(size.x / 9)), UI.GOLD if chosen else UI.MUTED)
-	_center_text(Content.display_name(individual), size.y - 8, mini(13, int(size.x / 8)), color)
+	_center_text(blocked_caption if blocked else first, size.y - 43, int(16 * text_scale), UI.FIRE if blocked else color)
+	_center_text("SEM AÇÕES" if insufficient_actions else target_caption if chosen and not target_caption.is_empty() else _scope_label(), size.y - 25, int(13 * text_scale), UI.GOLD if chosen else UI.MUTED)
+	draw_line(Vector2(6, size.y - 21), Vector2(size.x - 6, size.y - 21), UI.BORDER, 1)
+	var portrait_rect := Rect2(6, size.y - 22, 25, 23)
+	draw_texture_rect(owner_texture, portrait_rect, false)
+	var owner_name: String = "%s · %d" % [Content.display_name(individual), int(individual.uid)]
+	draw_string(UI.BODY, Vector2(34, size.y - 5), owner_name, HORIZONTAL_ALIGNMENT_LEFT, size.x - 38, int(12 * text_scale), UI.PAPER)

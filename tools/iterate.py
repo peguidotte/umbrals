@@ -30,13 +30,13 @@ def source_manifest():
     return {'sha256': digest, 'files': records}
 
 
-def run_command(command, log):
+def run_command(command, log, timeout_seconds=1800):
     # Arguments remain argv entries. The shell only sources the writable tool environment.
     result = subprocess.run(['bash', '-c', 'set -euo pipefail; source tools/environment.sh; exec "$@"',
                              'umbral-iteration', *command], cwd=ROOT, stdout=log, stderr=subprocess.STDOUT,
                             # Both battle routes plus five software-rendered viewports
                             # and video exceed 15 minutes on the cloud runner.
-                            timeout=1800)
+                            timeout=timeout_seconds)
     return result.returncode
 
 
@@ -167,8 +167,10 @@ def main():
     parser.add_argument('--goal', default='Melhorar a experiência preservando os contratos de jogo e navegação.')
     parser.add_argument('--baseline', type=Path, help='Earlier iteration directory or archived screenshots.')
     parser.add_argument('--video', action='store_true')
+    parser.add_argument('--step-timeout', type=int, default=1800, help='Seconds per verification step; coverage and assertions stay unchanged.')
     parser.add_argument('--report-file', type=Path, help='Also write the machine-readable run result here, for CI summaries.')
     args = parser.parse_args()
+    if args.step_timeout < 60: parser.error('--step-timeout must be at least 60 seconds.')
     if args.review_only:
         out = args.review_only.resolve()
         if not (out / 'run.json').is_file(): parser.error('Review directory must contain run.json.')
@@ -202,7 +204,7 @@ def main():
     report = {'label':args.label,'version':version,'goal':args.goal,'started_utc':stamp,
               'evidence_dir':str(out.relative_to(ROOT)),
               'source_hash':sources['sha256'],'baseline':str(baseline) if baseline else None,
-              'status':'running','steps':[],'comparisons':[],
+              'status':'running','steps':[],'comparisons':[], 'step_timeout_seconds':args.step_timeout,
               'tools':{'godot':engine,'python':sys.version.split()[0], 'playwright':importlib.metadata.version('playwright'), 'pillow':importlib.metadata.version('Pillow')},
               'visual_review':'pending; fill review notes after inspecting actual captures and video',
               'limits':['Software WebGL, not hardware performance measurements.', 'Synthetic gamepad events, not physical controller validation.',
@@ -217,7 +219,7 @@ def main():
             print(f'[{args.label}] {name}', flush=True)
             with (out / 'logs' / (name + '.log')).open('w') as log:
                 step_start = time.monotonic()
-                status = run_command(argv, log)
+                status = run_command(argv, log, args.step_timeout)
             report['steps'].append({'name':name,'exit_code':status,'seconds':round(time.monotonic()-step_start,2),'command':argv})
             if name == 'rules-and-ui':
                 for filename in ['asset-report.json','asset-unit-report.json','asset_catalog_test.log','rules.log','mutation-report.json','ui-report.json','ui_state_test.log','ui_flow_test.log','startup_smoke.log','import.log','expedition-report.json','expedition-rules.log','expedition-save.log','expedition-ui.log']:

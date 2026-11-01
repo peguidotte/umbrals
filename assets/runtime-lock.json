@@ -180,6 +180,16 @@
       "id": "ui/backpack",
       "version": "1.0.0"
     },
+    "ui/title-logo": {
+      "file": "texture",
+      "id": "ui/title-logo",
+      "version": "1.0.0"
+    },
+    "ui/title-menu": {
+      "file": "texture",
+      "id": "ui/title-menu",
+      "version": "1.0.0"
+    },
     "umbrals/dew": {
       "file": "portrait",
       "id": "umbrals/dew",
@@ -233,6 +243,11 @@
     "world/moonlit-clearing": {
       "file": "background",
       "id": "world/moonlit-clearing",
+      "version": "1.0.0"
+    },
+    "world/title-forest": {
+      "file": "texture",
+      "id": "world/title-forest",
       "version": "1.0.0"
     }
   },

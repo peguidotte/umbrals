@@ -2695,6 +2695,64 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 778874,
+      "id": "ui/title-logo@1.0.0:texture",
+      "kind": "texture",
+      "module": "ui/title-logo",
+      "path": "assets/ui/title-logo/versions/1.0.0/texture.png",
+      "role": "texture",
+      "sha256": "4f3ef5d20d5af48178438b2dc5611667a2fbed2cd427e3e43fe631a51d58ef10",
+      "source": {
+        "generation_id": "exec-5bf7018c-2293-49c2-a8cd-1e624c454153",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original artwork generated for Umbral in this conversation.",
+        "selection": "Existing approved composition; clean background derived for independent runtime layers.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "anchor": "full-frame",
+        "dimensions": [
+          2006,
+          784
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2579931,
+      "id": "ui/title-menu@1.0.0:texture",
+      "kind": "texture",
+      "module": "ui/title-menu",
+      "path": "assets/ui/title-menu/versions/1.0.0/texture.png",
+      "role": "texture",
+      "sha256": "992c78c3fc5e886bf201b6171c495ccee3f37fa6c505cbb86f1b14400b545cd7",
+      "source": {
+        "generation_id": "exec-c4063f14-d989-4041-b562-a3b96fe10f92",
+        "kind": "Image Gen selected concept, preserved byte-for-byte",
+        "license": "Original artwork generated for Umbral; selected by the user in this conversation.",
+        "selection": "Third displayed revision with compact shaded violet menu; selected for implementation.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "anchor": "full-frame",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
       "bytes": 2369,
       "id": "umbrals/dew@1.0.0:portrait",
       "kind": "texture",
@@ -2969,6 +3027,35 @@
         "filtering": "linear",
         "frames": 1,
         "mipmaps": false,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2627978,
+      "id": "world/title-forest@1.0.0:texture",
+      "kind": "texture",
+      "module": "world/title-forest",
+      "path": "assets/world/title-forest/versions/1.0.0/texture.png",
+      "role": "texture",
+      "sha256": "94833e9336b1727891ab48017149d5d89d145d01e8b28e67c47a3d1739eedc17",
+      "source": {
+        "generation_id": "exec-eec7c2ef-f5be-4941-89d7-d4ac88254736",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original artwork generated for Umbral in this conversation.",
+        "selection": "Existing approved composition; clean background derived for independent runtime layers.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "anchor": "full-frame",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "filtering": "nearest",
+        "frames": 1,
         "mode": "RGB"
       },
       "version": "1.0.0"

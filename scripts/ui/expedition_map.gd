@@ -9,6 +9,7 @@ signal selection_changed(id: String)
 signal control_created(control: Control, id: String)
 
 const UI = preload("res://scripts/ui/kit.gd")
+const Trail = preload("res://scripts/ui/expedition_trail.gd")
 const Content = preload("res://scripts/content.gd")
 
 const NODE_IDS: Array[String] = ["clearing", "thicket", "spring", "boss"]
@@ -21,6 +22,7 @@ var _built_wide: bool = true
 var _ui: UmbralUI
 var _root: VBoxContainer
 var _route_scroll: ScrollContainer
+var _trail: Control
 var _route_host: Control
 var _node_buttons: Dictionary = {}
 var _node_data: Dictionary = {}
@@ -85,7 +87,7 @@ func _build() -> void:
 	_root.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_root.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_root.add_theme_constant_override("separation", int(14 * _text_scale))
-	_root.add_theme_stylebox_override("panel", _ui.style(Color("101b20"), Color("57604d"), 16))
+	_root.add_theme_stylebox_override("panel", _ui.style(UI.INK, UI.BORDER, 16))
 	var frame := PanelContainer.new()
 	frame.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	frame.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -123,7 +125,7 @@ func _add_party_status() -> void:
 	var party: Array = _snapshot.get("party", [])
 	var panel := PanelContainer.new()
 	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	panel.add_theme_stylebox_override("panel", _ui.style(Color("172526"), Color("536453"), 9))
+	panel.add_theme_stylebox_override("panel", _ui.style(UI.SURFACE, UI.BORDER, 9))
 	_root.add_child(panel)
 	var content := UI.column(5)
 	panel.add_child(content)
@@ -147,10 +149,13 @@ func _add_party_status() -> void:
 		var state: String = (SLOT_NAMES[clampi(slot, 0, 2)] if active else "Reserva")
 		if hp <= 0:
 			state = "Incapacitado"
-		var item := _ui.label("%s\n%s · %d/%d HP" % [str(individual.get("name", Content.display_name(individual))), state, hp, max_hp], 17, UI.PAPER)
-		item.custom_minimum_size = Vector2(190.0 * _text_scale, 42.0 * _text_scale)
+		var portrait_row := UI.row(8)
+		members.add_child(portrait_row)
+		portrait_row.add_child(UI.art(str(Content.SPECIES[individual.species].art[int(individual.stage) - 1]), Vector2(48, 48)))
+		var item := _ui.label("%s\n%s · %d/%d HP" % [str(individual.get("name", Content.display_name(individual))) + " · " + str(individual.uid), state, hp, max_hp], 17, UI.PAPER)
+		item.custom_minimum_size = Vector2(155.0 * _text_scale, 42.0 * _text_scale)
 		item.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		members.add_child(item)
+		portrait_row.add_child(item)
 		control_created.emit(item, "map.party.%s" % str(individual.get("uid", members.get_child_count())))
 
 func _add_inventory_status() -> void:
@@ -180,7 +185,16 @@ func _add_route() -> void:
 	_route_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	_route_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	_route_scroll.custom_minimum_size.y = 190.0 * _text_scale
-	_root.add_child(_route_scroll)
+	var grove := PanelContainer.new()
+	grove.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	grove.clip_contents = true
+	grove.add_theme_stylebox_override("panel", _ui.style(UI.INK, UI.BORDER, 10))
+	_root.add_child(grove)
+	_trail = Trail.new()
+	grove.add_child(_trail)
+	grove.add_child(_route_scroll)
+	_route_scroll.get_v_scroll_bar().value_changed.connect(func(_value: float): _trail.queue_redraw())
+	_route_scroll.get_h_scroll_bar().value_changed.connect(func(_value: float): _trail.queue_redraw())
 	if _built_wide:
 		var row := HBoxContainer.new()
 		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -195,6 +209,9 @@ func _add_route() -> void:
 		_route_host = column
 		_route_scroll.add_child(column)
 		_add_vertical_route(column)
+	_trail.nodes = _node_buttons
+	_trail.selected = _selected_id
+	_trail.queue_redraw.call_deferred()
 
 func _add_wide_route(row: HBoxContainer) -> void:
 	var nodes: Dictionary = _nodes_by_id()
@@ -214,10 +231,10 @@ func _add_vertical_route(column: VBoxContainer) -> void:
 			depth_nodes.append(nodes.get(str(entry[i]), {}))
 		column.add_child(_depth_column(str(entry[0]), depth_nodes))
 
-func _depth_column(heading_text: String, entries: Array) -> VBoxContainer:
+func _depth_column(_heading_text: String, entries: Array) -> VBoxContainer:
 	var column := UI.column(8)
-	column.add_theme_stylebox_override("panel", _ui.style(Color("142123", 0.88), Color("384e45"), 9))
-	column.add_child(_ui.label(heading_text, 15, UI.GOLD))
+	column.add_theme_stylebox_override("panel", _ui.style(UI.SURFACE, UI.BORDER, 9))
+	column.alignment = BoxContainer.ALIGNMENT_CENTER
 	for entry_variant in entries:
 		if not entry_variant is Dictionary or entry_variant.is_empty():
 			continue
@@ -227,9 +244,16 @@ func _depth_column(heading_text: String, entries: Array) -> VBoxContainer:
 			continue
 		_node_data[id] = node
 		var button := _ui.button(_node_button_text(node, id == _selected_id), func(): _select_node(id), "map.node." + id)
-		button.custom_minimum_size = Vector2(220 * _text_scale, 76 * _text_scale)
-		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		button.custom_minimum_size = Vector2(220 * _text_scale, 136 * _text_scale)
+		button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		button.alignment = HORIZONTAL_ALIGNMENT_CENTER
+		button.icon = UI.Assets.texture("attacks/rain") if id == "spring" else UI.BattleArt.texture({"clearing": "characters/spore", "thicket": "characters/owl", "boss": "characters/stag"}[id])
+		button.expand_icon = true
+		button.add_theme_color_override("icon_disabled_color", Color(0.7, 0.75, 0.85))
+		button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
+		button.add_theme_constant_override("icon_max_width", 78)
+		button.add_theme_stylebox_override("normal", _ui.style(UI.SURFACE, UI.GOLD if id == _selected_id else UI.BORDER, 8))
 		button.disabled = bool(node.get("locked", false)) or not bool(node.get("available", false))
 		button.add_theme_font_size_override("font_size", int(18 * _text_scale))
 		column.add_child(button)
@@ -240,7 +264,7 @@ func _depth_column(heading_text: String, entries: Array) -> VBoxContainer:
 func _add_selection_detail() -> void:
 	var panel := PanelContainer.new()
 	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	panel.add_theme_stylebox_override("panel", _ui.style(Color("101b20"), Color("736c4f"), 10))
+	panel.add_theme_stylebox_override("panel", _ui.style(UI.SURFACE, UI.BORDER, 10))
 	_root.add_child(panel)
 	var content := UI.column(4)
 	panel.add_child(content)
@@ -299,6 +323,10 @@ func _select_node(id: String) -> void:
 	for node_id in _node_buttons:
 		var button: Button = _node_buttons[node_id]
 		button.text = _node_button_text(_node_data[node_id], node_id == id)
+		button.add_theme_stylebox_override("normal", _ui.style(UI.SURFACE, UI.GOLD if node_id == id else UI.BORDER, 8))
+	if is_instance_valid(_trail):
+		_trail.selected = id
+		_trail.queue_redraw()
 	if is_instance_valid(_confirm_button):
 		_confirm_button.disabled = not _is_selected_available()
 	var detail: Label = find_child("SelectionDetail", true, false) as Label
@@ -341,10 +369,8 @@ func _node_button_text(node: Dictionary, selected: bool = false) -> String:
 	var id: String = str(node.get("id", ""))
 	var title: String = str(node.get("title", id.capitalize()))
 	var state: String = "CONCLUÍDO" if bool(node.get("completed", false)) else ("ROTA NÃO ESCOLHIDA" if _is_unchosen_route(id) else ("DISPONÍVEL" if bool(node.get("available", false)) and not bool(node.get("locked", false)) else "BLOQUEADO"))
-	var kind: String = str(node.get("kind", "battle"))
-	var type_label: String = "DESCANSO" if kind == "rest" else ("CHEFE · COMBATE" if kind == "boss" else "COMBATE")
 	var prefix: String = "◆ " if selected else ""
-	return "%s%s\n%s · %s" % [prefix, title, type_label, state]
+	return "%s%s\n%s" % [prefix, title, state]
 
 func _selected_summary() -> String:
 	var node: Dictionary = _node_data.get(_selected_id, _nodes_by_id().get(_selected_id, {}))

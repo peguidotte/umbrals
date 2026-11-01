@@ -90,7 +90,8 @@ try:
                 raise
 
         def settled():
-            wait('!window.umbralState.busy')
+            # Long multi-actor queues can exceed 15 wall-clock seconds under software video capture.
+            wait('!window.umbralState.busy', timeout=60000)
             page.wait_for_timeout(200)
 
         def load():
@@ -161,7 +162,9 @@ try:
 
         def start(species='ember'):
             global starter_choice_seen
-            click('menu.practice')
+            click('menu.play')
+            wait("window.umbralState.screen === 'journey'")
+            click('journey.practice')
             wait("window.umbralState.screen === 'starter'")
             geometry('Starter choice')
             if not starter_choice_seen:
@@ -175,10 +178,17 @@ try:
         check(state()['focused'] == 'menu.play', 'Title opens with clear initial focus')
         geometry('Title')
         shot('01-menu')
+        home = {k for k,c in state()['controls'].items() if c['visible'] and c['active'] and k.startswith('menu.')}
+        check(home == {'menu.play', 'menu.codex', 'menu.settings', 'menu.help'}, 'Home has exactly four active choices')
+        check(not any(k in state()['controls'] for k in ('menu.practice', 'menu.continue', 'menu.credits')), 'Home has no hidden legacy aliases')
+        key('Enter')
+        wait("window.umbralState.screen === 'journey'")
+        geometry('Expedition choices')
+        shot('01b-journey')
+        back('menu')
+        check(state()['focused'] == 'menu.play', 'Back from expedition choices restores Play focus')
         key('ArrowDown')
-        check(state()['focused'] == 'menu.practice', 'Arrow keys navigate from expedition to practice')
-        key('ArrowDown')
-        check(state()['focused'] == 'menu.codex', 'Arrow keys continue to the codex')
+        check(state()['focused'] == 'menu.codex', 'Arrow keys navigate from Play to the codex')
         key('Enter')
         wait("window.umbralState.screen === 'codex'")
         shot('02-codex')
@@ -548,9 +558,12 @@ try:
                 load()
                 meta=geometry(f'Menu {width}×{height}')
                 shot(f'matrix-menu-{width}x{height}')
-                click('menu.practice')
+                click('menu.play')
+                geometry(f'Expedition choices {width}×{height}')
+                click('journey.practice')
                 geometry(f'Starter {width}×{height}')
                 shot(f'matrix-starter-{width}x{height}')
+                back('journey')
                 back('menu')
                 start()
                 meta.update(geometry(f'Battle {width}×{height}'))

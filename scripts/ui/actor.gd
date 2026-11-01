@@ -79,7 +79,7 @@ func set_identity(data: Dictionary, scale_text: float = 1.0) -> void:
 	text_scale = scale_text
 	if data.is_empty():
 		portrait.texture = null
-		caption.text = "Vaga " + ["superior", "central", "inferior"][slot]
+		caption.text = "—"
 		caption.modulate = Color(1, 1, 1, 0.45)
 		passive_caption.text = ""
 		tooltip_text = "Vaga %s · sem retaguarda" % ["superior", "central", "inferior"][slot]
@@ -95,6 +95,7 @@ func set_identity(data: Dictionary, scale_text: float = 1.0) -> void:
 		portrait.modulate = (Color(0.94, 0.97, 1.0) if slot == 0 else Color.WHITE) if alive else Color(0.4, 0.48, 0.56, 0.6)
 		accent = Color(species.get("color", "dec88d"))
 		caption.text = str(data.name) if data.has("name") else Content.display_name(data)
+		if not enemy: caption.text += " · %d" % int(data.uid)
 		caption.modulate = Color.WHITE
 		caption.add_theme_color_override("font_color", accent if alive else UI.MUTED)
 		var tags: Array[String] = []

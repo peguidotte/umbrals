@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "ui/title-logo",
+  "version": "1.0.0",
+  "status": "production",
+  "description": "Approved clean UMBRAL wordmark without subtitle or cards.",
+  "provenance": {
+    "kind": "Image Gen original preserved byte-for-byte",
+    "tool": "OpenAI Image Gen",
+    "generation_id": "exec-5bf7018c-2293-49c2-a8cd-1e624c454153",
+    "license": "Original artwork generated for Umbral in this conversation.",
+    "selection": "Existing approved composition; clean background derived for independent runtime layers."
+  },
+  "dependencies": [],
+  "files": {
+    "texture": {
+      "kind": "texture",
+      "path": "texture.png",
+      "sha256": "4f3ef5d20d5af48178438b2dc5611667a2fbed2cd427e3e43fe631a51d58ef10",
+      "bytes": 778874,
+      "technical": {
+        "dimensions": [
+          2006,
+          784
+        ],
+        "mode": "RGBA",
+        "alpha": true,
+        "filtering": "nearest",
+        "frames": 1,
+        "anchor": "full-frame"
+      }
+    }
+  },
+  "metadata": {
+    "consumer": "scripts/ui/title_menu.gd",
+    "notes": "Original retained with embedded metadata. Runtime region/masking, no raster edits."
+  }
+}
