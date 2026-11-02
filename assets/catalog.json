@@ -378,6 +378,15 @@
         }
       }
     },
+    "fonts/cormorant": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/fonts/cormorant/versions/1.0.0/manifest.json",
+          "sha256": "74b36c52fa300803471d8a09f97d19374b2069456e8137a1d6bedf522c077010",
+          "status": "production"
+        }
+      }
+    },
     "fonts/dejavu": {
       "versions": {
         "1.0.0": {
@@ -392,6 +401,24 @@
         "1.0.0": {
           "manifest": "assets/ui/backpack/versions/1.0.0/manifest.json",
           "sha256": "2d7f32918ba82e3afa3e2581045226a8a110c4cadfc8b02a316cf304976e6183",
+          "status": "production"
+        }
+      }
+    },
+    "ui/gold-approved": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/ui/gold-approved/versions/1.0.0/manifest.json",
+          "sha256": "bcdd59dfeb147ffdc6d53fbfd3867a8cf889716a83b5a3dbcbe7c095c6671c3c",
+          "status": "production"
+        }
+      }
+    },
+    "ui/gold-frame": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/ui/gold-frame/versions/1.0.0/manifest.json",
+          "sha256": "6ceec05e72484dcb81696a28697aaf7b6ced9d8dc64548e098eeaa3cf5440eb5",
           "status": "production"
         }
       }
@@ -500,6 +527,15 @@
         "1.0.0": {
           "manifest": "assets/world/battle-clearing-depth/versions/1.0.0/manifest.json",
           "sha256": "5d21ba0a466d7ebbf67f6366a7dd5d45e9c4a4cc8260dd7c35f6bc65e024af1b",
+          "status": "production"
+        }
+      }
+    },
+    "world/gold-forest": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/world/gold-forest/versions/1.0.0/manifest.json",
+          "sha256": "bde2b780377a7b117164fcffd99ff0139066a83a2ade6940f00935322833cbac",
           "status": "production"
         }
       }

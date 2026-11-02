@@ -19,7 +19,7 @@ func build(kit: RefCounted, saved: Dictionary, save_message: String, callbacks: 
 	requested_text_scale = kit.text_scale
 	theme = TitleTheme.make_theme(kit.make_theme())
 	var shade = ColorRect.new()
-	shade.color = Color(0.015, 0.009, 0.035, 0.5)
+	shade.color = Color(0.015, 0.03, 0.035, 0.5)
 	add_child(shade)
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	panel = PanelContainer.new()
@@ -31,13 +31,13 @@ func build(kit: RefCounted, saved: Dictionary, save_message: String, callbacks: 
 	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroller.add_child(body)
 	body.add_child(kit.label("JOGAR", 36, TitleTheme.PAPER))
-	body.add_child(kit.paragraph("O bosque espera por você.", 20, Color("c4b8d9")))
+	body.add_child(kit.paragraph("O bosque espera por você.", 20, Color("bac6b6")))
 	var has_save: bool = not saved.is_empty()
 	var summary: String = checkpoint_summary(saved) if has_save else "Sua primeira expedição começa com um vínculo."
 	body.add_child(kit.paragraph(summary, 23, TitleTheme.PAPER))
 	if has_save:
 		var roster: Array = saved.get("party", [])
-		body.add_child(kit.label("EQUIPE SALVA · %d VÍNCULO%s" % [roster.size(), "S" if roster.size() != 1 else ""], 15, Color("c4b8d9")))
+		body.add_child(kit.label("EQUIPE SALVA · %d VÍNCULO%s" % [roster.size(), "S" if roster.size() != 1 else ""], 15, Color("bac6b6")))
 		var grid = GridContainer.new()
 		grid.columns = 3
 		grid.add_theme_constant_override("h_separation", 12)
@@ -53,7 +53,7 @@ func build(kit: RefCounted, saved: Dictionary, save_message: String, callbacks: 
 			var details: VBoxContainer = UI.column(1)
 			row.add_child(details)
 			details.add_child(kit.label(display_name, 16, TitleTheme.PAPER))
-			details.add_child(kit.label("%d/%d HP" % [individual.hp, individual.max_hp], 15, Color("c4b8d9")))
+			details.add_child(kit.label("%d/%d HP" % [individual.hp, individual.max_hp], 15, Color("bac6b6")))
 			row.tooltip_text = "%s · %s" % [display_name, "Em campo" if int(individual.slot) >= 0 else "Reserva"]
 	var labels = ["CONTINUAR EXPEDIÇÃO", "NOVA EXPEDIÇÃO", "TREINO DE BATALHA", "VOLTAR"]
 	var ids = ["journey.continue", "journey.new", "journey.practice", "journey.back"]
@@ -74,7 +74,7 @@ func build(kit: RefCounted, saved: Dictionary, save_message: String, callbacks: 
 		register.call(button, ids[i], "journey")
 		button.pressed.connect(callbacks[i])
 		if i == 2:
-			notice = kit.paragraph(save_message, 16, Color("c4b8d9"))
+			notice = kit.paragraph(save_message, 16, Color("bac6b6"))
 			notice.visible = not save_message.is_empty() and not save_message.begins_with("Progresso salvo")
 			body.add_child(notice)
 	resized.connect(_layout)

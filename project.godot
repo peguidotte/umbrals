@@ -1,8 +1,8 @@
-; Umbral: Ecos do Bosque — Godot 4.6.3
+; Umbral — Godot 4.6.3
 config_version=5
 
 [application]
-config/name="Umbral: Ecos do Bosque"
+config/name="Umbral"
 config/description="Poderes únicos, passivas individuais e evoluções em um roguelike de Umbrals."
 config/version="0.3.0"
 config/use_custom_user_dir=true

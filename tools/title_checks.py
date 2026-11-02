@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'test-results/title-scoped'
 OUT.mkdir(parents=True, exist_ok=True)
 reports = []
-for script in ('asset_catalog_test.gd', 'title_menu_test.gd', 'startup_smoke.gd'):
+for script in ('asset_catalog_test.gd', 'title_menu_test.gd', 'gold_ui_test.gd', 'codex_navigation_test.gd', 'codex_story_test.gd', 'settings_menu_test.gd', 'startup_smoke.gd'):
     with tempfile.TemporaryDirectory(prefix='umbral-title-check-') as temporary:
         env = dict(os.environ, XDG_DATA_HOME=temporary + '/data',
                    XDG_CONFIG_HOME=temporary + '/config', XDG_CACHE_HOME=temporary + '/cache')

@@ -42,17 +42,10 @@ func _run() -> void:
 	await pad(JOY_BUTTON_DPAD_DOWN)
 	expect(focus_key() == "menu.codex", "Controller d-pad moves from Play to codex")
 	await pad(JOY_BUTTON_A)
-	expect(app.screens.top() == "codex" and focus_key() == "codex.back", "Controller A opens the focused codex")
+	expect(app.screens.top() == "codex" and focus_key() == "codex.tab.umbrals", "Controller A opens the codex categories")
 	await pad(JOY_BUTTON_B)
 	expect(app.screens.top() == "menu" and focus_key() == "menu.codex", "Controller B restores the previous menu focus")
-	# Presentation unit check: send a card press directly to the title control.
-	var card_press := InputEventMouseButton.new()
-	card_press.button_index = MOUSE_BUTTON_LEFT
-	card_press.pressed = true
-	# Use the rendered card center, including composition scale and its current float.
-	card_press.position = app.menu_root.composition.get_transform() * app.menu_root.cards[0].position
-	app.menu_root._gui_input(card_press)
-	expect(app.menu_root.effect_state().pulse_age == 0.0, "Card press starts the title presentation pulse")
+	expect(app.menu_root.canvas.size == Vector2(1672,941), "Title preserves the approved artwork composition")
 	var before_motion: String = JSON.stringify([app.game.rng.state, app.run_save.load_snapshot()])
 	await key(KEY_DOWN)
 	await key(KEY_ENTER)
@@ -63,11 +56,11 @@ func _run() -> void:
 	await key(KEY_ENTER)
 	expect(app.preferences.values.reduced_motion, "Keyboard toggles and persists reduced motion")
 	var title_effect: Dictionary = app.menu_root.effect_state()
-	expect(title_effect.reduced_motion and title_effect.clock == 0.0 and title_effect.pulse_age == 10.0, "Reduced motion immediately rests the title effect")
+	expect(title_effect.reduced_motion and title_effect.clock == 0.0, "Reduced motion immediately rests the title effect")
 	await key(KEY_ENTER)
 	await key(KEY_ENTER)
 	title_effect = app.menu_root.effect_state()
-	expect(title_effect.reduced_motion and title_effect.clock == 0.0 and title_effect.pulse_age == 10.0 and JSON.stringify([app.game.rng.state, app.run_save.load_snapshot()]) == before_motion, "Re-enabling reduced motion clears the effect without changing game RNG or save")
+	expect(title_effect.reduced_motion and title_effect.clock == 0.0 and JSON.stringify([app.game.rng.state, app.run_save.load_snapshot()]) == before_motion, "Re-enabling reduced motion clears the effect without changing game RNG or save")
 	await key(KEY_ESCAPE)
 	expect(app.screens.top() == "menu" and focus_key() == "menu.settings", "Back from options restores title focus")
 	app.registry["menu.help"].grab_focus()

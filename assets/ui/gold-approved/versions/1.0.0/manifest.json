@@ -1,0 +1,117 @@
+{
+  "dependencies": [],
+  "description": "Approved gold UI artwork atlas and text-free environment plates. Cropped at runtime; controls and knowledge stay native.",
+  "files": {
+    "codex-art": {
+      "bytes": 2381331,
+      "kind": "texture",
+      "path": "codex-art.png",
+      "provenance": {
+        "generation_id": "exec-fa393b48-144d-41dd-ac81-79d36eeba1f9",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original artwork generated for this game."
+      },
+      "sha256": "f19dc9fe7b1f982e158f87528e2c9d374b33b82ecf227ca7941a8b17e6fc57b2",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "codex-scene": {
+      "bytes": 2490856,
+      "kind": "texture",
+      "path": "codex-scene.png",
+      "provenance": {
+        "generation_id": "exec-1a29ccb1-c6bd-48b8-af7a-a3d8dcb04703",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original artwork generated for this game."
+      },
+      "sha256": "3598d9ec8105f5143bfe8ec8d6bce7c4dc99d093d79deeef438ce6c26b8c3991",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1671,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "codex-template": {
+      "bytes": 1977219,
+      "kind": "texture",
+      "path": "codex-template.png",
+      "provenance": {
+        "generation_id": "exec-2c546cb7-b2e0-4b45-a2c3-31c41c9163af",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original generated artwork for this game.",
+        "notes": "Empty approved UI template; text, creatures and icons removed, framing and dark reading surfaces retained."
+      },
+      "sha256": "3c7e9753b5494c49ace5a9fe1a11500efd6423a6879e37fa5ab49f7e14733f67",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "menu-art": {
+      "bytes": 2549367,
+      "kind": "texture",
+      "path": "menu-art.png",
+      "provenance": {
+        "generation_id": "exec-c915d4a4-d7e5-43d4-b1b3-b41f604dff6e",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original artwork generated for this game."
+      },
+      "sha256": "cbd6fd8f20619bfeb70a9b3ee3a4f18e32298323bef4e718e7b586437d0f7643",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "menu-scene": {
+      "bytes": 2509333,
+      "kind": "texture",
+      "path": "menu-scene.png",
+      "provenance": {
+        "generation_id": "exec-168b7988-9021-4e9e-8634-0c78cb05e27b",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original artwork generated for this game."
+      },
+      "sha256": "d99fe4bb6f3a4b088dd02b8aee40e08e37a81273a2ae5eee04af594e108fe61d",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    }
+  },
+  "id": "ui/gold-approved",
+  "provenance": {
+    "kind": "Original approved Image Gen concepts and background edits",
+    "license": "Original generated project artwork.",
+    "notes": "Runtime atlas regions isolate brand, ornaments, portrait illustrations and static caption plates. No full screenshot is used as an interactive screen.",
+    "tool": "OpenAI Image Gen"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

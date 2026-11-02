@@ -1,0 +1,211 @@
+class_name UmbralSettingsMenu
+extends Control
+## Native settings controls over the approved forest and botanical frame.
+const Gold = preload("res://scripts/ui/gold_theme.gd")
+const ControlsTheme = preload("res://scripts/ui/gold_controls_theme.gd")
+const RefArt = preload("res://scripts/ui/reference_art.gd")
+const Assets = preload("res://scripts/assets/catalog.gd")
+const UI = preload("res://scripts/ui/kit.gd")
+const MODES = {
+	"hidden": ["Oculta", "As intenções inimigas ficam escondidas."],
+	"partial": ["Parcial", "Revela a categoria da ação que está por vir."],
+	"full": ["Completa", "Revela força, alcance e alvo da ação."],
+}
+var preferences: RefCounted
+var register: Callable
+var panel: PanelContainer
+var columns: GridContainer
+var scroll: ScrollContainer
+var text_scale: float = 1.0
+var mode_buttons: Dictionary = {}
+var mode_marks: Dictionary = {}
+
+func build(store: RefCounted, registry: Callable, back: Callable) -> void:
+	name = "Overlay_settings"
+	preferences = store
+	register = registry
+	text_scale = preferences.text_scale()
+	theme = ControlsTheme.make(text_scale)
+	var forest: TextureRect = RefArt.image(self,Assets.texture("ui/gold-menu-scene"),Rect2(Vector2.ZERO,size))
+	forest.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	forest.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	var shade = ColorRect.new()
+	shade.color = Color(0.015,0.035,0.04,0.35)
+	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(shade)
+	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	panel = PanelContainer.new()
+	var surface: StyleBoxFlat = Gold.box(false,42)
+	surface.content_margin_top = 28
+	surface.content_margin_bottom = 52
+	surface.bg_color = Color(0.025,0.06,0.065,0.96)
+	surface.border_color = Color("8d805a")
+	panel.add_theme_stylebox_override("panel",surface)
+	add_child(panel)
+	var frame = Gold.Frame.new()
+	frame.inset = 0
+	frame.corner = 54
+	# A top-level Control keeps the frame independent of the content container.
+	add_child(frame)
+	var body: VBoxContainer = UI.column(18)
+	panel.add_child(body)
+	_build_header(body)
+	body.add_child(Gold.line())
+	scroll = ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	body.add_child(scroll)
+	columns = GridContainer.new()
+	columns.columns = 2
+	columns.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	columns.add_theme_constant_override("h_separation",64)
+	columns.add_theme_constant_override("v_separation",30)
+	scroll.add_child(columns)
+	_build_content()
+	body.add_child(Gold.line())
+	_build_footer(body,back)
+	resized.connect(_layout.bind(frame))
+	# Wrapped paragraphs report their final minimum after the first container pass.
+	panel.minimum_size_changed.connect(_layout.bind(frame))
+	_layout(frame)
+	_layout.call_deferred(frame)
+
+func _build_header(body: VBoxContainer) -> void:
+	var heading: HBoxContainer = UI.row(24)
+	body.add_child(heading)
+	var title: VBoxContainer = UI.column(0)
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	heading.add_child(title)
+	title.add_child(Gold.label("Opções",int(66*text_scale),Gold.PAPER,true))
+	title.add_child(Gold.paragraph("Seu jeito de explorar o bosque.",int(20*text_scale)))
+	var crest: TextureRect = RefArt.image(heading,RefArt.region("ui/gold-codex-art",Rect2(45,235,52,50)),Rect2())
+	crest.custom_minimum_size = Vector2(64,64)
+	crest.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	crest.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+
+func _build_content() -> void:
+	var comfort: VBoxContainer = UI.column(8)
+	comfort.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	columns.add_child(comfort)
+	_section(comfort,"Áudio")
+	_volume(comfort,"music","Música")
+	_volume(comfort,"sfx","Efeitos e interface")
+	comfort.add_child(Gold.line())
+	_section(comfort,"Acessibilidade")
+	_toggle(comfort,"reduced_motion","Movimento reduzido","Desativa tremores e partículas.")
+	_toggle(comfort,"flashes","Flashes de impacto","Permite clarões durante os golpes.")
+	_toggle(comfort,"large_text","Texto ampliado","Aumenta os textos da interface.")
+	var information: VBoxContainer = UI.column(14)
+	information.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	columns.add_child(information)
+	_section(information,"Informação inimiga")
+	information.add_child(Gold.paragraph("Escolha o que ver antes de conjurar.",int(19*text_scale)))
+	var group = ButtonGroup.new()
+	for mode in MODES: _mode(information,str(mode),group)
+	information.add_child(Gold.paragraph("A IA é a mesma em todos os modos.\nDurante a batalha, a mudança vale na próxima rodada.",int(18*text_scale)))
+	_sync_modes()
+
+func _build_footer(body: VBoxContainer, back: Callable) -> void:
+	var footer: HBoxContainer = UI.row(24)
+	body.add_child(footer)
+	var hint: Label = Gold.paragraph("Preferências deste dispositivo",int(18*text_scale))
+	hint.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	footer.add_child(hint)
+	var close: Button = Gold.button("Voltar",true)
+	close.add_theme_font_size_override("font_size",int(27*text_scale))
+	close.custom_minimum_size = Vector2(210,56)
+	close.tooltip_text = "Voltar (Esc / B)"
+	footer.add_child(close)
+	register.call(close,"settings.back","settings")
+	close.pressed.connect(back)
+
+func _section(parent: Control, title: String) -> void:
+	parent.add_child(Gold.label(title,int(31*text_scale),Gold.GOLD,true))
+
+func _volume(parent: Control, key: String, title: String) -> void:
+	var box: VBoxContainer = UI.column(0)
+	parent.add_child(box)
+	var labels: HBoxContainer = UI.row()
+	box.add_child(labels)
+	var label: Label = Gold.label(title,int(22*text_scale))
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	labels.add_child(label)
+	var percentage: Label = Gold.label("%d%%"%roundi(float(preferences.values[key])*100),int(22*text_scale),Gold.GOLD)
+	percentage.custom_minimum_size.x = 65
+	percentage.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	labels.add_child(percentage)
+	var slider = HSlider.new()
+	slider.min_value = 0
+	slider.max_value = 1
+	slider.step = 0.05
+	slider.value = float(preferences.values[key])
+	slider.custom_minimum_size.y = 34
+	slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	slider.accessibility_name = title
+	box.add_child(slider)
+	register.call(slider,"settings."+key,"settings")
+	slider.value_changed.connect(func(value: float):
+		percentage.text = "%d%%"%roundi(value*100)
+		preferences.set_value(key,value))
+
+func _toggle(parent: Control, key: String, title: String, description: String) -> void:
+	var box: VBoxContainer = UI.column(0)
+	parent.add_child(box)
+	var check = CheckButton.new()
+	check.text = title
+	check.button_pressed = bool(preferences.values[key])
+	check.custom_minimum_size.y = 36
+	check.accessibility_description = description
+	box.add_child(check)
+	register.call(check,"settings."+key,"settings")
+	check.toggled.connect(func(value: bool): preferences.set_value(key,value))
+	box.add_child(Gold.paragraph(description,int(17*text_scale)))
+
+func _mode(parent: Control, mode: String, group: ButtonGroup) -> void:
+	var choice = Button.new()
+	choice.toggle_mode = true
+	choice.button_group = group
+	choice.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	choice.accessibility_name = str(MODES[mode][0])+". "+str(MODES[mode][1])
+	choice.custom_minimum_size.y = 90*text_scale
+	parent.add_child(choice)
+	var margin = MarginContainer.new()
+	margin.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	choice.add_child(margin)
+	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	for side in ["left","right"]: margin.add_theme_constant_override("margin_"+side,20)
+	for side in ["top","bottom"]: margin.add_theme_constant_override("margin_"+side,12)
+	var content: VBoxContainer = UI.column(2)
+	content.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	margin.add_child(content)
+	var row: HBoxContainer = UI.row(12)
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	content.add_child(row)
+	var label: Label = Gold.label(str(MODES[mode][0]),int(29*text_scale),Gold.PAPER,true)
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(label)
+	var mark: Label = Gold.label("",int(17*text_scale),Gold.GOLD)
+	mark.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	row.add_child(mark)
+	content.add_child(Gold.paragraph(str(MODES[mode][1]),int(18*text_scale)))
+	mode_buttons[mode] = choice
+	mode_marks[mode] = mark
+	register.call(choice,"settings.info."+mode,"settings")
+	choice.pressed.connect(func():
+		preferences.set_value("information_mode",mode)
+		_sync_modes())
+
+func _sync_modes() -> void:
+	for mode in mode_buttons:
+		var active: bool = str(preferences.values.information_mode) == mode
+		mode_buttons[mode].set_pressed_no_signal(active)
+		mode_marks[mode].text = "✓ Em uso" if active else ""
+
+func _layout(frame: Control) -> void:
+	var width: float = minf(1320,size.x-80)
+	var height: float = minf(828,size.y-72)
+	panel.position = Vector2((size.x-width)*0.5,(size.y-height)*0.5)
+	panel.size = Vector2(width,height)
+	frame.position = panel.position
+	frame.size = panel.size
+	columns.columns = 2 if width >= 1040 else 1

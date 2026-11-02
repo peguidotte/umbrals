@@ -24,7 +24,7 @@ for target, entry in entry_points.items():
         out.write(ROOT / "assets/README.md", "ASSET-PROVENANCE.md")
         out.write(ROOT / "assets/asset-manifest.json", "ASSET-MANIFEST.json")
         out.writestr("LEIA-ME.txt",
-            f"Umbral: Ecos do Bosque {version}\n\n"
+            f"Umbral {version}\n\n"
             "Windows: execute Umbral.exe.\n"
             "Linux: chmod +x Umbral.x86_64 e execute.\n"
             "Web: nesta pasta, execute python -m http.server 8000 e abra http://localhost:8000.\n"

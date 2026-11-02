@@ -36,11 +36,8 @@ func run() -> void:
 	await process_frame
 	expect(root.gui_get_focus_owner() == app.registry["menu.play"], "Initial Play focus")
 	var title: Control = app.menu_root
-	var before: Array = title.effect_state().card_poses.duplicate(true)
-	await create_timer(0.22).timeout
-	var after: Array = title.effect_state().card_poses
-	expect(before != after and after.size() == 3, "Three independent card poses move")
-	expect(after[0].rotation != after[1].rotation and after[1].rotation != after[2].rotation, "Card rotations have separate phases")
+	expect(title.canvas.size == Vector2(1672,941) and title.buttons[0].plate is AtlasTexture, "Approved artwork coordinates and native atlas-backed controls are used")
+	expect(title.buttons.size() == 6 and title.buttons[0] == app.registry["menu.play"] and title.buttons[1] == app.registry["menu.codex"], "Gold title exposes selected six-command composition and original routes")
 	title.apply_preferences(true, false, 1.0)
 	var resting: Dictionary = title.effect_state()
 	await create_timer(0.2).timeout

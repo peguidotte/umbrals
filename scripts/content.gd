@@ -9,6 +9,44 @@ const CONSUMABLES = {
 	"potion": {"name": "Poção", "cost": 1, "heal": 18},
 	"revive": {"name": "Reanimar", "cost": 1, "revive_ratio": 0.35},
 }
+# Codex prose is presentation content; it grants no abilities or progression.
+const UMBRAL_LORE = {
+	"ember": {"title": "Quem guarda a última brasa", "text": "Brasa carrega a memória de uma fogueira mantida acesa à espera de alguém. Quando se assusta, recolhe a cauda em torno do corpo para proteger o próprio calor.\n\nAproxima-se em silêncio de quem sente frio. Seu primeiro gesto de confiança é dividir uma pequena chama."},
+	"ignivar": {"title": "Uma chama que também guia", "text": "A chama que Brasa guardava junto ao corpo agora ilumina o caminho de outros Umbrals. Ignivar ainda para para ouvir o bosque antes de avançar.\n\nSuas caudas deixam um rastro de calor entre as árvores, como um farol para quem ficou para trás."},
+	"moss": {"title": "Quem sempre deixa um abrigo pronto", "text": "Musgo guarda a lembrança de um santuário que acolheu viajantes. Seu corpo de madeira e folhas parece pesado, mas ele pisa com cuidado para não esmagar os brotos do caminho.\n\nAntes de descansar, ajeita um leito de folhas para os companheiros. Só então procura um lugar para si."},
+	"verdalio": {"title": "O abrigo ganhou raízes", "text": "Em Verdálio, a memória do antigo santuário tornou-se uma copa viva. Pequenas flores crescem entre os galhos que ele curva para proteger quem se aproxima.\n\nConserva o hábito de Musgo: confere cada canto do abrigo antes de permitir que o bosque adormeça."},
+	"volt": {"title": "Quem não consegue guardar uma tempestade", "text": "Faísca carrega a lembrança de um sino atingido por um raio. Impaciente, testa galhos com as antenas e às vezes se assusta com a própria descarga.\n\nA eletricidade encontra caminhos mais firmes quando ele está perto de outros Umbrals. Sozinho, continua procurando um eco que responda."},
+	"tempestral": {"title": "O eco encontrou um caminho", "text": "As descargas inquietas de Faísca se organizam nos circuitos da carapaça de Tempestral. Suas antenas percorrem o ar como quem escuta uma tempestade distante.\n\nMesmo em repouso, mantém um brilho baixo para que seus companheiros saibam onde encontrá-lo."},
+	"dew": {"title": "Quem recolhe o que a chuva lembra", "text": "Orvalho guarda gotas da primeira manhã depois da Fenda. Curioso, aproxima o rosto das poças para escutar as vibrações da água.\n\nQuando percebe tristeza em outro Umbral, oferece uma gota de seu reservatório. Depois espera, paciente, até que o silêncio pareça menos pesado."},
+	"mareveu": {"title": "Um pequeno céu de água", "text": "A memória que Orvalho carregava em gotas se espalha pelos véus de Marevéu. A água acompanha seus movimentos sem perder a forma, refletindo a lua entre as árvores.\n\nAinda se demora junto às poças. Algumas lembranças só podem ser ouvidas quando tudo fica quieto."},
+	"spore": {"title": "Um viajante das raízes", "text": "Esporo errante atravessa a clareira seguindo a umidade do chão. Seus passos espalham pequenos brilhos sob o chapéu, marcando trilhas que desaparecem quando o bosque seca.\n\nÉ fácil confundir sua imobilidade com distração. Ele está escutando o que se move debaixo das folhas."},
+	"owl": {"title": "A vigília entre os espinhos", "text": "A Coruja dos espinhos repousa onde os galhos se cruzam. Imóvel, acompanha as passagens da floresta e só revela sua presença quando decide mudar de poleiro.\n\nAs penas lembram folhas secas; os olhos, porém, não deixam que nada se perca na escuridão."},
+	"stag": {"title": "O Rei sem Aurora", "text": "O brilho de seus galhos surge entre as árvores antes que se ouçam seus passos. Os Umbrals da clareira se aquietam quando ele passa.\n\nNinguém sabe por quanto tempo ele vigia o bosque. À luz da lua, parece escutar uma manhã que ainda não chegou."},
+}
+const ITEM_DESCRIPTIONS = {
+	"potion": "Uma pequena reserva de cuidado para as travessias do bosque. A poção recupera o fôlego de um Umbral ferido e segue na mochila até que o Guia escolha quem precisa dela.",
+	"revive": "Quando um Umbral já não consegue continuar, este preparo ajuda a reacender seu vínculo. Reanima um companheiro incapacitado e devolve parte de seu HP.",
+}
+const POWER_DESCRIPTIONS = {
+	"sowing": "Espalha uma semente sobre o alvo. Fogo, água e bosque podem dar destinos diferentes ao que foi plantado.",
+	"interference": "Uma descarga desordena o ritmo do alvo. Além do impacto, a Interferência enfraquece seu próximo ataque.",
+	"fireball": "Uma chama concentrada é lançada contra um alvo. Um golpe direto para abrir caminho entre as sombras do bosque.",
+	"cinder_claw": "Brasas acompanham um golpe de garras. O calor permanece nos alvos atingidos mesmo depois do impacto.",
+	"flame_guard": "Uma camada de cinzas protege quem conjura. O escudo ajuda a absorver os golpes da rodada.",
+	"thorn_lash": "Um chicote de espinhos alcança os alvos enquanto o bosque prepara uma pequena proteção para quem o conduz.",
+	"root_wall": "Raízes se erguem para proteger quem conjura. A barreira também provoca os oponentes.",
+	"life_seed": "A energia de uma semente é dedicada à recuperação de um aliado ferido.",
+	"lightning": "Um arco de eletricidade alcança um alvo. Água sobre o oponente pode abrir caminho para uma reação de Condução.",
+	"static_veil": "Eletricidade envolve quem conjura, combinando proteção com uma descarga contra o alvo.",
+	"storm_dive": "Um mergulho concentra a força da tempestade em um único alvo. Exige mais ações do que os golpes básicos.",
+	"tidal_splash": "Um jato de água atinge e deixa o alvo Encharcado, preparando o terreno para outras técnicas.",
+	"rain_sweep": "Uma cortina de chuva alcança posições vizinhas e deixa os oponentes atingidos Encharcados.",
+	"dew_mend": "Uma gota preservada é compartilhada com um aliado para recuperar parte de seu HP.",
+	"inferno": "A chama de Ignivar se expande sobre os oponentes. O impacto deixa queimaduras nos alvos atingidos.",
+	"sanctuary": "Verdálio abre um abrigo para os aliados, unindo escudo e recuperação.",
+	"judgment": "Tempestral espalha uma descarga pela formação adversária e prepara proteção para si.",
+	"moon_tide": "A água de Marevéu atravessa a formação oponente, deixando os alvos atingidos Encharcados.",
+}
 const NATURES = {
 	"fire": {"name": "Fogo", "color": "ef987b"},
 	"water": {"name": "Água", "color": "80d7e5"},

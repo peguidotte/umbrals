@@ -85,3 +85,23 @@ mesmo bosque preenche formatos variados; na vertical, as cartas ficam acima
 dos comandos. Movimento reduzido fixa poses, remove partículas/pulso e evita
 transições. Sons de cristal e água são síntese original nos buses existentes.
 Esta é a linguagem do menu; a batalha não recebe uma reformulação nesta fatia.
+
+## V04-UX-05D — direção dourada selecionada
+
+O usuário comparou explicitamente o menu atual violeta com a dupla proposta e
+escolheu menu centralizado e grimório dourado. A abertura passa a usar floresta
+azul-esverdeada, pergaminho e ouro antigo, com sprites de batalha originais;
+Brasa → Ignivar e Musgo → Verdálio preservam suas identidades. Texto, foco e
+controles são nativos. O grimório revela conteúdo por descoberta persistente.
+Essa seleção substitui a direção da abertura 05B/05C; o HUD de batalha conserva
+seus contratos. [Entrega e validação focada](gold-menu-codex-v04-05d.md).
+
+V04-UX-05H estende essa direção às Opções, tanto no título quanto na pausa:
+floresta e moldura botânica existentes, Cormorant, papel/verde profundo/ouro,
+sliders e switches nativos. Áudio, acessibilidade e informação são agrupados;
+o rodapé fica fora da rolagem. [Capturas e limites](settings-gold-v04-05h.md).
+
+Em V04-UX-05I, o usuário fixou o nome **Umbral**, sem subtítulo. A abertura
+exibe apenas esse nome; a linha de marca das Opções foi removida e Voltar ganhou
+respiro em relação à moldura inferior. Como jogar fica adiado até a revisão das
+mecânicas, incluindo a decisão de manter ou substituir essa tela.

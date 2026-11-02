@@ -1,4 +1,4 @@
-# Umbral: Ecos do Bosque — caminho até 1.0
+# Umbral — caminho até 1.0
 
 Estado: **roadmap em desenvolvimento, com direções confirmadas e recomendações identificadas por status**, criado em 14/10/2026 a partir do MVP 0.3.0. As versões abaixo são marcos de produto, sem datas prometidas. Entregas futuras só ficam concluídas depois de implementadas e verificadas. A versão executável continua sendo 0.3.0.
 
@@ -516,3 +516,88 @@ propostas, implementação, verificação automática e revisão visual da IA.
 
 Direção posterior a 05A: a seleção explícita do usuário restringe V04-UX-05B à
 tela inicial; a recomendação anterior de HUD móvel permanece posterior.
+
+### V04-UX-05D — menu e códex dourados
+
+Implementada a dupla escolhida pelo usuário: menu centralizado com sprites atuais
+e grimório de descoberta com quatro categorias, paginação, poderes e evolução.
+Conhecimento persiste separado da expedição. A direção substitui violeta/branco
+na abertura; regras e HUD de batalha conservam o escopo anterior. Validação
+limitada às telas/save/assets afetados, conforme solicitação: 247 verificações
+focadas de menu/consumidor/startup, integridade de 59 releases e teste visual e
+interativo do códex. [Evidência e limites](gold-menu-codex-v04-05d.md).
+O marco 0.4 e a versão 0.3.0 permanecem; próxima fatia é revisão humana das
+capturas e acabamento responsivo conforme feedback, antes da economia.
+
+Revisão de V04-UX-05D após feedback de fidelidade: título/criaturas ampliados,
+fonte editorial e molduras botânicas originais, cartas com cenário e poderes em
+miniatura; ficha integrada à floresta. Runner focado: 286 verificações sem falhas;
+assets: 61 releases/130 arquivos. Capturas anteriores preservadas para comparação.
+
+V04-UX-05E substitui as aproximações por uma montagem sobre as artes aprovadas:
+placas e marca da abertura em atlas com controles nativos; template do grimório,
+retratos e ornamentos da referência; evoluções na ficha de linhagem e dados reais
+de descoberta. Validação focada: 291 verificações de abertura/códex, 45 nativas,
+62 releases/135 arquivos. Comparação e perfis de captura em
+`test-results/gold-reference/`; detalhes em `gold-menu-codex-v04-05d.md`.
+
+### V04-UX-05F — retorno contextual no grimório
+
+Corrigida a perda da origem ao consultar um poder ou evolução: Voltar/Esc/B
+restaura ficha, página, rolagem e foco antes de fechar o grimório. Abas explícitas
+iniciam outra consulta. A identidade visual aprovada foi preservada.
+[Implementação e evidência](codex-navigation-v04-05f.md): regressão reproduzida
+antes da correção; 24 verificações de navegação passaram em headless e com
+render nativo, mais 37 do fluxo existente. Sem suíte completa de combate e sem
+alterar a versão/marco. Próximo passo: avaliar a consulta em playtest real.
+
+### V04-UX-05G — histórias e descrições no grimório
+
+Por solicitação do usuário, removido o painel de evolução: Umbrals agora abrem
+em História, com Poderes e traços em outra aba. Itens/poderes/passivas têm
+Descrição e Efeito. Formas descobertas continuam em um atalho compacto; o
+histórico restaura também a aba interna. Adicionada prosa ao catálogo, sem
+alteração de regras/valores. Corrigidos seleção de categoria, fragmentos de
+retratos nas molduras e legendas sobre as artes no modo de texto ampliado.
+[Entrega e limites](codex-stories-v04-05g.md): 21 verificações nativas de ficha,
+28 de navegação e 38 do fluxo existente em headless; capturas nativas revisadas.
+Sem suíte completa de combate, conforme escopo solicitado. Marco/versão mantidos.
+Próxima fatia: artes distintas para consumíveis e revisão narrativa em playtest.
+
+### V04-UX-05H — opções na direção dourada
+
+O usuário priorizou a consistência da tela de opções com o menu e o grimório.
+Tela extraída para apresentação própria, com floresta/fonte/moldura existentes,
+sliders e switches dourados e grupos Áudio, Acessibilidade e Informação inimiga.
+Rodapé permanece visível; modo de informação muda sem perder o foco ou
+reconstruir a tela. Preferências/IDs/ordem de navegação preservados.
+[Entrega e evidências](settings-gold-v04-05h.md): 27 verificações de opções em
+headless, 31 com render nativo e 28 do menu existente. Capturas nativas em
+1672×941, 1280×720 e 1024×768, incluindo texto ampliado. Sem suíte completa de
+combate; regras e versão/marco mantidos. Próxima fatia sugerida: alinhar Como
+jogar e Créditos, mantendo narrativa/artes de consumíveis como trabalho separado.
+
+### V04-UX-05I — nome Umbral e margem do Voltar
+
+Nome confirmado pelo usuário: **Umbral**, sem subtítulo. Atualizados título do
+aplicativo, abertura, créditos e metadados/documentação atuais. Removida a linha
+de marca nas Opções e corrigida a distância entre Voltar e a moldura inferior.
+[Revisão e evidências](settings-gold-v04-05h.md): 30 verificações headless e 34
+nativas; capturas do título e opções revisadas, inclusive texto ampliado e
+formatos menores. Perfil/save e versão 0.3.0 preservados; nenhuma publicação.
+A pedido do usuário, **Como jogar fica adiado**: conteúdo e necessidade serão
+reavaliados depois das mudanças nas mecânicas. Essa direção suspende a sugestão
+anterior de redesenhar o guia agora; o acesso atual permanece disponível.
+
+### V04-UI-06A — componentes para evoluir a interface
+
+Rodada de manutenção solicitada pelo usuário para facilitar o acabamento do
+marco 0.4: grimório dividido em catálogo, galeria, ficha e controlador de
+navegação. O controlador passou de 490 para 247 linhas. Tema de controles
+dourados separado das Opções, com cabeçalho/conteúdo/rodapé explícitos.
+[Mapa de alteração e evidências](ui-components-v04-06a.md): 371 verificações
+focadas existentes passaram sem adaptação dos testes; mais 28 de navegação no
+Godot nativo. Oito capturas antes/depois ficaram idênticas na fixture controlada.
+Comportamento, conteúdo, save, assets e versão 0.3.0 preservados. Sem suíte
+completa de combate; Como jogar permanece adiado. Próxima fatia técnica sugerida:
+extrair inspeção/plano de `main.gd` quando esses fluxos forem priorizados.

@@ -1,9 +1,9 @@
 class_name UmbralTitleButton
 extends Button
 ## Fixed input rectangle; only the painted plate moves. Focus follows its chanfers.
-const INK = Color("100e25")
-const VIOLET = Color("a78ae6")
-const IVORY = Color("f6efff")
+const INK = Color("101c23")
+const VIOLET = Color("dec88d")
+const IVORY = Color("f3e6c5")
 var plate_texture: Texture2D
 var plate_size: Vector2 = Vector2.ZERO
 var reduced_motion: bool = false
@@ -22,7 +22,7 @@ func _ready() -> void:
 		add_theme_stylebox_override(state, empty)
 	for state in ["font_color", "font_hover_color", "font_focus_color", "font_pressed_color"]:
 		add_theme_color_override(state, Color.TRANSPARENT)
-	add_theme_color_override("font_disabled_color", Color("807892"))
+	add_theme_color_override("font_disabled_color", Color("8b917f"))
 	focus_entered.connect(queue_redraw)
 	focus_exited.connect(queue_redraw)
 	mouse_entered.connect(queue_redraw)
@@ -46,7 +46,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_instance_valid(caption):
 		caption.text = text
-		caption.add_theme_color_override("font_color", Color("807892") if disabled else IVORY)
+		caption.add_theme_color_override("font_color", Color("8b917f") if disabled else IVORY)
 	var target: float = 1.0 if (has_focus() or is_hovered()) and not disabled else 0.0
 	var next: float = target if reduced_motion else move_toward(highlight, target, delta * 9.0)
 	if not is_equal_approx(highlight, next):
@@ -75,7 +75,7 @@ func _draw() -> void:
 		if button_pressed: tint = 0.86
 		draw_polygon(points, PackedColorArray([Color(tint, tint, tint)]), uvs, plate_texture)
 	else:
-		draw_colored_polygon(points, Color("302049") if primary else INK)
+		draw_colored_polygon(points, Color("343326") if primary else INK)
 		var border: PackedVector2Array = points.duplicate()
 		border.append(points[0])
 		draw_polyline(border, VIOLET.darkened(0.45 if disabled else 0.2 - highlight * 0.2), 2.0, true)

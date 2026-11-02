@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "Transparent botanical gold frame derived from selected codex art direction.",
+  "files": {
+    "texture": {
+      "bytes": 540895,
+      "kind": "texture",
+      "path": "texture.png",
+      "sha256": "393825c52f57b12da09c6ddd2e3be4fa021be5fb06b6779ce7f43349a8caa4fd",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "ui/gold-frame",
+  "provenance": {
+    "generation_id": "exec-4dd188f0-9319-43ac-a9ef-b969c9b32860",
+    "kind": "Image Gen original preserved byte-for-byte",
+    "license": "Original generated artwork for Umbral.",
+    "prompt": "Transparent frame only, antique gold thin rectangular double border, botanical leaf corners, clean center, based on approved gold codex.",
+    "tool": "OpenAI Image Gen"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

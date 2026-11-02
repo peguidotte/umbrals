@@ -35,7 +35,14 @@ const CHARACTERS_SPORE: String = "res://assets/characters/spore/versions/1.0.0/p
 const CHARACTERS_STAG: String = "res://assets/characters/stag/versions/1.0.0/portrait.svg"
 const FONTS_BODY: String = "res://assets/fonts/dejavu/versions/1.0.0/body.ttf"
 const FONTS_DISPLAY: String = "res://assets/fonts/dejavu/versions/1.0.0/display.ttf"
+const FONTS_GOLD_DISPLAY: String = "res://assets/fonts/cormorant/versions/1.0.0/display.ttf"
 const UI_BACKPACK: String = "res://assets/ui/backpack/versions/1.0.0/icon.svg"
+const UI_GOLD_CODEX_ART: String = "res://assets/ui/gold-approved/versions/1.0.0/codex-art.png"
+const UI_GOLD_CODEX_SCENE: String = "res://assets/ui/gold-approved/versions/1.0.0/codex-scene.png"
+const UI_GOLD_CODEX_TEMPLATE: String = "res://assets/ui/gold-approved/versions/1.0.0/codex-template.png"
+const UI_GOLD_FRAME: String = "res://assets/ui/gold-frame/versions/1.0.0/texture.png"
+const UI_GOLD_MENU_ART: String = "res://assets/ui/gold-approved/versions/1.0.0/menu-art.png"
+const UI_GOLD_MENU_SCENE: String = "res://assets/ui/gold-approved/versions/1.0.0/menu-scene.png"
 const UI_TITLE_LOGO: String = "res://assets/ui/title-logo/versions/1.0.0/texture.png"
 const UI_TITLE_MENU: String = "res://assets/ui/title-menu/versions/1.0.0/texture.png"
 const UMBRALS_DEW: String = "res://assets/umbrals/dew/versions/1.0.0/portrait.svg"
@@ -48,6 +55,7 @@ const UMBRALS_VERDALIO: String = "res://assets/umbrals/verdalio/versions/1.0.0/p
 const UMBRALS_VOLT: String = "res://assets/umbrals/volt/versions/1.0.0/portrait.svg"
 const WORLD_BATTLE_CLEARING: String = "res://assets/world/battle-clearing/versions/1.0.0/background.png"
 const WORLD_BATTLE_CLEARING_DEPTH: String = "res://assets/world/battle-clearing-depth/versions/1.0.0/background.png"
+const WORLD_GOLD_FOREST: String = "res://assets/world/gold-forest/versions/1.0.0/texture.png"
 const WORLD_MOONLIT_CLEARING: String = "res://assets/world/moonlit-clearing/versions/1.0.0/background.png"
 const WORLD_TITLE_FOREST: String = "res://assets/world/title-forest/versions/1.0.0/texture.png"
 
@@ -87,7 +95,14 @@ const PATHS: Dictionary = {
 	"characters/stag": CHARACTERS_STAG,
 	"fonts/body": FONTS_BODY,
 	"fonts/display": FONTS_DISPLAY,
+	"fonts/gold-display": FONTS_GOLD_DISPLAY,
 	"ui/backpack": UI_BACKPACK,
+	"ui/gold-codex-art": UI_GOLD_CODEX_ART,
+	"ui/gold-codex-scene": UI_GOLD_CODEX_SCENE,
+	"ui/gold-codex-template": UI_GOLD_CODEX_TEMPLATE,
+	"ui/gold-frame": UI_GOLD_FRAME,
+	"ui/gold-menu-art": UI_GOLD_MENU_ART,
+	"ui/gold-menu-scene": UI_GOLD_MENU_SCENE,
 	"ui/title-logo": UI_TITLE_LOGO,
 	"ui/title-menu": UI_TITLE_MENU,
 	"umbrals/dew": UMBRALS_DEW,
@@ -100,6 +115,7 @@ const PATHS: Dictionary = {
 	"umbrals/volt": UMBRALS_VOLT,
 	"world/battle-clearing": WORLD_BATTLE_CLEARING,
 	"world/battle-clearing-depth": WORLD_BATTLE_CLEARING_DEPTH,
+	"world/gold-forest": WORLD_GOLD_FOREST,
 	"world/moonlit-clearing": WORLD_MOONLIT_CLEARING,
 	"world/title-forest": WORLD_TITLE_FOREST,
 }

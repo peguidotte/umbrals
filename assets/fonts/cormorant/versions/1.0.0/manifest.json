@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "id": "fonts/cormorant",
+  "version": "1.0.0",
+  "status": "production",
+  "description": "Cormorant Garamond for the selected botanical gold interface.",
+  "provenance": {
+    "kind": "third-party open font",
+    "source": "https://github.com/google/fonts/tree/main/ofl/cormorantgaramond",
+    "license": "SIL Open Font License 1.1"
+  },
+  "dependencies": [],
+  "files": {
+    "display": {
+      "kind": "font",
+      "path": "display.ttf",
+      "sha256": "b20b7d9626dd956b2c5e558692ad328b1f19e3275e2782db4fa07670d83f35e0",
+      "bytes": 1195560
+    },
+    "license": {
+      "kind": "license",
+      "path": "OFL.txt",
+      "sha256": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956",
+      "bytes": 4387
+    }
+  }
+}

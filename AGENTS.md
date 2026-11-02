@@ -1,6 +1,6 @@
 # Umbrals
 
-**Umbral: Ecos do Bosque** lives at this repository's root. The working tree integrates the technically closed battle MVP through V04-BAT-04A/B (product version still 0.3.0); see `docs/battle-implementation-v0.4.md` for actual scope/evidence and `docs/art-direction-v0.4.md` for the current runtime visual direction. Use the existing checkout; do not create a worktree unless asked. The local workflow skill is `.agents/skills/umbral/SKILL.md`.
+**Umbral** lives at this repository's root. The product name is Umbral, without a subtitle. The working tree integrates the technically closed battle MVP through V04-BAT-04A/B (product version still 0.3.0); see `docs/battle-implementation-v0.4.md` for actual scope/evidence and `docs/art-direction-v0.4.md` for the current runtime visual direction. Use the existing checkout; do not create a worktree unless asked. The local workflow skill is `.agents/skills/umbral/SKILL.md`.
 
 - Engine: Godot 4.6.3, GDScript with explicit types at public boundaries.
 - Read `docs/architecture.md` before changing game behavior.

@@ -23,14 +23,18 @@ const BattleReadout = preload("res://scripts/ui/battle_readout.gd")
 const Expedition = preload("res://scripts/expedition/expedition.gd")
 const ExpeditionMap = preload("res://scripts/ui/expedition_map.gd")
 const RunSave = preload("res://scripts/expedition/run_save.gd")
+const Codex = preload("res://scripts/ui/codex.gd")
+const CodexProgress = preload("res://scripts/codex_progress.gd")
 const TitleMenu = preload("res://scripts/ui/title_menu.gd")
 const JourneyMenu = preload("res://scripts/ui/journey_menu.gd")
+const SettingsMenu = preload("res://scripts/ui/settings_menu.gd")
 const TitleTheme = preload("res://scripts/ui/title_theme.gd")
 const TitleButton = preload("res://scripts/ui/title_button.gd")
 const SAVE_PATH = "user://umbral_stats_v1.json"
 const LEGACY_SAVE_PATH = "user://feral_hand_stats.json"
 const WEB_STATS_KEY = "umbral.stats.v1"
 
+var codex_progress = CodexProgress.new()
 var game = Rules.new()
 var expedition = Expedition.new()
 var run_save = RunSave.new()
@@ -120,6 +124,7 @@ func _ready() -> void:
 	ui.text_scale = preferences.text_scale()
 	header_text_scale = ui.text_scale
 	theme = ui.make_theme()
+	codex_progress.load_saved()
 	_load_stats()
 	_refresh_checkpoint()
 	audio = Audio.new()
@@ -217,7 +222,7 @@ func _build_menu() -> void:
 	var title = TitleMenu.new()
 	menu_root = title
 	_full(title, self)
-	var callbacks: Array[Callable] = [_push.bind("journey"), _push.bind("codex"), _push.bind("settings"), _push.bind("help")]
+	var callbacks: Array[Callable] = [_push.bind("journey"), _push.bind("codex"), _push.bind("settings"), _push.bind("help"), _push.bind("credits"), _quit]
 	title.build(callbacks, _register)
 	title.apply_preferences(preferences.values.reduced_motion, visual_capture, preferences.text_scale())
 	title.navigation_requested.connect(audio.navigate)
@@ -496,6 +501,7 @@ func _click_slot(side: String, slot: int) -> void:
 		_push("inspect")
 
 func _on_rule_changed(kind: String) -> void:
+	if kind not in ["selection", "target"] and not game.party.is_empty(): codex_progress.observe(game, session_active and screens.root() == "battle")
 	if not session_active or screens.root() != "battle" or busy: return
 	if kind in ["selection", "target"]: _sync_selection()
 	else: _sync_battle()
@@ -726,6 +732,8 @@ func _push(screen: String) -> void:
 	screens.push(screen)
 
 func _pop() -> void:
+	if screens.top() == "codex" and is_instance_valid(modal_root) and modal_root is Codex:
+		if modal_root.go_back(): return
 	_remember_focus()
 	screens.pop()
 
@@ -804,6 +812,7 @@ func _build_modal(screen: String) -> void:
 		"pause":
 			var body: VBoxContainer = _modal_frame("O bosque espera.", "Sua expedição está em pausa.", 650)
 			_button(body, "CONTINUAR", _pop, "pause.resume", screen, true)
+			_button(body, "GRIMÓRIO", _push.bind("codex"), "pause.codex", screen)
 			_button(body, "OPÇÕES", _push.bind("settings"), "pause.settings", screen)
 			_button(body, "COMO JOGAR", _push.bind("help"), "pause.help", screen)
 			_button(body, "VOLTAR AO TÍTULO", _push.bind("confirm_menu"), "pause.menu", screen)
@@ -811,7 +820,7 @@ func _build_modal(screen: String) -> void:
 		"help": _help()
 		"credits":
 			var body: VBoxContainer = _modal_frame("Feito para despertar ecos.", "", 850)
-			body.add_child(ui.paragraph("Umbral: Ecos do Bosque\nCriaturas e poderes: arte vetorial original.\nCenário: criado com Image Gen para este projeto.\nÁudio: síntese original, sem samples externos.\nFontes: DejaVu Sans e DejaVu Serif.", 24, UI.PAPER))
+			body.add_child(ui.paragraph("Umbral\nCriaturas e poderes: arte vetorial original.\nCenário: criado com Image Gen para este projeto.\nÁudio: síntese original, sem samples externos.\nFontes: DejaVu Sans e DejaVu Serif.", 24, UI.PAPER))
 			_button(body, "VOLTAR", _pop, "credits.back", screen, true)
 		"codex": _codex()
 		"inspect": _inspection()
@@ -832,60 +841,20 @@ func _build_modal(screen: String) -> void:
 			_button(body, "VOLTAR AO TÍTULO", _return_menu, "confirm.yes", screen)
 
 func _settings() -> void:
-	var body: VBoxContainer = _modal_frame("Opções", "Ajuste o ritmo, a leitura e o som para você.", 820)
-	for key in ["music", "sfx"]:
-		var row: HBoxContainer = UI.row(18)
-		body.add_child(row)
-		row.add_child(ui.label("Música" if key == "music" else "Efeitos e interface", 24))
-		var slider = HSlider.new()
-		slider.custom_minimum_size = Vector2(330, 48)
-		slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		slider.min_value = 0
-		slider.max_value = 1
-		slider.step = 0.05
-		slider.value = preferences.values[key]
-		row.add_child(slider)
-		_register(slider, "settings." + key, "settings")
-		var percentage: Label = ui.label("%d%%" % int(slider.value * 100), 22, UI.GOLD)
-		percentage.custom_minimum_size.x = 90
-		row.add_child(percentage)
-		slider.value_changed.connect(func(value: float): percentage.text = "%d%%" % int(value * 100); preferences.set_value(key, value))
-	for key in ["reduced_motion", "flashes", "large_text"]:
-		var check = CheckButton.new()
-		check.text = {"reduced_motion": "Movimento reduzido", "flashes": "Flashes de impacto", "large_text": "Texto ampliado"}[key]
-		check.custom_minimum_size.y = 56
-		check.button_pressed = preferences.values[key]
-		body.add_child(check)
-		_register(check, "settings." + key, "settings")
-		check.toggled.connect(func(value: bool): preferences.set_value(key, value))
-	body.add_child(ui.label("Informação inimiga", 23, UI.GOLD))
-	var information: HBoxContainer = UI.row(10)
-	body.add_child(information)
-	for mode in ["hidden", "partial", "full"]:
-		var label: String = {"hidden": "OCULTA", "partial": "PARCIAL", "full": "COMPLETA"}[mode]
-		var choice: Button = _button(information, ("✓ " if preferences.values.information_mode == mode else "") + label, _choose_information.bind(mode), "settings.info." + mode, "settings")
-		choice.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	body.add_child(ui.paragraph("Parcial revela a categoria; completa também mostra força, alcance e alvo. Mudar durante a batalha vale na próxima rodada. A IA permanece a mesma.", 18))
-	body.add_child(ui.paragraph("Movimento reduzido desativa tremores e partículas. Flashes começam desativados. Estas opções ficam salvas neste dispositivo.", 20))
-	_button(body, "VOLTAR", _pop, "settings.back", "settings", true)
+	var view = SettingsMenu.new()
+	modal_root = view
+	_full(view,self)
+	view.z_index = 100
+	view.build(preferences,_register,_pop)
 
 func _codex() -> void:
-	var body: VBoxContainer = _modal_frame("Grimório dos Umbrals", "Conheça os traits antes de escolher seu vínculo.", 1300)
-	var row: HBoxContainer = UI.row(26)
-	body.add_child(row)
-	for species_id in Content.SPECIES:
-		var column: VBoxContainer = UI.column(10)
-		column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		row.add_child(column)
-		var individual: Dictionary = Rules.make_umbral(species_id, "fierce", 0)
-		var species: Dictionary = Content.SPECIES[species_id]
-		column.add_child(UI.art("umbrals/" + species_id, Vector2(180, 160)))
-		column.add_child(ui.label(species.names[0] + " → " + species.names[1], 27, Color(species.color), true, true))
-		column.add_child(ui.label(species.trait, 24, UI.GOLD, false, true))
-		column.add_child(ui.paragraph(Content.nature_text(individual) + " · Resistências: " + Content.resistance_text(individual), 18))
-		column.add_child(ui.paragraph(Content.trait_text(individual), 22))
-		column.add_child(ui.paragraph("Técnica de linhagem: " + Content.POWERS[species.signature].name.replace("\n", " ") + ".", 20))
-	_button(body, "VOLTAR", _pop, "codex.back", "codex", true)
+	if session_active: codex_progress.observe(game, screens.root() == "battle")
+	var view = Codex.new()
+	modal_root = view
+	_full(view, self)
+	view.z_index = 100
+	view.build(codex_progress, _register, _pop, preferences.text_scale())
+	view.navigation_changed.connect(func(): _set_group("codex"))
 
 func _inspect_actor(index: int) -> void:
 	var individual: Dictionary = _at_slot("ally", index)
@@ -996,10 +965,6 @@ func _inspection() -> void:
 		for power_id in individual.get("known_powers", species.get("powers", [])): names.append(str(Content.POWERS[power_id].name).replace("\n", " "))
 		body.add_child(ui.paragraph("PODERES\n" + " · ".join(names), 21))
 	_button(frame, "VOLTAR", _pop, "inspect.back", "inspect", true)
-
-func _choose_information(mode: String) -> void:
-	preferences.set_value("information_mode", mode)
-	_on_screen_changed()
 
 func _open_pile(zone: String) -> void:
 	if busy or screens.top() != "battle": return
@@ -1652,7 +1617,9 @@ func _refresh_checkpoint() -> void:
 			saved_checkpoint = {}
 			save_notice = "O progresso salvo não pôde ser lido. Você pode iniciar uma nova expedição."
 			run_save.last_status = "corrupt"
-		elif str(saved_checkpoint.get("checkpoint_id", "")) in persisted_expeditions:
+		else:
+			codex_progress.observe(candidate.battle, candidate.phase in ["combat", "reward"])
+		if str(saved_checkpoint.get("checkpoint_id", "")) in persisted_expeditions:
 			saved_checkpoint = {}
 			save_notice = "Esta expedição já foi encerrada. Comece um novo vínculo."
 			run_save.clear()
@@ -1668,6 +1635,7 @@ func _update_continue_button() -> void:
 
 func _checkpoint_expedition() -> void:
 	if not expedition_active: return
+	codex_progress.observe(game, expedition.phase in ["combat", "reward"])
 	expedition.settle_battle()
 	if expedition.phase in ["victory", "defeat"]:
 		_record_result()

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
-<meta name="description" content="Roadmap proposto de Umbral: Ecos do Bosque, do MVP 0.3 ao lançamento Steam 1.0.">
+<meta name="description" content="Roadmap proposto de Umbral, do MVP 0.3 ao lançamento Steam 1.0.">
 <title>Umbral · Caminho até a Steam</title>
 <style>
 :root{--bg:#0c161b;--panel:#142329;--edge:#3e514e;--ink:#f3e6c5;--muted:#bac6b6;--gold:#dec88d;--green:#91c8a1;--fire:#ef987b;--radius:18px}
@@ -22,7 +22,12 @@ header{display:flex;align-items:center;justify-content:space-between;gap:20px;pa
 </style>
 </head>
 <body>
-<header><div class="brand">UMBRAL</div><div class="header-note">ECOS DO BOSQUE<br>ROADMAP DE PRODUÇÃO · 14 OUT 2026</div></header>
+<aside style="padding:16px;margin:16px;border:1px solid #dec88d;background:#101c23;color:#f3e6c5">V04-UX-05D: menu centralizado e grimório dourado selecionados e implementados. Descobertas persistentes; validação focada nas telas alteradas. <a href="gold-menu-codex-v04-05d.md" style="color:#dec88d">Entrega, evidências e limites</a>. Marco 0.4 permanece aberto.</aside>
+<aside style="padding:16px;margin:16px;border:1px solid #dec88d;background:#101c23;color:#f3e6c5">V04-UX-05G: fichas com História/Descrição e dados de jogo em abas; painel de evolução substituído por atalho para formas descobertas. Retorno preserva a aba consultada. <a href="codex-stories-v04-05g.md" style="color:#dec88d">Implementação e verificações focadas</a>. Versão 0.3.0 e marco 0.4 mantidos.</aside>
+<aside style="padding:16px;margin:16px;border:1px solid #dec88d;background:#101c23;color:#f3e6c5">V04-UX-05H: Opções na mesma direção dourada do menu, com grupos de áudio, acessibilidade e informação inimiga. Controles nativos, preferências preservadas e retorno à origem. <a href="settings-gold-v04-05h.md" style="color:#dec88d">Entrega e revisão visual</a>. Revisão 05I: margem do Voltar corrigida e nome confirmado como Umbral, sem subtítulo. O redesenho de Como jogar foi adiado pelo usuário até a revisão das mecânicas. Produto permanece 0.3.0.</aside>
+
+<aside style="padding:16px;margin:16px;border:1px solid #dec88d;background:#101c23;color:#f3e6c5">V04-UI-06A: catálogo, galeria e ficha do grimório separados do controlador de navegação; tema de controles separado das Opções. Fluxos e visual preservados. <a href="ui-components-v04-06a.md" style="color:#dec88d">Mapa dos componentes e validação focada</a>. Como jogar permanece adiado; produto 0.3.0.</aside>
+<header><div class="brand">UMBRAL</div><div class="header-note">ROADMAP DE PRODUÇÃO · 14 OUT 2026</div></header>
 <main>
 <section class="hero" aria-labelledby="title">
  <div><div class="eyebrow">Da versão 0.3 ao lançamento 1.0</div><h1>Do primeiro vínculo<br>à <em>Steam.</em></h1><p>Um jogo de criaturas, memórias e poderes combinados. O caminho até o lançamento passa por entregas que já podem ser jogadas, observadas e melhoradas.</p></div>
@@ -66,7 +71,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:20px;pa
 
 <section class="next" aria-labelledby="next-title"><div class="eyebrow">Compatibilidade Web</div><h2 id="next-title"><code>V04-UX-05D</code> · Abertura no iPhone.</h2><p>Após o relato de encerramento do Safari: reduzir o framebuffer Retina à resolução CSS, baixar partes diretamente no pack e separar a compilação do preload.</p><p>10 verificações de loader e 13 de densidade alta/toque/rotação/save passaram no Chromium. A confirmação em iPhone físico continua pendente. <a href="web-ios-startup-v04-05d.md">Diagnóstico e limites →</a></p><p>Menu 05C preservado; regras, audiência privada e save mantidos. Produto 0.3.0.</p></section>
 </main>
-<footer><p>Umbral: Ecos do Bosque · planejamento e implementação · 31/10/2026<br>Este arquivo é autossuficiente e funciona offline. Fonte de verdade: <a href="roadmap.md">roadmap.md</a>.</p><p>Jogo atual: 0.3.0 · roadmap futuro proposto<br><a href="https://github.com/peguidotte/umbrals/actions/runs/38632485628">CI do código 74df8de: aprovado</a></p></footer>
+<footer><p>Umbral · planejamento e implementação · 31/10/2026<br>Este arquivo é autossuficiente e funciona offline. Fonte de verdade: <a href="roadmap.md">roadmap.md</a>.</p><p>Jogo atual: 0.3.0 · roadmap futuro proposto<br><a href="https://github.com/peguidotte/umbrals/actions/runs/38632485628">CI do código 74df8de: aprovado</a></p></footer>
 <script>
 'use strict';
 const milestones={

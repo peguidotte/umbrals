@@ -169,3 +169,48 @@ bridge exposes the controller public view, never its private checkpoint/enemy pl
 The map is a fixed prototype fork, not procedural biome generation. Merchant,
 learning, acquired relics and broad events remain later slices. Validation and
 remaining scope are recorded in the [expedition delivery note](expedition-implementation-v0.5.md).
+
+## Codex record navigation — V04-UX-05F
+
+The codex owns a local history only for related-record links (power/evolution).
+While the top screen is codex, Back consumes that history before popping the
+screen stack. Each origin retains category, selected ID, gallery page, details
+scroll, inner record tab and semantic focus ID. Explicit category selection clears the local
+history. A presentation revision invalidates deferred focus/scroll restoration
+if another navigation occurred. History never changes the discovery profile,
+active expedition, checkpoints or gameplay RNG.
+
+V04-UX-05G separates discovered-record prose from mechanics: History / Powers
+and traits for Umbrals; Description / Effect for other categories. Lore and
+descriptions live in the content catalog and grant no abilities. A compact
+discovered-form link replaces the evolution panel. Unknown records never build
+their prose or inner tabs. See [the delivery note](codex-stories-v04-05g.md).
+
+## Gold settings presentation — V04-UX-05H
+
+`ui/settings_menu.gd` owns native controls, grouped layout and gold styling for
+title/pause settings. It writes through the existing Preferences service; main
+still owns preference application, the screen stack and text-size rebuilding.
+Semantic IDs and control order stay stable. Information-mode selection updates
+the buttons in place, preserving focus instead of rebuilding the modal. The
+existing next-plan information policy is unchanged. See [scope and evidence](settings-gold-v04-05h.md).
+
+## UI components — V04-UI-06A
+
+The discovery codex has three presentation boundaries under `ui/codex/`:
+
+- `catalog.gd` projects the content catalog, discovery ordering and ID lookup
+  without nodes or writes.
+- `gallery.gd` renders one page and emits `entry_selected`.
+- `record.gd` renders a record and emits `section_requested`, `power_requested`
+  and `form_requested`. It owns the wrapped-content minimum height.
+
+`ui/codex.gd` owns category/page/selection, Back history, scroll restoration and
+focus. It sets up the child components once, connects their requests, then feeds
+them the current data. Registry IDs and direct gallery control parents remain
+stable, so input and focus consumers do not depend on presentation internals.
+
+`ui/gold_controls_theme.gd` builds native-control styles independently from the
+settings view and preference store. `settings_menu.gd` owns header/content/footer
+composition and writes through Preferences as before. Theme instances are fresh
+per build. See [the change map and validation](ui-components-v04-06a.md).

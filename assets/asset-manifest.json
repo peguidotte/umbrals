@@ -2622,6 +2622,40 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 1195560,
+      "id": "fonts/cormorant@1.0.0:display",
+      "kind": "font",
+      "module": "fonts/cormorant",
+      "path": "assets/fonts/cormorant/versions/1.0.0/display.ttf",
+      "role": "display",
+      "sha256": "b20b7d9626dd956b2c5e558692ad328b1f19e3275e2782db4fa07670d83f35e0",
+      "source": {
+        "kind": "third-party open font",
+        "license": "SIL Open Font License 1.1",
+        "source": "https://github.com/google/fonts/tree/main/ofl/cormorantgaramond"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 4387,
+      "id": "fonts/cormorant@1.0.0:license",
+      "kind": "license",
+      "module": "fonts/cormorant",
+      "path": "assets/fonts/cormorant/versions/1.0.0/OFL.txt",
+      "role": "license",
+      "sha256": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956",
+      "source": {
+        "kind": "third-party open font",
+        "license": "SIL Open Font License 1.1",
+        "source": "https://github.com/google/fonts/tree/main/ofl/cormorantgaramond"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
       "bytes": 759720,
       "id": "fonts/dejavu@1.0.0:body",
       "kind": "font",
@@ -2691,6 +2725,159 @@
         "filtering": "linear",
         "format": "SVG",
         "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2381331,
+      "id": "ui/gold-approved@1.0.0:codex-art",
+      "kind": "texture",
+      "module": "ui/gold-approved",
+      "path": "assets/ui/gold-approved/versions/1.0.0/codex-art.png",
+      "role": "codex-art",
+      "sha256": "f19dc9fe7b1f982e158f87528e2c9d374b33b82ecf227ca7941a8b17e6fc57b2",
+      "source": {
+        "generation_id": "exec-fa393b48-144d-41dd-ac81-79d36eeba1f9",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original artwork generated for this game."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2490856,
+      "id": "ui/gold-approved@1.0.0:codex-scene",
+      "kind": "texture",
+      "module": "ui/gold-approved",
+      "path": "assets/ui/gold-approved/versions/1.0.0/codex-scene.png",
+      "role": "codex-scene",
+      "sha256": "3598d9ec8105f5143bfe8ec8d6bce7c4dc99d093d79deeef438ce6c26b8c3991",
+      "source": {
+        "generation_id": "exec-1a29ccb1-c6bd-48b8-af7a-a3d8dcb04703",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original artwork generated for this game."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1671,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1977219,
+      "id": "ui/gold-approved@1.0.0:codex-template",
+      "kind": "texture",
+      "module": "ui/gold-approved",
+      "path": "assets/ui/gold-approved/versions/1.0.0/codex-template.png",
+      "role": "codex-template",
+      "sha256": "3c7e9753b5494c49ace5a9fe1a11500efd6423a6879e37fa5ab49f7e14733f67",
+      "source": {
+        "generation_id": "exec-2c546cb7-b2e0-4b45-a2c3-31c41c9163af",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original generated artwork for this game.",
+        "notes": "Empty approved UI template; text, creatures and icons removed, framing and dark reading surfaces retained."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2549367,
+      "id": "ui/gold-approved@1.0.0:menu-art",
+      "kind": "texture",
+      "module": "ui/gold-approved",
+      "path": "assets/ui/gold-approved/versions/1.0.0/menu-art.png",
+      "role": "menu-art",
+      "sha256": "cbd6fd8f20619bfeb70a9b3ee3a4f18e32298323bef4e718e7b586437d0f7643",
+      "source": {
+        "generation_id": "exec-c915d4a4-d7e5-43d4-b1b3-b41f604dff6e",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original artwork generated for this game."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2509333,
+      "id": "ui/gold-approved@1.0.0:menu-scene",
+      "kind": "texture",
+      "module": "ui/gold-approved",
+      "path": "assets/ui/gold-approved/versions/1.0.0/menu-scene.png",
+      "role": "menu-scene",
+      "sha256": "d99fe4bb6f3a4b088dd02b8aee40e08e37a81273a2ae5eee04af594e108fe61d",
+      "source": {
+        "generation_id": "exec-168b7988-9021-4e9e-8634-0c78cb05e27b",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original artwork generated for this game."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 540895,
+      "id": "ui/gold-frame@1.0.0:texture",
+      "kind": "texture",
+      "module": "ui/gold-frame",
+      "path": "assets/ui/gold-frame/versions/1.0.0/texture.png",
+      "role": "texture",
+      "sha256": "393825c52f57b12da09c6ddd2e3be4fa021be5fb06b6779ce7f43349a8caa4fd",
+      "source": {
+        "generation_id": "exec-4dd188f0-9319-43ac-a9ef-b969c9b32860",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original generated artwork for Umbral.",
+        "prompt": "Transparent frame only, antique gold thin rectangular double border, botanical leaf corners, clean center, based on approved gold codex.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
       },
       "version": "1.0.0"
     },
@@ -2993,6 +3180,35 @@
           724
         ],
         "filtering": "nearest; no generated mipmaps; source PNG unchanged",
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2580974,
+      "id": "world/gold-forest@1.0.0:texture",
+      "kind": "texture",
+      "module": "world/gold-forest",
+      "path": "assets/world/gold-forest/versions/1.0.0/texture.png",
+      "role": "texture",
+      "sha256": "27ed10e3dc18e810e4d3d6677630272f9894855b0d8b4a1e56f89a8334a74c68",
+      "source": {
+        "generation_id": "exec-996f5daf-1290-4e86-9f66-0097efd1d649",
+        "kind": "Image Gen original preserved byte-for-byte",
+        "license": "Original artwork generated for Umbral in this conversation.",
+        "selection": "Gold menu and codex chosen by user; clean environment derived from selected concept with native text and original sprite layers.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "anchor": "full-frame",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "filtering": "linear",
         "frames": 1,
         "mode": "RGB"
       },

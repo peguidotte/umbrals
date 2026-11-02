@@ -1,4 +1,4 @@
-# Umbral: Ecos do Bosque
+# Umbral
 
 [![CI do Umbral](https://github.com/peguidotte/umbrals/actions/workflows/umbral.yml/badge.svg)](https://github.com/peguidotte/umbrals/actions/workflows/umbral.yml)
 

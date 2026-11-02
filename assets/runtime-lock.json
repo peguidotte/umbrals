@@ -249,6 +249,46 @@
       "file": "texture",
       "id": "world/title-forest",
       "version": "1.0.0"
+    },
+    "world/gold-forest": {
+      "id": "world/gold-forest",
+      "version": "1.0.0",
+      "file": "texture"
+    },
+    "fonts/gold-display": {
+      "id": "fonts/cormorant",
+      "version": "1.0.0",
+      "file": "display"
+    },
+    "ui/gold-frame": {
+      "id": "ui/gold-frame",
+      "version": "1.0.0",
+      "file": "texture"
+    },
+    "ui/gold-menu-art": {
+      "id": "ui/gold-approved",
+      "version": "1.0.0",
+      "file": "menu-art"
+    },
+    "ui/gold-codex-art": {
+      "id": "ui/gold-approved",
+      "version": "1.0.0",
+      "file": "codex-art"
+    },
+    "ui/gold-menu-scene": {
+      "id": "ui/gold-approved",
+      "version": "1.0.0",
+      "file": "menu-scene"
+    },
+    "ui/gold-codex-scene": {
+      "id": "ui/gold-approved",
+      "version": "1.0.0",
+      "file": "codex-scene"
+    },
+    "ui/gold-codex-template": {
+      "id": "ui/gold-approved",
+      "version": "1.0.0",
+      "file": "codex-template"
     }
   },
   "schema_version": 1

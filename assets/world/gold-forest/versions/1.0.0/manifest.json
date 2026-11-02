@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "world/gold-forest",
+  "version": "1.0.0",
+  "status": "production",
+  "description": "Moonlit forest for the selected gold title and discovery codex.",
+  "provenance": {
+    "kind": "Image Gen original preserved byte-for-byte",
+    "tool": "OpenAI Image Gen",
+    "generation_id": "exec-996f5daf-1290-4e86-9f66-0097efd1d649",
+    "license": "Original artwork generated for Umbral in this conversation.",
+    "selection": "Gold menu and codex chosen by user; clean environment derived from selected concept with native text and original sprite layers."
+  },
+  "dependencies": [],
+  "files": {
+    "texture": {
+      "kind": "texture",
+      "path": "texture.png",
+      "sha256": "27ed10e3dc18e810e4d3d6677630272f9894855b0d8b4a1e56f89a8334a74c68",
+      "bytes": 2580974,
+      "technical": {
+        "dimensions": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "alpha": false,
+        "filtering": "linear",
+        "frames": 1,
+        "anchor": "full-frame"
+      }
+    }
+  },
+  "metadata": {
+    "consumer": "scripts/ui/gold_theme.gd",
+    "notes": "Original retained with embedded metadata. Runtime region/masking, no raster edits."
+  }
+}

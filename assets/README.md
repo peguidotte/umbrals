@@ -40,3 +40,16 @@ Both originals retain their embedded metadata; hashes and filtering are recorded
 in the module manifests. Card masks, logo region, button chamfers and transforms
 are runtime presentation. Water/insect/crystal/card cues are original deterministic
 synthesis in `scripts/ui/audio.gd`, using bounded voices and existing Music/UI buses.
+
+- Gold title/codex environment: `world/gold-forest@1.0.0`, original Image Gen
+  clean forest plate derived from the selected menu composition. Original PNG
+  and embedded metadata preserved; no text or creatures painted into the plate.
+  Native UI and existing creature atlases are composed separately at runtime.
+- `ui/gold-frame@1.0.0`: transparent original Image Gen botanical frame, original
+  PNG retained; sliced only at runtime for controls and outer decoration.
+- `fonts/cormorant@1.0.0`: Cormorant Garamond from Google Fonts, SIL OFL 1.1;
+  original font and license included, used only by gold presentation.
+- `ui/gold-approved@1.0.0`: approved menu/codex originals plus text-free scene/UI
+  templates, preserved with per-file generation provenance. Runtime atlas regions
+  retain brand, ornaments, portrait illustrations and fixed caption plates. Each
+  interactive plate is a separate native control; discovery data is not baked in.
