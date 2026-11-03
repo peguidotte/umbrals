@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://scripts/catalog/power_identity.gd" id="1"]
+[resource]
+script = ExtResource("1")
+power_id = "static_veil"
+name = "Véu
+estático"
+art_path = "res://content/umbrals/volt/powers/storm_guard.svg"
+description = "Forma um véu de eletricidade protetora."

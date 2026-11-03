@@ -1,5 +1,7 @@
 # Iteração de experiência
 
+O desenvolvimento usa alvos focados; o fechamento congela as fontes e executa uma única aceitação completa após corrigir as falhas. O registro em `tools/harness_lib/registry.py` é compartilhado com CLI, wrappers e CI.
+
 O ciclo é **objetivo → implementação → verificações → jogar no navegador → comparar renders → registrar decisão**. As skills obrigatórias `game-ui-ux` e `game-feel` ficam em `.agents/skills/` dentro do jogo. Há também skills de Godot UI/animação/áudio, input, card-game, criação de assets e áudio. `skills-lock.json` registra origem e hashes do pacote solicitado pelo usuário.
 
 ```bash
@@ -40,4 +42,4 @@ python -m playwright install chromium
 
 O Playwright instala seu encoder de vídeo junto do browser. Nesta nuvem, Chromium e FFmpeg já são ferramentas do sistema; o encoder existente foi ligado ao cache de Playwright, sem download. `--video` exige um encoder acessível no cache indicado por `PLAYWRIGHT_BROWSERS_PATH`. O vídeo é evidência visual, sem captura do áudio; sons têm QA de PCM/clipping e precisam também de audição em hardware.
 
-Para diagnóstico rápido após uma falha, `python tools/browser_smoke.py --output test-results/diagnostico --no-matrix` é explícito e marca a matriz como não executada. A aceitação completa usa `iterate.py`; ele não tem um atalho que apresente verificações omitidas como aprovadas. O CI executa o mesmo comando e publica as evidências como artifact, sem publicar o jogo.
+Durante o desenvolvimento, use `python tools/harness.py check --suite effects --case enemy_shield` ou `python tools/harness.py browser --scenario inventory --viewport 1280x720 --large-text`. O registro resolve dependências, fixa o build e isola resultados/user data; veja [harness.md](harness.md) para planejamento, fixtures, replay, cache e retomada. Esses alvos são focados, com cobertura incompleta explícita. O adapter legado `browser_smoke.py --no-matrix` também marca a matriz como não executada. A aceitação completa usa `iterate.py`; ele não tem um atalho que apresente verificações omitidas como aprovadas. O CI executa o mesmo comando e publica as evidências como artifact, sem publicar o jogo.

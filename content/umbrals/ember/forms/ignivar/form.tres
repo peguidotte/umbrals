@@ -1,0 +1,19 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/evolution_definition.gd" id="1_8qfi8"]
+[ext_resource type="Script" path="res://scripts/catalog/power_definition.gd" id="2_vyge3"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/forms/ignivar/powers/fireball.tres" id="3_nm223"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/forms/ignivar/powers/cinder_claw.tres" id="4_xfr01"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/forms/ignivar/powers/flame_guard.tres" id="5_d0eqy"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/forms/ignivar/powers/inferno.tres" id="6_eket5"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/forms/ignivar/presentation.tres" id="7_1o738"]
+[ext_resource type="Script" path="res://scripts/catalog/form_definition.gd" id="8_lbhg4"]
+
+[resource]
+script = ExtResource("8_lbhg4")
+form_id = "ignivar"
+display_name = "Ignivar"
+description = "Ignivar — Fogo."
+trait_strength = 4
+powers = Array[ExtResource("2_vyge3")]([ExtResource("3_nm223"), ExtResource("4_xfr01"), ExtResource("5_d0eqy"), ExtResource("6_eket5")])
+presentation = ExtResource("7_1o738")

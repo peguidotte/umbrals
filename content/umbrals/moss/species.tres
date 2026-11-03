@@ -1,0 +1,22 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/form_definition.gd" id="1_k6xqt"]
+[ext_resource type="Resource" path="res://content/umbrals/moss/forms/moss/form.tres" id="2_jmxqu"]
+[ext_resource type="Resource" path="res://content/umbrals/moss/forms/verdalio/form.tres" id="3_t7qvj"]
+[ext_resource type="Script" path="res://scripts/catalog/species_definition.gd" id="4_kq1kl"]
+[ext_resource type="Script" path="res://content/umbrals/moss/mechanics/living_roots.gd" id="5_uyhh3"]
+
+[resource]
+script = ExtResource("4_kq1kl")
+species_id = "moss"
+description = "Umbral do elemento Bosque."
+element = "Bosque"
+color = Color(0.5686275, 0.78431374, 0.6313726, 1)
+initial_form_id = "moss"
+passive_pool = PackedStringArray("fierce", "resilient", "vital", "ardent", "swift")
+trait_id = "living_roots"
+trait_name = "Raízes Vivas"
+trait_description = "Ao proteger, cura %d por rodada."
+trait_script = ExtResource("5_uyhh3")
+forms = Array[ExtResource("1_k6xqt")]([ExtResource("2_jmxqu"), ExtResource("3_t7qvj")])
+ready_for_play = true

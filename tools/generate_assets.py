@@ -1,10 +1,20 @@
 """Generate original vector creatures and short synthesized effects. No external art."""
 from pathlib import Path
+import json
 import math
 import struct
 import wave
 
-ROOT = Path(__file__).resolve().parents[1] / "assets"
+REPO = Path(__file__).resolve().parents[1]
+ROOT = REPO / "assets"
+ASSET_DESTINATIONS = json.loads((REPO / "tools/original-asset-paths.json").read_text())
+
+
+def destination(relative):
+    path = REPO / ASSET_DESTINATIONS.get("assets/" + relative, "assets/" + relative)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    return path
+
 
 
 def creature(name, color, shapes):
@@ -20,7 +30,7 @@ def creature(name, color, shapes):
     {shapes}
     <path d="M64 223l4-9 4 9-4 9zM254 89l3-7 3 7-3 7zM229 250l3-6 3 6-3 6z" fill="{color}" opacity=".8"/>
     </svg>'''
-    (ROOT / f"{name}.svg").write_text(svg)
+    destination(f"{name}.svg").write_text(svg)
 
 
 creature("ember", "#ef987b", '''
@@ -138,7 +148,7 @@ creature("tempestral", "#f4dc92", '''
 (ROOT / "powers").mkdir(exist_ok=True)
 
 def power_icon(name, color, shapes):
-    (ROOT / "powers" / f"{name}.svg").write_text(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+    destination(f"powers/{name}.svg").write_text(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
     <defs><radialGradient id="g"><stop stop-color="{color}" stop-opacity=".25"/><stop offset="1" stop-color="{color}" stop-opacity="0"/></radialGradient></defs>
     <circle cx="64" cy="64" r="63" fill="url(#g)"/>
     <circle cx="64" cy="64" r="47" fill="none" stroke="{color}" stroke-opacity=".2"/>

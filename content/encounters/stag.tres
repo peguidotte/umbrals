@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://scripts/catalog/encounter_definition.gd" id="1"]
+[ext_resource type="Resource" path="res://content/enemies/stag.tres" id="2"]
+[ext_resource type="Resource" path="res://content/environments/moonlit_forest.tres" id="3"]
+[ext_resource type="Resource" path="res://content/rewards/forest.tres" id="4"]
+[resource]
+script = ExtResource("1")
+encounter_id = "stag"
+subtitle = "O ÚLTIMO ECO DO BOSQUE"
+enemy = ExtResource("2")
+environment = ExtResource("3")
+rewards = ExtResource("4")

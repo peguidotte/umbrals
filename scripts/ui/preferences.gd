@@ -5,6 +5,8 @@ signal changed
 const Storage = preload("res://scripts/storage.gd")
 const PATH = "user://umbral_preferences_v1.json"
 const WEB_KEY = "umbral.preferences.v1"
+var last_save_ok: bool = true
+var writer: Callable = Storage.write_json
 var values: Dictionary = {"music": 0.55, "sfx": 0.8, "reduced_motion": false, "flashes": false, "large_text": false}
 
 func load_saved() -> void:
@@ -28,7 +30,8 @@ func set_value(key: String, value: Variant) -> bool:
 	return true
 
 func _save() -> void:
-	if not Storage.write_json(PATH, WEB_KEY, values):
+	last_save_ok = writer.call(PATH, WEB_KEY, values)
+	if not last_save_ok:
 		push_warning("Could not save preferences.")
 
 func text_scale() -> float:

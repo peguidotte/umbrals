@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://scripts/catalog/visual_style.gd" id="1"]
+[ext_resource type="FontFile" path="res://assets/body.ttf" id="2"]
+[ext_resource type="FontFile" path="res://assets/display.ttf" id="3"]
+[resource]
+script = ExtResource("1")
+body = ExtResource("2")
+display = ExtResource("3")

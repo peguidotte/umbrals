@@ -1,0 +1,45 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://scripts/catalog/enemy_definition.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/catalog/enemy_action.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/catalog/effect_definition.gd" id="3"]
+
+[sub_resource type="Resource" id="effect0"]
+script = ExtResource("3")
+operation = "damage"
+target = "player"
+amount = 9
+
+[sub_resource type="Resource" id="action0"]
+script = ExtResource("2")
+action_id = "strike_0"
+effects = Array[ExtResource("3")]([SubResource("effect0")])
+
+[sub_resource type="Resource" id="effect1"]
+script = ExtResource("3")
+operation = "damage"
+target = "player"
+amount = 12
+
+[sub_resource type="Resource" id="action1"]
+script = ExtResource("2")
+action_id = "strike_1"
+effects = Array[ExtResource("3")]([SubResource("effect1")])
+
+[sub_resource type="Resource" id="effect2"]
+script = ExtResource("3")
+operation = "damage"
+target = "player"
+amount = 8
+
+[sub_resource type="Resource" id="action2"]
+script = ExtResource("2")
+action_id = "strike_2"
+effects = Array[ExtResource("3")]([SubResource("effect2")])
+
+[resource]
+script = ExtResource("1")
+enemy_id = "owl"
+name = "Coruja dos espinhos"
+hp = 170
+art_path = "res://assets/owl.svg"
+actions = Array[ExtResource("2")]([SubResource("action0"), SubResource("action1"), SubResource("action2")])

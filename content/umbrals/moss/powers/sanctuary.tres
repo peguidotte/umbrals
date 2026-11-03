@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://scripts/catalog/power_identity.gd" id="1"]
+[resource]
+script = ExtResource("1")
+power_id = "sanctuary"
+name = "Santuário
+ancestral"
+art_path = "res://content/umbrals/moss/powers/sanctuary.svg"
+action_id = "defend"
+description = "Protege e restaura o time em um santuário verde."

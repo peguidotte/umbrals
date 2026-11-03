@@ -1,0 +1,20 @@
+extends RefCounted
+## Stable protocol IDs. Display copy must never select game behavior.
+const BATTLE = "battle"
+const REWARD = "reward"
+const VICTORY = "victory"
+const DEFEAT = "defeat"
+const CAPTURE = "capture"
+const EVOLVE = "evolve"
+const TRIPLE_LINK = "triple_link_activated"
+const MENU = "menu"
+const PAUSE = "pause"
+const SETTINGS = "settings"
+const HELP = "help"
+const CODEX = "codex"
+const CREDITS = "credits"
+const INVENTORY = "inventory"
+const INSPECT = "inspect"
+const REPLACEMENT = "replacement"
+const CONFIRM_MENU = "confirm_menu"
+const SCREENS = [MENU, BATTLE, PAUSE, SETTINGS, HELP, CODEX, CREDITS, INSPECT, REWARD, REPLACEMENT, VICTORY, DEFEAT, CONFIRM_MENU, INVENTORY]

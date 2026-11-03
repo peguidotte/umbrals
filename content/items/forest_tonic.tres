@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://scripts/catalog/item_definition.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/catalog/effect_definition.gd" id="2"]
+[sub_resource type="Resource" id="heal"]
+script = ExtResource("2")
+operation = "heal"
+target = "player"
+amount = 10
+[resource]
+script = ExtResource("1")
+item_id = "forest_tonic"
+display_name = "Tônico do bosque"
+description = "Recupera até 10 de fôlego. Uma dose por expedição. Não avança a rodada."
+effects = Array[ExtResource("2")]([SubResource("heal")])

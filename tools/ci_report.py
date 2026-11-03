@@ -18,15 +18,28 @@ def main():
         failure = f'No readable iteration result: {error}'
 
     rows = [
+        ('Harness runner', report.get('harness_checks', {}), 'checks'),
+        ('Scenario fixtures', report.get('fixtures', {}), 'checks'),
+        ('Architecture', report.get('architecture', {}), 'modules'),
+        ('Exported catalog', report.get('packed_catalog', {}), 'checks'),
+        ('Content packages', report.get('content', {}), 'checks'),
+        ('Authoring tools', report.get('authoring', {}), 'checks'),
         ('Assets', report.get('assets', {}), 'source_assets'),
         ('Rules', report.get('rules', {}), 'checks'),
         ('UI / input', report.get('ui', {}), 'checks'),
         ('Browser', report.get('browser', {}), 'checks'),
     ]
+    growth = [item for item in report.get('ui', {}).get('suites', []) if item.get('suite') in {'growth_contracts', 'growth_ui'}]
+    for suite in ('growth_contracts', 'growth_ui'):
+        rows.append((suite, next((item for item in growth if item.get('suite') == suite), {}), 'checks'))
     mutations = report.get('mutations', {})
     browser = report.get('browser', {})
-    complete = all(data.get(count, 0) > 0 and data.get('failed') == 0 for _, data, count in rows)
+    complete = report.get('scope') == 'full' and report.get('coverage', {}).get('complete') is True
+    complete = complete and all(data.get(count, 0) > 0 and data.get('failed') == 0 for _, data, count in rows)
+    complete = complete and len(report.get('architecture', {}).get('negative_cases_detected', [])) > 0
     complete = complete and len(mutations.get('detected', [])) > 0 and mutations.get('failed') == 0
+    from harness_lib.registry import SCENARIOS
+    complete = complete and {item['name'] for item in browser.get('scenarios', []) if item['status'] == 'passed'} == set(SCENARIOS)
     complete = complete and browser.get('matrix_requested') and browser.get('matrix_executed')
     if not failure:
         failure = report.get('failure') or browser.get('failure')

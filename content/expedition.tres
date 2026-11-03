@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://scripts/catalog/expedition_definition.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/catalog/encounter_definition.gd" id="2"]
+[ext_resource type="Resource" path="res://content/encounters/spore.tres" id="3"]
+[ext_resource type="Resource" path="res://content/encounters/owl.tres" id="4"]
+[ext_resource type="Resource" path="res://content/encounters/stag.tres" id="5"]
+[resource]
+script = ExtResource("1")
+encounters = Array[ExtResource("2")]([ExtResource("3"), ExtResource("4"), ExtResource("5")])

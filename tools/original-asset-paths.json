@@ -1,0 +1,20 @@
+{
+  "assets/ember.svg": "content/umbrals/ember/forms/ember/portrait.svg",
+  "assets/ignivar.svg": "content/umbrals/ember/forms/ignivar/portrait.svg",
+  "assets/powers/fireball.svg": "content/umbrals/ember/powers/fireball.svg",
+  "assets/powers/claw.svg": "content/umbrals/ember/powers/claw.svg",
+  "assets/powers/fire_guard.svg": "content/umbrals/ember/powers/fire_guard.svg",
+  "assets/powers/inferno.svg": "content/umbrals/ember/powers/inferno.svg",
+  "assets/moss.svg": "content/umbrals/moss/forms/moss/portrait.svg",
+  "assets/verdalio.svg": "content/umbrals/moss/forms/verdalio/portrait.svg",
+  "assets/powers/thorns.svg": "content/umbrals/moss/powers/thorns.svg",
+  "assets/powers/roots.svg": "content/umbrals/moss/powers/roots.svg",
+  "assets/powers/seed.svg": "content/umbrals/moss/powers/seed.svg",
+  "assets/powers/sanctuary.svg": "content/umbrals/moss/powers/sanctuary.svg",
+  "assets/volt.svg": "content/umbrals/volt/forms/volt/portrait.svg",
+  "assets/tempestral.svg": "content/umbrals/volt/forms/tempestral/portrait.svg",
+  "assets/powers/lightning.svg": "content/umbrals/volt/powers/lightning.svg",
+  "assets/powers/storm_guard.svg": "content/umbrals/volt/powers/storm_guard.svg",
+  "assets/powers/dive.svg": "content/umbrals/volt/powers/dive.svg",
+  "assets/powers/judgment.svg": "content/umbrals/volt/powers/judgment.svg"
+}

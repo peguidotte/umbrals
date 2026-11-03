@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://scripts/catalog/power_identity.gd" id="1"]
+[resource]
+script = ExtResource("1")
+power_id = "storm_dive"
+name = "Mergulho
+trovão"
+art_path = "res://content/umbrals/volt/powers/dive.svg"
+action_id = "attack_melee"
+description = "Mergulha em uma investida carregada."

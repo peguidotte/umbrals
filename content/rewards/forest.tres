@@ -1,0 +1,6 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://scripts/catalog/reward_table.gd" id="1"]
+[resource]
+script = ExtResource("1")
+table_id = "forest"
+guaranteed_missing_species = "volt"

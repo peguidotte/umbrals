@@ -1,0 +1,24 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/evolution_definition.gd" id="1_35abl"]
+[ext_resource type="Script" path="res://scripts/catalog/power_definition.gd" id="2_vl8yj"]
+[ext_resource type="Resource" path="res://content/umbrals/moss/forms/moss/powers/thorn_lash.tres" id="3_rbajv"]
+[ext_resource type="Resource" path="res://content/umbrals/moss/forms/moss/powers/root_wall.tres" id="4_dmg0f"]
+[ext_resource type="Resource" path="res://content/umbrals/moss/forms/moss/powers/life_seed.tres" id="5_m6fic"]
+[ext_resource type="Resource" path="res://content/umbrals/moss/forms/moss/presentation.tres" id="6_80nyk"]
+[ext_resource type="Script" path="res://scripts/catalog/form_definition.gd" id="7_8r5wl"]
+
+[sub_resource type="Resource" id="Resource_n4y7d"]
+script = ExtResource("1_35abl")
+transition_id = "to_verdalio"
+target_form_id = "verdalio"
+
+[resource]
+script = ExtResource("7_8r5wl")
+form_id = "moss"
+display_name = "Musgo"
+description = "Musgo — Bosque."
+trait_strength = 2
+powers = Array[ExtResource("2_vl8yj")]([ExtResource("3_rbajv"), ExtResource("4_dmg0f"), ExtResource("5_m6fic")])
+evolutions = Array[ExtResource("1_35abl")]([SubResource("Resource_n4y7d")])
+presentation = ExtResource("6_80nyk")

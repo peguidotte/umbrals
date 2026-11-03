@@ -1,0 +1,19 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/evolution_definition.gd" id="1_cnf7x"]
+[ext_resource type="Script" path="res://scripts/catalog/power_definition.gd" id="2_dgjoj"]
+[ext_resource type="Resource" path="res://content/umbrals/volt/forms/tempestral/powers/lightning.tres" id="3_c0f6x"]
+[ext_resource type="Resource" path="res://content/umbrals/volt/forms/tempestral/powers/static_veil.tres" id="4_qnlgx"]
+[ext_resource type="Resource" path="res://content/umbrals/volt/forms/tempestral/powers/storm_dive.tres" id="5_8ly36"]
+[ext_resource type="Resource" path="res://content/umbrals/volt/forms/tempestral/powers/judgment.tres" id="6_tsj6b"]
+[ext_resource type="Resource" path="res://content/umbrals/volt/forms/tempestral/presentation.tres" id="7_ki2s6"]
+[ext_resource type="Script" path="res://scripts/catalog/form_definition.gd" id="8_y305k"]
+
+[resource]
+script = ExtResource("8_y305k")
+form_id = "tempestral"
+display_name = "Tempestral"
+description = "Tempestral — Raio."
+trait_strength = 7
+powers = Array[ExtResource("2_dgjoj")]([ExtResource("3_c0f6x"), ExtResource("4_qnlgx"), ExtResource("5_8ly36"), ExtResource("6_tsj6b")])
+presentation = ExtResource("7_ki2s6")

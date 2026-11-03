@@ -1,0 +1,24 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/evolution_definition.gd" id="1_lm04x"]
+[ext_resource type="Script" path="res://scripts/catalog/power_definition.gd" id="2_ksooq"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/forms/ember/powers/fireball.tres" id="3_84lan"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/forms/ember/powers/cinder_claw.tres" id="4_bdb3d"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/forms/ember/powers/flame_guard.tres" id="5_scbb5"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/forms/ember/presentation.tres" id="6_8xpgi"]
+[ext_resource type="Script" path="res://scripts/catalog/form_definition.gd" id="7_av32m"]
+
+[sub_resource type="Resource" id="Resource_aglc4"]
+script = ExtResource("1_lm04x")
+transition_id = "to_ignivar"
+target_form_id = "ignivar"
+
+[resource]
+script = ExtResource("7_av32m")
+form_id = "ember"
+display_name = "Brasa"
+description = "Brasa — Fogo."
+trait_strength = 2
+powers = Array[ExtResource("2_ksooq")]([ExtResource("3_84lan"), ExtResource("4_bdb3d"), ExtResource("5_scbb5")])
+evolutions = Array[ExtResource("1_lm04x")]([SubResource("Resource_aglc4")])
+presentation = ExtResource("6_8xpgi")

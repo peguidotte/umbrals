@@ -1,6 +1,7 @@
 class_name UmbralEffects
 extends Control
 ## A bounded presentation-only particle pool. Visual randomness never touches combat RNG.
+const Style = preload("res://scripts/ui/style.gd")
 var particles: Array = []
 var projectiles: Array = []
 var rng = RandomNumberGenerator.new()
@@ -26,7 +27,7 @@ func clear() -> void:
 func flight(from: Vector2, to: Vector2, color: Color) -> void:
 	flights += 1
 	if reduced_motion: return
-	if projectiles.size() < 9: projectiles.append({"from": from, "to": to, "color": color, "age": 0.0, "duration": 0.22})
+	if projectiles.size() < 9: projectiles.append({"from": from, "to": to, "color": color, "age": 0.0, "duration": Style.current.motion.projectile})
 
 func burst(at: Vector2, color: Color, count: int = 14) -> void:
 	bursts += 1
@@ -39,14 +40,14 @@ func burst(at: Vector2, color: Color, count: int = 14) -> void:
 func impact(at: Vector2, magnitude: int) -> void:
 	hits += 1
 	trauma = minf(1, trauma + (0.60 if magnitude >= 35 else 0.30)) if not reduced_motion else 0.0
-	burst(at, Color("edc986"), 24 if magnitude >= 35 else 12)
+	burst(at, Style.current.impact_color, 24 if magnitude >= 35 else 12)
 
 func _process(delta: float) -> void:
 	var had_feedback: bool = trauma > 0 or not particles.is_empty() or not projectiles.is_empty()
 	clock += delta
-	trauma = maxf(0, trauma - delta * 2.5)
+	trauma = maxf(0, trauma - delta * Style.current.motion.shake_decay)
 	if is_instance_valid(visual_layer):
-		visual_layer.position = Vector2(sin(clock * 39), sin(clock * 51)) * 7 * trauma * trauma
+		visual_layer.position = Vector2(sin(clock * 39), sin(clock * 51)) * Style.current.motion.shake_distance * trauma * trauma
 	for i in range(particles.size() - 1, -1, -1):
 		var p: Dictionary = particles[i]
 		p.age += delta
@@ -68,4 +69,4 @@ func _draw() -> void:
 		var point: Vector2 = bolt.from.lerp(bolt.to, eased) - Vector2(0, sin(fraction * PI) * 54)
 		draw_circle(point, 16, Color(bolt.color, 0.15))
 		draw_circle(point, 6, bolt.color)
-		draw_circle(point, 2, Color("fff4ca"))
+		draw_circle(point, 2, Style.current.projectile_core)

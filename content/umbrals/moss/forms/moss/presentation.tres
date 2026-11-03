@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Resource" path="res://content/umbrals/moss/forms/moss/animations/left.tres" id="1_biugu"]
+[ext_resource type="Resource" path="res://content/umbrals/moss/forms/moss/animations/right.tres" id="2_rvqyl"]
+[ext_resource type="Script" path="res://scripts/catalog/presentation_definition.gd" id="3_3r50s"]
+
+[resource]
+script = ExtResource("3_3r50s")
+left = ExtResource("1_biugu")
+right = ExtResource("2_rvqyl")
+sound_id = "leaf"
+authoring_notes = "Arte vetorial original preservada. Estados procedurais explícitos; espelhamento esquerdo declarado. Não são sprites desenhados quadro a quadro."

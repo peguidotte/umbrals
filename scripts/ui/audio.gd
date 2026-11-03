@@ -1,5 +1,7 @@
 class_name UmbralAudio
 extends Node
+const Catalog = preload("res://scripts/catalog/presentation_catalog.gd")
+var environment_id: String = ""
 var voices: Array[AudioStreamPlayer] = []
 var ui_voice: AudioStreamPlayer
 var music: AudioStreamPlayer
@@ -39,8 +41,9 @@ func _ready() -> void:
 	ui_voice.bus = "UI"
 	ui_voice.volume_db = -8
 	add_child(ui_voice)
-	music = _loop("ambience", -13)
-	pulse = _loop("boss_pulse", -40)
+	music = _loop(Catalog.ENVIRONMENT.music_id, -13)
+	pulse = _loop(Catalog.ENVIRONMENT.boss_music_id, -40)
+	environment_id = Catalog.ENVIRONMENT.environment_id
 
 func _loop(name: String, volume: float) -> AudioStreamPlayer:
 	var player = AudioStreamPlayer.new()
@@ -84,3 +87,12 @@ func duck() -> void:
 	duck_tween = create_tween()
 	duck_tween.tween_method(func(value: float): AudioServer.set_bus_volume_db(index, value), base, base - 4, 0.06)
 	duck_tween.tween_method(func(value: float): AudioServer.set_bus_volume_db(index, value), base - 4, base, 0.28)
+
+func set_environment(definition: Resource) -> void:
+	if definition.environment_id == environment_id: return
+	environment_id = definition.environment_id
+	for player in [music, pulse]:
+		player.stop()
+		player.queue_free()
+	music = _loop(definition.music_id, -13)
+	pulse = _loop(definition.boss_music_id, -40)

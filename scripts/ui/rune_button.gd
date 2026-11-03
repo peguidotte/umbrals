@@ -1,7 +1,8 @@
 class_name UmbralRuneButton
 extends Button
 ## Focus is signalled by shape and outline as well as color.
-var accent: Color = Color("dec88d")
+const Style = preload("res://scripts/ui/style.gd")
+var accent: Color = Style.current.gold
 
 func _ready() -> void:
 	mouse_entered.connect(queue_redraw)
@@ -10,7 +11,7 @@ func _ready() -> void:
 	focus_exited.connect(queue_redraw)
 
 func _draw() -> void:
-	var color: Color = accent if not disabled else Color("65726b")
+	var color: Color = accent if not disabled else Style.current.disabled_accent
 	var middle: float = size.y * 0.5
 	var x: float = 13.0
 	if has_focus() or is_hovered():

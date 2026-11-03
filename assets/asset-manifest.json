@@ -113,7 +113,7 @@
     },
     {
       "id": "ember",
-      "path": "assets/ember.svg",
+      "path": "content/umbrals/ember/forms/ember/portrait.svg",
       "sha256": "ad847d5b7ead36e3d172c70ca0054c416c85bfa95deb696d5efabb9181b3c66c",
       "bytes": 1752,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -193,7 +193,7 @@
     },
     {
       "id": "ignivar",
-      "path": "assets/ignivar.svg",
+      "path": "content/umbrals/ember/forms/ignivar/portrait.svg",
       "sha256": "e7c898f62cd2585e1f42900fe97981c050f8d46815c2db74dfa64c210a72f362",
       "bytes": 1821,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -253,7 +253,7 @@
     },
     {
       "id": "moss",
-      "path": "assets/moss.svg",
+      "path": "content/umbrals/moss/forms/moss/portrait.svg",
       "sha256": "cd817966197d9cfbac2ff1a1f41189f9e9716a909b5f7cbb266220e333368b1a",
       "bytes": 1699,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -313,7 +313,7 @@
     },
     {
       "id": "powers-claw",
-      "path": "assets/powers/claw.svg",
+      "path": "content/umbrals/ember/powers/claw.svg",
       "sha256": "5099fdffa8c09dea136dcfd7bea251adfbeeb8d6c6928f81c65d3bff498bdc3b",
       "bytes": 593,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -333,7 +333,7 @@
     },
     {
       "id": "powers-dive",
-      "path": "assets/powers/dive.svg",
+      "path": "content/umbrals/volt/powers/dive.svg",
       "sha256": "1f36d281534b5da29f45a60472756413a3cd62b43501dd61c36e81825c210bfd",
       "bytes": 657,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -353,7 +353,7 @@
     },
     {
       "id": "powers-fire_guard",
-      "path": "assets/powers/fire_guard.svg",
+      "path": "content/umbrals/ember/powers/fire_guard.svg",
       "sha256": "213a551821c5e93603ccc52ac0f6e34134a898d14d8b5b91e047badb187ccd91",
       "bytes": 681,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -373,7 +373,7 @@
     },
     {
       "id": "powers-fireball",
-      "path": "assets/powers/fireball.svg",
+      "path": "content/umbrals/ember/powers/fireball.svg",
       "sha256": "b7629623edd4d41100de28043691ea03ef3b35b04e692c7a70c2ce2404b947b3",
       "bytes": 710,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -393,7 +393,7 @@
     },
     {
       "id": "powers-inferno",
-      "path": "assets/powers/inferno.svg",
+      "path": "content/umbrals/ember/powers/inferno.svg",
       "sha256": "393092fae3ebce20fac6caf24c6cb5878a320185605bd09be94b1a9bca393f05",
       "bytes": 758,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -413,7 +413,7 @@
     },
     {
       "id": "powers-judgment",
-      "path": "assets/powers/judgment.svg",
+      "path": "content/umbrals/volt/powers/judgment.svg",
       "sha256": "cb99c620a7ba1d125faf03d9ff49b2a7a746e2899107773732af74fe66b224f4",
       "bytes": 701,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -433,7 +433,7 @@
     },
     {
       "id": "powers-lightning",
-      "path": "assets/powers/lightning.svg",
+      "path": "content/umbrals/volt/powers/lightning.svg",
       "sha256": "3093b273f4dec9995146b131f70b21de098137d7cd68ce8c31de8839216c7cf4",
       "bytes": 617,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -453,7 +453,7 @@
     },
     {
       "id": "powers-roots",
-      "path": "assets/powers/roots.svg",
+      "path": "content/umbrals/moss/powers/roots.svg",
       "sha256": "ace16265c5f20bfc5bb39b4824429274b6aa7d1c9b1a30f3e3e2a699a767594d",
       "bytes": 691,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -473,7 +473,7 @@
     },
     {
       "id": "powers-sanctuary",
-      "path": "assets/powers/sanctuary.svg",
+      "path": "content/umbrals/moss/powers/sanctuary.svg",
       "sha256": "76e8c696a74c53f4a7b862f5b738b6f3ad3def4e2544687a48e9e4eede7e41d4",
       "bytes": 721,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -493,7 +493,7 @@
     },
     {
       "id": "powers-seed",
-      "path": "assets/powers/seed.svg",
+      "path": "content/umbrals/moss/powers/seed.svg",
       "sha256": "5a872a3ce556735163d6b8621049f658b7378474ba64996aefdec41858e14caf",
       "bytes": 686,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -513,7 +513,7 @@
     },
     {
       "id": "powers-storm_guard",
-      "path": "assets/powers/storm_guard.svg",
+      "path": "content/umbrals/volt/powers/storm_guard.svg",
       "sha256": "42d7e606e0fb33195a025a148f4355c2585520d83755ccc53e90082e87a7171c",
       "bytes": 651,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -533,7 +533,7 @@
     },
     {
       "id": "powers-thorns",
-      "path": "assets/powers/thorns.svg",
+      "path": "content/umbrals/moss/powers/thorns.svg",
       "sha256": "04c58fff50bcaa629b3df76132c70b53ac26a1ee732476547e0b6cf91b5d8462",
       "bytes": 682,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -653,7 +653,7 @@
     },
     {
       "id": "tempestral",
-      "path": "assets/tempestral.svg",
+      "path": "content/umbrals/volt/forms/tempestral/portrait.svg",
       "sha256": "67706908ab5d5fb285848cdc47546034b3065e73fc75b942083d81584c3e0c12",
       "bytes": 1571,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -673,7 +673,7 @@
     },
     {
       "id": "verdalio",
-      "path": "assets/verdalio.svg",
+      "path": "content/umbrals/moss/forms/verdalio/portrait.svg",
       "sha256": "3bb474996e2274e691abe7d24911c53d36f54fd3d2683c98e8836cf68f0e8ccb",
       "bytes": 1718,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",
@@ -693,7 +693,7 @@
     },
     {
       "id": "volt",
-      "path": "assets/volt.svg",
+      "path": "content/umbrals/volt/forms/volt/portrait.svg",
       "sha256": "fe12c24c74a852c1ac0551e1ecb7f1bd7fe88d35ccc812a5e9b6eba04c5ef7a5",
       "bytes": 1536,
       "status": "in-engine review recorded in docs/visual-review-v0.3.md",

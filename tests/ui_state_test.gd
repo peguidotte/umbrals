@@ -1,6 +1,8 @@
 extends SceneTree
 const Stack = preload("res://scripts/ui/screen_stack.gd")
 const Preferences = preload("res://scripts/ui/preferences.gd")
+const Statistics = preload("res://scripts/session/statistics.gd")
+const Rules = preload("res://scripts/rules.gd")
 const Storage = preload("res://scripts/storage.gd")
 var checks: int = 0
 var failed: int = 0
@@ -59,5 +61,17 @@ func _init() -> void:
 	validated.load_saved()
 	expect(validated.values.music == 1.0, "Stored volume is validated and clamped after loading")
 	expect(not validated.values.large_text and not validated.values.flashes, "Stored invalid booleans preserve safe defaults")
+	var failing = Preferences.new()
+	failing.writer = func(_path: String, _key: String, _data: Dictionary) -> bool: return false
+	expect(failing.set_value("music", 0.3) and not failing.last_save_ok, "Accepted preferences expose persistence failure without losing session values")
+	var statistics = Statistics.new()
+	statistics.writer = func(_path: String, _key: String, _data: Dictionary) -> bool: return false
+	var run = Rules.new()
+	run.new_run(1)
+	expect(not statistics.record(run), "Unfinished sessions never count as completed runs")
+	run.phase = "victory"
+	run.total_damage = 99
+	expect(statistics.record(run) and not statistics.last_save_ok, "Statistics expose save failure while retaining completed results in memory")
+	expect(not statistics.record(run) and statistics.values.runs == 1 and statistics.values.wins == 1, "Repeated terminal notifications count a result only once")
 	print(JSON.stringify({"suite": "ui_state", "checks": checks, "failed": failed}))
 	quit(0 if failed == 0 else 1)

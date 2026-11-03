@@ -1,3 +1,4 @@
+from harness_io import results_dir
 """Validate shipped source provenance, PNG constraints and actual PCM samples."""
 from array import array
 import hashlib
@@ -11,7 +12,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 manifest = json.loads((ROOT / 'assets/asset-manifest.json').read_text())
 listed = {item['path'] for item in manifest['assets']}
-actual = {str(path.relative_to(ROOT)) for path in (ROOT / 'assets').rglob('*') if path.suffix in {'.svg','.png','.wav','.ttf'}}
+actual = {str(path.relative_to(ROOT)) for folder in ['assets', 'content/umbrals'] for path in (ROOT / folder).rglob('*') if path.suffix in {'.svg','.png','.wav','.ttf'}}
 if actual != listed:
     raise RuntimeError(f'Provenance coverage differs: {actual ^ listed}')
 audio = []
@@ -35,5 +36,5 @@ for item in manifest['assets']:
                 raise RuntimeError(f'Empty or clipped PCM: {item["path"]}')
             audio.append({'path':item['path'],'frames':len(samples),'peak':max(abs(sample) for sample in samples),'clipped_samples':0})
 report={'suite':'asset_qa','source_assets':len(listed),'failed':0,'audio':audio,'limits':'PCM checks do not replace hearing the audio on hardware; hashes do not decide aesthetics or license rights.'}
-(ROOT / 'test-results/asset-report.json').write_text(json.dumps(report,indent=2))
+(results_dir() / 'asset-report.json').write_text(json.dumps(report,indent=2))
 print(json.dumps({'suite':report['suite'],'source_assets':report['source_assets'],'failed':0}))

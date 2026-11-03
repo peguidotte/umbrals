@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Resource" path="res://content/umbrals/ember/forms/ignivar/animations/left.tres" id="1_sj4hs"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/forms/ignivar/animations/right.tres" id="2_qq2oc"]
+[ext_resource type="Script" path="res://scripts/catalog/presentation_definition.gd" id="3_iyxfc"]
+
+[resource]
+script = ExtResource("3_iyxfc")
+left = ExtResource("1_sj4hs")
+right = ExtResource("2_qq2oc")
+authoring_notes = "Arte vetorial original preservada. Estados procedurais explícitos; espelhamento esquerdo declarado. Não são sprites desenhados quadro a quadro."

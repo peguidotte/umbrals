@@ -1,0 +1,19 @@
+extends Resource
+@export var size: Vector2 = Vector2(180, 244)
+@export var corner_cut: float = 11
+@export var border_width: float = 3
+@export var focus_width: float = 5
+@export var title_size: int = 22
+@export var title_y: float = 57
+@export var title_gap: float = 26
+@export var art_y: float = 131
+@export var art_radius: float = 43
+@export var art_size: float = 80
+@export var main_size: int = 20
+@export var minor_size: int = 15
+@export var main_y: float = 196
+@export var minor_y: float = 217
+@export var owner_y: float = 237
+@export var selected_raise: float = 28
+@export var hover_raise: float = 18
+@export var hover_scale: float = 1.035

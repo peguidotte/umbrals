@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://scripts/catalog/power_identity.gd" id="1"]
+[resource]
+script = ExtResource("1")
+power_id = "life_seed"
+name = "Semente
+vital"
+art_path = "res://content/umbrals/moss/powers/seed.svg"
+action_id = "heal"
+description = "Restaura o fôlego com uma semente viva."

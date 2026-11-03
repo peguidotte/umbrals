@@ -1,0 +1,24 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/evolution_definition.gd" id="1_epa6j"]
+[ext_resource type="Script" path="res://scripts/catalog/power_definition.gd" id="2_0g3dx"]
+[ext_resource type="Resource" path="res://content/umbrals/volt/forms/volt/powers/lightning.tres" id="3_ltr1o"]
+[ext_resource type="Resource" path="res://content/umbrals/volt/forms/volt/powers/static_veil.tres" id="4_bkpni"]
+[ext_resource type="Resource" path="res://content/umbrals/volt/forms/volt/powers/storm_dive.tres" id="5_56cw8"]
+[ext_resource type="Resource" path="res://content/umbrals/volt/forms/volt/presentation.tres" id="6_0waff"]
+[ext_resource type="Script" path="res://scripts/catalog/form_definition.gd" id="7_6fm8k"]
+
+[sub_resource type="Resource" id="Resource_58a1j"]
+script = ExtResource("1_epa6j")
+transition_id = "to_tempestral"
+target_form_id = "tempestral"
+
+[resource]
+script = ExtResource("7_6fm8k")
+form_id = "volt"
+display_name = "Faísca"
+description = "Faísca — Raio."
+trait_strength = 4
+powers = Array[ExtResource("2_0g3dx")]([ExtResource("3_ltr1o"), ExtResource("4_bkpni"), ExtResource("5_56cw8")])
+evolutions = Array[ExtResource("1_epa6j")]([SubResource("Resource_58a1j")])
+presentation = ExtResource("6_0waff")

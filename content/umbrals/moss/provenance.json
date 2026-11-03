@@ -1,0 +1,125 @@
+{
+  "species_id": "moss",
+  "assets": [
+    {
+      "id": "moss",
+      "path": "content/umbrals/moss/forms/moss/portrait.svg",
+      "sha256": "cd817966197d9cfbac2ff1a1f41189f9e9716a909b5f7cbb266220e333368b1a",
+      "bytes": 1699,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "creature portrait",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-roots",
+      "path": "content/umbrals/moss/powers/roots.svg",
+      "sha256": "ace16265c5f20bfc5bb39b4824429274b6aa7d1c9b1a30f3e3e2a699a767594d",
+      "bytes": 691,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-sanctuary",
+      "path": "content/umbrals/moss/powers/sanctuary.svg",
+      "sha256": "76e8c696a74c53f4a7b862f5b738b6f3ad3def4e2544687a48e9e4eede7e41d4",
+      "bytes": 721,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-seed",
+      "path": "content/umbrals/moss/powers/seed.svg",
+      "sha256": "5a872a3ce556735163d6b8621049f658b7378474ba64996aefdec41858e14caf",
+      "bytes": 686,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-thorns",
+      "path": "content/umbrals/moss/powers/thorns.svg",
+      "sha256": "04c58fff50bcaa629b3df76132c70b53ac26a1ee732476547e0b6cf91b5d8462",
+      "bytes": 682,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "verdalio",
+      "path": "content/umbrals/moss/forms/verdalio/portrait.svg",
+      "sha256": "3bb474996e2274e691abe7d24911c53d36f54fd3d2683c98e8836cf68f0e8ccb",
+      "bytes": 1718,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "creature portrait",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    }
+  ]
+}

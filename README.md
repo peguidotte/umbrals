@@ -33,17 +33,32 @@ Conjurar poderes de **três indivíduos diferentes** ativa Vínculo triplo (+6 d
 
 A primeira semente é `42013` para uma partida reproduzível. **Nova expedição** sorteia outra semente e passivas. **Repetir a mesma semente** reproduz indivíduos e sorteio; decisões diferentes ainda mudam o resultado.
 
+## Adicionar Umbrals
+
+Cada espécie tem um pacote em `content/umbrals/<species_id>/`, com Resources `.tres`, formas, poderes, trait e assets próprios. Formas usam IDs estáveis e transições explícitas, permitindo várias evoluções e ramificações. Veja [o guia de autoria](docs/adding-umbrals.md).
+
+```bash
+python tools/umbrals.py new glacier --forms frostling glaciant auroral --name 'Geada'
+python tools/umbrals.py validate
+python tools/umbrals.py gallery
+```
+
+O gerador cria um rascunho. O registro exige trait implementado, assets/proveniência e as duas direções com todos os estados visuais. Os três Umbrals atuais preservam os SVGs originais com animações procedurais declaradas e espelhamento explícito. Não são novos sprites desenhados quadro a quadro.
+
 ## Desenvolvimento e evidências
 
 ```bash
 source tools/environment.sh
+python tools/harness.py plan --changed
+python tools/harness.py check --suite effects --case enemy_shield
+python tools/harness.py browser --scenario inventory --viewport 1280x720 --large-text
 python tools/iterate.py --label minha-iteracao --goal 'Melhoria observável de experiência' --video
 python tools/serve.py
 ```
 
-`iterate.py` executa `check.sh`, exporta Web e joga no navegador. Preserva cada tentativa em `artifacts/`, com hash das fontes, logs, relatório, capturas, snapshots, matriz de resolução e vídeo opcional. `review.html` reúne evidências e notas de avaliação. Use `--baseline <diretório-anterior>` para comparar versões. Veja `docs/iteration-harness.md`.
+O [harness modular](docs/harness.md) permite tarefas, casos e cenários individuais, com dependências automáticas, resultados isolados, cache verificado e retomada. Use os alvos afetados durante o desenvolvimento. `iterate.py` fecha o mesmo grafo completo, exporta Web e joga os oito cenários no navegador com fontes congeladas. Preserva cada tentativa em `artifacts/`, com hash das fontes, logs, relatório, capturas, snapshots, matriz de resolução e vídeo opcional. `review.html` reúne evidências e notas de avaliação. Use `--baseline <diretório-anterior>` para comparar versões. Veja `docs/iteration-harness.md`.
 
-`check.sh` executa exemplos numéricos de traits/passivas, transições, orçamento de energia, propriedade dos poderes, conservação do deck, 100 simulações, dois testes de mutação, preferências/stack e eventos de teclado/controle na cena real. Erros do Godot e runs sem testes são rejeitados.
+`check.sh` verifica as fronteiras arquiteturais e dezenove regressões negativas, contratos do catálogo, projeção e cancelamento de feedback. Também executa exemplos numéricos de traits/passivas, transições, orçamento de energia, propriedade dos poderes, conservação do deck, 100 simulações, dois testes de mutação, preferências/stack e eventos de teclado/controle na cena real. Erros do Godot e runs sem testes são rejeitados.
 
 O harness Web joga por cliques e teclado reais. Verifica menu, opções, pausa, foco, energia, camadas, captura, evolução, assinatura, save após reload e substituição/cancelamento. Exercita cinco formatos de tela, incluindo 720p, 4:3 e ultrawide, com texto ampliado. Evidências e builds são ignorados no Git. Gates automáticos não atribuem nota de beleza ou diversão: a revisão dos renders e do vídeo registra a decisão.
 
@@ -61,10 +76,15 @@ bash tools/build.sh Linux
 python tools/package.py
 ```
 
-O bootstrap usa artefatos oficiais e valida SHA-512. O download inicial de templates tem cerca de 1,26 GB; só os necessários são retidos. Veja `docs/architecture.md`, o workflow de IA em `.agents/skills/umbral/SKILL.md` e as nove skills de gamedev instaladas em `.agents/skills/`. `game-feel` e `game-ui-ux` são obrigatórias para mudanças de experiência.
+O bootstrap usa artefatos oficiais e valida SHA-512. O download inicial de templates tem cerca de 1,26 GB; só os necessários são retidos. Veja `docs/architecture.md`, o mapa de mudanças e validação em `docs/architecture-guidelines.md`, o workflow de IA em `.agents/skills/umbral/SKILL.md` e as nove skills de gamedev instaladas em `.agents/skills/`. `game-feel` e `game-ui-ux` são obrigatórias para mudanças de experiência.
 
 ## Limites
 
-MVP com 3 espécies, 3 evoluções, 12 poderes e 5 passivas; a run continua curta. O bot heurístico usa dano, escudo e cura, mas simulações não comprovam diversão nem balanceamento final. Criaturas/poderes são vetores originais; a floresta foi gerada com Image Gen; música ambiente e efeitos usam síntese original. Não há mapa ramificado, loja, remapeamento de controles, save de uma run em andamento ou Steamworks. Apenas preferências e estatísticas são salvas.
+MVP com 3 espécies, 3 evoluções, 12 poderes, 5 passivas, um consumível e uma relíquia opcional; a run continua curta. O bot heurístico usa dano, escudo e cura, mas simulações não comprovam diversão nem balanceamento final. Criaturas/poderes são vetores originais; a floresta foi gerada com Image Gen; música ambiente e efeitos usam síntese original. Não há mapa ramificado, loja, remapeamento de controles, save de uma run em andamento ou Steamworks. Apenas preferências e estatísticas são salvas para o jogador. Checkpoints completos e replay determinístico estão disponíveis para desenvolvimento/testes, sem uma tela de continuar partida.
 
 O build Windows é exportado sem assinatura e precisa de playtest em Windows. Navegação por controle tem teste com eventos Godot simulados; falta controle físico. O render Web é validado com Chromium/software WebGL; performance e áudio em hardware real ainda exigem avaliação. Consulte o badge e a execução correspondente ao commit para verificar o resultado remoto do CI.
+
+Para ampliar poderes, estados, itens, inimigos e encontros, consulte
+[adding-gameplay-content.md](docs/adding-gameplay-content.md). O estilo compartilhado e
+a galeria de componentes estão em [visual-style.md](docs/visual-style.md). Durante a
+batalha, **BOLSA** permite usar o tônico e escolher quem equipa a relíquia.

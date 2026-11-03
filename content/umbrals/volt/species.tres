@@ -1,0 +1,22 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/form_definition.gd" id="1_l3kyg"]
+[ext_resource type="Resource" path="res://content/umbrals/volt/forms/volt/form.tres" id="2_3tdpk"]
+[ext_resource type="Resource" path="res://content/umbrals/volt/forms/tempestral/form.tres" id="3_oh7rq"]
+[ext_resource type="Script" path="res://scripts/catalog/species_definition.gd" id="4_bgjcl"]
+[ext_resource type="Script" path="res://content/umbrals/volt/mechanics/live_circuit.gd" id="5_fdaq6"]
+
+[resource]
+script = ExtResource("4_bgjcl")
+species_id = "volt"
+description = "Umbral do elemento Raio."
+element = "Raio"
+color = Color(0.9098039, 0.8117647, 0.5058824, 1)
+initial_form_id = "volt"
+passive_pool = PackedStringArray("fierce", "resilient", "ardent", "swift")
+trait_id = "live_circuit"
+trait_name = "Circuito Vivo"
+trait_description = "Ataques: +%d dano por outro aliado ativo."
+trait_script = ExtResource("5_fdaq6")
+forms = Array[ExtResource("1_l3kyg")]([ExtResource("2_3tdpk"), ExtResource("3_oh7rq")])
+ready_for_play = true

@@ -1,0 +1,71 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/clip_definition.gd" id="1_xp4p3"]
+[ext_resource type="Script" path="res://scripts/catalog/direction_definition.gd" id="2_qcf04"]
+
+[sub_resource type="Resource" id="Resource_y3mjr"]
+script = ExtResource("1_xp4p3")
+action_id = "idle"
+duration = 4.487989505
+frames = PackedStringArray()
+loop = true
+pose_offset = Vector2(0, 3)
+
+[sub_resource type="Resource" id="Resource_yfwho"]
+script = ExtResource("1_xp4p3")
+action_id = "move"
+frames = PackedStringArray()
+loop = true
+pose_offset = Vector2(8, -3)
+
+[sub_resource type="Resource" id="Resource_exi2f"]
+script = ExtResource("1_xp4p3")
+action_id = "attack_melee"
+frames = PackedStringArray()
+pose_scale = Vector2(1.08, 0.95)
+pose_offset = Vector2(12, 0)
+
+[sub_resource type="Resource" id="Resource_558kt"]
+script = ExtResource("1_xp4p3")
+action_id = "attack_ranged"
+frames = PackedStringArray()
+pose_scale = Vector2(1.08, 0.95)
+release_time = 0.1
+release_point = "mouth"
+
+[sub_resource type="Resource" id="Resource_vdr0j"]
+script = ExtResource("1_xp4p3")
+action_id = "defend"
+frames = PackedStringArray()
+pose_scale = Vector2(1.04, 0.96)
+
+[sub_resource type="Resource" id="Resource_2gw6k"]
+script = ExtResource("1_xp4p3")
+action_id = "heal"
+frames = PackedStringArray()
+pose_scale = Vector2(1.03, 1.03)
+
+[sub_resource type="Resource" id="Resource_05k5r"]
+script = ExtResource("1_xp4p3")
+action_id = "hurt"
+frames = PackedStringArray()
+pose_offset = Vector2(-7, 0)
+
+[sub_resource type="Resource" id="Resource_hphur"]
+script = ExtResource("1_xp4p3")
+action_id = "defeat"
+frames = PackedStringArray()
+pose_scale = Vector2(1.05, 0.8)
+pose_offset = Vector2(0, 12)
+
+[resource]
+script = ExtResource("2_qcf04")
+portrait_path = "res://content/umbrals/moss/forms/moss/portrait.svg"
+mirror = true
+anchors = Dictionary[String, Vector2]({
+"attack_origin": Vector2(0.65, 0.5),
+"center": Vector2(0.5, 0.5),
+"impact_target": Vector2(0.5, 0.5),
+"mouth": Vector2(0.5, 0.57)
+})
+clips = Array[ExtResource("1_xp4p3")]([SubResource("Resource_y3mjr"), SubResource("Resource_yfwho"), SubResource("Resource_exi2f"), SubResource("Resource_558kt"), SubResource("Resource_vdr0j"), SubResource("Resource_2gw6k"), SubResource("Resource_05k5r"), SubResource("Resource_hphur")])

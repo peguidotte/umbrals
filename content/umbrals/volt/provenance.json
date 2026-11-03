@@ -1,0 +1,125 @@
+{
+  "species_id": "volt",
+  "assets": [
+    {
+      "id": "powers-dive",
+      "path": "content/umbrals/volt/powers/dive.svg",
+      "sha256": "1f36d281534b5da29f45a60472756413a3cd62b43501dd61c36e81825c210bfd",
+      "bytes": 657,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-judgment",
+      "path": "content/umbrals/volt/powers/judgment.svg",
+      "sha256": "cb99c620a7ba1d125faf03d9ff49b2a7a746e2899107773732af74fe66b224f4",
+      "bytes": 701,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-lightning",
+      "path": "content/umbrals/volt/powers/lightning.svg",
+      "sha256": "3093b273f4dec9995146b131f70b21de098137d7cd68ce8c31de8839216c7cf4",
+      "bytes": 617,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "powers-storm_guard",
+      "path": "content/umbrals/volt/powers/storm_guard.svg",
+      "sha256": "42d7e606e0fb33195a025a148f4355c2585520d83755ccc53e90082e87a7171c",
+      "bytes": 651,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "power illustration",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "tempestral",
+      "path": "content/umbrals/volt/forms/tempestral/portrait.svg",
+      "sha256": "67706908ab5d5fb285848cdc47546034b3065e73fc75b942083d81584c3e0c12",
+      "bytes": 1571,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "creature portrait",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    },
+    {
+      "id": "volt",
+      "path": "content/umbrals/volt/forms/volt/portrait.svg",
+      "sha256": "fe12c24c74a852c1ac0551e1ecb7f1bd7fe88d35ccc812a5e9b6eba04c5ef7a5",
+      "bytes": 1536,
+      "status": "in-engine review recorded in docs/visual-review-v0.3.md",
+      "collision": "none; visual/audio only",
+      "role": "creature portrait",
+      "technical": {
+        "format": "SVG",
+        "filtering": "linear",
+        "anchor": "center",
+        "frames": 1
+      },
+      "source": {
+        "kind": "authored original vector",
+        "tool": "tools/generate_assets.py",
+        "license": "Original project asset; no external samples or game artwork."
+      }
+    }
+  ]
+}

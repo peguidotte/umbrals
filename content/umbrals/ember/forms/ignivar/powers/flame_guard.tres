@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://scripts/catalog/power_definition.gd" id="1"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/powers/flame_guard.tres" id="2"]
+[ext_resource type="Script" path="res://scripts/catalog/effect_definition.gd" id="3"]
+
+[sub_resource type="Resource" id="effect0"]
+script = ExtResource("3")
+operation = "block"
+target = "player"
+amount = 12
+
+[resource]
+script = ExtResource("1")
+identity = ExtResource("2")
+effects = Array[ExtResource("3")]([SubResource("effect0")])

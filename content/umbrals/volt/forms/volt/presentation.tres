@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Resource" path="res://content/umbrals/volt/forms/volt/animations/left.tres" id="1_xd0bq"]
+[ext_resource type="Resource" path="res://content/umbrals/volt/forms/volt/animations/right.tres" id="2_8ef1j"]
+[ext_resource type="Script" path="res://scripts/catalog/presentation_definition.gd" id="3_dd446"]
+
+[resource]
+script = ExtResource("3_dd446")
+left = ExtResource("1_xd0bq")
+right = ExtResource("2_8ef1j")
+sound_id = "storm"
+authoring_notes = "Arte vetorial original preservada. Estados procedurais explícitos; espelhamento esquerdo declarado. Não são sprites desenhados quadro a quadro."

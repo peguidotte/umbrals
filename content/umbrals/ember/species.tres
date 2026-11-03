@@ -1,0 +1,22 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/form_definition.gd" id="1_bctn3"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/forms/ember/form.tres" id="2_ab41r"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/forms/ignivar/form.tres" id="3_vc5uc"]
+[ext_resource type="Script" path="res://scripts/catalog/species_definition.gd" id="4_p86xx"]
+[ext_resource type="Script" path="res://content/umbrals/ember/mechanics/combustion.gd" id="5_ky3xr"]
+
+[resource]
+script = ExtResource("4_p86xx")
+species_id = "ember"
+description = "Umbral do elemento Fogo."
+element = "Fogo"
+color = Color(0.9372549, 0.59607846, 0.48235294, 1)
+initial_form_id = "ember"
+passive_pool = PackedStringArray("fierce", "resilient", "ardent", "swift")
+trait_id = "combustion"
+trait_name = "Combustão"
+trait_description = "Ataques aplicam %d queimadura."
+trait_script = ExtResource("5_ky3xr")
+forms = Array[ExtResource("1_bctn3")]([ExtResource("2_ab41r"), ExtResource("3_vc5uc")])
+ready_for_play = true

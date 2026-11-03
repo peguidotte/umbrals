@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://scripts/catalog/power_identity.gd" id="1"]
+[resource]
+script = ExtResource("1")
+power_id = "inferno"
+name = "Sol
+devorador"
+art_path = "res://content/umbrals/ember/powers/inferno.svg"
+description = "Libera o sol interior de Ignivar."

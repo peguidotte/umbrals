@@ -22,20 +22,11 @@ REPO = ROOT
 IGNORED = {'.godot', 'builds', 'test-results', 'artifacts', '__pycache__', '.git'}
 
 
-def source_manifest():
-    files = [p for p in ROOT.rglob('*') if p.is_file() and not IGNORED.intersection(p.relative_to(ROOT).parts)
-             and not p.name.endswith(('.import', '.uid'))]
-    records = {str(p.relative_to(REPO)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
-    digest = hashlib.sha256(json.dumps(records, sort_keys=True).encode()).hexdigest()
-    return {'sha256': digest, 'files': records}
-
-
-def run_command(command, log):
-    # Arguments remain argv entries. The shell only sources the writable tool environment.
-    result = subprocess.run(['bash', '-c', 'set -euo pipefail; source tools/environment.sh; exec "$@"',
-                             'umbral-iteration', *command], cwd=ROOT, stdout=log, stderr=subprocess.STDOUT,
-                            timeout=900)
-    return result.returncode
+from harness_lib.manifest import source_manifest
+from harness_lib.runner import run as run_tasks, atomic_json
+from harness_lib.registry import FULL
+from harness_lib.reporting import summarize
+from harness_lib.builds import publish_build
 
 
 def canonical(name):
@@ -114,6 +105,8 @@ def write_review(out, report):
             diagnostic = ('<details><summary>Diferença de pixels (não mede qualidade)</summary>' + picture(pair['pixel_diff'], item['name'] + ' Diferença', portable) + '</details>') if pair and pair.get('pixel_diff') else ''
             cards.append(f'<article><h2>{name}</h2><div class="pair">{before}<figure><figcaption>Atual</figcaption>'
                          + picture('browser/' + item['file'], item['name'] + ' Atual', portable) + f'</figure></div>{diagnostic}</article>')
+        for name in report.get('style_gallery', {}).get('captures', []):
+            cards.append('<article><h2>Componentes — ' + html.escape(name) + '</h2>' + picture('style-gallery/' + name, name, portable) + '</article>')
         video = ''
         if (out / 'browser/gameplay.webm').exists():
             video = ('<p>O vídeo está no pacote completo de evidências. Extraia o ZIP e abra <code>index.html</code> para assisti-lo.</p>'
@@ -146,7 +139,7 @@ document.querySelector('#save').onclick=()=>{{const notes={{source_hash:{json.du
         bundle.write(out / 'review-full.html', 'index.html')
         for file in sorted(out.rglob('*')):
             relative = file.relative_to(out)
-            if not file.is_file() or file.name in excluded or file.suffix == '.zip' or relative.parts[:2] == ('browser', 'video'):
+            if not file.is_file() or file.name in excluded or file.suffix == '.zip' or relative.parts[:1] == ('tasks',) or 'video' in relative.parts:
                 continue
             bundle.write(file, relative)
     with zipfile.ZipFile(archive) as bundle:
@@ -165,6 +158,8 @@ def main():
     parser.add_argument('--goal', default='Melhorar a experiência preservando os contratos de jogo e navegação.')
     parser.add_argument('--baseline', type=Path, help='Earlier iteration directory or archived screenshots.')
     parser.add_argument('--video', action='store_true')
+    parser.add_argument('--jobs', type=int, default=3)
+    parser.add_argument('--output', type=Path)
     parser.add_argument('--report-file', type=Path, help='Also write the machine-readable run result here, for CI summaries.')
     args = parser.parse_args()
     if args.review_only:
@@ -182,81 +177,19 @@ def main():
     baseline = args.baseline.resolve() if args.baseline else None
     if baseline and not baseline.is_dir():
         parser.error('The baseline directory must exist.')
-    artifact_root = ROOT / 'artifacts'
-    artifact_root.mkdir(exist_ok=True)
-    (artifact_root / '.gdignore').touch()
-    stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
-    out = artifact_root / f'{args.label}-{stamp}'
-    out.mkdir()  # Never overwrite an earlier attempt, even a failed one.
-    (out / 'logs').mkdir()
-    version = re.search(r'config/version="([^"]+)"', (ROOT / 'project.godot').read_text()).group(1)
-    sources = source_manifest()
-    (out / 'source-manifest.json').write_text(json.dumps(sources, indent=2))
-    shutil.copy2(ROOT / 'skills-lock.json', out / 'skills-lock.json')
-    for file in ['ux-contracts.json','art-direction-v0.3.md']:
-        shutil.copy2(ROOT / 'docs' / file, out / file)
-    started = time.monotonic()
-    engine = subprocess.run(['bash','-c','source tools/environment.sh; godot --version'],cwd=ROOT,capture_output=True,text=True,check=True).stdout.strip()
-    report = {'label':args.label,'version':version,'goal':args.goal,'started_utc':stamp,
-              'evidence_dir':str(out.relative_to(ROOT)),
-              'source_hash':sources['sha256'],'baseline':str(baseline) if baseline else None,
-              'status':'running','steps':[],'comparisons':[],
-              'tools':{'godot':engine,'python':sys.version.split()[0], 'playwright':importlib.metadata.version('playwright'), 'pillow':importlib.metadata.version('Pillow')},
-              'visual_review':'pending; fill review notes after inspecting actual captures and video',
-              'limits':['Software WebGL, not hardware performance measurements.', 'Synthetic gamepad events, not physical controller validation.',
-                        'No automatic beauty/fun score. No full accessibility certification.', 'Local execution; no claim of a remote CI pass.']}
-    command = [sys.executable,'tools/browser_smoke.py','--output',str(out / 'browser')]
-    if args.video:
-        command.append('--video')
-    steps = [('rules-and-ui',['bash','tools/check.sh']),('web-export',['bash','tools/build.sh','Web']),('browser-experience',command)]
-    failed = False
-    try:
-        for name, argv in steps:
-            print(f'[{args.label}] {name}', flush=True)
-            with (out / 'logs' / (name + '.log')).open('w') as log:
-                step_start = time.monotonic()
-                status = run_command(argv, log)
-            report['steps'].append({'name':name,'exit_code':status,'seconds':round(time.monotonic()-step_start,2),'command':argv})
-            if name == 'rules-and-ui':
-                for filename in ['asset-report.json','rules.log','mutation-report.json','ui-report.json','ui_state_test.log','ui_flow_test.log','startup_smoke.log','import.log']:
-                    if (ROOT / 'test-results' / filename).exists():
-                        shutil.copy2(ROOT / 'test-results' / filename, out / 'logs' / filename)
-            if name == 'web-export' and status == 0:
-                export = ROOT / 'builds/web/index.pck'
-                report['web_pck_sha256'] = hashlib.sha256(export.read_bytes()).hexdigest()
-            if status != 0:
-                failed = True
-                print(f'Failed: {out / "logs" / (name + ".log")}', flush=True)
-                break
-        if source_manifest()['sha256'] != sources['sha256']:
-            raise RuntimeError('Sources changed during this iteration; evidence cannot describe one source revision.')
-    except Exception as exception:
-        failed = True
-        report['failure'] = str(exception)
-    finally:
-        for key, path in [('assets',out / 'logs/asset-report.json'),('ui',out / 'logs/ui-report.json'),('mutations',out / 'logs/mutation-report.json'),('browser',out / 'browser/browser-report.json')]:
-            if path.exists():
-                report[key] = json.loads(path.read_text())
-        if (out / 'logs/rules.log').exists():
-            for line in (out / 'logs/rules.log').read_text().splitlines():
-                if line.startswith('{'):
-                    item = json.loads(line)
-                    if item.get('suite') == 'umbral_rules':
-                        report['rules'] = item
-        report['status'] = 'failed' if failed else 'passed'
-        if failed and not report.get('failure'):
-            step = next((item for item in report['steps'] if item['exit_code'] != 0), {})
-            report['failed_step'] = step.get('name', 'iteration')
-            report['failure'] = report.get('browser', {}).get('failure') or f"{report['failed_step']} exited with code {step.get('exit_code', 'unknown')}; inspect its preserved log."
-        report['seconds'] = round(time.monotonic()-started,2)
-        report['comparisons'] = compare_images(report.get('browser',{}),baseline,out)
-        (out / 'run.json').write_text(json.dumps(report,indent=2,ensure_ascii=False))
-        if args.report_file:
-            args.report_file.parent.mkdir(parents=True, exist_ok=True)
-            args.report_file.write_text(json.dumps(report, indent=2, ensure_ascii=False))
-        write_review(out,report)
-        print(json.dumps({'status':report['status'],'report':str(out / 'review.html'),'seconds':report['seconds'],'failure':report.get('failure')},ensure_ascii=False))
-    return int(failed)
+    raw = run_tasks(list(FULL), {'label': args.label, 'full': True, 'video': args.video, 'jobs': args.jobs}, args.output)
+    report = summarize(raw)
+    out = Path(raw['directory'])
+    if report['status'] == 'passed' and report['coverage']['complete']:
+        publish_build(report['tasks']['web']['build_directory'], 'Web')
+    report['goal'] = args.goal
+    report['baseline'] = str(baseline) if baseline else None
+    report['comparisons'] = compare_images(report.get('browser', {}), baseline, out)
+    atomic_json(out / 'run.json', report)
+    if args.report_file: atomic_json(args.report_file, report)
+    write_review(out, report)
+    print(json.dumps({'status': report['status'], 'report': str(out / 'review.html'), 'seconds': report['seconds'], 'failure': report.get('failure')}, ensure_ascii=False))
+    return 0 if report['status'] == 'passed' and report['coverage']['complete'] else 1
 
 
 if __name__ == '__main__':

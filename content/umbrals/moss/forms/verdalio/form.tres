@@ -1,0 +1,19 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/evolution_definition.gd" id="1_h7dkv"]
+[ext_resource type="Script" path="res://scripts/catalog/power_definition.gd" id="2_nmjp2"]
+[ext_resource type="Resource" path="res://content/umbrals/moss/forms/verdalio/powers/thorn_lash.tres" id="3_d68y4"]
+[ext_resource type="Resource" path="res://content/umbrals/moss/forms/verdalio/powers/root_wall.tres" id="4_6hhcw"]
+[ext_resource type="Resource" path="res://content/umbrals/moss/forms/verdalio/powers/life_seed.tres" id="5_s0qh6"]
+[ext_resource type="Resource" path="res://content/umbrals/moss/forms/verdalio/powers/sanctuary.tres" id="6_w6q5x"]
+[ext_resource type="Resource" path="res://content/umbrals/moss/forms/verdalio/presentation.tres" id="7_2ymg6"]
+[ext_resource type="Script" path="res://scripts/catalog/form_definition.gd" id="8_cto72"]
+
+[resource]
+script = ExtResource("8_cto72")
+form_id = "verdalio"
+display_name = "Verdálio"
+description = "Verdálio — Bosque."
+trait_strength = 4
+powers = Array[ExtResource("2_nmjp2")]([ExtResource("3_d68y4"), ExtResource("4_6hhcw"), ExtResource("5_s0qh6"), ExtResource("6_w6q5x")])
+presentation = ExtResource("7_2ymg6")

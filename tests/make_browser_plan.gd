@@ -1,52 +1,54 @@
 extends SceneTree
+const Planner = preload("res://scripts/domain/selection_planner.gd")
 
+const Models = preload("res://scripts/domain/models.gd")
 const Rules = preload("res://scripts/rules.gd")
 
-func over_budget(g: RefCounted) -> Array:
-	for mask in range(1, 1 << g.hand.size()):
-		var cards: Array = []
-		var indices: Array = []
-		for i in range(g.hand.size()):
-			if mask & (1 << i):
-				cards.append(g.hand[i])
-				indices.append(i)
-		if cards.size() > 3: continue
-		var score: Dictionary = Rules.evaluate(cards, g.party, g.enemy_burn)
+func over_budget(g: Rules) -> Array:
+	for indices in Planner.combinations(g.hand.size()):
+		var cards: Array[Models.CardInstance] = []
+		for index in indices: cards.append(g.hand[index])
+		var score: Models.CastEvaluation = Rules.evaluate(cards, g.party, g.enemy_burn, g.catalog)
 		if int(score.energy) > 3: return indices
 	return []
 
 func make_plan(replacement: bool = false) -> Dictionary:
 	var game = Rules.new()
 	game.new_run(42013)
+	var initial_party: Array = Models.records(game.party)
 	var plan: Array = []
 	var steps: int = 0
 	while game.phase not in ["victory", "defeat"] and steps < 30:
 		if replacement and game.encounter == 2: break
 		if game.phase == "reward":
 			var index: int = 0 if game.encounter == 0 or replacement else 1
-			var offer: Dictionary = game.reward_offers[index].duplicate(true)
+			var offer: Dictionary = game.reward_offers[index].to_dict()
 			var replace_uid: int = int(game.party[1].uid) if replacement and game.party.size() == 3 else -1
 			var step: Dictionary = {"action": "reward", "index": index, "count": game.reward_offers.size(), "offer": offer, "replace_uid": replace_uid}
 			if not game.choose_reward(index, replace_uid):
 				push_error("Plan selected an invalid reward")
 				break
-			step["party_after"] = game.party.duplicate(true)
+			step["party_after"] = Models.records(game.party)
 			plan.append(step)
 		else:
-			game.selected = game.best_selection()
-			var score: Dictionary = game.preview()
-			var step: Dictionary = {"action": "play", "indices": game.selected.duplicate(), "hand": game.hand.duplicate(true), "damage": score.damage, "energy": score.energy, "illegal_indices": over_budget(game)}
+			game.selected = Planner.choose(game.hand, game.project, game.intent_damage())
+			var score: Models.CastEvaluation = game.preview()
+			var step: Dictionary = {"action": "play", "indices": game.selected.duplicate(), "hand": Models.records(game.hand), "damage": score.damage, "energy": score.energy, "illegal_indices": over_budget(game)}
 			game.play()
 			step["hp_after"] = game.player_hp
 			step["phase_after"] = game.phase
 			plan.append(step)
 		steps += 1
-	return {"seed": 42013, "outcome": game.phase, "plan": plan}
+	return {"seed": 42013, "initial_party": initial_party, "outcome": game.phase, "plan": plan}
 
 func _init() -> void:
 	var primary: Dictionary = make_plan()
 	var replacement: Dictionary = make_plan(true)
-	var file = FileAccess.open("res://test-results/browser-plan.json", FileAccess.WRITE)
+	var file = FileAccess.open(output_path("browser-plan.json"), FileAccess.WRITE)
 	file.store_string(JSON.stringify({"primary": primary, "replacement": replacement}))
 	print("Browser plans: main=", primary.outcome, ", replacement=", replacement.outcome)
 	quit(0 if primary.outcome == "victory" and replacement.outcome == "battle" else 1)
+
+func output_path(name: String) -> String:
+	var directory: String = OS.get_environment("UMBRAL_RESULTS_DIR")
+	return ("res://test-results" if directory.is_empty() else directory).path_join(name)

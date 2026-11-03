@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/catalog_definition.gd" id="1_rol0n"]
+[ext_resource type="Script" path="res://scripts/catalog/species_definition.gd" id="2_wqoix"]
+[ext_resource type="Resource" path="res://content/umbrals/ember/species.tres" id="3_3x767"]
+[ext_resource type="Resource" path="res://content/umbrals/moss/species.tres" id="4_lati3"]
+[ext_resource type="Resource" path="res://content/umbrals/volt/species.tres" id="5_1efsm"]
+
+[resource]
+script = ExtResource("1_rol0n")
+species = Array[ExtResource("2_wqoix")]([ExtResource("3_3x767"), ExtResource("4_lati3"), ExtResource("5_1efsm")])
