@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UmbralSpeciesResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/species_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "ember"
+initial_form = "ember"
+element = "Fogo"
+color = "ef987b"
+powers = ["fireball", "cinder_claw", "flame_guard"]
+signature = "inferno"
+passive_pool = ["fierce", "resilient", "ardent", "swift"]
+forms = Array[Dictionary]([
+{"id": "ember", "name": "Brasa", "nature": "fire", "secondary_nature": "", "resistances": {"fire": 25}, "art": "umbrals/ember", "trait_id": "combustion", "trait": "Combustão", "trait_description": "Ataques aplicam %d queimadura.", "trait_value": 2, "stats": {"max_hp": 40, "attack": 10, "defense": 2, "speed": 14}, "power_profile": {"damage": 0, "block": 0, "heal": 0, "burn": 0, "wet": 0}, "lore": {"title": "Quem guarda a última brasa", "text": "Brasa carrega a memória de uma fogueira mantida acesa à espera de alguém. Quando se assusta, recolhe a cauda em torno do corpo para proteger o próprio calor.\n\nAproxima-se em silêncio de quem sente frio. Seu primeiro gesto de confiança é dividir uma pequena chama."}},
+{"id": "ignivar", "name": "Ignivar", "nature": "fire", "secondary_nature": "", "resistances": {"fire": 25}, "art": "umbrals/ignivar", "trait_id": "combustion", "trait": "Combustão", "trait_description": "Ataques aplicam %d queimadura.", "trait_value": 4, "stats": {"max_hp": 52, "attack": 13, "defense": 3, "speed": 16}, "power_profile": {"damage": 5, "block": 4, "heal": 2, "burn": 1, "wet": 1}, "lore": {"title": "Uma chama que também guia", "text": "A chama que Brasa guardava junto ao corpo agora ilumina o caminho de outros Umbrals. Ignivar ainda para para ouvir o bosque antes de avançar.\n\nSuas caudas deixam um rastro de calor entre as árvores, como um farol para quem ficou para trás."}},
+])
+evolutions = Array[Dictionary]([{"id": "ember_to_ignivar", "from": "ember", "to": "ignivar"}])

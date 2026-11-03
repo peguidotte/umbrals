@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UmbralCatalogManifest" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/manifest_resource.gd" id="1"]
+[ext_resource type="Resource" path="res://content/species/ember/species.tres" id="2"]
+[ext_resource type="Resource" path="res://content/species/moss/species.tres" id="3"]
+[ext_resource type="Resource" path="res://content/species/volt/species.tres" id="4"]
+[ext_resource type="Resource" path="res://content/species/dew/species.tres" id="5"]
+
+[resource]
+script = ExtResource("1")
+species = Array[Resource]([ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5")])

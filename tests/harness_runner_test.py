@@ -65,6 +65,13 @@ folder=Path(os.environ['UMBRAL_RESULTS_DIR'])
     def execute(self, tasks, names=None, options=None, cls=Executor):
         return run(names or list(tasks), options or {}, root=self.root, tasks=tasks, executor_type=cls)
 
+    def test_legacy_fixture_change_selects_save_suite_without_browser(self):
+        from unittest.mock import patch
+        with patch('harness_lib.planning.changed_paths', return_value=['tests/fixtures/expedition_schema1_44943dc.json']):
+            result = plan(changed=True)
+        self.assertIn('expedition-save', result['requested'])
+        self.assertNotIn('browser.integration', result['requested'])
+
     def test_registry_is_acyclic_and_every_suite_has_one_owner(self):
         tasks = registry()
         self.assertEqual(len(closure(tasks, tasks)), len(tasks))

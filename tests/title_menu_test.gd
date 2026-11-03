@@ -42,7 +42,7 @@ func run() -> void:
 	var resting: Dictionary = title.effect_state()
 	await create_timer(0.2).timeout
 	expect(title.effect_state() == resting, "Reduced motion freezes poses and pulse")
-	var initial_save: String = JSON.stringify(app.run_save.load_snapshot())
+	var initial_save: String = JSON.stringify(app.session.run_save.load_snapshot())
 	await press("menu.play")
 	expect(app.screens.top() == "journey" and app.registry["journey.continue"].disabled, "No-save Journey disables Continue")
 	expect(app.registry["journey.new"].caption.text == "NOVA EXPEDIÇÃO" and app.registry["journey.new"].caption.is_visible_in_tree(), "Native caption is rendered above its plate")
@@ -50,23 +50,23 @@ func run() -> void:
 	await press("journey.new")
 	await press("starter.ember")
 	expect(app.screens.top() == "map", "New expedition opens map through existing starter flow")
-	var saved: String = JSON.stringify(app.run_save.load_snapshot())
-	var stable: String = JSON.stringify(app.expedition.snapshot())
+	var saved: String = JSON.stringify(app.session.run_save.load_snapshot())
+	var stable: String = JSON.stringify(app.session.expedition.snapshot())
 	expect(saved != initial_save, "Existing expedition coordinator writes the checkpoint")
 	app._return_menu()
 	await process_frame
 	await press("menu.play")
 	var journey: Control = app.modal_root
 	expect(not app.registry["journey.continue"].disabled, "Save enables Continue")
-	expect(journey.public_checkpoint.party == app.expedition.public_state().party, "Journey presents the saved party")
+	expect(journey.public_checkpoint.party == app.session.expedition.public_state().party, "Journey presents the saved party")
 	expect(journey.checkpoint_summary(journey.public_checkpoint) == "Bosque · Próxima parada: Clareira", "Journey describes the actual next node")
-	expect(JSON.stringify(app.run_save.load_snapshot()) == saved, "Building checkpoint card is read-only")
+	expect(JSON.stringify(app.session.run_save.load_snapshot()) == saved, "Building checkpoint card is read-only")
 	await press("journey.new")
 	expect(app.screens.top() == "confirm_new", "New still asks before replacing existing run")
 	await press("new.cancel")
-	expect(JSON.stringify(app.run_save.load_snapshot()) == saved, "Cancel New preserves the entire checkpoint")
+	expect(JSON.stringify(app.session.run_save.load_snapshot()) == saved, "Cancel New preserves the entire checkpoint")
 	await press("journey.continue")
-	expect(app.screens.top() == "map" and JSON.stringify(app.expedition.snapshot()) == stable, "Continue restores exact map, cards and RNG")
+	expect(app.screens.top() == "map" and JSON.stringify(app.session.expedition.snapshot()) == stable, "Continue restores exact map, cards and RNG")
 	app._return_menu()
 	await process_frame
 	app.preferences.set_value("reduced_motion", true)
@@ -78,10 +78,10 @@ func run() -> void:
 	var roster_view = preload("res://scripts/ui/journey_menu.gd").new()
 	app.add_child(roster_view)
 	roster_view.size = app.size
-	var public_saved: Dictionary = app.expedition.public_state()
+	var public_saved: Dictionary = app.session.expedition.public_state()
 	public_saved.party.clear()
 	for i in range(6):
-		public_saved.party.append(app.Rules.make_umbral(["ember", "dew", "moss", "volt"][i % 4], "fierce", i + 1, 2))
+		public_saved.party.append(app.Rules.make_umbral(["ember", "dew", "moss", "volt"][i % 4], "fierce", i + 1, app.Content.legacy_form(["ember", "dew", "moss", "volt"][i % 4], 2)))
 	var noop: Callable = func(): pass
 	var callbacks: Array[Callable] = [noop, noop, noop, noop]
 	roster_view.build(app.ui, public_saved, "", callbacks, func(_node: Control, _key: String, _screen: String): pass, true)

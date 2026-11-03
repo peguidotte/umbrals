@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UmbralSpeciesResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/species_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "dew"
+initial_form = "dew"
+element = "Água"
+color = "80d7e5"
+powers = ["tidal_splash", "rain_sweep", "dew_mend"]
+signature = "moon_tide"
+passive_pool = ["fierce", "vital", "swift"]
+forms = Array[Dictionary]([
+{"id": "dew", "name": "Orvalho", "nature": "water", "secondary_nature": "", "resistances": {"water": 25}, "art": "umbrals/dew", "trait_id": "marked_tide", "trait": "Maré Marcada", "trait_description": "Poderes de água deixam Encharcado por %d rodadas.", "trait_value": 2, "stats": {"max_hp": 42, "attack": 9, "defense": 2, "speed": 20}, "power_profile": {"damage": 0, "block": 0, "heal": 0, "burn": 0, "wet": 0}, "lore": {"title": "Quem recolhe o que a chuva lembra", "text": "Orvalho guarda gotas da primeira manhã depois da Fenda. Curioso, aproxima o rosto das poças para escutar as vibrações da água.\n\nQuando percebe tristeza em outro Umbral, oferece uma gota de seu reservatório. Depois espera, paciente, até que o silêncio pareça menos pesado."}},
+{"id": "mareveu", "name": "Marevéu", "nature": "water", "secondary_nature": "", "resistances": {"water": 25}, "art": "umbrals/mareveu", "trait_id": "marked_tide", "trait": "Maré Marcada", "trait_description": "Poderes de água deixam Encharcado por %d rodadas.", "trait_value": 3, "stats": {"max_hp": 54, "attack": 12, "defense": 3, "speed": 22}, "power_profile": {"damage": 5, "block": 4, "heal": 2, "burn": 1, "wet": 1}, "lore": {"title": "Um pequeno céu de água", "text": "A memória que Orvalho carregava em gotas se espalha pelos véus de Marevéu. A água acompanha seus movimentos sem perder a forma, refletindo a lua entre as árvores.\n\nAinda se demora junto às poças. Algumas lembranças só podem ser ouvidas quando tudo fica quieto."}},
+])
+evolutions = Array[Dictionary]([{"id": "dew_to_mareveu", "from": "dew", "to": "mareveu"}])

@@ -12,7 +12,7 @@ static func player_entries(cards: Array, party: Array, swaps: Array, items: Arra
 	for card in cards:
 		var owner: Dictionary = by_uid(party, int(card.owner))
 		if owner.is_empty() or not Content.POWERS.has(card.power): continue
-		var stats: Dictionary = Content.power_stats(str(card.power), int(owner.stage))
+		var stats: Dictionary = Content.power_stats(str(card.power), owner)
 		entries.append({"kind": "power", "side": "ally", "actor_uid": int(owner.uid), "actor_slot": int(owner.slot), "card": card.duplicate(true), "priority": int(stats.get("priority", 0)), "speed": int(owner.speed), "execution_order": int(stats.get("order", 0)), "key": "ally:power:" + str(card.instance_id)})
 	for swap in swaps:
 		var outgoing: Dictionary = by_uid(party, int(swap.out_uid))

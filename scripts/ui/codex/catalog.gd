@@ -6,10 +6,10 @@ const CATEGORIES = {"umbrals":"Umbrals","powers":"Poderes","passives":"Passivas"
 
 static func build() -> Dictionary:
 	var catalog: Dictionary = {"umbrals": [], "powers": [], "passives": [], "items": []}
-	for id in Content.SPECIES:
-		var s: Dictionary = Content.SPECIES[id]
-		catalog.umbrals.append({"id": id, "name": s.names[0], "art": s.art[0], "species": id, "stage": 1})
-		catalog.umbrals.append({"id": str(s.art[1]).get_file(), "name": s.names[1], "art": s.art[1], "species": id, "stage": 2})
+	for id in Content.species_ids():
+		for form_id in Content.form_ids(id):
+			var individual: Dictionary = {"species": id, "form_id": form_id}
+			catalog.umbrals.append({"id": form_id, "name": Content.display_name(individual), "art": Content.art_binding(individual), "species": id, "form_id": form_id, "initial": form_id == Content.initial_form(id)})
 	# Encounter Umbrals share the same category, never a separate bestiary.
 	var seen: Array = []
 	for encounter in Content.ENCOUNTERS:
@@ -17,7 +17,7 @@ static func build() -> Dictionary:
 			var id: String = str(enemy.art).get_file()
 			if id in seen: continue
 			seen.append(id)
-			catalog.umbrals.append({"id": id, "name": enemy.name, "art": enemy.art, "species": "", "stage": 1})
+			catalog.umbrals.append({"id": id, "name": enemy.name, "art": enemy.art, "species": "", "initial": true})
 	for id in Content.POWERS:
 		catalog.powers.append({"id": id, "name": str(Content.POWERS[id].name).replace("\n", " "), "art": Content.POWERS[id].art})
 	for id in Content.PASSIVES:
@@ -31,7 +31,7 @@ static func ordered(catalog: Dictionary, category: String, progress: RefCounted)
 	for known in [true,false]:
 		for entry in catalog[category]:
 			# Evolutions live in the selected lineage's record, as in the approved design.
-			if category == "umbrals" and int(entry.get("stage",1)) == 2: continue
+			if category == "umbrals" and not bool(entry.get("initial", true)): continue
 			if progress.knows(category,entry.id) == known: result.append(entry)
 	return result
 

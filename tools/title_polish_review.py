@@ -120,7 +120,7 @@ try:
         click('map.pause'); click('pause.menu'); click('confirm.yes'); wait("window.umbralState.screen === 'menu'")
         click('menu.play'); shot('journey-saved')
         check(state()['journey_summary'] == 'Bosque · Próxima parada: Clareira', 'Saved card identifies the actual next point')
-        check([[i[k] for k in ('uid','species','stage','hp','max_hp','slot')] for i in state()['journey_party']] == [[i[k] for k in ('uid','species','stage','hp','max_hp','slot')] for i in original_map['party']], 'Saved party is the same public party')
+        check([[i[k] for k in ('uid','species','form_id','hp','max_hp','slot')] for i in state()['journey_party']] == [[i[k] for k in ('uid','species','form_id','hp','max_hp','slot')] for i in original_map['party']], 'Saved party is the same public party')
         click('journey.new'); wait("window.umbralState.screen === 'confirm_new'"); click('new.cancel')
         check(storage() == checkpoint, 'Cancel New preserves exact localStorage checkpoint')
         click('journey.continue'); wait("window.umbralState.screen === 'map'")

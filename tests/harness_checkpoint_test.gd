@@ -27,7 +27,8 @@ func test_checkpoint() -> void:
 func test_replay() -> void:
 	var fixture: Dictionary = Fixtures.make("rewards")
 	var run = Expedition.new()
-	expect(run.restore(fixture.initial_state) and Replay.execute(run, fixture.commands).ok, "Whitelisted commands reproduce a real battle")
+	var decoded: Dictionary = Replay.decode(Replay.envelope(fixture.initial_state, fixture.commands))
+	expect(not decoded.is_empty() and run.restore(decoded.initial_state) and Replay.execute(run, decoded.commands).ok, "Versioned whitelisted commands reproduce a real battle")
 	expect(run.snapshot() == fixture.snapshot, "Replay agrees with validated reward fixture")
 	var previous: Dictionary = run.snapshot()
 	expect(not Replay.apply(run, {"command": "set_hp", "value": 99}) and run.snapshot() == previous, "Replay has no arbitrary setter")

@@ -3,6 +3,8 @@ extends RefCounted
 ## Pure deterministic combat. Preview never samples RNG or resolves enemy plans.
 signal state_changed(kind: String)
 
+const Evolution = preload("res://scripts/battle/evolution.gd")
+const Traits = preload("res://scripts/battle/traits.gd")
 const Planner = preload("res://scripts/domain/selection_planner.gd")
 const Content = preload("res://scripts/content.gd")
 const Targeting = preload("res://scripts/battle/targeting.gd")
@@ -55,8 +57,8 @@ var enemy_burn: int = 0
 var plays: int = 0
 var discards: int = -1
 
-static func make_umbral(species: String, passive: String, uid: int, stage: int = 1) -> Dictionary:
-	var individual: Dictionary = {"uid": uid, "species": species, "passive": passive, "stage": stage, "slot": -1, "block": 0, "statuses": {}, "status_sources": {}, "can_act_round": 1}
+static func make_umbral(species: String, passive: String, uid: int, form_id: String = "") -> Dictionary:
+	var individual: Dictionary = {"uid": uid, "species": species, "passive": passive, "form_id": Content.initial_form(species) if form_id.is_empty() else form_id, "slot": -1, "block": 0, "statuses": {}, "status_sources": {}, "can_act_round": 1}
 	var stats: Dictionary = _species_stats(individual)
 	for key in ["max_hp", "attack", "defense", "speed"]:
 		individual[key] = int(stats[key])
@@ -123,7 +125,7 @@ func _shuffle(cards: Array) -> void:
 		cards[j] = temp
 
 func _normalize(individual: Dictionary) -> void:
-	var defaults: Dictionary = make_umbral(str(individual.species), str(individual.get("passive", "fierce")), int(individual.uid), int(individual.get("stage", 1)))
+	var defaults: Dictionary = make_umbral(str(individual.species), str(individual.get("passive", "fierce")), int(individual.uid), Content.form_id(individual))
 	for key in defaults:
 		if not individual.has(key): individual[key] = defaults[key]
 
@@ -156,7 +158,7 @@ func start_encounter() -> void:
 	var definitions: Array = Content.ENCOUNTERS[encounter].get("enemies", [])
 	for i in range(mini(MAX_ACTIVE, definitions.size())):
 		var definition: Dictionary = definitions[i]
-		var opponent: Dictionary = make_umbral(str(definition.get("species", "moss")), str(definition.get("passive", "")), int(definition.get("uid", 100 + i)), int(definition.get("stage", 1)))
+		var opponent: Dictionary = make_umbral(str(definition.get("species", "moss")), str(definition.get("passive", "")), int(definition.get("uid", 100 + i)), Content.form_id(definition))
 		for key in definition: opponent[key] = definition[key]
 		opponent.slot = int(definition.get("slot", i))
 		opponent.max_hp = int(definition.get("max_hp", definition.get("hp", opponent.max_hp)))
@@ -327,7 +329,7 @@ func target_options(index: int) -> Array[int]:
 	var card: Dictionary = hand[index]
 	var owner: Dictionary = umbral_by_uid(int(card.owner))
 	if owner.is_empty() or not Content.POWERS.has(card.power): return []
-	return Targeting.options(Content.power_stats(str(card.power), int(owner.stage)), owner, party, enemies)
+	return Targeting.options(Content.power_stats(str(card.power), owner), owner, party, enemies)
 
 func set_target(index: int, slot: int) -> bool:
 	if phase != "battle" or not card_usable(index) or not slot in target_options(index): return false
@@ -356,7 +358,7 @@ func selected_cards() -> Array:
 	return cards
 
 static func power_effect(card: Dictionary, individual: Dictionary, companion_count: int, trait_available: bool = true) -> Dictionary:
-	var stats: Dictionary = Content.power_stats(str(card.power), int(individual.get("stage", 1)))
+	var stats: Dictionary = Content.power_stats(str(card.power), individual)
 	var damage: int = int(stats.get("damage", 0))
 	var block: int = int(stats.get("block", 0))
 	var heal: int = int(stats.get("heal", 0))
@@ -367,12 +369,10 @@ static func power_effect(card: Dictionary, individual: Dictionary, companion_cou
 		if individual.get("passive", "") == "ardent": burn += 2
 	if individual.get("passive", "") == "resilient" and block > 0: block += 3
 	if individual.get("passive", "") == "vital" and heal > 0: heal += 2
-	var species: String = str(individual.species)
-	var trait_values: Array = Content.SPECIES[species].get("trait_values", [0, 0])
-	var strength: int = int(trait_values[clampi(int(individual.get("stage", 1)) - 1, 0, trait_values.size() - 1)])
-	if species == "ember" and damage > 0: burn += strength
-	if species == "moss" and block > 0 and trait_available: heal += strength
-	if species == "volt" and damage > 0: damage += strength * maxi(0, companion_count - 1)
+	var modified: Dictionary = Traits.power(individual, damage, block, heal, burn, companion_count, trait_available)
+	damage = int(modified.damage)
+	heal = int(modified.heal)
+	burn = int(modified.burn)
 	stats.damage = damage + (int(individual.get("statuses", {}).get("charge", 0)) if damage > 0 else 0)
 	stats.attack_multiplier = Conditions.attack_multiplier(individual)
 	if burn > 0: stats.conditions.burn = burn
@@ -409,7 +409,7 @@ static func evaluate(cards: Array, companions: Array, existing_burn: int = 0) ->
 	for card in cards:
 		var individual: Dictionary = owners[int(card.owner)]
 		var stats: Dictionary = power_effect(card, individual, able_count, not moss_used.has(int(individual.uid)))
-		if individual.species == "moss" and int(stats.block) > 0: moss_used[int(individual.uid)] = true
+		if Traits.once_per_round(individual) and int(stats.block) > 0: moss_used[int(individual.uid)] = true
 		result.actions += int(stats.cost)
 		result.direct_damage += floori(float(stats.damage) * float(stats.attack_multiplier))
 		result.block += int(stats.block)
@@ -645,7 +645,7 @@ func _resolve_round(score: Dictionary, passing: bool) -> Dictionary:
 
 func _event(kind: String, entry: Dictionary, owner: Dictionary, target_side: String, target: Dictionary, power: String, amount: int) -> Dictionary:
 	var snapshot: Dictionary = {}
-	for key in ["uid", "species", "name", "art", "stage", "passive", "hp", "max_hp", "attack", "defense", "speed", "block", "statuses", "status_sources", "resistances", "slot", "can_act_round"]:
+	for key in ["uid", "species", "name", "art", "form_id", "passive", "hp", "max_hp", "attack", "defense", "speed", "block", "statuses", "status_sources", "resistances", "slot", "can_act_round"]:
 		if target.has(key): snapshot[key] = target[key].duplicate(true) if target[key] is Dictionary else target[key]
 	var event: Dictionary = {"kind": kind, "actor_uid": int(owner.get("uid", entry.get("actor_uid", -1))), "actor_side": str(entry.get("side", "ally")), "actor_slot": int(owner.get("slot", entry.get("actor_slot", -1))), "target_uid": int(target.get("uid", -1)), "target_side": target_side, "target_slot": int(target.get("slot", -1)), "power": power, "amount": amount, "target_state": snapshot}
 	event.actor_name = str(owner.name) if owner.has("name") else Content.display_name(owner) if owner.has("species") else "Umbral"
@@ -711,7 +711,7 @@ func _resolve_power(entry: Dictionary, owner: Dictionary, events: Array, moss_us
 		power = str(entry.card.power)
 		stats = power_effect(entry.card, owner, active_party(true).size(), not moss_used.has(int(owner.uid)))
 		stats.target_slot = int(entry.card.get("target_slot", owner.slot))
-		if owner.species == "moss" and int(stats.block) > 0: moss_used[int(owner.uid)] = true
+		if Traits.once_per_round(owner) and int(stats.block) > 0: moss_used[int(owner.uid)] = true
 	var offensive: bool = int(stats.get("damage", 0)) > 0
 	if offensive:
 		# Spend once per technique, before iterating area targets. Support keeps both.
@@ -786,8 +786,8 @@ func _apply_reaction(reaction: Dictionary, source: Dictionary, entry: Dictionary
 	var beneficiary: Dictionary = _by_uid(party if beneficiary_side == "ally" else enemies, int(source.get("uid", -1)))
 	if beneficiary.is_empty() or int(beneficiary.hp) <= 0: return
 	var support: Dictionary = {"block": int(reaction.get("block", 0)), "heal": int(reaction.get("heal", 0))}
-	if support.block > 0 and beneficiary.species == "moss" and not moss_used.has(int(beneficiary.uid)):
-		support.heal += int(Content.SPECIES.moss.trait_values[clampi(int(beneficiary.stage) - 1, 0, 1)])
+	if support.block > 0 and Traits.once_per_round(beneficiary) and not moss_used.has(int(beneficiary.uid)):
+		support.heal += Traits.strength(beneficiary)
 		moss_used[int(beneficiary.uid)] = true
 	_apply_support(support, entry, owner, beneficiary_side, beneficiary, power, events)
 
@@ -855,7 +855,10 @@ func _prepare_rewards() -> void:
 	var species: String = str(route[clampi(reward_index, 0, route.size() - 1)])
 	reward_offers.append({"kind": "capture", "umbral": make_umbral(species, _roll_passive(species), next_uid)})
 	for individual in party:
-		if int(individual.stage) < 2: reward_offers.append({"kind": "evolve", "uid": individual.uid})
+		reward_offers.append_array(Evolution.offers(individual, Content.evolution_edges(individual)))
+
+func _valid_evolution(individual: Dictionary, offer: Dictionary) -> bool:
+	return Evolution.valid(individual, offer, Content.evolution_edges(individual))
 
 func capture_destinations(offer_index: int, replace_uid: int = -1) -> Array[int]:
 	var result: Array[int] = []
@@ -886,7 +889,7 @@ func choose_reward(offer_index: int, replace_uid: int = -1, capture_slot: int = 
 	elif capture_slot != -2: return false
 	if offer.kind != "capture":
 		var candidate: Dictionary = umbral_by_uid(int(offer.uid))
-		if candidate.is_empty() or int(candidate.stage) >= 2: return false
+		if candidate.is_empty() or not _valid_evolution(candidate, offer): return false
 	_persist_card_collection()
 	if offer.kind == "capture":
 		if party.size() >= MAX_TEAM:
@@ -903,12 +906,10 @@ func choose_reward(offer_index: int, replace_uid: int = -1, capture_slot: int = 
 		next_uid += 1
 	else:
 		var individual: Dictionary = umbral_by_uid(int(offer.uid))
-		if individual.is_empty() or int(individual.stage) >= 2: return false
-		var ratio: float = float(individual.hp) / maxi(1, int(individual.max_hp))
-		individual.stage = 2
-		var stats: Dictionary = _species_stats(individual)
-		for key in ["max_hp", "attack", "defense", "speed"]: individual[key] = int(stats[key])
-		individual.hp = ceili(float(individual.max_hp) * ratio) if ratio > 0.0 else 0
+		if individual.is_empty() or not _valid_evolution(individual, offer): return false
+		var evolved: Dictionary = individual.duplicate(true)
+		evolved.form_id = str(offer.target_form_id)
+		Evolution.apply(individual, evolved.form_id, _species_stats(evolved))
 		# Existing instances and learned power IDs survive. No automatic signature cards.
 	if expedition_mode:
 		reward_offers.clear()

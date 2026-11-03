@@ -45,7 +45,7 @@ func build(kit: RefCounted, saved: Dictionary, save_message: String, callbacks: 
 		body.add_child(grid)
 		for individual in roster:
 			var display_name: String = Content.display_name(individual)
-			var portrait: String = str(Content.SPECIES[individual.species].art[int(individual.stage) - 1])
+			var portrait: String = Content.art_binding(individual)
 			var row: HBoxContainer = UI.row(6)
 			row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			grid.add_child(row)

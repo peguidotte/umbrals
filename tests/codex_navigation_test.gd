@@ -29,7 +29,35 @@ func capture(name: String) -> void:
 	await create_timer(0.1).timeout
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png("res://test-results/codex-navigation/"+name+".png")
+func check_form_links() -> void:
+	var record = preload("res://scripts/ui/codex/record.gd").new()
+	var controls: Dictionary = {}
+	var selected: Array = []
+	root.add_child(record)
+	record.setup(null, func(control: Control, id: String, _screen: String): controls[id] = control, 1.0)
+	record.form_requested.connect(func(id: String): selected.append(id))
+	record._form_links([
+		{"id": "branch_a", "name": "Primeira forma longa"},
+		{"id": "branch_b", "name": "Segunda forma longa"},
+		{"id": "branch_c", "name": "Terceira forma longa"},
+	])
+	for frame in range(4): await process_frame
+	var scroll: ScrollContainer = record.get_node("FormLinksScroll")
+	expect(controls.size() == 3 and controls.has("codex.evolution"), "Every discovered branch has a registered link and the first keeps its ID")
+	for id in controls:
+		var button: Button = controls[id]
+		expect(button.size.x >= button.get_combined_minimum_size().x and button.size.x >= 180, "Branch names have their full natural width")
+	controls["codex.evolution.2"].grab_focus()
+	for frame in range(5): await process_frame
+	expect(scroll.scroll_horizontal > 0 and controls["codex.evolution.2"].has_focus(), "Keyboard focus scrolls the last branch into view")
+	controls["codex.evolution.2"].pressed.emit()
+	expect(selected == ["branch_c"], "The branch link emits the selected form ID")
+	root.remove_child(record)
+	record.queue_free()
+	await process_frame
+
 func run() -> void:
+	await check_form_links()
 	app = load("res://scenes/main.tscn").instantiate()
 	root.add_child(app)
 	app.visual_capture = true
@@ -63,7 +91,7 @@ func run() -> void:
 	var saved_scroll: int = app.modal_root.detail_scroll.scroll_vertical
 	expect(saved_scroll > 0, "Origin record is genuinely scrolled")
 	await capture("01-origin")
-	var model: String = JSON.stringify([app.game.party,app.game.hand,app.game.rng.state,app.codex_progress.records,app.run_save.load_snapshot()])
+	var model: String = JSON.stringify([app.game.party,app.game.hand,app.game.rng.state,app.codex_progress.records,app.session.run_save.load_snapshot()])
 	await key(KEY_ENTER)
 	expect(app.modal_root.category == "powers" and app.modal_root.selected == "moon_tide", "Lineage technique opens from evolved record")
 	await capture("02-power")
@@ -83,7 +111,7 @@ func run() -> void:
 		await process_frame
 	expect(app.screens.top() == "menu", "Controller Back closes at the history root")
 	expect(root.gui_get_focus_owner() == app.registry["menu.codex"], "Closing restores menu focus")
-	expect(model == JSON.stringify([app.game.party,app.game.hand,app.game.rng.state,app.codex_progress.records,app.run_save.load_snapshot()]), "Navigation leaves game, knowledge, checkpoint and RNG unchanged")
+	expect(model == JSON.stringify([app.game.party,app.game.hand,app.game.rng.state,app.codex_progress.records,app.session.run_save.load_snapshot()]), "Navigation leaves game, knowledge, checkpoint and RNG unchanged")
 	# Explicit category choice starts a new consultation, rather than keeping stale link history.
 	await press("menu.codex")
 	await press("codex.section.details")

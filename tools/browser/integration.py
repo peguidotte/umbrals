@@ -10,7 +10,7 @@ def run(session):
     check, geometry, clear_selection, start = session.check, session.geometry, session.clear_selection, session.start
     OUT, captures, started = session.output, session.captures, session.started
     def actors_match(observed, expected):
-        fields = ['status_sources', 'resistances', 'uid', 'species', 'passive', 'name', 'art', 'slot', 'hp', 'max_hp', 'stage', 'attack', 'defense', 'speed', 'block', 'statuses', 'can_act_round']
+        fields = ['status_sources', 'resistances', 'uid', 'species', 'passive', 'name', 'art', 'slot', 'hp', 'max_hp', 'form_id', 'attack', 'defense', 'speed', 'block', 'statuses', 'can_act_round']
         return len(observed) == len(expected) and all(
             all(a.get(field) == b.get(field) for field in fields)
             for a,b in zip(observed, expected))
@@ -159,6 +159,7 @@ def run(session):
     illegal_tested = False
     impact_tested = False
     evolution_seen = False
+    evolution_uid, evolution_target = None, None
     reserve_tested = False
     modes_tested = False
     targets_tested = False
@@ -179,7 +180,7 @@ def run(session):
     configure_modes()
 
     def execute(plan, primary=True):
-        nonlocal illegal_tested, impact_tested, evolution_seen, reserve_tested, targets_tested, three_seen, seed_inspected, history_tested
+        nonlocal evolution_uid, evolution_target, illegal_tested, impact_tested, evolution_seen, reserve_tested, targets_tested, three_seen, seed_inspected, history_tested
         for step in plan['plan']:
             if step['action'] == 'play':
                 settled()
@@ -254,7 +255,7 @@ def run(session):
                     shot('08e-visible-own-commands')
                 if primary and state()['encounter'] == 2 and not evolution_seen:
                     shot('12-evolved-boss')
-                    evolution_seen = any(u['stage'] == 2 for u in state()['party'])
+                    evolution_seen = any(u['uid'] == evolution_uid and u['form_id'] == evolution_target for u in state()['party'])
                 before = state()
                 if step.get('reroll'):
                     click('hud.redraw')
@@ -328,6 +329,8 @@ def run(session):
                 check(state()['phase'] == 'reward', 'Clear opens capture/evolution')
                 if primary:
                     shot('11-capture' if step['offer']['kind']=='capture' else '11-evolution')
+                if step['offer']['kind'] == 'evolve':
+                    evolution_uid, evolution_target = step['offer']['uid'], step['offer']['target_form_id']
                 click('reward.' + str(step['index']))
                 if step['offer']['kind'] == 'capture':
                     wait("window.umbralState.screen === 'capture_destination'")

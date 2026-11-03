@@ -1,34 +1,20 @@
 {
   "commit": "56e987b73b4619a6b60425e743fe93738c3e12bf",
-  "reason": "Debt already present in the current product main at semantic merge; never regenerate to accept a regression. New modules retain 350/400 limits. Reduce debt as owners are extracted.",
+  "reason": "Reviewed ratchet: debt inherited from current-main 56e987b, reduced during V04-DEV-02 as owners were extracted. Never increase these ceilings or regenerate to hide regressions; new modules keep 350/400 limits.",
   "files": {
-    "scripts/battle/initiative.gd": {
-      "sha256": "fb307ca36274bc151c5cb11aa2ac759aeed3e0598ad8b0c7037c423f6ed272a4",
-      "metrics": {
-        "ordinal-forms": 1
-      }
-    },
-    "scripts/content.gd": {
-      "sha256": "e3971cb7c36a4fe2ae6d656572cabd6108946fb40638c79a934c7b42185193d8",
-      "metrics": {
-        "ordinal-forms": 2
-      }
-    },
     "scripts/main.gd": {
       "sha256": "ef7e663ef33796e3937a80e916e4e00ecdc3a56e1d06cac81e80743d7657a127",
       "metrics": {
-        "lines": 1681,
-        "widget-ownership": 4,
-        "platform-ownership": 5
+        "lines": 1306,
+        "widget-ownership": 3,
+        "platform-ownership": 1
       }
     },
     "scripts/rules.gd": {
       "sha256": "8d1b753a627d959bd26a34adfc0e552e3ebcba7b86b59d23d476575b97b7de81",
       "metrics": {
-        "lines": 883,
-        "ordinal-forms": 6,
-        "global-catalog": 15,
-        "embedded-planner": 1,
+        "lines": 867,
+        "global-catalog": 12,
         "untyped-runtime": 6
       }
     },

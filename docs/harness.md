@@ -135,3 +135,14 @@ O guard arquitetural registra separadamente a dívida já existente na main atua
 impede que ela cresça. Veja [architecture-guidelines.md](architecture-guidelines.md).
 Verde não significa que essa dívida já foi eliminada, nem certifica diversão, áudio
 ou desempenho em hardware.
+
+## Autoria e compatibilidade — V04-DEV-02
+
+`python tools/harness.py check --suite catalog,catalog-authoring` valida manifesto,
+IDs, grafo/ramificações, traços registrados e bindings de arte.
+`python tools/harness.py check --suite expedition-save,harness-core` cobre migração
+da fixture original, identidade e proteção de gravações incompatíveis.
+`python tools/harness.py replay --input <fixture-record.json>` aceita os envelopes
+gerados por fixtures; arquivos antigos passam apenas pela migração explícita.
+Os fingerprints incluem Resources em `content/**`, catálogo e serviços de sessão;
+edições nesses contratos invalidam as tarefas dependentes, inclusive exports.

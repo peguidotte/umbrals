@@ -17,7 +17,7 @@ static func plan_entry(entry: Dictionary, party: Array, _enemies: Array) -> Stri
 		var item: Dictionary = Content.CONSUMABLES[entry.order.item]
 		return "%s\n→ %s\n%d ação · item" % [item.name, name_of(_by_uid(party, int(entry.order.uid))), int(item.cost)]
 	var card: Dictionary = entry.card
-	var power: Dictionary = Content.power_stats(str(card.power), int(owner.get("stage", 1)))
+	var power: Dictionary = Content.power_stats(str(card.power), owner)
 	var target: String = "si próprio"
 	if power.get("target", "enemy") != "self":
 		if power.scope == "single":

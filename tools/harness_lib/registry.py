@@ -2,8 +2,8 @@
 from dataclasses import dataclass
 from pathlib import Path
 
-GAME = ('scripts/**', 'assets/**', 'scenes/**', 'project.godot', 'export_presets.cfg')
-DATA = ('scripts/rules.gd', 'scripts/content.gd', 'scripts/battle/**', 'scripts/expedition/**', 'scripts/domain/**', 'scripts/storage.gd')
+GAME = ('content/**', 'scripts/**', 'assets/**', 'scenes/**', 'project.godot', 'export_presets.cfg')
+DATA = ('content/**', 'scripts/catalog/**', 'scripts/rules.gd', 'scripts/content.gd', 'scripts/battle/**', 'scripts/expedition/**', 'scripts/session/**', 'scripts/domain/**', 'scripts/storage.gd')
 POLICY = ('AGENTS.md', '.agents/skills/umbral/**', 'docs/architecture*.md', 'docs/ux-contracts.json')
 INFRA = ('tools/harness.py', 'tools/harness_io.py', 'tools/harness_lib/**')
 
@@ -29,6 +29,7 @@ class Task:
 NATIVE = {
     'harness-core': ('harness_checkpoint_test.gd', 'harness_core', ('checkpoint', 'replay', 'planner')),
     'rules': ('rules_test.gd', 'umbral_rules', ('traits_and_passives', 'budget_and_ownership', 'seed_preview_and_inputs', 'roster_and_card_cycle', 'formation_boundaries', 'swaps_and_ko', 'ko_transition_flow', 'delayed_ko_entry', 'reserve_reinsertion', 'speed_and_scopes', 'visibility', 'multiple_items', 'enemy_attributes', 'tactical_planning', 'enemy_preparation', 'capture_and_evolution', 'natures_and_reactions', 'initial_passive_usefulness', 'elemental_starters', 'battle_lifecycle', 'simulations')),
+    'catalog': ('catalog_test.gd', 'catalog', ()),
     'asset-catalog': ('asset_catalog_test.gd', 'asset_catalog', ()),
     'ui-state': ('ui_state_test.gd', 'ui_state', ()),
     'ui-flow': ('ui_flow_test.gd', 'ui_input_flow', ()),
@@ -52,6 +53,7 @@ FIXTURE_SCENARIOS = {'inventory', 'combat', 'rewards', 'replacement'}
 def registry():
     tasks = {
         'architecture': Task('architecture', 'python', inputs=('scripts/**', 'tools/architecture*'), script='tools/architecture_checks.py', suite='architecture', report='architecture-report.json', count='modules'),
+        'catalog-authoring': Task('catalog-authoring', 'python', inputs=('content/**', 'scripts/catalog/**', 'tools/umbrals.py', 'tests/catalog_authoring_test.py', 'tests/catalog_authoring_runner.py'), script='tests/catalog_authoring_runner.py', suite='catalog_authoring', report='catalog-authoring-report.json'),
         'assets': Task('assets', 'python', inputs=('assets/**', 'docs/assets/**', 'tools/asset*', 'tools/normalize_atlas.py'), script='tools/asset_checks.py', suite='asset_qa', report='asset-report.json', count='source_assets'),
         'asset-unit': Task('asset-unit', 'python', inputs=('tools/asset*', 'tools/normalize_atlas.py', 'assets/schemas/**', 'tests/test_asset_pipeline.py'), script='tools/asset_unit_checks.py', suite='asset_units', report='asset-unit-report.json'),
         'harness': Task('harness', 'python', inputs=('tools/**', 'tests/harness_runner_test.py', 'tests/browser/**', 'tests/support/**'), script='tests/harness_runner_test.py', suite='harness_runner', report='harness-report.json'),
@@ -70,7 +72,7 @@ def registry():
     }
     for name, (script, suite, cases) in NATIVE.items():
         pattern, minimum = patterns.get(name, ('', 1))
-        tasks[name] = Task(name, 'native', ('import',), inputs=(DATA if name in ('rules', 'harness-core', 'expedition-rules', 'expedition-save') else GAME) + ('tests/' + script, 'tests/support/**'), script='tests/' + script, suite=suite, report='suite-report.json', cases=cases, pattern=pattern, minimum=minimum)
+        tasks[name] = Task(name, 'native', ('import',), inputs=(DATA if name in ('rules', 'harness-core', 'expedition-rules', 'expedition-save') else GAME) + ('tests/' + script, 'tests/support/**') + (('tests/fixtures/**',) if name == 'expedition-save' else ()), script='tests/' + script, suite=suite, report='suite-report.json', cases=cases, pattern=pattern, minimum=minimum)
     for name in SCENARIOS:
         dependency = 'packed-fixtures' if name in FIXTURE_SCENARIOS else 'packed-catalog'
         tasks['browser.' + name] = Task('browser.' + name, 'browser', (dependency,), inputs=GAME + ('tools/browser/session.py', 'tools/browser_smoke.py', 'tools/browser/__init__.py', 'tools/browser/scenarios/__init__.py') + (('tools/browser/' + name + '.py', 'tests/make_browser_plan.gd') if name in ('integration', 'layout') else ('tools/' + ('expedition_browser_smoke.py' if name == 'expedition' else 'title_browser_review.py'), 'tests/make_expedition_plan.gd') if name in ('expedition', 'title') else ('tools/browser/scenarios/' + name + '.py',)), script=name, suite='umbral_ui_experience', report='browser-report.json', lock='browser')
@@ -83,7 +85,7 @@ def registry():
     return tasks
 
 
-HEADLESS = ('architecture', 'assets', 'asset-unit', 'harness', 'mutations') + tuple(NATIVE)
+HEADLESS = ('architecture', 'catalog-authoring', 'assets', 'asset-unit', 'harness', 'mutations') + tuple(NATIVE)
 FULL = HEADLESS + ('packed-catalog', 'fixtures', 'packed-fixtures') + tuple('browser.' + name for name in SCENARIOS)
 
 

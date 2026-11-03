@@ -36,19 +36,19 @@ func run() -> void:
 	expected_home.sort()
 	expect(home_ids == expected_home, "Gold home exposes the exact current platform choices")
 	expect(not app.registry.has("menu.practice") and not app.registry.has("menu.continue") , "Practice and Continue remain in the Journey screen")
-	var before_journey: String = JSON.stringify(app.run_save.load_snapshot())
+	var before_journey: String = JSON.stringify(app.session.run_save.load_snapshot())
 	await press("menu.play")
 	expect(app.screens.top() == "journey" and app.registry["journey.continue"].disabled, "Play opens expedition choices with Continue disabled without a save")
 	await press("journey.back")
-	expect(app.screens.top() == "menu" and root.gui_get_focus_owner().get_meta("ui_id", "") == "menu.play" and JSON.stringify(app.run_save.load_snapshot()) == before_journey, "Canceling expedition choices restores focus and preserves save")
+	expect(app.screens.top() == "menu" and root.gui_get_focus_owner().get_meta("ui_id", "") == "menu.play" and JSON.stringify(app.session.run_save.load_snapshot()) == before_journey, "Canceling expedition choices restores focus and preserves save")
 	await press("menu.play")
 	await press("journey.new")
 	expect(app.screens.top() == "starter", "New expedition opens starter choice")
 	await press("starter.ember")
-	expect(app.screens.top() == "map" and app.expedition.phase == "map", "Starter opens expedition map")
-	var initial: String = JSON.stringify(app.expedition.snapshot())
+	expect(app.screens.top() == "map" and app.session.expedition.phase == "map", "Starter opens expedition map")
+	var initial: String = JSON.stringify(app.session.expedition.snapshot())
 	await press("map.node.clearing")
-	expect(JSON.stringify(app.expedition.snapshot()) == initial and app.screens.top() == "map", "Selecting a node does not enter or consume RNG")
+	expect(JSON.stringify(app.session.expedition.snapshot()) == initial and app.screens.top() == "map", "Selecting a node does not enter or consume RNG")
 	expect(app.registry["map.node.boss"].disabled, "Boss is visibly locked")
 	var before_formation: String = JSON.stringify([app.game.hand, app.game.deck, app.game.discard_pile, app.game.rng.state])
 	await press("map.formation")
@@ -58,10 +58,10 @@ func run() -> void:
 	expect(JSON.stringify([app.game.hand, app.game.deck, app.game.discard_pile, app.game.rng.state]) == before_formation, "Formation preserves cards and RNG")
 	await press("map.node.clearing")
 	await press("map.confirm")
-	expect(app.screens.top() == "battle" and app.expedition.current_node_id == "clearing", "Confirm enters clearing")
-	var stable: String = JSON.stringify(app.expedition.snapshot())
-	var save_before_id: String = str(app.run_save.load_snapshot().get("checkpoint_id", ""))
-	var save_before: String = JSON.stringify(app.run_save.load_snapshot())
+	expect(app.screens.top() == "battle" and app.session.expedition.current_node_id == "clearing", "Confirm enters clearing")
+	var stable: String = JSON.stringify(app.session.expedition.snapshot())
+	var save_before_id: String = str(app.session.run_save.load_snapshot().get("checkpoint_id", ""))
+	var save_before: String = JSON.stringify(app.session.run_save.load_snapshot())
 	app.queue_free()
 	await process_frame
 	app = load("res://scenes/main.tscn").instantiate()
@@ -72,16 +72,16 @@ func run() -> void:
 	await press("journey.new")
 	expect(app.screens.top() == "confirm_new", "New run asks before replacing checkpoint")
 	await press("new.cancel")
-	expect(JSON.stringify(app.run_save.load_snapshot()) == save_before, "Cancel new preserves saved state and RNG")
+	expect(JSON.stringify(app.session.run_save.load_snapshot()) == save_before, "Cancel new preserves saved state and RNG")
 	await press("journey.practice")
 	await press("starter.ember")
-	expect(app.screens.top() == "battle" and not app.expedition_active, "Practice opens battle independently")
-	expect(JSON.stringify(app.run_save.load_snapshot()) == save_before, "Practice leaves expedition checkpoint intact")
+	expect(app.screens.top() == "battle" and not app.session.expedition_active, "Practice opens battle independently")
+	expect(JSON.stringify(app.session.run_save.load_snapshot()) == save_before, "Practice leaves expedition checkpoint intact")
 	app._return_menu()
 	await process_frame
 	await press("menu.play")
 	await press("journey.continue")
-	expect(app.screens.top() == "battle" and JSON.stringify(app.expedition.snapshot()) == stable, "Continue restores exact committed battle, hand and RNG")
+	expect(app.screens.top() == "battle" and JSON.stringify(app.session.expedition.snapshot()) == stable, "Continue restores exact committed battle, hand and RNG")
 	# Play a legal clearing and accept its capture through the scene before testing map navigation.
 	var turns: int = 0
 	while app.game.phase == "battle" and turns < 20:
@@ -96,14 +96,14 @@ func run() -> void:
 	await press("capture.reserve")
 	await press("capture.confirm")
 	await press("map.node.spring")
-	var route_before: String = JSON.stringify(app.expedition.snapshot())
+	var route_before: String = JSON.stringify(app.session.expedition.snapshot())
 	expect(app.map_root._selected_id == "spring" and app.registry["map.selection.detail"].text.contains("Nascente"), "Spring is selected without entering it")
 	expect(app.registry["map.node.spring"].text.begins_with("◆"), "Selected spring displays its selection marker")
 	await press("map.pause")
 	await press("pause.resume")
 	expect(app.map_root._selected_id == "spring" and app.registry["map.selection.detail"].text.contains("Nascente"), "Pause and resume preserve the selected route and details")
 	expect(app.registry["map.node.spring"].text.begins_with("◆"), "Pause and resume preserve the visible selection marker")
-	expect(JSON.stringify(app.expedition.snapshot()) == route_before, "Pause and resume preserve controller state and RNG")
+	expect(JSON.stringify(app.session.expedition.snapshot()) == route_before, "Pause and resume preserve controller state and RNG")
 	await press("map.pause")
 	await press("pause.settings")
 	var large_text: CheckButton = app.registry["settings.large_text"]
@@ -113,16 +113,16 @@ func run() -> void:
 	await press("pause.resume")
 	expect(app.map_root._selected_id == "spring" and app.registry["map.selection.detail"].text.contains("Nascente"), "Changing text scale and returning preserves the selected route and details")
 	expect(app.registry["map.node.spring"].text.begins_with("◆"), "Changing text scale and returning preserves the visible selection marker")
-	expect(JSON.stringify(app.expedition.snapshot()) == route_before, "Changing text scale preserves controller state and RNG")
+	expect(JSON.stringify(app.session.expedition.snapshot()) == route_before, "Changing text scale preserves controller state and RNG")
 	# Direct terminal fixture verifies profile idempotence, independently of battle simulation.
 	app.game.phase = "victory"
-	app.checkpoint_id = "isolated-terminal-fixture"
-	app.result_recorded = false
-	var runs_before: int = int(app.stats.runs)
+	app.session.checkpoint_id = "isolated-terminal-fixture"
+	app.session.result_recorded = false
+	var runs_before: int = int(app.session.stats.runs)
 	app._record_result()
-	app.result_recorded = false
+	app.session.result_recorded = false
 	app._record_result()
-	expect(int(app.stats.runs) == runs_before + 1, "Recording the same terminal checkpoint twice counts one run")
+	expect(int(app.session.stats.runs) == runs_before + 1, "Recording the same terminal checkpoint twice counts one run")
 	app._return_menu()
 	await process_frame
 	await press("menu.play")
@@ -130,27 +130,27 @@ func run() -> void:
 	await press("new.confirm")
 	await press("starter.moss")
 	expect(app.screens.top() == "map" and app.game.starter_species == "moss", "Confirmed new run B starts after run A")
-	var b_id: String = app.checkpoint_id
-	var b_saved: Dictionary = app.run_save.load_snapshot()
+	var b_id: String = app.session.checkpoint_id
+	var b_saved: Dictionary = app.session.run_save.load_snapshot()
 	expect(b_saved.get("checkpoint_id", "") == b_id, "Confirmed run B owns the new checkpoint")
-	var records: Array = app.run_save._records()
-	var latest: int = app.run_save._latest(records)
+	var records: Array = app.session.run_save._records()
+	var latest: int = app.session.run_save._latest(records)
 	expect(latest >= 0, "Run B checkpoint exists before corruption fixture")
 	if latest >= 0:
-		var broken: FileAccess = FileAccess.open(app.run_save._slot_path(latest), FileAccess.WRITE)
+		var broken: FileAccess = FileAccess.open(app.session.run_save._slot_path(latest), FileAccess.WRITE)
 		broken.store_string("{truncated")
 		broken.close()
-		var recovered: Dictionary = app.run_save.load_snapshot()
+		var recovered: Dictionary = app.session.run_save.load_snapshot()
 		expect(recovered.is_empty() or recovered.get("checkpoint_id", "") != save_before_id, "Corrupt new run B never resurrects replaced run A")
 	# Restore B to isolate the completed-ID fixture from the corruption fixture.
-	expect(app.run_save.save(b_saved), "B checkpoint restored for completed-ID fixture")
+	expect(app.session.run_save.save(b_saved), "B checkpoint restored for completed-ID fixture")
 	app.game.phase = "victory"
-	app.result_recorded = false
+	app.session.result_recorded = false
 	app._record_result()
 	app._return_menu()
 	await process_frame
 	await press("menu.play")
-	expect(app.registry["journey.continue"].disabled and app.saved_checkpoint.is_empty(), "A completed checkpoint ID cannot Continue from an old nonterminal checkpoint")
+	expect(app.registry["journey.continue"].disabled and app.session.saved_checkpoint.is_empty(), "A completed checkpoint ID cannot Continue from an old nonterminal checkpoint")
 	app.queue_free()
 	app = null
 	await process_frame

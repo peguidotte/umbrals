@@ -24,13 +24,21 @@ func mark(category: String, id: String) -> bool:
 	records[category][id] = true
 	return true
 
+# Only form IDs belong to the umbrals discovery namespace.
+static func observed_form_ids(individual: Dictionary, initial_id: String) -> Array:
+	var ids: Array = []
+	if not initial_id.is_empty(): ids.append(initial_id)
+	var current: String = str(individual.get("form_id", initial_id))
+	if not current.is_empty() and not current in ids: ids.append(current)
+	return ids
+
 func observe(game: RefCounted, include_enemies: bool = true) -> void:
 	var changed: bool = false
 	for individual in game.party:
 		var species: String = str(individual.get("species", ""))
 		if not Content.SPECIES.has(species): continue
-		changed = mark("umbrals", species) or changed
-		if int(individual.get("stage", 1)) > 1: changed = mark("umbrals", str(Content.SPECIES[species].art[1]).get_file()) or changed
+		for id in observed_form_ids(individual, Content.initial_form(species)):
+			changed = mark("umbrals", id) or changed
 		var passive: String = str(individual.get("passive", ""))
 		if Content.PASSIVES.has(passive): changed = mark("passives", passive) or changed
 		for power in individual.get("known_powers", []):

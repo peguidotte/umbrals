@@ -86,7 +86,7 @@ func set_identity(data: Dictionary, scale_text: float = 1.0) -> void:
 	else:
 		var species: Dictionary = Content.SPECIES.get(data.get("species", ""), {})
 		var art: String = str(data.get("art", ""))
-		if art.is_empty() and not species.is_empty(): art = str(species.art[int(data.stage) - 1])
+		if art.is_empty() and not species.is_empty(): art = Content.art_binding(data)
 		portrait.texture = BattleArt.texture(art)
 		ground_profile = BattleArt.ground_profile(art)
 		portrait.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST if portrait.texture is AtlasTexture else CanvasItem.TEXTURE_FILTER_LINEAR

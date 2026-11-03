@@ -68,22 +68,45 @@ func render(entry: Dictionary, kind: String, section: String) -> void:
 
 func _form_selector(entry: Dictionary) -> void:
 	var species: Dictionary = Content.SPECIES[entry.species]
-	_label(self,Content.nature_text({"species":entry.species,"stage":entry.stage}),Rect2(35,496,300,38),24,Color(species.color))
-	var other_id: String = str(entry.species) if int(entry.stage) == 2 else str(species.art[1]).get_file()
-	var other_name: String = str(species.names[0] if int(entry.stage) == 2 else species.names[1])
-	if not progress.knows("umbrals",other_id):
+	_label(self,Content.nature_text({"species":entry.species,"form_id":entry.form_id}),Rect2(35,496,300,38),24,Color(species.color))
+	var alternatives: Array = []
+	for form_id in Content.form_ids(entry.species):
+		if form_id != entry.form_id and progress.knows("umbrals", form_id):
+			alternatives.append({"id": form_id, "name": Content.display_name({"species": entry.species, "form_id": form_id})})
+	_form_links(alternatives)
+
+## DTOs contain only the ID and display name of each discovered alternative.
+func _form_links(alternatives: Array) -> void:
+	if alternatives.is_empty():
 		_label(self,"Outras formas ainda não descobertas",Rect2(335,517,385,28),17,Gold.MUTED)
 		return
-	var form = Button.new()
-	form.text = "Ver "+other_name
-	form.tooltip_text = "Consultar outra forma já descoberta"
-	form.add_theme_font_override("font",Gold.display_font())
-	form.add_theme_font_size_override("font_size",int(21*text_scale))
-	form.add_theme_color_override("font_color",Gold.GOLD)
-	form.add_theme_stylebox_override("normal",StyleBoxEmpty.new())
-	RefArt.native(self,form,Rect2(350,512,370,32))
-	register.call(form,"codex.evolution","codex")
-	form.pressed.connect(form_requested.emit.bind(other_id))
+	var row: HBoxContainer
+	if alternatives.size() > 1:
+		var scroll = ScrollContainer.new()
+		scroll.name = "FormLinksScroll"
+		scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+		scroll.follow_focus = true
+		RefArt.native(self,scroll,Rect2(350,512,370,42))
+		row = HBoxContainer.new()
+		row.add_theme_constant_override("separation",12)
+		scroll.add_child(row)
+	for index in range(alternatives.size()):
+		var alternative: Dictionary = alternatives[index]
+		var form = Button.new()
+		form.text = "Ver " + str(alternative.name)
+		form.accessibility_name = form.text
+		form.tooltip_text = "Consultar outra forma já descoberta"
+		form.add_theme_font_override("font",Gold.display_font())
+		form.add_theme_font_size_override("font_size",int(21*text_scale))
+		form.add_theme_color_override("font_color",Gold.GOLD)
+		form.add_theme_stylebox_override("normal",StyleBoxEmpty.new())
+		if row == null:
+			RefArt.native(self,form,Rect2(350,512,370,32))
+		else:
+			form.custom_minimum_size = Vector2(180,32)
+			row.add_child(form)
+		register.call(form,"codex.evolution" if index == 0 else "codex.evolution.%d" % index,"codex")
+		form.pressed.connect(form_requested.emit.bind(str(alternative.id)))
 
 func _record_tabs() -> void:
 	var names: Array = ["História","Poderes e traços"] if category == "umbrals" else ["Descrição","Efeito"]
@@ -157,8 +180,8 @@ func _umbral_effects(body: VBoxContainer, entry: Dictionary) -> void:
 		_paragraph(body,"Este registro reúne as memórias desse Umbral. Observe suas ações durante os encontros.")
 		return
 	var species: Dictionary = Content.SPECIES[entry.species]
-	var individual = {"species":entry.species,"stage":entry.stage}
-	_heading(body,str(species.trait))
+	var individual = {"species":entry.species,"form_id":entry.form_id}
+	_heading(body,str(Content.form_definition(entry.species, entry.form_id).trait))
 	_paragraph(body,Content.trait_text(individual))
 	_paragraph(body,"Resistências: "+Content.resistance_text(individual),true)
 	body.add_child(Gold.line())
@@ -169,7 +192,7 @@ func _umbral_effects(body: VBoxContainer, entry: Dictionary) -> void:
 	grid.add_theme_constant_override("v_separation",14)
 	body.add_child(grid)
 	var powers: Array = species.powers.duplicate()
-	if int(entry.stage) == 2: powers.append(species.signature)
+	if entry.form_id != Content.initial_form(entry.species): powers.append(species.signature)
 	for id in powers:
 		var known: bool = progress.knows("powers",id)
 		var tile = VBoxContainer.new()

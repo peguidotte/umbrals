@@ -49,8 +49,10 @@ def metrics(path, source):
     if owner == 'ui':
         patterns['view-commands'] = r'\bgame\.(?:play|toggle|redraw|choose_reward|new_run|queue_item|queue_swap)\s*\(|\bgame\.\w+\s*(?:=(?!=)|\+=|-=)'
         patterns['host-reference'] = r'\b(?:app|host|coordinator)\s*[:=]'
-    if owner in {'rules', 'battle', 'domain', 'catalog'}:
+    if owner in {'rules', 'battle', 'domain', 'catalog', 'ui', 'session'}:
         patterns['ordinal-forms'] = r'\.stage\b|var stage\s*:'
+    if owner in {'rules', 'battle'}:
+        patterns['species-switch'] = r'\b(?:\w+\.)?species\s*==\s*[\"\'][a-z][a-z0-9_]*[\"\']'
     if owner == 'rules':
         patterns['global-catalog'] = r'Content\.(?:SPECIES|POWERS|ENCOUNTERS|STARTING_ITEMS)\b'
         patterns['embedded-planner'] = r'func best_selection\([^\n]*\n(?!\s+return Planner\.choose\()'
@@ -95,13 +97,15 @@ def negative_checks(sources, baseline):
     cases = [
         ('domain imports UI', 'scripts/battle/negative.gd', 'const Bad = preload("res://scripts/ui/kit.gd")', 'dependency-direction'),
         ('domain uses storage', 'scripts/battle/negative.gd', 'func bad(): FileAccess.open("x", 1)', 'pure-domain'),
+        ('ordinal form in view', 'scripts/ui/negative.gd', 'func bad(): return individual.stage', 'ordinal-forms'),
+        ('species switch in mechanics', 'scripts/battle/negative.gd', 'func bad(): return individual.species == "ember"', 'species-switch'),
         ('global RNG', 'scripts/battle/negative.gd', 'func bad(): randf()', 'global-rng'),
         ('test enters production', 'scripts/battle/negative.gd', 'const Bad = preload("res://tests/browser/fixture_entry.gd")', 'test-boundary'),
         ('view mutates rules', 'scripts/ui/negative.gd', 'func bad(): game.play()', 'view-commands'),
         ('view captures coordinator', 'scripts/ui/negative.gd', 'var app: Node', 'host-reference'),
         ('new module grows', 'scripts/battle/negative.gd', 'var x = 0\n' * 351, 'lines'),
-        ('coordinator grows', 'scripts/main.gd', sources['scripts/main.gd'] + '\nvar added = 0', 'lines'),
-        ('new widget in coordinator', 'scripts/main.gd', sources['scripts/main.gd'] + '\nfunc bad(): Label.new()', 'widget-ownership'),
+        ('coordinator grows', 'scripts/main.gd', sources['scripts/main.gd'] + '\n' + 'var added = 0\n' * (max(400, baseline.get('files', {}).get('scripts/main.gd', {}).get('metrics', {}).get('lines', 0)) + 1), 'lines'),
+        ('new widget in coordinator', 'scripts/main.gd', sources['scripts/main.gd'] + '\n' + 'func bad(): Label.new()\n' * (baseline.get('files', {}).get('scripts/main.gd', {}).get('metrics', {}).get('widget-ownership', 0) + 1), 'widget-ownership'),
     ]
     detected = []
     for name, path, source, expected in cases:

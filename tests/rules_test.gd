@@ -13,7 +13,7 @@ func expect(condition: bool, description: String) -> void:
 		printerr("FAIL: " + description)
 
 func unit(species: String, passive: String = "vital", uid: int = 1, stage: int = 1, slot: int = 1) -> Dictionary:
-	var result: Dictionary = Rules.make_umbral(species, passive, uid, stage)
+	var result: Dictionary = Rules.make_umbral(species, passive, uid, Content.legacy_form(species, stage))
 	result.slot = slot
 	return result
 
@@ -594,9 +594,10 @@ func test_capture_and_evolution() -> void:
 	force_reward(game)
 	var uid: int = game.party[0].uid
 	var passive: String = game.party[0].passive
+	var evolution_target: String = game.reward_offers[1].target_form_id
 	var count_before: int = 12 # Two owners keep their six learned instances after evolution.
 	expect(game.choose_reward(1), "An existing individual can evolve instead of capturing")
-	expect(game.party[0].uid == uid and game.party[0].passive == passive and game.party[0].stage == 2, "Evolution preserves UID and individual passive")
+	expect(game.party[0].uid == uid and game.party[0].passive == passive and game.party[0].form_id == evolution_target, "Evolution preserves UID and individual passive")
 	expect(all_cards(game).size() == count_before, "Evolution upgrades learned copies without automatically inflating the deck")
 	# A full roster fixture exercises release explicitly; a three-encounter run cannot naturally capture six.
 	var full = Rules.new()
@@ -739,7 +740,7 @@ func test_natures_and_reactions() -> void:
 	expect(Content.can_learn(evolved, "tidal_splash") and not Content.can_learn(unit("volt"), "tidal_splash"), "Secondary nature expands learning compatibility without changing the move")
 	expect(evolved.cards.size() == 6 and not "tidal_splash" in evolved.known_powers and Content.resistances(evolved) == {"lightning": 25}, "A secondary nature grants no automatic cards or Water resistance")
 	var unchanged: Dictionary = Content.POWERS.sowing.duplicate(true)
-	Content.power_stats("sowing", 2).conditions.seed = 99
+	Content.power_stats("sowing", {"species": "ember", "form_id": "ignivar"}).conditions.seed = 99
 	expect(Content.POWERS.sowing == unchanged, "Nested condition definitions remain immutable when evolved power data changes")
 	var projection = fixture([unit("ember")])
 	var announced: Dictionary = hostile(projection.enemies[0], 4)

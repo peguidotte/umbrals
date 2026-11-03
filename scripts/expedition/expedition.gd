@@ -3,6 +3,8 @@ extends RefCounted
 
 const Rules = preload("res://scripts/rules.gd")
 const Content = preload("res://scripts/content.gd")
+const Migration = preload("res://scripts/expedition/migration.gd")
+const Identity = preload("res://scripts/expedition/identity.gd")
 const Conditions = preload("res://scripts/battle/conditions.gd")
 const IDS = ["clearing", "thicket", "spring", "boss"]
 const TITLES = ["Clareira", "Mata fechada", "Nascente", "Guardião"]
@@ -75,11 +77,11 @@ func snapshot() -> Dictionary:
 	state["seed_value"] = str(battle.seed_value)
 	state["rng_seed"] = str(battle.rng.seed)
 	state["rng_state"] = str(battle.rng.state)
-	return {"schema": 1, "phase": phase, "current_node_id": current_node_id, "completed": completed.duplicate(), "battle": state}
+	return {"schema": 2, "identity": Identity.current(), "phase": phase, "current_node_id": current_node_id, "completed": completed.duplicate(), "battle": state}
 
 # Validation is performed on a detached candidate before touching the live run.
 func restore(data: Dictionary) -> bool:
-	var normalized: Dictionary = _normalize_json(data)
+	var normalized: Dictionary = Migration.checkpoint(_normalize_json(data))
 	if not _valid_snapshot(normalized): return false
 	data = normalized
 	var s: Dictionary = data.battle
@@ -137,7 +139,7 @@ func _int_keys(source: Dictionary) -> Dictionary:
 	return result
 
 func _valid_snapshot(data: Dictionary) -> bool:
-	if data.get("schema") != 1 or not data.get("battle") is Dictionary or not data.get("completed") is Array: return false
+	if data.get("schema") != 2 or not Identity.matches(data.get("identity")) or not data.get("battle") is Dictionary or not data.get("completed") is Array: return false
 	if data.has("checkpoint_id") and not data.checkpoint_id is String: return false
 	if not data.get("phase") in ["map", "combat", "reward", "victory", "defeat"] or not data.get("current_node_id") is String: return false
 	var current: String = data.current_node_id
@@ -159,7 +161,7 @@ func _valid_snapshot(data: Dictionary) -> bool:
 	for field in BATTLE_FIELDS:
 		if not s.has(field): return false
 	for field in ["seed_value", "rng_seed", "rng_state"]:
-		if not s.get(field) is String or not s[field].is_valid_int(): return false
+		if not s.get(field) is String or not s[field].is_valid_int() or str(int(s[field])) != s[field]: return false
 	for field in ["encounter", "round_number", "encounter_rounds_resolved", "hand_size_modifier", "action_modifier", "next_uid", "total_damage", "actions"]:
 		if not s[field] is int: return false
 	for field in ["party", "enemies", "hand", "deck", "discard_pile", "relics", "enemy_plan", "reward_offers"]:
@@ -230,15 +232,24 @@ func _valid_snapshot(data: Dictionary) -> bool:
 			for card in offer.umbral.cards:
 				if not _valid_card(card, [offer.umbral.uid]) or card.instance_id in offer_ids: return false
 				offer_ids.append(card.instance_id)
-		if offer.kind == "evolve" and (not offer.get("uid") is int or not offer.uid in uids): return false
+		if offer.kind == "evolve":
+			if not offer.get("uid") is int or not offer.uid in uids: return false
+			var owner: Dictionary = {}
+			for unit in s.party:
+				if unit.uid == offer.uid: owner = unit
+			var valid_edge: bool = false
+			for edge in Content.evolution_edges(owner):
+				if offer.get("source_form_id") == edge.from and offer.get("target_form_id") == edge.to and offer.get("transition_id") == edge.id: valid_edge = true
+			if not valid_edge: return false
 	return true
 
 func _valid_unit(unit: Variant) -> bool:
 	if not unit is Dictionary: return false
-	for key in ["uid", "stage", "slot", "hp", "max_hp", "attack", "defense", "speed", "block", "can_act_round"]:
+	for key in ["uid", "slot", "hp", "max_hp", "attack", "defense", "speed", "block", "can_act_round"]:
 		if not unit.get(key) is int: return false
 	if not unit.get("species") is String or not unit.species in Content.SPECIES or not unit.get("passive") is String: return false
-	if unit.uid < 1 or unit.stage < 1 or unit.stage > 2 or unit.slot < -1 or unit.slot > 2 or unit.max_hp < 1 or unit.hp < 0 or unit.hp > unit.max_hp: return false
+	if not unit.get("form_id") is String or Content.form_definition(unit.species, unit.form_id).is_empty() or unit.has("stage"): return false
+	if unit.uid < 1 or unit.slot < -1 or unit.slot > 2 or unit.max_hp < 1 or unit.hp < 0 or unit.hp > unit.max_hp: return false
 	if not unit.get("statuses") is Dictionary or not unit.get("status_sources") is Dictionary or not unit.get("known_powers") is Array or not unit.get("cards") is Array: return false
 	for power in unit.known_powers:
 		if not power is String or not power in Content.POWERS: return false

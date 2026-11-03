@@ -151,7 +151,7 @@ func _add_party_status() -> void:
 			state = "Incapacitado"
 		var portrait_row := UI.row(8)
 		members.add_child(portrait_row)
-		portrait_row.add_child(UI.art(str(Content.SPECIES[individual.species].art[int(individual.stage) - 1]), Vector2(48, 48)))
+		portrait_row.add_child(UI.art(Content.art_binding(individual), Vector2(48, 48)))
 		var item := _ui.label("%s\n%s · %d/%d HP" % [str(individual.get("name", Content.display_name(individual))) + " · " + str(individual.uid), state, hp, max_hp], 17, UI.PAPER)
 		item.custom_minimum_size = Vector2(155.0 * _text_scale, 42.0 * _text_scale)
 		item.size_flags_horizontal = Control.SIZE_EXPAND_FILL

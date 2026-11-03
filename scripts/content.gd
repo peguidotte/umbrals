@@ -10,15 +10,7 @@ const CONSUMABLES = {
 	"revive": {"name": "Reanimar", "cost": 1, "revive_ratio": 0.35},
 }
 # Codex prose is presentation content; it grants no abilities or progression.
-const UMBRAL_LORE = {
-	"ember": {"title": "Quem guarda a última brasa", "text": "Brasa carrega a memória de uma fogueira mantida acesa à espera de alguém. Quando se assusta, recolhe a cauda em torno do corpo para proteger o próprio calor.\n\nAproxima-se em silêncio de quem sente frio. Seu primeiro gesto de confiança é dividir uma pequena chama."},
-	"ignivar": {"title": "Uma chama que também guia", "text": "A chama que Brasa guardava junto ao corpo agora ilumina o caminho de outros Umbrals. Ignivar ainda para para ouvir o bosque antes de avançar.\n\nSuas caudas deixam um rastro de calor entre as árvores, como um farol para quem ficou para trás."},
-	"moss": {"title": "Quem sempre deixa um abrigo pronto", "text": "Musgo guarda a lembrança de um santuário que acolheu viajantes. Seu corpo de madeira e folhas parece pesado, mas ele pisa com cuidado para não esmagar os brotos do caminho.\n\nAntes de descansar, ajeita um leito de folhas para os companheiros. Só então procura um lugar para si."},
-	"verdalio": {"title": "O abrigo ganhou raízes", "text": "Em Verdálio, a memória do antigo santuário tornou-se uma copa viva. Pequenas flores crescem entre os galhos que ele curva para proteger quem se aproxima.\n\nConserva o hábito de Musgo: confere cada canto do abrigo antes de permitir que o bosque adormeça."},
-	"volt": {"title": "Quem não consegue guardar uma tempestade", "text": "Faísca carrega a lembrança de um sino atingido por um raio. Impaciente, testa galhos com as antenas e às vezes se assusta com a própria descarga.\n\nA eletricidade encontra caminhos mais firmes quando ele está perto de outros Umbrals. Sozinho, continua procurando um eco que responda."},
-	"tempestral": {"title": "O eco encontrou um caminho", "text": "As descargas inquietas de Faísca se organizam nos circuitos da carapaça de Tempestral. Suas antenas percorrem o ar como quem escuta uma tempestade distante.\n\nMesmo em repouso, mantém um brilho baixo para que seus companheiros saibam onde encontrá-lo."},
-	"dew": {"title": "Quem recolhe o que a chuva lembra", "text": "Orvalho guarda gotas da primeira manhã depois da Fenda. Curioso, aproxima o rosto das poças para escutar as vibrações da água.\n\nQuando percebe tristeza em outro Umbral, oferece uma gota de seu reservatório. Depois espera, paciente, até que o silêncio pareça menos pesado."},
-	"mareveu": {"title": "Um pequeno céu de água", "text": "A memória que Orvalho carregava em gotas se espalha pelos véus de Marevéu. A água acompanha seus movimentos sem perder a forma, refletindo a lua entre as árvores.\n\nAinda se demora junto às poças. Algumas lembranças só podem ser ouvidas quando tudo fica quieto."},
+const ENCOUNTER_LORE = {
 	"spore": {"title": "Um viajante das raízes", "text": "Esporo errante atravessa a clareira seguindo a umidade do chão. Seus passos espalham pequenos brilhos sob o chapéu, marcando trilhas que desaparecem quando o bosque seca.\n\nÉ fácil confundir sua imobilidade com distração. Ele está escutando o que se move debaixo das folhas."},
 	"owl": {"title": "A vigília entre os espinhos", "text": "A Coruja dos espinhos repousa onde os galhos se cruzam. Imóvel, acompanha as passagens da floresta e só revela sua presença quando decide mudar de poleiro.\n\nAs penas lembram folhas secas; os olhos, porém, não deixam que nada se perca na escuridão."},
 	"stag": {"title": "O Rei sem Aurora", "text": "O brilho de seus galhos surge entre as árvores antes que se ouçam seus passos. Os Umbrals da clareira se aquietam quando ele passa.\n\nNinguém sabe por quanto tempo ele vigia o bosque. À luz da lua, parece escutar uma manhã que ainda não chegou."},
@@ -59,13 +51,6 @@ const CAPTURE_ROUTES = {
 	"ember": ["moss", "dew"], "moss": ["dew", "ember"],
 	"volt": ["dew", "moss"], "dew": ["volt", "moss"],
 }
-const STAT_GROWTH = {"max_hp": 12, "attack": 3, "defense": 1, "speed": 2}
-const SPECIES = {
-	"ember": {"nature": "fire", "secondary_natures": ["", ""], "resistances": {"fire": 25}, "names": ["Brasa", "Ignivar"], "element": "Fogo", "color": "ef987b", "art": ["umbrals/ember", "umbrals/ignivar"], "trait": "Combustão", "trait_description": "Ataques aplicam %d queimadura.", "trait_values": [2, 4], "powers": ["fireball", "cinder_claw", "flame_guard"], "signature": "inferno", "stats": {"max_hp": 40, "attack": 10, "defense": 2, "speed": 14}},
-	"moss": {"nature": "forest", "secondary_natures": ["", ""], "resistances": {"forest": 25}, "names": ["Musgo", "Verdálio"], "element": "Bosque", "color": "91c8a1", "art": ["umbrals/moss", "umbrals/verdalio"], "trait": "Raízes Vivas", "trait_description": "Ao proteger, cura %d por rodada.", "trait_values": [2, 4], "powers": ["thorn_lash", "root_wall", "sowing"], "signature": "sanctuary", "stats": {"max_hp": 48, "attack": 8, "defense": 4, "speed": 8}},
-	"volt": {"nature": "lightning", "secondary_natures": ["", "water"], "resistances": {"lightning": 25}, "names": ["Faísca", "Tempestral"], "element": "Raio", "color": "e8cf81", "art": ["umbrals/volt", "umbrals/tempestral"], "trait": "Circuito Vivo", "trait_description": "Ataques: +%d dano por outro aliado ativo.", "trait_values": [4, 7], "powers": ["lightning", "interference", "storm_dive"], "signature": "judgment", "stats": {"max_hp": 36, "attack": 11, "defense": 1, "speed": 18}},
-	"dew": {"nature": "water", "secondary_natures": ["", ""], "resistances": {"water": 25}, "names": ["Orvalho", "Marevéu"], "element": "Água", "color": "80d7e5", "art": ["umbrals/dew", "umbrals/mareveu"], "trait": "Maré Marcada", "trait_description": "Poderes de água deixam Encharcado por %d rodadas.", "trait_values": [2, 3], "powers": ["tidal_splash", "rain_sweep", "dew_mend"], "signature": "moon_tide", "stats": {"max_hp": 42, "attack": 9, "defense": 2, "speed": 20}},
-}
 const PASSIVES = {
 	"fierce": {"name": "Feroz", "description": "Ataques ganham +3 dano."},
 	"resilient": {"name": "Resiliente", "description": "Proteções ganham +3 escudo."},
@@ -74,12 +59,6 @@ const PASSIVES = {
 	"swift": {"name": "Ágil", "description": "+3 Velocidade para este Umbral.", "speed_bonus": 3},
 }
 const PASSIVE_IDS = ["fierce", "resilient", "vital", "ardent", "swift"]
-const PASSIVE_POOLS = {
-	"ember": ["fierce", "resilient", "ardent", "swift"],
-	"moss": ["fierce", "resilient", "ardent", "swift"],
-	"volt": ["fierce", "ardent", "swift"],
-	"dew": ["fierce", "vital", "swift"],
-}
 # Target describes the side; scope describes semantic slots, never front/back ranks.
 # Larger priority resolves first. Order is only a stable per-power tiebreaker;
 # water does not receive an implicit phase ahead of faster lightning owners.
@@ -109,7 +88,7 @@ const ENCOUNTERS = [
 	{
 		"id": "clearing", "name": "Esporo errante", "subtitle": "A FLORESTA EXPERIMENTA SEUS VÍNCULOS", "hp": 105, "intents": [7, 9, 6], "art": "characters/spore",
 		"enemies": [
-			{"uid": 1001, "species": "moss", "name": "Esporo errante", "art": "characters/spore", "stage": 1, "max_hp": 58, "hp": 58, "attack": 10, "defense": 0, "speed": 8, "slot": 1, "pattern": [
+			{"uid": 1001, "species": "moss", "name": "Esporo errante", "art": "characters/spore", "form_id": "moss", "max_hp": 58, "hp": 58, "attack": 10, "defense": 0, "speed": 8, "slot": 1, "pattern": [
 				{"nature": "forest", "conditions": {}, "category": "attack", "damage": 8, "block": 0, "wet": 0, "scope": "single"},
 				{"nature": "forest", "conditions": {}, "category": "defend", "damage": 0, "block": 7, "wet": 0, "scope": "single", "priority": 1},
 				{"nature": "forest", "conditions": {}, "category": "attack", "damage": 11, "block": 0, "wet": 0, "scope": "single", "target_policy": "weakest"},
@@ -119,12 +98,12 @@ const ENCOUNTERS = [
 	{
 		"id": "thicket", "name": "Coruja dos espinhos", "subtitle": "UMBRALS NÃO LUTAM SOZINHOS", "hp": 170, "intents": [9, 12, 8], "art": "characters/owl",
 		"enemies": [
-			{"uid": 2001, "species": "volt", "name": "Coruja dos espinhos", "art": "characters/owl", "stage": 1, "max_hp": 46, "hp": 46, "attack": 10, "defense": 1, "speed": 14, "slot": 0, "pattern": [
+			{"uid": 2001, "species": "volt", "name": "Coruja dos espinhos", "art": "characters/owl", "form_id": "volt", "max_hp": 46, "hp": 46, "attack": 10, "defense": 1, "speed": 14, "slot": 0, "pattern": [
 				{"nature": "lightning", "conditions": {}, "category": "prepare", "charge": 6, "damage": 0, "block": 0, "wet": 0, "scope": "single"},
 				{"nature": "lightning", "conditions": {}, "category": "attack", "damage": 7, "block": 0, "wet": 0, "scope": "upper_pair"},
 				{"nature": "lightning", "conditions": {"electrified": 2}, "category": "attack", "damage": 6, "block": 0, "wet": 0, "scope": "single", "target_policy": "weakest"},
 			]},
-			{"uid": 2002, "species": "moss", "name": "Esporo vigia", "art": "characters/spore", "stage": 1, "max_hp": 40, "hp": 40, "attack": 10, "defense": 1, "speed": 8, "slot": 2, "pattern": [
+			{"uid": 2002, "species": "moss", "name": "Esporo vigia", "art": "characters/spore", "form_id": "moss", "max_hp": 40, "hp": 40, "attack": 10, "defense": 1, "speed": 8, "slot": 2, "pattern": [
 				{"nature": "forest", "conditions": {"seed": 3}, "category": "attack", "damage": 4, "block": 0, "wet": 0, "scope": "single"},
 				{"nature": "forest", "conditions": {}, "category": "defend", "damage": 0, "block": 8, "wet": 0, "scope": "single", "priority": 1},
 				{"nature": "forest", "conditions": {}, "category": "attack", "damage": 6, "block": 0, "wet": 0, "scope": "lower_pair"},
@@ -134,17 +113,17 @@ const ENCOUNTERS = [
 	{
 		"id": "boss", "name": "O Rei sem Aurora", "subtitle": "O ÚLTIMO ECO DO BOSQUE", "hp": 255, "intents": [11, 15, 9], "art": "characters/stag",
 		"enemies": [
-			{"uid": 3001, "species": "ember", "name": "O Rei sem Aurora", "art": "characters/stag", "stage": 2, "max_hp": 76, "hp": 76, "attack": 12, "defense": 2, "speed": 11, "slot": 1, "pattern": [
+			{"uid": 3001, "species": "ember", "name": "O Rei sem Aurora", "art": "characters/stag", "form_id": "ignivar", "max_hp": 76, "hp": 76, "attack": 12, "defense": 2, "speed": 11, "slot": 1, "pattern": [
 				{"nature": "fire", "conditions": {}, "category": "prepare", "charge": 6, "damage": 0, "block": 0, "wet": 0, "scope": "all"},
 				{"nature": "fire", "conditions": {}, "category": "attack", "damage": 10, "block": 0, "wet": 0, "scope": "all"},
 				{"nature": "fire", "conditions": {}, "category": "defend", "damage": 0, "block": 12, "wet": 0, "scope": "single", "priority": 1},
 			]},
-			{"uid": 3002, "species": "moss", "name": "Raiz do crepúsculo", "art": "characters/spore", "stage": 1, "max_hp": 40, "hp": 40, "attack": 10, "defense": 2, "speed": 6, "slot": 2, "pattern": [
+			{"uid": 3002, "species": "moss", "name": "Raiz do crepúsculo", "art": "characters/spore", "form_id": "moss", "max_hp": 40, "hp": 40, "attack": 10, "defense": 2, "speed": 6, "slot": 2, "pattern": [
 				{"nature": "forest", "conditions": {}, "category": "defend", "damage": 0, "block": 8, "wet": 0, "scope": "single", "priority": 1},
 				{"nature": "forest", "conditions": {"seed": 3}, "category": "attack", "damage": 4, "block": 0, "wet": 0, "scope": "lower_pair"},
 				{"nature": "forest", "conditions": {}, "category": "attack", "damage": 6, "block": 0, "wet": 0, "scope": "single", "target_policy": "weakest"},
 			]},
-			{"uid": 3003, "species": "volt", "name": "Coruja da fenda", "art": "characters/owl", "stage": 1, "max_hp": 36, "hp": 36, "attack": 10, "defense": 0, "speed": 15, "slot": 0, "pattern": [
+			{"uid": 3003, "species": "volt", "name": "Coruja da fenda", "art": "characters/owl", "form_id": "volt", "max_hp": 36, "hp": 36, "attack": 10, "defense": 0, "speed": 15, "slot": 0, "pattern": [
 				{"nature": "lightning", "conditions": {}, "category": "attack", "damage": 5, "block": 0, "wet": 0, "scope": "single"},
 				{"nature": "lightning", "conditions": {}, "category": "prepare", "charge": 6, "damage": 0, "block": 0, "wet": 0, "scope": "single"},
 				{"nature": "lightning", "conditions": {}, "category": "attack", "damage": 7, "block": 0, "wet": 0, "scope": "upper_pair"},
@@ -153,13 +132,88 @@ const ENCOUNTERS = [
 	},
 ]
 
-static func species_stats(individual: Dictionary) -> Dictionary:
+# Ordered manifest: explicit preload order is independent of filesystem enumeration.
+const CatalogLookup = preload("res://scripts/catalog/lookup.gd")
+const MANIFEST = preload("res://content/species/catalog.tres")
+static var CATALOG: Dictionary = _catalog_from_manifest()
+static var SPECIES: Dictionary = _species_projection()
+static var PASSIVE_POOLS: Dictionary = _passive_pools()
+static var UMBRAL_LORE: Dictionary = _umbral_lore()
+
+static func _catalog_from_manifest() -> Dictionary:
+	var result: Dictionary = {}
+	for package in MANIFEST.species: result[str(package.id)] = package
+	return result
+
+# Transitional projection for existing screens. Author only the resources.
+static func _species_projection() -> Dictionary:
+	var result: Dictionary = {}
+	for species_id in CATALOG:
+		var package: Resource = CATALOG[species_id]
+		var first: Dictionary = CatalogLookup.form(package, str(package.initial_form))
+		var data: Dictionary = {"nature": first.nature, "secondary_natures": [], "resistances": first.resistances.duplicate(true), "names": [], "element": package.element, "color": package.color, "art": [], "trait": first.trait, "trait_description": first.trait_description, "trait_values": [], "powers": package.powers.duplicate(), "signature": package.signature, "stats": first.stats.duplicate(true)}
+		for form in package.forms:
+			data.secondary_natures.append(form.secondary_nature)
+			data.names.append(form.name)
+			data.art.append(form.art)
+			data.trait_values.append(form.trait_value)
+		result[species_id] = data
+	return result
+
+static func _umbral_lore() -> Dictionary:
+	var result: Dictionary = ENCOUNTER_LORE.duplicate(true)
+	for species_id in CATALOG:
+		for form in CATALOG[species_id].forms:
+			result[str(form.id)] = form.lore.duplicate(true)
+	return result
+
+static func _passive_pools() -> Dictionary:
+	var result: Dictionary = {}
+	for species_id in CATALOG: result[species_id] = CATALOG[species_id].passive_pool.duplicate()
+	return result
+
+# Schema 1 compatibility only. New individuals persist form_id, never an ordinal.
+const LEGACY_FORMS = {
+	"ember": {1: "ember", 2: "ignivar"}, "moss": {1: "moss", 2: "verdalio"},
+	"volt": {1: "volt", 2: "tempestral"}, "dew": {1: "dew", 2: "mareveu"},
+}
+
+static func species_ids() -> Array:
+	return CATALOG.keys()
+
+static func form_ids(species_id: String) -> Array:
+	var ids: Array = []
+	if CATALOG.has(species_id):
+		for form in CATALOG[species_id].forms: ids.append(str(form.id))
+	return ids
+
+static func initial_form(species_id: String) -> String:
+	return str(CATALOG[species_id].initial_form) if CATALOG.has(species_id) else ""
+
+static func legacy_form(species_id: String, stage: int) -> String:
+	return str(LEGACY_FORMS.get(species_id, {}).get(stage, ""))
+
+static func form_id(individual: Dictionary) -> String:
 	var species_id: String = str(individual.get("species", "ember"))
-	var data: Dictionary = SPECIES.get(species_id, SPECIES.ember)
-	var stats: Dictionary = data.stats.duplicate(true)
-	var growth: int = clampi(int(individual.get("stage", 1)) - 1, 0, 1)
-	for key in STAT_GROWTH:
-		stats[key] = int(stats[key]) + int(STAT_GROWTH[key]) * growth
+	if individual.has("form_id"): return str(individual.form_id)
+	return initial_form(species_id)
+
+static func form_definition(species_id: String, id: String) -> Dictionary:
+	if not CATALOG.has(species_id): return {}
+	return CatalogLookup.form(CATALOG[species_id], id)
+
+static func evolution_edges(individual: Dictionary) -> Array:
+	var species_id: String = str(individual.get("species", ""))
+	var result: Array = []
+	if not CATALOG.has(species_id): return result
+	return CatalogLookup.edges(CATALOG[species_id], form_id(individual))
+
+static func art_binding(individual: Dictionary) -> String:
+	return str(form_definition(str(individual.get("species", "")), form_id(individual)).get("art", ""))
+
+static func species_stats(individual: Dictionary) -> Dictionary:
+	var form: Dictionary = form_definition(str(individual.get("species", "ember")), form_id(individual))
+	var stats: Dictionary = form.get("stats", {}).duplicate(true)
 	var passive: Dictionary = PASSIVES.get(str(individual.get("passive", "")), {})
 	stats.speed = int(stats.speed) + int(passive.get("speed_bonus", 0))
 	return stats
@@ -174,16 +228,16 @@ static func initial_power_ids(species_id: String) -> Array:
 	return result
 
 static func display_name(umbral: Dictionary) -> String:
-	return SPECIES[umbral.species].names[int(umbral.stage) - 1]
+	return str(form_definition(str(umbral.species), form_id(umbral)).get("name", ""))
 
 static func trait_text(umbral: Dictionary) -> String:
-	var data: Dictionary = SPECIES[umbral.species]
-	return data.trait_description % data.trait_values[int(umbral.stage) - 1]
+	var form: Dictionary = form_definition(str(umbral.species), form_id(umbral))
+	return str(form.trait_description) % int(form.trait_value)
 
 static func natures(individual: Dictionary) -> Array[String]:
-	var species: Dictionary = SPECIES[individual.species]
-	var result: Array[String] = [str(species.nature)]
-	var secondary: String = str(species.secondary_natures[clampi(int(individual.get("stage", 1)) - 1, 0, 1)])
+	var form: Dictionary = form_definition(str(individual.species), form_id(individual))
+	var result: Array[String] = [str(form.nature)]
+	var secondary: String = str(form.secondary_nature)
 	if not secondary.is_empty(): result.append(secondary)
 	return result
 
@@ -193,7 +247,7 @@ static func nature_text(individual: Dictionary) -> String:
 	return " / ".join(names)
 
 static func resistances(individual: Dictionary) -> Dictionary:
-	return individual.get("resistances", SPECIES[individual.species].resistances).duplicate(true)
+	return individual.get("resistances", form_definition(str(individual.species), form_id(individual)).get("resistances", {})).duplicate(true)
 
 static func resistance_text(individual: Dictionary) -> String:
 	var labels: Array[String] = []
@@ -209,15 +263,14 @@ static func can_learn(individual: Dictionary, power_id: String) -> bool:
 	if power.learning == "lineage": return SPECIES[individual.species].signature == power_id
 	return str(power.nature) in natures(individual)
 
-static func power_stats(power_id: String, stage: int) -> Dictionary:
+static func power_stats(power_id: String, individual: Dictionary) -> Dictionary:
 	var stats: Dictionary = POWERS[power_id].duplicate(true)
-	if stage == 2:
-		if int(stats.damage) > 0: stats.damage = int(stats.damage) + 5
-		if int(stats.block) > 0: stats.block = int(stats.block) + 4
-		if int(stats.heal) > 0: stats.heal = int(stats.heal) + 2
-		for id in ["burn", "wet"]:
-			if int(stats.conditions.get(id, 0)) > 0: stats.conditions[id] = int(stats.conditions[id]) + 1
-	# Compatibility summary fields; the resolver reads the condition catalog.
+	var form: Dictionary = form_definition(str(individual.get("species", "ember")), form_id(individual))
+	var profile: Dictionary = form.get("power_profile", {})
+	for id in ["damage", "block", "heal"]:
+		if int(stats[id]) > 0: stats[id] = int(stats[id]) + int(profile.get(id, 0))
+	for id in ["burn", "wet"]:
+		if int(stats.conditions.get(id, 0)) > 0: stats.conditions[id] = int(stats.conditions[id]) + int(profile.get(id, 0))
 	for id in ["burn", "wet", "taunt"]: stats[id] = int(stats.conditions.get(id, 0))
 	stats.lightning = stats.nature == "lightning"
 	return stats

@@ -79,7 +79,7 @@ try:
             captures.append({'name':name, 'file':name + '.png', 'screen':state()['screen'], 'viewport':page.viewport_size})
         def nodes(): return {n['id']:n for n in state()['expedition']['nodes']}
         def actors_match(observed, expected):
-            fields = ['uid', 'species', 'passive', 'slot', 'hp', 'max_hp', 'stage', 'attack', 'defense', 'speed', 'block', 'statuses', 'can_act_round']
+            fields = ['uid', 'species', 'passive', 'slot', 'hp', 'max_hp', 'form_id', 'attack', 'defense', 'speed', 'block', 'statuses', 'can_act_round']
             return len(observed) == len(expected) and all(all(a.get(k) == b.get(k) for k in fields) for a,b in zip(observed, expected))
         def map_check():
             check(state()['screen'] == 'map' and state()['expedition']['phase'] == 'map', 'Map and controller agree on phase')

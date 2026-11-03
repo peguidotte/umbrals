@@ -619,3 +619,34 @@ O [guia arquitetural](architecture-guidelines.md) distingue dívida herdada e gu
 extrações restantes de main, migração do catálogo para formas/transições estáveis
 compatíveis com o novo combate e versionamento de regras/conteúdo no save.
 Esta fatia não altera versão/marco, não conclui esses itens e não reabre Como jogar.
+
+### V04-DEV-02 — catálogo, apresentação e compatibilidade para crescer
+
+Resolvidas as três frentes priorizadas pelo usuário sobre a main `44943dc`:
+manifesto e Resources por espécie, formas/arestas estáveis com ramificações;
+extração de inspeção, recompensas/captura, diálogos, registros e feedback, além
+de serviços de sessão e protocolo Web; identidade de regras/conteúdo nos saves
+e replays com migração explícita da fixture original. UID, passiva, cópias,
+proporção de HP e RNG continuam preservados. As artes são referências fixadas,
+sem duplicação ou alegação de animações novas.
+
+A [ordem de tarefas](architecture-growth-tasks.md), o [guia de autoria](content-authoring.md)
+e a [política de compatibilidade](save-format.md) registram os contratos.
+O harness inclui autoria/catálogo e grafo com quatro formas, ramificação e
+segunda evolução; o guard rejeita estágio ordinal em views e switches por
+espécie nas mecânicas. Baseline reduzida, sem ampliar exceções herdadas.
+
+Evidências focadas: 14.413 verificações de regras, 19 de catálogo, 67 de save,
+oito mutações detectadas e suítes nativas de interface. A revisão final também cobriu colisões de IDs do grimório, links de múltiplas formas e rejeição de overflow de seed/RNG. O cenário Web de
+recompensas passou, incluindo comparação do catálogo efetivamente empacotado.
+A aceitação completa e revisão visual ficam em
+`artifacts/architecture-growth-final-20261103/`, com resultado efetivo em run.json,
+review.html e review-notes.md; esses arquivos são a referência do que passou,
+falhou ou foi revisado, sem transformar testes focados em aceitação completa.
+
+Dívida residual explícita: main ainda tem 1.306 linhas significativas de
+coordenação/sincronização/entrada; Rules e mapa também excedem a meta de tamanho.
+Novas extrações devem ter donos coesos e preservar as evidências, sem apenas
+transferir o monólito. Marco/versão não avançam; Como jogar continua adiado.
+Próxima fatia de produto pode usar o catálogo/contratos atuais; diversão,
+hardware e aprovação de arte final continuam exigindo avaliação humana.

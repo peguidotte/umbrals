@@ -4,9 +4,9 @@ The working tree integrates the first v0.4 battle slice while the product versio
 
 ## Responsibilities
 
-- `scripts/content.gd`: species, stage names/art, unique traits, useful passive pools, power definitions, signature unlocks and enemy intention patterns.
+- `content/species/catalog.tres`: ordered manifest of authored species packages. Each `content/species/<id>/species.tres` owns its stable forms, evolution graph, attributes, traits, initial powers, signature, colors, passive pool and form stories. `scripts/content.gd` provides queries and the remaining power/encounter/text catalog; derived compatibility projections are not a second authoring source.
 - `scripts/rules.gd`: deterministic state machine, individuals, owned power instances, persistent owned card zones, speed initiative, individual HP, target slots, status effects, substitutions and rewards.
-- `scripts/main.gd`: session coordinator, screen construction, feedback events, local statistics and opt-in read-only browser state.
+- `scripts/main.gd`: composition, session/screen routing, battle command dispatch and focus. Inspection, reward/capture, battle dialogs/readouts and resolution feedback are separate views/services in `scripts/ui/`; the read-only Web protocol is `ui/browser_bridge.gd`. `session/session_service.gd` owns checkpoint/result orchestration, with `session/run_save.gd` owning integrity-checked persistence.
 - `scripts/ui/`: screen stack, named input, atomic preferences, theme/buttons, persistent cards/hand, actors, world, health display, bounded effects and audio.
 - `scripts/assets/`: exact production resource bindings and version-explicit animation loading. Assets are independently versioned modules; gameplay content stores logical art IDs. See `docs/assets/README.md` for ownership, immutable releases, authoring and CI validation.
 
@@ -30,7 +30,7 @@ There are no network services, credentials or analytics endpoints. JSON gameplay
 
 ## Individuals and content
 
-Each individual has `uid`, `species`, `passive`, `stage`, `hp`, `max_hp`, `attack`, `defense`, `speed`, `block`, `statuses` and `slot`. Slots 0/1/2 mean upper/middle/lower; −1 means reserve. There are no rear ranks. A species trait is fixed; evolution preserves the individual's UID/passive and upgrades attributes/powers. Species stats and power definitions live in the content catalog.
+Each individual has `uid`, `species`, `passive`, `form_id`, `hp`, `max_hp`, `attack`, `defense`, `speed`, `block`, `statuses` and `slot`. Slots 0/1/2 mean upper/middle/lower; −1 means reserve. There are no rear ranks. A species trait is fixed; evolution preserves the individual's UID/passive and upgrades attributes/powers. Forms author complete stats and power profiles; an explicit edge identifies an evolution and its source/target. Neither array order nor numeric stages define behavior. Pure `battle/evolution.gd` preserves identity/cards and HP proportion; `battle/traits.gd` dispatches registered behavior IDs independently of species IDs. See [authoring](content-authoring.md).
 
 A run begins with one central individual of the chosen starter species. The roster holds up to six individuals, with one to three active by choice. Captures explicitly choose a vacant field slot or reserve (D44). Formation can be edited explicitly between encounters; normal entry/switch during battle costs an action and commits with Conjurar. Do not infer extra attacks from active count.
 
@@ -73,7 +73,7 @@ player selections; subsequent substitutions still receive slot attacks.
 
 `battle → reward → battle → reward → battle → victory`; a battle can end in defeat or pause for between-round KO replacement.
 
-Offers/passives are rolled once. Cancelling dialogs does not reroll them. A capture into a full roster requires an explicit outgoing UID. Evolution preserves current HP proportion, individual identity and edited copies, with no implicit full heal or extra signature cards. Map/shop/profile progression and a resumable active-run save are later slices; current storage persists preferences and completed-run statistics only.
+Offers/passives are rolled once. Cancelling dialogs does not reroll them. A capture into a full roster requires an explicit outgoing UID. Evolution preserves current HP proportion, individual identity and edited copies, with no implicit full heal or extra signature cards. The expedition has its own resumable checkpoint, separate from preferences, codex discovery and completed-run statistics. Shops and broader progression remain future content.
 
 ## Validation boundaries
 
@@ -156,7 +156,7 @@ confirmation/pause/formation requests; it never accesses gameplay RNG or writes
 battle state. Main is the sole screen/save coordinator. The three-column fork
 uses containers, scrolling, focus and roster wrapping.
 
-`expedition/run_save.gd` stores two versioned, checksummed generations separately
+`session/run_save.gd` stores two versioned, checksummed generations separately
 from preferences/statistics. Native writes use atomic temporary files; Web writes
 are read back synchronously. A completed ID journal in the profile guards result
 idempotence. Confirmed replacement retires the prior backup; an unavailable
@@ -231,3 +231,21 @@ extração; o catálogo continua em content.gd e usa estágios. Os modelos/Resou
 não foram tratados como compatíveis com as decisões posteriores do jogo. Veja
 [architecture-guidelines.md](architecture-guidelines.md) para o mapa e próximas prioridades,
 e [harness.md](harness.md) para comandos, isolamento e limites das evidências.
+
+## Growth boundaries — V04-DEV-02
+
+Inspection, reward/capture, battle dialogs and readouts receive explicit inputs and
+emit semantic intents. `ui/resolution_feedback.gd` consumes resolved public events
+and owns cancellation checks across awaits; it cannot mutate rules or sample combat
+RNG. Main still has substantial battle/input/focus coordination, measured by the
+architecture ratchet; this extraction does not claim the entire coordinator is small.
+
+Checkpoint schema 2 and replay envelopes carry a ruleset and deterministic gameplay
+content digest. Schema 1 has an explicit migration using a frozen original checkpoint;
+unsupported identities protect stored data from loading/overwriting/clearing. Cosmetic
+copy/art do not change gameplay compatibility. See [compatibility](save-format.md).
+
+The harness includes catalog authoring and native graph tests, including a four-form
+fixture with branching and multiple transitions. New ordinal form access, species-ID
+mechanical switches, domain I/O, UI mutations and coordinator growth are rejected by
+negative architecture cases. Required existing combat/browser gates remain active.

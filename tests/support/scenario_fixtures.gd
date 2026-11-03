@@ -30,4 +30,6 @@ static func make(name: String) -> Dictionary:
 		for index in game.best_selection(): commands.append({"command": "select", "index": index})
 		commands.append({"command": "cast"})
 		if not Replay.execute(run, commands).ok or run.phase != "reward": return {}
-	return {"name": name, "schema_version": 1, "initial_state": initial, "commands": commands, "snapshot": run.snapshot()}
+	var result: Dictionary = Replay.envelope(initial, commands)
+	result.merge({"name": name, "snapshot": run.snapshot()})
+	return result

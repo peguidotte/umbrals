@@ -14,17 +14,16 @@ assets, saves e decisões do produto. Nunca resolva divergência sobrescrevendo 
 
 ## Responsabilidades atuais
 
-- `main.gd`: sessão, comandos e coordenação. Ainda contém layout/feedback a extrair.
+- `main.gd`: composição, comandos, roteamento e foco. Inspeção, recompensas/captura, diálogos, registros e feedback têm donos em `ui/`; sessão/persistência em `session/` e protocolo Web em `ui/browser_bridge.gd`. Continua grande: novas extrações devem reduzir coordenação coesa, sem criar um helper com referência ao main.
 - `rules.gd`: estado e execução da batalha; `battle/` mantém alvos, iniciativa,
   preparação inimiga, condições e reações puros.
 - `domain/selection_planner.gd`: automação limitada pelo custo e orçamento real de ações.
   O adaptador em Rules mantém callers antigos; planejamento não escreve seleção/RNG.
   Custo zero não cria um limite fictício de três cartas.
 - `expedition/expedition.gd`: navegação e único Rules ativo; snapshot/restore validados.
-- `expedition/run_save.gd`: duas gerações e integridade de checkpoint; perfil separado.
+- `session/run_save.gd`: duas gerações e integridade de checkpoint; perfil separado.
 - `expedition/replay.gd`: comandos permitidos, sem I/O, setters arbitrários ou bridge.
-- `content.gd`: catálogo atual de quatro espécies/poderes/naturezas e textos. Ainda é
-  centralizado e usa estágios ordinais; migrar isso exige preservar o combate atual.
+- `content/species/`: dados por espécie e manifesto ordenado; formas e arestas explícitas. `content.gd` é a fachada de consulta e mantém poderes/encontros/textos. Projeções de compatibilidade são derivadas, nunca editadas. Leia `docs/content-authoring.md`.
 - `ui/`: telas e componentes; grimório já separa catálogo, galeria e ficha. Novos
   componentes devem emitir intenção e receber dados/serviços explícitos, sem guardar main.
 - `assets/`: versões imutáveis por domínio/ID, com produção fixada em runtime-lock.json.
@@ -46,20 +45,24 @@ coerentes. Uma baseline verde não significa que os problemas históricos estão
 Os casos negativos provam que alterações acima desses tetos e acoplamentos novos falham;
 o guard lexical não substitui testes de comportamento ou revisão.
 
-## Próximas prioridades arquiteturais
+## Contratos para novas mudanças
 
-1. Extrair inspeção, recompensas, navegação/foco e feedback restantes de main, preservando
-   os IDs/tempos públicos. Evitar helpers com referência ao coordenador.
-2. Portar os pacotes de conteúdo para o catálogo coletivo: espécies/formas e transições
-   estáveis, poderes/traços por dono e assets referenciados por versão. Não importar os
-   Resources antigos sem adaptar HP individual, naturezas, cópias conhecidas, reservas,
-   seis integrantes e evolução sem cartas extras. Migrar saves com estágios ordinais.
-3. Adicionar identidade do conjunto de regras/conteúdo e política de migração ao save e
-   replay. Hoje a versão estrutural do checkpoint não identifica toda alteração de balanceamento.
-
-Modelos tipados e catálogo por instância acompanham a segunda prioridade. O catálogo
-atual é constante; fixtures devem modificar só suas instâncias, nunca seus dicionários.
-Nenhuma dessas prioridades está concluída apenas porque o merge ou o harness passou.
+- Crie uma espécie com `python tools/umbrals.py author <id> --fallback ember`;
+  revise seus dados/arte e rode as suítes `catalog` e `catalog-authoring`.
+  Novo comportamento de traço exige implementação e registro em `battle/traits.gd`.
+- Evoluções são arestas com IDs estáveis; aceitam ramificações e mais de duas formas.
+  Não adicione `stage`, índices de formas ou switches por espécie nas mecânicas/views.
+- Modificações determinísticas exigem decisão explícita de compatibilidade e atualização
+  de RULESET quando necessário. Conteúdo mecânico participa do digest; prosa e arte
+  ficam fora dele. Migrações são explícitas e testadas com fixture antiga congelada.
+  Nunca trate uma identidade desconhecida como save vazio. Veja `docs/save-format.md`.
+- Views recebem dados e emitem intenção; não guardam main/host/coordinator nem escrevem
+  regras. Feedback usa eventos públicos e cancelamento após awaits. I/O e protocolo
+  de plataforma têm donos próprios, fora do domínio.
+- O guard rejeita novos acoplamentos e crescimento acima da dívida medida. Não aumente
+  a baseline para aprovar mudanças. Ainda há dívida explícita no coordenador, fachada
+  de Rules e mapa; isso não bloqueia adicionar conteúdo com os contratos atuais nem
+  autoriza afirmar que toda a arquitetura está concluída.
 
 ## Validação proporcional
 

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UmbralSpeciesResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/species_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "moss"
+initial_form = "moss"
+element = "Bosque"
+color = "91c8a1"
+powers = ["thorn_lash", "root_wall", "sowing"]
+signature = "sanctuary"
+passive_pool = ["fierce", "resilient", "ardent", "swift"]
+forms = Array[Dictionary]([
+{"id": "moss", "name": "Musgo", "nature": "forest", "secondary_nature": "", "resistances": {"forest": 25}, "art": "umbrals/moss", "trait_id": "living_roots", "trait": "Raízes Vivas", "trait_description": "Ao proteger, cura %d por rodada.", "trait_value": 2, "stats": {"max_hp": 48, "attack": 8, "defense": 4, "speed": 8}, "power_profile": {"damage": 0, "block": 0, "heal": 0, "burn": 0, "wet": 0}, "lore": {"title": "Quem sempre deixa um abrigo pronto", "text": "Musgo guarda a lembrança de um santuário que acolheu viajantes. Seu corpo de madeira e folhas parece pesado, mas ele pisa com cuidado para não esmagar os brotos do caminho.\n\nAntes de descansar, ajeita um leito de folhas para os companheiros. Só então procura um lugar para si."}},
+{"id": "verdalio", "name": "Verdálio", "nature": "forest", "secondary_nature": "", "resistances": {"forest": 25}, "art": "umbrals/verdalio", "trait_id": "living_roots", "trait": "Raízes Vivas", "trait_description": "Ao proteger, cura %d por rodada.", "trait_value": 4, "stats": {"max_hp": 60, "attack": 11, "defense": 5, "speed": 10}, "power_profile": {"damage": 5, "block": 4, "heal": 2, "burn": 1, "wet": 1}, "lore": {"title": "O abrigo ganhou raízes", "text": "Em Verdálio, a memória do antigo santuário tornou-se uma copa viva. Pequenas flores crescem entre os galhos que ele curva para proteger quem se aproxima.\n\nConserva o hábito de Musgo: confere cada canto do abrigo antes de permitir que o bosque adormeça."}},
+])
+evolutions = Array[Dictionary]([{"id": "moss_to_verdalio", "from": "moss", "to": "verdalio"}])

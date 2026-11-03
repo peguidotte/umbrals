@@ -41,7 +41,7 @@ func focus_id() -> String:
 	var owner: Control = root.gui_get_focus_owner()
 	return str(owner.get_meta("ui_id","")) if is_instance_valid(owner) else ""
 func snapshot() -> String:
-	return JSON.stringify([app.game.rng.state,app.game.party,app.game.hand,app.game.deck,app.game.discard_pile,app.run_save.load_snapshot()])
+	return JSON.stringify([app.game.rng.state,app.game.party,app.game.hand,app.game.deck,app.game.discard_pile,app.session.run_save.load_snapshot()])
 func expect_footer_clearance() -> void:
 	var safe: Rect2 = app.modal_root.panel.get_global_rect().grow(-32)
 	var back: Rect2 = app.registry["settings.back"].get_global_rect().grow(8)

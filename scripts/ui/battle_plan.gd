@@ -38,7 +38,7 @@ func populate(entries: Array, hand: Array, party: Array, enemies: Array, text_sc
 			for i in range(hand.size()):
 				if hand[i].instance_id == card.instance_id: id = i
 			var owner: Dictionary = _by_uid(party, int(card.owner))
-			var power: Dictionary = Content.power_stats(str(card.power), int(owner.stage))
+			var power: Dictionary = Content.power_stats(str(card.power), owner)
 			title = str(power.name).replace("\n", " ") + " · " + Content.display_name(owner)
 			detail = "%s · %d ação(ões) · %s · VEL %d" % [Content.NATURES[power.nature].name, int(power.cost), "Prioridade" if int(entry.priority) > 0 else "Normal", int(entry.speed)]
 			if str(power.get("scope", "single")) == "single" and power.get("target", "enemy") != "self":

@@ -12,7 +12,8 @@ func _init() -> void:
 	for name in Fixtures.NAMES:
 		var fixture: Dictionary = Fixtures.make(name)
 		var run = Expedition.new()
-		var valid: bool = not fixture.is_empty() and run.restore(JSON.parse_string(JSON.stringify(fixture.initial_state)))
+		var decoded: Dictionary = Replay.decode(JSON.parse_string(JSON.stringify(fixture)))
+		var valid: bool = not decoded.is_empty() and run.restore(decoded.initial_state)
 		checks += 1
 		if not valid: failed += 1; continue
 		valid = Replay.execute(run, fixture.commands).ok

@@ -36,11 +36,11 @@ func _ready() -> void:
 func configure(data: Dictionary, umbral: Dictionary, team: Array, large: float, reduce: bool) -> void:
 	card = data
 	individual = umbral
-	power = Content.power_stats(str(card.power), int(individual.get("stage", 1)))
+	power = Content.power_stats(str(card.power), individual)
 	var able_count: int = team.filter(func(member: Dictionary) -> bool: return int(member.get("slot", -1)) >= 0 and int(member.hp) > 0).size()
 	effect = Rules.power_effect(card, individual, able_count)
 	art_texture = Assets.texture(power.art)
-	owner_texture = UI.BattleArt.texture(Content.SPECIES[individual.species].art[int(individual.stage) - 1])
+	owner_texture = UI.BattleArt.texture(Content.art_binding(individual))
 	text_scale = large
 	reduced_motion = reduce
 	tooltip_text = "%s — %s\n%d ação(ões) · %d potência · %d escudo · %d cura\n%s\nSelecione e clique em uma vaga para mudar o alvo. Q/E: alvo. P: plano. C: detalhes." % [str(power.name).replace("\n", " "), Content.display_name(individual), int(power.cost), int(effect.get("damage", 0)), int(effect.get("block", 0)), int(effect.get("heal", 0)), _scope_label()]

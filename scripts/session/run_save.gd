@@ -1,7 +1,9 @@
 extends RefCounted
 ## Independent, integrity-checked expedition checkpoints. Never touches profile data.
 
-const VERSION: int = 1
+const VERSION: int = 2
+const Identity = preload("res://scripts/expedition/identity.gd")
+const Expedition = preload("res://scripts/expedition/expedition.gd")
 const SCHEMA: String = "umbral.expedition.checkpoint"
 const Storage = preload("res://scripts/storage.gd")
 
@@ -42,15 +44,25 @@ func _read_slot(slot: int) -> Dictionary:
 	var parsed: Variant = parser.data
 	if not parsed is Dictionary: return {"state": "invalid"}
 	var record: Dictionary = parsed
-	if record.get("schema") != SCHEMA or record.get("version") != VERSION: return {"state": "invalid"}
+	if record.get("schema") != SCHEMA: return {"state": "incompatible"}
+	var version: Variant = record.get("version")
+	if version != 1 and version != VERSION: return {"state": "incompatible"}
 	var generation: Variant = record.get("generation")
 	if not (generation is int or generation is float) or generation < 1 or generation > 9007199254740991 or generation != floor(generation): return {"state": "invalid"}
 	var kind: Variant = record.get("kind")
 	if kind != "snapshot" and kind != "cleared": return {"state": "invalid"}
 	if not record.get("snapshot") is Dictionary or not record.get("checksum") is String: return {"state": "invalid"}
-	var payload: Dictionary = {"schema": SCHEMA, "version": VERSION, "generation": generation, "kind": kind, "snapshot": record["snapshot"]}
+	var payload: Dictionary = {"schema": SCHEMA, "version": version, "generation": generation, "kind": kind, "snapshot": record["snapshot"]}
+	if version == VERSION: payload["identity"] = record.get("identity")
 	var normalized: Variant = JSON.parse_string(JSON.stringify(payload))
 	if JSON.stringify(normalized).sha256_text() != record["checksum"]: return {"state": "invalid"}
+	if version == VERSION and not Identity.matches(record.get("identity")): return {"state": "incompatible"}
+	if kind == "snapshot" and record["snapshot"].has("schema"):
+		var schema: Variant = record["snapshot"].get("schema")
+		if schema != 1 and schema != 2: return {"state": "incompatible"}
+		if schema == 2 and not Identity.matches(record["snapshot"].get("identity")): return {"state": "incompatible"}
+		var candidate = Expedition.new()
+		if not candidate.restore(record["snapshot"]): return {"state": "incompatible"}
 	return {"state": "valid", "generation": int(generation), "kind": kind, "snapshot": record["snapshot"]}
 
 func _records() -> Array[Dictionary]:
@@ -63,7 +75,7 @@ func _latest(records: Array[Dictionary]) -> int:
 	return latest
 
 func _write(slot: int, generation: int, kind: String, snapshot: Dictionary) -> bool:
-	var payload: Dictionary = {"schema": SCHEMA, "version": VERSION, "generation": generation, "kind": kind, "snapshot": snapshot}
+	var payload: Dictionary = {"schema": SCHEMA, "version": VERSION, "generation": generation, "kind": kind, "snapshot": snapshot, "identity": Identity.current()}
 	# Hash the same JSON representation that a subsequent reader will see.
 	var normalized: Variant = JSON.parse_string(JSON.stringify(payload))
 	if not normalized is Dictionary: return false
@@ -76,7 +88,15 @@ func _write(slot: int, generation: int, kind: String, snapshot: Dictionary) -> b
 	return written["state"] == "valid" and written["generation"] == generation and written["kind"] == kind and JSON.stringify(written["snapshot"]) == JSON.stringify(normalized["snapshot"])
 
 func save(snapshot: Dictionary) -> bool:
+	if snapshot.has("schema"):
+		var candidate = Expedition.new()
+		if not candidate.restore(snapshot):
+			last_status = "incompatible"
+			return false
 	var records: Array[Dictionary] = _records()
+	if records.any(func(record: Dictionary) -> bool: return record["state"] == "incompatible"):
+		last_status = "incompatible"
+		return false
 	if records.any(func(record: Dictionary) -> bool: return record["state"] == "io_error"):
 		last_status = "io_error"
 		return false
@@ -94,6 +114,9 @@ func save(snapshot: Dictionary) -> bool:
 
 func load_snapshot() -> Dictionary:
 	var records: Array[Dictionary] = _records()
+	if records.any(func(record: Dictionary) -> bool: return record["state"] == "incompatible"):
+		last_status = "incompatible"
+		return {}
 	var latest: int = _latest(records)
 	if latest == -1:
 		if records.any(func(record: Dictionary) -> bool: return record["state"] == "io_error"): last_status = "io_error"
@@ -116,6 +139,9 @@ func _remove(slot: int) -> bool:
 
 func clear() -> bool:
 	var records: Array[Dictionary] = _records()
+	if records.any(func(record: Dictionary) -> bool: return record["state"] == "incompatible"):
+		last_status = "incompatible"
+		return false
 	if records.any(func(record: Dictionary) -> bool: return record["state"] == "invalid" or record["state"] == "io_error"):
 		last_status = "corrupt" if records.any(func(record: Dictionary) -> bool: return record["state"] == "invalid") else "io_error"
 		return false
