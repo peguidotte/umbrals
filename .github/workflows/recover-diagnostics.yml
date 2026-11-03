@@ -1,10 +1,13 @@
 name: Recover harness failure diagnostics
 on:
+  push:
+    paths:
+      - .github/workflows/recover-diagnostics.yml
   workflow_dispatch:
     inputs:
       artifact_id:
-        description: GitHub Actions evidence artifact ID
-        required: true
+        description: Evidence artifact ID; leave empty to inspect the latest failed validation
+        required: false
         type: string
       task:
         description: Harness task name
@@ -23,10 +26,17 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           ARTIFACT_ID: ${{ inputs.artifact_id }}
-          TASK_NAME: ${{ inputs.task }}
+          TASK_NAME: ${{ inputs.task || 'web-fixtures' }}
           REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
+          if [[ -z "$ARTIFACT_ID" ]]; then
+            FAILED_RUN="$(gh api "repos/$REPO/actions/runs?status=failure&branch=main&event=push&per_page=30" --jq '.workflow_runs[] | select(.path == ".github/workflows/umbral.yml") | .id' | head -n 1)"
+            if [[ ! "$FAILED_RUN" =~ ^[0-9]+$ ]]; then echo "No failed validation run found"; exit 1; fi
+            ARTIFACT_ID="$(gh api "repos/$REPO/actions/runs/$FAILED_RUN/artifacts" --jq '.artifacts[] | select(.name == "umbral-diagnostics" or .name == "umbral-evidence") | .id' | head -n 1)"
+            export ARTIFACT_ID
+            echo "Inspecting failed run $FAILED_RUN, artifact $ARTIFACT_ID"
+          fi
           [[ "$ARTIFACT_ID" =~ ^[0-9]+$ ]]
           [[ "$TASK_NAME" =~ ^[a-zA-Z0-9._-]+$ ]]
           gh api "repos/$REPO/actions/artifacts/$ARTIFACT_ID/zip" > "$RUNNER_TEMP/evidence.zip"
