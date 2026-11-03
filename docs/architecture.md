@@ -4,7 +4,7 @@ The working tree integrates the first v0.4 battle slice while the product versio
 
 ## Responsibilities
 
-- `content/species/catalog.tres`: ordered manifest of authored species packages. Each `content/species/<id>/species.tres` owns its stable forms, evolution graph, attributes, traits, initial powers, signature, colors, passive pool and form stories. `scripts/content.gd` provides queries and the remaining power/encounter/text catalog; derived compatibility projections are not a second authoring source.
+- `content/species/catalog.tres`: ordered manifest of authored species packages. Each `content/species/<id>/species.tres` owns its stable forms, evolution graph, attributes, traits, initial powers, signature, colors, passive pool and form stories. `content/powers/`, `content/items/` and `content/encounters/` own their ordered Resource definitions. `scripts/content.gd` provides queries and curated nature/passive/route configuration; derived compatibility projections are not a second authoring source.
 - `scripts/rules.gd`: deterministic state machine, individuals, owned power instances, persistent owned card zones, speed initiative, individual HP, target slots, status effects, substitutions and rewards.
 - `scripts/main.gd`: composition, session/screen routing, battle command dispatch and focus. Inspection, reward/capture, battle dialogs/readouts and resolution feedback are separate views/services in `scripts/ui/`; the read-only Web protocol is `ui/browser_bridge.gd`. `session/session_service.gd` owns checkpoint/result orchestration, with `session/run_save.gd` owning integrity-checked persistence.
 - `scripts/ui/`: screen stack, named input, atomic preferences, theme/buttons, persistent cards/hand, actors, world, health display, bounded effects and audio.
@@ -249,3 +249,37 @@ The harness includes catalog authoring and native graph tests, including a four-
 fixture with branching and multiple transitions. New ordinal form access, species-ID
 mechanical switches, domain I/O, UI mutations and coordinator growth are rejected by
 negative architecture cases. Required existing combat/browser gates remain active.
+
+## Domain and authoring boundaries — V04-DEV-03
+
+`domain/models/` validates Individual, CardInstance, BattleCommand and BattleEvent
+snapshots. Planning rejects malformed cards before RNG commitment; resolution reads
+typed command properties and validates emitted events. Restore uses the same structural
+validators plus catalog, ownership and cross-zone validation. These models return
+detached DTOs; the live arrays/dictionaries in Rules remain the sole authoritative
+state. This is a typed boundary, not a complete conversion of the mutable runtime.
+
+Rules delegates card cycling, planning, power evaluation, round resolution and reward
+operations to cohesive modules under `battle/`, using explicit data and local RNG.
+Main delegates HUD/selection projection, focus, scoped input and starter rendering
+to `battle_presenter.gd`, `focus_registry.gd`, `input_dispatch.gd` and `starter_view.gd`.
+Main still owns considerable session/modal interaction routing; the ratchet records
+1,115 meaningful lines for main and 528 for Rules, rather than claiming their size
+targets were reached.
+
+Item Resources carry effect IDs and generic authored parameters. Registered handlers
+own effect behavior and parameter schemas; the catalog projects them without effect
+branches. The pouch, counts, eligibility, map and codex handle owned catalog items.
+Curated route IDs govern progress/boss presentation independently of catalog size.
+
+The new gameplay identity includes item effect bindings. An audited adapter maps the
+old schema-2 manifest's potion/revive behavior before allowing conservative additive
+content transitions. Frozen historical restore/replay and actual newly authored
+species, power and item usage are checked in an isolated copied project. Changes to
+existing stats, pools, order or effect bindings are rejected without changing live state.
+
+A failed CI cold fixture import aborted natively during display.ttf import with
+`free(): invalid size`. The disposable project now imports serially; local cold import
+passed. This is a bounded mitigation to verify in CI, not proof of the heap corruption's
+root cause. Compact diagnostics are separate from media/builds, and targeted resume
+reuses only verified successful dependencies while reporting focused coverage.

@@ -27,7 +27,7 @@ Modelos e contratos de catálogo precedem a integração de regras e migrações
 - Conteúdo: manifesto determinístico, validação de custos/efeitos/referências/assets, autoria de novo item e catálogo de teste sem mutação global. Novos encontros não podem alterar implicitamente as rotas curadas.
 - Saves/replays: fixture congelada de schema 2, transição aditiva permitida, mudanças incompatíveis rejeitadas sem modificar o estado ou sobrescrever o armazenamento; seed/RNG exatos e plano/ofertas preservados.
 
-## Checkpoint da interrupção de infraestrutura
+## Histórico da interrupção de infraestrutura
 
 O ambiente `ccarenv_b64_Y2NhcmVudl9hYjgwMmJlNjdjNDQ4MTkxYTNlN2U1MGZlNmNjOTg1OQ` perdeu conectividade. O provedor informou `desired_phase=running`, `observed_phase=running`, `connectivity=offline`, sem capacidades executáveis. O usuário informou que não consegue reativá-lo agora.
 
@@ -58,3 +58,20 @@ Já estão na main os commits `b636b85` e `6072ce9`, que adicionam a ferramenta 
 4. Reproduzir/corrigir o abort nativo de fixture com evidência; validar o diagnóstico leve e a repetição individual.
 5. Atualizar guias e ratchet com métricas reais; executar primeiro os checks focados e depois o grafo completo com fontes congeladas e revisão renderizada.
 6. Commitar e enviar todas as implementações autorizadas para a main atual. Conferir CI remota; não declarar sucesso remoto enquanto estiver pendente ou falha.
+
+## Retomada e integração
+
+O ambiente voltou, caiu novamente e foi recuperado. As implementações foram
+confirmadas no filesystem e salvas no GitHub em `wip/architecture-v04-dev03`
+(checkpoint inicial b234f88). Os commits remotos de diagnóstico e esta nota foram
+incorporados por fast-forward antes da integração.
+
+A revisão corrigiu rejeição tardia de cartas malformadas, adicionou schemas completos
+aos comandos e tornou parâmetros/IDs dos efeitos parte da identidade. Migração é
+exercitada com novas Resources reais em projeto isolado; a mochila também renderiza
+um terceiro item usando dados próprios de teste. O guard reduz os tetos de main
+para 1.115 e Rules para 528 linhas significativas; ainda há dívida explícita.
+
+A aceitação integrada e revisão ficam em `artifacts/architecture-v03-final-20261103/`.
+Consulte o resultado efetivo em run.json e as observações em review-notes.md.
+Esta referência de evidência não transforma um resultado pendente/falhado em sucesso.

@@ -41,11 +41,22 @@ jobs:
           [[ "$TASK_NAME" =~ ^[a-zA-Z0-9._-]+$ ]]
           gh api "repos/$REPO/actions/artifacts/$ARTIFACT_ID/zip" > "$RUNNER_TEMP/evidence.zip"
           python - <<'PY'
-          import os, re, zipfile
+          import json, os, re, zipfile
           from pathlib import Path
           archive = Path(os.environ['RUNNER_TEMP']) / 'evidence.zip'
           suffix = '/tasks/' + os.environ['TASK_NAME'] + '/process.log'
           with zipfile.ZipFile(archive) as data:
+              compact = [item for item in data.infolist() if item.filename.split('/')[-1] == 'ci-diagnostics.json']
+              if compact:
+                  item = compact[0]
+                  if item.file_size > 1_000_000:
+                      raise SystemExit('Compact diagnostics exceeds 1 MB')
+                  report = json.loads(data.read(item))
+                  task = report.get('tasks', {}).get(os.environ['TASK_NAME'])
+                  if task is None:
+                      raise SystemExit('Selected task is absent from compact diagnostics')
+                  print(json.dumps(task, indent=2))
+                  raise SystemExit(0)
               matches = [item for item in data.infolist() if ('/' + item.filename).endswith(suffix)]
               if not matches:
                   raise SystemExit('No matching task process.log in artifact')

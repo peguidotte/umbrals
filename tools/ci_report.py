@@ -25,7 +25,7 @@ def main():
         ('Assets', report.get('assets', {}), 'source_assets'),
         ('Asset contracts', report.get('asset_units', {}), 'checks'),
         ('Rules', report.get('rules', {}), 'checks'),
-        ('UI / input', report.get('ui', {}), 'checks'),
+        ('Native domain / UI', report.get('ui', {}), 'checks'),
         ('Browser', report.get('browser', {}), 'checks'),
     ]
     mutations = report.get('mutations', {})

@@ -650,3 +650,30 @@ Novas extrações devem ter donos coesos e preservar as evidências, sem apenas
 transferir o monólito. Marco/versão não avançam; Como jogar continua adiado.
 Próxima fatia de produto pode usar o catálogo/contratos atuais; diversão,
 hardware e aprovação de arte final continuam exigindo avaliação humana.
+
+
+### V04-DEV-03 — modelos, conteúdo e compatibilidade incremental
+
+Manutenção solicitada pelo usuário sobre a main 6e1b2ed, com agentes 6.1 Terra e
+integração única. O [plano e checkpoint](architecture-growth-v04-dev03.md) registra
+responsáveis, interrupções de infraestrutura e ordem de aceitação.
+
+Poderes, itens e encontros agora têm Resources, manifestos ordenados e autoria
+validada; catálogo isolado e handlers de itens com schema de parâmetros. Modelos
+tipados validam fronteiras e comandos/eventos reais, preservando o estado único
+em Rules. Ciclo de cartas, planejamento, avaliação, resolução e recompensas foram
+extraídos; HUD, foco e entrada têm donos próprios. A mochila reconhece itens novos.
+Migrações permitem adições auditadas e rejeitam alterações nas definições/pools/
+ordem existentes; efeitos de itens participam da identidade mecânica.
+
+Checks focados: 14.419 regras, 75 modelos, 74 save, nove Resources, cinco cenários
+isolados de compatibilidade e 27 contratos do harness, além de oito mutações.
+Aceitação completa e revisão renderizada em `artifacts/architecture-v03-final-20261103/`,
+com status efetivo em run.json e observações em review-notes.md. A versão 0.3.0 e
+os gates humanos não avançam; Como jogar segue adiado.
+
+CI: o crash nativo antigo foi recuperado por uma ferramenta remota e não atribuído
+a GDScript. Importação serial na cópia descartável passou localmente; confirmação
+remota e resultados concretos pertencem à execução de CI, sem supor sucesso.
+Main (1.115 linhas significativas), Rules (528) e mapa mantêm dívida de tamanho
+explicitamente limitada, e o runtime permanece parcialmente baseado em dicionários.

@@ -1,20 +1,20 @@
 {
   "commit": "56e987b73b4619a6b60425e743fe93738c3e12bf",
-  "reason": "Reviewed ratchet: debt inherited from current-main 56e987b, reduced during V04-DEV-02 as owners were extracted. Never increase these ceilings or regenerate to hide regressions; new modules keep 350/400 limits.",
+  "reason": "Reviewed ratchet inherited from 56e987b and reduced in V04-DEV-02/03. Never increase ceilings or regenerate to hide regressions; new modules keep 350/400 limits.",
   "files": {
     "scripts/main.gd": {
       "sha256": "ef7e663ef33796e3937a80e916e4e00ecdc3a56e1d06cac81e80743d7657a127",
       "metrics": {
-        "lines": 1306,
-        "widget-ownership": 3,
+        "lines": 1115,
+        "widget-ownership": 2,
         "platform-ownership": 1
       }
     },
     "scripts/rules.gd": {
       "sha256": "8d1b753a627d959bd26a34adfc0e552e3ebcba7b86b59d23d476575b97b7de81",
       "metrics": {
-        "lines": 867,
-        "global-catalog": 12,
+        "lines": 528,
+        "global-catalog": 10,
         "untyped-runtime": 6
       }
     },

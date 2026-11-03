@@ -57,7 +57,7 @@ def summarize(run):
     if tasks.get('gallery', {}).get('report'):
         result['style_gallery'] = tasks['gallery']['report']
         if not (out / 'style-gallery').exists(): shutil.copytree(tasks['gallery']['directory'], out / 'style-gallery')
-    for name in ('ux-contracts.json', 'art-direction-v0.3.md'):
+    for name in ('ux-contracts.json', 'art-direction-v0.4.md'):
         shutil.copy2(ROOT / 'docs' / name, out / name)
     atomic_json(out / 'run.json', result)
     return result

@@ -27,6 +27,24 @@ class NativePython(Executor):
 
 
 class Contracts(unittest.TestCase):
+    def test_recovery_reads_compact_and_legacy_diagnostics(self):
+        import textwrap
+        import zipfile
+        workflow = (ROOT / '.github/workflows/recover-diagnostics.yml').read_text()
+        script = textwrap.dedent(workflow.split("          python - <<'PY'\n", 1)[1].split('          PY\n', 1)[0])
+        cases = {
+            'ci-diagnostics.json': json.dumps({'tasks': {'web-fixtures': {'status': 'failed', 'log_excerpt': 'native import aborted'}}}),
+            'run/tasks/web-fixtures/process.log': 'display.ttf\nfree(): invalid size\n',
+        }
+        for name, contents in cases.items():
+            with tempfile.TemporaryDirectory(prefix='umbral-recovery-test-') as folder:
+                with zipfile.ZipFile(Path(folder) / 'evidence.zip', 'w') as archive:
+                    archive.writestr(name, contents)
+                env = dict(os.environ, RUNNER_TEMP=folder, TASK_NAME='web-fixtures')
+                result = subprocess.run([sys.executable, '-c', script], env=env, capture_output=True, text=True)
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                self.assertIn('native import aborted' if name.endswith('.json') else 'free(): invalid size', result.stdout)
+
     def test_fixture_configuration_serializes_only_disposable_project(self):
         from build_target import fixture_configuration
         production = (ROOT / 'project.godot').read_text()
@@ -195,11 +213,17 @@ folder=Path(os.environ['UMBRAL_RESULTS_DIR'])
         self.assertFalse(second['coverage']['complete'])
 
     def test_failure_excerpt_includes_error_outside_tail(self):
+        import contextlib
+        import io
         (self.root / 'broken.py').write_text("print('ERROR: specific cause')\nprint('noise\\n' * 80)\nraise SystemExit(1)\n")
         task = Task('broken', 'python', script='broken.py', inputs=('broken.py',), suite='fake', report='suite.json')
-        record = self.execute({'broken': task})['tasks']['broken']
+        # This is an intentionally failing child. Keep its diagnostic in the
+        # assertion scope so the outer harness does not see a real engine error.
+        with contextlib.redirect_stdout(io.StringIO()) as captured:
+            record = self.execute({'broken': task})['tasks']['broken']
         self.assertEqual(record['status'], 'failed')
         self.assertIn('ERROR: specific cause', record['log_excerpt'])
+        self.assertIn('ERROR: specific cause', captured.getvalue())
 
     def test_changed_planning_explains_dependencies(self):
         task = self.script('ok', 1)
