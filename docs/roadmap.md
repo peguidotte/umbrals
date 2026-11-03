@@ -666,9 +666,9 @@ extraídos; HUD, foco e entrada têm donos próprios. A mochila reconhece itens 
 Migrações permitem adições auditadas e rejeitam alterações nas definições/pools/
 ordem existentes; efeitos de itens participam da identidade mecânica.
 
-Checks focados: 14.419 regras, 75 modelos, 74 save, nove Resources, cinco cenários
+Checks focados: 14.419 regras, 75 modelos, 86 save, nove Resources, cinco cenários
 isolados de compatibilidade e 27 contratos do harness, além de oito mutações.
-Aceitação completa e revisão renderizada em `artifacts/architecture-v03-final-20261103/`,
+Aceitação completa e revisão renderizada em `artifacts/architecture-v03-verified-20261103/`,
 com status efetivo em run.json e observações em review-notes.md. A versão 0.3.0 e
 os gates humanos não avançam; Como jogar segue adiado.
 

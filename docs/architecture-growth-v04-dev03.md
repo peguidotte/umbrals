@@ -72,6 +72,6 @@ exercitada com novas Resources reais em projeto isolado; a mochila também rende
 um terceiro item usando dados próprios de teste. O guard reduz os tetos de main
 para 1.115 e Rules para 528 linhas significativas; ainda há dívida explícita.
 
-A aceitação integrada e revisão ficam em `artifacts/architecture-v03-final-20261103/`.
+A aceitação integrada e revisão ficam em `artifacts/architecture-v03-verified-20261103/`.
 Consulte o resultado efetivo em run.json e as observações em review-notes.md.
 Esta referência de evidência não transforma um resultado pendente/falhado em sucesso.

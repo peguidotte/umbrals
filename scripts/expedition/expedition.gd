@@ -7,6 +7,7 @@ const Migration = preload("res://scripts/expedition/migration.gd")
 const Identity = preload("res://scripts/expedition/identity.gd")
 const Individual = preload("res://scripts/domain/models/individual.gd")
 const CardInstance = preload("res://scripts/domain/models/card_instance.gd")
+const BattleCommand = preload("res://scripts/domain/models/battle_command.gd")
 const Conditions = preload("res://scripts/battle/conditions.gd")
 const IDS = ["clearing", "thicket", "spring", "boss"]
 const TITLES = ["Clareira", "Mata fechada", "Nascente", "Guardião"]
@@ -222,9 +223,12 @@ func _valid_snapshot(data: Dictionary) -> bool:
 	elif card_ids.size() != canonical.size(): return false
 	for entry in s.enemy_plan:
 		if not entry is Dictionary or not entry.get("actor_uid") is int or not entry.actor_uid in enemy_uids: return false
-		if not entry.get("category") in ["attack", "defend", "support", "prepare"] or not entry.get("target_slot") is int or entry.target_slot < 0 or entry.target_slot > 2: return false
-		for key in ["damage", "block", "heal", "wet", "priority", "actor_slot"]:
-			if not entry.get(key) is int: return false
+		var actor: Dictionary = {}
+		for enemy in s.enemies:
+			if enemy.uid == entry.actor_uid: actor = enemy
+		if actor.is_empty(): return false
+		var command: Dictionary = {"kind": "enemy", "side": "enemy", "actor_uid": actor.uid, "actor_slot": actor.slot, "speed": actor.speed, "priority": entry.get("priority"), "key": "enemy:%d" % actor.uid, "intent": entry}
+		if not BattleCommand.try_from_dict(command).ok: return false
 	for offer in s.reward_offers:
 		if not offer is Dictionary or not offer.get("kind") in ["capture", "evolve"]: return false
 		if offer.kind == "capture":

@@ -154,6 +154,26 @@ func _initialize() -> void:
 			if field == "seed_value": malformed.battle.rng_seed = invalid_number
 			if field == "rng_seed": malformed.battle.seed_value = invalid_number
 			expect(not run.restore(malformed) and run.snapshot() == prior, "Invalid " + field + " is rejected without changing run: " + invalid_number)
+	var malformed_intents: Array = [
+		{"erase": "power"}, {"field": "power", "value": ""},
+		{"erase": "scope"}, {"field": "scope", "value": "unknown"},
+		{"field": "conditions", "value": -1}, {"field": "conditions", "value": {"wet": -1}},
+		{"field": "conditions", "value": {"wet": "1"}}, {"field": "damage", "value": -1},
+		{"field": "actor_slot", "value": (prior.battle.enemy_plan[0].actor_slot + 1) % 3}
+	]
+	for mutation in malformed_intents:
+		var malformed: Dictionary = prior.duplicate(true)
+		if mutation.has("erase"): malformed.battle.enemy_plan[0].erase(mutation.erase)
+		else: malformed.battle.enemy_plan[0][mutation.field] = mutation.value
+		expect(not run.restore(malformed) and run.snapshot() == prior and str(run.battle.rng.state) == prior.battle.rng_state, "Invalid committed intent is rejected without changing run or RNG: " + str(mutation))
+	var invalid_plan: Dictionary = prior.duplicate(true)
+	invalid_plan.battle.enemy_plan[0].erase("power")
+	var bad_record: Dictionary = {"schema": RunSave.SCHEMA, "version": RunSave.VERSION, "generation": 1, "kind": "snapshot", "identity": prior.identity, "snapshot": invalid_plan}
+	bad_record.checksum = JSON.stringify(JSON.parse_string(JSON.stringify(bad_record))).sha256_text()
+	expect(Storage.write_json(PATH + ".0", KEY + ".0", bad_record), "Checksum-valid malformed intent fixture written")
+	expect(store.load_snapshot().is_empty() and store.last_status == "incompatible" and not store.save(prior) and not store.clear(), "Malformed committed intent blocks load, overwrite and clear")
+	expect(JSON.stringify(Storage.read_json(PATH + ".0", KEY + ".0")) == JSON.stringify(JSON.parse_string(JSON.stringify(bad_record))) and run.snapshot() == prior, "Rejected intent preserves storage and live run")
+	remove_fixtures()
 	var foreign: Dictionary = prior.duplicate(true)
 	foreign.identity.content_sha256 = "bad"
 	expect(not run.restore(foreign) and run.snapshot() == prior, "Foreign identity cannot mutate live run")

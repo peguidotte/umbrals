@@ -99,7 +99,7 @@ func run() -> void:
 		root.size = dimensions
 		await process_frame
 		await capture("codex-%dx%d" % [dimensions.x, dimensions.y])
-		for control in app.focus_groups.get("codex", []):
+		for control in app.focus_registry.groups.get("codex", []):
 			if control.get_parent() == app.modal_root.entries or control == app.modal_root.close:
 				expect(root.get_visible_rect().encloses(control.get_global_rect()), "Visible control within viewport")
 	app._pop()
