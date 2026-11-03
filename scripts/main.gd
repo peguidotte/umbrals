@@ -7,8 +7,10 @@ const Assets = preload("res://scripts/assets/catalog.gd")
 const Rules = preload("res://scripts/rules.gd")
 const Content = preload("res://scripts/content.gd")
 const UI = preload("res://scripts/ui/kit.gd")
+const FocusRegistry = preload("res://scripts/ui/focus_registry.gd")
 const Screens = preload("res://scripts/ui/screen_stack.gd")
 const Preferences = preload("res://scripts/ui/preferences.gd")
+const InputDispatch = preload("res://scripts/ui/input_dispatch.gd")
 const Actions = preload("res://scripts/ui/input_actions.gd")
 const World = preload("res://scripts/ui/world.gd")
 const Actor = preload("res://scripts/ui/actor.gd")
@@ -16,6 +18,7 @@ const PowerCard = preload("res://scripts/ui/power_card.gd")
 const Effects = preload("res://scripts/ui/effects.gd")
 const Audio = preload("res://scripts/ui/audio.gd")
 const Targeting = preload("res://scripts/battle/targeting.gd")
+const BattlePresenter = preload("res://scripts/ui/battle_presenter.gd")
 const BattleHUD = preload("res://scripts/ui/battle_hud.gd")
 const Conditions = preload("res://scripts/battle/conditions.gd")
 const BattlePlan = preload("res://scripts/ui/battle_plan.gd")
@@ -23,12 +26,14 @@ const BattleArt = preload("res://scripts/ui/battle_art.gd")
 const BattleReadout = preload("res://scripts/ui/battle_readout.gd")
 const ExpeditionMap = preload("res://scripts/ui/expedition_map.gd")
 const BattleRecords = preload("res://scripts/ui/battle_records.gd")
+const ItemPresentation = preload("res://scripts/ui/item_presentation.gd")
 const BattleDialogs = preload("res://scripts/ui/battle_dialogs.gd")
 const ResolutionFeedback = preload("res://scripts/ui/resolution_feedback.gd")
 const RewardView = preload("res://scripts/ui/reward_view.gd")
 const InspectionView = preload("res://scripts/ui/inspection_view.gd")
 const Codex = preload("res://scripts/ui/codex.gd")
 const CodexProgress = preload("res://scripts/codex_progress.gd")
+const StarterView = preload("res://scripts/ui/starter_view.gd")
 const TitleMenu = preload("res://scripts/ui/title_menu.gd")
 const JourneyMenu = preload("res://scripts/ui/journey_menu.gd")
 const SettingsMenu = preload("res://scripts/ui/settings_menu.gd")
@@ -37,6 +42,7 @@ const TitleButton = preload("res://scripts/ui/title_button.gd")
 
 var session = SessionService.new()
 var feedback = ResolutionFeedback.new()
+var battle_presenter = BattlePresenter.new()
 var active_presentation: RefCounted
 var codex_progress = CodexProgress.new()
 var game = Rules.new()
@@ -49,7 +55,7 @@ var screens = Screens.new()
 var preferences = Preferences.new()
 var ui = UI.new()
 var registry: Dictionary = {}
-var focus_memory: Dictionary = {}
+var focus_registry = FocusRegistry.new(registry)
 var world: Control
 var audio: Node
 var menu_root: Control
@@ -83,7 +89,6 @@ var redraw_button: Button
 var hand_view: Container
 var menu_stats: Label
 var cards: Array = []
-var focus_groups: Dictionary = {}
 var inspection: Dictionary = {}
 var replacement_index: int = -1
 var capture_index: int = -1
@@ -249,6 +254,13 @@ func _build_battle() -> void:
 	hud.slot_requested.connect(_click_slot)
 	hud.command_requested.connect(_battle_command)
 	hud.build(ui, _apply_safe_margin)
+	battle_presenter.configure(hud, registry, cards)
+	if not battle_presenter.control_created.is_connected(_register_battle_control):
+		battle_presenter.control_created.connect(_register_battle_control)
+		battle_presenter.card_selected.connect(_select)
+		battle_presenter.focus_group_changed.connect(_set_group.bind("battle"))
+		battle_presenter.changed.connect(_queue_debug)
+		battle_presenter.boss_changed.connect(audio.set_boss)
 	visual_layer = hud.visual_layer
 	effects = hud.effects
 	actors = hud.actors
@@ -271,6 +283,9 @@ func _build_battle() -> void:
 	discard_label = hud.discard_label
 	world.battle_bottom_inset = -visual_layer.offset_bottom
 	_sync_battle(false)
+
+func _register_battle_control(control: Control, key: String) -> void:
+	_register(control, key, "battle")
 
 func _battle_command(command: String) -> void:
 	if command.begins_with("reserve."):
@@ -298,173 +313,22 @@ func actor_center(side: String, slot: int) -> Vector2:
 func _apply_safe_margin(margin: MarginContainer) -> void:
 	BrowserBridge.apply_safe_margin(margin, size)
 
+func _prepare_battle_presenter() -> void:
+	battle_presenter.hand_fingerprint = hand_fingerprint
+	battle_presenter.set_state(game, preferences, busy, visual_capture, last_device, targeting_index)
+
 func _sync_battle(_animate: bool = false) -> void:
 	if not is_instance_valid(battle_root): return
-	var displayed_round: int = int(game.last_result.get("resolved_round", game.round_number)) if game.phase in ["reward", "victory", "defeat"] else game.round_number
-	round_label.text = "Rodada %d" % displayed_round
-	progress_label.text = "·  Clareira %d/%d" % [game.encounter + 1, Content.ENCOUNTERS.size()]
-	var intents: Array = game.public_intents()
-	for slot in range(3):
-		actors[slot].set_identity(_at_slot("ally", slot), preferences.text_scale())
-		enemy_actors[slot].set_identity(_at_slot("enemy", slot), preferences.text_scale())
-		var intent: Dictionary = {}
-		for candidate in intents:
-			if int(candidate.get("slot", -1)) == slot: intent = candidate
-		enemy_actors[slot].set_intent(intent)
-	for actor in actors + enemy_actors:
-		actor.still = visual_capture
-		actor.reduced_motion = preferences.values.reduced_motion
-	var reserves: Array = game.reserves()
-	for i in range(6):
-		var button: Button = reserve_buttons[i]
-		button.disabled = busy or i >= reserves.size() or game.phase != "battle"
-		button.icon = null
-		button.text = "—"
-		button.tooltip_text = "Vaga de reserva vazia. Até seis Umbrals no time."
-		if i < reserves.size():
-			var individual: Dictionary = reserves[i]
-			button.icon = BattleArt.texture(Content.art_binding(individual))
-			button.text = Content.display_name(individual)
-			button.tooltip_text = "%s · HP %d/%d
-Escolha uma vaga para trocar (1 ação)." % [Content.display_name(individual), int(individual.hp), int(individual.max_hp)]
-			button.disabled = button.disabled or int(individual.hp) <= 0
-			button.modulate = Color.WHITE if int(individual.hp) > 0 else Color(0.6, 0.65, 0.7)
-	draw_label.text = "%d\nCompra" % game.deck.size()
-	discard_label.text = "%d\nDescarte" % game.discard_pile.size()
-	if registry.has("hud.backpack"):
-		var pouch: Button = registry["hud.backpack"]
-		pouch.text = str(int(game.inventory.get("potion", 0)) + int(game.inventory.get("revive", 0)))
-		pouch.tooltip_text = "MOCHILA · %d poções · %d reanimação. Cada uso custa 1 ação; consultar é grátis." % [int(game.inventory.get("potion", 0)), int(game.inventory.get("revive", 0))]
-	effects.reduced_motion = preferences.values.reduced_motion
-	audio.set_boss(game.encounter == Content.ENCOUNTERS.size() - 1)
-	var fingerprint: String = JSON.stringify(game.hand.map(func(card: Dictionary) -> String: return str(card.instance_id)))
-	if fingerprint != hand_fingerprint:
-		hand_fingerprint = fingerprint
-		_rebuild_hand()
-	else:
-		for i in range(cards.size()): cards[i].configure(game.hand[i], game.umbral_by_uid(int(game.hand[i].owner)), game.party, preferences.text_scale(), preferences.values.reduced_motion)
-	_sync_selection()
-	_set_group("battle")
-	_queue_debug()
-
-func _rebuild_hand() -> void:
-	for card in cards:
-		hand_view.remove_child(card)
-		card.queue_free()
-	cards.clear()
-	for i in range(game.hand.size()):
-		var card = PowerCard.new()
-		hand_view.add_child(card)
-		card.configure(game.hand[i], game.umbral_by_uid(int(game.hand[i].owner)), game.party, preferences.text_scale(), preferences.values.reduced_motion)
-		_register(card, "hand.%d" % i, "battle")
-		card.pressed.connect(_select.bind(i))
-		cards.append(card)
-	hand_view.layout_cards()
-	hand_view.queue_sort()
+	_prepare_battle_presenter()
+	battle_presenter.sync()
+	hand_fingerprint = battle_presenter.hand_fingerprint
+	targeting_index = battle_presenter.targeting_index
 
 func _sync_selection() -> void:
 	if not is_instance_valid(battle_root): return
-	if registry.has("hud.backpack"):
-		registry["hud.backpack"].disabled = busy or game.phase != "battle"
-	plan_button.disabled = busy or game.phase != "battle"
-	history_button.disabled = busy or game.last_result.is_empty()
-	draw_label.disabled = busy
-	discard_label.disabled = busy
-	# Rules have already advanced to the next hand/phase. Keep the committed
-	# cards and targets visible until their event sequence finishes playing.
-	if busy:
-		command_strip.visible = false
-		for card in cards: card.disabled = true
-		for button in reserve_buttons: button.disabled = true
-		cast_button.disabled = true
-		cast_button.text = "CONJURANDO…"
-		redraw_button.disabled = true
-		phase_label.text = "EXECUTANDO · aguarde os efeitos"
-		for button in command_buttons: button.disabled = true
-		_queue_debug()
-		return
-	var score: Dictionary = game.preview()
-	phase_label.text = {"battle": "PLANEJAR  →  MIRAR  →  CONJURAR", "replacement": "REPOSIÇÃO · escolha quem continua", "reward": "ENCONTRO VENCIDO · escolha uma recompensa", "victory": "EXPEDIÇÃO CONCLUÍDA", "defeat": "EXPEDIÇÃO ENCERRADA"}.get(game.phase, "BATALHA")
-	var entries: Array = game.planned_actions()
-	var planned_cost: int = int(score.get("actions", 0))
-	var own_cost: int = int(Rules.evaluate(game.selected_cards(), game.party).actions)
-	command_strip.visible = not entries.is_empty() and game.phase == "battle"
-	for i in range(command_buttons.size()):
-		var button: Button = command_buttons[i]
-		button.visible = i < entries.size()
-		button.disabled = game.phase != "battle"
-		if i < entries.size():
-			button.text = BattleReadout.plan_entry(entries[i], game.party, game.enemies)
-			if i == command_buttons.size() - 1 and entries.size() > command_buttons.size(): button.text = "+%d comandos · REVISAR PLANO" % (entries.size() - i)
-			button.tooltip_text = button.text + "\nToque para revisar, alterar alvos ou remover. Inimigos podem intercalar; empates são sorteados ao Conjurar."
-	if not targeting_index in game.selected:
-		targeting_index = game.selected.back() if not game.selected.is_empty() else -1
-	plan_button.text = "PLANO %d" % [game.selected.size() + game.queued_swaps.size() + game.queued_items.size()]
-	plan_button.tooltip_text = "Revisar, inspecionar e editar os comandos · " + ("LB" if last_device == "gamepad" else "P")
-	history_button.tooltip_text = "Resumo da última rodada: danos reais, escudos, reações e ações canceladas."
-	for i in range(cards.size()):
-		var reason: String = game.card_reason(i)
-		cards[i].blocked = not reason.is_empty()
-		cards[i].blocked_caption = {"Umbral incapacitado": "INCAPACITADO", "Age na próxima rodada": "PRÓXIMA RODADA", "Umbral na reserva": "NA RESERVA"}.get(reason, "INDISPONÍVEL")
-		cards[i].disabled = busy or game.phase != "battle" or cards[i].blocked
-		var scope: String = str(Content.POWERS[game.hand[i].power].get("scope", "single"))
-		cards[i].target_caption = "→ " + (["superior", "centro", "inferior"][clampi(int(game.hand[i].get("target_slot", 1)), 0, 2)] if scope == "single" else {"upper_pair": "sup + centro", "lower_pair": "centro + inf", "all": "todos"}.get(scope, "todos"))
-		if Content.POWERS[game.hand[i].power].get("target", "enemy") == "self": cards[i].target_caption = "Si próprio"
-		var hypothetical: Array = game.selected_cards().duplicate()
-		hypothetical.append(game.hand[i])
-		cards[i].insufficient_actions = not i in game.selected and not cards[i].blocked and planned_cost + int(Rules.evaluate(hypothetical, game.party).actions) - own_cost > game.action_budget()
-		cards[i].aiming = i == targeting_index
-		cards[i].set_chosen(i in game.selected)
-		if cards[i].blocked: cards[i].tooltip_text = reason
-	cast_button.disabled = busy or not score.valid or game.phase != "battle"
-	redraw_button.disabled = busy or game.phase != "battle"
-	cast_button.text = "CONJURANDO…" if busy else "CONJURAR"
-	redraw_button.text = "RESORTEAR · R\nPassa a rodada"
-	var cost: int = int(score.get("actions", score.get("energy", 0)))
-	energy_label.configure(game.action_budget(), cost)
-	energy_label.add_theme_font_size_override("font_size", int(16 * preferences.text_scale()))
-	energy_label.tooltip_text = "%d de %d ações planejadas" % [cost, game.action_budget()]
-	energy_label.add_theme_color_override("font_color", UI.FIRE if cost > game.action_budget() else UI.GOLD)
-	if cost > game.action_budget(): phase_label.text = "PLANO EXCEDE AS AÇÕES · remova um comando"
-	if game.selected.is_empty() and game.queued_swaps.is_empty() and game.queued_items.is_empty():
-		preview_label.text = "Escolha poderes · depois escolha os alvos no campo"
-		notice_label.text = "Velocidade ordena · P: revisar plano · Espaço: conjurar"
-	else:
-		preview_label.text = "%d potência · %d escudo · %d cura  |  %d troca(s) · %d item(ns)" % [int(score.get("damage", 0)), int(score.get("block", 0)), int(score.get("heal", 0)), game.queued_swaps.size(), game.queued_items.size()]
-		notice_label.text = str(score.reason) if not score.valid else "Estimativa dos seus poderes; velocidade, defesas e estados mudam o resultado."
-		if game.pending_information_mode != game.information_mode:
-			notice_label.text += " Informação muda na próxima rodada."
-	if score.valid and targeting_index >= 0:
-		var aimed: Dictionary = game.hand[targeting_index]
-		var power: Dictionary = Content.POWERS[aimed.power]
-		if power.get("scope", "single") == "single" and power.get("target", "enemy") != "self":
-			var target: Dictionary = _at_slot("enemy" if power.get("target", "enemy") == "enemy" else "ally", int(aimed.target_slot))
-			var target_name: String = str(target.get("name", "")) if target.has("name") else Content.display_name(target) if not target.is_empty() else "Vaga vazia"
-			notice_label.text = "Alvo: %s · Q/E: mudar · P: plano" % target_name
-	_sync_targets()
-	_set_group("battle")
-	_queue_debug()
-
-func _scope_slots(power: Dictionary, slot: int) -> Array:
-	return Targeting.slots(str(power.get("scope", "single")), slot)
-
-func _sync_targets() -> void:
-	for actor in actors + enemy_actors:
-		actor.target_marked = false
-		actor.targeted = false
-		actor.target_available = false
-	if targeting_index in game.selected and targeting_index >= 0 and targeting_index < game.hand.size():
-		var card: Dictionary = game.hand[targeting_index]
-		var power: Dictionary = Content.POWERS[card.power]
-		var is_enemy: bool = str(power.get("target", "enemy")) == "enemy"
-		var slot: int = int(card.get("target_slot", 1))
-		var list: Array = enemy_actors if is_enemy else actors
-		var options: Array[int] = game.target_options(targeting_index)
-		for target_slot in options: list[target_slot].target_available = true
-		for target_slot in _scope_slots(power, slot):
-			if target_slot in options: list[int(target_slot)].target_marked = true
-		if slot in options: list[slot].targeted = true
-	for actor in actors + enemy_actors: actor.queue_redraw()
+	_prepare_battle_presenter()
+	battle_presenter.sync_selection()
+	targeting_index = battle_presenter.targeting_index
 
 func _click_slot(side: String, slot: int) -> void:
 	if busy or screens.top() != "battle": return
@@ -510,29 +374,12 @@ func _start_selected(value: int, starter: String) -> void:
 
 func _starter_choices() -> void:
 	var body: VBoxContainer = _modal_frame("Escolha seu primeiro vínculo", "Você começa com um Umbral. Cada um traz três poderes, com duas cópias de cada.", 1150)
-	var grid = GridContainer.new()
-	grid.columns = 2
-	grid.add_theme_constant_override("h_separation", 22)
-	grid.add_theme_constant_override("v_separation", 14)
-	body.add_child(grid)
-	var roles: Dictionary = {"ember": "Pressão e Queima", "moss": "Semeado e proteção", "volt": "Condução e Interferência", "dew": "Encharcado e cura"}
-	for species_id in Content.STARTERS:
-		var panel = PanelContainer.new()
-		panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		grid.add_child(panel)
-		var row: HBoxContainer = UI.row(16)
-		panel.add_child(row)
-		var portrait: TextureRect = UI.art("umbrals/" + species_id, Vector2(96, 96))
-		portrait.texture = BattleArt.texture(species_id)
-		row.add_child(portrait)
-		var column: VBoxContainer = UI.column(8)
-		column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		row.add_child(column)
-		var individual: Dictionary = Rules.make_umbral(species_id, "", 1)
-		column.add_child(ui.label(Content.nature_text(individual) + " · " + str(roles[species_id]), 19, UI.MUTED))
-		var choice: Button = _button(column, Content.display_name(individual), _start_selected.bind(seed_number, species_id), "starter." + species_id, "starter", true)
-		choice.tooltip_text = Content.trait_text(individual) + "\nResistências: " + Content.resistance_text(individual)
-	_button(body, "VOLTAR", _pop, "starter.back", "starter")
+	var view = StarterView.new()
+	active_presentation = view
+	view.control_created.connect(func(control: Control, key: String): _register(control, key, "starter"))
+	view.starter_requested.connect(func(species: String): _start_selected(seed_number, species))
+	view.back_requested.connect(_pop)
+	view.build(body, ui, bool(preferences.values.reduced_motion) or visual_capture, screens.root() == "menu")
 
 func _start_game(value: int = 42013, starter: String = "ember") -> void:
 	session.start_practice()
@@ -546,7 +393,7 @@ func _start_game(value: int = 42013, starter: String = "ember") -> void:
 	seed_number = value
 	targeting_index = -1
 	hand_fingerprint = ""
-	focus_memory.erase("battle")
+	focus_registry.memory.erase("battle")
 	game.new_run(value, str(preferences.values.information_mode), starter)
 	if not is_instance_valid(battle_root): _build_battle()
 	else: _sync_battle()
@@ -634,8 +481,7 @@ func _float_text(text: String, point: Vector2, color: Color, _font_size: int) ->
 	effects.popup(point, text, color)
 
 func _remember_focus() -> void:
-	var focused: Control = get_viewport().gui_get_focus_owner()
-	if is_instance_valid(focused): focus_memory[screens.top()] = focused.get_meta("ui_id", "")
+	focus_registry.remember(screens.top(), get_viewport().gui_get_focus_owner())
 
 func _push(screen: String) -> void:
 	_remember_focus()
@@ -673,7 +519,7 @@ func _on_screen_changed() -> void:
 	if screens.top() == "map": _build_map()
 	elif screens.top() not in ["menu", "battle"]: _build_modal(screens.top())
 	_set_group(screens.top())
-	_focus(focus_memory.get(screens.top(), ""), screens.top())
+	_focus(focus_registry.memory.get(screens.top(), ""), screens.top())
 	if screens.root() == "menu":
 		audio.set_title(true)
 		var arriving: Control = menu_root if screens.top() == "menu" else modal_root
@@ -990,9 +836,9 @@ func _pouch() -> void:
 	var frame: VBoxContainer = _modal_frame("Mochila", "Itens ficam fora do baralho. Cada uso custa 1 ação e resolve apenas ao Conjurar.", 1050)
 	var reasons: Dictionary = {}
 	for individual in game.party:
-		for item in ["potion", "revive"]:
+		for item in ItemPresentation.choices(Content.CONSUMABLES, game.inventory):
 			reasons["%s:%d" % [item, int(individual.uid)]] = game.item_reason(item, int(individual.uid))
-	_battle_dialogs().pouch(frame, game.inventory, game.party, reasons, game.queued_items, size, _register)
+	_battle_dialogs().pouch(frame, game.inventory, game.party, reasons, game.queued_items, size, _register, Content.CONSUMABLES)
 
 func _queue_item(item: String, uid: int) -> void:
 	if busy: return
@@ -1075,7 +921,7 @@ func _capture_destination() -> void:
 func _select_capture_slot(slot: int) -> void:
 	if not slot in game.capture_destinations(capture_index, capture_replace_uid): return
 	capture_slot = slot
-	focus_memory["capture_destination"] = "capture.reserve" if slot < 0 else "capture.slot.%d" % slot
+	focus_registry.memory["capture_destination"] = "capture.reserve" if slot < 0 else "capture.slot.%d" % slot
 	_on_screen_changed()
 
 func _accept_reward(index: int, replace_uid: int = -1, destination: int = -2) -> void:
@@ -1124,31 +970,10 @@ func _retry_seed() -> void:
 	else: _start_game(game.seed_value, game.starter_species)
 
 func _set_group(screen: String) -> void:
-	var group: Array = []
-	for key in registry:
-		var control = registry[key]
-		if is_instance_valid(control) and control.is_inside_tree() and control.get_meta("ui_screen", "") == screen and control.is_visible_in_tree():
-			if control.focus_mode == Control.FOCUS_NONE or (control is BaseButton and control.disabled): continue
-			group.append(control)
-	focus_groups[screen] = group
-	UI.focus_chain(group, screen in ["battle", "reward", "replacement"])
+	focus_registry.set_group(screen)
 
 func _focus(key: String, screen: String) -> void:
-	if registry.has(key) and is_instance_valid(registry[key]) and registry[key].is_visible_in_tree():
-		var target: Control = registry[key]
-		if not (target is BaseButton and target.disabled):
-			target.grab_focus()
-			_queue_debug()
-			return
-	var group: Array = focus_groups.get(screen, [])
-	if not group.is_empty():
-		var target: Control = group[0]
-		if screen == "battle":
-			for card in cards:
-				if is_instance_valid(card) and card.is_visible_in_tree() and not card.disabled:
-					target = card
-					break
-		if is_instance_valid(target): target.grab_focus()
+	focus_registry.restore(key, screen, cards)
 	_queue_debug()
 
 func _return_menu() -> void:
@@ -1221,53 +1046,34 @@ func _sync_text_scale() -> void:
 			reserve_buttons.clear()
 			hand_fingerprint = ""
 			_build_battle()
-		focus_memory[screens.top()] = key
+		focus_registry.memory[screens.top()] = key
 		_on_screen_changed()
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.echo: return
-	if event is InputEventJoypadMotion and absf(event.axis_value) < 0.25: return
+	if InputDispatch.ignored(event): return
 	if browser_test and event.is_pressed():
 		input_serial += 1
 		_queue_debug()
-	var device: String = "gamepad" if event is InputEventJoypadButton or event is InputEventJoypadMotion else "keyboard" if event is InputEventKey else "mouse" if event is InputEventMouseButton else last_device
+	var device: String = InputDispatch.device(event, last_device)
 	if device != last_device:
 		last_device = device
 		if session_active: _sync_selection()
-	if event.is_action_pressed("umbral_back"):
-		if screens.top() == "ko_replacement":
-			_finish_ko()
-			get_viewport().set_input_as_handled()
-			return
-		if screens.top() in ["battle", "map"]: _push("pause")
-		elif screens.top() in ["victory", "defeat"]: _return_menu()
-		elif screens.top() != "menu": _pop()
-		get_viewport().set_input_as_handled()
-		return
-	if screens.top() != "battle": return
-	for i in range(6):
-		if event.is_action_pressed("umbral_card_%d" % i):
-			_select(i)
-			get_viewport().set_input_as_handled()
-			return
-	if event.is_action_pressed("umbral_cast"):
-		_cast()
-		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("umbral_redraw"):
-		_redraw()
-		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("umbral_plan"):
-		_open_plan()
-		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("umbral_clear"):
-		_clear_plan()
-		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("umbral_target_previous") or event.is_action_pressed("umbral_target_next"):
-		_cycle_target(1 if event.is_action_pressed("umbral_target_next") else -1)
-		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("umbral_inspect"):
-		_inspect_focused()
-		get_viewport().set_input_as_handled()
+	var intent: Dictionary = InputDispatch.intent(event, screens.top())
+	if intent.is_empty(): return
+	match intent.action:
+		"back":
+			if screens.top() == "ko_replacement": _finish_ko()
+			elif screens.top() in ["battle", "map"]: _push("pause")
+			elif screens.top() in ["victory", "defeat"]: _return_menu()
+			elif screens.top() != "menu": _pop()
+		"card": _select(int(intent.index))
+		"cast": _cast()
+		"redraw": _redraw()
+		"plan": _open_plan()
+		"clear": _clear_plan()
+		"target": _cycle_target(int(intent.direction))
+		"inspect": _inspect_focused()
+	get_viewport().set_input_as_handled()
 
 func _layout_changed() -> void:
 	_queue_debug()

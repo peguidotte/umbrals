@@ -3,6 +3,12 @@ extends RefCounted
 ## Pure deterministic combat. Preview never samples RNG or resolves enemy plans.
 signal state_changed(kind: String)
 
+const ItemEffects = preload("res://scripts/battle/item_effects/registry.gd")
+const Rewards = preload("res://scripts/battle/rewards.gd")
+const Planning = preload("res://scripts/battle/planning.gd")
+const CardCycle = preload("res://scripts/battle/card_cycle.gd")
+const RoundResolution = preload("res://scripts/battle/round_resolution.gd")
+const PowerEvaluation = preload("res://scripts/battle/power_evaluation.gd")
 const Evolution = preload("res://scripts/battle/evolution.gd")
 const Traits = preload("res://scripts/battle/traits.gd")
 const Planner = preload("res://scripts/domain/selection_planner.gd")
@@ -228,13 +234,9 @@ func set_formation(uids_by_slot: Array) -> bool:
 	return true
 
 func _draw_hand() -> void:
-	while hand.size() < hand_capacity():
-		if deck.is_empty():
-			if discard_pile.is_empty(): break
-			deck = discard_pile.duplicate(true)
-			discard_pile.clear()
-			_shuffle(deck)
-		hand.append(deck.pop_back())
+	var cycle = CardCycle.new(party, hand, deck, discard_pile, suspended_cards, rng)
+	cycle.draw(hand_capacity())
+	deck = cycle.deck
 	_assign_default_targets()
 
 func _assign_default_targets() -> void:
@@ -250,65 +252,12 @@ func _first_living_slot(roster: Array) -> int:
 	return 1
 
 func _sync_owner_zones() -> void:
-	var returning: Array = []
-	for individual in party:
-		var uid: int = int(individual.uid)
-		var eligible: bool = int(individual.slot) >= 0 or int(individual.hp) <= 0
-		if not eligible:
-			if not suspended_cards.has(uid): suspended_cards[uid] = {"deck": [], "discard": [], "entered": true}
-			var suspended: Dictionary = suspended_cards[uid]
-			_move_owner_cards(deck, suspended.deck, uid)
-			_move_owner_cards(discard_pile, suspended.discard, uid)
-			_move_owner_cards(hand, suspended.discard, uid)
-		elif suspended_cards.has(uid):
-			var suspended: Dictionary = suspended_cards[uid]
-			var incoming: Array = suspended.deck
-			if not bool(suspended.get("entered", true)): _shuffle(incoming)
-			returning.append(incoming)
-			discard_pile.append_array(suspended.discard)
-			suspended_cards.erase(uid)
-	if returning.is_empty(): return
-	# Recycle only at exhaustion. Otherwise a solo owner's discarded hand
-	# would wait behind six new cards and guarantee a reserve-only next hand.
-	if deck.is_empty() and not discard_pile.is_empty():
-		deck = discard_pile.duplicate(true)
-		discard_pile.clear()
-		_shuffle(deck)
-	for incoming in returning: _interleave_draw(incoming)
-
-func _interleave_draw(incoming: Array) -> void:
-	# Uniformly merge the incoming sequence with the current draw sequence.
-	# Existing cards retain their relative order; no global redraw or fishing.
-	var merged: Array = []
-	var old_index: int = 0
-	var new_index: int = 0
-	while old_index < deck.size() and new_index < incoming.size():
-		var old_left: int = deck.size() - old_index
-		var new_left: int = incoming.size() - new_index
-		if rng.randi_range(1, old_left + new_left) <= old_left:
-			merged.append(deck[old_index])
-			old_index += 1
-		else:
-			merged.append(incoming[new_index])
-			new_index += 1
-	merged.append_array(deck.slice(old_index))
-	merged.append_array(incoming.slice(new_index))
-	deck = merged
-
-func _move_owner_cards(source: Array, destination: Array, uid: int) -> void:
-	for i in range(source.size() - 1, -1, -1):
-		if int(source[i].owner) == uid:
-			destination.push_front(source[i])
-			source.remove_at(i)
+	var cycle = CardCycle.new(party, hand, deck, discard_pile, suspended_cards, rng)
+	cycle._sync_owner_zones()
+	deck = cycle.deck
 
 func card_reason(index: int) -> String:
-	if phase != "battle" or index < 0 or index >= hand.size(): return "Poder indisponível"
-	var individual: Dictionary = umbral_by_uid(int(hand[index].owner))
-	if individual.is_empty(): return "Dono ausente"
-	if int(individual.hp) <= 0: return "Umbral incapacitado"
-	if int(individual.slot) < 0: return "Umbral na reserva"
-	if int(individual.get("can_act_round", 1)) > round_number: return "Age na próxima rodada"
-	return ""
+	return Planning.card_reason(index, phase, hand, party, round_number)
 
 func card_usable(index: int) -> bool:
 	return card_reason(index).is_empty()
@@ -325,11 +274,7 @@ func toggle(index: int) -> bool:
 	return true
 
 func target_options(index: int) -> Array[int]:
-	if index < 0 or index >= hand.size(): return []
-	var card: Dictionary = hand[index]
-	var owner: Dictionary = umbral_by_uid(int(card.owner))
-	if owner.is_empty() or not Content.POWERS.has(card.power): return []
-	return Targeting.options(Content.power_stats(str(card.power), owner), owner, party, enemies)
+	return Planning.target_options(index, hand, party, enemies)
 
 func set_target(index: int, slot: int) -> bool:
 	if phase != "battle" or not card_usable(index) or not slot in target_options(index): return false
@@ -358,106 +303,16 @@ func selected_cards() -> Array:
 	return cards
 
 static func power_effect(card: Dictionary, individual: Dictionary, companion_count: int, trait_available: bool = true) -> Dictionary:
-	var stats: Dictionary = Content.power_stats(str(card.power), individual)
-	var damage: int = int(stats.get("damage", 0))
-	var block: int = int(stats.get("block", 0))
-	var heal: int = int(stats.get("heal", 0))
-	var burn: int = int(stats.get("burn", 0))
-	if damage > 0:
-		damage = maxi(0, damage + int(individual.get("attack", 10)) - 10)
-		if individual.get("passive", "") == "fierce": damage += 3
-		if individual.get("passive", "") == "ardent": burn += 2
-	if individual.get("passive", "") == "resilient" and block > 0: block += 3
-	if individual.get("passive", "") == "vital" and heal > 0: heal += 2
-	var modified: Dictionary = Traits.power(individual, damage, block, heal, burn, companion_count, trait_available)
-	damage = int(modified.damage)
-	heal = int(modified.heal)
-	burn = int(modified.burn)
-	stats.damage = damage + (int(individual.get("statuses", {}).get("charge", 0)) if damage > 0 else 0)
-	stats.attack_multiplier = Conditions.attack_multiplier(individual)
-	if burn > 0: stats.conditions.burn = burn
-	stats.block = block
-	stats.heal = heal
-	stats.burn = burn
-	return stats
+	return PowerEvaluation.power_effect(card, individual, companion_count, trait_available)
 
 static func evaluate(cards: Array, companions: Array, existing_burn: int = 0) -> Dictionary:
-	var result: Dictionary = {"valid": false, "reason": "Selecione poderes, uma troca ou um item", "name": "Prepare sua conjuração", "actions": 0, "energy": 0, "damage": 0, "direct_damage": 0, "burn_added": 0, "burn_tick": existing_burn, "block": 0, "heal": 0, "bonuses": []}
-	if cards.is_empty(): return result
-	var owners: Dictionary = {}
-	for individual in companions: owners[int(individual.uid)] = individual
-	var seen: Dictionary = {}
-	var participating: Dictionary = {}
-	var moss_used: Dictionary = {}
-	for card in cards:
-		if not card.has("instance_id") or seen.has(card.instance_id) or not owners.has(int(card.get("owner", -1))) or not Content.POWERS.has(card.get("power", "")):
-			result.reason = "Poder inválido"
-			return result
-		var individual: Dictionary = owners[int(card.owner)]
-		if int(individual.get("hp", 1)) <= 0 or int(individual.get("slot", 0)) < 0:
-			result.reason = "Umbral incapacitado ou na reserva"
-			return result
-		var known: Array = individual.get("known_powers", Content.SPECIES[individual.species].powers)
-		if not card.power in known:
-			result.reason = "Este Umbral não conhece esse poder"
-			return result
-		seen[card.instance_id] = true
-		participating[int(card.owner)] = true
-	var able_count: int = 0
-	for individual in companions:
-		if int(individual.get("slot", 0)) >= 0 and int(individual.get("hp", 1)) > 0: able_count += 1
-	for card in cards:
-		var individual: Dictionary = owners[int(card.owner)]
-		var stats: Dictionary = power_effect(card, individual, able_count, not moss_used.has(int(individual.uid)))
-		if Traits.once_per_round(individual) and int(stats.block) > 0: moss_used[int(individual.uid)] = true
-		result.actions += int(stats.cost)
-		result.direct_damage += floori(float(stats.damage) * float(stats.attack_multiplier))
-		result.block += int(stats.block)
-		result.heal += int(stats.heal)
-		result.burn_added += int(stats.burn)
-	result.energy = result.actions
-	result.damage = result.direct_damage
-	result.name = "Conjuração conjunta" if participating.size() > 1 else "Poder de " + Content.display_name(owners[participating.keys()[0]])
-	result.valid = int(result.actions) <= ENERGY
-	result.reason = "" if result.valid else "Ações insuficientes"
-	return result
+	return PowerEvaluation.evaluate(cards, companions, existing_burn)
 
 func preview() -> Dictionary:
 	return preview_selection(selected)
 
 func preview_selection(indices: Array[int]) -> Dictionary:
-	var cards: Array = []
-	for index in indices:
-		if index >= 0 and index < hand.size(): cards.append(hand[index])
-	var result: Dictionary = evaluate(cards, party)
-	if not cards.is_empty() and not result.valid and result.reason != "Ações insuficientes": return result
-	if cards.size() != indices.size():
-		result.valid = false
-		result.reason = "Seleção inválida"
-		return result
-	for index in indices:
-		if not card_usable(index):
-			result.valid = false
-			result.reason = card_reason(index)
-			return result
-		var card: Dictionary = hand[index]
-		var owner: Dictionary = umbral_by_uid(int(card.owner))
-		for swap in queued_swaps:
-			if int(swap.out_uid) == int(owner.uid):
-				result.valid = false
-				result.reason = "Quem sai não pode conjurar nesta rodada"
-				return result
-		if not int(card.get("target_slot", -1)) in target_options(index):
-			result.valid = false
-			result.reason = "Escolha uma vaga com alvo apto no alcance do poder"
-			return result
-	result.actions += queued_swaps.size()
-	for item in queued_items: result.actions += int(Content.CONSUMABLES[item.item].cost)
-	result.energy = result.actions
-	result.valid = (not cards.is_empty() or not queued_swaps.is_empty() or not queued_items.is_empty()) and int(result.actions) <= action_budget()
-	result.reason = "" if result.valid else "Ações insuficientes" if int(result.actions) > action_budget() else "Selecione poderes, uma troca ou um item"
-	if cards.is_empty() and result.valid: result.name = "Manobra do time"
-	return result
+	return Planning.preview_selection(indices, hand, party, enemies, phase, round_number, queued_swaps, queued_items, action_budget())
 
 func queue_swap(out_uid: int, in_uid: int) -> bool:
 	var outgoing: Dictionary = umbral_by_uid(out_uid)
@@ -507,9 +362,8 @@ func item_reason(item: String, uid: int) -> String:
 	if phase != "battle" or not Content.CONSUMABLES.has(item): return "Item indisponível"
 	var target: Dictionary = umbral_by_uid(uid)
 	if target.is_empty(): return "Alvo ausente"
-	var definition: Dictionary = Content.CONSUMABLES[item]
-	if definition.has("heal") and (int(target.hp) <= 0 or int(target.hp) >= int(target.max_hp)): return "Requer um Umbral ferido e apto"
-	if definition.has("revive_ratio") and int(target.hp) > 0: return "Requer um Umbral incapacitado"
+	var reason: String = ItemEffects.reason(Content.item_effect(item), target)
+	if not reason.is_empty(): return reason
 	var reserved: int = 0
 	for order in queued_items:
 		if order.item == item: reserved += 1
@@ -580,25 +434,10 @@ func redraw() -> bool:
 func _resolve_round(score: Dictionary, passing: bool) -> Dictionary:
 	var player_entries: Array = [] if passing else Initiative.player_entries(selected_cards(), party, queued_swaps, queued_items)
 	var queue: Array = Initiative.commit(player_entries, enemy_plan, enemies, rng)
-	var events: Array = []
-	var moss_used: Dictionary = {}
-	var applied_damage: int = 0
-	for entry in queue:
-		if entry.kind == "swap":
-			_resolve_swap(entry, events)
-		elif entry.kind == "item":
-			_resolve_item(entry, events)
-		else:
-			var roster: Array = party if entry.side == "ally" else enemies
-			var owner: Dictionary = _by_uid(roster, int(entry.actor_uid))
-			if owner.is_empty() or int(owner.hp) <= 0 or int(owner.slot) < 0 or int(owner.get("can_act_round", 1)) > round_number:
-				events.append(_event("canceled", entry, owner, "ally" if entry.side == "enemy" else "enemy", {}, "", 0))
-				events.back().reason = "dono ausente" if owner.is_empty() else "incapacitado" if int(owner.hp) <= 0 else "na reserva" if int(owner.slot) < 0 else "age na próxima rodada"
-				continue
-			applied_damage += _resolve_power(entry, owner, events, moss_used)
-	_tick_statuses(events)
-	for event in events:
-		if event.kind == "burn" and event.target_side == "enemy": applied_damage += int(event.amount)
+	var resolver = RoundResolution.new(party, enemies, inventory, declined_replacements, round_number)
+	var resolution: Dictionary = resolver.resolve(queue)
+	var events: Array = resolution.events
+	var applied_damage: int = int(resolution.applied_damage)
 	total_damage += applied_damage
 	actions += 1
 	encounter_rounds_resolved += 1
@@ -624,7 +463,7 @@ func _resolve_round(score: Dictionary, passing: bool) -> Dictionary:
 	if not party_alive:
 		phase = "defeat"
 	elif not foes_alive:
-		phase = "victory" if (Content.ENCOUNTERS[encounter].get("id", "") == "boss" if expedition_mode else encounter == Content.ENCOUNTERS.size() - 1) else "reward"
+		phase = "victory" if (Content.ENCOUNTERS[encounter].get("id", "") == "boss" if expedition_mode else Content.ENCOUNTERS[encounter].get("id", "") == Content.route_encounter_ids().back()) else "reward"
 		if phase == "reward": _prepare_rewards()
 	elif _needs_replacement():
 		phase = "replacement"
@@ -642,181 +481,6 @@ func _resolve_round(score: Dictionary, passing: bool) -> Dictionary:
 	last_result = score.duplicate(true)
 	state_changed.emit("resolved")
 	return score
-
-func _event(kind: String, entry: Dictionary, owner: Dictionary, target_side: String, target: Dictionary, power: String, amount: int) -> Dictionary:
-	var snapshot: Dictionary = {}
-	for key in ["uid", "species", "name", "art", "form_id", "passive", "hp", "max_hp", "attack", "defense", "speed", "block", "statuses", "status_sources", "resistances", "slot", "can_act_round"]:
-		if target.has(key): snapshot[key] = target[key].duplicate(true) if target[key] is Dictionary else target[key]
-	var event: Dictionary = {"kind": kind, "actor_uid": int(owner.get("uid", entry.get("actor_uid", -1))), "actor_side": str(entry.get("side", "ally")), "actor_slot": int(owner.get("slot", entry.get("actor_slot", -1))), "target_uid": int(target.get("uid", -1)), "target_side": target_side, "target_slot": int(target.get("slot", -1)), "power": power, "amount": amount, "target_state": snapshot}
-	event.actor_name = str(owner.name) if owner.has("name") else Content.display_name(owner) if owner.has("species") else "Umbral"
-	event.target_name = str(target.name) if target.has("name") else Content.display_name(target) if target.has("species") else "Umbral"
-	return event
-
-func _resolve_swap(entry: Dictionary, events: Array) -> void:
-	var swap: Dictionary = entry.swap
-	var incoming: Dictionary = umbral_by_uid(int(swap.in_uid))
-	var outgoing: Dictionary = umbral_by_uid(int(swap.out_uid))
-	if incoming.is_empty() or int(incoming.hp) <= 0 or int(incoming.slot) >= 0: return
-	if not outgoing.is_empty():
-		if int(outgoing.slot) != int(swap.slot): return
-		if int(outgoing.hp) <= 0 and not declined_replacements.has(int(outgoing.uid)): return
-		outgoing.slot = -1
-	incoming.slot = int(swap.slot)
-	incoming.can_act_round = round_number + 1
-	var event: Dictionary = _event("swap", entry, incoming, "ally", incoming, "", 0)
-	event.out_uid = int(swap.out_uid)
-	events.append(event)
-
-func _resolve_item(entry: Dictionary, events: Array) -> void:
-	var order: Dictionary = entry.order
-	var target: Dictionary = umbral_by_uid(int(order.uid))
-	if target.is_empty() or int(inventory.get(order.item, 0)) <= 0: return
-	var definition: Dictionary = Content.CONSUMABLES[order.item]
-	if definition.has("revive_ratio"):
-		if int(target.hp) > 0: return
-		target.hp = maxi(1, ceili(float(target.max_hp) * float(definition.revive_ratio)))
-		declined_replacements.erase(int(target.uid))
-		target.can_act_round = round_number + 1
-		target.statuses = {}
-		target.status_sources = {}
-		events.append(_event("revive", entry, {}, "ally", target, "revive", int(target.hp)))
-	else:
-		if int(target.hp) <= 0: return
-		var healing: int = mini(int(definition.get("heal", 0)), int(target.max_hp) - int(target.hp))
-		target.hp += healing
-		events.append(_event("heal", entry, {}, "ally", target, "potion", healing))
-	inventory[order.item] = int(inventory[order.item]) - 1
-
-func _scope_slots(scope: String, target_slot: int) -> Array:
-	return Targeting.slots(scope, target_slot)
-
-func _resolve_power(entry: Dictionary, owner: Dictionary, events: Array, moss_used: Dictionary) -> int:
-	var stats: Dictionary
-	var power: String
-	if entry.kind == "enemy":
-		stats = entry.intent.duplicate(true)
-		if int(stats.get("damage", 0)) > 0:
-			stats.damage = maxi(0, int(stats.damage) + int(owner.get("attack", 10)) - 10) + int(owner.statuses.get("charge", 0))
-		stats.attack_multiplier = Conditions.attack_multiplier(owner)
-		power = str(stats.power)
-		stats.target = "self" if str(stats.category) in ["defend", "prepare"] else "enemy"
-		if str(stats.category) == "prepare":
-			Conditions.apply(owner, "charge", int(stats.get("charge", 0)), {"uid": int(owner.uid), "side": entry.side})
-			events.append(_event("prepare", entry, owner, str(entry.side), owner, power, int(stats.get("charge", 0))))
-		# Old custom enemy patterns remain readable; authored techniques use conditions.
-		if not stats.has("conditions"): stats.conditions = {}
-		for id in ["burn", "wet"]:
-			if int(stats.get(id, 0)) > 0: stats.conditions[id] = int(stats[id])
-	else:
-		power = str(entry.card.power)
-		stats = power_effect(entry.card, owner, active_party(true).size(), not moss_used.has(int(owner.uid)))
-		stats.target_slot = int(entry.card.get("target_slot", owner.slot))
-		if Traits.once_per_round(owner) and int(stats.block) > 0: moss_used[int(owner.uid)] = true
-	var offensive: bool = int(stats.get("damage", 0)) > 0
-	if offensive:
-		# Spend once per technique, before iterating area targets. Support keeps both.
-		for id in ["charge", "electrified"]:
-			if int(owner.statuses.get(id, 0)) > 0:
-				Conditions.consume(owner, id)
-				var spent: Dictionary = _event("condition_spent", entry, owner, str(entry.side), owner, power, 0)
-				spent.condition = id
-				events.append(spent)
-	var hostile: bool = str(stats.get("target", "enemy")) == "enemy"
-	var target_side: String = ("enemy" if entry.side == "ally" else "ally") if hostile else str(entry.side)
-	var targets: Array = enemies if target_side == "enemy" else party
-	var target_slot: int = int(stats.get("target_slot", owner.slot))
-	if str(stats.get("target", "enemy")) == "self": target_slot = int(owner.slot)
-	var scope: String = str(stats.get("scope", "single"))
-	if hostile and scope == "single":
-		for individual in targets:
-			if int(individual.get("slot", -1)) >= 0 and int(individual.hp) > 0 and int(individual.statuses.get("taunt", 0)) > 0:
-				target_slot = int(individual.slot)
-				break
-	var applied_damage: int = 0
-	for slot in _scope_slots(scope, target_slot):
-		var target: Dictionary = _at_slot(targets, int(slot))
-		if target.is_empty() or int(target.hp) <= 0: continue
-		var reaction: Dictionary = Reactions.choose(stats, target)
-		var seed_before: bool = int(target.statuses.get("seed", 0)) > 0
-		var beneficiary: Dictionary = target.get("status_sources", {}).get("seed", {}).duplicate(true)
-		if not reaction.is_empty() and bool(reaction.consume): Conditions.consume(target, str(reaction.condition))
-		if offensive:
-			var raw: float = float(stats.damage) * float(stats.get("attack_multiplier", 1.0)) * float(reaction.get("multiplier", 1.0))
-			var resistance: int = clampi(int(Content.resistances(target).get(str(stats.get("nature", "")), 0)), 0, 100)
-			raw *= 1.0 - float(resistance) / 100.0
-			var damage: int = maxi(0, floori(raw) - int(target.defense))
-			var absorbed: int = mini(int(target.block), damage)
-			target.block -= absorbed
-			damage = mini(int(target.hp), damage - absorbed)
-			target.hp -= damage
-			var hit: Dictionary = _event("attack", entry, owner, target_side, target, power, damage)
-			hit.blocked = absorbed
-			hit.amplified = reaction.get("id", "") == "conduction"
-			hit.nature = str(stats.get("nature", ""))
-			hit.resistance = resistance
-			hit.weakened = float(stats.get("attack_multiplier", 1.0)) < 1.0
-			events.append(hit)
-			if target_side == "enemy": applied_damage += damage
-		if not reaction.is_empty(): _apply_reaction(reaction, beneficiary, entry, owner, target_side, target, power, events, moss_used)
-		if int(target.hp) <= 0:
-			events.append(_event("ko", entry, owner, target_side, target, power, 0))
-			continue
-		for id in stats.get("conditions", {}):
-			# A preexisting seed is used or refreshed, never replanted by this same hit.
-			if id in ["taunt", "charge"] or (id == "seed" and seed_before): continue
-			Conditions.apply(target, id, int(stats.conditions[id]), {"uid": int(owner.uid), "side": entry.side})
-			var applied: Dictionary = _event("wet" if id == "wet" else "condition", entry, owner, target_side, target, power, int(stats.conditions[id]))
-			applied.condition = id
-			events.append(applied)
-		if not hostile: _apply_support(stats, entry, owner, target_side, target, power, events)
-	if hostile and (int(stats.get("block", 0)) > 0 or int(stats.get("heal", 0)) > 0 or int(stats.get("taunt", 0)) > 0):
-		_apply_support(stats, entry, owner, str(entry.side), owner, power, events)
-	return applied_damage
-
-func _apply_reaction(reaction: Dictionary, source: Dictionary, entry: Dictionary, owner: Dictionary, side: String, target: Dictionary, power: String, events: Array, moss_used: Dictionary) -> void:
-	if int(target.hp) > 0 and int(reaction.get("burn", 0)) > 0:
-		Conditions.apply(target, "burn", int(reaction.burn), {"uid": int(owner.uid), "side": entry.side})
-	var event: Dictionary = _event("reaction", entry, owner, side, target, power, 0)
-	event.reaction = str(reaction.id)
-	event.label = str(reaction.name)
-	event.condition = str(reaction.condition)
-	events.append(event)
-	if source.is_empty() or (int(reaction.get("block", 0)) <= 0 and int(reaction.get("heal", 0)) <= 0): return
-	var beneficiary_side: String = str(source.get("side", "ally"))
-	var beneficiary: Dictionary = _by_uid(party if beneficiary_side == "ally" else enemies, int(source.get("uid", -1)))
-	if beneficiary.is_empty() or int(beneficiary.hp) <= 0: return
-	var support: Dictionary = {"block": int(reaction.get("block", 0)), "heal": int(reaction.get("heal", 0))}
-	if support.block > 0 and Traits.once_per_round(beneficiary) and not moss_used.has(int(beneficiary.uid)):
-		support.heal += Traits.strength(beneficiary)
-		moss_used[int(beneficiary.uid)] = true
-	_apply_support(support, entry, owner, beneficiary_side, beneficiary, power, events)
-
-func _apply_support(stats: Dictionary, entry: Dictionary, owner: Dictionary, side: String, target: Dictionary, power: String, events: Array) -> void:
-	if int(stats.get("block", 0)) > 0:
-		target.block += int(stats.block)
-		events.append(_event("block", entry, owner, side, target, power, int(stats.block)))
-	if int(stats.get("heal", 0)) > 0:
-		var healing: int = mini(int(stats.heal), int(target.max_hp) - int(target.hp))
-		target.hp += healing
-		events.append(_event("heal", entry, owner, side, target, power, healing))
-	if int(stats.get("taunt", 0)) > 0:
-		Conditions.apply(target, "taunt", int(stats.taunt), {"uid": int(owner.uid), "side": entry.side})
-		events.append(_event("condition", entry, owner, side, target, power, int(stats.taunt)))
-		events.back().condition = "taunt"
-
-func _tick_statuses(events: Array) -> void:
-	for side in ["ally", "enemy"]:
-		var roster: Array = party if side == "ally" else enemies
-		for target in roster:
-			if int(target.get("slot", -1)) < 0 or int(target.hp) <= 0: continue
-			var burn: int = int(target.statuses.get("burn", 0))
-			if burn > 0:
-				var damage: int = mini(int(target.hp), burn)
-				target.hp -= damage
-				var entry: Dictionary = {"side": side, "actor_uid": int(target.uid), "actor_slot": int(target.slot)}
-				events.append(_event("burn", entry, target, side, target, "burn", damage))
-				if int(target.hp) <= 0: events.append(_event("ko", entry, target, side, target, "burn", 0))
-			Conditions.tick(target)
 
 func _needs_replacement() -> bool:
 	if reserves().is_empty(): return false
@@ -861,19 +525,7 @@ func _valid_evolution(individual: Dictionary, offer: Dictionary) -> bool:
 	return Evolution.valid(individual, offer, Content.evolution_edges(individual))
 
 func capture_destinations(offer_index: int, replace_uid: int = -1) -> Array[int]:
-	var result: Array[int] = []
-	if phase != "reward" or offer_index < 0 or offer_index >= reward_offers.size() or reward_offers[offer_index].kind != "capture": return result
-	if party.size() < MAX_TEAM and replace_uid != -1: return result
-	if party.size() >= MAX_TEAM and umbral_by_uid(replace_uid).is_empty(): return result
-	# Never leave a new encounter with no field body that can act or be replaced.
-	for individual in active_party():
-		if int(individual.uid) != replace_uid:
-			result.append(-1)
-			break
-	for slot in range(MAX_ACTIVE):
-		var occupant: Dictionary = _at_slot(party, slot)
-		if occupant.is_empty() or int(occupant.uid) == replace_uid: result.append(slot)
-	return result
+	return Rewards.capture_destinations(offer_index, replace_uid, phase, reward_offers, party)
 
 func choose_reward(offer_index: int, replace_uid: int = -1, capture_slot: int = -2) -> bool:
 	if phase != "reward" or offer_index < 0 or offer_index >= reward_offers.size(): return false
@@ -924,25 +576,14 @@ func choose_reward(offer_index: int, replace_uid: int = -1, capture_slot: int = 
 		_sync_compatibility()
 		state_changed.emit("reward")
 	else:
-		encounter += 1
+		var route: Array = Content.route_encounter_ids()
+		var route_index: int = route.find(Content.ENCOUNTERS[encounter].get("id", ""))
+		encounter = encounter_index(str(route[route_index + 1]))
 		start_encounter()
 	return true
 
 func _persist_card_collection() -> void:
-	# Zones, rather than species defaults, own the current edited deck. Learning,
-	# thinning and evolving preserve precisely these physical card instances.
-	var cards: Array = hand + deck + discard_pile
-	for suspended in suspended_cards.values(): cards.append_array(suspended.deck + suspended.discard)
-	for individual in party:
-		var owned: Array = []
-		var seen: Dictionary = {}
-		for card in cards:
-			if int(card.owner) == int(individual.uid) and not seen.has(card.instance_id):
-				var instance: Dictionary = card.duplicate(true)
-				instance.erase("target_slot")
-				owned.append(instance)
-				seen[card.instance_id] = true
-		individual.cards = owned
+	Rewards.persist_card_collection(party, hand, deck, discard_pile, suspended_cards)
 
 func _sync_compatibility() -> void:
 	max_hp = 0

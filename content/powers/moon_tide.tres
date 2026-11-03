@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UmbralPowerResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/power_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "moon_tide"
+nature = "water"
+learning = "lineage"
+conditions = {"wet": 2}
+name = "Maré\nlunar"
+cost = 2
+damage = 12
+block = 0
+heal = 0
+art = "attacks/rain"
+target = "enemy"
+scope = "all"
+priority = 0
+order = 160
+description = "A água de Marevéu atravessa a formação oponente, deixando os alvos atingidos Encharcados."

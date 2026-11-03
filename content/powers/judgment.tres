@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UmbralPowerResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/power_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "judgment"
+nature = "lightning"
+learning = "lineage"
+conditions = {}
+name = "Juízo da\ntempestade"
+cost = 2
+damage = 30
+block = 5
+heal = 0
+art = "attacks/judgment"
+target = "enemy"
+scope = "all"
+priority = 0
+order = 150
+description = "Tempestral espalha uma descarga pela formação adversária e prepara proteção para si."

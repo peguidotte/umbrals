@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path: sys.path.insert(0, str(ROOT))
 ID = re.compile(r"^[a-z][a-z0-9_]*$")
 
 
@@ -36,7 +37,9 @@ def validate(path, bindings):
             if not match:
                 raise ValueError(f'missing authoritative {name} registry')
             return dict(re.findall(r'^\s*"([a-z][a-z0-9_]*)": \{([^\n]*)', match.group(1), re.M))
-        power_registry, passive_registry, nature_registry = registry('POWERS'), registry('PASSIVES'), registry('NATURES')
+        from tools.content_authoring import load_catalog
+        power_registry = load_catalog('powers')
+        passive_registry, nature_registry = registry('PASSIVES'), registry('NATURES')
         def field(name):
             match = re.search(rf'^{name} = (.+)$', source, re.M)
             if not match:
@@ -48,7 +51,7 @@ def validate(path, bindings):
         if not isinstance(color, str) or not re.fullmatch(r'[0-9a-fA-F]{6}(?:[0-9a-fA-F]{2})?', color): errors.append('invalid color')
         if not isinstance(powers, list) or not powers or any(not isinstance(value, str) or value not in power_registry for value in powers): errors.append('unknown or invalid initial power')
         if not isinstance(passive_pool, list) or not passive_pool or any(not isinstance(value, str) or value not in passive_registry for value in passive_pool): errors.append('unknown or invalid passive')
-        if not isinstance(signature, str) or signature not in power_registry or not re.search(r'"learning"\s*:\s*"lineage"', power_registry.get(signature, '')): errors.append('signature must identify a lineage power')
+        if not isinstance(signature, str) or signature not in power_registry or power_registry.get(signature, {}).get('learning') != 'lineage': errors.append('signature must identify a lineage power')
         if not ID.fullmatch(sid) or sid != path.parent.name:
             errors.append('species ID must match its folder and use stable lowercase IDs')
         ids = [f.get('id', '') for f in forms]
@@ -56,10 +59,8 @@ def validate(path, bindings):
             errors.append('form IDs must be unique stable lowercase IDs')
         if initial not in ids:
             errors.append('initial form is missing')
-        encounter_block = re.search(r'^const ENCOUNTERS = \[\n(.*?)^\]', content, re.M | re.S)
-        if not encounter_block:
-            raise ValueError('missing authoritative ENCOUNTERS catalog')
-        encounter_ids = {art.rsplit('/', 1)[-1] for art in re.findall(r'"uid"\s*:\s*\d+[^\n]*?"art"\s*:\s*"([^"]+)"', encounter_block.group(1))}
+        encounters = load_catalog('encounters')
+        encounter_ids = {enemy['art'].rsplit('/', 1)[-1] for encounter in encounters.values() for enemy in encounter['enemies']}
         for form_id in ids:
             if form_id in encounter_ids:
                 errors.append(f'form ID {form_id} is reserved for encounter discovery')

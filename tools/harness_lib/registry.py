@@ -27,6 +27,8 @@ class Task:
 
 
 NATIVE = {
+    'content-resources': ('content_resources_test.gd', 'content_resources', ()),
+    'domain-models': ('domain_models_test.gd', 'domain_models', ()),
     'harness-core': ('harness_checkpoint_test.gd', 'harness_core', ('checkpoint', 'replay', 'planner')),
     'rules': ('rules_test.gd', 'umbral_rules', ('traits_and_passives', 'budget_and_ownership', 'seed_preview_and_inputs', 'roster_and_card_cycle', 'formation_boundaries', 'swaps_and_ko', 'ko_transition_flow', 'delayed_ko_entry', 'reserve_reinsertion', 'speed_and_scopes', 'visibility', 'multiple_items', 'enemy_attributes', 'tactical_planning', 'enemy_preparation', 'capture_and_evolution', 'natures_and_reactions', 'initial_passive_usefulness', 'elemental_starters', 'battle_lifecycle', 'simulations')),
     'catalog': ('catalog_test.gd', 'catalog', ()),
@@ -53,7 +55,9 @@ FIXTURE_SCENARIOS = {'inventory', 'combat', 'rewards', 'replacement'}
 def registry():
     tasks = {
         'architecture': Task('architecture', 'python', inputs=('scripts/**', 'tools/architecture*'), script='tools/architecture_checks.py', suite='architecture', report='architecture-report.json', count='modules'),
-        'catalog-authoring': Task('catalog-authoring', 'python', inputs=('content/**', 'scripts/catalog/**', 'tools/umbrals.py', 'tests/catalog_authoring_test.py', 'tests/catalog_authoring_runner.py'), script='tests/catalog_authoring_runner.py', suite='catalog_authoring', report='catalog-authoring-report.json'),
+        'catalog-authoring': Task('catalog-authoring', 'python', inputs=('content/**', 'assets/**', 'scripts/catalog/**', 'tools/umbrals.py', 'tools/content_authoring.py', 'tests/catalog_authoring_test.py', 'tests/catalog_authoring_runner.py'), script='tests/catalog_authoring_runner.py', suite='catalog_authoring', report='catalog-authoring-report.json'),
+        'content-authoring': Task('content-authoring', 'python', inputs=('content/**', 'assets/runtime-lock.json', 'scripts/catalog/**', 'scripts/battle/item_effects/**', 'tools/content_authoring.py', 'tests/content_authoring_test.py', 'tests/content_authoring_runner.py'), script='tests/content_authoring_runner.py', suite='content_authoring', report='content-authoring-report.json'),
+        'migration-compat': Task('migration-compat', 'python', inputs=DATA + ('project.godot', 'tests/fixtures/**', 'tests/expedition_additive_test.py', 'tests/expedition_additive_test.gd', 'tests/expedition_additive_runner.py', 'tools/content_authoring.py'), script='tests/expedition_additive_runner.py', suite='migration_compat', report='migration-compat-report.json', minimum=5),
         'assets': Task('assets', 'python', inputs=('assets/**', 'docs/assets/**', 'tools/asset*', 'tools/normalize_atlas.py'), script='tools/asset_checks.py', suite='asset_qa', report='asset-report.json', count='source_assets'),
         'asset-unit': Task('asset-unit', 'python', inputs=('tools/asset*', 'tools/normalize_atlas.py', 'assets/schemas/**', 'tests/test_asset_pipeline.py'), script='tools/asset_unit_checks.py', suite='asset_units', report='asset-unit-report.json'),
         'harness': Task('harness', 'python', inputs=('tools/**', 'tests/harness_runner_test.py', 'tests/browser/**', 'tests/support/**'), script='tests/harness_runner_test.py', suite='harness_runner', report='harness-report.json'),
@@ -85,7 +89,7 @@ def registry():
     return tasks
 
 
-HEADLESS = ('architecture', 'catalog-authoring', 'assets', 'asset-unit', 'harness', 'mutations') + tuple(NATIVE)
+HEADLESS = ('architecture', 'catalog-authoring', 'content-authoring', 'migration-compat', 'assets', 'asset-unit', 'harness', 'mutations') + tuple(NATIVE)
 FULL = HEADLESS + ('packed-catalog', 'fixtures', 'packed-fixtures') + tuple('browser.' + name for name in SCENARIOS)
 
 

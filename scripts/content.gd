@@ -5,40 +5,7 @@ extends RefCounted
 const VERSION = "0.3.0"
 const INITIAL_POWER_COPIES = 2
 const STARTING_ITEMS = {"potion": 2, "revive": 1}
-const CONSUMABLES = {
-	"potion": {"name": "Poção", "cost": 1, "heal": 18},
-	"revive": {"name": "Reanimar", "cost": 1, "revive_ratio": 0.35},
-}
 # Codex prose is presentation content; it grants no abilities or progression.
-const ENCOUNTER_LORE = {
-	"spore": {"title": "Um viajante das raízes", "text": "Esporo errante atravessa a clareira seguindo a umidade do chão. Seus passos espalham pequenos brilhos sob o chapéu, marcando trilhas que desaparecem quando o bosque seca.\n\nÉ fácil confundir sua imobilidade com distração. Ele está escutando o que se move debaixo das folhas."},
-	"owl": {"title": "A vigília entre os espinhos", "text": "A Coruja dos espinhos repousa onde os galhos se cruzam. Imóvel, acompanha as passagens da floresta e só revela sua presença quando decide mudar de poleiro.\n\nAs penas lembram folhas secas; os olhos, porém, não deixam que nada se perca na escuridão."},
-	"stag": {"title": "O Rei sem Aurora", "text": "O brilho de seus galhos surge entre as árvores antes que se ouçam seus passos. Os Umbrals da clareira se aquietam quando ele passa.\n\nNinguém sabe por quanto tempo ele vigia o bosque. À luz da lua, parece escutar uma manhã que ainda não chegou."},
-}
-const ITEM_DESCRIPTIONS = {
-	"potion": "Uma pequena reserva de cuidado para as travessias do bosque. A poção recupera o fôlego de um Umbral ferido e segue na mochila até que o Guia escolha quem precisa dela.",
-	"revive": "Quando um Umbral já não consegue continuar, este preparo ajuda a reacender seu vínculo. Reanima um companheiro incapacitado e devolve parte de seu HP.",
-}
-const POWER_DESCRIPTIONS = {
-	"sowing": "Espalha uma semente sobre o alvo. Fogo, água e bosque podem dar destinos diferentes ao que foi plantado.",
-	"interference": "Uma descarga desordena o ritmo do alvo. Além do impacto, a Interferência enfraquece seu próximo ataque.",
-	"fireball": "Uma chama concentrada é lançada contra um alvo. Um golpe direto para abrir caminho entre as sombras do bosque.",
-	"cinder_claw": "Brasas acompanham um golpe de garras. O calor permanece nos alvos atingidos mesmo depois do impacto.",
-	"flame_guard": "Uma camada de cinzas protege quem conjura. O escudo ajuda a absorver os golpes da rodada.",
-	"thorn_lash": "Um chicote de espinhos alcança os alvos enquanto o bosque prepara uma pequena proteção para quem o conduz.",
-	"root_wall": "Raízes se erguem para proteger quem conjura. A barreira também provoca os oponentes.",
-	"life_seed": "A energia de uma semente é dedicada à recuperação de um aliado ferido.",
-	"lightning": "Um arco de eletricidade alcança um alvo. Água sobre o oponente pode abrir caminho para uma reação de Condução.",
-	"static_veil": "Eletricidade envolve quem conjura, combinando proteção com uma descarga contra o alvo.",
-	"storm_dive": "Um mergulho concentra a força da tempestade em um único alvo. Exige mais ações do que os golpes básicos.",
-	"tidal_splash": "Um jato de água atinge e deixa o alvo Encharcado, preparando o terreno para outras técnicas.",
-	"rain_sweep": "Uma cortina de chuva alcança posições vizinhas e deixa os oponentes atingidos Encharcados.",
-	"dew_mend": "Uma gota preservada é compartilhada com um aliado para recuperar parte de seu HP.",
-	"inferno": "A chama de Ignivar se expande sobre os oponentes. O impacto deixa queimaduras nos alvos atingidos.",
-	"sanctuary": "Verdálio abre um abrigo para os aliados, unindo escudo e recuperação.",
-	"judgment": "Tempestral espalha uma descarga pela formação adversária e prepara proteção para si.",
-	"moon_tide": "A água de Marevéu atravessa a formação oponente, deixando os alvos atingidos Encharcados.",
-}
 const NATURES = {
 	"fire": {"name": "Fogo", "color": "ef987b"},
 	"water": {"name": "Água", "color": "80d7e5"},
@@ -62,75 +29,23 @@ const PASSIVE_IDS = ["fierce", "resilient", "vital", "ardent", "swift"]
 # Target describes the side; scope describes semantic slots, never front/back ranks.
 # Larger priority resolves first. Order is only a stable per-power tiebreaker;
 # water does not receive an implicit phase ahead of faster lightning owners.
-const POWERS = {
-	"sowing": {"nature": "forest", "learning": "nature", "conditions": {"seed": 3}, "name": "Semeadura", "cost": 1, "damage": 6, "block": 0, "heal": 0, "art": "attacks/life-seed", "target": "enemy", "scope": "single", "priority": 0, "order": 60},
-	"interference": {"nature": "lightning", "learning": "nature", "conditions": {"electrified": 2}, "name": "Interferência", "cost": 1, "damage": 4, "block": 0, "heal": 0, "art": "attacks/lightning", "target": "enemy", "scope": "single", "priority": 0, "order": 80},
-	"fireball": {"nature": "fire", "learning": "nature", "conditions": {}, "name": "Bola de\nfogo", "cost": 1, "damage": 12, "block": 0, "heal": 0, "art": "attacks/fireball", "target": "enemy", "scope": "single", "priority": 0, "order": 10},
-	"cinder_claw": {"nature": "fire", "learning": "nature", "conditions": {"burn": 3}, "name": "Garra de\nbrasas", "cost": 1, "damage": 8, "block": 0, "heal": 0, "art": "attacks/cinder-claw", "target": "enemy", "scope": "upper_pair", "priority": 0, "order": 20},
-	"flame_guard": {"nature": "fire", "learning": "nature", "conditions": {}, "name": "Manto de\ncinzas", "cost": 1, "damage": 0, "block": 8, "heal": 0, "art": "attacks/flame-guard", "target": "self", "scope": "single", "priority": 1, "order": 30},
-	"thorn_lash": {"nature": "forest", "learning": "nature", "conditions": {}, "name": "Chicote de\nespinhos", "cost": 1, "damage": 8, "block": 4, "heal": 0, "art": "attacks/thorn-lash", "target": "enemy", "scope": "lower_pair", "priority": 0, "order": 40},
-	"root_wall": {"nature": "forest", "learning": "nature", "conditions": {"taunt": 1}, "name": "Muralha de\nraízes", "cost": 1, "damage": 0, "block": 12, "heal": 0, "art": "attacks/root-wall", "target": "self", "scope": "single", "priority": 1, "order": 50},
-	"life_seed": {"nature": "forest", "learning": "nature", "conditions": {}, "name": "Semente\nvital", "cost": 1, "damage": 0, "block": 0, "heal": 6, "art": "attacks/life-seed", "target": "ally", "scope": "single", "priority": 0, "order": 60},
-	"lightning": {"nature": "lightning", "learning": "nature", "conditions": {}, "name": "Arco\nelétrico", "cost": 1, "damage": 11, "block": 0, "heal": 0, "art": "attacks/lightning", "target": "enemy", "scope": "single", "priority": 0, "order": 70},
-	"static_veil": {"nature": "lightning", "learning": "nature", "conditions": {}, "name": "Véu\nestático", "cost": 1, "damage": 4, "block": 8, "heal": 0, "art": "attacks/static-veil", "target": "enemy", "scope": "single", "priority": 1, "order": 80},
-	"storm_dive": {"nature": "lightning", "learning": "nature", "conditions": {}, "name": "Mergulho\ntrovão", "cost": 2, "damage": 25, "block": 0, "heal": 0, "art": "attacks/storm-dive", "target": "enemy", "scope": "single", "priority": 0, "order": 90},
-	"tidal_splash": {"nature": "water", "learning": "nature", "conditions": {"wet": 2}, "name": "Jato de\norvalho", "cost": 1, "damage": 8, "block": 0, "heal": 0, "art": "attacks/splash", "target": "enemy", "scope": "single", "priority": 0, "order": 100},
-	"rain_sweep": {"nature": "water", "learning": "nature", "conditions": {"wet": 2}, "name": "Chuva\nlateral", "cost": 1, "damage": 4, "block": 0, "heal": 0, "art": "attacks/rain", "target": "enemy", "scope": "upper_pair", "priority": 0, "order": 110},
-	"dew_mend": {"nature": "water", "learning": "nature", "conditions": {}, "name": "Gota\nserena", "cost": 1, "damage": 0, "block": 0, "heal": 6, "art": "attacks/dew-mend", "target": "ally", "scope": "single", "priority": 0, "order": 120},
-	"inferno": {"nature": "fire", "learning": "lineage", "conditions": {"burn": 5}, "name": "Sol\ndevorador", "cost": 2, "damage": 27, "block": 0, "heal": 0, "art": "attacks/inferno", "target": "enemy", "scope": "all", "priority": 0, "order": 130},
-	"sanctuary": {"nature": "forest", "learning": "lineage", "conditions": {}, "name": "Santuário\nancestral", "cost": 2, "damage": 0, "block": 18, "heal": 6, "art": "attacks/sanctuary", "target": "ally", "scope": "all", "priority": 1, "order": 140},
-	"judgment": {"nature": "lightning", "learning": "lineage", "conditions": {}, "name": "Juízo da\ntempestade", "cost": 2, "damage": 30, "block": 5, "heal": 0, "art": "attacks/judgment", "target": "enemy", "scope": "all", "priority": 0, "order": 150},
-	"moon_tide": {"nature": "water", "learning": "lineage", "conditions": {"wet": 2}, "name": "Maré\nlunar", "cost": 2, "damage": 12, "block": 0, "heal": 0, "art": "attacks/rain", "target": "enemy", "scope": "all", "priority": 0, "order": 160},
-}
 # Legacy summary fields remain available to screens and migrated records. The
 # playable battle uses individual enemies, not the legacy aggregate hp/intents.
-const ENCOUNTERS = [
-	{
-		"id": "clearing", "name": "Esporo errante", "subtitle": "A FLORESTA EXPERIMENTA SEUS VÍNCULOS", "hp": 105, "intents": [7, 9, 6], "art": "characters/spore",
-		"enemies": [
-			{"uid": 1001, "species": "moss", "name": "Esporo errante", "art": "characters/spore", "form_id": "moss", "max_hp": 58, "hp": 58, "attack": 10, "defense": 0, "speed": 8, "slot": 1, "pattern": [
-				{"nature": "forest", "conditions": {}, "category": "attack", "damage": 8, "block": 0, "wet": 0, "scope": "single"},
-				{"nature": "forest", "conditions": {}, "category": "defend", "damage": 0, "block": 7, "wet": 0, "scope": "single", "priority": 1},
-				{"nature": "forest", "conditions": {}, "category": "attack", "damage": 11, "block": 0, "wet": 0, "scope": "single", "target_policy": "weakest"},
-			]},
-		],
-	},
-	{
-		"id": "thicket", "name": "Coruja dos espinhos", "subtitle": "UMBRALS NÃO LUTAM SOZINHOS", "hp": 170, "intents": [9, 12, 8], "art": "characters/owl",
-		"enemies": [
-			{"uid": 2001, "species": "volt", "name": "Coruja dos espinhos", "art": "characters/owl", "form_id": "volt", "max_hp": 46, "hp": 46, "attack": 10, "defense": 1, "speed": 14, "slot": 0, "pattern": [
-				{"nature": "lightning", "conditions": {}, "category": "prepare", "charge": 6, "damage": 0, "block": 0, "wet": 0, "scope": "single"},
-				{"nature": "lightning", "conditions": {}, "category": "attack", "damage": 7, "block": 0, "wet": 0, "scope": "upper_pair"},
-				{"nature": "lightning", "conditions": {"electrified": 2}, "category": "attack", "damage": 6, "block": 0, "wet": 0, "scope": "single", "target_policy": "weakest"},
-			]},
-			{"uid": 2002, "species": "moss", "name": "Esporo vigia", "art": "characters/spore", "form_id": "moss", "max_hp": 40, "hp": 40, "attack": 10, "defense": 1, "speed": 8, "slot": 2, "pattern": [
-				{"nature": "forest", "conditions": {"seed": 3}, "category": "attack", "damage": 4, "block": 0, "wet": 0, "scope": "single"},
-				{"nature": "forest", "conditions": {}, "category": "defend", "damage": 0, "block": 8, "wet": 0, "scope": "single", "priority": 1},
-				{"nature": "forest", "conditions": {}, "category": "attack", "damage": 6, "block": 0, "wet": 0, "scope": "lower_pair"},
-			]},
-		],
-	},
-	{
-		"id": "boss", "name": "O Rei sem Aurora", "subtitle": "O ÚLTIMO ECO DO BOSQUE", "hp": 255, "intents": [11, 15, 9], "art": "characters/stag",
-		"enemies": [
-			{"uid": 3001, "species": "ember", "name": "O Rei sem Aurora", "art": "characters/stag", "form_id": "ignivar", "max_hp": 76, "hp": 76, "attack": 12, "defense": 2, "speed": 11, "slot": 1, "pattern": [
-				{"nature": "fire", "conditions": {}, "category": "prepare", "charge": 6, "damage": 0, "block": 0, "wet": 0, "scope": "all"},
-				{"nature": "fire", "conditions": {}, "category": "attack", "damage": 10, "block": 0, "wet": 0, "scope": "all"},
-				{"nature": "fire", "conditions": {}, "category": "defend", "damage": 0, "block": 12, "wet": 0, "scope": "single", "priority": 1},
-			]},
-			{"uid": 3002, "species": "moss", "name": "Raiz do crepúsculo", "art": "characters/spore", "form_id": "moss", "max_hp": 40, "hp": 40, "attack": 10, "defense": 2, "speed": 6, "slot": 2, "pattern": [
-				{"nature": "forest", "conditions": {}, "category": "defend", "damage": 0, "block": 8, "wet": 0, "scope": "single", "priority": 1},
-				{"nature": "forest", "conditions": {"seed": 3}, "category": "attack", "damage": 4, "block": 0, "wet": 0, "scope": "lower_pair"},
-				{"nature": "forest", "conditions": {}, "category": "attack", "damage": 6, "block": 0, "wet": 0, "scope": "single", "target_policy": "weakest"},
-			]},
-			{"uid": 3003, "species": "volt", "name": "Coruja da fenda", "art": "characters/owl", "form_id": "volt", "max_hp": 36, "hp": 36, "attack": 10, "defense": 0, "speed": 15, "slot": 0, "pattern": [
-				{"nature": "lightning", "conditions": {}, "category": "attack", "damage": 5, "block": 0, "wet": 0, "scope": "single"},
-				{"nature": "lightning", "conditions": {}, "category": "prepare", "charge": 6, "damage": 0, "block": 0, "wet": 0, "scope": "single"},
-				{"nature": "lightning", "conditions": {}, "category": "attack", "damage": 7, "block": 0, "wet": 0, "scope": "upper_pair"},
-			]},
-		],
-	},
-]
+
+const GameplayCatalog = preload("res://scripts/catalog/gameplay_catalog.gd")
+static var DEFAULT_CATALOG = GameplayCatalog.new()
+static var POWERS: Dictionary = DEFAULT_CATALOG.powers()
+static var CONSUMABLES: Dictionary = DEFAULT_CATALOG.items()
+static var ENCOUNTERS: Array = DEFAULT_CATALOG.encounters()
+static var POWER_DESCRIPTIONS: Dictionary = DEFAULT_CATALOG.descriptions("power")
+static var ITEM_DESCRIPTIONS: Dictionary = DEFAULT_CATALOG.descriptions("item")
+static var ENCOUNTER_LORE: Dictionary = DEFAULT_CATALOG.descriptions("encounter")
+
+static func item_effect(item_id: String) -> String:
+	return DEFAULT_CATALOG.item_effect(item_id)
+
+static func route_encounter_ids() -> Array:
+	return ["clearing", "thicket", "boss"]
 
 # Ordered manifest: explicit preload order is independent of filesystem enumeration.
 const CatalogLookup = preload("res://scripts/catalog/lookup.gd")

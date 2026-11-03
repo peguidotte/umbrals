@@ -27,6 +27,17 @@ class NativePython(Executor):
 
 
 class Contracts(unittest.TestCase):
+    def test_fixture_configuration_serializes_only_disposable_project(self):
+        from build_target import fixture_configuration
+        production = (ROOT / 'project.godot').read_text()
+        fixture = fixture_configuration(production)
+        self.assertIn('run/main_scene="res://tests/browser/fixture_entry.tscn"', fixture)
+        self.assertIn('[editor]\nimport/use_multiple_threads=false', fixture)
+        self.assertNotIn('import/use_multiple_threads=false', production)
+        edited = fixture_configuration(production + '\n[editor]\nimport/use_multiple_threads=true\n')
+        self.assertEqual(edited.count('import/use_multiple_threads='), 1)
+        self.assertIn('import/use_multiple_threads=false', edited)
+
     def test_browser_modules_have_bound_global_references(self):
         # Importing Playwright is not required by the headless job. Inspect Python's
         # own symbol table, including nested callbacks, before starting a browser.
@@ -170,6 +181,25 @@ folder=Path(os.environ['UMBRAL_RESULTS_DIR'])
         self.assertEqual(second['tasks']['b']['status'], 'passed')
         self.assertEqual(second['status'], 'passed')
         self.assertFalse(second['coverage']['complete'])
+
+    def test_forced_task_reruns_with_verified_dependency(self):
+        from dataclasses import replace
+        parent = self.script('parent', 1)
+        child = replace(self.script('child', 1), deps=('parent',))
+        tasks = {'parent': parent, 'child': child}
+        first = self.execute(tasks)
+        second = self.execute(tasks, names=['child'], options={
+            'resume': str(Path(first['directory']) / 'harness-run.json'), 'force_tasks': ['child']})
+        self.assertEqual(second['tasks']['parent']['status'], 'cached')
+        self.assertEqual(second['tasks']['child']['status'], 'passed')
+        self.assertFalse(second['coverage']['complete'])
+
+    def test_failure_excerpt_includes_error_outside_tail(self):
+        (self.root / 'broken.py').write_text("print('ERROR: specific cause')\nprint('noise\\n' * 80)\nraise SystemExit(1)\n")
+        task = Task('broken', 'python', script='broken.py', inputs=('broken.py',), suite='fake', report='suite.json')
+        record = self.execute({'broken': task})['tasks']['broken']
+        self.assertEqual(record['status'], 'failed')
+        self.assertIn('ERROR: specific cause', record['log_excerpt'])
 
     def test_changed_planning_explains_dependencies(self):
         task = self.script('ok', 1)

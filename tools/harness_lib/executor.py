@@ -198,9 +198,10 @@ class Executor:
             with self.locked(task.lock):
                 record['lock_wait_seconds'] = round(time.monotonic() - lock_started, 4)
                 origin = None
-                if not self.options.get('fresh') and previous and previous.get('status') in ('passed', 'cached') and previous.get('fingerprint') == key:
+                reuse_allowed = not self.options.get('fresh') and task.name not in self.options.get('force_tasks', [])
+                if reuse_allowed and previous and previous.get('status') in ('passed', 'cached') and previous.get('fingerprint') == key:
                     origin = (Path(previous['directory']), previous['outputs'], previous['source_hash'])
-                elif task.cacheable and not self.options.get('fresh') and (store / 'metadata.json').is_file():
+                elif task.cacheable and reuse_allowed and (store / 'metadata.json').is_file():
                     try:
                         metadata = json.loads((store / 'metadata.json').read_text())
                         origin = (store / 'payload', metadata['outputs'], metadata['source_hash'])
@@ -248,6 +249,11 @@ class Executor:
             record.update(status='interrupted', error=str(error))
         except Exception as error:
             record.update(status='failed', error=str(error))
+        if record['status'] in ('failed', 'interrupted') and (folder / 'process.log').is_file():
+            # Keep the failure useful even when the large visual evidence cannot be downloaded.
+            lines = (folder / 'process.log').read_text(errors='replace').splitlines()
+            errors = [line for line in lines if re.search(r'error|exception|traceback|failed|no space', line, re.I)]
+            record['log_excerpt'] = ('\n'.join(errors[-30:]) + '\n--- log tail ---\n' + '\n'.join(lines[-30:]))[-12000:]
         if record['status'] == 'failed' and task.kind in ('native', 'replay') and (folder / 'process.log').is_file() and not (folder / (task.report or 'suite-report.json')).is_file():
             # Native suites can print their executed counts before returning failure.
             # Preserve those counts without treating a failed process as a pass.

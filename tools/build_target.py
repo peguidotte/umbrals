@@ -3,9 +3,30 @@ import argparse
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 from harness_io import ROOT, results_dir
+
+
+def fixture_configuration(configuration):
+    """Build the disposable boot config with serialized resource imports."""
+    production_scene = 'run/main_scene="res://scenes/main.tscn"'
+    fixture_scene = 'run/main_scene="res://tests/browser/fixture_entry.tscn"'
+    if configuration.count(production_scene) != 1:
+        raise ValueError('Expected one production main scene')
+    configuration = configuration.replace(production_scene, fixture_scene)
+    # A CI cold import aborted in Godot's font import. Serialization is a bounded
+    # experiment; the abort alone does not prove concurrent imports caused it.
+    editor = re.search(r'(?m)^\[editor\]\s*$', configuration)
+    if not editor:
+        return configuration.rstrip() + '\n\n[editor]\nimport/use_multiple_threads=false\n'
+    start = editor.end()
+    next_section = re.search(r'(?m)^\[', configuration[start:])
+    end = start + next_section.start() if next_section else len(configuration)
+    section = configuration[start:end]
+    section = re.sub(r'(?m)^\s*import/use_multiple_threads\s*=.*$', '', section)
+    return configuration[:start] + '\nimport/use_multiple_threads=false\n' + section.lstrip('\n') + configuration[end:]
 
 
 def run(command, cwd=ROOT):
@@ -36,8 +57,7 @@ def main():
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / relative, destination)
         shutil.copy2(args.fixture_data, project / 'tests/browser/fixtures.json')
-        configuration = (ROOT / 'project.godot').read_text().replace('run/main_scene="res://scenes/main.tscn"', 'run/main_scene="res://tests/browser/fixture_entry.tscn"')
-        assert 'run/main_scene="res://tests/browser/fixture_entry.tscn"' in configuration
+        configuration = fixture_configuration((ROOT / 'project.godot').read_text())
         (project / 'project.godot').write_text(configuration)
         (project / 'export_presets.cfg').write_text((ROOT / 'export_presets.cfg').read_text().replace('tests/*,', '').replace('include_filter="assets/', 'include_filter="tests/browser/fixtures.json,assets/'))
         run(['godot', '--headless', '--path', str(project), '--editor', '--import', '--quit'])

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UmbralPowerResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/power_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "rain_sweep"
+nature = "water"
+learning = "nature"
+conditions = {"wet": 2}
+name = "Chuva\nlateral"
+cost = 1
+damage = 4
+block = 0
+heal = 0
+art = "attacks/rain"
+target = "enemy"
+scope = "upper_pair"
+priority = 0
+order = 110
+description = "Uma cortina de chuva alcança posições vizinhas e deixa os oponentes atingidos Encharcados."

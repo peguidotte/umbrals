@@ -34,7 +34,9 @@ def parser():
             command.add_argument('--fixture')
         if name == 'build': command.add_argument('target', choices=['Web', 'Windows', 'Linux'])
         if name == 'verify': command.add_argument('--full', action='store_true', required=True)
-        if name == 'resume': command.add_argument('--from', dest='previous', type=Path, required=True)
+        if name == 'resume':
+            command.add_argument('--from', dest='previous', type=Path, required=True)
+            command.add_argument('--task', help='Rerun one registered task and its dependencies as focused evidence.')
         if name == 'replay': command.add_argument('--input', type=Path, required=True)
         if name not in ['list', 'plan', 'preflight']:
             command.add_argument('--output', type=Path)
@@ -95,7 +97,11 @@ def main(argv=None):
         path = args.previous / 'harness-run.json' if args.previous.is_dir() else args.previous
         previous = json.loads(path.read_text())
         requested = previous['requested']
-        options = {**previous['options'], **options, 'resume': str(path), 'full': previous['scope'] == 'full'}
+        options = {**previous['options'], **options, 'resume': str(path), 'full': previous['scope'] == 'full', 'force_tasks': []}
+        if args.task:
+            if args.task not in tasks: cli.error('Unknown task: ' + args.task)
+            requested = [args.task]
+            options.update(full=False, case=None, case_task=None, viewport=None, fixture=None, large_text=False, force_tasks=[args.task])
     else:
         if not args.input.is_file(): cli.error('Replay file does not exist')
         tasks['replay'] = Task('replay', 'replay', ('import',), script='tools/replay_run.gd', suite='run_replay', report='suite-report.json')

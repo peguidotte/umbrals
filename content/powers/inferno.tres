@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UmbralPowerResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/power_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "inferno"
+nature = "fire"
+learning = "lineage"
+conditions = {"burn": 5}
+name = "Sol\ndevorador"
+cost = 2
+damage = 27
+block = 0
+heal = 0
+art = "attacks/inferno"
+target = "enemy"
+scope = "all"
+priority = 0
+order = 130
+description = "A chama de Ignivar se expande sobre os oponentes. O impacto deixa queimaduras nos alvos atingidos."

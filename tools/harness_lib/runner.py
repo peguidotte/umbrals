@@ -85,7 +85,10 @@ def run(requested, options=None, output=None, root=ROOT, tasks=None, executor_ty
                             records[name] = future.result()
                         except Exception as error:
                             records[name] = {'name': name, 'status': 'failed', 'error': str(error), 'seconds': 0}
-                        if not options.get('json'): print(f'  {name}: {records[name]["status"]} ({records[name]["seconds"]}s)', flush=True)
+                        if not options.get('json'):
+                            print(f'  {name}: {records[name]["status"]} ({records[name]["seconds"]}s)', flush=True)
+                            if records[name].get('log_excerpt'):
+                                print(f'--- {name} failure log (last 12000 bytes) ---\n{records[name]["log_excerpt"]}', flush=True)
                 persist()
     finally:
         for name, handler in original_signals.items():

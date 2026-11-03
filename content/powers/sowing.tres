@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UmbralPowerResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/power_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "sowing"
+nature = "forest"
+learning = "nature"
+conditions = {"seed": 3}
+name = "Semeadura"
+cost = 1
+damage = 6
+block = 0
+heal = 0
+art = "attacks/life-seed"
+target = "enemy"
+scope = "single"
+priority = 0
+order = 60
+description = "Espalha uma semente sobre o alvo. Fogo, água e bosque podem dar destinos diferentes ao que foi plantado."

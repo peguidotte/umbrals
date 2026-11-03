@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UmbralPowerResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/power_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "thorn_lash"
+nature = "forest"
+learning = "nature"
+conditions = {}
+name = "Chicote de\nespinhos"
+cost = 1
+damage = 8
+block = 4
+heal = 0
+art = "attacks/thorn-lash"
+target = "enemy"
+scope = "lower_pair"
+priority = 0
+order = 40
+description = "Um chicote de espinhos alcança os alvos enquanto o bosque prepara uma pequena proteção para quem o conduz."

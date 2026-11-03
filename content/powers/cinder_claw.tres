@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UmbralPowerResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/power_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "cinder_claw"
+nature = "fire"
+learning = "nature"
+conditions = {"burn": 3}
+name = "Garra de\nbrasas"
+cost = 1
+damage = 8
+block = 0
+heal = 0
+art = "attacks/cinder-claw"
+target = "enemy"
+scope = "upper_pair"
+priority = 0
+order = 20
+description = "Brasas acompanham um golpe de garras. O calor permanece nos alvos atingidos mesmo depois do impacto."

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UmbralPowerResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/power_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "static_veil"
+nature = "lightning"
+learning = "nature"
+conditions = {}
+name = "Véu\nestático"
+cost = 1
+damage = 4
+block = 8
+heal = 0
+art = "attacks/static-veil"
+target = "enemy"
+scope = "single"
+priority = 1
+order = 80
+description = "Eletricidade envolve quem conjura, combinando proteção com uma descarga contra o alvo."

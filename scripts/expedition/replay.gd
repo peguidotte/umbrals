@@ -28,6 +28,7 @@ static func integer(value: Variant) -> bool:
 	return (value is int or value is float) and is_finite(float(value)) and float(value) == floor(float(value)) and value >= -2 and value <= 2147483647
 
 const Identity = preload("res://scripts/expedition/identity.gd")
+const Registry = preload("res://scripts/expedition/migration_registry.gd")
 const Migration = preload("res://scripts/expedition/migration.gd")
 const SCHEMA = "umbral.expedition.replay"
 const VERSION = 2
@@ -39,10 +40,13 @@ static func envelope(initial_state: Dictionary, commands: Array) -> Dictionary:
 static func decode(data: Variant) -> Dictionary:
 	if not data is Dictionary or not data.get("initial_state") is Dictionary or not data.get("commands") is Array: return {}
 	if data.has("schema") or data.has("version") or data.has("identity"):
-		if data.get("schema") != SCHEMA or data.get("version") != VERSION or not Identity.matches(data.get("identity")): return {}
-		if data.initial_state.get("schema") != 2: return {}
+		if data.get("schema") != SCHEMA or data.get("version") != VERSION or not Registry.supports(data.get("identity")): return {}
+		if data.initial_state.get("schema") != 2 or data.initial_state.get("identity") != data.get("identity"): return {}
 	else:
 		if data.initial_state.get("schema") != 1: return {}
 	var checkpoint: Dictionary = Migration.checkpoint(data.initial_state)
 	if checkpoint.is_empty(): return {}
+	var expedition_script = load("res://scripts/expedition/expedition.gd")
+	var candidate = expedition_script.new()
+	if not candidate.restore(checkpoint): return {}
 	return envelope(checkpoint, data.commands)

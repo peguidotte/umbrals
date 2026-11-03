@@ -404,7 +404,7 @@ func _item_name(item_id: String) -> String:
 	match item_id:
 		"potion": return "Poção"
 		"revive": return "Reanimação"
-		_: return item_id.capitalize()
+		_: return str(Content.CONSUMABLES.get(item_id, {}).get("name", item_id.capitalize()))
 
 func _restore_focus(ui_id: String) -> void:
 	if not is_inside_tree():

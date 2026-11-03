@@ -1,5 +1,6 @@
 extends Control
 ## Displays one discovered record; navigation and history stay in codex.gd.
+const Items = preload("res://scripts/ui/item_presentation.gd")
 const Content = preload("res://scripts/content.gd")
 const Gold = preload("res://scripts/ui/gold_theme.gd")
 const Art = preload("res://scripts/ui/battle_art.gd")
@@ -170,7 +171,7 @@ func _effects(body: VBoxContainer, entry: Dictionary) -> void:
 		"items":
 			var item: Dictionary = Content.CONSUMABLES[entry.id]
 			_heading(body,"Como usar")
-			_paragraph(body,"Restaura %d HP."%int(item.heal) if item.has("heal") else "Reanima com %d%% do HP máximo."%int(float(item.get("revive_ratio",0))*100))
+			_paragraph(body,Items.effect_text(item, str(Content.ITEM_DESCRIPTIONS.get(entry.id, ""))))
 			_paragraph(body,"Custa %d ação. Escolha o alvo pela mochila e confirme ao conjurar."%int(item.cost))
 			_paragraph(body,"Fica na mochila, fora do baralho.",true)
 

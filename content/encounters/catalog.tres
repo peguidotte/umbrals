@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/content_manifest.gd" id="manifest"]
+[ext_resource type="Resource" path="res://content/encounters/clearing.tres" id="0"]
+[ext_resource type="Resource" path="res://content/encounters/thicket.tres" id="1"]
+[ext_resource type="Resource" path="res://content/encounters/boss.tres" id="2"]
+
+[resource]
+script = ExtResource("manifest")
+entries = Array[Resource]([ExtResource("0"), ExtResource("1"), ExtResource("2")])

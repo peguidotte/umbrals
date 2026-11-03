@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/content_manifest.gd" id="manifest"]
+[ext_resource type="Resource" path="res://content/items/potion.tres" id="0"]
+[ext_resource type="Resource" path="res://content/items/revive.tres" id="1"]
+
+[resource]
+script = ExtResource("manifest")
+entries = Array[Resource]([ExtResource("0"), ExtResource("1")])

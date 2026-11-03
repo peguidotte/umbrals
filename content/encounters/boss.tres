@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UmbralEncounterResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/encounter_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "boss"
+name = "O Rei sem Aurora"
+subtitle = "O ÚLTIMO ECO DO BOSQUE"
+hp = 255
+intents = [11, 15, 9]
+art = "characters/stag"
+enemies = [{"uid": 3001, "species": "ember", "name": "O Rei sem Aurora", "art": "characters/stag", "form_id": "ignivar", "max_hp": 76, "hp": 76, "attack": 12, "defense": 2, "speed": 11, "slot": 1, "pattern": [{"nature": "fire", "conditions": {}, "category": "prepare", "charge": 6, "damage": 0, "block": 0, "wet": 0, "scope": "all"}, {"nature": "fire", "conditions": {}, "category": "attack", "damage": 10, "block": 0, "wet": 0, "scope": "all"}, {"nature": "fire", "conditions": {}, "category": "defend", "damage": 0, "block": 12, "wet": 0, "scope": "single", "priority": 1}]}, {"uid": 3002, "species": "moss", "name": "Raiz do crepúsculo", "art": "characters/spore", "form_id": "moss", "max_hp": 40, "hp": 40, "attack": 10, "defense": 2, "speed": 6, "slot": 2, "pattern": [{"nature": "forest", "conditions": {}, "category": "defend", "damage": 0, "block": 8, "wet": 0, "scope": "single", "priority": 1}, {"nature": "forest", "conditions": {"seed": 3}, "category": "attack", "damage": 4, "block": 0, "wet": 0, "scope": "lower_pair"}, {"nature": "forest", "conditions": {}, "category": "attack", "damage": 6, "block": 0, "wet": 0, "scope": "single", "target_policy": "weakest"}]}, {"uid": 3003, "species": "volt", "name": "Coruja da fenda", "art": "characters/owl", "form_id": "volt", "max_hp": 36, "hp": 36, "attack": 10, "defense": 0, "speed": 15, "slot": 0, "pattern": [{"nature": "lightning", "conditions": {}, "category": "attack", "damage": 5, "block": 0, "wet": 0, "scope": "single"}, {"nature": "lightning", "conditions": {}, "category": "prepare", "charge": 6, "damage": 0, "block": 0, "wet": 0, "scope": "single"}, {"nature": "lightning", "conditions": {}, "category": "attack", "damage": 7, "block": 0, "wet": 0, "scope": "upper_pair"}]}]
+lore = {"title": "O Rei sem Aurora", "text": "O brilho de seus galhos surge entre as árvores antes que se ouçam seus passos. Os Umbrals da clareira se aquietam quando ele passa.\n\nNinguém sabe por quanto tempo ele vigia o bosque. À luz da lua, parece escutar uma manhã que ainda não chegou."}

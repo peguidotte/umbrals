@@ -37,3 +37,22 @@ IDs de forma também não podem coincidir com os IDs de descoberta dos encontros
 (derivados do basename da arte dos inimigos em `ENCOUNTERS`); o validador consulta
 esse catálogo para reservar os IDs. A descoberta registra a forma inicial e a
 forma observada, sem interpretar o ID da espécie como ID de outra forma.
+
+## Poderes, consumíveis e encontros
+
+Os catálogos ordenados em `content/powers/`, `content/items/` e
+`content/encounters/` usam um recurso por ID estável. Para iniciar um novo
+registro com valores explícitos de outro, execute, por exemplo,
+`python tools/content_authoring.py author powers novo_poder --fallback fireball`.
+Revise todos os campos, texto e arte fixada antes de usá-lo. O comando não cria
+arte. `python tools/content_authoring.py validate` verifica os manifestos,
+referências, valores e comportamentos conhecidos; execute também
+`python tools/umbrals.py validate` e os testes de catálogo.
+
+Consumíveis declaram `effect_id` e os valores em `effect_parameters`: os comportamentos `heal` e `revive` são
+registrados em `scripts/battle/item_effects/registry.gd`. Novos comportamentos
+precisam de um handler puro e de uma entrada em `PARAMETER_SCHEMAS` no registro, para validar os parâmetros de autoria. Encontros adicionais não
+alteram automaticamente a rota existente: a lista de IDs da rota é explícita.
+`gameplay_catalog.gd` constrói snapshots isolados e seus métodos devolvem cópias;
+os testes, passe manifestos próprios em vez de alterar o catálogo de produção.
+Descrições e história são apresentação e ficam fora da identidade de gameplay.

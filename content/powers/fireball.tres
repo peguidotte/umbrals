@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UmbralPowerResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/power_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "fireball"
+nature = "fire"
+learning = "nature"
+conditions = {}
+name = "Bola de\nfogo"
+cost = 1
+damage = 12
+block = 0
+heal = 0
+art = "attacks/fireball"
+target = "enemy"
+scope = "single"
+priority = 0
+order = 10
+description = "Uma chama concentrada é lançada contra um alvo. Um golpe direto para abrir caminho entre as sombras do bosque."

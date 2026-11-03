@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UmbralPowerResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/power_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "tidal_splash"
+nature = "water"
+learning = "nature"
+conditions = {"wet": 2}
+name = "Jato de\norvalho"
+cost = 1
+damage = 8
+block = 0
+heal = 0
+art = "attacks/splash"
+target = "enemy"
+scope = "single"
+priority = 0
+order = 100
+description = "Um jato de água atinge e deixa o alvo Encharcado, preparando o terreno para outras técnicas."

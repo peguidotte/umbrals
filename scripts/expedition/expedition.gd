@@ -5,6 +5,8 @@ const Rules = preload("res://scripts/rules.gd")
 const Content = preload("res://scripts/content.gd")
 const Migration = preload("res://scripts/expedition/migration.gd")
 const Identity = preload("res://scripts/expedition/identity.gd")
+const Individual = preload("res://scripts/domain/models/individual.gd")
+const CardInstance = preload("res://scripts/domain/models/card_instance.gd")
 const Conditions = preload("res://scripts/battle/conditions.gd")
 const IDS = ["clearing", "thicket", "spring", "boss"]
 const TITLES = ["Clareira", "Mata fechada", "Nascente", "Guardião"]
@@ -191,7 +193,7 @@ func _valid_snapshot(data: Dictionary) -> bool:
 		enemy_uids.append(unit.uid)
 		enemy_slots.append(unit.slot)
 	for key in s.inventory:
-		if not key in Content.STARTING_ITEMS or not s.inventory[key] is int or s.inventory[key] < 0: return false
+		if not key in Content.CONSUMABLES or not s.inventory[key] is int or s.inventory[key] < 0: return false
 	var suspended_uids: Array = []
 	for key in s.suspended_cards:
 		if not str(key).is_valid_int() or not int(key) in uids or not s.suspended_cards[key] is Dictionary: return false
@@ -244,10 +246,13 @@ func _valid_snapshot(data: Dictionary) -> bool:
 	return true
 
 func _valid_unit(unit: Variant) -> bool:
-	if not unit is Dictionary: return false
+	var parsed: Dictionary = Individual.try_from_dict(unit)
+	if not parsed.ok: return false
+	unit = parsed.value.to_dict()
 	for key in ["uid", "slot", "hp", "max_hp", "attack", "defense", "speed", "block", "can_act_round"]:
 		if not unit.get(key) is int: return false
 	if not unit.get("species") is String or not unit.species in Content.SPECIES or not unit.get("passive") is String: return false
+	if not unit.passive.is_empty() and not unit.passive in Content.PASSIVES: return false
 	if not unit.get("form_id") is String or Content.form_definition(unit.species, unit.form_id).is_empty() or unit.has("stage"): return false
 	if unit.uid < 1 or unit.slot < -1 or unit.slot > 2 or unit.max_hp < 1 or unit.hp < 0 or unit.hp > unit.max_hp: return false
 	if not unit.get("statuses") is Dictionary or not unit.get("status_sources") is Dictionary or not unit.get("known_powers") is Array or not unit.get("cards") is Array: return false
@@ -267,7 +272,9 @@ func _valid_unit(unit: Variant) -> bool:
 	return true
 
 func _valid_card(card: Variant, uids: Array) -> bool:
-	if not card is Dictionary or not card.get("instance_id") is String or card.instance_id.is_empty(): return false
+	var parsed: Dictionary = CardInstance.try_from_dict(card)
+	if not parsed.ok: return false
+	card = parsed.value.to_dict()
 	if not card.get("owner") is int or not card.owner in uids or not card.get("power") is String or not card.power in Content.POWERS: return false
 	if card.has("target_slot") and (not card.target_slot is int or card.target_slot < 0 or card.target_slot > 2): return false
 	return true

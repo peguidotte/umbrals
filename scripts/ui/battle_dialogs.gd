@@ -1,6 +1,7 @@
 extends RefCounted
 ## Battle dialogs render supplied snapshots and emit player intent.
 const Content = preload("res://scripts/content.gd")
+const Items = preload("res://scripts/ui/item_presentation.gd")
 const UI = preload("res://scripts/ui/kit.gd")
 signal back_requested
 signal swap_requested(slot: int)
@@ -62,9 +63,10 @@ func formation(body: VBoxContainer, party: Array, formation_draft: Array, regist
 
 
 
-func pouch(frame: VBoxContainer, inventory: Dictionary, party: Array, reasons: Dictionary, queued_items: Array, viewport_size: Vector2, registry: Callable) -> void:
+func pouch(frame: VBoxContainer, inventory: Dictionary, party: Array, reasons: Dictionary, queued_items: Array, viewport_size: Vector2, registry: Callable, definitions: Dictionary) -> void:
 	register = registry
-	frame.add_child(ui.label("%d poção(ões) · %d reanimação(ões)" % [int(inventory.get("potion", 0)), int(inventory.get("revive", 0))], 22, UI.GOLD))
+	var item_ids: Array = Items.choices(definitions, inventory)
+	frame.add_child(ui.label(Items.summary(inventory, definitions), 22, UI.GOLD))
 	var scroll = ScrollContainer.new()
 	scroll.custom_minimum_size.y = minf(360, viewport_size.y - 380)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -80,12 +82,10 @@ func pouch(frame: VBoxContainer, inventory: Dictionary, party: Array, reasons: D
 		var label: Label = ui.label("%s · %d/%d HP" % [Content.display_name(individual), int(individual.hp), int(individual.max_hp)], 20)
 		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(label)
-		var heal: Button = _button(row, "POÇÃO", item_requested.emit.bind("potion", int(individual.uid)), "pouch.potion.%d" % i, "pouch")
-		heal.tooltip_text = str(reasons.get("potion:%d" % int(individual.uid), ""))
-		heal.disabled = not heal.tooltip_text.is_empty()
-		var revive: Button = _button(row, "REANIMAR", item_requested.emit.bind("revive", int(individual.uid)), "pouch.revive.%d" % i, "pouch")
-		revive.tooltip_text = str(reasons.get("revive:%d" % int(individual.uid), ""))
-		revive.disabled = not revive.tooltip_text.is_empty()
+		for item_id in item_ids:
+			var choice: Button = _button(row, Items.name_for(item_id, definitions).to_upper(), item_requested.emit.bind(item_id, int(individual.uid)), "pouch.%s.%d" % [item_id, i], "pouch")
+			choice.tooltip_text = str(reasons.get("%s:%d" % [item_id, int(individual.uid)], ""))
+			choice.disabled = not choice.tooltip_text.is_empty()
 	for i in range(queued_items.size()):
 		_button(body, "CANCELAR ITEM %d" % (i + 1), item_cancel_requested.emit.bind(i), "pouch.cancel.%d" % i, "pouch")
 	body.add_child(ui.paragraph("Reanimar devolve HP agora. Se estiver em campo, os poderes ficam disponíveis na próxima rodada. Reservas continuam fora do baralho; não há compra extra.", 18))

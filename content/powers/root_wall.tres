@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UmbralPowerResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/power_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "root_wall"
+nature = "forest"
+learning = "nature"
+conditions = {"taunt": 1}
+name = "Muralha de\nraízes"
+cost = 1
+damage = 0
+block = 12
+heal = 0
+art = "attacks/root-wall"
+target = "self"
+scope = "single"
+priority = 1
+order = 50
+description = "Raízes se erguem para proteger quem conjura. A barreira também provoca os oponentes."

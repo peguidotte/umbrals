@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UmbralPowerResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/power_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "dew_mend"
+nature = "water"
+learning = "nature"
+conditions = {}
+name = "Gota\nserena"
+cost = 1
+damage = 0
+block = 0
+heal = 6
+art = "attacks/dew-mend"
+target = "ally"
+scope = "single"
+priority = 0
+order = 120
+description = "Uma gota preservada é compartilhada com um aliado para recuperar parte de seu HP."

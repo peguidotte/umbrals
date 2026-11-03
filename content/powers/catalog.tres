@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=20 format=3]
+
+[ext_resource type="Script" path="res://scripts/catalog/content_manifest.gd" id="manifest"]
+[ext_resource type="Resource" path="res://content/powers/sowing.tres" id="0"]
+[ext_resource type="Resource" path="res://content/powers/interference.tres" id="1"]
+[ext_resource type="Resource" path="res://content/powers/fireball.tres" id="2"]
+[ext_resource type="Resource" path="res://content/powers/cinder_claw.tres" id="3"]
+[ext_resource type="Resource" path="res://content/powers/flame_guard.tres" id="4"]
+[ext_resource type="Resource" path="res://content/powers/thorn_lash.tres" id="5"]
+[ext_resource type="Resource" path="res://content/powers/root_wall.tres" id="6"]
+[ext_resource type="Resource" path="res://content/powers/life_seed.tres" id="7"]
+[ext_resource type="Resource" path="res://content/powers/lightning.tres" id="8"]
+[ext_resource type="Resource" path="res://content/powers/static_veil.tres" id="9"]
+[ext_resource type="Resource" path="res://content/powers/storm_dive.tres" id="10"]
+[ext_resource type="Resource" path="res://content/powers/tidal_splash.tres" id="11"]
+[ext_resource type="Resource" path="res://content/powers/rain_sweep.tres" id="12"]
+[ext_resource type="Resource" path="res://content/powers/dew_mend.tres" id="13"]
+[ext_resource type="Resource" path="res://content/powers/inferno.tres" id="14"]
+[ext_resource type="Resource" path="res://content/powers/sanctuary.tres" id="15"]
+[ext_resource type="Resource" path="res://content/powers/judgment.tres" id="16"]
+[ext_resource type="Resource" path="res://content/powers/moon_tide.tres" id="17"]
+
+[resource]
+script = ExtResource("manifest")
+entries = Array[Resource]([ExtResource("0"), ExtResource("1"), ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7"), ExtResource("8"), ExtResource("9"), ExtResource("10"), ExtResource("11"), ExtResource("12"), ExtResource("13"), ExtResource("14"), ExtResource("15"), ExtResource("16"), ExtResource("17")])

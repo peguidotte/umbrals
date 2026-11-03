@@ -193,6 +193,37 @@ func test_seed_preview_and_inputs() -> void:
 	first.selected.assign([0, 1])
 	before = state_snapshot(first)
 	expect(not first.play().ok and state_snapshot(first) == before, "Over-budget commitment changes no HP, cards, plan, round or RNG")
+	# Invalid externally supplied card data must fail before initiative samples RNG.
+	# Capture every Rules property, including queued selections and compatibility fields.
+	var malformed: Array = [
+		{"instance_id": "", "owner": 1, "power": "fireball", "target_slot": 1},
+		{"instance_id": "bad-owner", "owner": "1", "power": "fireball", "target_slot": 1},
+		{"instance_id": "float-owner", "owner": 1.0, "power": "fireball", "target_slot": 1},
+		{"instance_id": "bad-target", "owner": 1, "power": "fireball", "target_slot": 1.0},
+		{"instance_id": "missing-power", "owner": 1, "target_slot": 1},
+		"not a card",
+	]
+	for bad_card in malformed:
+		var rejected = fixture([unit("ember")])
+		rejected.hand = [bad_card]
+		rejected.selected.assign([0])
+		var snapshot: Dictionary = {}
+		for property in rejected.get_script().get_script_property_list():
+			var key: String = property.name
+			if key == "rng":
+				snapshot[key] = [rejected.rng.seed, rejected.rng.state]
+			else:
+				var value: Variant = rejected.get(key)
+				snapshot[key] = value.duplicate(true) if value is Array or value is Dictionary else value
+		var preview: Dictionary = rejected.preview()
+		var result: Dictionary = rejected.play()
+		var after: Dictionary = {}
+		for key in snapshot:
+			if key == "rng":
+				after[key] = [rejected.rng.seed, rejected.rng.state]
+			else:
+				after[key] = rejected.get(key)
+		expect(not preview.valid and not result.ok and snapshot == after, "Malformed card is rejected before any state or RNG changes: " + str(bad_card))
 	var game = fixture([unit("ember")])
 	var round_before: int = game.round_number
 	var old_ids: Array = []

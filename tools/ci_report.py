@@ -68,6 +68,10 @@ def main():
         lines.append('')
     if failure:
         lines.extend(['## Falha', '', '```text', failure.replace('```', "'''"), '```', ''])
+        for name, task in report.get('tasks', {}).items():
+            if task.get('status') in ('failed', 'interrupted'):
+                excerpt = task.get('log_excerpt', '')
+                lines.extend([f'### {name}', '', '```text', (task.get('error', '') + '\n' + excerpt).replace('```', "'''")[-12500:], '```', ''])
         escaped = failure.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
         print(f'::error title=Umbral CI::{escaped}')
     lines.extend([f'**Evidências:** `{report.get("evidence_dir", "consulte umbral-evidence")}`', '',

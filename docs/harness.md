@@ -80,12 +80,16 @@ temporário; a ponte JavaScript pública continua somente leitura.
 O PCK de produção deve excluir script, cena e dados das fixtures. A leitura ocorre em
 diretório vazio, evitando fallback para arquivos do checkout. Scripts compilados são
 verificados com ResourceLoader; FileAccess sozinho não reconhece seu remapeamento.
+O projeto descartável usa `editor/import/use_multiple_threads=false` na importação
+fria. Um CI anterior abortou durante a importação de fonte no Godot nativo; a
+serialização reduz o paralelismo como experimento, sem afirmar a causa do erro.
 
 ## Cache, isolamento e retomada
 
 ```bash
 python tools/harness.py plan --changed --since <execução-anterior>
 python tools/harness.py resume --from <execução-ou-harness-run.json>
+python tools/harness.py resume --from <execução-ou-harness-run.json> --task web-fixtures
 python tools/harness.py check --suite rules --case visibility --fresh
 ```
 
@@ -94,6 +98,10 @@ resumo e `tasks/<nome>/`. Testes nativos têm user data privado. Importação e 
 podem usar cache somente se entradas/políticas/ferramentas/opções e hashes das saídas
 conferirem. Corrupção invalida o cache. `--fresh` impede reaproveitamento, inclusive
 na retomada. A origem dos resultados reutilizados permanece registrada.
+`resume --task` executa novamente a tarefa indicada e resolve suas dependências,
+reaproveitando somente resultados anteriores verificados. É evidência focada,
+nunca aceitação completa. Sem `--task`, uma retomada de escopo completo executa
+novamente as verificações comportamentais exigidas.
 
 O plano compara entradas declaradas com uma aceitação anterior ou Git. É conservador,
 não uma análise semântica perfeita. Alterações de dependências também atingem seus
@@ -103,6 +111,10 @@ Workers nativos são limitados; import/export e browser têm locks. Tarefas com 
 lock não preenchem workers aguardando outra tarefa do próprio run. Locks de arquivo
 coordenam execuções simultâneas. Métricas separam processo, espera do lock e duração total;
 ações de navegação comuns também têm timings.
+Falhas incluem trechos limitados do log no console e no relatório; o CI publica
+`umbral-diagnostics` separadamente das capturas e dos builds, sem projetos
+temporários de fixtures ou caches. `Recover harness failure diagnostics` permite
+recuperar o log de uma tarefa de um artifact antigo pelo ID.
 
 Resultados distinguem passed, failed, cached, skipped e interrupted. SIGINT/SIGTERM
 encerram grupos de processos e deixam relatório. Reinício abrupto/SIGKILL pode deixar

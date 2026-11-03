@@ -1,6 +1,8 @@
 extends SceneTree
 
 const RunSave = preload("res://scripts/session/run_save.gd")
+const Registry = preload("res://scripts/expedition/migration_registry.gd")
+const Baseline = preload("res://scripts/expedition/baseline_manifest.gd")
 const Migration = preload("res://scripts/expedition/migration.gd")
 const Identity = preload("res://scripts/expedition/identity.gd")
 const Replay = preload("res://scripts/expedition/replay.gd")
@@ -88,13 +90,40 @@ func _initialize() -> void:
 	edited = gameplay.duplicate(true)
 	edited.forms[0].power_profile.damage = 3
 	expect(Identity.content_digest(edited, {}, {}, {}, [], {}) != digest, "Power profile changes alter gameplay identity")
-	expect(Migration.supported_legacy_target(Identity.current()), "Legacy adapter targets the current audited identity")
+	expect(Registry.supports(Migration.LEGACY_TARGET) and not Migration.supported_legacy_target(Identity.current()), "Legacy adapter reaches the versioned current identity through its audited transition")
 	var future_identity: Dictionary = Identity.current().duplicate(true)
 	future_identity.content_sha256 = "future"
 	expect(not Migration.supported_legacy_target(future_identity), "Changed gameplay catalog requires a migration decision")
 	future_identity = Identity.current().duplicate(true)
 	future_identity.ruleset = "future"
 	expect(not Migration.supported_legacy_target(future_identity), "Changed ruleset requires a migration decision")
+	var baseline: Dictionary = Baseline.DATA.duplicate(true)
+	baseline["manifest_version"] = 2
+	baseline["item_effects"] = {"potion": "heal", "revive": "revive"}
+	var expanded: Dictionary = baseline.duplicate(true)
+	expanded.species["future_species"] = {"hp": 10}
+	expanded.catalog["future_species"] = {"initial_form": "future_species", "forms": {}, "evolutions": []}
+	expanded.powers["future_power"] = {"damage": 1}
+	expanded.encounters.append({"id": "future_encounter", "enemies": []})
+	expanded.extras.species_order.append("future_species")
+	expect(Registry.additive(baseline, expanded), "New definitions preserve audited content and ordering")
+	var altered_manifest: Dictionary = expanded.duplicate(true)
+	altered_manifest.species.erase(baseline.species.keys()[0])
+	expect(not Registry.additive(baseline, altered_manifest), "Removed species are incompatible")
+	altered_manifest = expanded.duplicate(true)
+	altered_manifest.powers[baseline.powers.keys()[0]]["damage"] = -999
+	expect(not Registry.additive(baseline, altered_manifest), "Changed power effects are incompatible")
+	altered_manifest = expanded.duplicate(true)
+	altered_manifest.extras.capture_routes = {}
+	expect(not Registry.additive(baseline, altered_manifest), "Changed capture pools are incompatible")
+	altered_manifest = expanded.duplicate(true)
+	altered_manifest.encounters.reverse()
+	expect(not Registry.additive(baseline, altered_manifest), "Changed encounter order is incompatible")
+	var frozen: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/expedition_schema2_6e1b2ed.json"))
+	var frozen_run = Expedition.new()
+	expect(frozen_run.restore(frozen), "Frozen schema 2 checkpoint restores")
+	var frozen_migrated: Dictionary = Migration.checkpoint(frozen)
+	expect(Migration.checkpoint(frozen_migrated) == frozen_migrated, "Migration is idempotent")
 	var legacy: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/legacy_checkpoint_v1.json"))
 	var migrated: Dictionary = Migration.checkpoint(legacy)
 	expect(not migrated.is_empty() and migrated.schema == 2 and migrated.battle.party[0].form_id == "ember", "Frozen schema 1 checkpoint migrates to canonical form")

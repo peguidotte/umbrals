@@ -3,6 +3,7 @@ extends RefCounted
 
 const VERSION: int = 2
 const Identity = preload("res://scripts/expedition/identity.gd")
+const Registry = preload("res://scripts/expedition/migration_registry.gd")
 const Expedition = preload("res://scripts/expedition/expedition.gd")
 const SCHEMA: String = "umbral.expedition.checkpoint"
 const Storage = preload("res://scripts/storage.gd")
@@ -56,11 +57,11 @@ func _read_slot(slot: int) -> Dictionary:
 	if version == VERSION: payload["identity"] = record.get("identity")
 	var normalized: Variant = JSON.parse_string(JSON.stringify(payload))
 	if JSON.stringify(normalized).sha256_text() != record["checksum"]: return {"state": "invalid"}
-	if version == VERSION and not Identity.matches(record.get("identity")): return {"state": "incompatible"}
+	if version == VERSION and not Registry.supports(record.get("identity")): return {"state": "incompatible"}
 	if kind == "snapshot" and record["snapshot"].has("schema"):
 		var schema: Variant = record["snapshot"].get("schema")
 		if schema != 1 and schema != 2: return {"state": "incompatible"}
-		if schema == 2 and not Identity.matches(record["snapshot"].get("identity")): return {"state": "incompatible"}
+		if schema == 2 and (not Registry.supports(record["snapshot"].get("identity")) or (version == VERSION and record["snapshot"].get("identity") != record.get("identity"))): return {"state": "incompatible"}
 		var candidate = Expedition.new()
 		if not candidate.restore(record["snapshot"]): return {"state": "incompatible"}
 	return {"state": "valid", "generation": int(generation), "kind": kind, "snapshot": record["snapshot"]}
