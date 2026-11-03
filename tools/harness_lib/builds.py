@@ -14,4 +14,3 @@ def publish_build(build, target):
     temporary = destination.with_name(destination.name + '.tmp-' + str(os.getpid()))
     temporary.symlink_to(build, target_is_directory=True)
     temporary.replace(destination)
-

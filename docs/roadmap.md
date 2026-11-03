@@ -613,7 +613,7 @@ da fachada de regras e usa o orçamento de ações, sem limite artificial de tr�
 Fixtures/replay usam o checkpoint atual e APIs reais; testes antigos de oito mutações,
 catálogo de assets, save e navegação são preservados.
 
-Evidência local de integração: `artifacts/current-main-integration-20261103/`;
+Evidência local de integração: `artifacts/current-main-integration-20261103-verified/`;
 resultados efetivos e revisão ficam em run.json/review.html, sem alegar CI remoto.
 O [guia arquitetural](architecture-guidelines.md) distingue dívida herdada e guardrails:
 extrações restantes de main, migração do catálogo para formas/transições estáveis

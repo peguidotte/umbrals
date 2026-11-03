@@ -162,11 +162,12 @@ try:
                   'actions', 'round_number', 'stats', 'expedition', 'checkpoint_status')
         x, y = coords(1150, 500, (1672, 941))
         page.mouse.click(x, y)
-        wait(f"window.umbralState.title_effect.awakenings > {before['title_effect']['awakenings']}")
+        wait(f"window.umbralState.input_serial > {before['input_serial']}")
         after = state()
-        check(all(before[k] == after[k] for k in fields), 'Card click keeps public game and checkpoint state intact')
-        check(after['screen'] == 'menu', 'Card click stays on menu')
-        shot('card-pulse.png')
+        check(all(before[k] == after[k] for k in fields), 'Gold artwork background click keeps public game and checkpoint state intact')
+        check(after['screen'] == 'menu', 'Gold artwork background click stays on menu')
+        check(after['title_effect']['background'] == 'ui/gold-menu-scene' and after['title_effect']['card_poses'] == [], 'Gold title exposes its approved static composition')
+        shot('gold-background-click.png')
         page.wait_for_timeout(2000)
         click('menu.settings')
         click('settings.reduced_motion')
@@ -177,8 +178,8 @@ try:
         page.mouse.move(0, 0)
         page.wait_for_timeout(300)
         effect = state()['title_effect']
-        check(effect['reduced_motion'] and effect['clock'] == 0 and effect['pulse_age'] == 10,
-              'Reduced motion rests title clock and pulse')
+        check(effect['reduced_motion'] and effect['clock'] == 0 and effect['card_poses'] == [],
+              'Reduced motion preserves the static gold title')
         shot('reduced-motion-1.png')
         page.wait_for_timeout(300)
         shot('reduced-motion-2.png')
