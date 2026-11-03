@@ -3,6 +3,7 @@ extends RefCounted
 ## Pure deterministic combat. Preview never samples RNG or resolves enemy plans.
 signal state_changed(kind: String)
 
+const Planner = preload("res://scripts/domain/selection_planner.gd")
 const Content = preload("res://scripts/content.gd")
 const Targeting = preload("res://scripts/battle/targeting.gd")
 const Initiative = preload("res://scripts/battle/initiative.gd")
@@ -422,14 +423,19 @@ static func evaluate(cards: Array, companions: Array, existing_burn: int = 0) ->
 	return result
 
 func preview() -> Dictionary:
-	var cards: Array = selected_cards()
+	return preview_selection(selected)
+
+func preview_selection(indices: Array[int]) -> Dictionary:
+	var cards: Array = []
+	for index in indices:
+		if index >= 0 and index < hand.size(): cards.append(hand[index])
 	var result: Dictionary = evaluate(cards, party)
 	if not cards.is_empty() and not result.valid and result.reason != "Ações insuficientes": return result
-	if cards.size() != selected.size():
+	if cards.size() != indices.size():
 		result.valid = false
 		result.reason = "Seleção inválida"
 		return result
-	for index in selected:
+	for index in indices:
 		if not card_usable(index):
 			result.valid = false
 			result.reason = card_reason(index)
@@ -950,26 +956,4 @@ func _sync_compatibility() -> void:
 		enemy_burn += int(opponent.statuses.get("burn", 0))
 
 func best_selection() -> Array[int]:
-	# Bounded heuristic for smoke simulations. Does not inspect hidden enemy plans.
-	var best: Array[int] = []
-	var best_value: float = -INF
-	var original: Array[int] = selected.duplicate()
-	var count: int = mini(hand.size(), 12)
-	for mask in range(1, 1 << count):
-		var indices: Array[int] = []
-		var cards: Array = []
-		for i in range(count):
-			if mask & (1 << i):
-				indices.append(i)
-				cards.append(hand[i])
-		selected = indices
-		var score: Dictionary = preview()
-		if not score.valid: continue
-		var value: float = float(score.direct_damage) + float(score.block) * 0.45 + float(score.heal) * 0.35 + float(score.burn_added) * 1.2
-		for card in cards:
-			if int(Content.POWERS[card.power].conditions.get("wet", 0)) > 0: value += 2.0
-		if value > best_value:
-			best_value = value
-			best = indices
-	selected = original
-	return best
+	return Planner.choose(hand, action_budget(), preview_selection)

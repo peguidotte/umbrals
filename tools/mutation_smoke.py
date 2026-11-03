@@ -1,3 +1,4 @@
+from harness_io import results_dir
 """Prove the rule suite detects eight representative gameplay regressions."""
 import json
 import shutil
@@ -25,7 +26,9 @@ for name, (before, after) in mutations.items():
         folder = Path(directory)
         (folder / "scripts").mkdir()
         shutil.copytree(ROOT / "scripts/battle", folder / "scripts/battle")
+        shutil.copytree(ROOT / "scripts/domain", folder / "scripts/domain")
         (folder / "tests").mkdir()
+        shutil.copytree(ROOT / "tests/support", folder / "tests/support")
         (folder / "project.godot").write_text('config_version=5\n[application]\nconfig/name="Umbral isolated mutation test"\n')
         (folder / "scripts/rules.gd").write_text(original.replace(before, after))
         (folder / "scripts/content.gd").write_text((ROOT / "scripts/content.gd").read_text())
@@ -40,5 +43,5 @@ for name, (before, after) in mutations.items():
             raise AssertionError(f"Undetected gameplay regression: {name}")
         detected.append({"mutation": name, "failing_checks": report["failed"]})
 report = {"suite": "umbral_mutation_smoke", "detected": detected, "failed": 0}
-(ROOT / "test-results/mutation-report.json").write_text(json.dumps(report, indent=2))
+(results_dir() / "mutation-report.json").write_text(json.dumps(report, indent=2))
 print(json.dumps(report))

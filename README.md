@@ -54,7 +54,7 @@ python tools/iterate.py --label minha-iteracao --goal 'Melhoria observável de e
 python tools/serve.py
 ```
 
-`iterate.py` executa `check.sh`, exporta Web e joga no navegador. Preserva cada tentativa em `artifacts/`, com hash das fontes, logs, relatório, capturas, snapshots, matriz de resolução e vídeo opcional. `review.html` reúne evidências e notas de avaliação. Use `--baseline <diretório-anterior>` para comparar versões. Veja `docs/iteration-harness.md`.
+O [harness modular](docs/harness.md) oferece preflight da main, filtros de suíte/caso/cenário, dependências automáticas, cache e retomada verificados. `iterate.py` executa o grafo completo, exporta Web e joga os fluxos atuais no navegador. Preserva cada tentativa em `artifacts/`, com hash das fontes, logs, relatório, capturas, snapshots, matriz de resolução e vídeo opcional. `review.html` reúne evidências e notas de avaliação. Use `--baseline <diretório-anterior>` para comparar versões. Veja `docs/iteration-harness.md`.
 
 `check.sh` executa exemplos numéricos de traits/passivas, transições, orçamento de ações, propriedade dos poderes, conservação do deck, 100 simulações, oito testes de mutação, preferências/stack e eventos de teclado/controle na cena real. Erros do Godot e runs sem testes são rejeitados.
 

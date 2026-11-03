@@ -601,3 +601,21 @@ Godot nativo. Oito capturas antes/depois ficaram idênticas na fixture controlad
 Comportamento, conteúdo, save, assets e versão 0.3.0 preservados. Sem suíte
 completa de combate; Como jogar permanece adiado. Próxima fatia técnica sugerida:
 extrair inspeção/plano de `main.gd` quando esses fluxos forem priorizados.
+
+
+### V04-DEV-01 — integrar infraestrutura com a main atual
+
+Integração solicitada pelo usuário, preservando o contrato coletivo, a expedição,
+o save/continuar e a apresentação já existentes na main. O harness passa a ter
+registro único, preflight contra origin/main, casos/cenários individuais, isolamento,
+cache/retomada verificados e checks de sua própria infraestrutura. O planejador sai
+da fachada de regras e usa o orçamento de ações, sem limite artificial de três cartas.
+Fixtures/replay usam o checkpoint atual e APIs reais; testes antigos de oito mutações,
+catálogo de assets, save e navegação são preservados.
+
+Evidência local de integração: `artifacts/current-main-integration-20261103/`;
+resultados efetivos e revisão ficam em run.json/review.html, sem alegar CI remoto.
+O [guia arquitetural](architecture-guidelines.md) distingue dívida herdada e guardrails:
+extrações restantes de main, migração do catálogo para formas/transições estáveis
+compatíveis com o novo combate e versionamento de regras/conteúdo no save.
+Esta fatia não altera versão/marco, não conclui esses itens e não reabre Como jogar.

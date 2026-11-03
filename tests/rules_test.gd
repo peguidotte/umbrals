@@ -1,5 +1,6 @@
 extends SceneTree
 ## Independent numerical examples plus state-machine invariants for the 3-slot battle.
+const Cases = preload("res://tests/support/case_selection.gd")
 const Rules = preload("res://scripts/rules.gd")
 const Content = preload("res://scripts/content.gd")
 var checks: int = 0
@@ -47,28 +48,10 @@ func fixture(companions: Array) -> RefCounted:
 	return game
 
 func _init() -> void:
-	test_traits_and_passives()
-	test_budget_and_ownership()
-	test_seed_preview_and_inputs()
-	test_roster_and_card_cycle()
-	test_formation_boundaries()
-	test_swaps_and_ko()
-	test_ko_transition_flow()
-	test_delayed_ko_entry()
-	test_reserve_reinsertion()
-	test_speed_and_scopes()
-	test_visibility()
-	test_multiple_items()
-	test_enemy_attributes()
-	test_tactical_planning()
-	test_enemy_preparation()
-	test_capture_and_evolution()
-	test_natures_and_reactions()
-	test_initial_passive_usefulness()
-	test_elemental_starters()
-	test_battle_lifecycle()
-	test_simulations()
-	print(JSON.stringify({"suite": "umbral_rules", "checks": checks, "failed": failures.size(), "failures": failures}))
+	if not Cases.run({"traits_and_passives": test_traits_and_passives, "budget_and_ownership": test_budget_and_ownership, "seed_preview_and_inputs": test_seed_preview_and_inputs, "roster_and_card_cycle": test_roster_and_card_cycle, "formation_boundaries": test_formation_boundaries, "swaps_and_ko": test_swaps_and_ko, "ko_transition_flow": test_ko_transition_flow, "delayed_ko_entry": test_delayed_ko_entry, "reserve_reinsertion": test_reserve_reinsertion, "speed_and_scopes": test_speed_and_scopes, "visibility": test_visibility, "multiple_items": test_multiple_items, "enemy_attributes": test_enemy_attributes, "tactical_planning": test_tactical_planning, "enemy_preparation": test_enemy_preparation, "capture_and_evolution": test_capture_and_evolution, "natures_and_reactions": test_natures_and_reactions, "initial_passive_usefulness": test_initial_passive_usefulness, "elemental_starters": test_elemental_starters, "battle_lifecycle": test_battle_lifecycle, "simulations": test_simulations}):
+		quit(2)
+		return
+	print(JSON.stringify({"case": Cases.active_case, "cases": Cases.executed, "suite": "umbral_rules", "checks": checks, "failed": failures.size(), "failures": failures}))
 	quit(0 if failures.is_empty() else 1)
 
 func test_traits_and_passives() -> void:

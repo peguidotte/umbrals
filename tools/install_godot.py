@@ -1,4 +1,5 @@
 """Linux x86_64 bootstrap. Official Godot artifacts, verified with SHA-512."""
+import argparse
 import hashlib
 import os
 from pathlib import Path
@@ -6,6 +7,10 @@ import shutil
 import subprocess
 import urllib.request
 import zipfile
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--engine-only", action="store_true", help="Skip export templates for fast headless validation.")
+args = parser.parse_args()
 
 VERSION = "4.6.3"
 BASE = f"https://github.com/godotengine/godot/releases/download/{VERSION}-stable/"
@@ -46,6 +51,10 @@ if not version.startswith(f"{VERSION}.stable."):
     destination.chmod(0o755)
     archive.unlink()
     print(f"Installed engine: {destination}")
+
+if args.engine_only:
+    print(f"Godot {VERSION} available; templates not requested.")
+    raise SystemExit(0)
 
 required = ["web_nothreads_release.zip", "linux_release.x86_64", "windows_release_x86_64.exe", "windows_release_x86_64_console.exe"]
 if not all((TEMPLATES / item).is_file() for item in required):

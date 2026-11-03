@@ -56,7 +56,9 @@ func make_plan(branch: String) -> Dictionary:
 
 func _init() -> void:
 	var plans: Dictionary = {"thicket": make_plan("thicket"), "spring": make_plan("spring")}
-	var file = FileAccess.open("res://test-results/expedition-plan.json", FileAccess.WRITE)
+	var output: String = OS.get_environment("UMBRAL_RESULTS_DIR")
+	if output.is_empty(): output = "res://test-results"
+	var file = FileAccess.open(output.path_join("expedition-plan.json"), FileAccess.WRITE)
 	file.store_string(JSON.stringify(plans, "  "))
 	file.close()
 	print("Expedition plans: thicket=", plans.thicket.outcome, ", spring=", plans.spring.outcome)

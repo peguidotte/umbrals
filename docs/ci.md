@@ -35,3 +35,13 @@ python tools/ci_report.py --report test-results/ci-run.json
 O primeiro CI detectou perda das opções de acessibilidade após recarregar a página. O arquivo virtual já tinha sido atualizado, mas sua sincronização com IndexedDB era assíncrona. A implementação usa gravação síncrona em `localStorage` para preferências e estatísticas, mantendo os arquivos antigos como fallback de leitura. O harness recarrega logo após as alterações, antes de capturas ou esperas extras, e verifica tanto ativar quanto desativar as opções. O teste de estatísticas após recarga também permanece.
 
 Passar no CI demonstra essas validações e a exportação. Windows ainda exige execução no Windows; controle físico, áudio, desempenho em hardware, revisão visual e diversão exigem avaliação própria. O workflow não publica releases nem envia o jogo à Steam.
+
+
+## Registro modular da main atual
+
+O job headless quick-checks roda antes de validate; o fechamento completo mantém os
+próprios testes para vincular evidência às fontes daquele runner. Ambos usam
+harness_lib/registry.py. O gate exige scope full, cobertura completa, matriz e dez
+cenários, incluindo expedição e menu atuais. As oito mutações e validação de releases
+imutáveis permanecem. Resultados isolados e cache/retomada nunca dispensam comportamento
+no fechamento. A dívida arquitetural histórica aparece separadamente no relatório.

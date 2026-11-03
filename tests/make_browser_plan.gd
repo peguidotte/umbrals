@@ -192,7 +192,9 @@ func _init() -> void:
 	var alternate: Dictionary = make_plan(true)
 	var elemental: Dictionary = make_elemental_plan()
 	var electric: Dictionary = make_electric_plan()
-	var file = FileAccess.open("res://test-results/browser-plan.json", FileAccess.WRITE)
+	var output: String = OS.get_environment("UMBRAL_RESULTS_DIR")
+	if output.is_empty(): output = "res://test-results"
+	var file = FileAccess.open(output.path_join("browser-plan.json"), FileAccess.WRITE)
 	file.store_string(JSON.stringify({"primary": primary, "replacement": alternate, "elemental": elemental, "electric": electric, "coverage": {"full_roster_release": "numerical fixture; six roster members cannot be captured in three encounters"}}))
 	print("Browser plans: main=", primary.outcome, ", alternate=", alternate.outcome, ", elemental=", elemental.outcome, " ", elemental.reactions, ", electric=", electric.control_seen, "/", electric.conduction_seen)
 	quit(0 if primary.outcome == "victory" and alternate.outcome in ["victory", "defeat"] and electric.control_seen and electric.conduction_seen and ["sprouting", "bloom", "wildfire"].all(func(id: String) -> bool: return id in elemental.reactions) else 1)

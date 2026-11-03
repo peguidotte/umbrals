@@ -1,3 +1,4 @@
+from harness_io import results_dir
 """Validate shipped source provenance, PNG constraints and actual PCM samples."""
 from array import array
 import hashlib
@@ -69,6 +70,6 @@ for item in manifest['assets']:
                 raise RuntimeError(f'Empty or clipped PCM: {item["path"]}')
             audio.append({'path':item['path'],'frames':len(samples),'peak':max(abs(sample) for sample in samples),'clipped_samples':0})
 report={'suite':'asset_qa','source_assets':len(listed),'failed':0,'audio':audio,'modules':module_report,'migration_originals_verified':len(migration['files']),'normalized_frames_verified':normalized_frames,'limits':'PCM checks do not replace hearing the audio on hardware; hashes do not decide aesthetics or license rights.'}
-(ROOT / 'test-results').mkdir(exist_ok=True)
-(ROOT / 'test-results/asset-report.json').write_text(json.dumps(report,indent=2))
+results_dir().mkdir(parents=True, exist_ok=True)
+(results_dir() / 'asset-report.json').write_text(json.dumps(report,indent=2))
 print(json.dumps({'suite':report['suite'],'source_assets':report['source_assets'],'failed':0}))

@@ -18,6 +18,10 @@ def main():
         failure = f'No readable iteration result: {error}'
 
     rows = [
+        ('Architecture', report.get('architecture', {}), 'modules'),
+        ('Harness', report.get('harness_checks', {}), 'checks'),
+        ('Fixtures', report.get('fixtures', {}), 'checks'),
+        ('Exported catalog', report.get('packed_catalog', {}), 'checks'),
         ('Assets', report.get('assets', {}), 'source_assets'),
         ('Asset contracts', report.get('asset_units', {}), 'checks'),
         ('Rules', report.get('rules', {}), 'checks'),
@@ -26,9 +30,12 @@ def main():
     ]
     mutations = report.get('mutations', {})
     browser = report.get('browser', {})
-    complete = all(data.get(count, 0) > 0 and data.get('failed') == 0 for _, data, count in rows)
+    complete = report.get('scope') == 'full' and report.get('coverage', {}).get('complete') is True
+    complete = complete and all(data.get(count, 0) > 0 and data.get('failed') == 0 for _, data, count in rows)
     complete = complete and len(mutations.get('detected', [])) > 0 and mutations.get('failed') == 0
     complete = complete and browser.get('matrix_requested') and browser.get('matrix_executed')
+    from harness_lib.registry import SCENARIOS
+    complete = complete and {item['name'] for item in browser.get('scenarios', []) if item['status'] == 'passed'} == set(SCENARIOS)
     if not failure:
         failure = report.get('failure') or browser.get('failure')
     if not failure and (report.get('status') != 'passed' or not complete):

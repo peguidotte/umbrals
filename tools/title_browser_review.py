@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
 parser.add_argument('--output', type=Path, default=ROOT / 'test-results/title-review')
 parser.add_argument('--video', action='store_true')
+parser.add_argument('--build-dir', type=Path, default=ROOT / 'builds/web')
 args = parser.parse_args()
 OUT = args.output.resolve()
 OUT.mkdir(parents=True, exist_ok=True)
@@ -29,7 +30,7 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
 
 
 server = http.server.ThreadingHTTPServer(
-    ('127.0.0.1', 0), functools.partial(QuietHandler, directory=str(ROOT / 'builds/web')))
+    ('127.0.0.1', 0), functools.partial(QuietHandler, directory=str(args.build_dir.resolve())))
 threading.Thread(target=server.serve_forever, daemon=True).start()
 base = f'http://127.0.0.1:{server.server_port}/index.html?test=1'
 
@@ -98,12 +99,12 @@ try:
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(executable_path='/usr/bin/chromium', headless=True,
             args=['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'])
-        expected = {'menu.play', 'menu.codex', 'menu.settings', 'menu.help'}
+        expected = {'menu.play', 'menu.codex', 'menu.settings', 'menu.help', 'menu.credits'}
         context = browser.new_context(viewport={'width': 1672, 'height': 941}, device_scale_factor=1)
         page = context.new_page()
         attach_errors(page)
         load(base + '&visual=1')
-        check(active_home() == expected, 'Desktop home exposes four active choices')
+        check(active_home() == expected, 'Gold Web home exposes five active choices')
         shot('menu-default.png')
         check(state()['focused'] == 'menu.play', 'Play receives initial focus')
         for focus, name in [('menu.codex', 'menu-focus-codex.png'),
@@ -134,7 +135,7 @@ try:
         page = context.new_page()
         attach_errors(page)
         load(base + '&visual=1')
-        check(active_home() == expected, 'Touch viewport exposes four active choices')
+        check(active_home() == expected, 'Touch viewport exposes five gold-home choices')
         shot('touch-menu.png')
         click('menu.play', touch=True)
         wait("window.umbralState.screen === 'journey'")

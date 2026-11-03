@@ -1,0 +1,43 @@
+"""Five current-product layouts; independent from the full combat route."""
+def run(session):
+    page, contracts, matrix = session.page, session.contracts, session.matrix
+    load, geometry, shot = session.load, session.geometry, session.shot
+    click, back, start, key = session.click, session.back, session.start, session.key
+    profiles = [session.viewport] if session.viewport else contracts['viewports']
+    for width,height in profiles:
+        page.set_viewport_size({'width':width,'height':height})
+        page.wait_for_timeout(250)
+        load()
+        meta=geometry(f'Menu {width}×{height}')
+        shot(f'matrix-menu-{width}x{height}')
+        click('menu.play')
+        geometry(f'Expedition choices {width}×{height}')
+        click('journey.practice')
+        geometry(f'Starter {width}×{height}')
+        shot(f'matrix-starter-{width}x{height}')
+        back('journey')
+        back('menu')
+        start()
+        meta.update(geometry(f'Battle {width}×{height}'))
+        key('1')
+        shot(f'matrix-battle-{width}x{height}')
+        click('hud.pause')
+        geometry(f'Pause {width}×{height}')
+        click('pause.settings')
+        click('settings.large_text')
+        geometry(f'Large options {width}×{height}')
+        shot(f'matrix-options-{width}x{height}')
+        back('pause'); back('battle')
+        geometry(f'Large battle {width}×{height}')
+        key('c')
+        geometry(f'Large effect inspection {width}×{height}')
+        shot(f'matrix-inspect-{width}x{height}')
+        back('battle')
+        shot(f'matrix-large-battle-{width}x{height}')
+        click('hud.plan')
+        geometry(f'Large plan {width}×{height}')
+        shot(f'matrix-large-plan-{width}x{height}')
+        back('battle')
+        click('hud.pause'); click('pause.menu'); click('confirm.yes')
+        click('menu.settings'); click('settings.large_text'); back('menu')
+        matrix.append({'viewport':{'width':width,'height':height},'status':'passed','details':meta})

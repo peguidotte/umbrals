@@ -214,3 +214,20 @@ stable, so input and focus consumers do not depend on presentation internals.
 settings view and preference store. `settings_menu.gd` owns header/content/footer
 composition and writes through Preferences as before. Theme instances are fresh
 per build. See [the change map and validation](ui-components-v04-06a.md).
+
+
+## Integração da infraestrutura arquitetural — V04-DEV-01
+
+A main atual prevalece sobre a refatoração histórica do protótipo: combate coletivo,
+mapa, save/continuar, conteúdo e assets versionados permanecem seus contratos.
+O registro único do harness integra os testes atuais (incluindo expedição e UI gold),
+com filtros, resultados isolados, cache/retomada verificados e dez cenários de browser.
+Fixtures usam o checkpoint existente; o replay é uma whitelist sobre APIs reais.
+O planejador foi extraído sem mudar a heurística ou escrever a seleção, respeitando
+o orçamento atual e poderes de custo zero. Preflight detecta divergência antes de planejar.
+
+A dívida arquitetural herdada é explicitamente medida: main/rules ainda precisam de
+extração; o catálogo continua em content.gd e usa estágios. Os modelos/Resources antigos
+não foram tratados como compatíveis com as decisões posteriores do jogo. Veja
+[architecture-guidelines.md](architecture-guidelines.md) para o mapa e próximas prioridades,
+e [harness.md](harness.md) para comandos, isolamento e limites das evidências.

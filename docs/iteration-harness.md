@@ -114,3 +114,11 @@ via WeakRef (prazo de 2 s) antes de encerrar, em vez de assumir que 100 ms basta
 para mixer e main loop drenarem recursos. Há uma asserção de liberação; avisos
 de leak continuam falhando. Três execuções consecutivas passaram. Nenhum código
 de runtime precisou mudar nessa revisão da integração.
+
+
+## Desenvolvimento por alvos
+
+Antes de planejar, use `python tools/harness.py preflight --fetch`. Durante a
+implementação, rode a suíte/caso/cenário afetado; veja [harness.md](harness.md).
+`iterate.py` agora usa o registro comum e fecha os dez cenários atuais, incluindo
+expedição e menu, com fontes congeladas. Runs focados nunca dispensam esse gate.

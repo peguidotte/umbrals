@@ -31,8 +31,11 @@ func run() -> void:
 		var control = app.registry[id]
 		if is_instance_valid(control) and control is BaseButton and control.is_visible_in_tree() and control.get_meta("ui_screen", "") == "menu": home_ids.append(id)
 	home_ids.sort()
-	expect(home_ids == ["menu.codex", "menu.help", "menu.play", "menu.settings"], "Home exposes exactly four choices")
-	expect(not app.registry.has("menu.practice") and not app.registry.has("menu.continue") and not app.registry.has("menu.credits"), "Home has no legacy hidden aliases")
+	var expected_home: Array = ["menu.codex", "menu.credits", "menu.help", "menu.play", "menu.settings"]
+	if not OS.has_feature("web"): expected_home.append("menu.quit")
+	expected_home.sort()
+	expect(home_ids == expected_home, "Gold home exposes the exact current platform choices")
+	expect(not app.registry.has("menu.practice") and not app.registry.has("menu.continue") , "Practice and Continue remain in the Journey screen")
 	var before_journey: String = JSON.stringify(app.run_save.load_snapshot())
 	await press("menu.play")
 	expect(app.screens.top() == "journey" and app.registry["journey.continue"].disabled, "Play opens expedition choices with Continue disabled without a save")

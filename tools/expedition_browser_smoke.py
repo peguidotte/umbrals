@@ -12,11 +12,12 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
 parser.add_argument('--output', type=Path, default=ROOT / 'test-results/expedition-browser')
+parser.add_argument('--build-dir', type=Path, default=ROOT / 'builds/web')
 args = parser.parse_args()
 OUT = args.output.resolve()
 OUT.mkdir(parents=True, exist_ok=True)
 subprocess.run(['bash', '-c', 'set -euo pipefail; source tools/environment.sh; godot --headless --path . --script tests/make_expedition_plan.gd'], cwd=ROOT, check=True)
-plans = json.loads((ROOT / 'test-results/expedition-plan.json').read_text())
+plans = json.loads((Path(__import__('os').environ.get('UMBRAL_RESULTS_DIR', ROOT / 'test-results')) / 'expedition-plan.json').read_text())
 (OUT / 'expedition-plan.json').write_text(json.dumps(plans, indent=2, ensure_ascii=False))
 checks, captures, logs, errors = [], [], [], []
 start = time.monotonic()
@@ -25,7 +26,7 @@ failure = None
 class Quiet(http.server.SimpleHTTPRequestHandler):
     def log_message(self, *_): pass
 
-server = http.server.ThreadingHTTPServer(('127.0.0.1', 0), functools.partial(Quiet, directory=str(ROOT / 'builds/web')))
+server = http.server.ThreadingHTTPServer(('127.0.0.1', 0), functools.partial(Quiet, directory=str(args.build_dir.resolve())))
 threading.Thread(target=server.serve_forever, daemon=True).start()
 url = f'http://127.0.0.1:{server.server_port}/index.html?test=1&visual=1'
 
