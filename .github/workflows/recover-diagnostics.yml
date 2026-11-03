@@ -1,0 +1,48 @@
+name: Recover harness failure diagnostics
+on:
+  workflow_dispatch:
+    inputs:
+      artifact_id:
+        description: GitHub Actions evidence artifact ID
+        required: true
+        type: string
+      task:
+        description: Harness task name
+        required: true
+        default: web-fixtures
+        type: string
+permissions:
+  actions: read
+  contents: read
+jobs:
+  recover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Recover selected task logs from evidence archive
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_ID: ${{ inputs.artifact_id }}
+          TASK_NAME: ${{ inputs.task }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          [[ "$ARTIFACT_ID" =~ ^[0-9]+$ ]]
+          [[ "$TASK_NAME" =~ ^[a-zA-Z0-9._-]+$ ]]
+          gh api "repos/$REPO/actions/artifacts/$ARTIFACT_ID/zip" > "$RUNNER_TEMP/evidence.zip"
+          python - <<'PY'
+          import os, re, zipfile
+          from pathlib import Path
+          archive = Path(os.environ['RUNNER_TEMP']) / 'evidence.zip'
+          suffix = '/tasks/' + os.environ['TASK_NAME'] + '/process.log'
+          with zipfile.ZipFile(archive) as data:
+              matches = [item for item in data.infolist() if ('/' + item.filename).endswith(suffix)]
+              if not matches:
+                  raise SystemExit('No matching task process.log in artifact')
+              for item in matches:
+                  if item.file_size > 10_000_000:
+                      raise SystemExit('Log exceeds 10 MB safety limit: ' + item.filename)
+                  lines = data.read(item).decode('utf-8', errors='replace').splitlines()
+                  errors = [line for line in lines if re.search(r'error|exception|traceback|failed|no space', line, re.I)]
+                  print('\n### ' + item.filename + '\n' + '\n'.join(errors[-40:]) + '\n--- tail ---\n' + '\n'.join(lines[-40:]))
+          PY
