@@ -141,3 +141,9 @@ nos dois roadmaps foram conciliados conservando os dois registros. Não há nova
 mudança de regras, RNG, schema ou identidade de saves nesta correção de UI.
 As aceitações anteriores continuam históricas; o fechamento integral e o CI do
 novo HEAD são registrados separadamente no PR antes da revisão do integrador.
+
+A integração posterior incorpora também a main `1198404`, incluindo o contrato
+de autoria de atores do PR #9 sem alterações. O CI `41930241220` testou o merge
+sintético contra `030ee7d`; continua sendo evidência histórica dessa base, não
+validação da integração atual. O novo merge recebe aceitação integral própria e
+o gate de autoria de atores, com o resultado registrado no PR antes da revisão.

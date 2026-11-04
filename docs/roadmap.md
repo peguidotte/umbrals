@@ -1037,3 +1037,7 @@ preserva o refúgio do PR #8 e os dois registros de roadmap. Evidência focada e
 `artifacts/harness/spring-notice-regressions-20261104T225648522434Z-fba9e0/`;
 fechamento integral e CI do novo HEAD registrados no PR. Rascunho aguarda revisão,
 sem merge. Não há nova mecânica ou mudança de compatibilidade por este ajuste.
+
+A atualização de base para `1198404` incorpora também o PR #9. A aceitação
+contra `030ee7d` permanece histórica; a integração atual recebe gates próprios,
+incluindo autoria de atores, e o resultado do merge exato é registrado no PR.
