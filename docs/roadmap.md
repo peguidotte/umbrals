@@ -967,6 +967,7 @@ Saída e atalhos reutilizam os fluxos existentes; grimório usa descobertas reai
 Bancada de melhorias indisponível; nenhum NPC, afinidade ou coleção persistente
 foi inventado. Save, RNG e regras mantidos. [Escopo e evidências](refuge-v05-ux02.md).
 
-Fechamento em andamento: executar aceitação completa com fontes congeladas e
-revisar capturas/vídeo reais. Próxima fatia: feedback de Pedro sobre a sala,
+Aceitação local completa aprovada com fontes congeladas; capturas e quadros do
+vídeo real revisados. Repetição de title aprovada após corrigir a sincronização
+do teclado na automação, sem alterar o runtime. CI do HEAD corrigido pendente. Próxima fatia: feedback de Pedro sobre a sala,
 refinamento da arte e definição de melhorias/personagens antes de implementá-los.
