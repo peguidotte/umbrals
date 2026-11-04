@@ -57,7 +57,7 @@ def load(url):
 
 def shot(name):
     page.screenshot(path=str(OUT / name))
-    captures.append(name)
+    captures.append({'name': Path(name).stem, 'file': name, 'screen': state()['screen']})
 
 
 def key(value):
@@ -100,8 +100,12 @@ try:
         browser = playwright.chromium.launch(executable_path='/usr/bin/chromium', headless=True,
             args=['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'])
         expected = {'menu.play', 'menu.codex', 'menu.settings', 'menu.help', 'menu.credits'}
-        context = browser.new_context(viewport={'width': 1672, 'height': 941}, device_scale_factor=1)
+        room_options = {'viewport': {'width': 1672, 'height': 941}, 'device_scale_factor': 1}
+        if args.video:
+            room_options.update(record_video_dir=str(OUT / 'video'), record_video_size={'width': 1672, 'height': 941})
+        context = browser.new_context(**room_options)
         page = context.new_page()
+        room_video = page.video
         attach_errors(page)
         load(base + '&visual=1')
         check(active_home() == expected, 'Gold Web home exposes five active choices')
@@ -116,12 +120,19 @@ try:
         key('ArrowUp'); key('ArrowUp'); key('ArrowUp')
         check(state()['focused'] == 'menu.play', 'Keyboard returns to Play')
         key('Enter')
+        wait("window.umbralState.screen === 'refuge'")
+        from refuge_browser_review import review_room
+        review_room(page, state, wait, key, click, shot, check)
+        click('refuge.departure')
         wait("window.umbralState.screen === 'journey'")
         shot('journey.png')
+        key('Escape')
+        wait("window.umbralState.screen === 'refuge'")
         key('Escape')
         wait("window.umbralState.screen === 'menu'")
         check(state()['focused'] == 'menu.play', 'Cancel journey restores Play focus')
         click('menu.play')
+        click('refuge.departure')
         click('journey.new')
         wait("window.umbralState.screen === 'starter'")
         shot('starter.png')
@@ -134,6 +145,7 @@ try:
         saved_expedition = state()['expedition']
         click('map.pause'); click('pause.menu'); click('confirm.yes')
         click('menu.play')
+        click('refuge.departure')
         wait("window.umbralState.screen === 'journey'")
         check(not state()['controls']['journey.continue']['disabled'], 'Lobby offers the saved expedition')
         shot('lobby-saved.png')
@@ -147,6 +159,7 @@ try:
         click('menu.settings'); click('settings.large_text'); key('Escape')
         wait("window.umbralState.screen === 'menu'")
         click('menu.play')
+        click('refuge.departure')
         wait("window.umbralState.screen === 'journey'")
         shot('lobby-saved-large-text.png')
         check(state()['focused'] == 'journey.new', 'Lobby restores the previous New focus after returning from settings')
@@ -165,6 +178,7 @@ try:
         check(state()['expedition'] == saved_expedition, 'Canceling practice from lobby preserves saved expedition')
 
         context.close()
+        if room_video: videos.append(room_video.path())
 
         context = browser.new_context(viewport={'width': 844, 'height': 390}, device_scale_factor=1,
                                       has_touch=True, is_mobile=True)
@@ -174,12 +188,14 @@ try:
         check(active_home() == expected, 'Touch viewport exposes five gold-home choices')
         shot('touch-menu.png')
         click('menu.play', touch=True)
+        click('refuge.departure', touch=True)
         wait("window.umbralState.screen === 'journey'")
         check(all(state()['controls'][k]['visible'] and state()['controls'][k]['active']
                   for k in ('journey.new', 'journey.continue', 'journey.practice', 'journey.back')),
               'Touch viewport displays all journey choices')
         shot('touch-journey.png')
         click('journey.back', touch=True)
+        click('refuge.title', touch=True)
         wait("window.umbralState.screen === 'menu'")
         context.close()
 

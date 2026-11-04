@@ -147,7 +147,7 @@ class Session:
             if 'foreground' in c:
                 check(contrast(c['foreground'], c['background']) >= 4.5,
                       description + ': solid button text has ≥4.5 contrast — ' + identity)
-        if s['screen'] not in ['menu','battle']:
+        if s['screen'] not in ['menu','battle','refuge']:
             check(s['overlay_z'] > s['card_max_z'], description + ': modal stays above elevated cards')
         check(s['focused'] in active, description + ': visible focus stays in the active screen')
         return {'screen':s['screen'], 'active_controls':len(active), 'logical_size':s['logical_size'], 'focused':s['focused']}
@@ -160,6 +160,7 @@ class Session:
     def start(self, species='ember'):
         click, wait, geometry, shot, settled = self.click, self.wait, self.geometry, self.shot, self.settled
         click('menu.play')
+        click('refuge.departure')
         wait("window.umbralState.screen === 'journey'")
         click('journey.practice')
         wait("window.umbralState.screen === 'starter'")

@@ -74,7 +74,9 @@ func _run() -> void:
 	expect(app.screens.top() == "menu" and focus_key() == "menu.help", "Back from guide restores title focus")
 	app.registry["menu.play"].grab_focus()
 	await key(KEY_ENTER)
-	expect(app.screens.top() == "journey", "Play opens the expedition choices")
+	expect(app.screens.top() == "refuge", "Play opens the walkable refuge")
+	app.registry["refuge.departure"].pressed.emit()
+	await process_frame
 	app.registry["journey.practice"].grab_focus()
 	await key(KEY_ENTER)
 	await process_frame
