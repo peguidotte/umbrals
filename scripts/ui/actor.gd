@@ -85,7 +85,7 @@ func _pivot() -> void:
 func _ground() -> Vector2:
 	return Vector2(size.x * 0.5, size.y - 58)
 
-func set_identity(data: Dictionary, scale_text: float = 1.0) -> void:
+func set_identity(data: Dictionary, scale_text: float = 1.0, animate_lifecycle: bool = false) -> void:
 	var previous_uid: int = int(identity.get("uid", -1))
 	var same_individual: bool = previous_uid == int(data.get("uid", -2))
 	var was_alive: bool = int(identity.get("hp", 0)) > 0
@@ -133,7 +133,7 @@ func set_identity(data: Dictionary, scale_text: float = 1.0) -> void:
 	set_intent(public_intent)
 	_pivot()
 	if not data.is_empty():
-		rig.set_incapacitated(int(data.get("hp", 0)) <= 0, same_individual and was_alive)
+		rig.set_incapacitated(int(data.get("hp", 0)) <= 0, animate_lifecycle and same_individual and was_alive)
 	queue_redraw()
 
 func set_intent(data: Dictionary) -> void:

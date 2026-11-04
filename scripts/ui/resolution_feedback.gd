@@ -123,4 +123,4 @@ func _snapshot(event: Dictionary, actors: Array, enemies: Array, text_scale: flo
 	var snapshot: Dictionary = event.get("target_state", {})
 	if slot < 0 or slot >= 3 or snapshot.is_empty(): return
 	var targets: Array = enemies if event.get("target_side", "enemy") == "enemy" else actors
-	if slot < targets.size() and is_instance_valid(targets[slot]): targets[slot].set_identity(snapshot, text_scale)
+	if slot < targets.size() and is_instance_valid(targets[slot]): targets[slot].set_identity(snapshot, text_scale, true)

@@ -101,6 +101,7 @@ func _run() -> void:
 	for body in hud.actors + hud.enemy_actors:
 		expect(not body.rig.managed, "Accessibility cancellation releases every managed actor")
 	await lifecycle_checks()
+	await lifecycle_deploy_checks()
 	app.feedback.cancel()
 	app.audio.shutdown()
 	await create_timer(0.12).timeout
@@ -148,6 +149,12 @@ func lifecycle_checks() -> void:
 	expect(body.rig.lifecycle.sprite.frame == 3, "KO settles and holds its last pose")
 	body.stop_motion()
 	expect(body.rig.lifecycle.state == "ko" and body.rig.lifecycle.sprite.frame == 3, "Presentation cancellation cannot stand an incapacitated creature up")
+	var restored_body: Control = preload("res://scripts/ui/actor.gd").new()
+	restored_body.size = Vector2(230, 230)
+	root.add_child(restored_body)
+	restored_body.set_identity(body.identity)
+	expect(restored_body.rig.lifecycle.state == "ko" and restored_body.rig.lifecycle.sprite.frame == 3, "A restored incapacitated snapshot starts at rest without replaying a fall")
+	restored_body.queue_free()
 	app.preferences.set_value("reduced_motion", true)
 	expect(body.rig.lifecycle.sprite.frame == 3, "Reduced motion preserves the readable KO pose")
 	app.preferences.set_value("reduced_motion", false)
@@ -156,3 +163,27 @@ func lifecycle_checks() -> void:
 	app.runtime.turn.cast()
 	await settle()
 	expect(int(body.identity.hp) > 0 and not body.rig.lifecycle.incapacitated and not body.rig.lifecycle.active(), "A real revival releases KO and restores normal idle/casts")
+
+func lifecycle_deploy_checks() -> void:
+	app._return_menu()
+	app.preferences.set_value("reduced_motion", false)
+	var fixture: Dictionary = preload("res://tests/support/scenario_fixtures.gd").make("brasa_lifecycle")
+	var run = preload("res://scripts/expedition/expedition.gd").new()
+	expect(run.restore(fixture.snapshot), "Fresh deploy uses the same validated checkpoint")
+	app._start_game()
+	app.session.expedition = run
+	app.session.expedition_active = true
+	app.runtime.bind_game(run.battle)
+	app._sync_battle()
+	app.screens.reset("battle")
+	app._sync_phase()
+	await process_frame
+	var body: Control = app.screen_host.battle_root.hud.actors[2]
+	expect(body.identity.is_empty() and app.game.queue_deploy(2, 1), "Plan Brasa into an actually empty field slot")
+	app.runtime.turn.cast()
+	var deadline: int = Time.get_ticks_msec() + 2000
+	while int(body.identity.get("uid", -1)) != 1 and Time.get_ticks_msec() < deadline: await process_frame
+	expect(body.rig.lifecycle.state == "walk", "The committed deploy event plays entry even without a previous occupant")
+	app.preferences.set_value("reduced_motion", true)
+	expect(not body.rig.lifecycle.active(), "Reduced motion immediately cancels an in-flight entry walk")
+	await settle(2.0)
