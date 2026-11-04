@@ -713,3 +713,19 @@ Linux também passaram; Windows foi exportado, não executado em Windows.
 Os tempos são os observados nessas execuções. As capturas e a amostra de vídeo
 locais foram revisadas; a aceitação completa pertence à CI vinculada acima.
 Produto permanece 0.3.0; diversão, arte final e hardware continuam gates humanos abertos.
+
+
+### V05-UX-01 — lobby de preparação
+
+Primeira fatia solicitada para Jogar: a tela de jornada vira um lobby com
+expedição, equipe do checkpoint e espaços separados para melhorias e visitas
+por vínculo. Melhorias estão indisponíveis; visitas são uma possibilidade
+futura, sem afinidade persistida, coleção permanente ou criaturas simuladas.
+Continuar, nova expedição com confirmação e treino mantêm os contratos atuais.
+A implementação usa a identidade dourada existente, texto nativo, rolagem com
+foco e Voltar fora da rolagem. Nenhuma regra, RNG ou formato de save mudou.
+
+Validação e limites: [entrega do lobby](lobby-v05-ux01.md). Versão e gates humanos
+permanecem abertos. Próxima fatia depende das decisões de produto sobre quais
+melhorias existem e o significado de visitas/vínculo; esta entrega não decide
+moeda, custos, bônus nem permanência de indivíduos.
