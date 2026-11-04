@@ -1,8 +1,9 @@
 # Desenvolvimento sobre a main atual
 
-A base desta integração é a main `56e987b`, com batalha coletiva, expedição, save e
-visual atualizados. O ramo antigo de refatoração fica preservado no histórico
-(`4cebd55`); seus modelos do protótipo anterior não são o contrato do jogo atual.
+A base inclui batalha coletiva, expedição, save e visual atualizados. Confirme a main
+por preflight antes de cada trabalho; o [mapa de arquitetura](architecture-map.md)
+é o ponto de entrada para donos e entrega paralela. O ramo antigo de refatoração
+permanece no histórico (`4cebd55`); seus modelos não são o contrato atual.
 
 ## Preflight obrigatório
 
@@ -14,7 +15,7 @@ assets, saves e decisões do produto. Nunca resolva divergência sobrescrevendo 
 
 ## Responsabilidades atuais
 
-- `main.gd`: composição, comandos, roteamento e foco. Inspeção, recompensas/captura, diálogos, registros e feedback têm donos em `ui/`; sessão/persistência em `session/` e protocolo Web em `ui/browser_bridge.gd`. Continua grande: novas extrações devem reduzir coordenação coesa, sem criar um helper com referência ao main.
+- `main.gd`: composição e conexão dos serviços. `application/` possui coordenação de aplicação, incluindo ciclo de turno e entrada pendente; só main importa essa camada. Ela não importa main nem acessa armazenamento diretamente, e UI/domínio/sessão não dependem dela. Inspeção, recompensas/captura, diálogos, registros e feedback têm donos em `ui/`; sessão/persistência em `session/` e protocolo Web em `ui/browser_bridge.gd`. Extrações devem ter donos coesos, sem referência ao main.
 - `rules.gd`: estado e execução da batalha; `battle/` mantém alvos, iniciativa,
   preparação inimiga, condições e reações puros, além de ciclo de cartas, planejamento, avaliação, resolução e recompensas com entradas explícitas.
 - `domain/selection_planner.gd`: automação limitada pelo custo e orçamento real de ações.
@@ -38,9 +39,10 @@ Os modelos em `domain/models/` são snapshots tipados e validados usados em plan
 `tools/architecture-baseline.json` registra métricas da main de origem, sem alterá-la.
 `architecture_checks.py` verifica dependências, ciclos, domínio puro, RNG local,
 fronteira de testes, comandos em views e concentração. Módulos novos continuam limitados
-a 350 linhas significativas (400 para um novo coordenador). As exceções históricas
-são explícitas: main, rules e mapa já excediam esses limites antes desta integração.
-Seus tetos não podem crescer, e novas ocorrências de acoplamento são rejeitadas.
+a 350 linhas significativas (400 para um novo coordenador). Os limites são 400 linhas significativas para coordenadores e 350 para módulos;
+main, Rules e mapa agora cabem nesses limites. A baseline mantém apenas a dívida
+explícita de compatibilidade de Rules: sete acessos ao catálogo global e seis usos
+do runtime não tipado. Consulte o guard para os números e não aumente os tetos.
 
 Não regenere a baseline para aprovar uma regressão. Reduza-a conforme extrair donos
 coerentes. Uma baseline verde não significa que os problemas históricos estão resolvidos.

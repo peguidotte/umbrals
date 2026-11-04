@@ -35,7 +35,7 @@ func run() -> void:
 	await process_frame
 	await process_frame
 	expect(root.gui_get_focus_owner() == app.registry["menu.play"], "Initial Play focus")
-	var title: Control = app.menu_root
+	var title: Control = app.screen_host.menu_root
 	expect(title.canvas.size == Vector2(1672,941) and title.buttons[0].plate is AtlasTexture, "Approved artwork coordinates and native atlas-backed controls are used")
 	expect(title.buttons.size() == 6 and title.buttons[0] == app.registry["menu.play"] and title.buttons[1] == app.registry["menu.codex"], "Gold title exposes selected six-command composition and original routes")
 	title.apply_preferences(true, false, 1.0)
@@ -46,7 +46,7 @@ func run() -> void:
 	await press("menu.play")
 	expect(app.screens.top() == "journey" and app.registry["journey.continue"].disabled, "No-save Journey disables Continue")
 	expect(app.registry["journey.new"].caption.text == "NOVA EXPEDIÇÃO" and app.registry["journey.new"].caption.is_visible_in_tree(), "Native caption is rendered above its plate")
-	expect(not app.menu_root.input_active, "Journey owns title interaction")
+	expect(not app.screen_host.menu_root.input_active, "Journey owns title interaction")
 	await press("journey.new")
 	await press("starter.ember")
 	expect(app.screens.top() == "map", "New expedition opens map through existing starter flow")
@@ -56,7 +56,7 @@ func run() -> void:
 	app._return_menu()
 	await process_frame
 	await press("menu.play")
-	var journey: Control = app.modal_root
+	var journey: Control = app.screen_host.modal_root
 	expect(not app.registry["journey.continue"].disabled, "Save enables Continue")
 	expect(journey.public_checkpoint.party == app.session.expedition.public_state().party, "Journey presents the saved party")
 	expect(journey.checkpoint_summary(journey.public_checkpoint) == "Bosque · Próxima parada: Clareira", "Journey describes the actual next node")
@@ -72,7 +72,7 @@ func run() -> void:
 	app.preferences.set_value("reduced_motion", true)
 	await process_frame
 	await press("menu.play")
-	expect(app.modal_root.modulate.a == 1.0, "Reduced motion skips menu entrance animation")
+	expect(app.screen_host.modal_root.modulate.a == 1.0, "Reduced motion skips menu entrance animation")
 	await press("journey.back")
 	expect(root.gui_get_focus_owner() == app.registry["menu.play"], "Back restores semantic Play focus")
 	var roster_view = preload("res://scripts/ui/journey_menu.gd").new()

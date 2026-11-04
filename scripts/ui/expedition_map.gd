@@ -10,10 +10,9 @@ signal control_created(control: Control, id: String)
 
 const UI = preload("res://scripts/ui/kit.gd")
 const Trail = preload("res://scripts/ui/expedition_trail.gd")
-const Content = preload("res://scripts/content.gd")
+const Status = preload("res://scripts/ui/expedition_status.gd")
 
 const NODE_IDS: Array[String] = ["clearing", "thicket", "spring", "boss"]
-const SLOT_NAMES: Array[String] = ["Superior", "Central", "Inferior"]
 
 var _snapshot: Dictionary = {}
 var _text_scale: float = 1.0
@@ -110,8 +109,8 @@ func _build() -> void:
 	heading.add_child(_ui.label(biome, 18, UI.MUTED))
 	control_created.emit(title, "map.title")
 
-	_add_party_status()
-	_add_inventory_status()
+	Status.add_party_status(_root, _snapshot, _text_scale, _ui, control_created.emit)
+	Status.add_inventory_status(_root, _snapshot, _ui, control_created.emit)
 	_add_route()
 	_add_selection_detail()
 	_add_actions()
@@ -120,63 +119,6 @@ func _build() -> void:
 		var initial: Control = _node_buttons.get(_selected_id, _confirm_button)
 		if is_instance_valid(initial) and not initial.has_focus():
 			initial.grab_focus.call_deferred()
-
-func _add_party_status() -> void:
-	var party: Array = _snapshot.get("party", [])
-	var panel := PanelContainer.new()
-	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	panel.add_theme_stylebox_override("panel", _ui.style(UI.SURFACE, UI.BORDER, 9))
-	_root.add_child(panel)
-	var content := UI.column(5)
-	panel.add_child(content)
-	content.add_child(_ui.label("TIME · FORMAÇÃO E HP", 16, UI.GOLD))
-	var members := HFlowContainer.new()
-	members.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	members.add_theme_constant_override("h_separation", int(12 * _text_scale))
-	members.add_theme_constant_override("v_separation", int(6 * _text_scale))
-	content.add_child(members)
-	if party.is_empty():
-		members.add_child(_ui.label("Time indisponível", 17, UI.MUTED))
-		return
-	for individual_variant in party:
-		if not individual_variant is Dictionary:
-			continue
-		var individual: Dictionary = individual_variant
-		var hp: int = int(individual.get("hp", 0))
-		var max_hp: int = maxi(1, int(individual.get("max_hp", individual.get("hp_max", 1))))
-		var slot: int = int(individual.get("slot", -1))
-		var active: bool = slot >= 0
-		var state: String = (SLOT_NAMES[clampi(slot, 0, 2)] if active else "Reserva")
-		if hp <= 0:
-			state = "Incapacitado"
-		var portrait_row := UI.row(8)
-		members.add_child(portrait_row)
-		portrait_row.add_child(UI.art(Content.art_binding(individual), Vector2(48, 48)))
-		var item := _ui.label("%s\n%s · %d/%d HP" % [str(individual.get("name", Content.display_name(individual))) + " · " + str(individual.uid), state, hp, max_hp], 17, UI.PAPER)
-		item.custom_minimum_size = Vector2(155.0 * _text_scale, 42.0 * _text_scale)
-		item.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		portrait_row.add_child(item)
-		control_created.emit(item, "map.party.%s" % str(individual.get("uid", members.get_child_count())))
-
-func _add_inventory_status() -> void:
-	var inventory_variant: Variant = _snapshot.get("inventory", {})
-	var inventory: Dictionary = inventory_variant if inventory_variant is Dictionary else {}
-	var summary: Array[String] = []
-	for item_id in inventory.keys():
-		var quantity: int = int(inventory[item_id])
-		if quantity > 0:
-			summary.append("%s ×%d" % [_item_name(str(item_id)), quantity])
-	var line: String = "MOCHILA · " + (" · ".join(summary) if not summary.is_empty() else "sem consumíveis")
-	var label := _ui.label(line, 16, UI.MUTED)
-	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_root.add_child(label)
-	control_created.emit(label, "map.inventory")
-	var save_notice: String = str(_snapshot.get("save_notice", "")).strip_edges()
-	if not save_notice.is_empty():
-		var notice := _ui.paragraph(save_notice, 15, UI.MUTED)
-		notice.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		_root.add_child(notice)
-		control_created.emit(notice, "map.save_notice")
 
 func _add_route() -> void:
 	_route_scroll = ScrollContainer.new()
@@ -399,12 +341,6 @@ func _is_unchosen_route(id: String) -> bool:
 	var sibling_id: String = "spring" if id == "thicket" else "thicket"
 	var sibling: Dictionary = _nodes_by_id().get(sibling_id, {})
 	return bool(sibling.get("completed", false))
-
-func _item_name(item_id: String) -> String:
-	match item_id:
-		"potion": return "Poção"
-		"revive": return "Reanimação"
-		_: return str(Content.CONSUMABLES.get(item_id, {}).get("name", item_id.capitalize()))
 
 func _restore_focus(ui_id: String) -> void:
 	if not is_inside_tree():

@@ -226,9 +226,10 @@ Fixtures usam o checkpoint existente; o replay é uma whitelist sobre APIs reais
 O planejador foi extraído sem mudar a heurística ou escrever a seleção, respeitando
 o orçamento atual e poderes de custo zero. Preflight detecta divergência antes de planejar.
 
-A dívida arquitetural herdada é explicitamente medida: main/rules ainda precisam de
-extração; o catálogo continua em content.gd e usa estágios. Os modelos/Resources antigos
-não foram tratados como compatíveis com as decisões posteriores do jogo. Veja
+Na época desta integração havia dívida em main/rules e o catálogo ainda usava estágios.
+V04-DEV-02/03 substituíram essa descrição: Resources e arestas explícitas são a fonte
+de autoria; `content.gd` é fachada. Os modelos/Resources do protótipo antigo não foram
+tratados como compatíveis com as decisões posteriores do jogo. Veja
 [architecture-guidelines.md](architecture-guidelines.md) para o mapa e próximas prioridades,
 e [harness.md](harness.md) para comandos, isolamento e limites das evidências.
 
@@ -263,9 +264,9 @@ Rules delegates card cycling, planning, power evaluation, round resolution and r
 operations to cohesive modules under `battle/`, using explicit data and local RNG.
 Main delegates HUD/selection projection, focus, scoped input and starter rendering
 to `battle_presenter.gd`, `focus_registry.gd`, `input_dispatch.gd` and `starter_view.gd`.
-Main still owns considerable session/modal interaction routing; the ratchet records
-1,115 meaningful lines for main and 528 for Rules, rather than claiming their size
-targets were reached.
+At the V04-DEV-03 checkpoint, main still owned considerable session/modal routing;
+the ratchet recorded 1,115 meaningful lines for main and 528 for Rules. Consult the
+current guard and [architecture map](architecture-map.md) for subsequent changes.
 
 Item Resources carry effect IDs and generic authored parameters. Registered handlers
 own effect behavior and parameter schemas; the catalog projects them without effect
@@ -280,6 +281,16 @@ existing stats, pools, order or effect bindings are rejected without changing li
 
 A failed CI cold fixture import aborted natively during display.ttf import with
 `free(): invalid size`. The disposable project now imports serially; local cold import
-passed. This is a bounded mitigation to verify in CI, not proof of the heap corruption's
-root cause. Compact diagnostics are separate from media/builds, and targeted resume
+passed. GitHub [run 41737897245](https://github.com/peguidotte/umbrals/actions/runs/41737897245) subsequently passed the full CI in about 42 minutes.
+That result verifies that run, not the root cause of the earlier heap corruption. Compact diagnostics are separate from media/builds, and targeted resume
 reuses only verified successful dependencies while reporting focused coverage.
+
+
+## Coordinator boundaries — V04-DEV-04
+
+The [current map](architecture-map.md) lists application and presentation owners.
+Main composes them; Rules retains live state and RNG. The measured meaningful-line
+counts are main 399, Rules 345 and expedition map 325; the extracted status view is
+64. These size limits do not eliminate the seven global-catalog and six untyped-runtime
+compatibility occurrences retained by Rules. Consult the guard and the actual full
+acceptance result before drawing conclusions about behavior.

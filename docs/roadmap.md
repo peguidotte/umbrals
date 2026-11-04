@@ -674,6 +674,27 @@ os gates humanos não avançam; Como jogar segue adiado.
 
 CI: o crash nativo antigo foi recuperado por uma ferramenta remota e não atribuído
 a GDScript. Importação serial na cópia descartável passou localmente; confirmação
-remota e resultados concretos pertencem à execução de CI, sem supor sucesso.
-Main (1.115 linhas significativas), Rules (528) e mapa mantêm dívida de tamanho
-explicitamente limitada, e o runtime permanece parcialmente baseado em dicionários.
+remota passou depois no [run 41737897245](https://github.com/peguidotte/umbrals/actions/runs/41737897245) (CI completo, cerca de 42 minutos);
+isso não comprova a causa raiz do abort anterior. No checkpoint DEV-03, main tinha
+1.115 linhas significativas e Rules 528; consulte o guard atual para métricas
+posteriores. O runtime permanece parcialmente baseado em dicionários.
+
+
+### V04-DEV-04 — CI, coordenação e mapa atual
+
+Implementação integrada em andamento, autorizada como desbloqueio técnico antes de
+novas funcionalidades. O [mapa atual](architecture-map.md) identifica os novos donos
+de aplicação e apresentação. Main mede 399 linhas significativas, Rules 345, mapa 325
+e status 64; o guard elimina exceções de tamanho, mantendo em Rules sete acessos ao
+catálogo global e seis ocorrências do runtime não tipado por compatibilidade.
+
+Checks focados de UI flow, expedição, gold e opções passaram em
+`artifacts/harness/main-architecture-complete-20261104T023240591119Z-4f35c2/`; 14.419
+verificações de regras e oito mutações passaram em snapshot direto anterior. O executor
+preserva logs e contagens ao detectar erro fatal; 30 contratos do harness passaram.
+A aceitação completa com fontes congeladas e revisão é planejada em
+`artifacts/architecture-dev04-verified-20261104/`: consulte seu `run.json` e a CI
+real para o resultado, sem inferir aprovação pelo caminho. A execução preliminar
+[41759797459](https://github.com/peguidotte/umbrals/actions/runs/41759797459) testa
+a paralelização em `320b8ba`, não a aceitação final do produto. Produto permanece
+0.3.0; diversão, arte final e hardware continuam gates humanos abertos.

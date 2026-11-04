@@ -97,11 +97,11 @@ func run() -> void:
 	await press("capture.confirm")
 	await press("map.node.spring")
 	var route_before: String = JSON.stringify(app.session.expedition.snapshot())
-	expect(app.map_root._selected_id == "spring" and app.registry["map.selection.detail"].text.contains("Nascente"), "Spring is selected without entering it")
+	expect(app.screen_host.map_root._selected_id == "spring" and app.registry["map.selection.detail"].text.contains("Nascente"), "Spring is selected without entering it")
 	expect(app.registry["map.node.spring"].text.begins_with("◆"), "Selected spring displays its selection marker")
 	await press("map.pause")
 	await press("pause.resume")
-	expect(app.map_root._selected_id == "spring" and app.registry["map.selection.detail"].text.contains("Nascente"), "Pause and resume preserve the selected route and details")
+	expect(app.screen_host.map_root._selected_id == "spring" and app.registry["map.selection.detail"].text.contains("Nascente"), "Pause and resume preserve the selected route and details")
 	expect(app.registry["map.node.spring"].text.begins_with("◆"), "Pause and resume preserve the visible selection marker")
 	expect(JSON.stringify(app.session.expedition.snapshot()) == route_before, "Pause and resume preserve controller state and RNG")
 	await press("map.pause")
@@ -111,7 +111,7 @@ func run() -> void:
 	await process_frame
 	await press("settings.back")
 	await press("pause.resume")
-	expect(app.map_root._selected_id == "spring" and app.registry["map.selection.detail"].text.contains("Nascente"), "Changing text scale and returning preserves the selected route and details")
+	expect(app.screen_host.map_root._selected_id == "spring" and app.registry["map.selection.detail"].text.contains("Nascente"), "Changing text scale and returning preserves the selected route and details")
 	expect(app.registry["map.node.spring"].text.begins_with("◆"), "Changing text scale and returning preserves the visible selection marker")
 	expect(JSON.stringify(app.session.expedition.snapshot()) == route_before, "Changing text scale preserves controller state and RNG")
 	# Direct terminal fixture verifies profile idempotence, independently of battle simulation.

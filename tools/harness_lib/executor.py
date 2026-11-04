@@ -24,6 +24,27 @@ def environment(root):
     return env
 
 
+def fatal_engine_output(output):
+    return output.startswith('ERROR:') or any(marker in output for marker in
+        ('SCRIPT ERROR:', '\nERROR:', 'instances leaked', 'Resources still in use'))
+
+
+def stop_process_group(process):
+    try:
+        os.killpg(process.pid, signal.SIGTERM)
+    except ProcessLookupError:
+        process.wait()
+        return
+    try:
+        process.wait(timeout=3)
+    except subprocess.TimeoutExpired:
+        try:
+            os.killpg(process.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+        process.wait()
+
+
 class Executor:
     def __init__(self, root, out, sources, options, cancelled):
         self.root, self.out, self.sources, self.options, self.cancelled = root, out, sources, options, cancelled
@@ -128,21 +149,23 @@ class Executor:
                 env[variable] = str(folder / 'userdata' / subdirectory)
         timeout = self.options.get('step_timeout', 1800) if task.kind == 'browser' else 240
         started = time.monotonic()
-        with (folder / 'process.log').open('w') as log:
+        log_path = folder / 'process.log'
+        with log_path.open('w') as log, log_path.open(errors='replace') as observed:
             process = subprocess.Popen(command, cwd=self.root, env=env, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+            tail = ''
             while process.poll() is None:
                 if self.cancelled.is_set() or time.monotonic() - started > timeout:
-                    os.killpg(process.pid, signal.SIGTERM)
-                    try:
-                        process.wait(timeout=3)
-                    except subprocess.TimeoutExpired:
-                        os.killpg(process.pid, signal.SIGKILL)
-                        process.wait()
+                    stop_process_group(process)
                     if self.cancelled.is_set(): raise InterruptedError('Run interrupted')
                     raise TimeoutError(f'Task exceeded {timeout}s')
+                tail += observed.read(65536)
+                if fatal_engine_output(tail):
+                    stop_process_group(process)
+                    raise RuntimeError(f'Fatal engine error; see {log_path}')
+                tail = tail[-512:]
                 time.sleep(.05)
-        output = (folder / 'process.log').read_text()
-        if process.returncode or any(marker in output for marker in ('SCRIPT ERROR:', '\nERROR:', 'instances leaked', 'Resources still in use')):
+        output = log_path.read_text()
+        if process.returncode or fatal_engine_output(output):
             raise RuntimeError(f'Command failed ({process.returncode}); see {folder / "process.log"}')
         return output
 

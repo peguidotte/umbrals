@@ -53,13 +53,13 @@ func run() -> void:
 	root.add_child(app)
 	app.preferences.values.reduced_motion = true
 	app.visual_capture = true
-	app.menu_root.apply_preferences(true, true, 1.0)
+	app.screen_host.menu_root.apply_preferences(true, true, 1.0)
 	await process_frame
 	await capture("01-menu")
 	expect(root.gui_get_focus_owner() == app.registry["menu.play"], "Menu starts focused")
 	await activate("menu.codex")
 	expect(app.screens.top() == "codex", "Menu opens codex")
-	expect(not "Combustão" in texts(app.modal_root), "Empty codex hides trait")
+	expect(not "Combustão" in texts(app.screen_host.modal_root), "Empty codex hides trait")
 	await capture("02-undiscovered")
 	await key(KEY_ESCAPE)
 	expect(app.screens.top() == "menu" and root.gui_get_focus_owner() == app.registry["menu.codex"], "Back restores menu focus")
@@ -77,13 +77,13 @@ func run() -> void:
 	await capture("03-discovered")
 	await activate("codex.section.details")
 	await activate("codex.related.fireball")
-	expect(app.modal_root.category == "powers" and app.modal_root.selected == "fireball", "Related power opens record")
+	expect(app.screen_host.modal_root.category == "powers" and app.screen_host.modal_root.selected == "fireball", "Related power opens record")
 	await capture("04-power")
 	for category in ["passives", "items", "umbrals"]:
 		await activate("codex.tab." + category)
-		expect(app.modal_root.category == category, "Category " + category)
+		expect(app.screen_host.modal_root.category == category, "Category " + category)
 	await activate("codex.next")
-	expect(app.modal_root.page == 1, "Pagination works")
+	expect(app.screen_host.modal_root.page == 1, "Pagination works")
 	await key(KEY_ESCAPE)
 	await key(KEY_ESCAPE)
 	expect(app.screens.top() == "battle", "Return to paused battle")
@@ -100,11 +100,11 @@ func run() -> void:
 		await process_frame
 		await capture("codex-%dx%d" % [dimensions.x, dimensions.y])
 		for control in app.focus_registry.groups.get("codex", []):
-			if control.get_parent() == app.modal_root.entries or control == app.modal_root.close:
+			if control.get_parent() == app.screen_host.modal_root.entries or control == app.screen_host.modal_root.close:
 				expect(root.get_visible_rect().encloses(control.get_global_rect()), "Visible control within viewport")
 	app._pop()
 	app._push("codex")
-	app.modal_root.text_scale = 1.25
+	app.screen_host.modal_root.text_scale = 1.25
 	# Rebuild through the actual accessibility preference flow.
 	app.preferences.set_value("large_text", true)
 	await process_frame

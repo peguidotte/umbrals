@@ -45,7 +45,7 @@ func _run() -> void:
 	expect(app.screens.top() == "codex" and focus_key() == "codex.tab.umbrals", "Controller A opens the codex categories")
 	await pad(JOY_BUTTON_B)
 	expect(app.screens.top() == "menu" and focus_key() == "menu.codex", "Controller B restores the previous menu focus")
-	expect(app.menu_root.canvas.size == Vector2(1672,941), "Title preserves the approved artwork composition")
+	expect(app.screen_host.menu_root.canvas.size == Vector2(1672,941), "Title preserves the approved artwork composition")
 	var before_motion: String = JSON.stringify([app.game.rng.state, app.session.run_save.load_snapshot()])
 	await key(KEY_DOWN)
 	await key(KEY_ENTER)
@@ -55,11 +55,11 @@ func _run() -> void:
 	expect(focus_key() == "settings.reduced_motion", "Tab reaches reduced-motion without escaping the modal")
 	await key(KEY_ENTER)
 	expect(app.preferences.values.reduced_motion, "Keyboard toggles and persists reduced motion")
-	var title_effect: Dictionary = app.menu_root.effect_state()
+	var title_effect: Dictionary = app.screen_host.menu_root.effect_state()
 	expect(title_effect.reduced_motion and title_effect.clock == 0.0, "Reduced motion immediately rests the title effect")
 	await key(KEY_ENTER)
 	await key(KEY_ENTER)
-	title_effect = app.menu_root.effect_state()
+	title_effect = app.screen_host.menu_root.effect_state()
 	expect(title_effect.reduced_motion and title_effect.clock == 0.0 and JSON.stringify([app.game.rng.state, app.session.run_save.load_snapshot()]) == before_motion, "Re-enabling reduced motion clears the effect without changing game RNG or save")
 	await key(KEY_ESCAPE)
 	expect(app.screens.top() == "menu" and focus_key() == "menu.settings", "Back from options restores title focus")
@@ -90,13 +90,13 @@ func _run() -> void:
 	await key(KEY_1)
 	await key(KEY_2)
 	expect(app.game.selected.size() == 2 and app.registry["hand.0"].get_instance_id() == id, "Selection preserves the card node and focus infrastructure")
-	expect(app.command_strip.visible and app.command_buttons[0].text.contains("→") and app.energy_label.text.contains("no plano"), "Visible command strip names the target and distinguishes planned from free actions")
+	expect(app.screen_host.battle_root.hud.command_strip.visible and app.screen_host.battle_root.hud.command_buttons[0].text.contains("→") and app.screen_host.battle_root.hud.energy_label.text.contains("no plano"), "Visible command strip names the target and distinguishes planned from free actions")
 	var plan_before: String = JSON.stringify([app.game.party, app.game.hand, app.game.rng.state, app.game.actions])
 	await pad(JOY_BUTTON_LEFT_SHOULDER)
 	expect(app.screens.top() == "plan" and focus_key().begins_with("plan."), "Controller LB opens the player command editor with modal focus")
 	app.registry["plan.inspect.0"].grab_focus()
 	await pad(JOY_BUTTON_A)
-	expect(app.screens.top() == "inspect" and app.inspection.card.instance_id == app.game.hand[0].instance_id, "Plan has a touch-reachable power inspection without relying on hover or a keyboard")
+	expect(app.screens.top() == "inspect" and app.runtime.interactions.inspection.card.instance_id == app.game.hand[0].instance_id, "Plan has a touch-reachable power inspection without relying on hover or a keyboard")
 	await pad(JOY_BUTTON_B)
 	expect(app.screens.top() == "plan" and app.game.selected.size() == 2, "Returning from power details preserves the plan")
 	app.registry["plan.remove.power.0"].grab_focus()
@@ -107,7 +107,7 @@ func _run() -> void:
 	expect(app.game.selected.size() == 2 and JSON.stringify([app.game.party, app.game.hand, app.game.rng.state, app.game.actions]) == plan_before, "Editing and restoring the plan preserves bodies, physical cards, RNG and round")
 	await key(KEY_C)
 	expect(app.screens.top() == "inspect", "Inspection is accessible without the mouse")
-	expect(app.modal_root.z_index > 6, "Modal renders above lifted cards")
+	expect(app.screen_host.modal_root.z_index > 6, "Modal renders above lifted cards")
 	await key(KEY_ESCAPE)
 	expect(app.screens.top() == "battle", "Back from inspection preserves combat")
 	await key(KEY_ESCAPE)
@@ -123,21 +123,21 @@ func _run() -> void:
 	var committed_hand: Array = app.cards.map(func(card): return card.card.instance_id)
 	var committed_selection: Array = app.cards.map(func(card): return card.chosen)
 	await pad(JOY_BUTTON_X)
-	expect(app.busy and app.cards.map(func(card): return card.card.instance_id) == committed_hand and app.cards.map(func(card): return card.chosen) == committed_selection, "The committed hand and chosen powers stay visible during the speed queue")
+	expect(app.runtime.turn.busy and app.cards.map(func(card): return card.card.instance_id) == committed_hand and app.cards.map(func(card): return card.chosen) == committed_selection, "The committed hand and chosen powers stay visible during the speed queue")
 	await key(KEY_C)
 	expect(app.screens.top() == "battle", "Inspection cannot expose advanced-model HP during feedback")
 	await pad(JOY_BUTTON_X)
 	expect(app.game.actions == 1, "Repeated cast during feedback cannot spend another round")
 	await create_timer(0.25).timeout
-	expect(not app.busy and app.game.phase == "battle", "Feedback completes and releases input")
-	expect(app.effects.trauma == 0 and app.effects.particles.is_empty(), "Reduced-motion casting has no shake or particles")
+	expect(not app.runtime.turn.busy and app.game.phase == "battle", "Feedback completes and releases input")
+	expect(app.screen_host.battle_root.hud.effects.trauma == 0 and app.screen_host.battle_root.hud.effects.particles.is_empty(), "Reduced-motion casting has no shake or particles")
 	expect(app.audio.voices.size() == 4, "Repeated feedback uses a bounded audio pool")
 	var before_history: String = JSON.stringify([app.game.party, app.game.hand, app.game.rng.state, app.game.round_number])
 	app.registry["hud.history"].grab_focus()
 	await key(KEY_ENTER)
 	expect(app.screens.top() == "history" and focus_key() == "history.back", "Last-round history is reachable with a focused back action")
 	var history_text: String = ""
-	for node in app.modal_root.find_children("*", "Label", true, false): history_text += node.text + "\n"
+	for node in app.screen_host.modal_root.find_children("*", "Label", true, false): history_text += node.text + "\n"
 	expect(history_text.contains("HP retirado") and history_text.contains("Clareira 1") and not history_text.contains("target_slot"), "History describes actual HP and the original encounter without exposing internal targeting fields")
 	await key(KEY_ESCAPE)
 	expect(JSON.stringify([app.game.party, app.game.hand, app.game.rng.state, app.game.round_number]) == before_history, "Reviewing the last round does not replan enemies, advance combat or consume RNG")
@@ -150,10 +150,10 @@ func _run() -> void:
 	app.game.hand = [app.game.party[0].cards[0].duplicate(true)]
 	app.game.hand[0].target_slot = 0
 	app.game.selected.assign([0])
-	app.targeting_index = 0
+	app.runtime.turn.targeting_index = 0
 	app._sync_battle()
 	await key(KEY_E)
-	expect(app.game.hand[0].target_slot == 2 and app.enemy_actors[2].targeted, "Target shortcut skips vacant slots and updates the visible target marker")
+	expect(app.game.hand[0].target_slot == 2 and app.screen_host.battle_root.hud.enemy_actors[2].targeted, "Target shortcut skips vacant slots and updates the visible target marker")
 	await key(KEY_Q)
 	expect(app.game.hand[0].target_slot == 0, "Reverse target cycling restores the original semantic slot")
 	await key(KEY_P)
@@ -177,31 +177,31 @@ func _run() -> void:
 	expect(readout.event_line({"kind": "condition_spent", "actor_name": "Coruja", "condition": "charge"}).contains("Carga") and not readout.event_line({"kind": "condition_spent", "condition": "charge"}).contains("Eletrificado"), "History distinguishes spent Charge from offensive weakening")
 	var saved_hand: Array = app.game.hand.duplicate(true)
 	var saved_selection: Array = app.game.selected.duplicate()
-	var saved_targeting: int = app.targeting_index
+	var saved_targeting: int = app.runtime.turn.targeting_index
 	var healer: Dictionary = app.game.make_umbral("dew", "vital", 77)
 	healer.slot = 0
 	app.game.party.append(healer)
 	app.game.hand = [healer.cards[4].duplicate(true)]
 	app.game.hand[0].target_slot = 0
 	app.game.selected.clear()
-	app.targeting_index = -1
+	app.runtime.turn.targeting_index = -1
 	app._sync_battle()
 	await key(KEY_1)
-	app._click_slot("enemy", 2)
-	expect(app.game.hand[0].target_slot == 0 and app.notice_label.text.contains("aliados"), "Healing rejects an enemy click without silently changing its allied target")
-	app._click_slot("ally", 1)
+	app.runtime.interactions.click_slot("enemy", 2)
+	expect(app.game.hand[0].target_slot == 0 and app.screen_host.battle_root.hud.notice_label.text.contains("aliados"), "Healing rejects an enemy click without silently changing its allied target")
+	app.runtime.interactions.click_slot("ally", 1)
 	expect(app.game.hand[0].target_slot == 1, "Healing can target a different ally through the same visible slot interaction")
 	app.game.party.pop_back()
 	app.game.hand = saved_hand
 	app.game.selected.assign(saved_selection)
-	app.targeting_index = saved_targeting
+	app.runtime.turn.targeting_index = saved_targeting
 	app._sync_battle()
 	var node_id: int = app.cards[0].get_instance_id()
-	app._click_slot("ally", 1)
-	expect(app.screens.top() == "battle" and app.game.hand[0].target_slot == 0 and app.notice_label.text.contains("inimigos"), "An invalid-side target explains the error without opening an unrelated inspector")
+	app.runtime.interactions.click_slot("ally", 1)
+	expect(app.screens.top() == "battle" and app.game.hand[0].target_slot == 0 and app.screen_host.battle_root.hud.notice_label.text.contains("inimigos"), "An invalid-side target explains the error without opening an unrelated inspector")
 	expect(app.cards[0].get_instance_id() == node_id, "Target editing retains the actual card node")
 	await key(KEY_BACKSPACE)
-	expect(app.game.selected.is_empty() and app.targeting_index == -1, "Clear shortcut leaves no stale aiming state")
+	expect(app.game.selected.is_empty() and app.runtime.turn.targeting_index == -1, "Clear shortcut leaves no stale aiming state")
 	app.registry["hud.discard"].grab_focus()
 	await key(KEY_ENTER)
 	expect(app.screens.top() == "pile" and focus_key() == "pile.back", "Discard inspection is available by keyboard with a working back path")
@@ -222,40 +222,40 @@ func _run() -> void:
 	companion.can_act_round = app.game.round_number + 1
 	app._sync_battle()
 	expect(app.cards[1].blocked and app.cards[1].blocked_caption == "PRÓXIMA RODADA", "Waiting after revive is distinguished from incapacitation")
-	var old_battle: int = app.battle_root.get_instance_id()
-	app.busy = true
+	var old_battle: int = app.screen_host.battle_root.get_instance_id()
+	app.runtime.turn.busy = true
 	app.preferences.set_value("large_text", true)
-	expect(app.battle_root.get_instance_id() == old_battle and not is_equal_approx(app.header_text_scale, app.preferences.text_scale()), "Large-text rebuilding is deferred while the committed event stream is visible")
-	app.busy = false
+	expect(app.screen_host.battle_root.get_instance_id() == old_battle and not is_equal_approx(app.header_text_scale, app.preferences.text_scale()), "Large-text rebuilding is deferred while the committed event stream is visible")
+	app.runtime.turn.busy = false
 	app._sync_text_scale()
-	expect(app.battle_root.get_instance_id() != old_battle and is_equal_approx(app.header_text_scale, app.preferences.text_scale()), "Deferred text scale applies as soon as feedback releases the battle")
+	expect(app.screen_host.battle_root.get_instance_id() != old_battle and is_equal_approx(app.header_text_scale, app.preferences.text_scale()), "Deferred text scale applies as soon as feedback releases the battle")
 	# Inspect only the public enemy view: full exposes authored effects, restricted modes do not.
 	var shown_enemy: Dictionary = app.game.enemies[0]
 	var intent: Dictionary = {"actor_uid": int(shown_enemy.uid), "actor_slot": int(shown_enemy.slot), "category": "attack", "nature": "lightning", "conditions": {"electrified": 2}, "damage": 4, "scope": "single", "target_slot": 1}
 	app.game.enemy_plan = [intent]
 	for mode in ["full", "partial", "hidden"]:
 		app.game.information_mode = mode
-		app.inspection = {"umbral": app._public_individual(shown_enemy), "enemy": true}
+		app.runtime.interactions.inspection = {"umbral": app._public_individual(shown_enemy), "enemy": true}
 		app._push("inspect")
 		await process_frame
 		var paragraphs: String = ""
-		for node in app.modal_root.find_children("*", "Label", true, false): paragraphs += node.text + "\n"
+		for node in app.screen_host.modal_root.find_children("*", "Label", true, false): paragraphs += node.text + "\n"
 		expect(paragraphs.contains("Natureza anunciada") == (mode == "full") and paragraphs.contains("Anuncia Eletrificado") == (mode == "full"), "Intent inspection obeys public nature/condition visibility: " + mode)
 		app._pop()
 	# Dense combat feedback stays inside the canvas and reserves space for its full motion.
 	for reduced in [false, true]:
-		app.effects.clear()
-		app.effects.reduced_motion = reduced
-		for i in range(24): app.effects.popup(Vector2(0, 0), ["BROTAÇÃO", "+6 ESCUDO", "+2 HP", "INCÊNDIO"][i % 4])
+		app.screen_host.battle_root.hud.effects.clear()
+		app.screen_host.battle_root.hud.effects.reduced_motion = reduced
+		for i in range(24): app.screen_host.battle_root.hud.effects.popup(Vector2(0, 0), ["BROTAÇÃO", "+6 ESCUDO", "+2 HP", "INCÊNDIO"][i % 4])
 		var rectangles: Array[Rect2] = []
-		for label in app.effects.popups:
-			var rectangle: Rect2 = app.effects._popup_rect(label)
-			expect(Rect2(Vector2.ZERO, app.effects.size).encloses(rectangle), "Normal/reduced-motion popup path stays inside the canvas")
+		for label in app.screen_host.battle_root.hud.effects.popups:
+			var rectangle: Rect2 = app.screen_host.battle_root.hud.effects._popup_rect(label)
+			expect(Rect2(Vector2.ZERO, app.screen_host.battle_root.hud.effects.size).encloses(rectangle), "Normal/reduced-motion popup path stays inside the canvas")
 			for previous in rectangles: expect(not rectangle.intersects(previous), "Dense damage, condition and support popup paths never overlap")
 			rectangles.append(rectangle)
-		expect(app.effects.popups.size() <= 18, "Readable popup layout preserves the bounded feedback pool")
-	app.effects.clear()
-	app.effects.reduced_motion = app.preferences.values.reduced_motion
+		expect(app.screen_host.battle_root.hud.effects.popups.size() <= 18, "Readable popup layout preserves the bounded feedback pool")
+	app.screen_host.battle_root.hud.effects.clear()
+	app.screen_host.battle_root.hud.effects.reduced_motion = app.preferences.values.reduced_motion
 	# Explicit capture destination can be canceled, then confirmed into a free slot.
 	app.game.new_run(42013)
 	app.game.phase = "reward"
@@ -265,7 +265,7 @@ func _run() -> void:
 	var before_capture: String = JSON.stringify([app.game.party, app.game.reward_offers, app.game.rng.state])
 	app.registry["reward.0"].grab_focus()
 	await key(KEY_ENTER)
-	expect(app.screens.top() == "capture_destination" and app.capture_slot == 0 and app.registry["capture.slot.1"].disabled, "Capture suggests a genuinely free field slot and keeps the occupied slot unavailable")
+	expect(app.screens.top() == "capture_destination" and app.rewards.capture_slot == 0 and app.registry["capture.slot.1"].disabled, "Capture suggests a genuinely free field slot and keeps the occupied slot unavailable")
 	await key(KEY_ESCAPE)
 	expect(app.screens.top() == "reward" and JSON.stringify([app.game.party, app.game.reward_offers, app.game.rng.state]) == before_capture, "Canceling capture preserves the rolled individual, offers and RNG")
 	app.registry["reward.0"].grab_focus()
@@ -278,9 +278,9 @@ func _run() -> void:
 	await key(KEY_P)
 	app.registry["plan.cast"].grab_focus()
 	await key(KEY_ENTER)
-	expect(app.busy and app.phase_label.text.begins_with("EXECUTANDO"), "A valid plan can be committed directly from its editor, with a distinct execution phase")
+	expect(app.runtime.turn.busy and app.screen_host.battle_root.hud.phase_label.text.begins_with("EXECUTANDO"), "A valid plan can be committed directly from its editor, with a distinct execution phase")
 	await create_timer(0.6).timeout
-	expect(not app.busy and not app.command_strip.visible, "Resolved commands leave the strip before the next plan")
+	expect(not app.runtime.turn.busy and not app.screen_host.battle_root.hud.command_strip.visible, "Resolved commands leave the strip before the next plan")
 	# Expanded hands keep their cards readable and reachable through real focus.
 	app.game.new_run(42013)
 	for slot in [0, 2]:
@@ -295,7 +295,7 @@ func _run() -> void:
 	await process_frame
 	await process_frame
 	await process_frame
-	var hand_scroll: ScrollContainer = app.hand_view.get_parent()
+	var hand_scroll: ScrollContainer = app.screen_host.battle_root.hud.hand_view.get_parent()
 	expect(app.cards.size() == 18 and app.cards.back().size.x >= 128, "An eighteen-card modified hand preserves readable card width")
 	expect(hand_scroll.scroll_horizontal > 0 and hand_scroll.get_global_rect().has_point(app.cards.back().get_global_rect().get_center()), "Keyboard focus reveals the final card of an expanded hand")
 	app.cards.front().grab_focus()
@@ -366,11 +366,11 @@ func _run() -> void:
 	expect(app.game.preview().valid and app.game.preview().actions == 1 and int(app.game.umbral_by_uid(1).hp) == 0, "The selector queues delayed replacement as one action and preserves the incapacitated body until commitment")
 	await key(KEY_SPACE)
 	await create_timer(0.6).timeout
-	expect(not app.busy and app.game.active_party(true).size() == 2 and int(app.game.umbral_by_uid(1).slot) == -1, "Conjurar completes a delayed replacement without forcing a third active")
+	expect(not app.runtime.turn.busy and app.game.active_party(true).size() == 2 and int(app.game.umbral_by_uid(1).slot) == -1, "Conjurar completes a delayed replacement without forcing a third active")
 	# A finishing blow leaves no next hand; presentation must retain the old
 	# cards without indexing into the empty model during the animation.
 	var displayed_hand: Array = app.cards.map(func(card): return card.card.instance_id)
-	app.busy = true
+	app.runtime.turn.busy = true
 	app.game.hand.clear()
 	app.game.phase = "reward"
 	app._sync_selection()

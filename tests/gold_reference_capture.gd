@@ -10,7 +10,7 @@ func run() -> void:
 	root.add_child(app)
 	app.visual_capture = true
 	app.preferences.values.reduced_motion = true
-	app.menu_root.apply_preferences(true,true,1.0)
+	app.screen_host.menu_root.apply_preferences(true,true,1.0)
 	await capture("menu")
 	# An explicit visual fixture, isolated from user storage; discoveries are not fabricated in production.
 	app.codex_progress.mark("umbrals","ember")

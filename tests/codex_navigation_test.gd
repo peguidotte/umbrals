@@ -74,34 +74,34 @@ func run() -> void:
 	if not expect(app.screens.top() == "codex", "Back from a related power keeps the codex open"):
 		await finish()
 		return
-	expect(app.modal_root.category == "umbrals" and app.modal_root.selected == "ember", "Back restores originating Umbral")
-	expect(app.modal_root.record_section == "details", "Back restores originating record tab")
+	expect(app.screen_host.modal_root.category == "umbrals" and app.screen_host.modal_root.selected == "ember", "Back restores originating Umbral")
+	expect(app.screen_host.modal_root.record_section == "details", "Back restores originating record tab")
 	expect(root.gui_get_focus_owner() == app.registry["codex.related.fireball"], "Back restores the related-power focus")
 	# Follow two links from a lineage on the second page, including a scrolled record.
 	await press("codex.next")
 	await press("codex.entry.dew")
 	await press("codex.evolution")
-	expect(app.modal_root.selected == "mareveu", "Evolution opens the evolved record")
+	expect(app.screen_host.modal_root.selected == "mareveu", "Evolution opens the evolved record")
 	await press("codex.section.details")
 	app.registry["codex.related.moon_tide"].grab_focus()
 	for frame in range(4): await process_frame
 	# Use the real scroll produced by revealing the focused link; its position
 	# depends on the record layout, and the source must be genuinely visible.
 	await process_frame
-	var saved_scroll: int = app.modal_root.detail_scroll.scroll_vertical
+	var saved_scroll: int = app.screen_host.modal_root.detail_scroll.scroll_vertical
 	expect(saved_scroll > 0, "Origin record is genuinely scrolled")
 	await capture("01-origin")
 	var model: String = JSON.stringify([app.game.party,app.game.hand,app.game.rng.state,app.codex_progress.records,app.session.run_save.load_snapshot()])
 	await key(KEY_ENTER)
-	expect(app.modal_root.category == "powers" and app.modal_root.selected == "moon_tide", "Lineage technique opens from evolved record")
+	expect(app.screen_host.modal_root.category == "powers" and app.screen_host.modal_root.selected == "moon_tide", "Lineage technique opens from evolved record")
 	await capture("02-power")
 	await key(KEY_ESCAPE)
-	expect(app.screens.top() == "codex" and app.modal_root.selected == "mareveu" and app.modal_root.page == 1, "Back restores evolution and gallery page")
-	expect(app.modal_root.detail_scroll.scroll_vertical == saved_scroll, "Back restores exact scroll position")
+	expect(app.screens.top() == "codex" and app.screen_host.modal_root.selected == "mareveu" and app.screen_host.modal_root.page == 1, "Back restores evolution and gallery page")
+	expect(app.screen_host.modal_root.detail_scroll.scroll_vertical == saved_scroll, "Back restores exact scroll position")
 	expect(root.gui_get_focus_owner() == app.registry["codex.related.moon_tide"], "Back restores technique focus")
 	await capture("03-returned")
 	await press("codex.back")
-	expect(app.screens.top() == "codex" and app.modal_root.selected == "dew" and app.modal_root.page == 1, "Visible Back button restores base lineage on its page")
+	expect(app.screens.top() == "codex" and app.screen_host.modal_root.selected == "dew" and app.screen_host.modal_root.page == 1, "Visible Back button restores base lineage on its page")
 	expect(root.gui_get_focus_owner() == app.registry["codex.evolution"], "Evolution link focus restored")
 	for down in [true,false]:
 		var event = InputEventJoypadButton.new()

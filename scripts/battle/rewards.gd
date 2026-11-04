@@ -1,5 +1,8 @@
 extends RefCounted
 ## Reward destination and card collection operations over explicit roster data.
+const EncounterSetup = preload("res://scripts/battle/encounter_setup.gd")
+const Content = preload("res://scripts/content.gd")
+const Evolution = preload("res://scripts/battle/evolution.gd")
 const Targeting = preload("res://scripts/battle/targeting.gd")
 
 static func by_uid(roster: Array, uid: int) -> Dictionary:
@@ -45,3 +48,51 @@ static func persist_card_collection(party: Array, hand: Array, deck: Array, disc
 				seen[card.instance_id] = true
 		individual.cards = owned
 
+
+static func apply_offer(offer_index: int, replace_uid: int, capture_slot: int, phase: String, reward_offers: Array, party: Array, hand: Array, deck: Array, discard_pile: Array, suspended_cards: Dictionary, max_team: int) -> bool:
+	if phase != "reward" or offer_index < 0 or offer_index >= reward_offers.size(): return false
+	var offer: Dictionary = reward_offers[offer_index]
+	if replace_uid != -1 and (offer.kind != "capture" or party.size() < max_team): return false
+	if offer.kind == "capture" and party.size() >= max_team and by_uid(party, replace_uid).is_empty(): return false
+	var destination: int = -1
+	if offer.kind == "capture":
+		destination = capture_slot
+		if destination == -2:
+			destination = int(by_uid(party, replace_uid).slot) if party.size() >= max_team else -1
+		if not destination in capture_destinations(offer_index, replace_uid, phase, reward_offers, party): return false
+	elif capture_slot != -2: return false
+	if offer.kind != "capture":
+		var candidate: Dictionary = by_uid(party, int(offer.uid))
+		if candidate.is_empty() or not Evolution.valid(candidate, offer, Content.evolution_edges(candidate)): return false
+	persist_card_collection(party, hand, deck, discard_pile, suspended_cards)
+	if offer.kind == "capture":
+		if party.size() >= max_team:
+			var old: Dictionary = by_uid(party, replace_uid)
+			if old.is_empty(): return false
+			var index: int = party.find(old)
+			var captured: Dictionary = offer.umbral.duplicate(true)
+			captured.slot = destination
+			party[index] = captured
+		else:
+			var captured: Dictionary = offer.umbral.duplicate(true)
+			captured.slot = destination
+			party.append(captured)
+	else:
+		var individual: Dictionary = by_uid(party, int(offer.uid))
+		if individual.is_empty() or not Evolution.valid(individual, offer, Content.evolution_edges(individual)): return false
+		var evolved: Dictionary = individual.duplicate(true)
+		evolved.form_id = str(offer.target_form_id)
+		Evolution.apply(individual, evolved.form_id, Content.species_stats(evolved))
+		# Existing instances and learned power IDs survive. No automatic signature cards.
+	return true
+
+static func prepare(reward_offers: Array, party: Array, starter_species: String, encounter: int, expedition_mode: bool, next_uid: int, rng: RandomNumberGenerator) -> void:
+	reward_offers.clear()
+	var route: Array = Content.CAPTURE_ROUTES[starter_species]
+	var reward_index: int = (0 if Content.ENCOUNTERS[encounter].get("id", "") == "clearing" else 1) if expedition_mode else encounter
+	var species: String = str(route[clampi(reward_index, 0, route.size() - 1)])
+	var pool: Array = Content.PASSIVE_POOLS[species]
+	var passive: String = str(pool[rng.randi_range(0, pool.size() - 1)])
+	reward_offers.append({"kind": "capture", "umbral": EncounterSetup.make_umbral(species, passive, next_uid)})
+	for individual in party:
+		reward_offers.append_array(Evolution.offers(individual, Content.evolution_edges(individual)))

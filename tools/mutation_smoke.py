@@ -12,9 +12,9 @@ mutations = {
     "Fourth shared action incorrectly allowed": ("const ENERGY = 3", "const ENERGY = 4"),
     "Seed reaction consumption removed": ('scripts/battle/round_resolution.gd', 'if not reaction.is_empty() and bool(reaction.consume): Conditions.consume(target, str(reaction.condition))', 'if false: Conditions.consume(target, str(reaction.condition))'),
     "Reserve cards reinserted as one owner block": ('scripts/battle/card_cycle.gd', 'for incoming in returning: _interleave_draw(incoming)', 'for incoming in returning: deck = incoming + deck'),
-    "Explicit capture destination ignored": ('destination = capture_slot', 'destination = -1'),
+    "Explicit capture destination ignored": ('scripts/battle/rewards.gd', 'destination = capture_slot', 'destination = -1'),
     "Partial KO ignored at encounter start": ('\tif _needs_replacement():\n\t\tphase = "replacement"', '\tif active_party(true).is_empty() and not reserves().is_empty():\n\t\tphase = "replacement"'),
-    "Declined replacement prompt repeated": ('if int(individual.hp) <= 0 and not declined_replacements.has(int(individual.uid)): return true', 'if int(individual.hp) <= 0: return true'),
+    "Declined replacement prompt repeated": ('scripts/battle/battle_view.gd', 'if int(individual.hp) <= 0 and not declined_replacements.has(int(individual.uid)): return true', 'if int(individual.hp) <= 0: return true'),
     "Delayed voluntary KO replacement blocked": ('if outgoing.is_empty() or int(outgoing.get("slot", -1)) < 0: return false', 'if outgoing.is_empty() or int(outgoing.get("slot", -1)) < 0 or int(outgoing.hp) <= 0: return false'),
 }
 detected = []

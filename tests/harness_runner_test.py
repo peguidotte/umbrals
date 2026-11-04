@@ -27,6 +27,29 @@ class NativePython(Executor):
 
 
 class Contracts(unittest.TestCase):
+    def test_fatal_engine_error_stops_a_hung_process_and_keeps_evidence(self):
+        import contextlib
+        import io
+        (self.root / 'hung.py').write_text(
+            "import time\n"
+            "print('{\"suite\": \"fake\", \"checks\": 3, \"failed\": 0}', flush=True)\n"
+            "print('SCRIPT ER', end='', flush=True)\n"
+            "time.sleep(0.15)\n"
+            "print('ROR: invalid state', flush=True)\n"
+            "time.sleep(10)\n")
+        tasks = {'native': Task('native', 'native', script='hung.py', suite='fake', report='suite-report.json')}
+        started = time.monotonic()
+        with contextlib.redirect_stdout(io.StringIO()):
+            report = run(['native'], {'fresh': True}, self.root / 'fatal-run',
+                         self.root, tasks, NativePython)
+        self.assertLess(time.monotonic() - started, 5)
+        self.assertEqual(report['status'], 'failed')
+        record = report['tasks']['native']
+        self.assertIn('Fatal engine error', record['error'])
+        self.assertIn('SCRIPT ERROR: invalid state', record['log_excerpt'])
+        self.assertEqual(record['report']['checks'], 3)
+        self.assertGreater(record['report']['failed'], 0)
+
     def test_parallel_ci_rejects_incomplete_mixed_and_tampered_results(self):
         from datetime import datetime, timezone
         from unittest.mock import patch

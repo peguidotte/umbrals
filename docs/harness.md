@@ -111,7 +111,8 @@ Workers nativos são limitados; import/export e browser têm locks. Tarefas com 
 lock não preenchem workers aguardando outra tarefa do próprio run. Locks de arquivo
 coordenam execuções simultâneas. Métricas separam processo, espera do lock e duração total;
 ações de navegação comuns também têm timings.
-Falhas incluem trechos limitados do log no console e no relatório; o CI publica
+O executor detecta mensagens fatais do engine e encerra o grupo de processos,
+preservando contagens e logs da falha. Falhas incluem trechos limitados do log no console e no relatório; o CI publica
 `umbral-diagnostics` separadamente das capturas e dos builds, sem projetos
 temporários de fixtures ou caches. `Recover harness failure diagnostics` permite
 recuperar o log de uma tarefa de um artifact antigo pelo ID.
@@ -132,8 +133,9 @@ python tools/iterate.py --review-only <execução>
 Corrija os alvos afetados primeiro; depois congele fontes e execute o grafo completo.
 Testes comportamentais completos rodam novamente; apenas importação/exportação válidas
 podem ser reutilizadas. Filtros de caso/fixture/viewport não entram em `verify --full`.
-O gate do CI exige scope full, cobertura completa, todas as tarefas e dez cenários
-aprovados, incluindo a matriz. `--step-timeout` mantém o limite configurável de browser
+O gate do CI agrega preparação completa e quatro grupos isolados de navegador,
+verificando fonte, ferramentas e hashes transferidos, cobertura, dez cenários e
+matriz completa. Veja [CI](ci.md). `--step-timeout` mantém o limite configurável de browser
 (1.800 segundos por padrão); não reduz as asserções.
 
 `iterate` acrescenta comparação e HTML/ZIP portátil; inspecione renders e vídeo e
@@ -143,8 +145,9 @@ Os self-tests do runner cobrem dependências, filtros, cache corrompido, retomad
 isolamento, processos interrompidos, workers, símbolos globais dos módulos Python,
 divergência da main e distinção entre foco e aceitação completa.
 
-O guard arquitetural registra separadamente a dívida já existente na main atual e
-impede que ela cresça. Veja [architecture-guidelines.md](architecture-guidelines.md).
+O guard arquitetural verifica limites de tamanho, dependências da camada application,
+widgets/plataforma no main e referências de host; também registra a dívida residual
+de compatibilidade e impede que ela cresça. Veja [architecture-guidelines.md](architecture-guidelines.md).
 Verde não significa que essa dívida já foi eliminada, nem certifica diversão, áudio
 ou desempenho em hardware.
 

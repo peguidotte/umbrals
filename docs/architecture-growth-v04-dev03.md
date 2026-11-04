@@ -1,6 +1,6 @@
 # V04-DEV-03 — próximas fronteiras de crescimento
 
-Base de produto: main `6e1b2edd6333998c9523e91d2a67969730d5d7ed`, confirmada por preflight com fetch. O usuário autorizou implementar as cinco frentes com agentes GPT-6.1 Terra e entregar tudo na main. Esta nota é um plano e um checkpoint de retomada; não declara as implementações locais como integradas ou aprovadas.
+**Registro histórico, não instruções de retomada atuais.** A base desse plano era a main `6e1b2edd6333998c9523e91d2a67969730d5d7ed`. A integração posterior e suas evidências estão no [roadmap](roadmap.md#v04-dev-03--modelos-conteúdo-e-compatibilidade-incremental); use o [mapa atual](architecture-map.md) e o preflight para trabalho novo. Os eventos e comandos abaixo preservam o contexto da época.
 
 ## Objetivo e limites
 
@@ -50,7 +50,7 @@ Isso comprova um abort nativo durante importação; não comprova por si só a c
 
 Já estão na main os commits `b636b85` e `6072ce9`, que adicionam a ferramenta reutilizável `.github/workflows/recover-diagnostics.yml`. Ela aceita artefato/tarefa ou encontra a validação falha mais recente, recuperando apenas o diagnóstico selecionado no console.
 
-## Retomada obrigatória
+## Retomada planejada na época (histórica)
 
 1. Restabelecer o ambiente e conferir `git status`, arquivos dos seis agentes e evidências locais; preservar tudo que estiver sem commit.
 2. Buscar a main atual e incorporar por fast-forward os commits remotos de diagnóstico e esta nota, sem sobrescrever o trabalho local.
@@ -75,3 +75,7 @@ para 1.115 e Rules para 528 linhas significativas; ainda há dívida explícita.
 A aceitação integrada e revisão ficam em `artifacts/architecture-v03-verified-20261103/`.
 Consulte o resultado efetivo em run.json e as observações em review-notes.md.
 Esta referência de evidência não transforma um resultado pendente/falhado em sucesso.
+
+## Confirmação posterior
+
+O [run GitHub 41737897245](https://github.com/peguidotte/umbrals/actions/runs/41737897245) passou o CI completo em cerca de 42 minutos, incluindo a importação fria. Isso não identifica a causa raiz do abort anterior. A evidência é daquele commit/run, não de alterações posteriores.

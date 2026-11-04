@@ -8,7 +8,8 @@ import re
 from harness_io import ROOT, results_dir
 
 ALLOWED = {
-    'composition': {'rules', 'catalog', 'ui', 'storage', 'assets', 'battle', 'expedition', 'domain', 'session', 'platform'},
+    'composition': {'application', 'rules', 'catalog', 'ui', 'storage', 'assets', 'battle', 'expedition', 'domain', 'session', 'platform'},
+    'application': {'application', 'session', 'rules', 'ui', 'platform', 'catalog', 'assets', 'battle', 'domain'},
     'rules': {'catalog', 'battle', 'domain'},
     'battle': {'catalog', 'battle', 'domain'},
     'domain': {'catalog', 'battle', 'domain'},
@@ -28,7 +29,7 @@ def layer(path):
     if path == 'scripts/content.gd': return 'catalog'
     if path == 'scripts/codex_progress.gd': return 'session'
     if path in {'scripts/storage.gd', 'scripts/expedition/run_save.gd'}: return 'storage'
-    for name in ('battle', 'ui', 'assets', 'expedition', 'domain', 'session', 'platform', 'catalog'):
+    for name in ('application', 'battle', 'ui', 'assets', 'expedition', 'domain', 'session', 'platform', 'catalog'):
         if path.startswith('scripts/' + name + '/'): return name
     return None
 
@@ -43,13 +44,14 @@ def metrics(path, source):
     }
     if owner in {'rules', 'battle', 'domain', 'catalog', 'expedition'}:
         patterns['pure-domain'] = r'\b(?:FileAccess|DirAccess|JavaScriptBridge|HTTPClient|HTTPRequest|AudioServer|Input|SceneTree|Node|Control)\b|\bget_tree\s*\('
-    if owner == 'composition':
+    if owner in {'composition', 'application'}:
         patterns['widget-ownership'] = r'\b(?:Button|Label|TextureRect|VBoxContainer|HBoxContainer|PanelContainer|ColorRect|MarginContainer|HSlider|CheckButton)\.new\('
         patterns['platform-ownership'] = r'\b(?:FileAccess|DirAccess|JavaScriptBridge)\b|create_tween\('
     if owner == 'ui':
         patterns['view-commands'] = r'\bgame\.(?:play|toggle|redraw|choose_reward|new_run|queue_item|queue_swap)\s*\(|\bgame\.\w+\s*(?:=(?!=)|\+=|-=)'
-        patterns['host-reference'] = r'\b(?:app|host|coordinator)\s*[:=]'
-    if owner in {'rules', 'battle', 'domain', 'catalog', 'ui', 'session'}:
+    if owner in {'ui', 'application'}:
+        patterns['host-reference'] = r'\b(?:app|host|coordinator|main)\s*[:=]'
+    if owner in {'application', 'rules', 'battle', 'domain', 'catalog', 'ui', 'session'}:
         patterns['ordinal-forms'] = r'\.stage\b|var stage\s*:'
     if owner in {'rules', 'battle'}:
         patterns['species-switch'] = r'\b(?:\w+\.)?species\s*==\s*[\"\'][a-z][a-z0-9_]*[\"\']'
@@ -94,7 +96,18 @@ def check(sources, baseline):
 
 
 def negative_checks(sources, baseline):
+    sources = dict(sources, **{'scripts/application/layer_probe.gd': 'extends RefCounted'})
     cases = [
+        ('view imports application', 'scripts/ui/negative.gd', 'const Bad = preload("res://scripts/application/layer_probe.gd")', 'dependency-direction'),
+        ('domain imports application', 'scripts/domain/negative.gd', 'const Bad = preload("res://scripts/application/layer_probe.gd")', 'dependency-direction'),
+        ('session imports application', 'scripts/session/negative.gd', 'const Bad = preload("res://scripts/application/layer_probe.gd")', 'dependency-direction'),
+        ('application imports main', 'scripts/application/negative.gd', 'const Bad = preload("res://scripts/main.gd")', 'dependency-direction'),
+        ('application imports storage', 'scripts/application/negative.gd', 'const Bad = preload("res://scripts/storage.gd")', 'dependency-direction'),
+        ('application captures coordinator', 'scripts/application/negative.gd', 'var host: Control', 'host-reference'),
+        ('application captures main', 'scripts/application/negative.gd', 'var main: Control', 'host-reference'),
+        ('application owns widget', 'scripts/application/negative.gd', 'func bad(): Label.new()', 'widget-ownership'),
+        ('application owns platform', 'scripts/application/negative.gd', 'func bad(): FileAccess.open("x", 1)', 'platform-ownership'),
+        ('application module grows', 'scripts/application/negative.gd', 'var x = 0\n' * 351, 'lines'),
         ('domain imports UI', 'scripts/battle/negative.gd', 'const Bad = preload("res://scripts/ui/kit.gd")', 'dependency-direction'),
         ('domain uses storage', 'scripts/battle/negative.gd', 'func bad(): FileAccess.open("x", 1)', 'pure-domain'),
         ('ordinal form in view', 'scripts/ui/negative.gd', 'func bad(): return individual.stage', 'ordinal-forms'),

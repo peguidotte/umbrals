@@ -39,9 +39,14 @@ Passar no CI demonstra essas validações e a exportação. Windows ainda exige 
 
 ## Registro modular da main atual
 
-O job headless quick-checks roda antes de validate; o fechamento completo mantém os
-próprios testes para vincular evidência às fontes daquele runner. Ambos usam
-harness_lib/registry.py. O gate exige scope full, cobertura completa, matriz e dez
-cenários, incluindo expedição e menu atuais. As oito mutações e validação de releases
-imutáveis permanecem. Resultados isolados e cache/retomada nunca dispensam comportamento
-no fechamento. A dívida arquitetural histórica aparece separadamente no relatório.
+A preparação executa o grafo headless completo e exports Web, incluindo verificação
+do pacote. Quatro jobs isolados de navegador executam integration, layout, expedition
+e os outros sete cenários sobre os exports Web transferidos e verificados. Cada
+worker importa o projeto Godot localmente para gerar seu plano. Preparação e workers
+publicam diagnósticos compactos próprios, além dos diagnósticos agregados. O agregador
+confere fonte, ferramentas, preparação, hashes, dez cenários e matriz completa antes
+de gerar o relatório e a revisão. Builds desktop e smoke Linux são separados. O registro
+`harness_lib/registry.py` continua dono das tarefas e cobertura; execução local full
+segue o fluxo de [harness](harness.md). Evidência de cada execução pertence à revisão
+que a produziu. O [run anterior 41737897245](https://github.com/peguidotte/umbrals/actions/runs/41737897245)
+passou o CI completo em cerca de 42 minutos; não é evidência para mudanças posteriores.
