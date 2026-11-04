@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: '3.12'
+          python-version: '3.12.16'
       - name: Validate immutable assets
         env:
           ASSET_PR_BASE: ${{ github.event.pull_request.base.sha }}
@@ -76,7 +76,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: '3.12'
+          python-version: '3.12.16'
       - name: Prepare tool paths
         run: printf 'FERAL_STATE_ROOT=%s/umbral-tools\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -104,7 +104,13 @@ jobs:
           source tools/environment.sh
           mkdir -p test-results
           godot --headless --editor --import --quit >test-results/browser-import.log 2>&1
-          if rg -n 'SCRIPT ERROR:|^ERROR:|instances leaked|Resources still in use' test-results/browser-import.log; then cat test-results/browser-import.log; exit 1; fi
+          if grep -En 'SCRIPT ERROR:|^ERROR:|instances leaked|Resources still in use' test-results/browser-import.log; then
+            cat test-results/browser-import.log
+            exit 1
+          else
+            scan_status=$?
+            if [ "$scan_status" -ne 1 ]; then exit "$scan_status"; fi
+          fi
       - name: Verify preparation and run scenarios
         run: |
           mkdir -p artifacts
@@ -143,7 +149,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: '3.12'
+          python-version: '3.12.16'
       - run: printf 'FERAL_STATE_ROOT=%s/umbral-tools\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
@@ -168,7 +174,12 @@ jobs:
           python tools/package.py
           mkdir -p test-results
           builds/linux/Umbral.x86_64 --headless -- --smoke-exit >test-results/native-linux.log 2>&1
-          if rg -n 'SCRIPT ERROR:|^ERROR:|instances leaked|Resources still in use' test-results/native-linux.log; then exit 1; fi
+          if grep -En 'SCRIPT ERROR:|^ERROR:|instances leaked|Resources still in use' test-results/native-linux.log; then
+            exit 1
+          else
+            scan_status=$?
+            if [ "$scan_status" -ne 1 ]; then exit "$scan_status"; fi
+          fi
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: umbral-builds
@@ -197,7 +208,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: '3.12'
+          python-version: '3.12.16'
       - run: python -m pip install -r tools/requirements-browser.txt
       - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         with:
