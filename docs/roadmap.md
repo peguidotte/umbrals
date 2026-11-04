@@ -1009,3 +1009,22 @@ e abrigo portátil, preferencialmente em Umbral da mãe, ainda sem especificaç�
 lore/segunda sala. Protagonista é exploração separada; nome provisório não entra no
 código. Aceitação integral e CI do HEAD final são gates antes do merge; resultados
 finais registrados no PR. Versão permanece 0.3.0.
+
+
+### V05-UX-05 — casa inicial de Pietro
+
+A orientação de Pedro fixa a sala como parte da casa inicial, separada do futuro
+abrigo dentro do Umbral da mãe. A primeira implementação começa com uma saída
+breve da cama e permite percorrer quarto → sala → cozinha, subir/descer a escada
+e explorar o quarto da mãe. Portas/objetos exigem aproximação; não há seletor de
+cômodos. A saída externa mantém a preparação e o save/continuar exato existentes.
+
+`house-input` passou 44 checks nativos; `house-painted-visual` passou 71 checks Web
+com vídeo e capturas reais após a revisão de arte das passagens. A tentativa
+`house-painted-passages` detectou fonte editada durante o teste e permanece
+invalidada, apesar de suas 44 asserções sem falha. O fechamento roda novamente
+com fontes congeladas, incluindo os cinco formatos com todos os cômodos;
+resultado final/CI ficam no PR de rascunho. Não é aceite completo por esses
+resultados focados. [Escopo, revisão e limites](house-v05-ux05.md). Próxima fatia:
+cena com a mãe e entrega posterior do abrigo, sem assumir economia/cosmologia
+ou aprovar um desenho de Umbral por inferência. Versão permanece 0.3.0.

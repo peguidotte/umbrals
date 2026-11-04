@@ -590,11 +590,25 @@
         }
       }
     },
+    "world/pietro-house": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/world/pietro-house/versions/1.0.0/manifest.json",
+          "sha256": "f1579afbab754568bcfd74dbe2de1a23a6a0781646939b8ce98309b9fcd5dcbb",
+          "status": "production"
+        }
+      }
+    },
     "world/refuge-lateral": {
       "versions": {
         "1.0.0": {
           "manifest": "assets/world/refuge-lateral/versions/1.0.0/manifest.json",
           "sha256": "d4c985940b2f330c426664c152a9fda1a9a13b94ae2b98a8be7093a6f716a9bf",
+          "status": "production"
+        },
+        "1.1.0": {
+          "manifest": "assets/world/refuge-lateral/versions/1.1.0/manifest.json",
+          "sha256": "e3865e792d4881a2c7f562def5ac4cbdeaef55ead4e6cd37db6a3eda400718de",
           "status": "production"
         }
       }

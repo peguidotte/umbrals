@@ -59,7 +59,8 @@ const WORLD_BATTLE_CLEARING: String = "res://assets/world/battle-clearing/versio
 const WORLD_BATTLE_CLEARING_DEPTH: String = "res://assets/world/battle-clearing-depth/versions/1.0.0/background.png"
 const WORLD_GOLD_FOREST: String = "res://assets/world/gold-forest/versions/1.0.0/texture.png"
 const WORLD_MOONLIT_CLEARING: String = "res://assets/world/moonlit-clearing/versions/1.0.0/background.png"
-const WORLD_REFUGE_LATERAL: String = "res://assets/world/refuge-lateral/versions/1.0.0/background.png"
+const WORLD_PIETRO_HOUSE: String = "res://assets/world/pietro-house/versions/1.0.0/rooms.png"
+const WORLD_REFUGE_LATERAL: String = "res://assets/world/refuge-lateral/versions/1.1.0/background.png"
 const WORLD_TITLE_FOREST: String = "res://assets/world/title-forest/versions/1.0.0/texture.png"
 
 const PATHS: Dictionary = {
@@ -122,6 +123,7 @@ const PATHS: Dictionary = {
 	"world/battle-clearing-depth": WORLD_BATTLE_CLEARING_DEPTH,
 	"world/gold-forest": WORLD_GOLD_FOREST,
 	"world/moonlit-clearing": WORLD_MOONLIT_CLEARING,
+	"world/pietro-house": WORLD_PIETRO_HOUSE,
 	"world/refuge-lateral": WORLD_REFUGE_LATERAL,
 	"world/title-forest": WORLD_TITLE_FOREST,
 }

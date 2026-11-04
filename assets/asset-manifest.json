@@ -4520,6 +4520,72 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 2975689,
+      "id": "world/pietro-house@1.0.0:first-source",
+      "kind": "review",
+      "module": "world/pietro-house",
+      "path": "assets/world/pietro-house/versions/1.0.0/review/first-source.png",
+      "role": "first-source",
+      "sha256": "386abdd923adae27c518a2d8f609e8e63452133eac76291df5644fb8be4347f4",
+      "source": {
+        "edit_history": "Both original generated PNG outputs preserved byte-for-byte. Runtime uses the doorway-continuity edit. Initial output retained in review/first-source.png. Regions 965x543, 965x543, 965x544 selected at runtime; no pixel edits.",
+        "generation_brief": "Three stacked side-on timber house rooms: single bed, kitchen/stair hall, mother bedroom. Clear foreground walking floor, no text or actors, teal forest and amber lighting.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral, using project-owned living room as style reference.",
+        "recorded_date_utc": "2026-11-04",
+        "review_status": "Source inspected; first implementation art, pending Pedro review and in-engine validation. Production denotes runtime eligibility, not user art approval.",
+        "style_reference": {
+          "path": "assets/world/refuge-lateral/versions/1.0.0/background.png",
+          "sha256": "25f8379d091ddf2e7ef2e92ac3817bca09d436747c59397a7b6f21336c50f42d"
+        },
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          965,
+          1629
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2714988,
+      "id": "world/pietro-house@1.0.0:texture",
+      "kind": "texture",
+      "module": "world/pietro-house",
+      "path": "assets/world/pietro-house/versions/1.0.0/rooms.png",
+      "role": "texture",
+      "sha256": "980a92569de41366de80d6053f52f1645b4cac8a2fe085423a06909ae814b686",
+      "source": {
+        "edit_history": "Both original generated PNG outputs preserved byte-for-byte. Runtime uses the doorway-continuity edit. Initial output retained in review/first-source.png. Regions 965x543, 965x543, 965x544 selected at runtime; no pixel edits.",
+        "generation_brief": "Three stacked side-on timber house rooms: single bed, kitchen/stair hall, mother bedroom. Clear foreground walking floor, no text or actors, teal forest and amber lighting.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral, using project-owned living room as style reference.",
+        "recorded_date_utc": "2026-11-04",
+        "review_status": "Source inspected; first implementation art, pending Pedro review and in-engine validation. Production denotes runtime eligibility, not user art approval.",
+        "style_reference": {
+          "path": "assets/world/refuge-lateral/versions/1.0.0/background.png",
+          "sha256": "25f8379d091ddf2e7ef2e92ac3817bca09d436747c59397a7b6f21336c50f42d"
+        },
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          965,
+          1630
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
       "bytes": 2841832,
       "id": "world/refuge-lateral@1.0.0:texture",
       "kind": "texture",
@@ -4552,6 +4618,39 @@
         "mode": "RGB"
       },
       "version": "1.0.0"
+    },
+    {
+      "bytes": 2656857,
+      "id": "world/refuge-lateral@1.1.0:texture",
+      "kind": "texture",
+      "module": "world/refuge-lateral",
+      "path": "assets/world/refuge-lateral/versions/1.1.0/background.png",
+      "role": "texture",
+      "sha256": "d96cc4de7c287d388f1beb4f224c9da89abf3bc3398827be752fdc102c62bd9e",
+      "source": {
+        "edit_history": "Original output PNG copied byte-identically, including embedded metadata; no pixel edits. Prior release retained unchanged.",
+        "generation_brief": "Preserve moonlit living-room composition, scale and exterior exit; integrate small bedroom and kitchen timber doorways.",
+        "kind": "generated original edit",
+        "license_record": "Original artwork generated for Umbral from project-owned living-room reference.",
+        "recorded_date_utc": "2026-11-04",
+        "review_status": "Source inspected; runtime and Pedro review recorded separately.",
+        "style_reference": {
+          "path": "assets/world/refuge-lateral/versions/1.0.0/background.png",
+          "sha256": "25f8379d091ddf2e7ef2e92ac3817bca09d436747c59397a7b6f21336c50f42d"
+        },
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.1.0"
     },
     {
       "bytes": 2627978,

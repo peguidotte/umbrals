@@ -1,57 +1,62 @@
-"""Real keyboard traversal; production bridge remains read-only."""
+"""Real home traversal; the production bridge remains read-only."""
+
 def depart(page, wait):
-    wait("window.umbralState.screen === 'refuge' && window.umbralState.refuge.armed")
-    # Returning from departure requires leaving the threshold before re-entry.
+    wait("window.umbralState.screen === 'refuge' && window.umbralState.refuge.armed && !window.umbralState.refuge.waking")
+    home = page.evaluate('window.umbralState.refuge')
+    if home['room'] == 'mother' or home['on_stairs']:
+        page.keyboard.down('s')
+        try:
+            wait("window.umbralState.refuge.room === 'kitchen' && !window.umbralState.refuge.on_stairs", timeout=30000)
+        finally:
+            page.keyboard.up('s')
+    if page.evaluate("window.umbralState.refuge.room === 'kitchen'"):
+        page.keyboard.down('a')
+        try:
+            wait("window.umbralState.refuge.room === 'living'", timeout=30000)
+        finally:
+            page.keyboard.up('a')
     if not page.evaluate('window.umbralState.refuge.exit_ready'):
         page.keyboard.down('a')
-        page.wait_for_timeout(550)
-        page.keyboard.up('a')
+        try:
+            wait("window.umbralState.refuge.position[0] < 1430", timeout=15000)
+        finally:
+            page.keyboard.up('a')
     page.keyboard.down('d')
     try:
-        wait("window.umbralState.screen === 'journey'", timeout=20000)
+        wait("window.umbralState.screen === 'journey'", timeout=30000)
     finally:
         page.keyboard.up('d')
 
 
 def review_room(page, state, wait, key, click, shot, check):
+    if state()["refuge"]["waking"]:
+        shot("house-waking.png")
     wait("window.umbralState.screen === 'refuge' && window.umbralState.refuge.armed")
     before = state()
     fields = ('hand', 'deck', 'discard', 'party', 'enemies', 'actions', 'stats', 'expedition', 'checkpoint_status')
-    check(state()['focused'] == 'refuge.walk', 'Refuge gives movement initial focus')
+    check(state()['focused'] == 'refuge.walk', 'Home gives walking initial focus')
+    check(state()['refuge']['room'] == 'bedroom' and state()['refuge']['location'] == 'pietro_house', 'Initial home opens in Pietro bedroom, separate from portable shelter')
+    shot('house-pietro-bedroom.png')
+    click('refuge.living')
+    check(state()['refuge']['room'] == 'bedroom', 'Distant bedroom door requires an actual walk')
+    wait("window.umbralState.refuge.room === 'living'", 20000)
     shot('refuge-main.png')
-    page.keyboard.down('a')
-    try:
-        wait("window.umbralState.refuge.position[0] <= 100", timeout=20000)
-        shot('refuge-left-boundary.png')
-    finally:
-        page.keyboard.up('a')
-    page.keyboard.down('d')
-    try:
-        wait("window.umbralState.refuge.position[0] >= 690", timeout=20000)
-    finally:
-        page.keyboard.up('d')
-    page.keyboard.down('d')
-    page.wait_for_timeout(1000)
-    shot('refuge-walking-right.png')
-    page.keyboard.up('d')
-    page.keyboard.down('a')
-    page.wait_for_timeout(1000)
-    shot('refuge-walking-left.png')
-    page.keyboard.up('a')
-    key('Shift')
-    def approach(target):
-        for _ in range(90):
-            x = state()['refuge']['position'][0]
-            if abs(x-target) < 35: return
-            page.keyboard.press('d' if x < target else 'a', delay=70)
-            page.wait_for_timeout(120)
-            key('Shift')
-        raise AssertionError('Could not walk to station')
-    approach(270)
-    check(state()['refuge']['nearby'] == 'codex', 'Horizontal walking reaches reading station')
-    shot('refuge-reading-desk.png')
-    key('e')
-    wait("window.umbralState.screen === 'codex'")
+    click('refuge.kitchen')
+    wait("window.umbralState.refuge.room === 'kitchen'", 20000)
+    shot('house-kitchen.png')
+    click('refuge.stairs')
+    wait("window.umbralState.refuge.on_stairs && window.umbralState.refuge.stair_progress > 0.3", 20000)
+    shot('house-stair-ascent.png')
+    wait("window.umbralState.refuge.room === 'mother'", 20000)
+    shot('house-mother-bedroom.png')
+    click('refuge.stairs')
+    wait("window.umbralState.refuge.room === 'kitchen' && window.umbralState.refuge.on_stairs", 20000)
+    shot('house-stair-descent.png')
+    wait("!window.umbralState.refuge.on_stairs", 20000)
+    click('refuge.living')
+    wait("window.umbralState.refuge.room === 'living'", 20000)
+    click('refuge.codex')
+    wait("window.umbralState.screen === 'codex'", 20000)
     stationary = state()['refuge']['position']
     page.keyboard.press('d', delay=300)
     key('Shift')
@@ -60,22 +65,21 @@ def review_room(page, state, wait, key, click, shot, check):
     key('Escape')
     wait("window.umbralState.screen === 'refuge' && window.umbralState.refuge.armed")
     check(state()['focused'] == 'refuge.walk', 'Closing codex restores walking focus')
-    approach(1170)
-    key('e')
-    check('indisponíveis' in state()['refuge']['notice'], 'Future station makes no functional promise')
+    click('refuge.improvements')
+    wait("window.umbralState.refuge.notice.includes('indisponíveis')", 20000)
     shot('refuge-future-workbench.png')
     depart(page, wait)
-    check(state()['controls']['journey.continue']['disabled'], 'Physical exit opens preparation without starting a new run')
+    check(state()['controls']['journey.continue']['disabled'], 'Exterior exit opens preparation without starting a new run')
     shot('refuge-departure.png')
     key('Escape')
     wait("window.umbralState.screen === 'refuge'")
     page.wait_for_timeout(500)
-    check(state()['screen'] == 'refuge', 'Returning at the threshold does not reopen departure')
-    check(all(before[f] == state()[f] for f in fields), 'Walking and consultations preserve gameplay and checkpoint fields')
+    check(state()['screen'] == 'refuge', 'Returning at threshold does not reopen departure')
+    check(all(before[f] == state()[f] for f in fields), 'All rooms, stairs and consultations preserve gameplay and checkpoint fields')
 
 
 def point_walk(page, state, wait, target_x, expression, touch=False):
-    """Click/tap the actual floor and observe continuous walking, without setters."""
+    """Click/tap actual floor and observe continuous walking, without setters."""
     s = state()
     canvas = page.locator('#canvas').bounding_box()
     room = s['refuge']
@@ -88,3 +92,27 @@ def point_walk(page, state, wait, target_x, expression, touch=False):
     else:
         page.mouse.click(x, y)
     wait(expression, timeout=20000)
+
+
+def responsive_home(session, width, height):
+    """Inspect every real room at each contracted viewport, then leave in living."""
+    wait, click, shot = session.wait, session.click, session.shot
+    wait("window.umbralState.refuge.armed && !window.umbralState.refuge.waking")
+    session.geometry(f'Pietro bedroom {width}×{height}')
+    shot(f'matrix-house-bedroom-{width}x{height}')
+    click('refuge.living')
+    wait("window.umbralState.refuge.room === 'living'", timeout=20000)
+    session.geometry(f'Living room {width}×{height}')
+    shot(f'matrix-house-living-{width}x{height}')
+    click('refuge.kitchen')
+    wait("window.umbralState.refuge.room === 'kitchen'", timeout=20000)
+    session.geometry(f'Kitchen {width}×{height}')
+    shot(f'matrix-house-kitchen-{width}x{height}')
+    click('refuge.stairs')
+    wait("window.umbralState.refuge.room === 'mother'", timeout=20000)
+    session.geometry(f'Mother bedroom {width}×{height}')
+    shot(f'matrix-house-mother-{width}x{height}')
+    click('refuge.stairs')
+    wait("window.umbralState.refuge.room === 'kitchen' && !window.umbralState.refuge.on_stairs", timeout=20000)
+    click('refuge.living')
+    wait("window.umbralState.refuge.room === 'living'", timeout=20000)
