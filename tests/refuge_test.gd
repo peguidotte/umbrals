@@ -113,11 +113,14 @@ func run() -> void:
 	await hold(KEY_A, 18)
 	expect(room.canvas.point != departure and room.canvas.stride == 0, "Reduced motion retains locomotion and removes cosmetic stride")
 	expect(JSON.stringify([app.game.rng.state, app.game.party, app.session.run_save.load_snapshot(), app.session.stats]) == before, "Walking, codex, shortcuts and input leave RNG, HP, checkpoint and stats untouched")
-	app.registry["refuge.settings"].pressed.emit()
+	app.registry["refuge.codex"].pressed.emit()
+	expect(app.screens.top() == "refuge" and room.pointer_target == Space.STATIONS.codex.x, "Object activation starts walking instead of opening a remote panel")
+	for i in range(330): await physics_frame
 	await process_frame
 	var under_settings: Vector2 = room.canvas.point
+	expect(app.screens.top() == "codex", "Walking to an activated object opens its real panel on arrival")
 	await key(KEY_A, true)
-	app.registry["settings.back"].pressed.emit()
+	app.registry["codex.back"].pressed.emit()
 	await process_frame
 	for i in range(8): await physics_frame
 	expect(room.canvas.point == under_settings, "Held input from a modal cannot move the avatar on return")
@@ -125,6 +128,40 @@ func run() -> void:
 	await physics_frame
 	await hold(KEY_A, 10)
 	expect(room.canvas.point.x < under_settings.x, "Releasing then pressing re-arms movement")
+	expect(not room.notice_label.visible and not app.registry.has("refuge.consult") and not app.registry.has("refuge.move_left"), "Room has no persistent instruction bar or movement buttons")
+	app.registry["refuge.exit"].pressed.emit()
+	await physics_frame
+	expect(room.pointer_target > Space.EXIT, "Exit object requests a physical walk across the threshold")
+	await hold(KEY_A, 2)
+	expect(is_nan(room.pointer_target) and room.pointer_intent.is_empty(), "Direct movement cancels automatic approach")
+	app.registry["refuge.codex"].pressed.emit()
+	room._notification(Control.NOTIFICATION_APPLICATION_FOCUS_OUT)
+	expect(is_nan(room.pointer_target) and not room.armed, "Application focus loss cancels pending object interaction")
+	app.registry["refuge.exit"].pressed.emit()
+	for i in range(360): await physics_frame
+	expect(app.screens.top() == "journey", "Pointer approach crosses the right boundary into preparation")
+	await button(JOY_BUTTON_B)
+	for i in range(12): await physics_frame
+	expect(app.screens.top() == "refuge", "Returning at the door does not reopen preparation automatically")
+	app.registry["refuge.exit"].pressed.emit()
+	for i in range(12): await physics_frame
+	expect(app.screens.top() == "journey", "Explicit door activation works again after returning at its threshold")
+	await button(JOY_BUTTON_B)
+	app.registry["refuge.codex"].pressed.emit()
+	await key(KEY_TAB, true)
+	await key(KEY_TAB, false)
+	expect(not room.has_focus() and is_nan(room.pointer_target), "Tab cancels an approach instead of leaving a resumable destination")
+	var published: Array[Vector2] = []
+	room.changed.connect(func(): published.append(room.canvas.point))
+	room.grab_focus()
+	room.armed = true
+	room.canvas.point = Vector2(Space.LEFT + 1, Space.FLOOR_Y)
+	room.elapsed = 0
+	Input.action_press("umbral_refuge_left")
+	room._physics_process(1.0 / 60)
+	Input.action_release("umbral_refuge_left")
+	expect(not published.is_empty() and published.back().x == Space.LEFT, "Boundary arrival publishes the exact final position between periodic updates")
+	expect(JSON.stringify([app.game.rng.state, app.game.party, app.session.run_save.load_snapshot(), app.session.stats]) == before, "Pointer approaches, door re-entry and focus cancellation preserve gameplay and checkpoint state")
 	app.audio.shutdown()
 	app.queue_free()
 	await process_frame

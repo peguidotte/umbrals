@@ -19,6 +19,17 @@ def review_room(page, state, wait, key, click, shot, check):
     fields = ('hand', 'deck', 'discard', 'party', 'enemies', 'actions', 'stats', 'expedition', 'checkpoint_status')
     check(state()['focused'] == 'refuge.walk', 'Refuge gives movement initial focus')
     shot('refuge-main.png')
+    page.keyboard.down('a')
+    try:
+        wait("window.umbralState.refuge.position[0] <= 100", timeout=20000)
+        shot('refuge-left-boundary.png')
+    finally:
+        page.keyboard.up('a')
+    page.keyboard.down('d')
+    try:
+        wait("window.umbralState.refuge.position[0] >= 690", timeout=20000)
+    finally:
+        page.keyboard.up('d')
     page.keyboard.down('d')
     page.wait_for_timeout(1000)
     shot('refuge-walking-right.png')
@@ -63,24 +74,17 @@ def review_room(page, state, wait, key, click, shot, check):
     check(all(before[f] == state()[f] for f in fields), 'Walking and consultations preserve gameplay and checkpoint fields')
 
 
-def pointer_walk(page, state, wait, identity, expression, touch=False):
-    """Hold an actual pointer on a movement control; never invoke game methods."""
+def point_walk(page, state, wait, target_x, expression, touch=False):
+    """Click/tap the actual floor and observe continuous walking, without setters."""
     s = state()
-    control = s['controls'][identity]
     canvas = page.locator('#canvas').bounding_box()
-    x = canvas['x'] + control['cx'] / s['logical_size'][0] * canvas['width']
-    y = canvas['y'] + control['cy'] / s['logical_size'][1] * canvas['height']
-    client = page.context.new_cdp_session(page) if touch else None
+    room = s['refuge']
+    logical_x = room['scene_origin'][0] + target_x * room['scene_scale']
+    logical_y = room['scene_origin'][1] + 825 * room['scene_scale']
+    x = canvas['x'] + logical_x / s['logical_size'][0] * canvas['width']
+    y = canvas['y'] + logical_y / s['logical_size'][1] * canvas['height']
     if touch:
-        client.send('Input.dispatchTouchEvent', {'type': 'touchStart', 'touchPoints': [{'x': x, 'y': y}]})
+        page.touchscreen.tap(x, y)
     else:
-        page.mouse.move(x, y)
-        page.mouse.down()
-    try:
-        wait(expression, timeout=20000)
-    finally:
-        if touch:
-            client.send('Input.dispatchTouchEvent', {'type': 'touchEnd', 'touchPoints': []})
-            client.detach()
-        else:
-            page.mouse.up()
+        page.mouse.click(x, y)
+    wait(expression, timeout=20000)
