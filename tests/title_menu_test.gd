@@ -29,6 +29,11 @@ func active_playbacks(audio: Node) -> Array[WeakRef]:
 			result.append(weakref(player.get_stream_playback()))
 	return result
 
+func labels_in(node: Node) -> String:
+	var result: String = node.text + "\n" if node is Label else ""
+	for child in node.get_children(): result += labels_in(child)
+	return result
+
 func run() -> void:
 	app = load("res://scenes/main.tscn").instantiate()
 	root.add_child(app)
@@ -47,6 +52,10 @@ func run() -> void:
 	expect(app.screens.top() == "journey" and app.registry["journey.continue"].disabled, "No-save Journey disables Continue")
 	expect(app.registry["journey.new"].caption.text == "NOVA EXPEDIÇÃO" and app.registry["journey.new"].caption.is_visible_in_tree(), "Native caption is rendered above its plate")
 	expect(not app.screen_host.menu_root.input_active, "Journey owns title interaction")
+	var lobby_copy: String = labels_in(app.screen_host.modal_root)
+	expect("LOBBY" in lobby_copy and "Indisponíveis nesta versão" in lobby_copy and "Possibilidade futura" in lobby_copy, "Lobby distinguishes playable expedition from unavailable improvements and proposed visits")
+	expect(app.screen_host.modal_root.choices.size() == 4, "Future spaces add no fake gameplay actions")
+	expect(JSON.stringify(app.session.run_save.load_snapshot()) == initial_save, "Opening an empty lobby does not create progress")
 	await press("journey.new")
 	await press("starter.ember")
 	expect(app.screens.top() == "map", "New expedition opens map through existing starter flow")
@@ -87,6 +96,9 @@ func run() -> void:
 	roster_view.build(app.ui, public_saved, "", callbacks, func(_node: Control, _key: String, _screen: String): pass, true)
 	await process_frame
 	await process_frame
+	expect("EQUIPE DA EXPEDIÇÃO SALVA · 6/6" in labels_in(roster_view), "Full roster is explicitly scoped to the saved expedition")
+	expect(roster_view.scroller.follow_focus, "Scrolled lobby follows keyboard focus")
+	expect(roster_view.choices[3].get_parent() == roster_view.footer, "Back remains outside scrolling content")
 	expect(roster_view.public_checkpoint.party.size() == 6, "Checkpoint view supports all six saved individuals")
 	expect(roster_view.panel.size.x <= app.size.x - 40 and roster_view.panel.size.y <= app.size.y - 40, "Six-person panel stays within viewport")
 	roster_view.queue_free()

@@ -12,6 +12,7 @@ def run(session):
         shot(f'matrix-menu-{width}x{height}')
         click('menu.play')
         geometry(f'Expedition choices {width}×{height}')
+        shot(f'matrix-lobby-{width}x{height}')
         click('journey.practice')
         geometry(f'Starter {width}×{height}')
         shot(f'matrix-starter-{width}x{height}')
