@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "format": "battle-motion-v1",
+  "form_id": "ember",
+  "motion_source": {
+    "id": "characters/battle-motion",
+    "version": "1.0.0",
+    "role": "motion"
+  },
+  "performances_source": {
+    "id": "attacks/woodland-elements",
+    "version": "1.1.0",
+    "role": "performances"
+  },
+  "states": {
+    "idle": {
+      "group": "states",
+      "clip": "0"
+    },
+    "walk": {
+      "missing": "Creature locomotion has not been authored. Battle dashes are attacks, not a walk cycle."
+    },
+    "hurt": {
+      "group": "states",
+      "clip": "3"
+    }
+  },
+  "attacks": [
+    0,
+    1,
+    2
+  ]
+}
