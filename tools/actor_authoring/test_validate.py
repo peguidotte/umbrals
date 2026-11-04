@@ -10,6 +10,7 @@ import unittest
 
 from tools.actor_authoring.validate import CHANNELS, main, validate_profile
 from asset_pipeline import AssetError, ROOT, file_record, write_json
+from tools.umbrals import ID as CONTENT_ID
 
 
 def frames(offset):
@@ -95,6 +96,23 @@ class ActorAuthoringTests(unittest.TestCase):
     def test_missing_track_is_rejected_without_fallback(self):
         del self.form["states"]["3"]
         self.rejects("hurt: missing")
+
+    def test_content_form_id_with_underscore_is_accepted(self):
+        form_id = "brasa_adulto"
+        self.assertIsNotNone(CONTENT_ID.fullmatch(form_id))
+        self.profile["form_id"] = form_id
+        self.motion["forms"] = {form_id: self.form}
+        self.save()
+        report = self.validate()
+        self.assertTrue(report["valid"])
+        self.assertEqual(report["form_id"], form_id)
+
+    def test_hyphenated_form_id_is_rejected_like_content(self):
+        form_id = "brasa-adulto"
+        self.assertIsNone(CONTENT_ID.fullmatch(form_id))
+        self.profile["form_id"] = form_id
+        self.motion["forms"] = {form_id: self.form}
+        self.rejects("Profile schema")
 
     def test_missing_form_is_rejected_without_proxy(self):
         self.profile["form_id"] = "spore"

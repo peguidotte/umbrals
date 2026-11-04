@@ -32,6 +32,8 @@ de assets e do formato de saves. Uma mudança incompatível exige outro schema e
 adaptador; não reescrever o v1 publicado. O único adaptador desta fatia é
 `battle-motion-v1`, para os canais normalizados de `battle_motion.gd`:
 
+- `form_id` segue o conteúdo: `[a-z][a-z0-9_]*`, com underscore e sem hífen.
+  IDs dos módulos de assets conservam seu contrato separado com hífen.
 - Fontes por `{id, version, role}` exatos, resolvidas nos manifests existentes.
   Reutiliza leitura JSON estrita, schema de módulo, caminhos seguros e integridade
   SHA-256/bytes do pipeline. Não busca `latest` nem consulta runtime-lock.
