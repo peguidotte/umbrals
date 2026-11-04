@@ -38,10 +38,15 @@ func run() -> void:
 	expect(not app.registry.has("menu.practice") and not app.registry.has("menu.continue") , "Practice and Continue remain in the Journey screen")
 	var before_journey: String = JSON.stringify(app.session.run_save.load_snapshot())
 	await press("menu.play")
+	app._menu_intent("journey")
+	await process_frame
 	expect(app.screens.top() == "journey" and app.registry["journey.continue"].disabled, "Play opens expedition choices with Continue disabled without a save")
 	await press("journey.back")
+	await press("refuge.title")
 	expect(app.screens.top() == "menu" and root.gui_get_focus_owner().get_meta("ui_id", "") == "menu.play" and JSON.stringify(app.session.run_save.load_snapshot()) == before_journey, "Canceling expedition choices restores focus and preserves save")
 	await press("menu.play")
+	app._menu_intent("journey")
+	await process_frame
 	await press("journey.new")
 	expect(app.screens.top() == "starter", "New expedition opens starter choice")
 	await press("starter.ember")
@@ -68,6 +73,8 @@ func run() -> void:
 	root.add_child(app)
 	await process_frame
 	await press("menu.play")
+	app._menu_intent("journey")
+	await process_frame
 	expect(not app.registry["journey.continue"].disabled, "Reconstructed app offers Continue")
 	await press("journey.new")
 	expect(app.screens.top() == "confirm_new", "New run asks before replacing checkpoint")
@@ -80,6 +87,8 @@ func run() -> void:
 	app._return_menu()
 	await process_frame
 	await press("menu.play")
+	app._menu_intent("journey")
+	await process_frame
 	await press("journey.continue")
 	expect(app.screens.top() == "battle" and JSON.stringify(app.session.expedition.snapshot()) == stable, "Continue restores exact committed battle, hand and RNG")
 	# Play a legal clearing and accept its capture through the scene before testing map navigation.
@@ -126,6 +135,8 @@ func run() -> void:
 	app._return_menu()
 	await process_frame
 	await press("menu.play")
+	app._menu_intent("journey")
+	await process_frame
 	await press("journey.new")
 	await press("new.confirm")
 	await press("starter.moss")
@@ -150,6 +161,8 @@ func run() -> void:
 	app._return_menu()
 	await process_frame
 	await press("menu.play")
+	app._menu_intent("journey")
+	await process_frame
 	expect(app.registry["journey.continue"].disabled and app.session.saved_checkpoint.is_empty(), "A completed checkpoint ID cannot Continue from an old nonterminal checkpoint")
 	app.queue_free()
 	app = null

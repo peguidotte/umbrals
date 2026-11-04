@@ -5,6 +5,7 @@ signal map_requested
 signal modal_requested(screen: String)
 signal debug_requested
 signal phase_requested
+const RefugeRoom = preload("res://scripts/ui/refuge_room.gd")
 const Codex = preload("res://scripts/ui/codex.gd")
 const ModalFrame = preload("res://scripts/ui/modal_frame.gd")
 var screens: RefCounted
@@ -15,6 +16,7 @@ var preferences: RefCounted
 var viewport: Viewport
 var cards: Array
 var visual_capture: bool = false
+var refuge_root: Control
 var menu_root: Control
 var battle_root: Control
 var map_root: Control
@@ -30,6 +32,15 @@ func configure(stack: RefCounted, focus: RefCounted, world_view: Control, sound:
 	viewport = screen_viewport
 	cards = card_nodes
 	visual_capture = capture
+
+func build_refuge(parent: Control, kit: RefCounted, register: Callable, intent: Callable, debug: Callable) -> void:
+	refuge_root = RefugeRoom.new()
+	parent.add_child(refuge_root)
+	refuge_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	refuge_root.build(kit, register)
+	refuge_root.requested.connect(intent)
+	refuge_root.changed.connect(debug)
+	refuge_root.apply_preferences(preferences.values.reduced_motion, preferences.text_scale())
 
 func remember_focus() -> void:
 	focus_registry.remember(screens.top(), viewport.gui_get_focus_owner())
@@ -55,11 +66,15 @@ func refresh() -> void:
 	if is_instance_valid(title_entrance): title_entrance.kill()
 	menu_root.modulate = Color.WHITE
 	var battle: bool = screens.root() == "battle"
+	world.visible = screens.root() != "refuge"
 	world.title_mode = not battle
 	world.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR if not battle else CanvasItem.TEXTURE_FILTER_NEAREST
 	world.queue_redraw()
 	menu_root.visible = screens.root() == "menu"
 	menu_root.input_active = screens.top() == "menu"
+	if is_instance_valid(refuge_root):
+		refuge_root.visible = screens.root() == "refuge"
+		refuge_root.set_active(screens.top() == "refuge")
 	if is_instance_valid(map_root): map_root.visible = screens.root() == "map"
 	if is_instance_valid(battle_root):
 		battle_root.visible = battle
@@ -70,10 +85,10 @@ func refresh() -> void:
 		modal_root.queue_free()
 	modal_root = null
 	if screens.top() == "map": map_requested.emit()
-	elif screens.top() not in ["menu", "battle"]: modal_requested.emit(screens.top())
+	elif screens.top() not in ["menu", "battle", "refuge"]: modal_requested.emit(screens.top())
 	set_group(screens.top())
-	focus(focus_registry.memory.get(screens.top(), ""), screens.top())
-	if screens.root() == "menu":
+	focus("refuge.walk" if screens.top() == "refuge" else focus_registry.memory.get(screens.top(), ""), screens.top())
+	if screens.root() in ["menu", "refuge"]:
 		audio.set_title(true)
 		var arriving: Control = menu_root if screens.top() == "menu" else modal_root
 		if is_instance_valid(arriving):

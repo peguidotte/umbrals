@@ -1,3 +1,4 @@
+from refuge_browser_review import depart
 """Replay native expedition plans through real Chromium canvas input and preserve evidence."""
 import argparse
 import functools
@@ -88,6 +89,7 @@ try:
                 check(c['disabled'] == (not n['available']), n['id'] + ' availability matches visible button')
         def start_run():
             click('menu.play')
+            depart(page, wait)
             click('journey.new')
             if state()['screen'] == 'confirm_new': click('new.confirm')
             wait("window.umbralState.screen === 'starter'")
@@ -159,6 +161,7 @@ try:
                         page.reload()
                         wait("window.umbralState.screen === 'menu'", 90000)
                         click('menu.play')
+                        depart(page, wait)
                         click('journey.continue')
                         wait("window.umbralState.screen === 'battle'")
                         settled()
@@ -209,9 +212,11 @@ try:
             page.reload()
             wait("window.umbralState.screen === 'menu'", 90000)
             click('menu.play')
+            depart(page, wait)
             check(state()['controls']['journey.continue']['disabled'], 'Completed expedition cannot be resumed after reload')
             check(state()['stats'] == stats_before, 'Reload does not duplicate the terminal result')
             click('journey.back')
+            click('refuge.title')
         load()
         replay('thicket')
         replay('spring')

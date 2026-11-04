@@ -160,6 +160,11 @@
       "id": "characters/owl",
       "version": "1.0.0"
     },
+    "characters/refuge-traveler": {
+      "file": "texture",
+      "id": "characters/refuge-traveler",
+      "version": "1.0.0"
+    },
     "characters/spore": {
       "file": "portrait",
       "id": "characters/spore",
@@ -288,6 +293,11 @@
     "world/moonlit-clearing": {
       "file": "background",
       "id": "world/moonlit-clearing",
+      "version": "1.0.0"
+    },
+    "world/refuge-lateral": {
+      "file": "texture",
+      "id": "world/refuge-lateral",
       "version": "1.0.0"
     },
     "world/title-forest": {

@@ -983,3 +983,18 @@ por 394 hashes de scripts/assets compartilhados, excluindo a view do lobby.
 Esta repetição capturou os estados atualizados; o vídeo permanece evidência
 do mesmo movimento, sem nova gravação redundante. Após o resultado, somente
 estes registros documentais de fechamento foram atualizados.
+
+### V05-UX-03 — refúgio lateral com arte própria
+
+Pedro aprovou a direção lateral na linguagem visual do menu, após rejeitar a
+execução geométrica do PR #6. Branch nova sobre main com lore integrado; tentativa
+anterior preservada sem merge. Cenário original separado de avatar com poses de
+caminhada; saída física à direita, grimório real e bancada explicitamente futura.
+Sem economia, visitantes persistidos, cura ou alteração de save/RNG.
+
+Capturas e vídeo reais orientaram escala/composição. Suítes nativas afetadas,
+percurso Web (incluindo mouse/toque reais) e matriz de cinco resoluções passaram
+nas rodadas focadas. Aceitação integral e CI do HEAD permanecem gates obrigatórios
+antes de integração; seus resultados são registrados no PR e entrega.
+[Escopo, evidências e limites](refuge-v05-ux03.md). Próxima fatia: avaliação da
+execução, personagens e decisões de melhorias/afinidade, sem impor cosmologia.

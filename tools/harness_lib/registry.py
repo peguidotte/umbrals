@@ -37,6 +37,7 @@ NATIVE = {
     'ui-flow': ('ui_flow_test.gd', 'ui_input_flow', ()),
     'battle-motion': ('battle_motion_test.gd', 'battle_motion', ()),
     'startup': ('startup_smoke.gd', 'scene_startup', ()),
+    'refuge': ('refuge_test.gd', 'refuge', ()),
     'title': ('title_menu_test.gd', 'title_menu_scoped', ()),
     'gold-ui': ('gold_ui_test.gd', 'gold_ui', ()),
     'codex-nav': ('codex_navigation_test.gd', 'codex_navigation', ()),
@@ -80,7 +81,7 @@ def registry():
         tasks[name] = Task(name, 'native', ('import',), inputs=(DATA if name in ('rules', 'harness-core', 'expedition-rules', 'expedition-save') else GAME) + ('tests/' + script, 'tests/support/**') + (('tests/fixtures/**',) if name == 'expedition-save' else ()), script='tests/' + script, suite=suite, report='suite-report.json', cases=cases, pattern=pattern, minimum=minimum)
     for name in SCENARIOS:
         dependency = 'packed-fixtures' if name in FIXTURE_SCENARIOS else 'packed-catalog'
-        tasks['browser.' + name] = Task('browser.' + name, 'browser', (dependency,), inputs=GAME + ('tools/browser/session.py', 'tools/browser_smoke.py', 'tools/browser/__init__.py', 'tools/browser/scenarios/__init__.py') + (('tools/browser/' + name + '.py', 'tests/make_browser_plan.gd') if name in ('integration', 'layout') else ('tools/' + ('expedition_browser_smoke.py' if name == 'expedition' else 'title_browser_review.py'), 'tests/make_expedition_plan.gd') if name in ('expedition', 'title') else ('tools/browser/scenarios/' + name + '.py',)), script=name, suite='umbral_ui_experience', report='browser-report.json', lock='browser')
+        tasks['browser.' + name] = Task('browser.' + name, 'browser', (dependency,), inputs=GAME + ('tools/browser/session.py', 'tools/browser_smoke.py', 'tools/browser/__init__.py', 'tools/browser/scenarios/__init__.py', 'tools/refuge_browser_review.py') + (('tools/browser/' + name + '.py', 'tests/make_browser_plan.gd') if name in ('integration', 'layout') else ('tools/' + ('expedition_browser_smoke.py' if name == 'expedition' else 'title_browser_review.py'), 'tests/make_expedition_plan.gd') if name in ('expedition', 'title') else ('tools/browser/scenarios/' + name + '.py',)), script=name, suite='umbral_ui_experience', report='browser-report.json', lock='browser')
     for target in ('Linux', 'Windows'):
         tasks['build.' + target] = Task('build.' + target, 'export', ('import',), script=target, inputs=GAME + ('tools/build_target.py',), suite='web_export', report='build-report.json', cacheable=True, lock='project', order_only=('import',))
     for name, task in list(tasks.items()):

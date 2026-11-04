@@ -8,6 +8,7 @@ static func install() -> void:
 	for action in KEYS:
 		_register(action, KEYS[action], PAD.get(action, -1))
 	for i in range(6): _register("card_%d" % i, KEY_1 + i, -1)
+	_install_refuge()
 	# Enter/A accepts focused controls; Space is reserved for casting, not a GUI double-fire.
 	InputMap.action_erase_events("ui_accept")
 	var enter = InputEventKey.new()
@@ -28,3 +29,25 @@ static func _register(action: String, key: int, pad: int) -> void:
 		var controller = InputEventJoypadButton.new()
 		controller.button_index = pad
 		InputMap.action_add_event(name, controller)
+
+
+static func _install_refuge() -> void:
+	_register("refuge_interact", KEY_E, JOY_BUTTON_A)
+	var enter = InputEventKey.new()
+	enter.physical_keycode = KEY_ENTER
+	InputMap.action_add_event("umbral_refuge_interact", enter)
+	var directions: Array = [
+		["left", KEY_A, KEY_LEFT, JOY_BUTTON_DPAD_LEFT, JOY_AXIS_LEFT_X, -1.0],
+		["right", KEY_D, KEY_RIGHT, JOY_BUTTON_DPAD_RIGHT, JOY_AXIS_LEFT_X, 1.0],
+		["up", KEY_W, KEY_UP, JOY_BUTTON_DPAD_UP, JOY_AXIS_LEFT_Y, -1.0],
+		["down", KEY_S, KEY_DOWN, JOY_BUTTON_DPAD_DOWN, JOY_AXIS_LEFT_Y, 1.0]]
+	for row in directions:
+		var action: String = "refuge_" + row[0]
+		_register(action, row[1], row[3])
+		var arrow = InputEventKey.new()
+		arrow.physical_keycode = row[2]
+		InputMap.action_add_event("umbral_" + action, arrow)
+		var stick = InputEventJoypadMotion.new()
+		stick.axis = row[4]
+		stick.axis_value = row[5]
+		InputMap.action_add_event("umbral_" + action, stick)

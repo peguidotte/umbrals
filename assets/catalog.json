@@ -392,6 +392,15 @@
         }
       }
     },
+    "characters/refuge-traveler": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/refuge-traveler/versions/1.0.0/manifest.json",
+          "sha256": "5005fa584e8e462e895c9872636c9131919b917e6947f12db7dab12ff73a0754",
+          "status": "production"
+        }
+      }
+    },
     "characters/spore": {
       "versions": {
         "1.0.0": {
@@ -577,6 +586,15 @@
         "1.0.0": {
           "manifest": "assets/world/moonlit-clearing/versions/1.0.0/manifest.json",
           "sha256": "ac02a8674e099bc79670d2d48ba68312686e173ce7ae0c0026811cd55451f1b1",
+          "status": "production"
+        }
+      }
+    },
+    "world/refuge-lateral": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/world/refuge-lateral/versions/1.0.0/manifest.json",
+          "sha256": "d4c985940b2f330c426664c152a9fda1a9a13b94ae2b98a8be7093a6f716a9bf",
           "status": "production"
         }
       }

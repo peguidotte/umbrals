@@ -64,6 +64,8 @@ func run() -> void:
 	await key(KEY_ESCAPE)
 	expect(app.screens.top() == "menu" and root.gui_get_focus_owner() == app.registry["menu.codex"], "Back restores menu focus")
 	await activate("menu.play")
+	app._menu_intent("journey")
+	await process_frame
 	expect(app.screens.top() == "journey", "Play still opens expedition choices")
 	await key(KEY_ESCAPE)
 	# Real game startup, no combat simulation.

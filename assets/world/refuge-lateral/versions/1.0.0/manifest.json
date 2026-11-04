@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "world/refuge-lateral",
+  "version": "1.0.0",
+  "status": "production",
+  "description": "Clean contemporary lateral refuge environment; no actors embedded",
+  "dependencies": [],
+  "files": {
+    "texture": {
+      "kind": "texture",
+      "path": "background.png",
+      "bytes": 2841832,
+      "sha256": "25f8379d091ddf2e7ef2e92ac3817bca09d436747c59397a7b6f21336c50f42d",
+      "technical": {
+        "dimensions": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "alpha": false,
+        "frames": 1
+      }
+    }
+  },
+  "provenance": {
+    "kind": "generated original",
+    "tool": "OpenAI Image Gen",
+    "recorded_date_utc": "2026-11-04",
+    "original_output_basename": "exec-9aacecf0-40d4-4925-afb4-3f763b9749e5.png",
+    "original_sha256": "25f8379d091ddf2e7ef2e92ac3817bca09d436747c59397a7b6f21336c50f42d",
+    "license_record": "Original art generated for Umbral; no third-party game assets. Project-owned main artwork used as style reference.",
+    "edit_history": "Original PNG copied byte-identically, including embedded metadata. Atlas regions and pivots are runtime data; no pixel edits.",
+    "review_status": "Original pixels inspected; real Godot Web scene and walking captures reviewed in lateral-composition-review. Integration acceptance remains separate.",
+    "style_reference": {
+      "path": "assets/ui/gold-approved/versions/1.0.0/menu-scene.png",
+      "sha256": "d99fe4bb6f3a4b088dd02b8aee40e08e37a81273a2ae5eee04af594e108fe61d"
+    }
+  }
+}

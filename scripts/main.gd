@@ -52,7 +52,6 @@ var control_registry = ControlRegistry.new()
 var screen_host = ScreenHost.new()
 var world: Control
 var audio: Node
-var menu_stats: Label
 var cards: Array = []
 var session_active: bool = false
 var browser_test: bool = false
@@ -109,7 +108,7 @@ func _ready() -> void:
 	header_text_scale = ui.text_scale
 	theme = ui.make_theme()
 	codex_progress.load_saved()
-	_load_stats()
+	session.load_stats()
 	audio = Audio.new()
 	runtime.configure(game, session, codex_progress, screens, audio, _animate_resolution)
 	_refresh_checkpoint()
@@ -141,6 +140,7 @@ func _ready() -> void:
 	game.state_changed.connect(_on_rule_changed)
 	resized.connect(_layout_changed)
 	_build_menu()
+	screen_host.build_refuge(self, ui, _register, _menu_intent, _queue_debug)
 	_on_screen_changed()
 	_log("ui_started", {"screen": "menu"})
 	if "--smoke-exit" in OS.get_cmdline_user_args(): call_deferred("_smoke_exit")
@@ -283,6 +283,10 @@ func _battle_overlay(screen: String) -> void:
 
 func _menu_intent(intent: String) -> void:
 	match intent:
+		"refuge":
+			screen_host.remember_focus()
+			screen_host.refuge_root.enter()
+			screens.reset("refuge")
 		"back": _pop()
 		"confirm_new": run_flow.confirm_new_expedition()
 		"return_menu": _return_menu()
@@ -320,7 +324,6 @@ func _return_menu() -> void:
 	audio.set_boss(false)
 	_refresh_checkpoint()
 	_update_continue_button()
-	_update_menu_stats()
 	screens.reset("menu")
 
 func _quit() -> void:
@@ -332,6 +335,7 @@ func _quit() -> void:
 
 func _on_preferences_changed() -> void:
 	audio.apply(preferences.values)
+	screen_host.refuge_root.apply_preferences(preferences.values.reduced_motion, preferences.text_scale())
 	world.still = visual_capture or preferences.values.reduced_motion
 	screen_host.menu_root.apply_preferences(preferences.values.reduced_motion, visual_capture, preferences.text_scale())
 	for control in registry.values():
@@ -371,6 +375,8 @@ func _sync_text_scale() -> void:
 func _input(event: InputEvent) -> void:
 	if input_router.route(event, screens.top(), session_active, browser_test):
 		get_viewport().set_input_as_handled()
+	elif is_instance_valid(screen_host.refuge_root) and screen_host.refuge_root.handle_input(event, input_router.last_device):
+		get_viewport().set_input_as_handled()
 
 func _layout_changed() -> void:
 	_queue_debug()
@@ -387,6 +393,7 @@ func _publish_test_state() -> void:
 	var presentation: Dictionary = {"revision": published_revision, "busy": turn.busy, "session_active": session_active, "targeting_index": turn.targeting_index, "logical_size": [size.x, size.y], "device": input_router.last_device, "feedback": screen_host.battle_root.feedback_metrics() if is_instance_valid(screen_host.battle_root) else {"hits": 0, "flights": 0, "bursts": 0, "trauma": 0, "particles": 0}, "rejected_busy_casts": turn.rejected_busy_casts, "overlay_z": screen_host.modal_root.z_index if is_instance_valid(screen_host.modal_root) else 0, "audio": BrowserBridge.audio_snapshot(audio.voices.size()), "node_count": get_tree().get_node_count(), "title_effect": screen_host.menu_root.effect_state(), "title_audio": BrowserBridge.title_audio_snapshot(audio.title_active, audio.navigation_count, audio.awakening_count), "input_serial": input_router.input_serial, "interaction_serial": interaction_serial, "last_interaction": last_interaction}
 	if is_instance_valid(screen_host.modal_root) and screen_host.modal_root is JourneyMenu:
 		presentation["journey_checkpoint"] = screen_host.modal_root.public_checkpoint
+	presentation["refuge"] = screen_host.refuge_root.public_state()
 	BrowserBridge.publish(BrowserSnapshot.build(game, session, screens, preferences, presentation), registry, get_viewport().gui_get_focus_owner())
 
 func _public_individual(individual: Dictionary) -> Dictionary:
@@ -435,9 +442,6 @@ func _prepare_expedition_battle() -> void:
 	if not is_instance_valid(screen_host.battle_root): _build_battle()
 	else: _sync_battle()
 
-func _start_expedition(value: int = 42013, starter: String = "ember") -> void:
-	expedition_flow.start(value, str(preferences.values.information_mode), starter)
-
 func _continue_expedition() -> void:
 	expedition_flow.resume()
 
@@ -449,12 +453,5 @@ func _build_map() -> void:
 func _enter_node(id: String) -> void:
 	expedition_flow.enter_node(id, turn.busy, screens.top())
 
-func _load_stats() -> void:
-	session.load_stats()
-
 func _record_result() -> void:
 	expedition_flow.record_result(game)
-
-func _update_menu_stats() -> void:
-	if not is_instance_valid(menu_stats): return
-	menu_stats.text = "%d vitórias  ·  %d expedições  ·  novos instintos a cada semente" % [session.stats.wins, session.stats.runs]

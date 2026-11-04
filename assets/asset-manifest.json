@@ -3790,6 +3790,66 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 1246,
+      "id": "characters/refuge-traveler@1.0.0:poses",
+      "kind": "data",
+      "module": "characters/refuge-traveler",
+      "path": "assets/characters/refuge-traveler/versions/1.0.0/poses.json",
+      "role": "poses",
+      "sha256": "ec5a1cf242d51d50b54f53f9ad79f5438db64444b0c168f6852664bbca9266ba",
+      "source": {
+        "edit_history": "Original PNG copied byte-identically, including embedded metadata. Atlas regions and pivots are runtime data; no pixel edits.",
+        "kind": "generated original",
+        "license_record": "Original art generated for Umbral; no third-party game assets. Project-owned main artwork used as style reference.",
+        "original_output_basename": "exec-02117221-32e5-43cb-9e1d-02176a42e1d3.png",
+        "original_sha256": "7a19d58d399834f92fec84d3529d16731e7436ef11eb40e7527230aae592e403",
+        "recorded_date_utc": "2026-11-04",
+        "review_status": "Original pixels inspected; real Godot Web scene and walking captures reviewed in lateral-composition-review. Integration acceptance remains separate.",
+        "style_reference": {
+          "path": "assets/characters/battle-creatures/versions/1.0.0/texture.png",
+          "sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb"
+        },
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1020660,
+      "id": "characters/refuge-traveler@1.0.0:texture",
+      "kind": "texture",
+      "module": "characters/refuge-traveler",
+      "path": "assets/characters/refuge-traveler/versions/1.0.0/atlas.png",
+      "role": "texture",
+      "sha256": "7a19d58d399834f92fec84d3529d16731e7436ef11eb40e7527230aae592e403",
+      "source": {
+        "edit_history": "Original PNG copied byte-identically, including embedded metadata. Atlas regions and pivots are runtime data; no pixel edits.",
+        "kind": "generated original",
+        "license_record": "Original art generated for Umbral; no third-party game assets. Project-owned main artwork used as style reference.",
+        "original_output_basename": "exec-02117221-32e5-43cb-9e1d-02176a42e1d3.png",
+        "original_sha256": "7a19d58d399834f92fec84d3529d16731e7436ef11eb40e7527230aae592e403",
+        "recorded_date_utc": "2026-11-04",
+        "review_status": "Original pixels inspected; real Godot Web scene and walking captures reviewed in lateral-composition-review. Integration acceptance remains separate.",
+        "style_reference": {
+          "path": "assets/characters/battle-creatures/versions/1.0.0/texture.png",
+          "sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb"
+        },
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
       "bytes": 1436,
       "id": "characters/spore@1.0.0:portrait",
       "kind": "texture",
@@ -4455,6 +4515,40 @@
         "filtering": "linear",
         "frames": 1,
         "mipmaps": false,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2841832,
+      "id": "world/refuge-lateral@1.0.0:texture",
+      "kind": "texture",
+      "module": "world/refuge-lateral",
+      "path": "assets/world/refuge-lateral/versions/1.0.0/background.png",
+      "role": "texture",
+      "sha256": "25f8379d091ddf2e7ef2e92ac3817bca09d436747c59397a7b6f21336c50f42d",
+      "source": {
+        "edit_history": "Original PNG copied byte-identically, including embedded metadata. Atlas regions and pivots are runtime data; no pixel edits.",
+        "kind": "generated original",
+        "license_record": "Original art generated for Umbral; no third-party game assets. Project-owned main artwork used as style reference.",
+        "original_output_basename": "exec-9aacecf0-40d4-4925-afb4-3f763b9749e5.png",
+        "original_sha256": "25f8379d091ddf2e7ef2e92ac3817bca09d436747c59397a7b6f21336c50f42d",
+        "recorded_date_utc": "2026-11-04",
+        "review_status": "Original pixels inspected; real Godot Web scene and walking captures reviewed in lateral-composition-review. Integration acceptance remains separate.",
+        "style_reference": {
+          "path": "assets/ui/gold-approved/versions/1.0.0/menu-scene.png",
+          "sha256": "d99fe4bb6f3a4b088dd02b8aee40e08e37a81273a2ae5eee04af594e108fe61d"
+        },
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "frames": 1,
         "mode": "RGB"
       },
       "version": "1.0.0"
