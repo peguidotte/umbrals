@@ -110,5 +110,6 @@ reinserção de reservas sem blocos por dono. PLANO também permite conjurar.
 Iniciar expedição abre uma sala explorável: A/D, setas ou controle caminham;
 E/Enter/A consultam o grimório próximo. A saída à direita abre a preparação
 existente, preservando continuar, nova expedição com confirmação e treino.
-Mouse/toque podem segurar as setas na tela para caminhar. A bancada ainda não
-oferece melhorias. [Escopo e evidências](docs/refuge-v05-ux03.md).
+Mouse/toque indicam um ponto do chão ou um objeto para o personagem caminhar até lá.
+A sala não exibe instruções permanentes; Como jogar explica os controles.
+A bancada ainda não oferece melhorias. [Revisão de escala e acesso](docs/refuge-v05-ux04.md).

@@ -1,4 +1,4 @@
-from refuge_browser_review import depart, pointer_walk
+from refuge_browser_review import depart, point_walk
 """Real browser input and captures for the title menu and its card effect."""
 import argparse
 import functools
@@ -124,9 +124,9 @@ try:
         wait("window.umbralState.screen === 'refuge'")
         from refuge_browser_review import review_room
         review_room(page, state, wait, key, click, shot, check)
-        pointer_walk(page, state, wait, 'refuge.move_left', "window.umbralState.refuge.position[0] < 1400")
-        pointer_walk(page, state, wait, 'refuge.move_right', "window.umbralState.screen === 'journey'")
-        check(state()['screen'] == 'journey', 'Mouse hold traverses the physical exit')
+        click('refuge.exit')
+        wait("window.umbralState.screen === 'journey'", 20000)
+        check(state()['screen'] == 'journey', 'Explicit mouse door activation works again after returning at its threshold')
         wait("window.umbralState.screen === 'journey'")
         shot('journey.png')
         key('Escape')
@@ -192,14 +192,16 @@ try:
         shot('touch-menu.png')
         click('menu.play', touch=True)
         wait("window.umbralState.refuge.armed")
-        pointer_walk(page, state, wait, 'refuge.move_left', "window.umbralState.refuge.nearby === 'codex'", touch=True)
-        check(state()['refuge']['nearby'] == 'codex', 'Real touch hold reaches the codex without keyboard')
-        click('refuge.consult', touch=True)
-        wait("window.umbralState.screen === 'codex'")
+        point_walk(page, state, wait, 450, "window.umbralState.refuge.position[0] < 500", touch=True)
+        check(state()['screen'] == 'refuge', 'Touch on floor walks without opening a panel')
+        click('refuge.codex', touch=True)
+        check(state()['screen'] == 'refuge', 'Touch on distant book cannot open it remotely')
+        wait("window.umbralState.screen === 'codex'", 20000)
+        check(state()['refuge']['nearby'] == 'codex', 'Real touch reaches and opens the codex without keyboard')
         click('codex.back', touch=True)
         wait("window.umbralState.screen === 'refuge'")
-        pointer_walk(page, state, wait, 'refuge.move_right', "window.umbralState.screen === 'journey'", touch=True)
-        wait("window.umbralState.screen === 'journey'")
+        click('refuge.exit', touch=True)
+        wait("window.umbralState.screen === 'journey'", 20000)
         check(all(state()['controls'][k]['visible'] and state()['controls'][k]['active']
                   for k in ('journey.new', 'journey.continue', 'journey.practice', 'journey.back')),
               'Touch viewport displays all journey choices')

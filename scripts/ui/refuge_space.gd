@@ -4,8 +4,9 @@ const SIZE = Vector2(1672, 941)
 const FLOOR_Y = 788.0
 const SPAWN = Vector2(700, FLOOR_Y)
 const SPEED = 245.0
-const LEFT = 70.0
-const RIGHT = 1590.0
+# Reserve the enlarged walk poses' 88px extent at both edges.
+const LEFT = 100.0
+const RIGHT = 1570.0
 const EXIT = 1500.0
 const STATIONS = {"codex": Vector2(270, FLOOR_Y), "improvements": Vector2(1170, FLOOR_Y)}
 
