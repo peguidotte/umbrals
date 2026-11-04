@@ -15,7 +15,7 @@ func _boot_fixture() -> void:
 	_start_game()
 	session.expedition = candidate
 	session.expedition_active = true
-	_bind_game(session.expedition.battle)
+	runtime.bind_game(session.expedition.battle)
 	if bool(JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('large_text') === '1'")): preferences.set_value("large_text", true)
 	_sync_battle()
 	screens.reset("battle")

@@ -45,12 +45,12 @@ jobs:
         run: python tools/ci_parallel.py prepare --output artifacts/ci-prepare
       - name: Prepare headless diagnostics
         if: always()
-        run: python tools/ci_diagnostics.py --report artifacts/ci-prepare/harness-run.json --output test-results/ci-prepare-diagnostics.json
+        run: python tools/ci_diagnostics.py --report artifacts/ci-prepare/harness-run.json --output test-results/ci-diagnostics.json
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: umbral-prepare-diagnostics
-          path: test-results/ci-prepare-diagnostics.json
+          path: test-results/ci-diagnostics.json
           retention-days: 14
       - name: Pack preparation for browser workers
         run: tar -cf "$RUNNER_TEMP/prepare.tar" -C artifacts ci-prepare
@@ -118,13 +118,13 @@ jobs:
           python tools/ci_parallel.py shard --prepared artifacts/ci-prepare --group '${{ matrix.group }}' --output 'artifacts/ci-${{ matrix.group }}'
       - name: Prepare browser diagnostics
         if: always()
-        run: python tools/ci_diagnostics.py --report 'artifacts/ci-${{ matrix.group }}/shard.json' --output 'test-results/ci-${{ matrix.group }}-diagnostics.json'
+        run: python tools/ci_diagnostics.py --report 'artifacts/ci-${{ matrix.group }}/shard.json' --output 'test-results/ci-diagnostics.json'
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: umbral-browser-${{ matrix.group }}-diagnostics
           path: |
-            test-results/ci-${{ matrix.group }}-diagnostics.json
+            test-results/ci-diagnostics.json
             test-results/browser-import.log
           retention-days: 14
       - name: Pack browser evidence

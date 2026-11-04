@@ -144,6 +144,50 @@ class Contracts(unittest.TestCase):
             self.assertIsNone(bundle.testzip())
             self.assertTrue({'index.html', 'source-manifest.json', 'browser/gameplay.webm', 'browser/integration/sample.png'} <= set(bundle.namelist()))
 
+    def test_failed_browser_shard_prints_recoverable_task_diagnostics(self):
+        import contextlib
+        import io
+        import threading
+        from unittest.mock import patch
+        import ci_parallel as ci
+        source = source_manifest()
+        probe = Executor(ROOT, self.root, source, {}, threading.Event())
+        prep = {'tasks': {'packed': {'fingerprint': 'fixture', 'outputs': {}}},
+                'tools': probe.versions}
+        task = Task('browser.integration', 'browser', ('packed',), script='integration', report='browser-report.json')
+        script = self.root / 'fail_browser.py'
+        script.write_text("print('SCRIPT ERROR: representative browser failure', flush=True)\nraise SystemExit(1)\n")
+        class FailingBrowser(Executor):
+            def command(self, task, folder, deps):
+                return [sys.executable, str(script)]
+        output = io.StringIO()
+        folder = self.root / 'ci-integration'
+        with patch.object(ci, 'preparation', return_value=prep), patch.object(ci, 'registry', return_value={task.name: task}), \
+             patch.object(ci, 'Executor', FailingBrowser), contextlib.redirect_stdout(output):
+            with self.assertRaisesRegex(ValueError, 'Browser group failed'):
+                ci.shard(folder, self.root / 'prepared', 'integration')
+        self.assertIn('SCRIPT ERROR: representative browser failure', output.getvalue())
+        shard = json.loads((folder / 'shard.json').read_text())
+        self.assertEqual(shard['status'], 'failed')
+        self.assertIn('representative browser failure', shard['tasks'][task.name]['log_excerpt'])
+        diagnostics = self.root / 'ci-diagnostics.json'
+        result = subprocess.run([sys.executable, str(ROOT / 'tools/ci_diagnostics.py'), '--report', str(folder / 'shard.json'),
+                                 '--output', str(diagnostics)], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        compact = json.loads(diagnostics.read_text())
+        self.assertEqual(compact['tasks'][task.name]['status'], 'failed')
+        self.assertIn('representative browser failure', compact['tasks'][task.name]['log_excerpt'])
+        import textwrap
+        import zipfile
+        workflow = (ROOT / '.github/workflows/recover-diagnostics.yml').read_text()
+        recovery = textwrap.dedent(workflow.split("          python - <<'PY'\n", 1)[1].split('          PY\n', 1)[0])
+        with zipfile.ZipFile(self.root / 'evidence.zip', 'w') as archive:
+            archive.write(diagnostics, 'ci-diagnostics.json')
+        env = dict(os.environ, RUNNER_TEMP=str(self.root), TASK_NAME=task.name)
+        recovered = subprocess.run([sys.executable, '-c', recovery], env=env, capture_output=True, text=True)
+        self.assertEqual(recovered.returncode, 0, recovered.stderr)
+        self.assertIn('representative browser failure', recovered.stdout)
+
     def test_parallel_ci_checks_prepared_outputs(self):
         from unittest.mock import patch
         import ci_parallel as ci

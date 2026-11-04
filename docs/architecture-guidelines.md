@@ -34,6 +34,11 @@ assets, saves e decisões do produto. Nunca resolva divergência sobrescrevendo 
 
 Os modelos em `domain/models/` são snapshots tipados e validados usados em planejamento, eventos e restore. O estado vivo continua nos dicionários de Rules; esta rodada não converte todo o runtime em objetos tipados. Catálogos de teste são instâncias isoladas e consultas devolvem cópias.
 
+A troca da Rules ativa passa por `SessionRuntime.bind_game()`, que conecta todos os
+donos de comandos à mesma instância. `main._bind_game()` é apenas o callback de
+apresentação desse sinal. Fixtures e novos fluxos de sessão devem usar a entrada
+do runtime; atribuir só `main.game` ou chamar seu callback deixa comandos no run antigo.
+
 ## Guard incremental e dívida existente
 
 `tools/architecture-baseline.json` registra métricas da main de origem, sem alterá-la.

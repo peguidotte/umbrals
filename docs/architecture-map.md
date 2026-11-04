@@ -25,6 +25,8 @@ flowchart TD
   `reward_flow.gd` coordena recompensas. Só main importa application; essa camada
   não importa main nem acessa armazenamento diretamente. UI, domínio e sessão não
   dependem dela.
+  `SessionRuntime.bind_game()` conecta a Rules ativa a todos os donos de comandos;
+  o callback de main atualiza a apresentação. Fixtures seguem essa mesma entrada.
 - `scripts/expedition/expedition.gd` possui a Rules ativa e navega a expedição;
   `scripts/session/` é dona da persistência, com perfil separado do run.
 - `scripts/rules.gd` possui o estado vivo. `scripts/battle/` recebe entradas explícitas

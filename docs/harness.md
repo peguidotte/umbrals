@@ -76,6 +76,10 @@ contrato atual de continuar partida. Não introduza outro save concorrente com e
 Comando inválido informa o índice e mantém o estado após o prefixo válido. Não há setter
 arbitrário. Fixtures entram por `tests/browser/fixture_entry.tscn` em um projeto Web
 temporário; a ponte JavaScript pública continua somente leitura.
+Após restaurar a expedição, esse boot conecta a batalha por
+`runtime.bind_game(candidate.battle)`. O callback de apresentação de main não
+substitui a conexão dos donos de comandos; os cenários de itens e substituição
+exercitam essa fronteira com ações reais.
 
 O PCK de produção deve excluir script, cena e dados das fixtures. A leitura ocorre em
 diretório vazio, evitando fallback para arquivos do checkout. Scripts compilados são

@@ -105,7 +105,11 @@ def shard(folder, prepared, group):
     records = {}
     for scenario in GROUPS[group]:
         task = tasks['browser.' + scenario]
-        records[task.name] = executor.execute(task, {name: prep['tasks'][name] for name in task.deps})
+        record = executor.execute(task, {name: prep['tasks'][name] for name in task.deps})
+        records[task.name] = record
+        print(f'[{group}] {task.name}: {record["status"]} ({record.get("seconds", 0)}s)', flush=True)
+        if record.get('log_excerpt'):
+            print(f'--- {task.name} failure log (last 12000 bytes) ---\n{record["log_excerpt"]}', flush=True)
     final = source_manifest()['sha256']
     result = {'status': 'passed' if all(x['status'] == 'passed' for x in records.values()) and final == sources['sha256'] else 'failed',
               'source_hash': sources['sha256'], 'final_source_hash': final, 'source_unchanged': final == sources['sha256'],
