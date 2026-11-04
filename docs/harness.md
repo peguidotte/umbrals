@@ -97,6 +97,16 @@ python tools/harness.py resume --from <execução-ou-harness-run.json> --task we
 python tools/harness.py check --suite rules --case visibility --fresh
 ```
 
+Para repetir um grupo de cenários com um único grafo de dependências:
+
+```bash
+python tools/harness.py check --suite browser.inventory,browser.combat,browser.rewards,browser.replacement --label fixture-binding
+```
+
+Importação e export são resolvidos uma vez para esse grupo; o cache só é usado
+quando verificado. Os cenários executam novamente. O resultado continua focado,
+sem substituir a aceitação completa.
+
 Cada run tem diretório único em `artifacts/harness/`, manifesto, relatório bruto,
 resumo e `tasks/<nome>/`. Testes nativos têm user data privado. Importação e exports
 podem usar cache somente se entradas/políticas/ferramentas/opções e hashes das saídas

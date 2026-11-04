@@ -1,6 +1,6 @@
 # CI do Umbral
 
-O workflow **Umbral — validate and build** roda em pushes, pull requests e execução manual. Ubuntu 24.04, Godot 4.6.3, Python 3.12 e as dependências do browser são fixados; as actions oficiais são fixadas por commit, com a versão correspondente ao lado. Ferramentas e caches ficam fora das fontes do jogo. Uma atualização na mesma branch cancela a execução anterior.
+O workflow **Umbral — validate and build** roda em pushes, pull requests e execução manual. Ubuntu 24.04, Godot 4.6.3, Python 3.12.16 e as dependências do browser são fixados; as actions oficiais são fixadas por commit, com a versão correspondente ao lado. Ferramentas e caches ficam fora das fontes do jogo. Uma atualização na mesma branch cancela a execução anterior.
 
 ## O que precisa passar
 
@@ -43,7 +43,10 @@ A preparação executa o grafo headless completo e exports Web, incluindo verifi
 do pacote. Quatro jobs isolados de navegador executam integration, layout, expedition
 e os outros sete cenários sobre os exports Web transferidos e verificados. Cada
 worker importa o projeto Godot localmente para gerar seu plano. Preparação e workers
-publicam diagnósticos compactos próprios, além dos diagnósticos agregados. O agregador
+publicam `ci-diagnostics.json` nos artifacts `umbral-prepare-diagnostics` e
+`umbral-browser-<grupo>-diagnostics`, além do `umbral-diagnostics` agregado; o
+workflow de recuperação consegue ler esses diagnósticos. A verificação de logs falha
+se o scanner estiver indisponível, em vez de interpretar ausência de resultado como sucesso. O agregador
 confere fonte, ferramentas, preparação, hashes, dez cenários e matriz completa antes
 de gerar o relatório e a revisão. Builds desktop e smoke Linux são separados. O registro
 `harness_lib/registry.py` continua dono das tarefas e cobertura; execução local full

@@ -682,19 +682,34 @@ posteriores. O runtime permanece parcialmente baseado em dicionários.
 
 ### V04-DEV-04 — CI, coordenação e mapa atual
 
-Implementação integrada em andamento, autorizada como desbloqueio técnico antes de
-novas funcionalidades. O [mapa atual](architecture-map.md) identifica os novos donos
-de aplicação e apresentação. Main mede 399 linhas significativas, Rules 345, mapa 325
-e status 64; o guard elimina exceções de tamanho, mantendo em Rules sete acessos ao
-catálogo global e seis ocorrências do runtime não tipado por compatibilidade.
+Implementação integrada como desbloqueio técnico antes de novas funcionalidades.
+O [mapa atual](architecture-map.md) identifica os donos de aplicação e apresentação.
+Main mede 399 linhas significativas, Rules 345 e mapa 325; não há exceções de tamanho.
+Em Rules permanecem sete acessos ao catálogo global e seis ocorrências do runtime
+não tipado por compatibilidade.
 
 Checks focados de UI flow, expedição, gold e opções passaram em
-`artifacts/harness/main-architecture-complete-20261104T023240591119Z-4f35c2/`; 14.419
-verificações de regras e oito mutações passaram em snapshot direto anterior. O executor
-preserva logs e contagens ao detectar erro fatal; 30 contratos do harness passaram.
-A aceitação completa com fontes congeladas e revisão é planejada em
-`artifacts/architecture-dev04-verified-20261104/`: consulte seu `run.json` e a CI
-real para o resultado, sem inferir aprovação pelo caminho. A execução preliminar
-[41759797459](https://github.com/peguidotte/umbrals/actions/runs/41759797459) testa
-a paralelização em `320b8ba`, não a aceitação final do produto. Produto permanece
-0.3.0; diversão, arte final e hardware continuam gates humanos abertos.
+`artifacts/harness/main-architecture-complete-20261104T023240591119Z-4f35c2/`;
+14.419 verificações de regras e oito mutações passaram em snapshot direto anterior.
+O executor preserva logs e contagens ao detectar erro fatal; 31 contratos do harness
+passaram, incluindo diagnóstico e recuperação de shard falho.
+
+A tentativa local completa `artifacts/architecture-dev04-verified-20261104/` foi
+interrompida por binding incorreto do adaptador de fixtures após passarem as etapas
+nativas, integration (859) e layout (872); não é aceitação completa. Após corrigir
+para `Runtime.bind_game`, os cenários focados inventory (17), combat (51), rewards
+(5) e replacement (11) passaram em `artifacts/architecture-dev04-fixtures-20261104/`.
+Consulte os relatórios efetivos para detalhes e limites.
+
+A execução preliminar [41759797459](https://github.com/peguidotte/umbrals/actions/runs/41759797459)
+passou em 25m20s sobre `320b8ba`, contra 42m18s do run anterior: cerca de 40% menos
+tempo para a base anterior. A aceitação completa da revisão
+`55168a628f3575acae8db0a4b16f9414712336d7` passou no
+[run 41764501375](https://github.com/peguidotte/umbrals/actions/runs/41764501375),
+em 21m07s de criação a conclusão. Foram 14.419 verificações de regras, 1.136 de
+domínio/UI nativos, 2.288 no navegador, dez cenários, cinco formatos de tela,
+31 contratos do harness e oito mutações detectadas. Exports e inicialização
+Linux também passaram; Windows foi exportado, não executado em Windows.
+Os tempos são os observados nessas execuções. As capturas e a amostra de vídeo
+locais foram revisadas; a aceitação completa pertence à CI vinculada acima.
+Produto permanece 0.3.0; diversão, arte final e hardware continuam gates humanos abertos.
