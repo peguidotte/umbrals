@@ -27,6 +27,118 @@ class NativePython(Executor):
 
 
 class Contracts(unittest.TestCase):
+    def test_parallel_ci_rejects_incomplete_mixed_and_tampered_results(self):
+        from datetime import datetime, timezone
+        from unittest.mock import patch
+        import base64
+        import zipfile
+        import ci_parallel as ci
+        from harness_lib.registry import SCENARIOS
+        root = self.root
+        prepared = root / 'prepared'
+        prepared.mkdir()
+        sources = source_manifest()
+        (prepared / 'source-manifest.json').write_text(json.dumps(sources))
+        tasks = registry()
+        prep_tasks = {}
+        for name in closure(tasks, ci.PREPARE):
+            task_dir = prepared / 'tasks' / name
+            task_dir.mkdir(parents=True)
+            task = tasks[name]
+            report = {'suite': task.suite, 'checks': 1, 'failed': 0}
+            if task.report:
+                (task_dir / task.report).write_text(json.dumps(report))
+            record = {'name': name, 'status': 'passed', 'inputs_verified': True, 'directory': str(task_dir),
+                      'outputs': file_hashes(task_dir), 'report': report}
+            if name in ('web', 'web-fixtures'):
+                (task_dir / 'build').mkdir()
+                record['build_directory'] = str(task_dir / 'build')
+            if name in ('packed-catalog', 'packed-fixtures'):
+                record['build_directory'] = prep_tasks['web' if name == 'packed-catalog' else 'web-fixtures']['build_directory']
+            prep_tasks[name] = record
+        stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+        prep = {'status': 'passed', 'source_hash': sources['sha256'], 'final_source_hash': sources['sha256'],
+                'source_unchanged': True, 'tools': {'godot': '4.6.3'}, 'ci_identity': ci.identity(),
+                'directory': str(prepared), 'requested': list(ci.PREPARE), 'started_utc': stamp, 'tasks': prep_tasks}
+        (prepared / 'harness-run.json').write_text(json.dumps(prep))
+        viewports = json.loads((ROOT / 'docs/ux-contracts.json').read_text())['viewports']
+        png = base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/a4kAAAAASUVORK5CYII=')
+        folders = []
+        for group, scenarios in ci.GROUPS.items():
+            folder = root / group
+            folder.mkdir()
+            records = {}
+            for scenario in scenarios:
+                name = 'browser.' + scenario
+                task_dir = folder / 'tasks' / name
+                task_dir.mkdir(parents=True)
+                report = {'suite': 'umbral_ui_experience', 'scenario': scenario, 'checks': 1, 'failed': 0, 'captures': [], 'seconds': 1}
+                if scenario == 'layout':
+                    report.update(matrix_executed=True, matrix=[{'viewport': {'width': w, 'height': h}, 'status': 'passed'} for w, h in viewports])
+                if scenario == 'integration':
+                    (task_dir / 'gameplay.webm').write_bytes(b'video')
+                    (task_dir / 'sample.png').write_bytes(png)
+                    report['captures'].append({'name': 'sample', 'file': 'sample.png', 'screen': 'battle'})
+                (task_dir / 'browser-report.json').write_text(json.dumps(report))
+                records[name] = {'name': name, 'status': 'passed', 'inputs_verified': True, 'directory': str(task_dir),
+                                 'outputs': file_hashes(task_dir), 'report': report,
+                                 'arguments': {'viewport': None, 'large_text': None, 'fixture': None, 'video': True}}
+            shard = {'directory': str(folder), 'group': group, 'status': 'passed', 'source_unchanged': True,
+                     'source_hash': sources['sha256'], 'final_source_hash': sources['sha256'], 'tools': prep['tools'],
+                     'ci_identity': prep['ci_identity'], 'preparation_digest': ci.preparation_digest(prep), 'tasks': records}
+            (folder / 'shard.json').write_text(json.dumps(shard))
+            folders.append(folder)
+        self.assertEqual(sum(map(len, ci.GROUPS.values())), len(SCENARIOS))
+        def rejected(paths=folders):
+            with self.assertRaises((ValueError, OSError, KeyError)):
+                ci.aggregate(prepared, paths, root / 'result', root / 'ci-run.json')
+        rejected(folders[:-1])
+        rejected(folders[:-1] + [folders[0]])
+        path = folders[0] / 'shard.json'
+        original = path.read_text()
+        for field, value in [('source_hash', 'old'), ('tools', {'godot': 'old'}),
+                             ('preparation_digest', 'other'), ('ci_identity', {'commit': 'old'}), ('status', 'failed')]:
+            changed = json.loads(original); changed[field] = value
+            path.write_text(json.dumps(changed)); rejected()
+        changed = json.loads(original); changed['tasks'].clear()
+        path.write_text(json.dumps(changed)); rejected()
+        path.write_text(original)
+        output = folders[0] / 'tasks/browser.integration/gameplay.webm'
+        output.write_bytes(b'tampered'); rejected(); output.write_bytes(b'video')
+        manifest = prepared / 'source-manifest.json'
+        original_manifest = manifest.read_text()
+        manifest.write_text('{}'); rejected(); manifest.write_text(original_manifest)
+        with patch('harness_lib.builds.publish_build'):
+            ci.aggregate(prepared, folders, root / 'result', root / 'ci-run.json')
+        combined = json.loads((root / 'ci-run.json').read_text())
+        self.assertTrue(combined['coverage']['complete'])
+        self.assertEqual({name[8:] for name in combined['tasks'] if name.startswith('browser.')}, set(SCENARIOS))
+        self.assertEqual(json.loads((root / 'result/source-manifest.json').read_text()), sources)
+        html = (root / 'result/review-standalone.html').read_text()
+        self.assertIn('data:image/png;base64,', html)
+        self.assertIn('download="source-manifest.json"', html)
+        with zipfile.ZipFile(root / 'result/review-bundle.zip') as bundle:
+            self.assertIsNone(bundle.testzip())
+            self.assertTrue({'index.html', 'source-manifest.json', 'browser/gameplay.webm', 'browser/integration/sample.png'} <= set(bundle.namelist()))
+
+    def test_parallel_ci_checks_prepared_outputs(self):
+        from unittest.mock import patch
+        import ci_parallel as ci
+        from harness_lib.registry import Task
+        folder = self.root / 'prepared'
+        task_dir = folder / 'tasks/example'
+        task_dir.mkdir(parents=True)
+        (task_dir / 'suite.json').write_text(json.dumps({'checks': 1, 'failed': 0}))
+        record = {'name': 'example', 'status': 'passed', 'inputs_verified': True,
+                  'directory': str(task_dir), 'outputs': file_hashes(task_dir), 'report': {'checks': 1, 'failed': 0}}
+        report = {'status': 'passed', 'source_unchanged': True, 'source_hash': 'abc', 'final_source_hash': 'abc',
+                  'requested': ['example'], 'tasks': {'example': record}}
+        with patch.object(ci, 'registry', return_value={'example': Task('example', 'python', report='suite.json')}):
+            ci.verify_run(report, folder, ['example'], 'abc')
+            (task_dir / 'suite.json').write_text('tampered')
+            with self.assertRaisesRegex(ValueError, 'Tampered'):
+                ci.verify_run(report, folder, ['example'], 'abc')
+
     def test_recovery_reads_compact_and_legacy_diagnostics(self):
         import textwrap
         import zipfile
