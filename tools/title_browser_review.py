@@ -261,6 +261,8 @@ except Exception:
         try:
             page.screenshot(path=str(OUT / 'failure.png'))
             (OUT / 'failure-state.json').write_text(json.dumps(state(), indent=2, ensure_ascii=False))
+            s = state()
+            print('Title presentation at failure: ' + json.dumps({k: s.get(k) for k in ('screen', 'focused', 'refuge', 'input_serial')}), flush=True)
         except Exception:
             pass
 finally:

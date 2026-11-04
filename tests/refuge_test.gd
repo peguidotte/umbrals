@@ -151,6 +151,17 @@ func run() -> void:
 	await key(KEY_TAB, true)
 	await key(KEY_TAB, false)
 	expect(not room.has_focus() and is_nan(room.pointer_target), "Tab cancels an approach instead of leaving a resumable destination")
+	var published: Array[Vector2] = []
+	room.changed.connect(func(): published.append(room.canvas.point))
+	room.grab_focus()
+	room.armed = true
+	room.canvas.point = Vector2(Space.LEFT + 1, Space.FLOOR_Y)
+	room.elapsed = 0
+	Input.action_press("umbral_refuge_left")
+	room._physics_process(1.0 / 60)
+	Input.action_release("umbral_refuge_left")
+	expect(not published.is_empty() and published.back().x == Space.LEFT, "Boundary arrival publishes the exact final position between periodic updates")
+	expect(JSON.stringify([app.game.rng.state, app.game.party, app.session.run_save.load_snapshot(), app.session.stats]) == before, "Pointer approaches, door re-entry and focus cancellation preserve gameplay and checkpoint state")
 	app.audio.shutdown()
 	app.queue_free()
 	await process_frame

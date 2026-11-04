@@ -21,6 +21,7 @@ var notice_left: float = 0
 var exit_ready: bool = true
 var pointer_target: float = NAN
 var pointer_intent: String = ""
+var walking: bool = false
 var hotspots: Dictionary = {}
 var notice_label: Label
 var title_button: Button
@@ -86,6 +87,7 @@ func set_active(value: bool) -> void:
 		_clear_pointer()
 		armed = false
 		canvas.stride = 0
+		walking = false
 		canvas.queue_redraw()
 	if is_instance_valid(notice_label): notice_label.visible = active and not notice.is_empty()
 
@@ -124,14 +126,18 @@ func _physics_process(delta: float) -> void:
 	elif not is_nan(pointer_target):
 		direction.x = signf(pointer_target - canvas.point.x)
 	var previous: Vector2 = canvas.point
+	var arrived: bool = false
 	canvas.point = Space.walk(previous, direction, delta)
 	if not is_nan(pointer_target) and absf(pointer_target - previous.x) <= absf(canvas.point.x - previous.x):
 		canvas.point.x = pointer_target
+		arrived = true
 		var intent: String = pointer_intent
 		_clear_pointer()
 		if not intent.is_empty(): _interact(intent)
 	if not direction.is_zero_approx(): canvas.facing = direction
 	var moving: bool = not canvas.point.is_equal_approx(previous)
+	var movement_changed: bool = moving != walking
+	walking = moving
 	canvas.stride = canvas.stride + delta * 9 if moving and not reduced else 0
 	canvas.nearby = Space.nearest(canvas.point)
 	canvas.queue_redraw()
@@ -140,14 +146,14 @@ func _physics_process(delta: float) -> void:
 		exit_ready = false
 		_request("journey")
 	elapsed += delta
-	if elapsed >= 0.1 and moving:
+	if arrived or movement_changed or (moving and (elapsed >= 0.1 or canvas.point.x in [Space.LEFT, Space.RIGHT])):
 		elapsed = 0
 		changed.emit()
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
-		_clear_pointer()
 		armed = false
+		_stop_walk()
 
 func _clear_pointer() -> void:
 	pointer_target = NAN
@@ -156,7 +162,9 @@ func _clear_pointer() -> void:
 func _stop_walk() -> void:
 	_clear_pointer()
 	canvas.stride = 0
+	walking = false
 	canvas.queue_redraw()
+	changed.emit()
 
 func _approach(identity: String) -> void:
 	if not active: return

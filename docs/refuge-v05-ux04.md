@@ -50,3 +50,11 @@ passou em Web com vídeo, incluindo reentrada na porta e caminhada por toque.
 Essa comparação comprova a alteração visível; aprovação de proporções por Pedro,
 teste de controle físico e acabamento final do protagonista permanecem separados.
 Aceitação integral e CI do commit final são gates obrigatórios antes do merge.
+
+As primeiras CI do commit 978e698 detectaram que a publicação periódica do estado
+da sala podia parar antes da posição final exata na borda. O caso foi reproduzido
+com falha nativa preservada (1/34), sem reduzir a asserção Web. A sala agora publica
+chegada, início/fim de movimento e limites. quiet-room-final-publication passou
+34 checks e arquitetura; quiet-room-boundary-web passou com captura da borda e
+vídeo real. A aceitação local anterior foi interrompida e preservada para repetir
+o conjunto completo com fontes congeladas após essa correção.
