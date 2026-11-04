@@ -2,6 +2,13 @@
 
 The working tree integrates the first v0.4 battle slice while the product version remains 0.3.0. Acceptance/evidence is recorded in [the implementation note](battle-implementation-v0.4.md); this does not declare the whole 0.4 milestone complete.
 
+## Narrative context
+
+[The lore guide](lore/README.md) separates world and first-game decisions from
+implemented contracts. Consult [the reconciliation map](lore/implementacao.md) for
+D01/D46, starter choices and existing catalog prose. This documentation does not
+authorize changes to mechanics, saves or approved art.
+
 ## Responsibilities
 
 - `content/species/catalog.tres`: ordered manifest of authored species packages. Each `content/species/<id>/species.tres` owns its stable forms, evolution graph, attributes, traits, initial powers, signature, colors, passive pool and form stories. `content/powers/`, `content/items/` and `content/encounters/` own their ordered Resource definitions. `scripts/content.gd` provides queries and curated nature/passive/route configuration; derived compatibility projections are not a second authoring source.
