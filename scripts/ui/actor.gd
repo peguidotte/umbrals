@@ -5,12 +5,19 @@ const Content = preload("res://scripts/content.gd")
 const BattleArt = preload("res://scripts/ui/battle_art.gd")
 const Conditions = preload("res://scripts/battle/conditions.gd")
 const UI = preload("res://scripts/ui/kit.gd")
+const CreatureRig = preload("res://scripts/ui/creature_rig.gd")
+var rig: Node2D
 var portrait: TextureRect
 var caption: Label
 var passive_caption: Label
 var intent_caption: Label
 var identity: Dictionary = {}
-var reduced_motion: bool = false
+var reduced_motion: bool = false:
+	set(value):
+		reduced_motion = value
+		if is_instance_valid(rig):
+			rig.reduced_motion = value
+			if value: stop_motion()
 var still: bool = false
 var idle_clock: float = 0.0
 var accent: Color = UI.GOLD
@@ -35,6 +42,9 @@ func _ready() -> void:
 	portrait.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(portrait)
 	portrait.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
+	rig = CreatureRig.new()
+	portrait.add_child(rig)
+	portrait.self_modulate = Color(1, 1, 1, 0)
 	caption = UI.new().label("", 19, UI.PAPER, true, true)
 	add_child(caption)
 	caption.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
@@ -64,6 +74,7 @@ func _pivot() -> void:
 		var depth: float = [0.90, 1.0, 1.07][clampi(slot, 0, 2)]
 		var factor: float = minf((size.x - 32) / portrait.texture.get_width(), 118.0 * depth / maxf(1, foot.y - float(ground_profile.visible_top)))
 		portrait.size = portrait.texture.get_size() * factor
+		rig.configure(portrait.texture, str(identity.get("art", "")).get_file() if not str(identity.get("art", "")).is_empty() else Content.art_binding(identity).get_file(), portrait.size, foot * factor, portrait.flip_h)
 		if portrait.flip_h: foot.x = portrait.texture.get_width() - foot.x
 		portrait.pivot_offset = foot * factor
 		# The opaque feet, rather than the transparent atlas rectangle, meet the floor.
@@ -75,22 +86,27 @@ func _ground() -> Vector2:
 	return Vector2(size.x * 0.5, size.y - 58)
 
 func set_identity(data: Dictionary, scale_text: float = 1.0) -> void:
+	if is_instance_valid(rig) and int(identity.get("uid", -1)) != int(data.get("uid", -1)): rig.reset()
 	identity = data.duplicate(true)
 	text_scale = scale_text
 	if data.is_empty():
 		portrait.texture = null
+		rig.hide()
+		rig.set_process(false)
 		caption.text = "—"
 		caption.modulate = Color(1, 1, 1, 0.45)
 		passive_caption.text = ""
 		tooltip_text = "Vaga %s · sem retaguarda" % ["superior", "central", "inferior"][slot]
 	else:
+		rig.show()
+		rig.set_process(true)
 		var species: Dictionary = Content.SPECIES.get(data.get("species", ""), {})
 		var art: String = str(data.get("art", ""))
 		if art.is_empty() and not species.is_empty(): art = Content.art_binding(data)
 		portrait.texture = BattleArt.texture(art)
 		ground_profile = BattleArt.ground_profile(art)
 		portrait.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST if portrait.texture is AtlasTexture else CanvasItem.TEXTURE_FILTER_LINEAR
-		portrait.flip_h = enemy and not portrait.texture is AtlasTexture
+		portrait.flip_h = enemy
 		var alive: bool = int(data.get("hp", 1)) > 0
 		portrait.modulate = (Color(0.94, 0.97, 1.0) if slot == 0 else Color.WHITE) if alive else Color(0.4, 0.48, 0.56, 0.6)
 		accent = Color(species.get("color", "dec88d"))
@@ -141,12 +157,25 @@ func set_intent(data: Dictionary) -> void:
 
 func _process(delta: float) -> void:
 	if not is_instance_valid(portrait): return
-	if still or reduced_motion:
-		portrait.scale = Vector2.ONE
-		return
+	portrait.scale = Vector2.ONE
+	rig.reduced_motion = reduced_motion
+	rig.still = still or (not identity.is_empty() and int(identity.get("hp", 0)) <= 0)
+	if still or reduced_motion: return
 	idle_clock += delta
-	# Breathing keeps the foot pivot fixed to its ground anchor.
-	portrait.scale = Vector2(1.0 + sin(idle_clock * 1.4 + float(identity.get("uid", 0))) * 0.006, 1.0 + sin(idle_clock * 1.4 + float(identity.get("uid", 0))) * 0.009)
+
+func visual_ground() -> Vector2:
+	return get_global_transform() * _ground()
+
+func impact_point() -> Vector2:
+	return rig.to_global(rig.project(Vector2(0.55, 0.53))) if is_instance_valid(rig) and portrait.texture != null else get_global_rect().get_center()
+
+func emission_point(index: int, secondary: bool = false) -> Vector2:
+	return rig.socket(index, secondary) if is_instance_valid(rig) else impact_point()
+
+func stop_motion() -> void:
+	if is_instance_valid(rig):
+		rig.reset()
+		rig._refresh()
 
 func _draw() -> void:
 	var ground: Vector2 = _ground()

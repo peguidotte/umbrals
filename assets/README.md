@@ -1,6 +1,6 @@
 # Assets
 
-Asset modules live at `<domain>/<slug>/versions/<semver>/`. Each release owns a manifest with file roles, provenance, hashes, animation contracts and exact dependencies. Existing game art is migrated without visual changes; new attack effects and demo actors are prototypes.
+Asset modules live at `<domain>/<slug>/versions/<semver>/`. Each release owns a manifest with file roles, provenance, hashes, animation contracts and exact dependencies. Demo actors and earlier attack studies remain prototypes; the approved battle performances have explicit production pins.
 
 Read [the architecture and workflow](../docs/assets/README.md) before adding or evolving art. `runtime-lock.json` pins production art; `catalog.json`, `asset-manifest.json` and the Godot binding paths are generated with `python tools/assets.py build`. Validate with `python tools/assets.py validate --base-ref origin/main`.
 
@@ -9,6 +9,22 @@ Domains: attacks, characters, umbrals, traits, passives, items, audio, world, fo
 Original source art remains original to the project. Editable vector/audio sources are in `tools/generate_assets.py` and `tools/generate_audio.py`; VFX sources and references are in `tools/asset_authoring/`. Font licenses are preserved both here and in the font module. Original generated forest PNG metadata is retained. Archived pre-migration inventories and the exact migration map are in `docs/assets/`.
 
 ## Battle assets
+
+`attacks/woodland-elements@1.0.0` is a prototype VFX family generated with
+OpenAI Image Gen (`exec-5845b7c1-b024-4120-9ca6-18c891a321c0`). Its original RGBA
+PNG retains embedded metadata. Sixteen transparent clips are procedurally animated
+from that atlas, with source ownership in `tools/asset_authoring/attack_studies_v4.js`
+and export in `export_element_clips.py`. No third-party game art was used.
+The fifteen standalone choreography previews use this family. The prototype is
+preserved independently of the production version below.
+
+`attacks/woodland-elements@1.1.0` integrates the user-approved revision 5 through
+the production binding `attacks/battle-performances`. Exact dependencies pin
+`characters/battle-motion@1.0.0` (normalized skeletal tracks and calibrated
+sockets for eight forms) and `audio/battle-performances@1.0.0` (fifteen original
+stereo performances). The original character PNG bytes are unchanged. Native
+Godot meshes animate those pixels; these are not hand-redrawn pose sequences.
+See [the runtime integration](../docs/battle-motion-v04-08a.md).
 
 The original first-stage and evolved battle atlases and grounding maps are in `characters/battle-creatures` and `characters/battle-evolved`; their PNG bytes are preserved. The maps use the module texture paths. The original battle provenance and prompts are retained alongside the first atlas. `world/battle-clearing-depth` is the reviewed wide arena, while `world/battle-clearing` retains the earlier artwork. Water portraits, power icons and the backpack are original project vectors. The original v0.4 inventory, including generation briefs, source hashes and review context, is archived in `docs/assets/original-v0.4-manifest.json`.
 

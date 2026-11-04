@@ -1,0 +1,721 @@
+{
+  "animations": {
+    "bark-impact": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "bark-impact",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": false,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "crest-wave": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "crest-wave",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": true,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "electric-impact": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "electric-impact",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": false,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "electric-turbine": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "electric-turbine",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": true,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "ember-flower": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "ember-flower",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": true,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "fire-comet": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "fire-comet",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": true,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "fire-crescent": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "fire-crescent",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": true,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "fire-impact": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "fire-impact",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": false,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "lightning-lance": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "lightning-lance",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": true,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "lightning-wing": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "lightning-wing",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": true,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "root-spire": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "root-spire",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": true,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "thorn-dart": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "thorn-dart",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": true,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "thorn-whip": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "thorn-whip",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": true,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "water-bolt": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "water-bolt",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": true,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "water-impact": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "water-impact",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": false,
+      "pivot": [
+        96,
+        96
+      ]
+    },
+    "water-ribbon": {
+      "columns": 4,
+      "display_size": [
+        192,
+        192
+      ],
+      "file": "water-ribbon",
+      "fps": 24,
+      "frame_size": [
+        192,
+        192
+      ],
+      "frames": 12,
+      "loop": true,
+      "pivot": [
+        96,
+        96
+      ]
+    }
+  },
+  "changes": "Approved v5 elemental performances, event clocks and pinned character/audio dependencies.",
+  "dependencies": [
+    {
+      "id": "characters/battle-motion",
+      "version": "1.0.0"
+    },
+    {
+      "id": "audio/battle-performances",
+      "version": "1.0.0"
+    }
+  ],
+  "description": "Illustrated elemental VFX source atlas for fifteen attack choreography studies",
+  "files": {
+    "bark-impact": {
+      "bytes": 357971,
+      "kind": "texture",
+      "path": "bark-impact.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "1fed84153f924a02dde91c141aea6f5ae6acb0f6fff72be92d63a739d7951041",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "crest-wave": {
+      "bytes": 342157,
+      "kind": "texture",
+      "path": "crest-wave.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "417eae851d6695bd545d826e4d4945351cb68858dd5dcbae910046bbc46cb0b1",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "electric-impact": {
+      "bytes": 389094,
+      "kind": "texture",
+      "path": "electric-impact.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "99f46daece47d0843be6f11be36816003fcd7cf5146398a97b97a297f57fae0a",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "electric-turbine": {
+      "bytes": 412087,
+      "kind": "texture",
+      "path": "electric-turbine.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "b53add83611ba64e93a12a353615e20ecd4e810c40aaad4cdcb67ebcb3263560",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "ember-flower": {
+      "bytes": 424186,
+      "kind": "texture",
+      "path": "ember-flower.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "5d96762971d213e4ac605ace3bd94f8f52f647d770f25982260aa0ae8c423d63",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "fire-comet": {
+      "bytes": 190881,
+      "kind": "texture",
+      "path": "fire-comet.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "266e61076f12a5ba85ef238e0778bb61851d53fcdfe034fe983e5235bb2afe3b",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "fire-crescent": {
+      "bytes": 316837,
+      "kind": "texture",
+      "path": "fire-crescent.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "046803a8f8a9e3ebe2374f042d7710ea715224d07919ea65ba525e5e51dc0e7d",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "fire-impact": {
+      "bytes": 433331,
+      "kind": "texture",
+      "path": "fire-impact.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "38dd808db4c05703df1b2a1f31dcdd5579a2e9429f147813961497877d418ab9",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "lightning-lance": {
+      "bytes": 196752,
+      "kind": "texture",
+      "path": "lightning-lance.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "0625b17331a8718984e9d635b548f0a7066597b301888b23fb3b5d4b7e999eed",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "lightning-wing": {
+      "bytes": 300879,
+      "kind": "texture",
+      "path": "lightning-wing.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "11fca6814bbfd5552cae739375c48c942a16a3b443dcd7724b5ec4b639457ac6",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "performances": {
+      "bytes": 3069,
+      "kind": "data",
+      "path": "performances.json",
+      "provenance": {
+        "approval": "User approved the v5 preview and requested game/main integration.",
+        "kind": "Approved v5 Canvas choreography exported for native Godot presentation",
+        "source_files": {
+          "attack_actor_rig.js": "cd452b426766a2c7080d569e1e36302e45fd4f5b41061b6e2745508d78e20fa8",
+          "attack_choreography.json": "9ab6fb2d24b60cf48b85251c7812164b8d96e72e1b05f379b731310f6a3e41d1",
+          "attack_personalities.js": "e4659f9e68c3adb3f056e73cee99000f679d91d950abfb14e5220e7fb63cce04",
+          "umbral_anatomy.js": "f5e982660d94d3a06c181369b450b51f3135103cd47614e980971cbae8ea4652"
+        }
+      },
+      "sha256": "7fbe4e135e7437eba026f0aa209111f93f2c59c217d685eefc21e133105da609"
+    },
+    "root-spire": {
+      "bytes": 268098,
+      "kind": "texture",
+      "path": "root-spire.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "9c1bbcee9261f38fb4f10358b71e0d988b73f099ed0c54b903f94f4c19135f7b",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "source-atlas": {
+      "bytes": 1872328,
+      "kind": "texture",
+      "path": "source-atlas.png",
+      "sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "thorn-dart": {
+      "bytes": 188547,
+      "kind": "texture",
+      "path": "thorn-dart.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "272e99f08dfe61744e46be337c8fd51c377a5728569bf3c2accc6f1a386bfbe7",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "thorn-whip": {
+      "bytes": 145444,
+      "kind": "texture",
+      "path": "thorn-whip.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "685971bceca535cd74c040a7383ed7dad2da315217c6ac2a9648cb8ccdbc548b",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "water-bolt": {
+      "bytes": 178847,
+      "kind": "texture",
+      "path": "water-bolt.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "34aa94f73a7c91fe1e8347d8a629564c116e1186cf73c92e2ab6663e3c724231",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "water-impact": {
+      "bytes": 278236,
+      "kind": "texture",
+      "path": "water-impact.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "9427dea2d7d6c8eeaef6580980d30125ba59d00e87f29d199b271dbcfeeedf95",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "water-ribbon": {
+      "bytes": 199190,
+      "kind": "texture",
+      "path": "water-ribbon.png",
+      "provenance": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "sha256": "5e88d021bb01b44b680dce76fbe03d090373513e21e8f3929924829071b2c2c0",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "attacks/woodland-elements",
+  "provenance": {
+    "brief": "Four by four transparent atlas of original woodland elemental VFX; richly shaded illustrated pixel art with dark colored contours. Four distinct silhouettes per family: fire, botanical thorns, water and gold/cyan lightning. Right-facing projectiles; no text, creatures, scenery or UI.",
+    "kind": "OpenAI image_gen original generated VFX",
+    "license": "Original session-generated game art; no third-party game assets.",
+    "model_version": "Not exposed by tool; none inferred.",
+    "notes": "Original 1254x1254 RGBA PNG preserved with embedded metadata. Four by four source atlas; runtime clips use explicit source rectangles. Animation is procedural, not hand-drawn flipbook frames.",
+    "original_output_basename": "exec-5845b7c1-b024-4120-9ca6-18c891a321c0.png",
+    "original_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a",
+    "recorded_date_utc": "2026-11-04",
+    "tool": "OpenAI Image Gen"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.1.0"
+}

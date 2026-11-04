@@ -35,6 +35,7 @@ NATIVE = {
     'asset-catalog': ('asset_catalog_test.gd', 'asset_catalog', ()),
     'ui-state': ('ui_state_test.gd', 'ui_state', ()),
     'ui-flow': ('ui_flow_test.gd', 'ui_input_flow', ()),
+    'battle-motion': ('battle_motion_test.gd', 'battle_motion', ()),
     'startup': ('startup_smoke.gd', 'scene_startup', ()),
     'title': ('title_menu_test.gd', 'title_menu_scoped', ()),
     'gold-ui': ('gold_ui_test.gd', 'gold_ui', ()),

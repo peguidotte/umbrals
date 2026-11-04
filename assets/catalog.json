@@ -180,11 +180,34 @@
         }
       }
     },
+    "attacks/woodland-elements": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/attacks/woodland-elements/versions/1.0.0/manifest.json",
+          "sha256": "c6d2c32501d5969b04a4d7a3e8fc1c44d992bad41f2d013f12e8861823ede583",
+          "status": "prototype"
+        },
+        "1.1.0": {
+          "manifest": "assets/attacks/woodland-elements/versions/1.1.0/manifest.json",
+          "sha256": "a80504dde3832d75c776dcddb9c155bb264f6877364cebcf411740b27be7dd86",
+          "status": "production"
+        }
+      }
+    },
     "audio/ambience": {
       "versions": {
         "1.0.0": {
           "manifest": "assets/audio/ambience/versions/1.0.0/manifest.json",
           "sha256": "2d2be2b1797b363212e1e1932af165365077da901a1c463eb6097c518b4c45bb",
+          "status": "production"
+        }
+      }
+    },
+    "audio/battle-performances": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/audio/battle-performances/versions/1.0.0/manifest.json",
+          "sha256": "a77a73cb32ecbe2099c65e57cf7db7baa4954c4a4f2a78c11145d43a3212f36a",
           "status": "production"
         }
       }
@@ -311,6 +334,15 @@
         "1.0.0": {
           "manifest": "assets/characters/battle-evolved/versions/1.0.0/manifest.json",
           "sha256": "9f0810a44baa2ca58a8d74a0119ef255a3673366a899af12909aedcd0ddd2e31",
+          "status": "production"
+        }
+      }
+    },
+    "characters/battle-motion": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/battle-motion/versions/1.0.0/manifest.json",
+          "sha256": "de98bacb7316a3f2905fb73f2a8f94e570840fd4171f889df2748816129fc8e4",
           "status": "production"
         }
       }

@@ -1,0 +1,45 @@
+{
+  "dependencies": [
+    {
+      "id": "characters/battle-creatures",
+      "version": "1.0.0"
+    },
+    {
+      "id": "characters/battle-evolved",
+      "version": "1.0.0"
+    }
+  ],
+  "description": "Eight anatomical rigs, fifteen cast tracks and material-aware reactions, approved v5.",
+  "files": {
+    "motion": {
+      "bytes": 1927260,
+      "kind": "data",
+      "path": "motion.json",
+      "provenance": {
+        "approval": "User approved the v5 preview and requested game/main integration.",
+        "kind": "Approved v5 Canvas choreography exported for native Godot presentation",
+        "source_files": {
+          "attack_actor_rig.js": "cd452b426766a2c7080d569e1e36302e45fd4f5b41061b6e2745508d78e20fa8",
+          "attack_choreography.json": "9ab6fb2d24b60cf48b85251c7812164b8d96e72e1b05f379b731310f6a3e41d1",
+          "attack_personalities.js": "e4659f9e68c3adb3f056e73cee99000f679d91d950abfb14e5220e7fb63cce04",
+          "umbral_anatomy.js": "f5e982660d94d3a06c181369b450b51f3135103cd47614e980971cbae8ea4652"
+        }
+      },
+      "sha256": "2dfd3acad3f9ea62b4936376b9894d38b213fbc97380cb9a38eceac557c9fe83"
+    }
+  },
+  "id": "characters/battle-motion",
+  "provenance": {
+    "approval": "User approved the v5 preview and requested game/main integration.",
+    "kind": "Approved v5 Canvas choreography exported for native Godot presentation",
+    "source_files": {
+      "attack_actor_rig.js": "cd452b426766a2c7080d569e1e36302e45fd4f5b41061b6e2745508d78e20fa8",
+      "attack_choreography.json": "9ab6fb2d24b60cf48b85251c7812164b8d96e72e1b05f379b731310f6a3e41d1",
+      "attack_personalities.js": "e4659f9e68c3adb3f056e73cee99000f679d91d950abfb14e5220e7fb63cce04",
+      "umbral_anatomy.js": "f5e982660d94d3a06c181369b450b51f3135103cd47614e980971cbae8ea4652"
+    }
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

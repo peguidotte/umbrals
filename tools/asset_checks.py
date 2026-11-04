@@ -62,13 +62,20 @@ for item in manifest['assets']:
                 raise RuntimeError(f'Image constraints changed: {item["path"]}')
     if path.suffix == '.wav':
         with wave.open(str(path)) as sound:
-            if sound.getsampwidth()!=2 or sound.getnchannels()!=1 or sound.getframerate()!=22050:
+            # Preserve the original mono migration contract. The approved
+            # performance module has its own explicit stereo/48 kHz contract.
+            expected = (2, 2, 48000) if item['module'] == 'audio/battle-performances' else (2, 1, 22050)
+            actual = (sound.getsampwidth(), sound.getnchannels(), sound.getframerate())
+            if actual != expected:
                 raise RuntimeError(f'PCM format changed: {item["path"]}')
             samples=array('h',sound.readframes(sound.getnframes()))
             if sys.byteorder != 'little': samples.byteswap()
             if not samples or max(abs(sample) for sample in samples) >= 32767:
                 raise RuntimeError(f'Empty or clipped PCM: {item["path"]}')
-            audio.append({'path':item['path'],'frames':len(samples),'peak':max(abs(sample) for sample in samples),'clipped_samples':0})
+            channel_peaks = [max(abs(sample) for sample in samples[channel::sound.getnchannels()]) for channel in range(sound.getnchannels())]
+            if min(channel_peaks) == 0:
+                raise RuntimeError(f'Silent PCM channel: {item["path"]}')
+            audio.append({'path':item['path'],'frames':sound.getnframes(),'channels':sound.getnchannels(),'sample_rate':sound.getframerate(),'channel_peaks':channel_peaks,'peak':max(channel_peaks),'clipped_samples':0})
 report={'suite':'asset_qa','source_assets':len(listed),'failed':0,'audio':audio,'modules':module_report,'migration_originals_verified':len(migration['files']),'normalized_frames_verified':normalized_frames,'limits':'PCM checks do not replace hearing the audio on hardware; hashes do not decide aesthetics or license rights.'}
 results_dir().mkdir(parents=True, exist_ok=True)
 (results_dir() / 'asset-report.json').write_text(json.dumps(report,indent=2))

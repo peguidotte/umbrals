@@ -1881,6 +1881,956 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 357971,
+      "id": "attacks/woodland-elements@1.0.0:bark-impact",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/bark-impact.png",
+      "role": "bark-impact",
+      "sha256": "1fed84153f924a02dde91c141aea6f5ae6acb0f6fff72be92d63a739d7951041",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 342157,
+      "id": "attacks/woodland-elements@1.0.0:crest-wave",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/crest-wave.png",
+      "role": "crest-wave",
+      "sha256": "417eae851d6695bd545d826e4d4945351cb68858dd5dcbae910046bbc46cb0b1",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 389094,
+      "id": "attacks/woodland-elements@1.0.0:electric-impact",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/electric-impact.png",
+      "role": "electric-impact",
+      "sha256": "99f46daece47d0843be6f11be36816003fcd7cf5146398a97b97a297f57fae0a",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 412087,
+      "id": "attacks/woodland-elements@1.0.0:electric-turbine",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/electric-turbine.png",
+      "role": "electric-turbine",
+      "sha256": "b53add83611ba64e93a12a353615e20ecd4e810c40aaad4cdcb67ebcb3263560",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 424186,
+      "id": "attacks/woodland-elements@1.0.0:ember-flower",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/ember-flower.png",
+      "role": "ember-flower",
+      "sha256": "5d96762971d213e4ac605ace3bd94f8f52f647d770f25982260aa0ae8c423d63",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 190881,
+      "id": "attacks/woodland-elements@1.0.0:fire-comet",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/fire-comet.png",
+      "role": "fire-comet",
+      "sha256": "266e61076f12a5ba85ef238e0778bb61851d53fcdfe034fe983e5235bb2afe3b",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 316837,
+      "id": "attacks/woodland-elements@1.0.0:fire-crescent",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/fire-crescent.png",
+      "role": "fire-crescent",
+      "sha256": "046803a8f8a9e3ebe2374f042d7710ea715224d07919ea65ba525e5e51dc0e7d",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 433331,
+      "id": "attacks/woodland-elements@1.0.0:fire-impact",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/fire-impact.png",
+      "role": "fire-impact",
+      "sha256": "38dd808db4c05703df1b2a1f31dcdd5579a2e9429f147813961497877d418ab9",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 196752,
+      "id": "attacks/woodland-elements@1.0.0:lightning-lance",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/lightning-lance.png",
+      "role": "lightning-lance",
+      "sha256": "0625b17331a8718984e9d635b548f0a7066597b301888b23fb3b5d4b7e999eed",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 300879,
+      "id": "attacks/woodland-elements@1.0.0:lightning-wing",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/lightning-wing.png",
+      "role": "lightning-wing",
+      "sha256": "11fca6814bbfd5552cae739375c48c942a16a3b443dcd7724b5ec4b639457ac6",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 268098,
+      "id": "attacks/woodland-elements@1.0.0:root-spire",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/root-spire.png",
+      "role": "root-spire",
+      "sha256": "9c1bbcee9261f38fb4f10358b71e0d988b73f099ed0c54b903f94f4c19135f7b",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1872328,
+      "id": "attacks/woodland-elements@1.0.0:source-atlas",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/source-atlas.png",
+      "role": "source-atlas",
+      "sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a",
+      "source": {
+        "brief": "Four by four transparent atlas of original woodland elemental VFX; richly shaded illustrated pixel art with dark colored contours. Four distinct silhouettes per family: fire, botanical thorns, water and gold/cyan lightning. Right-facing projectiles; no text, creatures, scenery or UI.",
+        "kind": "OpenAI image_gen original generated VFX",
+        "license": "Original session-generated game art; no third-party game assets.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "notes": "Original 1254x1254 RGBA PNG preserved with embedded metadata. Four by four source atlas; runtime clips use explicit source rectangles. Animation is procedural, not hand-drawn flipbook frames.",
+        "original_output_basename": "exec-5845b7c1-b024-4120-9ca6-18c891a321c0.png",
+        "original_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a",
+        "recorded_date_utc": "2026-11-04",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 188547,
+      "id": "attacks/woodland-elements@1.0.0:thorn-dart",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/thorn-dart.png",
+      "role": "thorn-dart",
+      "sha256": "272e99f08dfe61744e46be337c8fd51c377a5728569bf3c2accc6f1a386bfbe7",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 145444,
+      "id": "attacks/woodland-elements@1.0.0:thorn-whip",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/thorn-whip.png",
+      "role": "thorn-whip",
+      "sha256": "685971bceca535cd74c040a7383ed7dad2da315217c6ac2a9648cb8ccdbc548b",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 178847,
+      "id": "attacks/woodland-elements@1.0.0:water-bolt",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/water-bolt.png",
+      "role": "water-bolt",
+      "sha256": "34aa94f73a7c91fe1e8347d8a629564c116e1186cf73c92e2ab6663e3c724231",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 278236,
+      "id": "attacks/woodland-elements@1.0.0:water-impact",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/water-impact.png",
+      "role": "water-impact",
+      "sha256": "9427dea2d7d6c8eeaef6580980d30125ba59d00e87f29d199b271dbcfeeedf95",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 199190,
+      "id": "attacks/woodland-elements@1.0.0:water-ribbon",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.0.0/water-ribbon.png",
+      "role": "water-ribbon",
+      "sha256": "5e88d021bb01b44b680dce76fbe03d090373513e21e8f3929924829071b2c2c0",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 357971,
+      "id": "attacks/woodland-elements@1.1.0:bark-impact",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/bark-impact.png",
+      "role": "bark-impact",
+      "sha256": "1fed84153f924a02dde91c141aea6f5ae6acb0f6fff72be92d63a739d7951041",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 342157,
+      "id": "attacks/woodland-elements@1.1.0:crest-wave",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/crest-wave.png",
+      "role": "crest-wave",
+      "sha256": "417eae851d6695bd545d826e4d4945351cb68858dd5dcbae910046bbc46cb0b1",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 389094,
+      "id": "attacks/woodland-elements@1.1.0:electric-impact",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/electric-impact.png",
+      "role": "electric-impact",
+      "sha256": "99f46daece47d0843be6f11be36816003fcd7cf5146398a97b97a297f57fae0a",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 412087,
+      "id": "attacks/woodland-elements@1.1.0:electric-turbine",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/electric-turbine.png",
+      "role": "electric-turbine",
+      "sha256": "b53add83611ba64e93a12a353615e20ecd4e810c40aaad4cdcb67ebcb3263560",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 424186,
+      "id": "attacks/woodland-elements@1.1.0:ember-flower",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/ember-flower.png",
+      "role": "ember-flower",
+      "sha256": "5d96762971d213e4ac605ace3bd94f8f52f647d770f25982260aa0ae8c423d63",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 190881,
+      "id": "attacks/woodland-elements@1.1.0:fire-comet",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/fire-comet.png",
+      "role": "fire-comet",
+      "sha256": "266e61076f12a5ba85ef238e0778bb61851d53fcdfe034fe983e5235bb2afe3b",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 316837,
+      "id": "attacks/woodland-elements@1.1.0:fire-crescent",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/fire-crescent.png",
+      "role": "fire-crescent",
+      "sha256": "046803a8f8a9e3ebe2374f042d7710ea715224d07919ea65ba525e5e51dc0e7d",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 433331,
+      "id": "attacks/woodland-elements@1.1.0:fire-impact",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/fire-impact.png",
+      "role": "fire-impact",
+      "sha256": "38dd808db4c05703df1b2a1f31dcdd5579a2e9429f147813961497877d418ab9",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 196752,
+      "id": "attacks/woodland-elements@1.1.0:lightning-lance",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/lightning-lance.png",
+      "role": "lightning-lance",
+      "sha256": "0625b17331a8718984e9d635b548f0a7066597b301888b23fb3b5d4b7e999eed",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 300879,
+      "id": "attacks/woodland-elements@1.1.0:lightning-wing",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/lightning-wing.png",
+      "role": "lightning-wing",
+      "sha256": "11fca6814bbfd5552cae739375c48c942a16a3b443dcd7724b5ec4b639457ac6",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 3069,
+      "id": "attacks/woodland-elements@1.1.0:performances",
+      "kind": "data",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/performances.json",
+      "role": "performances",
+      "sha256": "7fbe4e135e7437eba026f0aa209111f93f2c59c217d685eefc21e133105da609",
+      "source": {
+        "approval": "User approved the v5 preview and requested game/main integration.",
+        "kind": "Approved v5 Canvas choreography exported for native Godot presentation",
+        "source_files": {
+          "attack_actor_rig.js": "cd452b426766a2c7080d569e1e36302e45fd4f5b41061b6e2745508d78e20fa8",
+          "attack_choreography.json": "9ab6fb2d24b60cf48b85251c7812164b8d96e72e1b05f379b731310f6a3e41d1",
+          "attack_personalities.js": "e4659f9e68c3adb3f056e73cee99000f679d91d950abfb14e5220e7fb63cce04",
+          "umbral_anatomy.js": "f5e982660d94d3a06c181369b450b51f3135103cd47614e980971cbae8ea4652"
+        }
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 268098,
+      "id": "attacks/woodland-elements@1.1.0:root-spire",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/root-spire.png",
+      "role": "root-spire",
+      "sha256": "9c1bbcee9261f38fb4f10358b71e0d988b73f099ed0c54b903f94f4c19135f7b",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 1872328,
+      "id": "attacks/woodland-elements@1.1.0:source-atlas",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/source-atlas.png",
+      "role": "source-atlas",
+      "sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a",
+      "source": {
+        "brief": "Four by four transparent atlas of original woodland elemental VFX; richly shaded illustrated pixel art with dark colored contours. Four distinct silhouettes per family: fire, botanical thorns, water and gold/cyan lightning. Right-facing projectiles; no text, creatures, scenery or UI.",
+        "kind": "OpenAI image_gen original generated VFX",
+        "license": "Original session-generated game art; no third-party game assets.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "notes": "Original 1254x1254 RGBA PNG preserved with embedded metadata. Four by four source atlas; runtime clips use explicit source rectangles. Animation is procedural, not hand-drawn flipbook frames.",
+        "original_output_basename": "exec-5845b7c1-b024-4120-9ca6-18c891a321c0.png",
+        "original_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a",
+        "recorded_date_utc": "2026-11-04",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 188547,
+      "id": "attacks/woodland-elements@1.1.0:thorn-dart",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/thorn-dart.png",
+      "role": "thorn-dart",
+      "sha256": "272e99f08dfe61744e46be337c8fd51c377a5728569bf3c2accc6f1a386bfbe7",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 145444,
+      "id": "attacks/woodland-elements@1.1.0:thorn-whip",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/thorn-whip.png",
+      "role": "thorn-whip",
+      "sha256": "685971bceca535cd74c040a7383ed7dad2da315217c6ac2a9648cb8ccdbc548b",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 178847,
+      "id": "attacks/woodland-elements@1.1.0:water-bolt",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/water-bolt.png",
+      "role": "water-bolt",
+      "sha256": "34aa94f73a7c91fe1e8347d8a629564c116e1186cf73c92e2ab6663e3c724231",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 278236,
+      "id": "attacks/woodland-elements@1.1.0:water-impact",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/water-impact.png",
+      "role": "water-impact",
+      "sha256": "9427dea2d7d6c8eeaef6580980d30125ba59d00e87f29d199b271dbcfeeedf95",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 199190,
+      "id": "attacks/woodland-elements@1.1.0:water-ribbon",
+      "kind": "texture",
+      "module": "attacks/woodland-elements",
+      "path": "assets/attacks/woodland-elements/versions/1.1.0/water-ribbon.png",
+      "role": "water-ribbon",
+      "sha256": "5e88d021bb01b44b680dce76fbe03d090373513e21e8f3929924829071b2c2c0",
+      "source": {
+        "kind": "Procedural animation of original image_gen atlas",
+        "notes": "12 deterministic deformation frames; fixed transparent cell and pivot.",
+        "renderer_sha256": "6a731095b9b59281d13ef14f2e709ce46b1fafc2b33dfd6ee7490809cc02241d",
+        "source_sha256": "8e7b55588c737bea7fc978bbd3918da905481bf912347f611dc2f07d0583a31a"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          768,
+          576
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
       "bytes": 529244,
       "id": "audio/ambience@1.0.0:sound",
       "kind": "audio",
@@ -1900,6 +2850,246 @@
         "sample_rate": 22050,
         "seconds": 12.0
       },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-01",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/01.wav",
+      "role": "performance-01",
+      "sha256": "23aee11780e6475e6a835d990bcbd0e8ef006f26eb8c02b92ea78d347a825185",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-02",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/02.wav",
+      "role": "performance-02",
+      "sha256": "2ac61850b7683987bff9f3aa3c34ae170aebb51a015972c7090936dd66f3f0f3",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-03",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/03.wav",
+      "role": "performance-03",
+      "sha256": "621c2823651c1f60ccd280a37b7341ff2d8a16c23af42f15df822543fdc75c1d",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-04",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/04.wav",
+      "role": "performance-04",
+      "sha256": "b6fb179ce330252e043ca4987dd488101ac9627d8ea51d3279fcd27c5611e108",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-05",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/05.wav",
+      "role": "performance-05",
+      "sha256": "5856c78fd4483d6d1f163104dd161265be8732ac3cef351e343d934b7f936179",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-06",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/06.wav",
+      "role": "performance-06",
+      "sha256": "949d700fe086d1983911b671f458a940578e3c6e6ff943c5026ca4619bf162f1",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-07",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/07.wav",
+      "role": "performance-07",
+      "sha256": "652c20eb3bc6f1a95d633014741d3a955d29fae7c030414460a9a1d9a2680eb0",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-08",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/08.wav",
+      "role": "performance-08",
+      "sha256": "8bd8230eb9135f7bee96570fdfcd16c7f927ef7832b1c2fa6975c5693709ff2d",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-09",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/09.wav",
+      "role": "performance-09",
+      "sha256": "2bef47c63f7cb8ebd2e4cbb05490f25e3137807b007f0e2219cddaa4e033faaf",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-10",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/10.wav",
+      "role": "performance-10",
+      "sha256": "7997ff087d0bb5a5240f2e1a6c13dcd1a23fe8d412e5cba0b3a3e5d84cb003db",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-11",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/11.wav",
+      "role": "performance-11",
+      "sha256": "73224c60304296ce2d4d0ad52d4460864e3eafc1f94b60f95e3e3446a3126d69",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-12",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/12.wav",
+      "role": "performance-12",
+      "sha256": "0c2ea567ca9038940bdfc808e90ccdc0ef08ee0ecd6940c2cc0aef314791e45e",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-13",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/13.wav",
+      "role": "performance-13",
+      "sha256": "27bd6707a78a21c81ca0d2576607f78481448d5f5cad839f0661609a2bdca502",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-14",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/14.wav",
+      "role": "performance-14",
+      "sha256": "755f6d174c02950848deeebb8a501bdc730063e0211614cc39e04b279e0f976c",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 614444,
+      "id": "audio/battle-performances@1.0.0:performance-15",
+      "kind": "audio",
+      "module": "audio/battle-performances",
+      "path": "assets/audio/battle-performances/versions/1.0.0/15.wav",
+      "role": "performance-15",
+      "sha256": "48259a74c169025f097d24aad4cf42e3d56c7daeec0531f399d88feb03d24594",
+      "source": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "status": "production",
+      "technical": {},
       "version": "1.0.0"
     },
     {
@@ -2345,6 +3535,28 @@
         "frames": 1,
         "mode": "RGBA"
       },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1927260,
+      "id": "characters/battle-motion@1.0.0:motion",
+      "kind": "data",
+      "module": "characters/battle-motion",
+      "path": "assets/characters/battle-motion/versions/1.0.0/motion.json",
+      "role": "motion",
+      "sha256": "2dfd3acad3f9ea62b4936376b9894d38b213fbc97380cb9a38eceac557c9fe83",
+      "source": {
+        "approval": "User approved the v5 preview and requested game/main integration.",
+        "kind": "Approved v5 Canvas choreography exported for native Godot presentation",
+        "source_files": {
+          "attack_actor_rig.js": "cd452b426766a2c7080d569e1e36302e45fd4f5b41061b6e2745508d78e20fa8",
+          "attack_choreography.json": "9ab6fb2d24b60cf48b85251c7812164b8d96e72e1b05f379b731310f6a3e41d1",
+          "attack_personalities.js": "e4659f9e68c3adb3f056e73cee99000f679d91d950abfb14e5220e7fb63cce04",
+          "umbral_anatomy.js": "f5e982660d94d3a06c181369b450b51f3135103cd47614e980971cbae8ea4652"
+        }
+      },
+      "status": "production",
+      "technical": {},
       "version": "1.0.0"
     },
     {

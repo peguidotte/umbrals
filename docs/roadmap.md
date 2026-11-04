@@ -729,3 +729,230 @@ Validação e limites: [entrega do lobby](lobby-v05-ux01.md). Versão e gates hu
 permanecem abertos. Próxima fatia depende das decisões de produto sobre quais
 melhorias existem e o significado de visitas/vínculo; esta entrega não decide
 moeda, custos, bônus nem permanência de indivíduos.
+### V04-ART-07A — quinze estudos de animação para comparação
+
+A pedido do usuário, produzidas as três alternativas de Bola de fogo, Chicote
+de espinhos, Jato de orvalho, Arco elétrico e Mergulho trovão sobre a main
+`44943dc`. Galeria offline com pausa/tempo por estudo, velocidade, ampliação,
+formas iniciais/evoluídas e movimento reduzido; quinze MP4/GIF, vídeo sequencial
+e comparação simultânea em `builds/attack-studies/`. Fontes reproduzíveis em
+`tools/asset_authoring/attack_studies.html` e `build_attack_studies.py`.
+
+Verificadas renderização de 48 quadros por estudo em Chromium, controles reais,
+ausência de erros JavaScript e overflow horizontal em 390px; capturas desktop,
+mobile e movimento reduzido revisadas. Suítes focadas assets, asset-unit e
+harness passaram em `artifacts/harness/harness-check-20261103T035135263463Z-e58ff3/`.
+Estudos usam os sprites originais com transformações corporais e VFX procedurais,
+sem áudio, poses anatômicas novas ou integração Godot. Não representam aprovação
+do usuário, performance em hardware ou fechamento do marco. Próxima fatia:
+selecionar coreografias, criar poses próprias e integrar efeitos por evento,
+preservando alvos/iniciativa. Nenhuma regra, pin de produção ou versão mudou.
+
+### V04-ART-07B — emissão anatômica e reação corporal
+
+O usuário considerou as ideias boas, mas rejeitou a simplicidade da execução:
+efeitos semelhantes e pouca participação dos Umbrals no gesto. Confirmou como
+direção saídas em diferentes partes do corpo, cada uma acompanhada de reação;
+citou explicitamente a cauda do Ignivar. A revisão desenvolve as quinze opções
+sobre a main `6e1b2ed`, com fontes separados de rig/articulações e coreografias.
+
+Cabeça, cauda, patas e copa/reservatório deformam uma malha contínua dos atlas
+originais. Cada variação define preparação, emissão, contrapeso e recuperação;
+o efeito usa um socket calculado pela mesma deformação da parte animada. Boca,
+cauda, pata, braço, raízes, galhos, reservatório, antenas e circuitos têm gestos
+e materiais próprios. Não são novas poses redesenhadas quadro a quadro.
+
+Evidência de estudo em `builds/attack-studies-v2/`: 96 quadros por opção a 30 FPS,
+vídeo sequencial de 48s, galeria offline, articulações/saídas, tiras de seis poses
+e comparação da cauda com a primeira versão. Validados 15 pacotes VFX, movimento
+local em todas as performances, retorno ao repouso e decodificação de 17 vídeos.
+Controles de galeria e 390px verificados em Chromium. Revisadas poses da cauda,
+raízes, reservatório e mergulho e as capturas da galeria; primeiro take v2
+preservado antes de refinar raízes e formas curvas.
+
+Suítes focadas assets, asset-unit e harness passaram em
+`artifacts/harness/harness-check-20261103T110343262337Z-caa024/`.
+Nenhuma alteração de regras, saves ou pins. Não houve integração Godot, áudio,
+profiling em hardware ou nova aprovação estética. Próxima fatia: avaliação
+visual do usuário, poses desenhadas quando a deformação não sustentar a anatomia
+e integração por eventos das coreografias selecionadas; marco/versão mantidos.
+
+### V04-ART-07C — vida dos Umbrals, pontos por forma e impactos
+
+O usuário reconheceu a melhoria da revisão corporal e pediu efeitos mais
+impactantes, origem mais clara dos poderes e mais animações dos próprios
+Umbrals. Revisão 3 sobre `b636b85`: seis estados (repouso, preparação, conjuração,
+dano, defesa e celebração) em oito formas explicitamente nomeadas, além das
+quinze coreografias anteriores com contato, reação e materiais em camadas.
+
+`umbral_anatomy.js` define pontos distintos para formas iniciais/evoluídas e
+movimentos locais; o apoio usa os metadados de chão do atlas. A galeria permite
+comparar estados, desacelerar, ver saídas, alternar formas e reduzir movimento.
+Números de impacto são ilustrativos; luz breve local é opcional e começa desligada.
+Continuam sendo malhas deformadas dos sprites originais, sem novas sequências
+redesenhadas, áudio ou integração Godot.
+
+A exportação foi interrompida pela indisponibilidade do ambiente e retomada
+depois de sua recuperação. Quadros agora persistem no workspace com assinatura
+dos inputs, sem descartar o render em uma interrupção compatível. Saídas em
+`builds/attack-studies-v3/`: galeria offline, quinze clips a 30 FPS, vídeo de
+golpes com 48s e biblioteca de personagens com 19,2s. Revisados quadros de
+preparação, conjuração e dano nas oito formas, a galeria e suas capturas.
+
+Verificações: seis sequências de poses distintas por forma; trinta saídas
+projetadas coincidem com o ator; controles, movimento reduzido e largura de
+390px em Chromium sem erros JavaScript. Quinze pacotes VFX validados, dezoito
+vídeos decodificados e comparação de cauda também decodificada. Reprodução dos
+dois vídeos principais verificada no navegador. Suítes focadas assets,
+asset-unit e harness passaram em
+`artifacts/harness/harness-check-20261103T221913674705Z-4c8e8b/`.
+
+Não é fechamento do marco nem aprovação estética final. Deformação extrema
+ainda pode comprimir a silhueta e requer revisão/desenho de poses na arte final.
+Próxima fatia: avaliação dessas opções e integração por evento das selecionadas,
+com animação redesenhada onde o rig não preservar a anatomia. Regras, saves,
+pins e versão de produção não mudaram.
+
+### V04-ART-07D — assets elementais ilustrados e movimento secundário
+
+O usuário pediu nova melhoria dos assets e animações. Base atualizada por
+fast-forward para `d7c54b9`, preservando as três revisões e os registros locais.
+Resultado observável: quinze coreografias com materiais ilustrados distintos,
+origem anatômica mantida e menor compressão corporal em gestos fortes.
+
+Novo módulo protótipo `attacks/woodland-elements@1.0.0`: prancha original Image
+Gen de dezesseis silhuetas, quatro por família (fogo, espinhos, água e eletricidade).
+PNG original e metadados preservados. Dezesseis folhas RGBA, doze quadros cada,
+células 192×192, pivô 96×96 e 24 FPS, exportadas para reutilização. São deformações
+procedurais da arte ilustrada, não sequências redesenhadas à mão. Catálogo e
+proveniência regenerados; nenhum pin de produção avançado.
+
+Na prévia, chamas têm núcleo/rastro, raízes têm casca, água tem espuma e volume,
+e eletricidade combina ouro e azul. Fitas usam vértices compartilhados: o primeiro
+take revelou frestas nas curvas da água, corrigidas e revisadas antes da exportação
+final. O rig limita rotações locais extremas, redistribui o golpe de cauda entre
+quadril/patas/cabeça e adiciona acompanhamento de asas, antenas, galhos e nadadeiras.
+Os atlas de criaturas continuam originais, com animação por malha.
+
+Evidências em `builds/attack-studies-v4/`: galeria offline, quinze clips,
+vídeo sequencial de 48s, oito formas/seis estados em 19,2s, comparação da cauda
+com v3 e pacote de assets separado. Revisadas cenas de fogo, cauda, fita de água,
+raízes, antenas, giro elétrico, panorama dos quinze e conjuração das oito formas.
+Quinze pacotes VFX e dezoito vídeos validados/decodificados; reprodução dos dois
+vídeos principais confirmada no Chromium. Builder verificou controles, 390px,
+movimento reduzido, seis estados distintos e trinta pontos de emissão. Dezesseis
+folhas verificadas quanto a alpha, dimensões, bordas livres e quadros distintos.
+
+Suítes focadas assets, asset-unit, asset-catalog, harness e catalog-authoring,
+com importação dependente, passaram em
+`artifacts/harness/harness-check-20261104T021411688717Z-5f7685/`.
+Validação posterior do catálogo/proveniência passou contra `origin/main`.
+Não é aceitação completa do jogo, aprovação estética ou medição em hardware.
+Áudio, integração por eventos no Godot e poses redesenhadas permanecem posteriores;
+marco e versão não foram encerrados por esta revisão.
+
+### V04-ART-07E — personalidade, peso, consequência e sonoplastia
+
+O usuário aprovou a melhoria dos assets, mas pediu mais impacto, identidade de
+cada Umbral, ataques/reações próprios e sensação de peso que dê vontade de
+acompanhar a animação. Base atualizada para `f67f73e`, preservando alterações
+concorrentes de arquitetura e todas as revisões de arte locais.
+
+`attack_choreography.json` define quinze relógios de apresentação, compartilhados
+por gesto e som: preparação sustentada, ruptura, contato, pausa de 50–100 ms,
+consequência e recuperação. Não há pausa na simulação do jogo. Oito perfis
+explícitos distinguem massa, respiração, ritmo e tempo para se recompor.
+Ignivar transfere o impulso entre peito, patas e cauda; Verdálio tensiona madeira
+e firma raízes; Marevéu acumula pressão e deixa os véus acompanhar o fluxo;
+Tempestral arranca e absorve aterrissagens. Formas iniciais recuperam com mais
+agilidade e mantêm pontos anatômicos próprios.
+
+Alvos agora são Umbrals voltados para o conjurador. A galeria permite trocar
+quem recebe, comparando o mesmo golpe em quatro adultos ou quatro formas
+iniciais. Corte, chicote, espinhos sucessivos, pressão de água, onda, descarga,
+pulso, laço, investida, mergulho e giro têm respostas distintas; a massa e o
+material do receptor modificam deslocamento, postura e fragmentos. Câmera tem
+impulso curto com controle separado; movimento reduzido mantém marcadores e
+elimina deslocamentos/partículas. Durante revisão, o giro revelou rotação em
+torno dos pés: o pivô foi corrigido para a carapaça e a exportação foi refeita.
+
+Quinze WAVs estéreo originais sintetizados têm preparação, lançamento, contato
+e cauda próprios, sem samples externos. A prévia sonora começa por clique,
+sincroniza pela posição do áudio e para ao fechar/alterar a reprodução. MP4s
+individuais e sequência têm AAC estéreo; a biblioteca corporal permanece muda.
+Não houve teste físico de audição em fones/alto-falantes.
+
+Evidências em `builds/attack-studies-v5/`: sequência de quinze golpes com 48s,
+destaques com som de 13,5s, biblioteca de oito formas/seis estados com 19,2s,
+galeria offline e comparação do mesmo ataque contra quatro corpos. Revisados
+fogo, corte de cauda, raízes, fita de água, mergulho, giro corrigido e matriz
+de reações. O builder verifica estados, retorno das raízes, diversidade dos
+deslocamentos de reação, trinta sockets, controles, início/cancelamento sonoro,
+movimento reduzido e largura de 390px. Validação digital dos quinze WAVs cobre
+duração, canais, hashes, ausência de clipping e início/cauda silenciosos.
+
+Dezenove MP4s foram decodificados, com verificação dos canais AAC estéreo nos
+clips de ataques e destaques; a comparação da cauda foi decodificada à parte.
+Reprodução no navegador e início/cancelamento da prévia sonora foram verificados.
+Suítes focadas assets, asset-unit e harness passaram após a correção do pivô em
+`artifacts/harness/harness-check-20261104T044535062080Z-d06311/`.
+Isso não é aceitação completa, aprovação estética ou prova de diversão.
+Continuam sendo estudos Canvas sobre os sprites originais, sem poses novas
+redesenhadas nem integração por eventos no Godot. Regras, saves, pins e versão
+de produção não mudaram; integração das coreografias segue como próxima fatia.
+
+### V04-ART-08A — coreografias aprovadas integradas ao jogo
+
+O usuário aprovou a revisão 5 e pediu integração no combate e na main atual.
+Quinze coreografias agora usam eventos reais, com preparação, origem anatômica,
+contato, consequência e recuperação. Oito formas têm movimentos e reações
+próprios. As três variações alternam por indivíduo/poder, sem consumir RNG de
+jogo; ataques de área compartilham um gesto e preservam a ordem dos snapshots.
+HP visível muda no contato. Rótulos, alvos, slots, cartas, regras e saves
+mantêm seus contratos. Pausa, saída do combate e movimento reduzido encerram
+ou suspendem corretamente malha, efeitos e som.
+
+Pin de produção `attacks/battle-performances` em
+`attacks/woodland-elements@1.1.0`, com dependências exatas de
+`characters/battle-motion@1.0.0` e `audio/battle-performances@1.0.0`.
+Protótipo 1.0.0, PNGs originais, metadados e fontes de autoria preservados.
+O runtime usa malhas nativas e quinze WAVs originais no pool existente de
+quatro vozes. Reprodução por stream corrige o silêncio observado no caminho
+Web automático por samples. A checagem de PCM mantém o contrato mono dos
+assets antigos e acrescenta estéreo/48 kHz somente para o novo módulo,
+verificando integridade, clipping e sinal nos dois canais.
+
+Primeiro fechamento completo, na base `f67f73e`, passou com vídeo e fontes
+congeladas em
+`artifacts/harness/battle-motion-main-20261104T135855270594Z-cc5b31/`.
+Inclui regras, mutações, saves, assets, arquitetura, suíte nativa de movimento
+com 38 verificações, dez cenários Web e cinco resoluções. A tentativa anterior
+interrompida após a falha do contrato antigo de PCM foi preservada.
+
+Revisão real adicional em `artifacts/attack-runtime-preview-final/`: oito
+formas, trinta execuções cobrindo as quinze variações, galeria, vídeo completo
+e destaques de 17s. Som capturado do próprio jogo, sem trilha substituída;
+oito MP4s reproduzidos no Chromium sem erros de mídia. Revisados fogo,
+raízes/espinhos, água, pulsos, investida, mergulho, giro, reações, 3×3,
+chefe, captura/evolução, substituição e matriz de resoluções. O baseline do
+HTML é o primeiro take nativo da integração, não uma imagem da main sem mudanças.
+
+Ver [responsabilidades, contratos e limites](battle-motion-v04-08a.md).
+Captura por software não mede desempenho em hardware; não houve audição
+física nem certificação de diversão. São malhas sobre os sprites originais,
+sem novas poses redesenhadas. Próxima fatia: playtest humano da cadência em
+encontros completos e refinamento de poses quando necessário. Esta integração
+não encerra os marcos humanos pendentes nem avança a versão do produto.
+
+Na conferência de publicação, a main havia avançado para `ce1ba2a` com o
+lobby V05-UX-01. A integração foi reaplicada sobre essa base, preservando
+integralmente a view, os testes e a documentação do lobby; o conflito de
+roadmap manteve os dois registros. O grafo completo passou novamente em
+`artifacts/harness/battle-main-lobby-20261104T144151943104Z-e38e27/`, com
+cobertura completa e fontes inalteradas durante a execução. Inclui os dez
+cenários de navegador, as duas rotas da expedição e cinco resoluções. O código
+de combate e os assets são idênticos aos da gravação já revisada, verificados
+por 394 hashes de scripts/assets compartilhados, excluindo a view do lobby.
+Esta repetição capturou os estados atualizados; o vídeo permanece evidência
+do mesmo movimento, sem nova gravação redundante. Após o resultado, somente
+estes registros documentais de fechamento foram atualizados.
