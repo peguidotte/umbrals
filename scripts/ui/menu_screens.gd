@@ -23,7 +23,7 @@ var journey_root: Control:
 	get: return _journey_ref.get_ref() if _journey_ref != null else null
 
 func build_modal(screen: String, ui: RefCounted, viewport_size: Vector2, preferences: RefCounted, capture: bool, session: RefCounted, progress: RefCounted, game: RefCounted, screen_root: String) -> Control:
-	var menu: bool = screen_root == "menu"
+	var menu: bool = screen_root in ["menu", "refuge"]
 	var reduced: bool = bool(preferences.values.reduced_motion) or capture
 	match screen:
 		"journey":
@@ -43,7 +43,7 @@ func build_modal(screen: String, ui: RefCounted, viewport_size: Vector2, prefere
 func title(viewport_size: Vector2, preferences: RefCounted, capture: bool) -> Control:
 	var view = TitleMenu.new()
 	view.size = viewport_size
-	var callbacks: Array[Callable] = [_request.bind("journey"), _request.bind("codex"), _request.bind("settings"), _request.bind("help"), _request.bind("credits"), _request.bind("quit")]
+	var callbacks: Array[Callable] = [_request.bind("refuge"), _request.bind("codex"), _request.bind("settings"), _request.bind("help"), _request.bind("credits"), _request.bind("quit")]
 	view.build(callbacks, _register)
 	view.apply_preferences(preferences.values.reduced_motion, capture, preferences.text_scale())
 	view.navigation_requested.connect(title_navigation.emit)

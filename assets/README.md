@@ -69,3 +69,11 @@ synthesis in `scripts/ui/audio.gd`, using bounded voices and existing Music/UI b
   templates, preserved with per-file generation provenance. Runtime atlas regions
   retain brand, ornaments, portrait illustrations and fixed caption plates. Each
   interactive plate is a separate native control; discovery data is not baked in.
+
+## Refúgio provisório — V05-UX-02
+
+A sala explorável e seu avatar são desenhos vetoriais originais em
+scripts/ui/refuge_art.gd, renderizados nativamente pelo Godot. Não importam sprites,
+layouts ou samples externos. A arte é explicitamente provisória; não constitui
+um novo atlas nem altera versões existentes ou runtime-lock.json. Quando houver
+arte final, cenário e personagem devem ganhar módulos próprios e versões fixadas.

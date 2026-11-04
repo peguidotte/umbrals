@@ -956,3 +956,18 @@ por 394 hashes de scripts/assets compartilhados, excluindo a view do lobby.
 Esta repetição capturou os estados atualizados; o vídeo permanece evidência
 do mesmo movimento, sem nova gravação redundante. Após o resultado, somente
 estes registros documentais de fechamento foram atualizados.
+
+### V05-UX-02 — correção do lobby para sala explorável
+
+O usuário esclareceu que lobby significa caminhar com um boneco por uma sala,
+interagindo com partida, grimório e futuros pontos de melhorias/personagens.
+A primeira fatia substitui a entrada direta no menu por um Refúgio contemporâneo
+com arte vetorial original provisória, teclado/controle, colisões e interação.
+Saída e atalhos reutilizam os fluxos existentes; grimório usa descobertas reais.
+Bancada de melhorias indisponível; nenhum NPC, afinidade ou coleção persistente
+foi inventado. Save, RNG e regras mantidos. [Escopo e evidências](refuge-v05-ux02.md).
+
+Aceitação local completa aprovada com fontes congeladas; capturas e quadros do
+vídeo real revisados. Repetição de title aprovada após corrigir a sincronização
+do teclado na automação, sem alterar o runtime. CI do HEAD corrigido pendente. Próxima fatia: feedback de Pedro sobre a sala,
+refinamento da arte e definição de melhorias/personagens antes de implementá-los.

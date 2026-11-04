@@ -29,8 +29,8 @@ func build(kit: RefCounted, saved: Dictionary, save_message: String, callbacks: 
 	add_child(panel)
 	var frame: VBoxContainer = UI.column(16)
 	panel.add_child(frame)
-	frame.add_child(kit.label("LOBBY", 36, TitleTheme.PAPER))
-	frame.add_child(kit.paragraph("Um respiro antes de voltar ao bosque.", 20, Color("bac6b6")))
+	frame.add_child(kit.label("PREPARAR EXPEDIÇÃO", 36, TitleTheme.PAPER))
+	frame.add_child(kit.paragraph("Escolha como voltar ao bosque.", 20, Color("bac6b6")))
 	scroller = ScrollContainer.new()
 	scroller.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	scroller.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -69,12 +69,6 @@ func build(kit: RefCounted, saved: Dictionary, save_message: String, callbacks: 
 			details.add_child(kit.paragraph(display_name, 18, TitleTheme.PAPER))
 			details.add_child(kit.paragraph("%d/%d HP · %s" % [individual.hp, individual.max_hp, "Em campo" if int(individual.slot) >= 0 else "Reserva"], 16, Color("bac6b6")))
 		body.add_child(kit.paragraph("Esta equipe pertence à expedição atual. Uma nova expedição começa com outra equipe.", 16, Color("bac6b6")))
-	var future: VBoxContainer = UI.column(20)
-	future.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	sections.add_child(future)
-	_future_space(future, kit, "MELHORIAS", "Indisponíveis nesta versão", "Espaço reservado para preparar futuras expedições. Ainda não há melhorias para adquirir.")
-	_future_space(future, kit, "VISITAS POR VÍNCULO", "Possibilidade futura", "Umbrals com vínculos fortes poderão passar por aqui. As visitas ainda não estão disponíveis.")
-	future.add_child(kit.paragraph("A equipe da expedição não representa visitantes nem uma coleção permanente.", 16, Color("bac6b6")))
 	footer = UI.column(8)
 	frame.add_child(footer)
 	var labels = ["CONTINUAR EXPEDIÇÃO", "NOVA EXPEDIÇÃO", "TREINO DE BATALHA", "VOLTAR"]
@@ -115,21 +109,6 @@ static func checkpoint_summary(saved: Dictionary) -> String:
 		if node.available: available.append(str(node.title))
 	return "Bosque · Próxima parada: %s" % " ou ".join(available) if not available.is_empty() else "Bosque · Expedição em andamento"
 
-func _future_space(parent: VBoxContainer, kit: RefCounted, title: String, status: String, description: String) -> void:
-	var card = PanelContainer.new()
-	var box = StyleBoxFlat.new()
-	box.bg_color = Color(0.06, 0.11, 0.12, 0.8)
-	box.border_color = Color("665f46")
-	box.set_border_width_all(1)
-	box.set_content_margin_all(18)
-	card.add_theme_stylebox_override("panel", box)
-	parent.add_child(card)
-	var text: VBoxContainer = UI.column(10)
-	card.add_child(text)
-	text.add_child(kit.paragraph(title, 22, TitleTheme.PAPER))
-	text.add_child(kit.paragraph(status, 17, TitleTheme.VIOLET))
-	text.add_child(kit.paragraph(description, 18, Color("bac6b6")))
-
 func _layout() -> void:
 	if not is_instance_valid(panel): return
 	var window: Vector2 = Vector2(DisplayServer.window_get_size())
@@ -140,8 +119,8 @@ func _layout() -> void:
 	var minimum_hit: float = maxf(54.0, 44.0 / maxf(0.01, pixel_scale * zoom))
 	for button in choices:
 		if not is_equal_approx(button.custom_minimum_size.y, minimum_hit): button.custom_minimum_size.y = minimum_hit
-	var width: float = minf(1160, (size.x - 80) / zoom)
-	sections.columns = 2 if width >= 1000 else 1
+	var width: float = minf(920, (size.x - 80) / zoom)
+	sections.columns = 1
 	panel.size = Vector2(width, (size.y - 80) / zoom)
 	panel.position = (size - panel.size * zoom) * 0.5
 

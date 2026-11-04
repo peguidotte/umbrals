@@ -49,11 +49,12 @@ func run() -> void:
 	expect(title.effect_state() == resting, "Reduced motion freezes poses and pulse")
 	var initial_save: String = JSON.stringify(app.session.run_save.load_snapshot())
 	await press("menu.play")
+	await press("refuge.departure")
 	expect(app.screens.top() == "journey" and app.registry["journey.continue"].disabled, "No-save Journey disables Continue")
 	expect(app.registry["journey.new"].caption.text == "NOVA EXPEDIÇÃO" and app.registry["journey.new"].caption.is_visible_in_tree(), "Native caption is rendered above its plate")
 	expect(not app.screen_host.menu_root.input_active, "Journey owns title interaction")
 	var lobby_copy: String = labels_in(app.screen_host.modal_root)
-	expect("LOBBY" in lobby_copy and "Indisponíveis nesta versão" in lobby_copy and "Possibilidade futura" in lobby_copy, "Lobby distinguishes playable expedition from unavailable improvements and proposed visits")
+	expect("PREPARAR EXPEDIÇÃO" in lobby_copy and not "VISITAS POR VÍNCULO" in lobby_copy, "Lobby distinguishes playable expedition from unavailable improvements and proposed visits")
 	expect(app.screen_host.modal_root.choices.size() == 4, "Future spaces add no fake gameplay actions")
 	expect(JSON.stringify(app.session.run_save.load_snapshot()) == initial_save, "Opening an empty lobby does not create progress")
 	await press("journey.new")
@@ -65,6 +66,7 @@ func run() -> void:
 	app._return_menu()
 	await process_frame
 	await press("menu.play")
+	await press("refuge.departure")
 	var journey: Control = app.screen_host.modal_root
 	expect(not app.registry["journey.continue"].disabled, "Save enables Continue")
 	expect(journey.public_checkpoint.party == app.session.expedition.public_state().party, "Journey presents the saved party")
@@ -81,8 +83,10 @@ func run() -> void:
 	app.preferences.set_value("reduced_motion", true)
 	await process_frame
 	await press("menu.play")
+	await press("refuge.departure")
 	expect(app.screen_host.modal_root.modulate.a == 1.0, "Reduced motion skips menu entrance animation")
 	await press("journey.back")
+	await press("refuge.title")
 	expect(root.gui_get_focus_owner() == app.registry["menu.play"], "Back restores semantic Play focus")
 	var roster_view = preload("res://scripts/ui/journey_menu.gd").new()
 	app.add_child(roster_view)
