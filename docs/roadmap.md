@@ -999,6 +999,16 @@ antes de integração; seus resultados são registrados no PR e entrega.
 [Escopo, evidências e limites](refuge-v05-ux03.md). Próxima fatia: avaliação da
 execução, personagens e decisões de melhorias/afinidade, sem impor cosmologia.
 
+### V05-UX-04 — proporção e sala sem instruções permanentes
+
+Revisão de Pedro: personagem maior em relação ao ambiente, retirada da barra e
+consulta por objetos com aproximação real. Teclado/controle preservados; mouse/toque
+indicam destino, sem teleporte. Como jogar mantém instruções opcionais.
+[Escopo, direção futura e evidências](refuge-v05-ux04.md). A direção prevê casa inicial
+e abrigo portátil, preferencialmente em Umbral da mãe, ainda sem especificação de
+lore/segunda sala. Protagonista é exploração separada; nome provisório não entra no
+código. Aceitação integral e CI do HEAD final são gates antes do merge; resultados
+finais registrados no PR. Versão permanece 0.3.0.
 
 ### V05-EVT-01 — decisão contextual na Nascente (protótipo revisável)
 
