@@ -1,5 +1,10 @@
 {
   "bindings": {
+    "attacks/battle-performances": {
+      "file": "source-atlas",
+      "id": "attacks/woodland-elements",
+      "version": "1.1.0"
+    },
     "attacks/cinder-claw": {
       "file": "icon",
       "id": "attacks/cinder-claw",
@@ -175,9 +180,44 @@
       "id": "fonts/dejavu",
       "version": "1.0.0"
     },
+    "fonts/gold-display": {
+      "file": "display",
+      "id": "fonts/cormorant",
+      "version": "1.0.0"
+    },
     "ui/backpack": {
       "file": "icon",
       "id": "ui/backpack",
+      "version": "1.0.0"
+    },
+    "ui/gold-codex-art": {
+      "file": "codex-art",
+      "id": "ui/gold-approved",
+      "version": "1.0.0"
+    },
+    "ui/gold-codex-scene": {
+      "file": "codex-scene",
+      "id": "ui/gold-approved",
+      "version": "1.0.0"
+    },
+    "ui/gold-codex-template": {
+      "file": "codex-template",
+      "id": "ui/gold-approved",
+      "version": "1.0.0"
+    },
+    "ui/gold-frame": {
+      "file": "texture",
+      "id": "ui/gold-frame",
+      "version": "1.0.0"
+    },
+    "ui/gold-menu-art": {
+      "file": "menu-art",
+      "id": "ui/gold-approved",
+      "version": "1.0.0"
+    },
+    "ui/gold-menu-scene": {
+      "file": "menu-scene",
+      "id": "ui/gold-approved",
       "version": "1.0.0"
     },
     "ui/title-logo": {
@@ -240,6 +280,11 @@
       "id": "world/battle-clearing-depth",
       "version": "1.0.0"
     },
+    "world/gold-forest": {
+      "file": "texture",
+      "id": "world/gold-forest",
+      "version": "1.0.0"
+    },
     "world/moonlit-clearing": {
       "file": "background",
       "id": "world/moonlit-clearing",
@@ -249,46 +294,6 @@
       "file": "texture",
       "id": "world/title-forest",
       "version": "1.0.0"
-    },
-    "world/gold-forest": {
-      "id": "world/gold-forest",
-      "version": "1.0.0",
-      "file": "texture"
-    },
-    "fonts/gold-display": {
-      "id": "fonts/cormorant",
-      "version": "1.0.0",
-      "file": "display"
-    },
-    "ui/gold-frame": {
-      "id": "ui/gold-frame",
-      "version": "1.0.0",
-      "file": "texture"
-    },
-    "ui/gold-menu-art": {
-      "id": "ui/gold-approved",
-      "version": "1.0.0",
-      "file": "menu-art"
-    },
-    "ui/gold-codex-art": {
-      "id": "ui/gold-approved",
-      "version": "1.0.0",
-      "file": "codex-art"
-    },
-    "ui/gold-menu-scene": {
-      "id": "ui/gold-approved",
-      "version": "1.0.0",
-      "file": "menu-scene"
-    },
-    "ui/gold-codex-scene": {
-      "id": "ui/gold-approved",
-      "version": "1.0.0",
-      "file": "codex-scene"
-    },
-    "ui/gold-codex-template": {
-      "id": "ui/gold-approved",
-      "version": "1.0.0",
-      "file": "codex-template"
     }
   },
   "schema_version": 1

@@ -1,0 +1,164 @@
+{
+  "dependencies": [],
+  "description": "Fifteen original stereo attack performances, synchronized with approved v5 event clocks.",
+  "files": {
+    "performance-01": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "01.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "23aee11780e6475e6a835d990bcbd0e8ef006f26eb8c02b92ea78d347a825185"
+    },
+    "performance-02": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "02.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "2ac61850b7683987bff9f3aa3c34ae170aebb51a015972c7090936dd66f3f0f3"
+    },
+    "performance-03": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "03.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "621c2823651c1f60ccd280a37b7341ff2d8a16c23af42f15df822543fdc75c1d"
+    },
+    "performance-04": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "04.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "b6fb179ce330252e043ca4987dd488101ac9627d8ea51d3279fcd27c5611e108"
+    },
+    "performance-05": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "05.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "5856c78fd4483d6d1f163104dd161265be8732ac3cef351e343d934b7f936179"
+    },
+    "performance-06": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "06.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "949d700fe086d1983911b671f458a940578e3c6e6ff943c5026ca4619bf162f1"
+    },
+    "performance-07": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "07.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "652c20eb3bc6f1a95d633014741d3a955d29fae7c030414460a9a1d9a2680eb0"
+    },
+    "performance-08": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "08.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "8bd8230eb9135f7bee96570fdfcd16c7f927ef7832b1c2fa6975c5693709ff2d"
+    },
+    "performance-09": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "09.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "2bef47c63f7cb8ebd2e4cbb05490f25e3137807b007f0e2219cddaa4e033faaf"
+    },
+    "performance-10": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "10.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "7997ff087d0bb5a5240f2e1a6c13dcd1a23fe8d412e5cba0b3a3e5d84cb003db"
+    },
+    "performance-11": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "11.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "73224c60304296ce2d4d0ad52d4460864e3eafc1f94b60f95e3e3446a3126d69"
+    },
+    "performance-12": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "12.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "0c2ea567ca9038940bdfc808e90ccdc0ef08ee0ecd6940c2cc0aef314791e45e"
+    },
+    "performance-13": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "13.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "27bd6707a78a21c81ca0d2576607f78481448d5f5cad839f0661609a2bdca502"
+    },
+    "performance-14": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "14.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "755f6d174c02950848deeebb8a501bdc730063e0211614cc39e04b279e0f976c"
+    },
+    "performance-15": {
+      "bytes": 614444,
+      "kind": "audio",
+      "path": "15.wav",
+      "provenance": {
+        "kind": "Original deterministic synthesis; no external samples.",
+        "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+      },
+      "sha256": "48259a74c169025f097d24aad4cf42e3d56c7daeec0531f399d88feb03d24594"
+    }
+  },
+  "id": "audio/battle-performances",
+  "provenance": {
+    "kind": "Original deterministic synthesis; no external samples.",
+    "source_sha256": "46d534bee5820a53212468cdd266a76e712c2077337ef4f11372fa7dee6b5a4a"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

@@ -61,7 +61,9 @@ func refresh() -> void:
 	menu_root.visible = screens.root() == "menu"
 	menu_root.input_active = screens.top() == "menu"
 	if is_instance_valid(map_root): map_root.visible = screens.root() == "map"
-	if is_instance_valid(battle_root): battle_root.visible = battle
+	if is_instance_valid(battle_root):
+		battle_root.visible = battle
+		battle_root.pause_feedback(screens.top() != "battle")
 	if is_instance_valid(modal_root):
 		# Hide immediately, free after the pressed control's input event completes.
 		modal_root.hide()

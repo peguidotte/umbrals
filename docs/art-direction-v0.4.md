@@ -36,6 +36,17 @@ A composição aprovada orienta a entrega, mas qualidade visual será descrita a
 partir das capturas reais. Animações de poses completas, materiais finais e
 aprovação de todas as espécies continuam trabalho posterior.
 
+## V04-ART-08A — coreografias aprovadas no combate
+
+Quinze variações aprovadas agora acompanham os eventos reais de combate,
+com preparação, emissão anatômica, contato, recuperação e áudio original.
+Oito formas têm perfis corporais e reações próprios. As malhas nativas usam
+os pixels originais; rótulos e áreas de seleção ficam em suas posições.
+Trajetórias e saltos se adaptam aos slots reais, preservando a composição,
+o movimento reduzido e o limite de flashes locais. Ataques, movimento e som
+têm módulos separados e versões fixadas. Ver
+[integração e evidências](battle-motion-v04-08a.md).
+
 
 ## V04-UX-05A — base visual implementada, em avaliação
 

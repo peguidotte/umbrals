@@ -3,6 +3,9 @@ extends Control
 ## A bounded presentation-only particle pool. Visual randomness never touches combat RNG.
 const POPUP_FONT_SIZE = 22
 const UI = preload("res://scripts/ui/kit.gd")
+const Choreography = preload("res://scripts/ui/battle_choreography.gd")
+var choreography: Node2D
+var paused_feedback: bool = false
 var particles: Array = []
 var projectiles: Array = []
 var popups: Array = []
@@ -18,8 +21,11 @@ var flights: int = 0
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	rng.seed = 9127
+	choreography = Choreography.new()
+	add_child(choreography)
 
 func clear() -> void:
+	if is_instance_valid(choreography): choreography.cancel()
 	particles.clear()
 	projectiles.clear()
 	popups.clear()
@@ -75,6 +81,7 @@ func impact(at: Vector2, magnitude: int) -> void:
 	burst(at, Color("edc986"), 24 if magnitude >= 35 else 12)
 
 func _process(delta: float) -> void:
+	if paused_feedback: return
 	var had_feedback: bool = trauma > 0 or not particles.is_empty() or not projectiles.is_empty() or not popups.is_empty()
 	clock += delta
 	trauma = maxf(0, trauma - delta * 2.5)

@@ -12,6 +12,9 @@ var scroller: ScrollContainer
 var public_checkpoint: Dictionary = {}
 var choices: Array[Button] = []
 var requested_text_scale: float = 1.0
+var sections: GridContainer
+var footer: VBoxContainer
+var roster_grid: GridContainer
 
 func build(kit: RefCounted, saved: Dictionary, save_message: String, callbacks: Array[Callable], register: Callable, reduced: bool) -> void:
 	name = "Overlay_journey"
@@ -24,37 +27,56 @@ func build(kit: RefCounted, saved: Dictionary, save_message: String, callbacks: 
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	panel = PanelContainer.new()
 	add_child(panel)
+	var frame: VBoxContainer = UI.column(16)
+	panel.add_child(frame)
+	frame.add_child(kit.label("LOBBY", 36, TitleTheme.PAPER))
+	frame.add_child(kit.paragraph("Um respiro antes de voltar ao bosque.", 20, Color("bac6b6")))
 	scroller = ScrollContainer.new()
 	scroller.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	panel.add_child(scroller)
-	var body: VBoxContainer = UI.column(14)
+	scroller.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroller.follow_focus = true
+	frame.add_child(scroller)
+	sections = GridContainer.new()
+	sections.columns = 2
+	sections.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	sections.add_theme_constant_override("h_separation", 28)
+	sections.add_theme_constant_override("v_separation", 24)
+	scroller.add_child(sections)
+	var body: VBoxContainer = UI.column(12)
 	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	scroller.add_child(body)
-	body.add_child(kit.label("JOGAR", 36, TitleTheme.PAPER))
-	body.add_child(kit.paragraph("O bosque espera por você.", 20, Color("bac6b6")))
+	sections.add_child(body)
+	body.add_child(kit.label("EXPEDIÇÃO", 22, TitleTheme.PAPER))
 	var has_save: bool = not saved.is_empty()
-	var summary: String = checkpoint_summary(saved) if has_save else "Sua primeira expedição começa com um vínculo."
-	body.add_child(kit.paragraph(summary, 23, TitleTheme.PAPER))
+	var summary: String = checkpoint_summary(saved) if has_save else "Nenhuma expedição salva. Escolha um Umbral para começar."
+	body.add_child(kit.paragraph(summary, 20, TitleTheme.PAPER))
 	if has_save:
 		var roster: Array = saved.get("party", [])
-		body.add_child(kit.label("EQUIPE SALVA · %d VÍNCULO%s" % [roster.size(), "S" if roster.size() != 1 else ""], 15, Color("bac6b6")))
-		var grid = GridContainer.new()
-		grid.columns = 3
-		grid.add_theme_constant_override("h_separation", 12)
-		grid.add_theme_constant_override("v_separation", 8)
-		body.add_child(grid)
+		body.add_child(kit.paragraph("EQUIPE DA EXPEDIÇÃO SALVA · %d/6" % roster.size(), 16, Color("bac6b6")))
+		roster_grid = GridContainer.new()
+		roster_grid.columns = 2
+		roster_grid.add_theme_constant_override("h_separation", 12)
+		roster_grid.add_theme_constant_override("v_separation", 8)
+		body.add_child(roster_grid)
 		for individual in roster:
 			var display_name: String = Content.display_name(individual)
-			var portrait: String = Content.art_binding(individual)
 			var row: HBoxContainer = UI.row(6)
 			row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			grid.add_child(row)
-			row.add_child(UI.art(portrait, Vector2(54, 54)))
+			roster_grid.add_child(row)
+			row.add_child(UI.art(Content.art_binding(individual), Vector2(54, 54)))
 			var details: VBoxContainer = UI.column(1)
+			details.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			row.add_child(details)
-			details.add_child(kit.label(display_name, 16, TitleTheme.PAPER))
-			details.add_child(kit.label("%d/%d HP" % [individual.hp, individual.max_hp], 15, Color("bac6b6")))
-			row.tooltip_text = "%s · %s" % [display_name, "Em campo" if int(individual.slot) >= 0 else "Reserva"]
+			details.add_child(kit.paragraph(display_name, 18, TitleTheme.PAPER))
+			details.add_child(kit.paragraph("%d/%d HP · %s" % [individual.hp, individual.max_hp, "Em campo" if int(individual.slot) >= 0 else "Reserva"], 16, Color("bac6b6")))
+		body.add_child(kit.paragraph("Esta equipe pertence à expedição atual. Uma nova expedição começa com outra equipe.", 16, Color("bac6b6")))
+	var future: VBoxContainer = UI.column(20)
+	future.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	sections.add_child(future)
+	_future_space(future, kit, "MELHORIAS", "Indisponíveis nesta versão", "Espaço reservado para preparar futuras expedições. Ainda não há melhorias para adquirir.")
+	_future_space(future, kit, "VISITAS POR VÍNCULO", "Possibilidade futura", "Umbrals com vínculos fortes poderão passar por aqui. As visitas ainda não estão disponíveis.")
+	future.add_child(kit.paragraph("A equipe da expedição não representa visitantes nem uma coleção permanente.", 16, Color("bac6b6")))
+	footer = UI.column(8)
+	frame.add_child(footer)
 	var labels = ["CONTINUAR EXPEDIÇÃO", "NOVA EXPEDIÇÃO", "TREINO DE BATALHA", "VOLTAR"]
 	var ids = ["journey.continue", "journey.new", "journey.practice", "journey.back"]
 	for i in range(ids.size()):
@@ -69,16 +91,17 @@ func build(kit: RefCounted, saved: Dictionary, save_message: String, callbacks: 
 			continue_button = button
 			button.disabled = not has_save
 			button.tooltip_text = summary if has_save else "Nenhuma expedição salva neste dispositivo."
-		body.add_child(button)
+		(footer if i == 3 else body).add_child(button)
 		choices.append(button)
 		register.call(button, ids[i], "journey")
 		button.pressed.connect(callbacks[i])
 		if i == 2:
+			body.add_child(kit.paragraph("Treine batalhas sem substituir sua expedição salva.", 16, Color("bac6b6")))
 			notice = kit.paragraph(save_message, 16, Color("bac6b6"))
 			notice.visible = not save_message.is_empty() and not save_message.begins_with("Progresso salvo")
 			body.add_child(notice)
 	resized.connect(_layout)
-	body.minimum_size_changed.connect(_layout)
+	sections.minimum_size_changed.connect(_layout)
 	_layout.call_deferred()
 
 static func checkpoint_summary(saved: Dictionary) -> String:
@@ -92,6 +115,21 @@ static func checkpoint_summary(saved: Dictionary) -> String:
 		if node.available: available.append(str(node.title))
 	return "Bosque · Próxima parada: %s" % " ou ".join(available) if not available.is_empty() else "Bosque · Expedição em andamento"
 
+func _future_space(parent: VBoxContainer, kit: RefCounted, title: String, status: String, description: String) -> void:
+	var card = PanelContainer.new()
+	var box = StyleBoxFlat.new()
+	box.bg_color = Color(0.06, 0.11, 0.12, 0.8)
+	box.border_color = Color("665f46")
+	box.set_border_width_all(1)
+	box.set_content_margin_all(18)
+	card.add_theme_stylebox_override("panel", box)
+	parent.add_child(card)
+	var text: VBoxContainer = UI.column(10)
+	card.add_child(text)
+	text.add_child(kit.paragraph(title, 22, TitleTheme.PAPER))
+	text.add_child(kit.paragraph(status, 17, TitleTheme.VIOLET))
+	text.add_child(kit.paragraph(description, 18, Color("bac6b6")))
+
 func _layout() -> void:
 	if not is_instance_valid(panel): return
 	var window: Vector2 = Vector2(DisplayServer.window_get_size())
@@ -102,13 +140,10 @@ func _layout() -> void:
 	var minimum_hit: float = maxf(54.0, 44.0 / maxf(0.01, pixel_scale * zoom))
 	for button in choices:
 		if not is_equal_approx(button.custom_minimum_size.y, minimum_hit): button.custom_minimum_size.y = minimum_hit
-	var width: float = minf(760, (size.x - 80) / zoom)
-	var height: float = minf(scroller.get_combined_minimum_size().y + 56, (size.y - 80) / zoom)
-	# ScrollContainer minimum height excludes its scrolling content.
-	if scroller.get_child_count() > 0: height = minf(scroller.get_child(0).get_combined_minimum_size().y + 56, (size.y - 80) / zoom)
-	panel.size = Vector2(width, height)
-	panel.position = Vector2(maxf(40, (size.x - 1672 * minf(size.x / 1672, size.y / 941)) * 0.5 + 94), (size.y - height * zoom) * 0.5)
-	if size.x / maxf(1, size.y) < 1.15: panel.position.x = (size.x - width * zoom) * 0.5
+	var width: float = minf(1160, (size.x - 80) / zoom)
+	sections.columns = 2 if width >= 1000 else 1
+	panel.size = Vector2(width, (size.y - 80) / zoom)
+	panel.position = (size - panel.size * zoom) * 0.5
 
 func _adapt_text(node: Node, minimum_font: int) -> void:
 	for child in node.get_children():

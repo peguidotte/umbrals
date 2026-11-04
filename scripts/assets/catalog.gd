@@ -5,6 +5,25 @@ extends RefCounted
 const Paths = preload("res://scripts/assets/binding_paths.gd")
 static var _catalog: Dictionary = {}
 static var _manifests: Dictionary = {}
+static var _bindings: Dictionary = {}
+
+static func bound_manifest(binding: String) -> Dictionary:
+	if _bindings.is_empty(): _bindings = _read_json("res://assets/runtime-lock.json").get("bindings", {})
+	var reference: Dictionary = _bindings.get(binding, {})
+	if reference.is_empty(): return {}
+	return manifest(str(reference.id), str(reference.version))
+
+static func bound_file(binding: String, role: String) -> String:
+	bound_manifest(binding)
+	var reference: Dictionary = _bindings.get(binding, {})
+	if reference.is_empty(): return ""
+	return file_path(str(reference.id), str(reference.version), role)
+
+static func dependency_file(binding: String, dependency: String, role: String) -> String:
+	for reference in bound_manifest(binding).get("dependencies", []):
+		if str(reference.id) == dependency: return file_path(str(reference.id), str(reference.version), role)
+	push_error("Missing pinned dependency: %s -> %s" % [binding, dependency])
+	return ""
 
 static func resource(binding: String) -> Resource:
 	if not Paths.PATHS.has(binding):

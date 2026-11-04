@@ -44,11 +44,13 @@ func _ready() -> void:
 	AudioServer.set_bus_volume_db(0, -2)
 	for i in range(4):
 		var player = AudioStreamPlayer.new()
+		player.playback_type = AudioServer.PLAYBACK_TYPE_STREAM
 		player.bus = "SFX"
 		player.volume_db = -4
 		add_child(player)
 		voices.append(player)
 	ui_voice = AudioStreamPlayer.new()
+	ui_voice.playback_type = AudioServer.PLAYBACK_TYPE_STREAM
 	ui_voice.bus = "UI"
 	ui_voice.volume_db = -8
 	add_child(ui_voice)
@@ -59,14 +61,17 @@ func _ready() -> void:
 	crystal_confirm = _crystal(0.3, 660.0, false)
 	magic_chord = _crystal(0.85, 330.0, true)
 	crystal_voice = AudioStreamPlayer.new()
+	crystal_voice.playback_type = AudioServer.PLAYBACK_TYPE_STREAM
 	crystal_voice.bus = "UI"
 	crystal_voice.volume_db = -17
 	add_child(crystal_voice)
 	magic_voice = AudioStreamPlayer.new()
+	magic_voice.playback_type = AudioServer.PLAYBACK_TYPE_STREAM
 	magic_voice.bus = "UI"
 	magic_voice.volume_db = -12
 	add_child(magic_voice)
 	title_water = AudioStreamPlayer.new()
+	title_water.playback_type = AudioServer.PLAYBACK_TYPE_STREAM
 	title_water.bus = "Music"
 	title_water.volume_db = -80
 	title_water.stream = _forest_water()
@@ -148,6 +153,8 @@ func set_title(active: bool) -> void:
 
 func _loop(name: String, volume: float) -> AudioStreamPlayer:
 	var player = AudioStreamPlayer.new()
+	# Keep original WAV synthesis and performance cues in the same mixer on Web.
+	player.playback_type = AudioServer.PLAYBACK_TYPE_STREAM
 	player.bus = "Music"
 	player.volume_db = volume
 	var stream: AudioStreamWAV = Assets.resource("audio/" + name.replace("_", "-"))
@@ -177,6 +184,17 @@ func play(name: String, small: bool = false) -> void:
 	player.pitch_scale = [0.98, 1.0, 1.025, 1.01][voice_index % 4]
 	player.stream = Assets.resource("audio/" + name.replace("_", "-"))
 	player.play()
+
+func performance(index: int) -> AudioStreamPlayer:
+	if shutting_down or voices.is_empty(): return null
+	var path: String = Assets.dependency_file("attacks/battle-performances", "audio/battle-performances", "performance-%02d" % (clampi(index, 0, 14) + 1))
+	var player: AudioStreamPlayer = voices[voice_index % voices.size()]
+	voice_index += 1
+	player.stream_paused = false
+	player.pitch_scale = 1.0
+	player.stream = load(path)
+	player.play()
+	return player
 
 func set_boss(active: bool) -> void:
 	create_tween().tween_property(pulse, "volume_db", -19.0 if active else -40.0, 0.55)

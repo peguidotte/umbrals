@@ -53,10 +53,17 @@ completa, mesmo quando está verde.
 
 ## Fixtures, checkpoints e replay
 
-`tests/support/scenario_fixtures.gd` constrói sete condições iniciais sobre o combate
+`tests/support/scenario_fixtures.gd` constrói sete condições funcionais sobre o combate
 atual: batalha, ferido, escudo inimigo, recompensa, várias ofertas, seis integrantes
 para substituição e mochila do time completo. Fixtures alteram somente sua instância;
 não editam o catálogo global. Ofertas são produzidas por uma conjuração real.
+
+Oito fixtures adicionais `motion_*` restauram uma forma por vez com cartas
+possuídas e três receptores resistentes para revisar as quinze coreografias.
+São dados exclusivos de teste. `battle-motion` testa a apresentação nativa:
+snapshots no contato, variantes, pausa, cancelamento, movimento reduzido e RNG.
+`tools/capture_battle_performances.py` registra controles reais no build de
+fixtures, com o canvas e o áudio real do jogo; não substitui a aceitação completa.
 
 A tarefa `fixtures` restaura o estado inicial, reproduz os comandos e compara o
 checkpoint final para cada caso. Produz `fixtures.json` e `fixture-records/<nome>.json`.

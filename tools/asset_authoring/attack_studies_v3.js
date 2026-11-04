@@ -1,0 +1,50 @@
+/* Review 3: calibrated form sockets, creature state library and layered impacts. */
+const formIds=Object.keys(Anatomy.forms),lifeCanvases=[],lifeState={value:0},impactValues=[12,8,12,8,8,8,8,8,8,11,11,11,25,25,25];
+const powersSection=document.createElement('section');powersSection.id='actor-library';powersSection.innerHTML='<small>Vida dos Umbrals · oito formas</small><h2>O corpo conta a ação.</h2><p>Respiração e apêndices em repouso; preparação, conjuração, dano, defesa e celebração próprios. Escolha um estado para comparar as oito formas.</p><label>Estado <select id="life-state">'+Anatomy.states.map((s,i)=>`<option value="${i}">${s}</option>`).join('')+'</select></label><div class="life-grid" style="margin-top:18px"></div>';
+document.querySelector('main').prepend(powersSection);
+formIds.forEach(id=>{let cell=document.createElement('article');cell.innerHTML=`<canvas width="320" height="240" aria-label="Animação de ${Anatomy.forms[id].name}"></canvas>`;powersSection.querySelector('.life-grid').append(cell);lifeCanvases.push(cell.querySelector('canvas'))});
+document.querySelector('#life-state').onchange=e=>{lifeState.value=+e.target.value;clock=0;states.forEach(s=>s.time=0)};
+const styles=document.createElement('style');styles.textContent='.life-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.life-grid article{min-width:0}#life-state{margin-left:10px}@media(max-width:900px){.life-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}';document.head.append(styles);
+const camera={flash:false};const flashLabel=document.createElement('label');flashLabel.innerHTML='<input id="impact-flash" type="checkbox"> Luz breve no impacto';document.querySelector('nav').append(flashLabel);document.querySelector('#impact-flash').onchange=e=>camera.flash=e.target.checked;
+function drawLife(index,t,state=lifeState.value){let id=formIds[index],f=Anatomy.forms[id],canvas=lifeCanvases[index],c=canvas.getContext('2d');if(!window.exportMode){let r=canvas.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;}c.clearRect(0,0,320,240);c.drawImage(assets.background,0,0,assets.background.width,assets.background.height,0,0,320,240);c.fillStyle='#0b171c88';c.fillRect(0,0,320,240);c.fillStyle='#0b171cee';c.fillRect(0,0,320,31);c.fillRect(0,209,320,31);let p=Anatomy.statePose(id,state,t),dx=160-121,dy=196-267;p.x+=dx;p.y+=dy;ellipse(c,160,199,60,8,'#061013',.8);let representative={ember:1,moss:3,dew:7,volt:9}[f.family],q=(t-.3)/2.45;let rig=Anatomy.draw(c,representative,q,id,t,{pose:p,size:158});
+ if(state===1&&q>0&&q<.65&&!reduced){let [x,y]=rig.socket,color=groups[{ember:0,moss:1,dew:2,volt:3}[f.family]].color;ring(c,x,y,10+5*Math.sin(q*7),color,.65);}
+ if(state===2&&q>.35&&q<.52&&!reduced){let [x,y]=rig.socket,color=groups[{ember:0,moss:1,dew:2,volt:3}[f.family]].color;for(let k=0;k<6;k++){let a=k*tau/6;dot(c,x+Math.cos(a)*(q-.35)*140,y+Math.sin(a)*(q-.35)*80,2,color,1-(q-.35)/.17)}}
+ if(state===3&&q>.34&&q<.55&&!reduced)line(c,[[212,106],[225,127],[207,149]],'#edbc8e',3,Math.sin((q-.34)/.21*Math.PI));
+ if(state===4&&q>.1&&q<.7){let a=Math.sin((q-.1)/.6*Math.PI);line(c,[[107,172],[110,117],[160,94],[210,117],[213,172],[160,197],[107,172]],'#dec88d',2,a*.7)}
+ if(state===5&&q>.3&&q<.8&&!reduced){for(let k=0;k<7;k++){let a=k*2.4,dist=(q-.3)*110;leaf(c,160+Math.cos(a)*dist,111+Math.sin(a)*dist-20*(q-.3),4,k+q,'#dec88d')}}
+ c.fillStyle='#f3e6c5';c.font='15px Georgia';c.fillText(f.name,12,21);c.fillStyle='#bac6b6';c.font='11px sans-serif';c.fillText(Anatomy.states[state].toUpperCase(),12,228);c.textAlign='right';c.fillText(index%2?'EVOLUÍDO':'INICIAL',307,228);c.textAlign='left';}
+function pulseImpact(c,index,tx,ty,h,direction){if(h<0||h>=1||reduced)return;let gi=Math.floor(index/3),color=groups[gi].color,fade=Math.pow(1-h,1.3),size=gi===4?1.25:1;
+ // Contact star, direction-preserving fragments and a low ground response.
+ if(h<.30){let a=(1-h/.30);for(let k=0;k<6;k++){let angle=k*tau/6+direction;firePetal(c,tx,ty,(k%2?17:30)*size,angle,2.8*size,a)}dot(c,tx,ty,7*size,'#fff0ce',a*.8)}
+ for(let k=0;k<14;k++){let angle=direction+(hash(k+30)-.5)*2.2,dist=(13+hash(k+4)*68)*Math.sin(h*Math.PI*.5);let x=tx+Math.cos(angle)*dist,y=ty+Math.sin(angle)*dist+h*h*24;line(c,[[x-Math.cos(angle)*5*(1-h),y-Math.sin(angle)*5*(1-h)],[x,y]],k%4?color:'#f8e8be',k%3===0?3:1,fade)}
+ if(gi===0){for(let k=0;k<5;k++){let a=k*2.4,x=tx+Math.cos(a)*h*30,y=ty-12-h*(25+hash(k)*19),r=(8+h*12)*fade;ellipse(c,x,y,r,r*.75,'#514148',fade*.22)}ring(c,tx,278,12+h*42,'#c99c76',fade*.6,.22)}
+ if(gi===1){for(let k=0;k<8;k++){let a=k*2.4,x=tx+Math.cos(a)*h*48,y=ty+Math.sin(a)*h*40;leaf(c,x,y,6*fade,a+h*5,'#a2c27d')}ring(c,tx,278,h*42,'#a8b084',fade*.5,.2)}
+ if(gi===2){splash(c,tx,ty,h,12);ring(c,tx,278,12+h*57,'#a8e4e4',fade*.8,.24);ring(c,tx,278,4+h*40,'#80d7e5',fade*.5,.24)}
+ if(gi>=3){for(let k=0;k<3;k++){let a=k*tau/3+h*5;bolt(c,tx,ty,tx+Math.cos(a)*43*size,ty+Math.sin(a)*38*size,k+Math.floor(h*20),1,fade*.85)}zigRing(c,tx,ty,15+h*43*size,15+h*35*size,h,fade*.7)}
+ if(camera.flash&&h<.16){dot(c,tx,ty,30*size,color,(1-h/.16)*.16)}
+ c.save();c.globalAlpha=Math.sin(clamp(h*3)*Math.PI*.5)*fade;c.fillStyle='#f3e6c5';c.strokeStyle='#101c23';c.lineWidth=3;c.font='bold 21px Georgia';c.textAlign='center';let text='−'+impactValues[index];c.strokeText(text,tx,ty-40-h*25);c.fillText(text,tx,ty-40-h*25);c.restore();
+}
+function renderV3(index,time,target){let gi=Math.floor(index/3),g=groups[gi],v=index%3,s=RigStudy.specs[index],id=evolved?g.adult:g.base,canvas=target||canvases[index],c=canvas.getContext('2d');if(!window.exportMode&&!target){let r=canvas.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;}
+ let q=(time-.32)/s.duration,rawQ=q;
+ // A short hold of presentation at contact; simulation/gameplay are not involved.
+ if(q>=.66&&q<.69)q=.66+(q-.66)*.15;else if(q>=.69)q=.6645+(q-.69)*1.082;
+ let active=q>=0&&q<1,h=clamp((q-.66)/.34),impact=q>=.66&&q<1,tx=513,ys=gi===1?[193,283]:[267];
+ c.clearRect(0,0,640,360);c.imageSmoothingEnabled=false;let bg=assets.background,sw=bg.height*640/300;c.drawImage(bg,(bg.width-sw)/2,0,sw,bg.height,0,29,640,288);c.fillStyle='#07131933';c.fillRect(0,29,640,288);ellipse(c,121,270,56,8,'#061013',.85);
+ for(let yy of ys){ellipse(c,tx,yy+3,37,7,'#061013',.85);let recoil=impact&&!reduced?Math.sin(h*9)*14*(1-h):0;actor(c,'spore',tx+recoil,yy,gi===1?83:108,impact&&!reduced?-.12*Math.sin(h*Math.PI*1.3)*(1-h):0,impact&&!reduced?1-.08*Math.sin(h*Math.PI):1,impact&&!reduced?1+.06*Math.sin(h*Math.PI):1)}
+ let source=Anatomy.socket(index,id),releasePose=Anatomy.attack(index,.35,id,time),from=RigStudy.project(source,id,s.family,releasePose,166),to=[tx,gi===1?210:220],u=clamp((q-.35)/.31),options={pose:Anatomy.attack(index,q,id,time),socket:source,size:166};
+ if(active&&index===4&&!reduced)material(c,index,from,to,u,h,q,{socket:from});
+ if(index>=12&&active&&q>.35&&q<.66&&!reduced){for(let k=2;k>=1;k--){c.save();c.globalAlpha=.12;RigStudy.draw(c,index,q-k*.03,id,true,{pose:Anatomy.attack(index,q-k*.03,id,time),socket:source,size:166});c.restore()}}
+ let rig=Anatomy.draw(c,index,q,id,time,options);rig.secondary=rig.joint(Anatomy.forms[id].antennaB||source);
+ if(active&&!reduced){screenSource(c,rig,index,q);if(index!==4)material(c,index,[3,7,10].includes(index)?rig.socket:from,to,u,h,q,rig);
+  if(q>.23&&q<.43){let a=Math.sin(clamp((q-.23)/.20)*Math.PI);let [x,y]=rig.socket;for(let k=0;k<5;k++){let angle=k*tau/5;line(c,[[x+Math.cos(angle)*7,y+Math.sin(angle)*7],[x+Math.cos(angle)*(12+a*9),y+Math.sin(angle)*(12+a*9)]],g.color,1.5,a*.8)}}
+  if(impact){for(let yy of ys)pulseImpact(c,index,tx,yy-45,h,Math.atan2(to[1]-from[1],to[0]-from[0]));}}
+ if(reduced&&active){ring(c,...rig.socket,13,g.color,.8);if(q>.66)ys.forEach(yy=>ring(c,tx,yy-43,30,g.color,.8));}
+ if(showJoints){let [x,y]=rig.socket;ring(c,x,y,8,g.color,.95);line(c,[[x-12,y],[x+12,y]],g.color,1);line(c,[[x,y-12],[x,y+12]],g.color,1);c.font='10px sans-serif';c.fillStyle='#f3e6c5';c.fillText(s.label,x+12,y-12)}
+ c.fillStyle='#0b171cf2';c.fillRect(0,0,640,30);c.fillRect(0,316,640,44);c.fillStyle='#dec88d';c.font='12px sans-serif';c.fillText(`${String(index+1).padStart(2,'0')} / ${'ABC'[v]}  ${g.names[v].toUpperCase()}`,13,20);c.textAlign='right';c.fillStyle=g.color;c.fillText('SAÍDA: '+s.label.toUpperCase(),627,20);c.textAlign='left';let phase=q<0?'REPOUSO VIVO':q<.25?'PREPARAÇÃO / PESO':q<.35?'TENSÃO / EMISSÃO':q<.66?'DISPARO / CONTRAPESO':q<.84?'CONTATO / REAÇÃO':'RECUPERAÇÃO';if(q>=1)phase='REPOUSO VIVO';c.font='11px sans-serif';c.fillStyle=g.color;c.fillText(phase,13,335);c.fillStyle='#bac6b6';c.textAlign='right';c.fillText(Anatomy.forms[id].name+' · '+g.duration[v].toFixed(2)+' s',627,335);c.textAlign='left';c.fillStyle='#36504d';c.fillRect(13,347,614,2);c.fillStyle=g.color;c.fillRect(13,347,614*clamp(time/3.2),2);
+}
+render=renderV3;
+window.renderFrame=(time)=>{window.exportMode=true;canvases.forEach((canvas,i)=>renderV3(i,time));lifeCanvases.forEach((_,i)=>drawLife(i,time));return canvases.map(c=>c.toDataURL('image/png').split(',')[1])};
+window.renderLifeFrame=(time,state)=>{window.exportMode=true;lifeCanvases.forEach((_,i)=>drawLife(i,time,state));return lifeCanvases.map(c=>c.toDataURL('image/png').split(',')[1])};
+window.anatomyMetrics=()=>formIds.map(id=>({id,name:Anatomy.forms[id].name,points:Anatomy.forms[id],states:Anatomy.states.map((name,state)=>({name,poses:[.3,.9,1.3,2.2,3.1].map(t=>Anatomy.statePose(id,state,t))}))}));
+window.emissionMetrics=()=>RigStudy.specs.map((s,index)=>({index,forms:[groups[Math.floor(index/3)].base,groups[Math.floor(index/3)].adult].map(id=>{let q=.35,p=Anatomy.attack(index,q,id,.32+q*s.duration),uv=Anatomy.socket(index,id),projected=RigStudy.project(uv,id,s.family,p,166);return {id,uv,release:projected,drawSocket:Anatomy.draw(document.createElement('canvas').getContext('2d'),index,q,id,.32+q*s.duration).socket}})}));
+function animateLife(){if(window.loaded&&!window.exportMode)lifeCanvases.forEach((_,i)=>drawLife(i,clock%3.2));requestAnimationFrame(animateLife)}requestAnimationFrame(animateLife);

@@ -1,0 +1,230 @@
+[
+  {
+    "index": 0,
+    "start": 0.2,
+    "release": 0.77,
+    "contact": 1.11,
+    "hold": 0.067,
+    "mode": "blast",
+    "target": "verdalio",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.11
+    ],
+    "signature": "Ferocidade / combustão"
+  },
+  {
+    "index": 1,
+    "start": 0.2,
+    "release": 0.91,
+    "contact": 1.23,
+    "hold": 0.083,
+    "mode": "cut",
+    "target": "mareveu",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.23
+    ],
+    "signature": "Ferocidade / combustão"
+  },
+  {
+    "index": 2,
+    "start": 0.2,
+    "release": 0.87,
+    "contact": 1.19,
+    "hold": 0.067,
+    "mode": "bloom",
+    "target": "tempestral",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.19
+    ],
+    "signature": "Ferocidade / combustão"
+  },
+  {
+    "index": 3,
+    "start": 0.2,
+    "release": 1,
+    "contact": 1.21,
+    "hold": 0.067,
+    "mode": "lash",
+    "target": "ignivar",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.21
+    ],
+    "signature": "Paciência / madeira tensionada"
+  },
+  {
+    "index": 4,
+    "start": 0.2,
+    "release": 1.04,
+    "contact": 1.42,
+    "hold": 0.1,
+    "mode": "lift",
+    "target": "tempestral",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.42
+    ],
+    "signature": "Paciência / madeira tensionada"
+  },
+  {
+    "index": 5,
+    "start": 0.2,
+    "release": 0.88,
+    "contact": 1.22,
+    "hold": 0.05,
+    "mode": "pierce",
+    "target": "mareveu",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.22,
+      1.32,
+      1.42
+    ],
+    "signature": "Paciência / madeira tensionada"
+  },
+  {
+    "index": 6,
+    "start": 0.2,
+    "release": 0.78,
+    "contact": 1.03,
+    "hold": 0.05,
+    "mode": "push",
+    "target": "ignivar",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.03
+    ],
+    "signature": "Pressão / fluidez"
+  },
+  {
+    "index": 7,
+    "start": 0.2,
+    "release": 0.97,
+    "contact": 1.31,
+    "hold": 0.067,
+    "mode": "flow",
+    "target": "tempestral",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.31,
+      1.48
+    ],
+    "signature": "Pressão / fluidez"
+  },
+  {
+    "index": 8,
+    "start": 0.2,
+    "release": 1.03,
+    "contact": 1.4,
+    "hold": 0.083,
+    "mode": "wave",
+    "target": "verdalio",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.4
+    ],
+    "signature": "Pressão / fluidez"
+  },
+  {
+    "index": 9,
+    "start": 0.2,
+    "release": 0.84,
+    "contact": 0.96,
+    "hold": 0.05,
+    "mode": "shock",
+    "target": "mareveu",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      0.96
+    ],
+    "signature": "Precisão / descarga"
+  },
+  {
+    "index": 10,
+    "start": 0.2,
+    "release": 0.98,
+    "contact": 1.18,
+    "hold": 0.067,
+    "mode": "pulse",
+    "target": "verdalio",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.18
+    ],
+    "signature": "Precisão / descarga"
+  },
+  {
+    "index": 11,
+    "start": 0.2,
+    "release": 0.93,
+    "contact": 1.19,
+    "hold": 0.067,
+    "mode": "bind",
+    "target": "ignivar",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.19
+    ],
+    "signature": "Precisão / descarga"
+  },
+  {
+    "index": 12,
+    "start": 0.2,
+    "release": 0.85,
+    "contact": 1.1,
+    "hold": 0.083,
+    "mode": "ram",
+    "target": "verdalio",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.1
+    ],
+    "signature": "Arranque / massa"
+  },
+  {
+    "index": 13,
+    "start": 0.2,
+    "release": 0.94,
+    "contact": 1.39,
+    "hold": 0.1,
+    "mode": "slam",
+    "target": "ignivar",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.39
+    ],
+    "signature": "Arranque / massa"
+  },
+  {
+    "index": 14,
+    "start": 0.2,
+    "release": 1,
+    "contact": 1.34,
+    "hold": 0.083,
+    "mode": "spin",
+    "target": "mareveu",
+    "end": 2.65,
+    "loop": 3.2,
+    "beats": [
+      1.34
+    ],
+    "signature": "Arranque / massa"
+  }
+]

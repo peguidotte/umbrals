@@ -77,6 +77,12 @@ func apply_reduced_motion(reduced: bool) -> void:
 
 func clear_effects() -> void:
 	hud.effects.clear()
+	for body in hud.actors + hud.enemy_actors: body.stop_motion()
+
+func pause_feedback(paused: bool) -> void:
+	hud.effects.paused_feedback = paused
+	hud.effects.choreography.set_suspended(paused)
+	for body in hud.actors + hud.enemy_actors: body.rig.paused = paused
 
 func popup(point: Vector2, text: String, color: Color) -> void:
 	hud.effects.popup(point, text, color)
@@ -87,4 +93,4 @@ func reward_burst(individual: Dictionary) -> void:
 			hud.effects.burst(actor.get_global_rect().get_center(), Color(Content.SPECIES[individual.species].color), 32)
 
 func feedback_metrics() -> Dictionary:
-	return {"hits": hud.effects.hits, "flights": hud.effects.flights, "bursts": hud.effects.bursts, "trauma": hud.effects.trauma, "particles": hud.effects.particles.size()}
+	return {"hits": hud.effects.hits, "flights": hud.effects.flights, "bursts": hud.effects.bursts, "trauma": hud.effects.trauma, "particles": hud.effects.particles.size(), "performances": hud.effects.choreography.started, "performance_active": hud.effects.choreography.active, "variant": hud.effects.choreography.current_variant, "emission_part": hud.effects.choreography.current_source}
