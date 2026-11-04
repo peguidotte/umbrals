@@ -3560,6 +3560,30 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 14307,
+      "id": "characters/brasa-pilot@0.1.0:walk",
+      "kind": "data",
+      "module": "characters/brasa-pilot",
+      "path": "assets/characters/brasa-pilot/versions/0.1.0/walk.json",
+      "role": "walk",
+      "sha256": "bfcdfa43e1a75760fe12ff357f65f42f8513acbbc39c54191dc98a592f383250",
+      "source": {
+        "approval": "Unapproved locomotion blocking; family concept approval does not approve this gait",
+        "artwork": "Reuses characters/battle-creatures@1.0.0; no new pixels or spritesheets",
+        "authoring_sha256": "072496a56e3678b9e2f449bba76ac601681a32b34ec4032e51cd5224367b0328",
+        "authoring_tool": "tools/brasa_pilot/build.py",
+        "kind": "Original deterministic channel animation study over existing Brasa artwork",
+        "license": "Original project animation data; original artwork provenance remains in its pinned module",
+        "source_files": {
+          "assets/characters/battle-creatures/versions/1.0.0/atlas.json": "c1243fba5c348dbd53e7593b4f965202dbb8b6ba1fa88b8e2424c2fe1b388247",
+          "assets/characters/battle-motion/versions/1.0.0/motion.json": "2dfd3acad3f9ea62b4936376b9894d38b213fbc97380cb9a38eceac557c9fe83"
+        }
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
       "bytes": 1241875,
       "id": "characters/demo-acrobat@1.0.0:pike-somersault",
       "kind": "texture",
