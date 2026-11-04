@@ -69,3 +69,14 @@ synthesis in `scripts/ui/audio.gd`, using bounded voices and existing Music/UI b
   templates, preserved with per-file generation provenance. Runtime atlas regions
   retain brand, ornaments, portrait illustrations and fixed caption plates. Each
   interactive plate is a separate native control; discovery data is not baked in.
+
+## Refúgio lateral — V05-UX-03
+
+`world/refuge-lateral@1.0.0` é um cenário original sem atores embutidos, gerado
+com OpenAI Image Gen usando o menu do próprio jogo como referência visual.
+`characters/refuge-traveler@1.0.0` contém um atlas original separado, com repouso
+e seis poses de caminhada selecionadas, regiões/pivôs explícitos e escala fixa.
+O atlas de criaturas existente orientou o acabamento; os Umbrais não ganharam
+animações de caminhada por esta alteração. PNGs originais mantêm bytes e
+metadados; manifests registram origem, hashes e referências. A fonte Cormorant
+e sua licença existente são reutilizadas. Ver `docs/refuge-v05-ux03.md`.

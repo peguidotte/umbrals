@@ -37,6 +37,7 @@ static func build(game: RefCounted, session: RefCounted, screens: RefCounted, pr
 		"title_audio": presentation.title_audio, "input_serial": presentation.input_serial,
 		"interaction_serial": presentation.interaction_serial, "last_interaction": presentation.last_interaction,
 	}
+	if presentation.has("refuge"): state["refuge"] = presentation.refuge
 	if presentation.has("journey_checkpoint"):
 		var checkpoint: Dictionary = presentation.journey_checkpoint
 		state["journey_summary"] = JourneyMenu.checkpoint_summary(checkpoint) if not checkpoint.is_empty() else ""

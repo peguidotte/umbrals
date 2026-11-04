@@ -1,3 +1,4 @@
+from refuge_browser_review import depart
 """Five current-product layouts; independent from the full combat route."""
 def run(session):
     page, contracts, matrix = session.page, session.contracts, session.matrix
@@ -11,12 +12,16 @@ def run(session):
         meta=geometry(f'Menu {width}×{height}')
         shot(f'matrix-menu-{width}x{height}')
         click('menu.play')
+        geometry(f'Refuge {width}×{height}')
+        shot(f'matrix-refuge-{width}x{height}')
+        depart(session.page, session.wait)
         geometry(f'Expedition choices {width}×{height}')
         shot(f'matrix-lobby-{width}x{height}')
         click('journey.practice')
         geometry(f'Starter {width}×{height}')
         shot(f'matrix-starter-{width}x{height}')
         back('journey')
+        back('refuge')
         back('menu')
         start()
         meta.update(geometry(f'Battle {width}×{height}'))

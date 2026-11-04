@@ -1,3 +1,4 @@
+from refuge_browser_review import depart
 """Browser lifecycle, read-only diagnostics, real input, geometry and action timings."""
 from contextlib import contextmanager
 from functools import partial
@@ -147,7 +148,7 @@ class Session:
             if 'foreground' in c:
                 check(contrast(c['foreground'], c['background']) >= 4.5,
                       description + ': solid button text has ≥4.5 contrast — ' + identity)
-        if s['screen'] not in ['menu','battle']:
+        if s['screen'] not in ['menu','battle','refuge']:
             check(s['overlay_z'] > s['card_max_z'], description + ': modal stays above elevated cards')
         check(s['focused'] in active, description + ': visible focus stays in the active screen')
         return {'screen':s['screen'], 'active_controls':len(active), 'logical_size':s['logical_size'], 'focused':s['focused']}
@@ -160,6 +161,7 @@ class Session:
     def start(self, species='ember'):
         click, wait, geometry, shot, settled = self.click, self.wait, self.geometry, self.shot, self.settled
         click('menu.play')
+        depart(self.page, wait)
         wait("window.umbralState.screen === 'journey'")
         click('journey.practice')
         wait("window.umbralState.screen === 'starter'")
@@ -181,6 +183,8 @@ class Session:
             try:
                 self.check(not self.errors, 'Browser reports no uncaught JavaScript errors')
                 engine_errors = [entry for entry in self.logs if 'SCRIPT ERROR:' in entry['text'] or entry['text'].startswith('ERROR:')]
+                for entry in engine_errors:
+                    print('Godot runtime diagnostic: ' + entry['text'], flush=True)
                 self.check(not engine_errors, 'Godot reports no runtime errors')
             except Exception as error:
                 failure = str(error)

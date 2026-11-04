@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "characters/refuge-traveler",
+  "version": "1.0.0",
+  "status": "production",
+  "description": "Original contemporary traveler idle and locomotion poses",
+  "dependencies": [],
+  "files": {
+    "texture": {
+      "kind": "texture",
+      "path": "atlas.png",
+      "bytes": 1020660,
+      "sha256": "7a19d58d399834f92fec84d3529d16731e7436ef11eb40e7527230aae592e403",
+      "technical": {
+        "dimensions": [
+          1774,
+          887
+        ],
+        "mode": "RGBA",
+        "alpha": true,
+        "frames": 1
+      }
+    },
+    "poses": {
+      "kind": "data",
+      "path": "poses.json",
+      "bytes": 1246,
+      "sha256": "ec5a1cf242d51d50b54f53f9ad79f5438db64444b0c168f6852664bbca9266ba"
+    }
+  },
+  "provenance": {
+    "kind": "generated original",
+    "tool": "OpenAI Image Gen",
+    "recorded_date_utc": "2026-11-04",
+    "original_output_basename": "exec-02117221-32e5-43cb-9e1d-02176a42e1d3.png",
+    "original_sha256": "7a19d58d399834f92fec84d3529d16731e7436ef11eb40e7527230aae592e403",
+    "license_record": "Original art generated for Umbral; no third-party game assets. Project-owned main artwork used as style reference.",
+    "edit_history": "Original PNG copied byte-identically, including embedded metadata. Atlas regions and pivots are runtime data; no pixel edits.",
+    "review_status": "Original pixels inspected; real Godot Web scene and walking captures reviewed in lateral-composition-review. Integration acceptance remains separate.",
+    "style_reference": {
+      "path": "assets/characters/battle-creatures/versions/1.0.0/texture.png",
+      "sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb"
+    }
+  }
+}

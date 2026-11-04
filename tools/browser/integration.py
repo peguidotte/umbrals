@@ -1,3 +1,4 @@
+from refuge_browser_review import depart
 """Full current-main practice route, preserving every original assertion."""
 import json
 import math
@@ -22,9 +23,12 @@ def run(session):
     check(home == {'menu.play', 'menu.codex', 'menu.settings', 'menu.help', 'menu.credits'}, 'Gold Web home has exactly five active choices')
     check(not any(k in state()['controls'] for k in ('menu.practice', 'menu.continue', 'menu.quit')), 'Home has no hidden legacy aliases')
     key('Enter')
+    wait("window.umbralState.screen === 'refuge'")
+    depart(session.page, wait)
     wait("window.umbralState.screen === 'journey'")
     geometry('Expedition choices')
     shot('01b-journey')
+    back('refuge')
     back('menu')
     check(state()['focused'] == 'menu.play', 'Back from expedition choices restores Play focus')
     key('ArrowDown')

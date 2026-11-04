@@ -32,6 +32,7 @@ const AUDIO_STORM: String = "res://assets/audio/storm/versions/1.0.0/sound.wav"
 const CHARACTERS_BATTLE_CREATURES: String = "res://assets/characters/battle-creatures/versions/1.0.0/texture.png"
 const CHARACTERS_BATTLE_EVOLVED: String = "res://assets/characters/battle-evolved/versions/1.0.0/texture.png"
 const CHARACTERS_OWL: String = "res://assets/characters/owl/versions/1.0.0/portrait.svg"
+const CHARACTERS_REFUGE_TRAVELER: String = "res://assets/characters/refuge-traveler/versions/1.0.0/atlas.png"
 const CHARACTERS_SPORE: String = "res://assets/characters/spore/versions/1.0.0/portrait.svg"
 const CHARACTERS_STAG: String = "res://assets/characters/stag/versions/1.0.0/portrait.svg"
 const FONTS_BODY: String = "res://assets/fonts/dejavu/versions/1.0.0/body.ttf"
@@ -58,6 +59,7 @@ const WORLD_BATTLE_CLEARING: String = "res://assets/world/battle-clearing/versio
 const WORLD_BATTLE_CLEARING_DEPTH: String = "res://assets/world/battle-clearing-depth/versions/1.0.0/background.png"
 const WORLD_GOLD_FOREST: String = "res://assets/world/gold-forest/versions/1.0.0/texture.png"
 const WORLD_MOONLIT_CLEARING: String = "res://assets/world/moonlit-clearing/versions/1.0.0/background.png"
+const WORLD_REFUGE_LATERAL: String = "res://assets/world/refuge-lateral/versions/1.0.0/background.png"
 const WORLD_TITLE_FOREST: String = "res://assets/world/title-forest/versions/1.0.0/texture.png"
 
 const PATHS: Dictionary = {
@@ -93,6 +95,7 @@ const PATHS: Dictionary = {
 	"characters/battle-creatures": CHARACTERS_BATTLE_CREATURES,
 	"characters/battle-evolved": CHARACTERS_BATTLE_EVOLVED,
 	"characters/owl": CHARACTERS_OWL,
+	"characters/refuge-traveler": CHARACTERS_REFUGE_TRAVELER,
 	"characters/spore": CHARACTERS_SPORE,
 	"characters/stag": CHARACTERS_STAG,
 	"fonts/body": FONTS_BODY,
@@ -119,5 +122,6 @@ const PATHS: Dictionary = {
 	"world/battle-clearing-depth": WORLD_BATTLE_CLEARING_DEPTH,
 	"world/gold-forest": WORLD_GOLD_FOREST,
 	"world/moonlit-clearing": WORLD_MOONLIT_CLEARING,
+	"world/refuge-lateral": WORLD_REFUGE_LATERAL,
 	"world/title-forest": WORLD_TITLE_FOREST,
 }

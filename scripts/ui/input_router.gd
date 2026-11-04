@@ -35,7 +35,7 @@ func route(event: InputEvent, screen: String, session_active: bool, browser_test
 		"back":
 			if screen == "ko_replacement": finish_replacements_requested.emit()
 			elif screen in ["battle", "map"]: screen_requested.emit("pause")
-			elif screen in ["victory", "defeat"]: return_menu_requested.emit()
+			elif screen in ["victory", "defeat", "refuge"]: return_menu_requested.emit()
 			elif screen != "menu": screen_pop_requested.emit()
 		"card": card_requested.emit(int(intent.index))
 		"cast": cast_requested.emit()
