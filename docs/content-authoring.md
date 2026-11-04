@@ -1,5 +1,9 @@
 # Autoria de espécies e formas
 
+Antes de escrever histórias ou descrições, leia [lore e status das decisões](lore/README.md)
+e a [conciliação com o conteúdo atual](lore/implementacao.md). Texto exploratório
+não confirma cosmologia, região ou origem das cartas; preservar regras e saves.
+
 Cada linhagem fica em `content/species/<species_id>/species.tres`. IDs são
 estáveis, minúsculos e usam letras ASCII, dígitos e sublinhado. IDs de formas
 são globalmente únicos entre espécies para a descoberta no códex. Indivíduos guardam

@@ -12,6 +12,13 @@ O [formato visual do MVP de batalha](docs/references/battle/00-aprovada/README.m
 
 O jogo abre em um menu na floresta. O combate tem criaturas em cena, HUD compacto, cartas em uma faixa inferior, previsão de consequências e impactos curtos. Pausa, grimório, inspeção e opções compartilham navegação por foco. Música, efeitos, movimento reduzido, flashes opcionais e texto ampliado ficam nas opções e persistem entre sessões.
 
+## Lore e orientação para agentes
+
+A [documentação de lore](docs/lore/README.md) separa mundo, primeiro jogo, decisões
+confirmadas e propostas em aberto. Leia-a antes de implementar narrativa, conteúdo
+ou progressão. Ela registra as tensões com a main e o estado de acesso às fontes;
+não altera as regras descritas aqui nem substitui decisões do roadmap.
+
 ## Jogar
 
 - **Windows:** extraia `builds/Umbral-0.3.0-windows.zip` e execute `Umbral.exe`.

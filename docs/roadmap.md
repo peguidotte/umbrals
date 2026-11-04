@@ -28,6 +28,12 @@ O CI [38632485628](https://github.com/peguidotte/umbrals/actions/runs/3863248562
 
 ## Backstory proposta
 
+Esta sinopse permanece como proposta histórica. A [lore integrada](lore/README.md)
+registra decisões de Pedro sobre mundo e primeiro jogo; a
+[matriz de conciliação](lore/implementacao.md) explicita tensões com esta origem
+em memórias, D01, D46 e a prosa já implementada. Esta integração não reescreve
+a sinopse, não revoga decisões e não muda mecânicas.
+
 Na **Noite da Fenda**, o coração do bosque se partiu. As lembranças que ligavam seus habitantes se espalharam, e os antigos guardiões passaram a repetir fragmentos do passado. Os Umbrals nasceram desses vínculos entre memória e natureza: uma brasa preservada, uma raiz que protegeu alguém, uma tempestade que nunca terminou.
 
 Você é um **Guia de Ecos**, capaz de ouvir essas lembranças. Parte do Refúgio para reconectar três santuários e descobrir por que o **Rei sem Aurora**, já presente no MVP, mantém a floresta presa àquela noite. Cada expedição reorganiza caminhos e encontros. Umbral vencido pode ter seu vínculo restaurado e se juntar ao time.
@@ -714,6 +720,27 @@ Os tempos são os observados nessas execuções. As capturas e a amostra de víd
 locais foram revisadas; a aceitação completa pertence à CI vinculada acima.
 Produto permanece 0.3.0; diversão, arte final e hardware continuam gates humanos abertos.
 
+
+### V04-LORE-01 — documentação de mundo e primeiro jogo
+
+Fatia documental da bíblia curta de mundo/combate prevista no marco 0.4, solicitada
+por Pedro para orientar agentes e conteúdo futuro. [Entrada](lore/README.md),
+[mundo](lore/mundo.md), [primeiro jogo](lore/primeiro-jogo.md),
+[pendências](lore/pendencias.md), [conciliação](lore/implementacao.md) e
+[fontes](lore/fontes.md) separam decisões, preferências e exploração. AGENTS,
+skill local, README, autoria e arquitetura apontam para esse conjunto.
+
+Base: main `f67f73e`, confirmada por preflight com fetch. A transferência do ZIP
+primário falhou; a integração usa o contexto consolidado de Pedro e identifica
+explicitamente a reconciliação documental ainda pendente. Nenhum PDF/imagem foi
+importado. D01, D46, quatro opções iniciais, saves, catálogo e arte são preservados;
+nenhuma mecânica ou prosa do jogo foi alterada. Versão e escopo dos marcos não mudam.
+
+Verificação: links locais e âncoras dos documentos alterados, UTF-8, diff sem erros
+de whitespace e escopo exclusivamente documental conferidos. Gameplay, browser,
+exports e revisão visual não foram reexecutados na main para esta fatia documental.
+Próxima fatia: obter o pacote, reconciliar suas fontes com Pedro e então propor a
+revisão da prosa existente. Não declarar a bíblia final nem o marco 0.4 concluídos.
 
 ### V05-UX-01 — lobby de preparação
 
