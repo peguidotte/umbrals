@@ -132,15 +132,37 @@ try:
                     settled()
                     if n == 'spring':
                         wait("window.umbralState.screen === 'map'")
-                        check(state()['checkpoint_status'] == 'ok', 'Rest checkpoint is saved')
-                        check(actors_match(state()['expedition']['party'], step['party_after']), 'Rest applies the native healing result')
-                        check(nodes()['thicket']['locked'] and nodes()['spring']['completed'], 'Rest completes once and locks the alternate branch')
-                        shot('spring-completed-map')
+                        check(state()['checkpoint_status'] == 'ok' and state()['expedition']['phase'] == 'event', 'Room entry is checkpointed before its decision')
+                        shot('spring-room')
+                        pending_room = state()['expedition']
+                        page.reload()
+                        wait("window.umbralState.screen === 'menu'", 90000)
+                        click('menu.play')
+                        depart(page, wait)
+                        check('Descansar ou praticar' in state()['journey_summary'], 'Continue describes the pending room')
+                        click('journey.continue')
+                        wait("window.umbralState.screen === 'map' && window.umbralState.expedition.phase === 'event'")
+                        check(state()['expedition'] == pending_room, 'Reload preserves the unspent interval, HP and owned copies')
+                        continue
                     else:
                         wait("window.umbralState.screen === 'battle'")
                         check(state()['checkpoint_status'] == 'ok', 'Encounter entry checkpoint is saved')
                         check(actors_match(state()['party'], step['party_after']), 'Entering ' + n + ' preserves native roster and HP')
                         if n == 'boss': shot(branch + '-boss')
+                elif step['action'] == 'event':
+                    before = state()['expedition']
+                    click('event.practice')
+                    shot('spring-practice-draft')
+                    click('event.cancel')
+                    check(state()['expedition'] == before, 'Canceling practice leaves the room and party unchanged')
+                    click('event.rest')
+                    shot('spring-rest-preview')
+                    click('event.confirm')
+                    settled()
+                    check(state()['checkpoint_status'] == 'ok', 'Rest checkpoint is saved')
+                    check(actors_match(state()['expedition']['party'], step['party_after']), 'Rest applies the native healing result')
+                    check(nodes()['thicket']['locked'] and nodes()['spring']['completed'], 'Rest completes once and locks the alternate branch')
+                    shot('spring-completed-map')
                 elif step['action'] == 'play':
                     settled()
                     check(state()['hand'] == step['hand'], 'Visible hand equals seeded native plan')

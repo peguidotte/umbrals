@@ -14,6 +14,7 @@ static func checkpoint(input: Dictionary) -> Dictionary:
 	var result: Dictionary = input.duplicate(true)
 	if result.get("schema") == 2:
 		if not Registry.supports(result.get("identity")) or not Registry.source_state_valid(result): return {}
+		if result.identity != Identity.current(): result["event_revision"] = 0
 		result.identity = Identity.current()
 		return result
 	if result.get("schema") != 1 or not result.get("battle") is Dictionary or not Registry.supports(LEGACY_TARGET): return {}

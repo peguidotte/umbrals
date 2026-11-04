@@ -301,3 +301,16 @@ counts are main 399, Rules 345 and expedition map 325; the extracted status view
 64. These size limits do not eliminate the seven global-catalog and six untyped-runtime
 compatibility occurrences retained by Rules. Consult the guard and the actual full
 acceptance result before drawing conclusions about behavior.
+
+
+## V05-EVT-01: contextual spring prototype
+
+New expeditions pause at the spring in a stable `event` phase. The choice is
+rest versus practicing one already-known technique at the cost of that rest;
+combat capture/evolution rewards are unchanged. `battle/technique_practice.gd`
+validates the pure copy-editing operation, preserving owner, instance identity
+and total. Expedition owns confirmation/completion; the application flow owns
+checkpoint orchestration; SpringRoom renders a detached snapshot and emits intent.
+No currency, store, generic event scripting system or permanent power progression
+is introduced. Rules-2 expeditions migrate to legacy event revision 0, preserving
+immediate rest and deterministic replay. See [behavior, compatibility and limits](spring-event-v05-01.md).

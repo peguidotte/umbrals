@@ -998,3 +998,22 @@ nas rodadas focadas. Aceitação integral e CI do HEAD permanecem gates obrigat�
 antes de integração; seus resultados são registrados no PR e entrega.
 [Escopo, evidências e limites](refuge-v05-ux03.md). Próxima fatia: avaliação da
 execução, personagens e decisões de melhorias/afinidade, sem impor cosmologia.
+
+
+### V05-EVT-01 — decisão contextual na Nascente (protótipo revisável)
+
+Pedro aceitou a viabilidade da edição de cópias, mas rejeitou oferecê-la como
+recompensa genérica pós-combate. Pediu salas/NPCs/situações com decisões, citando
+Hades/Balatro e possíveis compras/vendas. A fatia experimental usa a Nascente já
+existente: descansar ou abrir mão da cura para praticar com um Umbral vivo.
+Uma cópia muda entre técnicas conhecidas do mesmo dono, preservando instâncias e
+total; confirmação mostra consequências e cancelamento descarta só o rascunho.
+Captura/evolução de combate permanecem. Não há moeda, mercador ou economia nova.
+
+Ruleset 3 com migração explícita: expedições antigas mantêm o descanso imediato
+e o replay anterior; novas runs persistem a sala antes da escolha. Limites de
+1–3 cópias e a situação são defaults experimentais, sem aprovação final de design.
+[Escopo, alternativas de conteúdo e evidências](spring-event-v05-01.md).
+Próxima fatia: avaliar a decisão e definir identidade/NPC ou uma primeira economia
+antes de afirmar compra/venda. Versão continua 0.3.0; critérios humanos e demais
+conteúdos de 0.5 permanecem abertos.

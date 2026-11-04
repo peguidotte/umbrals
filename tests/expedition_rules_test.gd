@@ -117,7 +117,8 @@ func _initialize() -> void:
 	run.battle.party[0].hp = 1
 	run.battle.party[1].hp = 0
 	var before_rng: int = run.battle.rng.state
-	expect(run.choose_node("spring"), "spring available")
+	expect(run.choose_node("spring") and run.phase == "event", "spring opens its contextual choice")
+	expect(run.choose_event("rest"), "confirm rest in spring")
 	expect(run.battle.party[0].hp == 1 + ceili(maximum * 0.25) and run.battle.party[1].hp == 0, "spring heals living only")
 	expect(run.battle.rng.state == before_rng and not run.choose_node("spring") and not run.choose_node("thicket"), "rest once, no roll, closes fork")
 	expect(run.choose_node("boss"), "boss follows rest")

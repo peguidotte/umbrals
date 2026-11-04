@@ -18,7 +18,7 @@ func _boot_fixture() -> void:
 	runtime.bind_game(session.expedition.battle)
 	if bool(JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('large_text') === '1'")): preferences.set_value("large_text", true)
 	_sync_battle()
-	screens.reset("battle")
+	screens.reset("map" if candidate.phase in ["map", "event"] else "battle")
 	_sync_phase()
 	fixture_ready = true
 	_queue_debug()
