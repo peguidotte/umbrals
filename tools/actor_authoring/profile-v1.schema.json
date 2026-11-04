@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:umbral:actor-authoring:profile-v1",
+  "title": "Offline battle-motion actor requirements v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "format",
+    "form_id",
+    "motion_source",
+    "performances_source",
+    "states",
+    "attacks"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "type": "integer"
+    },
+    "format": {
+      "const": "battle-motion-v1"
+    },
+    "form_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "motion_source": {
+      "$ref": "#/$defs/source"
+    },
+    "performances_source": {
+      "$ref": "#/$defs/source"
+    },
+    "states": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "idle",
+        "walk",
+        "hurt"
+      ],
+      "properties": {
+        "idle": {
+          "$ref": "#/$defs/state"
+        },
+        "walk": {
+          "$ref": "#/$defs/state"
+        },
+        "hurt": {
+          "$ref": "#/$defs/state"
+        }
+      }
+    },
+    "attacks": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 14
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "role"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(characters|attacks)/[a-z][a-z0-9-]*$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$"
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "state": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "group",
+            "clip"
+          ],
+          "properties": {
+            "group": {
+              "enum": [
+                "states",
+                "reactions"
+              ]
+            },
+            "clip": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)$"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "missing"
+          ],
+          "properties": {
+            "missing": {
+              "type": "string",
+              "pattern": "\\S"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
