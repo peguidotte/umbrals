@@ -12,3 +12,5 @@ instalação, com `library file transfer failed: download failed`. Não houve
 rota alternativa. O [registro de origem](reference-status.json) mantém o vínculo
 para uma transferência oficial posterior, preservando bytes/metadados então.
 Sem mudanças em runtime, catálogo de conteúdo, IDs ou saves.
+
+Uma segunda tentativa oficial também falhou antes da instalação. Continua sem PNG local.

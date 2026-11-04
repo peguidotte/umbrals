@@ -1,0 +1,14 @@
+{
+  "forms": {
+    "ember": {
+      "ko": "knockout",
+      "ko_seconds": 0.6,
+      "source_height_ratio": 0.9313186813186813,
+      "standing_height": 301,
+      "stride_pixels": 160,
+      "walk": "walk",
+      "walk_seconds": 0.8
+    }
+  },
+  "schema_version": 1
+}

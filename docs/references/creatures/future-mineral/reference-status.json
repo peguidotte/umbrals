@@ -13,5 +13,11 @@
   "transfer_status": "failed_before_install",
   "error": "library file transfer failed: download failed",
   "repository_image_path": null,
-  "sha256": null
+  "sha256": null,
+  "official_retry": {
+    "date_utc": "2026-11-04",
+    "flow": "prepare_materialize plus current official transfer helper",
+    "result": "All requested files failed before installation: library file transfer failed: download failed",
+    "attempt_count": 2
+  }
 }

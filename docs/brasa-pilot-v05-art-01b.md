@@ -1,5 +1,8 @@
 # V05-ART-01B — primeira onda da família Brasa
 
+Registro histórico da primeira fatia (`2dce89c`). A continuação com poses novas,
+KO e playback no jogo está em [V05-ART-01C](brasa-lifecycle-integration.md).
+
 Base: `main@030ee7d9b2723ef6c75007cd5f9c17ec60da30ba`, confirmada por
 `python tools/harness.py preflight --fetch` antes das edições. Worktree isolada,
 sem incorporar a PR [#9](https://github.com/peguidotte/umbrals/pull/9), ainda

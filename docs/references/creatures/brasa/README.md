@@ -3,7 +3,9 @@
 Pedro aprovou Sendral e pediu produção em ondas. Após um fechamento criativo
 inicial da família, **reabriu a forma final do ramo principal de fogo**: o desenho
 ainda parecia apenas crescimento e mais caudas. Não fixar nem produzir sua arte
-final enquanto ele revê o conceito. Sendral de cinzas continua aprovado.
+final enquanto ele revê o conceito. A orientação seguinte preserva o final original
+quadrúpede com três caudas e propõe uma juba menor inspirada na opção A; a nova
+imagem ainda aguarda validação. Sendral de cinzas continua aprovado.
 O fechamento criativo não aprova assets implementados, animações, atributos ou tipos.
 
 Árvore de referência: **Brasa → intermediário comum → final de fogo OU final
@@ -34,3 +36,6 @@ ignorada pelo Godot e a exportação já exclui `docs/`.
 
 A [primeira onda técnica](../../../brasa-pilot-v05-art-01b.md) usa o Brasa atual
 para validar o pipeline sem substituir sua arte ou criar formas no catálogo.
+
+Uma segunda tentativa pelo fluxo oficial repetiu a falha de transferência para
+ambas as imagens. O registro preserva essa tentativa; nenhum PNG foi instalado.

@@ -8,8 +8,18 @@
     "initial_existing_form_id": "ember",
     "common_intermediate_candidate_existing_form_id": "ignivar",
     "finals": [
-      {"direction": "fire", "preferred_spoken_name": "Andarvor", "form_id": null, "creative_status": "reopened_for_exploration_do_not_produce_final_art"},
-      {"direction": "controlled_ashes_free_tail", "preferred_spoken_name": "Sendral", "form_id": null, "creative_status": "approved"}
+      {
+        "direction": "fire",
+        "preferred_spoken_name": "Andarvor",
+        "form_id": null,
+        "creative_status": "reopened_for_exploration_do_not_produce_final_art"
+      },
+      {
+        "direction": "controlled_ashes_free_tail",
+        "preferred_spoken_name": "Sendral",
+        "form_id": null,
+        "creative_status": "approved"
+      }
     ],
     "mechanics_and_natures": "not_decided_by_visual_approval"
   },
@@ -40,5 +50,16 @@
       "repository_image_path": null,
       "sha256": null
     }
-  ]
+  ],
+  "official_retry": {
+    "date_utc": "2026-11-04",
+    "flow": "prepare_materialize plus current official transfer helper",
+    "result": "All requested files failed before installation: library file transfer failed: download failed",
+    "attempt_count": 2
+  },
+  "latest_fire_direction": {
+    "status": "proposal_pending_visual_validation",
+    "direction": "Preserve original quadruped final with three tails; add a smaller mane inspired by option A. New concept image pending validation.",
+    "production_authorized": false
+  }
 }

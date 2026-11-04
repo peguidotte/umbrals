@@ -1,5 +1,10 @@
 # Piloto Brasa — V05-ART-01B
 
+Este é o estudo histórico de malha 0.1.0, preservado como reprovado. Seu gate
+de pins sem alterações se aplica ao commit `2dce89c`. A continuação integrada
+usa [V05-ART-01C](../../docs/brasa-lifecycle-integration.md), poses originais e
+um novo pin explícito; não executar o gate antigo como validação da continuação.
+
 Uma forma existente, um módulo novo de protótipo e uma captura **nativa Godot**.
 Usa os skills locais [Umbral](../../.agents/skills/umbral/SKILL.md),
 [Create Game Assets](../../.agents/skills/create-game-assets/SKILL.md) e
