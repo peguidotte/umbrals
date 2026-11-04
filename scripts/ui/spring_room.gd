@@ -6,6 +6,7 @@ signal pause_requested
 const UI = preload("res://scripts/ui/kit.gd")
 const Content = preload("res://scripts/content.gd")
 const Practice = preload("res://scripts/battle/technique_practice.gd")
+const Status = preload("res://scripts/ui/expedition_status.gd")
 var ui = UI.new()
 var snapshot: Dictionary
 var draft: Dictionary = {}
@@ -51,6 +52,9 @@ func _ready() -> void:
 	scene_row.add_child(prose)
 	prose.add_child(ui.label("Uma pausa no caminho", 26, UI.PAPER, true))
 	prose.add_child(ui.paragraph("O som da água acompanha os gestos dos Umbrais. O grupo pode descansar ou usar este intervalo para praticar uma técnica antes de seguir ao guardião.", 20))
+	# Stay outside the scrolling draft so a failed checkpoint cannot be hidden
+	# by choosing techniques, canceling, or changing text size.
+	Status.add_save_notice(column, snapshot, ui, control_created.emit)
 	var actions: HBoxContainer = UI.row(16)
 	column.add_child(actions)
 	_button(actions, "DESCANSAR\nRecuperar até 25% do HP máximo", _choose.bind("rest"), "event.rest")

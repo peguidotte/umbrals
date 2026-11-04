@@ -60,3 +60,42 @@ def run(s):
     s.check('spring' in [n['id'] for n in after['nodes'] if n['completed']] and next(n for n in after['nodes'] if n['id'] == 'thicket')['locked'], 'Room decision closes the branch once')
     s.check(s.state()['checkpoint_status'] == 'ok', 'Contextual practice is checkpointed')
     s.shot('room-practice-completed')
+
+    # Deny only checkpoint writes at the browser storage boundary. No game
+    # state setter or catalog mutation is exposed by the production bridge.
+    s.page.set_viewport_size({'width':1280, 'height':720})
+    s.fixture('spring_approach')
+    checkpoint_bytes = lambda: s.page.evaluate("JSON.stringify([localStorage.getItem('umbral.run.v1.0'),localStorage.getItem('umbral.run.v1.1')])")
+    previous_record = checkpoint_bytes()
+    s.page.evaluate("""() => {
+        const write = Storage.prototype.setItem;
+        Storage.prototype.setItem = function(key, value) {
+            if (String(key).startsWith('umbral.run.v1.'))
+                throw new DOMException('Checkpoint write refused by test', 'QuotaExceededError');
+            return write.call(this, key, value);
+        };
+    }""")
+    s.click('map.node.spring'); s.click('map.confirm')
+    s.wait("window.umbralState.expedition.phase === 'event'")
+    notice = lambda: s.state()['controls']['map.save_notice']
+    s.check(s.state()['checkpoint_status'] == 'io_error', 'Storage refusal reaches the actual room entry checkpoint')
+    s.check(notice()['visible'] and 'Não foi possível salvar' in notice()['text'] and 'SALVAMENTO' in notice()['text'], 'Room exposes the unsaved-progress warning as readable text')
+    s.check(checkpoint_bytes() == previous_record, 'Refused room entry leaves the previous checkpoint bytes unchanged')
+    s.geometry('Room with rejected checkpoint', scrollable=True)
+    s.shot('room-save-rejected')
+    pending = s.state()['expedition']
+    s.click('event.practice'); s.click('event.cancel')
+    s.click('map.pause'); s.click('pause.resume')
+    s.check(s.state()['expedition'] == pending and notice()['visible'] and 'Não foi possível salvar' in notice()['text'], 'Cancel and pause keep the warning and unspent room visible')
+    s.click('event.rest'); s.click('event.confirm')
+    s.wait("window.umbralState.expedition.phase === 'map'")
+    s.check(notice()['visible'] and 'Não foi possível salvar' in notice()['text'], 'Rejected choice checkpoint stays visible after returning to the map')
+    s.check(checkpoint_bytes() == previous_record, 'Failure after the room decision also preserves stored bytes')
+    s.shot('room-choice-save-rejected')
+    # A fresh document restores the platform method, then production entry
+    # proves that success replaces the failure message.
+    s.fixture('spring_approach')
+    s.click('map.node.spring'); s.click('map.confirm')
+    s.wait("window.umbralState.expedition.phase === 'event'")
+    s.check(s.state()['checkpoint_status'] == 'ok' and 'Progresso salvo' in notice()['text'] and 'Não foi possível' not in notice()['text'], 'Successful room checkpoint displays the current success status')
+    s.shot('room-save-ok')

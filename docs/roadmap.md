@@ -1027,3 +1027,13 @@ e o replay anterior; novas runs persistem a sala antes da escolha. Limites de
 Próxima fatia: avaliar a decisão e definir identidade/NPC ou uma primeira economia
 antes de afirmar compra/venda. Versão continua 0.3.0; critérios humanos e demais
 conteúdos de 0.5 permanecem abertos.
+
+
+Revisão de V05-EVT-01: o aviso de gravação agora aparece também na Nascente,
+fora da rolagem, com o mesmo componente do mapa. Foram verificados recusa real
+no Web Storage e os estados de sucesso, recuperação e dados protegidos; 109
+checks nativos e o cenário Web focado passaram. A integração da main `030ee7d`
+preserva o refúgio do PR #8 e os dois registros de roadmap. Evidência focada em
+`artifacts/harness/spring-notice-regressions-20261104T225648522434Z-fba9e0/`;
+fechamento integral e CI do novo HEAD registrados no PR. Rascunho aguarda revisão,
+sem merge. Não há nova mecânica ou mudança de compatibilidade por este ajuste.

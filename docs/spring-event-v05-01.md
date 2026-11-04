@@ -105,3 +105,39 @@ stdout exigido pelo runner) e `spring-browser-review` (o guard de modal foi
 corrigido para a raiz de mapa, exigindo cartas de batalha ocultas).
 A aceitação integral posterior é registrada no PR/entrega; um foco verde não
 substitui esse fechamento.
+
+
+## Revisão QA — status do checkpoint e integração do PR #8
+
+A revisão independente identificou uma omissão: SpringRoom recebia o snapshot da
+sessão, mas não exibia `save_notice`. Se a gravação falhasse ao entrar, os dados
+anteriores permaneciam protegidos, porém o jogador não recebia aviso nessa sala.
+A apresentação agora é compartilhada com o mapa por `ExpeditionStatus`: texto
+SALVAMENTO, alto contraste, fonte 19 com escala de acessibilidade, quebra de linha
+e posicionamento fora da rolagem/rascunho. A view mostra o texto da sessão e não
+reinterpreta sucesso/falha a partir de uma cor. A ponte continua somente leitura,
+expondo o texto visível dos Labels registrados para verificação.
+
+A suíte nativa passou com 109 verificações: recusa no checkpoint da entrada e
+após confirmar, preservação do registro anterior, aviso após cancelamento/pausa,
+escrita posterior bem-sucedida, armazenamento protegido por incompatibilidade ou
+falha de substituição e retomada de um checkpoint recuperado. O navegador recusa
+somente `setItem` das duas chaves de checkpoint, através da API da plataforma em
+um documento de teste, sem setter de estado do jogo nem alteração do catálogo.
+Capturas reais conferem o aviso na Nascente e no mapa; as duas strings armazenadas
+continuam byte a byte iguais após as recusas. Um documento novo restaura a API e
+a entrada seguinte mostra o sucesso atual. A fixture `spring_approach` é exclusiva
+do build de teste e chega ao mapa por comandos/replay validados.
+
+Evidência focada aprovada:
+`artifacts/harness/spring-notice-regressions-20261104T225648522434Z-fba9e0/`.
+O primeiro teste nativo foi preservado: a preparação de texto ampliado tentava
+salvar antes do caso observado; foi movida para antes de ativar a expedição,
+conservando as expectativas de uma escrita por confirmação.
+
+A branch incorporou a main `030ee7d` por merge. As implementações, testes,
+README e documento específico do PR #8 permanecem idênticos à main; os conflitos
+nos dois roadmaps foram conciliados conservando os dois registros. Não há nova
+mudança de regras, RNG, schema ou identidade de saves nesta correção de UI.
+As aceitações anteriores continuam históricas; o fechamento integral e o CI do
+novo HEAD são registrados separadamente no PR antes da revisão do integrador.

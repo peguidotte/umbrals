@@ -9,6 +9,22 @@ const Registry = preload("res://scripts/expedition/migration_registry.gd")
 const Storage = preload("res://scripts/storage.gd")
 const RunSave = preload("res://scripts/session/run_save.gd")
 const Room = preload("res://scripts/ui/spring_room.gd")
+class CheckpointStore extends RunSave:
+	# Fault injection at the I/O boundary, with the previous record kept intact.
+	var kept: Dictionary = {}
+	var writes: int = 0
+	var refuse: bool = true
+	var read_status: String = "ok"
+	func save(data: Dictionary) -> bool:
+		writes += 1
+		last_status = "io_error" if refuse else "ok"
+		if refuse: return false
+		kept = data.duplicate(true)
+		return true
+	func load_snapshot() -> Dictionary:
+		last_status = read_status
+		return kept.duplicate(true)
+
 var checks: int = 0
 var failed: int = 0
 var controls: Dictionary = {}
@@ -23,7 +39,7 @@ func expect(value: bool, message: String) -> void:
 func _initialize() -> void:
 	call_deferred("run")
 
-func room_run() -> RefCounted:
+func room_run(enter_spring: bool = true) -> RefCounted:
 	var expedition = Expedition.new()
 	expedition.new_run(42013)
 	expedition.battle.party.append(Rules.make_umbral("ember", "fierce", 2))
@@ -36,7 +52,7 @@ func room_run() -> RefCounted:
 	expect(expedition.phase == "reward" and not expedition.battle.reward_offers.any(func(offer): return offer.kind == "redistribute"), "Copy editing is absent from combat rewards")
 	expect(expedition.choose_reward(1), "Resolve ordinary evolution before route choice")
 	expedition.battle.party[0].hp = 12
-	expect(expedition.choose_node("spring"), "Entering spring opens contextual room")
+	if enter_spring: expect(expedition.choose_node("spring"), "Entering spring opens contextual room")
 	return expedition
 
 func rejected(expedition: RefCounted, choice: Dictionary, label: String) -> void:
@@ -111,6 +127,7 @@ func run() -> void:
 	old.new_run(42013)
 	expect(old.event_revision == 1, "New expedition gets the new room after a legacy resume")
 	await ui_checks(before, transfer)
+	await save_notice_checks()
 	print(JSON.stringify({"suite": "spring_event", "checks": checks, "failed": failed}))
 	quit(1 if failed else 0)
 
@@ -125,6 +142,7 @@ func ui_checks(before: Dictionary, transfer: Dictionary) -> void:
 	room.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	await process_frame
 	expect(controls["event.confirm"].disabled, "Room has no implicit default commitment")
+	expect(not controls.has("map.save_notice"), "Empty save status adds no empty announcement")
 	controls["event.practice"].pressed.emit()
 	await process_frame
 	controls["event.uid.1"].pressed.emit()
@@ -143,3 +161,86 @@ func ui_checks(before: Dictionary, transfer: Dictionary) -> void:
 	expect(emissions == [{"choice": "rest", "details": {}}] and expedition.snapshot() == before, "View emits intent and never mutates the run")
 	room.queue_free()
 	await process_frame
+
+func app_press(app: Control, id: String) -> void:
+	app.registry[id].pressed.emit()
+	await process_frame
+
+func visible_notice(app: Control, expected: String) -> void:
+	var notice: Label = app.registry.get("map.save_notice")
+	expect(is_instance_valid(notice), "Active route renders save status: " + expected)
+	if not is_instance_valid(notice): return
+	expect(notice.is_visible_in_tree() and expected in notice.text and notice.text.begins_with("SALVAMENTO · "), "Save status is explicit text, not color alone")
+	expect(notice.autowrap_mode == TextServer.AUTOWRAP_WORD_SMART and notice.get_theme_font_size("font_size") == int(19 * app.preferences.text_scale()), "Notice wraps and follows large-text preference")
+	expect(Rect2(Vector2.ZERO, app.size).encloses(notice.get_global_rect()), "Complete save notice remains within the viewport")
+	var parent: Node = notice.get_parent()
+	var in_scroll: bool = false
+	while parent != app and parent != null:
+		if parent is ScrollContainer: in_scroll = true
+		parent = parent.get_parent()
+	expect(not in_scroll and notice.focus_mode == Control.FOCUS_NONE, "Save status stays outside draft scrolling without taking focus")
+
+func save_notice_checks() -> void:
+	var app: Control = load("res://scenes/main.tscn").instantiate()
+	root.add_child(app)
+	await process_frame
+	app._start_game()
+	app.preferences.set_value("large_text", true)
+	var expedition = room_run(false)
+	var store = CheckpointStore.new()
+	store.kept = expedition.snapshot()
+	var old_record: Dictionary = store.kept.duplicate(true)
+	app.session.run_save = store
+	app.session.expedition = expedition
+	app.session.expedition_active = true
+	app.session.checkpoint_writable = true
+	app.runtime.bind_game(expedition.battle)
+	app.screens.reset("map")
+	await process_frame
+	await app_press(app, "map.node.spring")
+	await app_press(app, "map.confirm")
+	var pending_room: Dictionary = expedition.snapshot()
+	expect(store.writes == 1 and store.kept == old_record and store.last_status == "io_error", "Refused checkpoint at room entry preserves the previous record")
+	expect(expedition.phase == "event" and pending_room.battle.rng_state == old_record.battle.rng_state, "Failed autosave leaves the live room usable without RNG changes")
+	visible_notice(app, "Não foi possível salvar")
+	await app_press(app, "event.practice")
+	await app_press(app, "event.cancel")
+	await app_press(app, "map.pause")
+	await app_press(app, "pause.resume")
+	expect(store.writes == 1 and expedition.snapshot() == pending_room, "Cancel and pause do not retry writes or change the unsaved room")
+	visible_notice(app, "Não foi possível salvar")
+	await app_press(app, "event.rest")
+	await app_press(app, "event.confirm")
+	expect(expedition.phase == "map" and store.writes == 2 and store.kept == old_record, "Refused checkpoint after the choice also preserves the previous record")
+	visible_notice(app, "Não foi possível salvar")
+	var live_after_choice: Dictionary = expedition.snapshot()
+	store.refuse = false
+	app.expedition_flow.checkpoint()
+	app._on_screen_changed()
+	await process_frame
+	expect(store.writes == 3 and store.last_status == "ok" and expedition.snapshot() == live_after_choice, "A later successful write clears the failure without replaying the choice")
+	visible_notice(app, "Progresso salvo")
+	for status in ["incompatible", "corrupt"]:
+		var writes_before: int = store.writes
+		var retained: Dictionary = store.kept.duplicate(true)
+		app.session.expedition = room_run(false)
+		app.session.checkpoint_writable = false
+		store.last_status = status
+		app.runtime.bind_game(app.session.expedition.battle)
+		app.screens.reset("map")
+		await process_frame
+		await app_press(app, "map.node.spring")
+		await app_press(app, "map.confirm")
+		expect(store.writes == writes_before and store.kept == retained, "Read-only session preserves protected data: " + status)
+		visible_notice(app, "outra versão" if status == "incompatible" else "substituir o progresso anterior")
+	store.kept = pending_room
+	store.read_status = "recovered"
+	var writes_before_resume: int = store.writes
+	expect(app.expedition_flow.resume(), "Recovered pending room resumes through the production flow")
+	await process_frame
+	expect(store.writes == writes_before_resume and app.session.expedition.snapshot() == pending_room, "Resume preserves the recovered room without silently rewriting it")
+	visible_notice(app, "Recuperamos o último progresso válido")
+	app.audio.shutdown()
+	app.queue_free()
+	await process_frame
+	await create_timer(0.2).timeout
