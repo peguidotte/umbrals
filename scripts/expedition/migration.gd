@@ -17,7 +17,7 @@ static func checkpoint(input: Dictionary) -> Dictionary:
 		if not Registry.supports(result.get("identity")) or not Registry.source_state_valid(result): return {}
 		if result.identity != Identity.current():
 			if result.identity.ruleset == "expedition-rules-2": result["event_revision"] = 0
-			result["catalog_revision"] = 0
+			if result.identity != Registry.CATALOG1_IDENTITY: result["catalog_revision"] = 0
 		result.identity = Identity.current()
 		return result
 	if result.get("schema") != 1 or not result.get("battle") is Dictionary or not Registry.supports(LEGACY_TARGET): return {}

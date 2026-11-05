@@ -59,7 +59,7 @@ static func run(expect: Callable) -> void:
 static func new_evolution(frozen: Dictionary, expect: Callable) -> void:
 	var run = Expedition.new()
 	run.new_run(1, "partial", "moss")
-	expect.call(run.battle.catalog_revision == 1 and run.event_revision == 1, "New run selects catalog 1 independently of the spring revision")
+	expect.call(run.battle.catalog_revision == Revision.CURRENT and run.event_revision == 1, "New run selects the current catalog independently of the spring revision")
 	expect.call(Replay.execute(run, frozen.replay.commands).ok, "Real original commands reach new-run second reward")
 	var before: Dictionary = run.snapshot()
 	var historical = Expedition.new()
@@ -67,9 +67,9 @@ static func new_evolution(frozen: Dictionary, expect: Callable) -> void:
 	var old_rewards: Dictionary = historical.snapshot().battle
 	expect.call(before.battle.rng_state == old_rewards.rng_state and before.battle.party == old_rewards.party and before.battle.hand == old_rewards.hand and before.battle.enemy_plan == old_rewards.enemy_plan, "New evolution availability adds no RNG, combat or card changes")
 	var offer: Dictionary = {"kind": "evolve", "uid": 1, "source_form_id": "verdalio", "target_form_id": "foslash", "transition_id": "verdalio_to_foslash"}
-	expect.call(run.battle.reward_offers.size() == 2 and run.battle.reward_offers[1] == offer, "Foslash is an explicit post-Folife reward choice")
+	expect.call(run.battle.reward_offers.size() == 3 and run.battle.reward_offers[1] == offer, "Foslash retains its explicit reward position before Folivel")
 	var owner: Dictionary = run.battle.party[0].duplicate(true)
-	expect.call(Revision.edges(owner, 0).is_empty() and Revision.edges(owner, 1).size() == 1 and Revision.edges(owner, 2).is_empty(), "Revision query controls outgoing edges and fails closed for unknown revision")
+	expect.call(Revision.edges(owner, 0).is_empty() and Revision.edges(owner, 1).size() == 1 and Revision.edges(owner, 2).size() == 2 and Revision.edges(owner, 3).is_empty(), "Revision query controls both final branches and fails closed for unknown revision")
 	var resumed = Expedition.new()
 	expect.call(resumed.restore(JSON.parse_string(JSON.stringify(before))) and resumed.snapshot() == before, "Pending new evolution survives exact JSON checkpoint")
 	expect.call(run.choose_reward(1) and resumed.choose_reward(1) and resumed.snapshot() == run.snapshot(), "Actual Foslash choice executes identically after resume")
@@ -85,7 +85,7 @@ static func new_evolution(frozen: Dictionary, expect: Callable) -> void:
 	var final_lash: Dictionary = Content.power_stats("thorn_lash", after)
 	expect.call(final_lash.damage == old_lash.damage + 5 and final_lash.block == old_lash.block + 4, "The same owned thorn_lash copies gain damage and block after evolution")
 	expect.call(Revision.edges(after, 1).is_empty() and after.cards.size() == owner.cards.size(), "Final form adds no evolution or automatic signature copies")
-	expect.call(resumed.restore(run.snapshot()) and resumed.battle.catalog_revision == 1 and resumed.battle.party[0].form_id == "foslash", "Chosen final form and catalog revision persist")
+	expect.call(resumed.restore(run.snapshot()) and resumed.battle.catalog_revision == Revision.CURRENT and resumed.battle.party[0].form_id == "foslash", "Chosen final form and catalog revision persist")
 	expect.call(run.choose_node("boss") and run.battle.party[0].form_id == "foslash", "Chosen final form enters the next actual encounter")
 	var wounded = Expedition.new()
 	wounded.restore(before)
@@ -93,7 +93,7 @@ static func new_evolution(frozen: Dictionary, expect: Callable) -> void:
 	expect.call(resumed.restore(wounded.snapshot()) and resumed.choose_reward(1) and resumed.battle.party[0].hp == 21, "Validated wounded fixture scales HP proportion from17/60 to21/72 without a free heal")
 	resumed.restore(frozen.expected)
 	resumed.new_run(1, "partial", "moss")
-	expect.call(resumed.battle.catalog_revision == 1, "Starting anew after legacy resume resets catalog revision")
+	expect.call(resumed.battle.catalog_revision == Revision.CURRENT, "Starting anew after legacy resume resets catalog revision")
 
 static func source_revision_checks(frozen: Dictionary, expect: Callable) -> void:
 	for field in ["event_revision", "catalog_revision"]:
@@ -113,7 +113,7 @@ static func rejections(frozen: Dictionary, expect: Callable) -> void:
 	var run = Expedition.new()
 	run.restore(frozen.expected)
 	var before: Dictionary = run.snapshot()
-	for revision in [-1, 2, 1.5, "1", true, null]:
+	for revision in [-1, 3, 1.5, "1", true, null]:
 		var bad: Dictionary = before.duplicate(true)
 		bad.catalog_revision = revision
 		expect.call(not run.restore(bad) and run.snapshot() == before, "Unsupported or malformed catalog revision is atomic: " + str(revision))
@@ -197,7 +197,7 @@ static func storage_checks(frozen: Dictionary, expect: Callable) -> void:
 	var future: Dictionary = original.duplicate(true)
 	future.identity = Identity.current()
 	future.snapshot.identity = Identity.current()
-	future.snapshot.catalog_revision = 2
+	future.snapshot.catalog_revision = 3
 	future.erase("checksum")
 	future.checksum = JSON.stringify(JSON.parse_string(JSON.stringify(future))).sha256_text()
 	expect.call(Storage.write_json(PATH + ".0", KEY + ".0", future), "Checksum-valid future catalog revision envelope written")

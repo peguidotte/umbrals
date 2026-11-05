@@ -165,6 +165,11 @@
       "id": "characters/battle-evolved",
       "version": "1.0.0"
     },
+    "characters/lifecycle-folivel": {
+      "file": "walk-front",
+      "id": "characters/folivel-lifecycle",
+      "version": "1.0.0"
+    },
     "characters/lifecycle-foslash": {
       "file": "walk",
       "id": "characters/foslash-lifecycle",
@@ -173,12 +178,12 @@
     "characters/lifecycle-moss": {
       "file": "walk",
       "id": "characters/foli-lifecycle",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "characters/lifecycle-verdalio": {
       "file": "walk",
       "id": "characters/folife-lifecycle",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "characters/owl": {
       "file": "portrait",
@@ -270,6 +275,11 @@
       "id": "umbrals/ember",
       "version": "1.0.0"
     },
+    "umbrals/folivel": {
+      "file": "portrait",
+      "id": "characters/folivel-pilot",
+      "version": "1.0.0"
+    },
     "umbrals/foslash": {
       "file": "portrait",
       "id": "characters/foslash-pilot",
@@ -288,7 +298,7 @@
     "umbrals/moss": {
       "file": "portrait",
       "id": "characters/foli-pilot",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "umbrals/tempestral": {
       "file": "portrait",
@@ -298,7 +308,7 @@
     "umbrals/verdalio": {
       "file": "portrait",
       "id": "characters/folife-pilot",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "umbrals/volt": {
       "file": "portrait",

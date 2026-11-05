@@ -1,0 +1,154 @@
+{
+  "schema": 1,
+  "source": "../rear-ko-original.png",
+  "source_sha256": "f9b279796401432dd3a3020512b028d364bbe3a2be65e527358c0a263d798daa",
+  "source_dimensions": [
+    2172,
+    724
+  ],
+  "source_layout": "Four horizontal bodies, full-height quarters543x724; model did not maintain requested362px cells.",
+  "output_frame_size": [
+    543,
+    543
+  ],
+  "output_grid": [
+    4,
+    1
+  ],
+  "output_dimensions": [
+    2172,
+    543
+  ],
+  "pivot": [
+    271,
+    500
+  ],
+  "operation": "Common y110:653 crop per543px quarter; integer vertical translation to alpha>=128 floor y500, x unchanged. No resampling, repaint or alpha threshold applied to output pixels.",
+  "frames": [
+    {
+      "i": 0,
+      "source_rect": [
+        0,
+        110,
+        543,
+        543
+      ],
+      "source_opaque_bbox_full_quarter": [
+        35,
+        138,
+        513,
+        563
+      ],
+      "integer_translation_after_crop": [
+        0,
+        47
+      ],
+      "pivot": [
+        271,
+        500
+      ],
+      "opaque_bbox_after": [
+        35,
+        75,
+        513,
+        500
+      ],
+      "opaque_pixels_preserved": true
+    },
+    {
+      "i": 1,
+      "source_rect": [
+        543,
+        110,
+        543,
+        543
+      ],
+      "source_opaque_bbox_full_quarter": [
+        33,
+        194,
+        520,
+        541
+      ],
+      "integer_translation_after_crop": [
+        0,
+        69
+      ],
+      "pivot": [
+        271,
+        500
+      ],
+      "opaque_bbox_after": [
+        33,
+        153,
+        520,
+        500
+      ],
+      "opaque_pixels_preserved": true
+    },
+    {
+      "i": 2,
+      "source_rect": [
+        1086,
+        110,
+        543,
+        543
+      ],
+      "source_opaque_bbox_full_quarter": [
+        27,
+        255,
+        522,
+        535
+      ],
+      "integer_translation_after_crop": [
+        0,
+        75
+      ],
+      "pivot": [
+        271,
+        500
+      ],
+      "opaque_bbox_after": [
+        27,
+        220,
+        522,
+        500
+      ],
+      "opaque_pixels_preserved": true
+    },
+    {
+      "i": 3,
+      "source_rect": [
+        1629,
+        110,
+        543,
+        543
+      ],
+      "source_opaque_bbox_full_quarter": [
+        25,
+        294,
+        523,
+        538
+      ],
+      "integer_translation_after_crop": [
+        0,
+        72
+      ],
+      "pivot": [
+        271,
+        500
+      ],
+      "opaque_bbox_after": [
+        25,
+        256,
+        523,
+        500
+      ],
+      "opaque_pixels_preserved": true
+    }
+  ],
+  "standing_height_equivalent_proposal": 450,
+  "equivalent_note": "Estimated by width ratio478/1048 against rear still opaque height986; first KO pose is already lowered and425px tall. Requires engine scale review.",
+  "source_height_ratio": 0.7862838915470495,
+  "candidate_ko_seconds": 0.6,
+  "status": "candidate only; independent/in-engine review pending"
+}

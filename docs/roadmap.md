@@ -1122,3 +1122,18 @@ sem aceitação integral desta candidata ainda. Verso de Foslash bloqueado na
 geração; pop de postura e lâmina pintada durante o projétil permanecem.
 Próxima fatia: Folivel jogável e versos próprios onde há arte válida;
 fechamento completo com vídeo após congelar a candidata. Produto 0.3.0.
+
+### V05-CNT-02B — Folivel jogável e dorsais próprios
+
+A alternativa Folivel da v13 entra por aresta explícita de Folife, com
+frente/verso e lifecycle próprios. Foli/Folife recebem dorsais em novas
+versões 1.1.0; as fontes frontais anteriores permanecem preservadas.
+Catálogo 2 mantém compatibilidade auditada com as revisões 0/1, sem
+acrescentar Folivel às ofertas de uma run histórica. Save252/0 e regras56/0
+passaram nos alvos puros; fechamento completo, input/vídeo e revisão do
+commit congelado ficam no PR.
+
+[Escopo, identidade, fontes e lacunas](folivel-playable-v05-cnt-02b.md).
+Marcha dorsal de Folivel tem alternância posterior limitada; verso de
+Foslash e casts de corpo em poses ainda faltam. Sem merge ou aprovação
+estética/performance por contagens de teste. Produto 0.3.0.

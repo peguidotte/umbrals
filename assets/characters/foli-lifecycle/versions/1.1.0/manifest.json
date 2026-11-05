@@ -1,0 +1,238 @@
+{
+  "animations": {
+    "knockout": {
+      "columns": 4,
+      "file": "knockout",
+      "fps": 6.666666666666667,
+      "frame_size": [
+        362,
+        362
+      ],
+      "frames": 4,
+      "loop": false,
+      "pivot": [
+        198,
+        340
+      ]
+    },
+    "knockout-back": {
+      "columns": 4,
+      "file": "knockout-back",
+      "fps": 6.666666666666667,
+      "frame_size": [
+        627,
+        627
+      ],
+      "frames": 4,
+      "loop": false,
+      "pivot": [
+        313,
+        620
+      ]
+    },
+    "walk": {
+      "columns": 4,
+      "file": "walk",
+      "fps": 10,
+      "frame_size": [
+        362,
+        362
+      ],
+      "frames": 8,
+      "loop": true,
+      "pivot": [
+        198,
+        340
+      ]
+    },
+    "walk-back": {
+      "columns": 4,
+      "file": "walk-back",
+      "fps": 5.0,
+      "frame_size": [
+        627,
+        627
+      ],
+      "frames": 4,
+      "loop": true,
+      "pivot": [
+        313,
+        620
+      ]
+    }
+  },
+  "changes": "Add own authored dorsal art, anatomy and clips; front pixels/tracks and timings unchanged.",
+  "dependencies": [
+    {
+      "id": "characters/foli-pilot",
+      "version": "1.1.0"
+    }
+  ],
+  "description": "Foli front clips unchanged plus own four-pose dorsal walk/KO; draft.",
+  "files": {
+    "back-provenance": {
+      "bytes": 1528,
+      "kind": "data",
+      "path": "back-provenance.json",
+      "sha256": "c1c835e593146bcb8d345b8553348a337797b6e139af04ac999813fe6a89fcb8"
+    },
+    "knockout": {
+      "bytes": 401660,
+      "kind": "texture",
+      "path": "knockout.png",
+      "sha256": "19bffac7b9582c0115720709901f3db4b82533247b368adafc1e2bfde1b12247",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          362
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "knockout-back": {
+      "bytes": 951275,
+      "kind": "texture",
+      "path": "knockout-back.png",
+      "sha256": "954e36f8272c05e95a6d830e1f5cc6dc28556017b9978672396093ed1273880d",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2508,
+          627
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "normalization": {
+      "bytes": 3881,
+      "kind": "data",
+      "path": "normalization.json",
+      "sha256": "c623a8231458cefca16b792ad6d3b95a2df26e7b96d9ffdffd540c12193d71de"
+    },
+    "normalization-knockout-back": {
+      "bytes": 3544,
+      "kind": "data",
+      "path": "normalization-knockout-back.json",
+      "sha256": "5f96f907686026755e0c2eca9fd6aac8cea38061316189b703c6aa271278be14"
+    },
+    "normalization-walk-back": {
+      "bytes": 3520,
+      "kind": "data",
+      "path": "normalization-walk-back.json",
+      "sha256": "8cf4ba5d59b9cd9232691c62ce07b93ae5ca1319464ce0eb831562b49f56a09a"
+    },
+    "original": {
+      "bytes": 1339032,
+      "kind": "review",
+      "path": "review/original.png",
+      "sha256": "68e2cb82686989626f441867b58d6be931b3f665233bb3a63821c3845de2e104",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "original-knockout-back": {
+      "bytes": 986087,
+      "kind": "review",
+      "path": "review/knockout-back-original.png",
+      "sha256": "5082ddbeae397cdea389365015c1ef6081a7478d5e7d31e529c88dc5bfb166ca",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "original-walk-back": {
+      "bytes": 862192,
+      "kind": "review",
+      "path": "review/walk-back-original.png",
+      "sha256": "e16a9e7f8ea28a77450f6800d4da9ea879693e9378bafe0a8eeee229667da54c",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "profile": {
+      "bytes": 554,
+      "kind": "data",
+      "path": "profile.json",
+      "sha256": "60bc52a1e07bce9af636fd92b64f9da8648e765286f075eaf785173f7445b7ed"
+    },
+    "walk": {
+      "bytes": 835923,
+      "kind": "texture",
+      "path": "walk.png",
+      "sha256": "ce9b7f5ad7069993b2e3facbf0e831c8553d8e12c2bb3ba3b6b5e47184bfcea2",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "walk-back": {
+      "bytes": 834689,
+      "kind": "texture",
+      "path": "walk-back.png",
+      "sha256": "c0b832004a6a7373bfa3def57a47718b1b51020becfacc3fda32347505276293",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2508,
+          627
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/foli-lifecycle",
+  "metadata": {
+    "limits": [
+      "Dorsal four-pose gait and pop remain subject to scene/human review.",
+      "No front clip fallback for missing rear poses."
+    ],
+    "production_ready": false
+  },
+  "provenance": {
+    "back": "See original-back roles and back-provenance; exact crops/integer translation; no resampling",
+    "front": {
+      "approval": "Independent technical review permits draft integration only. No main promotion or complete family claim.",
+      "brief": "Exact Foli, 4x3 transparent sheet: 8 alternating hind-foot walk poses, 4 reversible KO poses, same scale, right facing; preserve leaf ears, brown fur, cream paws, amber eye and three hovering leaves. No shadows/text/scenery/injuries.",
+      "edit_history": "Crop into 362x362 cells; integer vertical translations align opaque floor at y340. No image resampling or creative pixel changes.",
+      "kind": "Image Gen edit of the project-owned Foli pilot",
+      "original_output_basename": "exec-b049a45e-7b25-4c18-9fb8-cce5c90991fe.png",
+      "original_preserved": true,
+      "reference": {
+        "id": "characters/foli-pilot",
+        "role": "portrait",
+        "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+        "version": "1.0.0"
+      }
+    },
+    "original_png_preserved": true
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.1.0"
+}

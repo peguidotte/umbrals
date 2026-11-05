@@ -1,0 +1,28 @@
+{
+  "front": {
+    "grounding": {
+      "foot": [
+        631.0,
+        998
+      ],
+      "visible_top": 303,
+      "width": 1182,
+      "height": 136
+    },
+    "standing_height": 212,
+    "source_height_ratio": 0.5542264752791068
+  },
+  "back": {
+    "grounding": {
+      "foot": [
+        636.0,
+        1135
+      ],
+      "visible_top": 149,
+      "width": 1048,
+      "height": 110
+    },
+    "standing_height": 450,
+    "source_height_ratio": 0.7862838915470495
+  }
+}
