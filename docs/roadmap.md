@@ -1089,11 +1089,11 @@ Versão do produto permanece 0.3.0; esta entrega não encerra o marco de arte.
 
 ### V05-INT-01 — candidata de consolidação jogável
 
-Casa contínua (#11), locomoção/KO/reanimação de Brasa (#12) e nomes Nisca/Niscor
-(#13) foram revisados e reunidos localmente sobre main `1523d0e`, com união dos
+Casa contínua (#11), locomoção/KO/reanimação de Brasa (#12), nomes Nisca/Niscor
+(#13) e Foli/Folife (#14) foram revisados e reunidos localmente sobre main `1523d0e`, com união dos
 assets e preservação dos contratos da Nascente/save. O grupo focado passou;
 aceitação integral e revisão visual do conjunto exato ainda são necessárias.
-Água e grama não têm commits publicados nesta composição inicial. Não se declara
+Água ainda não tem commits publicados nesta composição. Não se declara
 arte das quatro famílias, finais, casa narrativa completa ou entrega na main.
 [Origens, donos, plano de aceitação e limites](playable-integration-v05-01.md).
 Não há alteração de workflows, proteção ou versão do produto.
