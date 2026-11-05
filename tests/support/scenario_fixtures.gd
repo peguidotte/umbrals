@@ -2,11 +2,12 @@ extends RefCounted
 const Expedition = preload("res://scripts/expedition/expedition.gd")
 const Rules = preload("res://scripts/rules.gd")
 const Replay = preload("res://scripts/expedition/replay.gd")
-const NAMES = ["spring_room", "spring_approach", "battle", "wounded", "enemy_shield", "rewards", "rewards_many", "replacement", "inventory_full", "motion_ember", "motion_ignivar", "motion_moss", "motion_verdalio", "motion_dew", "motion_mareveu", "motion_volt", "motion_tempestral"]
+const NAMES = ["spring_room", "spring_approach", "battle", "wounded", "enemy_shield", "rewards", "rewards_many", "replacement", "inventory_full", "motion_ember", "motion_ignivar", "motion_moss", "motion_verdalio", "motion_dew", "motion_mareveu", "motion_volt", "motion_tempestral", "brasa_lifecycle"]
 
 static func make(name: String) -> Dictionary:
 	if name not in NAMES: return {}
 	if name in ["spring_room", "spring_approach"]: return _spring(name == "spring_room")
+	if name == "brasa_lifecycle": return _lifecycle()
 	if name.begins_with("motion_"): return _motion(name)
 	var run = Expedition.new()
 	run.new_run(42013, "full", "ember")
@@ -34,6 +35,28 @@ static func make(name: String) -> Dictionary:
 		if not Replay.execute(run, commands).ok or run.phase != "reward": return {}
 	var result: Dictionary = Replay.envelope(initial, commands)
 	result.merge({"name": name, "snapshot": run.snapshot()})
+	return result
+
+static func _lifecycle() -> Dictionary:
+	# Test-only checkpoint: enter from reserve, receive a real KO, then revive.
+	var run = Expedition.new()
+	run.new_run(42013, "full", "ember")
+	var game: RefCounted = run.battle
+	game.party[0].slot = -1
+	game.party[0].hp = 1
+	for entry in [["moss", 2, 0], ["dew", 3, 1]]:
+		var body: Dictionary = Rules.make_umbral(str(entry[0]), "vital", int(entry[1]))
+		body.slot = int(entry[2])
+		game.party.append(body)
+	game.next_uid = 4
+	if not run.choose_node("clearing"): return {}
+	game.inventory.revive = 2
+	game.enemies[0].pattern = [{"category": "attack", "damage": 18, "block": 0, "heal": 0, "scope": "single", "target_slot": 1, "priority": 0, "nature": "forest", "conditions": {}}, {"category": "defend", "damage": 0, "block": 1, "heal": 0, "scope": "single", "priority": 1, "nature": "forest", "conditions": {}}]
+	game._commit_enemy_plan()
+	game._sync_compatibility()
+	var snapshot: Dictionary = run.snapshot()
+	var result: Dictionary = Replay.envelope(snapshot, [])
+	result.merge({"name": "brasa_lifecycle", "snapshot": snapshot})
 	return result
 
 static func _motion(name: String) -> Dictionary:

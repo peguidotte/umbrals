@@ -1,0 +1,126 @@
+{
+  "animations": {
+    "knockout": {
+      "columns": 4,
+      "file": "knockout",
+      "fps": 6.666666667,
+      "frame_size": [
+        362,
+        362
+      ],
+      "frames": 4,
+      "loop": false,
+      "pivot": [
+        210,
+        324
+      ]
+    },
+    "walk": {
+      "columns": 4,
+      "file": "walk",
+      "fps": 10,
+      "frame_size": [
+        362,
+        362
+      ],
+      "frames": 8,
+      "loop": true,
+      "pivot": [
+        210,
+        324
+      ]
+    }
+  },
+  "dependencies": [
+    {
+      "id": "characters/battle-creatures",
+      "version": "1.0.0"
+    }
+  ],
+  "description": "Brasa original biped locomotion and reversible incapacitation poses.",
+  "files": {
+    "knockout": {
+      "bytes": 451894,
+      "kind": "texture",
+      "path": "knockout.png",
+      "sha256": "65d34bd436cc90d389d4647d970300cb42084fa66c7a6b69d6c3c5a118836020",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          362
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "normalization": {
+      "bytes": 2410,
+      "kind": "data",
+      "path": "normalization.json",
+      "sha256": "4161b5bc89a3990a17aa905522b458bec6111f545e2d3d667b6fbdd78f2352aa"
+    },
+    "original": {
+      "bytes": 1410889,
+      "kind": "review",
+      "path": "review/original.png",
+      "sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "profile": {
+      "bytes": 269,
+      "kind": "data",
+      "path": "profile.json",
+      "sha256": "d77de33e24e73619f7e87db1bcfe70340f38a2fcab2f1ae04c347bc2c7d5104e"
+    },
+    "walk": {
+      "bytes": 956529,
+      "kind": "texture",
+      "path": "walk.png",
+      "sha256": "28881ba82925da5e5baaa8b3676fd31d99cbed88db6377f0ed48fc1ee709d928",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/brasa-lifecycle",
+  "metadata": {
+    "independent_review": "pending",
+    "production_ready": false
+  },
+  "provenance": {
+    "brief": "Exact Brasa identity, eight biped walk poses with alternating hind feet and four reversible KO poses, right facing, 4x3 transparent grid; preserve charcoal body, orange forepaws, amber eye and one spiral tail.",
+    "edit_history": "Original retained in review/original.png. Runtime cells sliced and integer translated; no resampling, repainting or alpha cleanup.",
+    "kind": "generated original animation poses",
+    "license_record": "Original generated artwork for Umbral using project-owned reference; no third-party game art.",
+    "model_version": "not exposed",
+    "original_output_basename": "exec-90926448-5f64-4ca6-8e15-070e807370c9.png",
+    "original_sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+    "recorded_date_utc": "2026-11-04",
+    "reference": {
+      "module": "characters/battle-creatures",
+      "region": "ember",
+      "texture_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+      "version": "1.0.0"
+    },
+    "review_status": "Candidate; native-size movement and independent review pending.",
+    "tool": "OpenAI Image Gen"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.2.0"
+}

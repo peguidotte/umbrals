@@ -1041,3 +1041,76 @@ sem merge. Não há nova mecânica ou mudança de compatibilidade por este ajust
 A atualização de base para `1198404` incorpora também o PR #9. A aceitação
 contra `030ee7d` permanece histórica; a integração atual recebe gates próprios,
 incluindo autoria de atores, e o resultado do merge exato é registrado no PR.
+
+
+### V05-UX-05 — casa contínua de Pietro
+
+Pedro rejeitou as vistas separadas após ver o vídeo. A revisão mantém os quatro
+cômodos em um único mundo 2D, com câmera acompanhando, dois pisos conectados por
+escada física com apoio/oclusão e posição sem saltos nas divisas. A porta da cozinha
+conserva preparação/Continuar; casa inicial e futuro abrigo portátil têm identidades
+separadas. Ator provisório com pele mais clara, roupa azul/dourada e escala revista.
+A referência aprovada foi localizada mas a transferência oficial falhou; aprovação
+de semelhança e acabamento continua pendente. Base main 1523d0e incorporada, preservando a Nascente contextual e suas migrações.
+
+As evidências de cenas separadas estão superadas. A revisão contínua tem testes de
+coordenadas, câmera, apoio/retomada da escada, margens por resolução, limites, inputs
+e conservação de RNG/save, além de captura/vídeo reais em MP4. O fechamento registra
+os resultados efetivos e o merge exato; não há aceite estético automático nem merge
+na main. [Escopo e limites](house-v05-ux05.md). Próxima fatia: avaliação de Pedro,
+acabamento do ator/ambiente e abertura narrativa/entrega do abrigo, ainda ausentes.
+
+### V04-CONT-01E — nomes aprovados da família elétrica
+
+Primeira fatia de consolidação sobre a main `1523d0e`: Nisca e Niscor aparecem
+nas formas existentes `volt` e `tempestral`, com histórias atualizadas e o nome
+correto em Juízo da tempestade. IDs, aresta de evolução, atributos, naturezas,
+poderes, passivas, cartas e pins de assets permanecem. O checkpoint inicial e
+a identidade de gameplay antes/depois são idênticos; não há migração nova.
+
+Catálogo (24 verificações), autoria, saves e histórias do grimório passaram nos
+alvos focados. A primeira tentativa preservada tinha uma expectativa incorreta
+no teste novo sobre estágio numérico; a correção usa o adaptador explícito de
+migração, sem alterar o runtime. Evidências em
+`artifacts/harness/electric-focused-20261105T011550466576Z-3b6958/` e
+`artifacts/harness/electric-catalog-fixed-20261105T011643734212Z-162200/`.
+O fechamento completo e a revisão dos renders desta revisão são registrados no PR;
+resultado focado não equivale a aceitação completa.
+
+Auravel (alado) e Zuldar (bípede, espinhos azuis carregados) são os nomes finais
+aprovados, ainda sem integração jogável. A referência aprovada da Library não
+pôde ser baixada pelo helper suportado; seus pixels não foram inspecionados.
+Os assets anteriores permanecem provisórios para a nova identidade, sem alegação
+de sprites novos ou de arte aprovada no motor. Niscor não ganha agulhas destacadas
+controladas à distância. [Limites e próximo passo](../content/species/volt/README.md).
+Próxima fatia: obter a referência e produzir Nisca com estados corporais e origens
+de ataque verificadas, antes de avançar pins ou habilitar as formas finais.
+Versão do produto permanece 0.3.0; esta entrega não encerra o marco de arte.
+
+### V05-INT-01 — candidata de consolidação jogável
+
+Casa contínua (#11), locomoção/KO/reanimação de Brasa (#12), nomes Nisca/Niscor
+(#13) e Foli/Folife (#14) foram revisados e reunidos localmente sobre main `1523d0e`, com união dos
+assets e preservação dos contratos da Nascente/save. O grupo focado passou;
+aceitação integral e revisão visual do conjunto exato ainda são necessárias.
+Água ainda não tem commits publicados nesta composição. Não se declara
+arte das quatro famílias, finais, casa narrativa completa ou entrega na main.
+[Origens, donos, plano de aceitação e limites](playable-integration-v05-01.md).
+Não há alteração de workflows, proteção ou versão do produto.
+
+### V04-CNT-01A — Foli e Folife com identidade preservada
+
+Primeira fatia do pedido de integrar as quatro famílias: os nomes e descrições
+de Foli e Folife entram no catálogo já usado pela escolha inicial, batalha,
+evolução e grimório. Espécie/formas/aresta conservam `moss`, `moss`/`verdalio` e
+`moss_to_verdalio`; gameplay e identidade dos saves continuam iguais. Catálogo,
+autoria, save, compatibilidade e história passaram nos gates focados; fechamento
+e capturas reais são registrados no PR. [Escopo e evidências](grass-family-v04-cnt-01a.md).
+
+Foslash e Folivel são nomes/conceitos aprovados, ainda sem novas formas jogáveis
+nesta fatia. As duas referências da Library foram resolvidas, mas a transferência
+oficial falhou: arte da lebre, poses e origens anatômicas não foram validadas.
+Continuam os retratos anteriores como fallback explícito na documentação.
+Próxima fatia: materializar e revisar a arte aprovada e integrar as formas finais
+com compatibilidade auditada. Versão continua 0.3.0; as quatro famílias não estão
+declaradas concluídas por esta entrega.

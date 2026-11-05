@@ -101,6 +101,9 @@ func _present(event: Dictionary, context: Dictionary, illustrated: bool) -> void
 			var label: String = {"heal": "+%d HP" % amount, "revive": "REANIMADO", "block": "+%d ESCUDO" % amount, "wet": "ENCHARCADO", "swap": "TROCA", "ko": "INCAPACITADO", "prepare": "+%d CARGA" % amount}[kind]
 			effects.popup(target, label, UI.LEAF if kind in ["heal", "revive"] else UI.GOLD)
 			if kind in ["heal", "revive"]: context.audio.play("leaf")
+			if kind == "swap":
+				var incoming: Control = AttackEvents.actor(event, context, true)
+				if is_instance_valid(incoming): incoming.rig.enter_field()
 			if is_instance_valid(body) and kind in ["block", "prepare", "heal", "revive"] and not illustrated: body.rig.play_state(4 if kind == "block" else 1 if kind == "prepare" else 5)
 
 func _center(actors: Array, enemies: Array, viewport: Vector2, side: String, slot: int) -> Vector2:
@@ -120,4 +123,4 @@ func _snapshot(event: Dictionary, actors: Array, enemies: Array, text_scale: flo
 	var snapshot: Dictionary = event.get("target_state", {})
 	if slot < 0 or slot >= 3 or snapshot.is_empty(): return
 	var targets: Array = enemies if event.get("target_side", "enemy") == "enemy" else actors
-	if slot < targets.size() and is_instance_valid(targets[slot]): targets[slot].set_identity(snapshot, text_scale)
+	if slot < targets.size() and is_instance_valid(targets[slot]): targets[slot].set_identity(snapshot, text_scale, true)
