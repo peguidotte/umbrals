@@ -1,0 +1,15 @@
+{
+  "forms": {
+    "foslash": {
+      "ko": "knockout",
+      "ko_seconds": 0.6,
+      "settle_mode": "cut",
+      "source_height_ratio": 0.886762360446571,
+      "standing_height": 311,
+      "stride_pixels": 62,
+      "walk": "walk",
+      "walk_seconds": 0.8
+    }
+  },
+  "schema": 1
+}

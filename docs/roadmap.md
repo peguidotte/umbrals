@@ -1105,3 +1105,20 @@ de raízes detectada pelo teste inicial foi corrigida sem remover checks.
 Chevron/colar, cortes, verso e VFX próprios continuam abertos. Foslash e
 Folivel têm candidatas estáticas separadas, sem novas formas/regras jogáveis.
 Produto 0.3.0; sem merge ou promoção da família.
+
+### V05-CNT-02A — Foslash jogável e folhas-lâminas
+
+Foslash entra por aresta explícita de Folife, com anatomia frontal, oito
+poses de caminhada/quatro de KO e VFX próprios de folhas-lâminas para a
+linhagem. Ruleset 4 separa a revisão do catálogo da revisão de eventos;
+runs históricas mantêm o grafo antigo, UID/passiva/cartas e RNG. Atributos
+adultos repetem o incremento anterior como default provisório, sem nova
+regra definitiva de balanceamento.
+
+[Escopo, compatibilidade, tentativas e lacunas](foslash-playable-v05-cnt-02a.md).
+Gates focados passaram; mouse real validou evolução/boss/3 casts (25/0) e
+comandos de produção validaram HP 72→0→26 no mesmo UID (16/0). Draft técnico,
+sem aceitação integral desta candidata ainda. Verso de Foslash bloqueado na
+geração; pop de postura e lâmina pintada durante o projétil permanecem.
+Próxima fatia: Folivel jogável e versos próprios onde há arte válida;
+fechamento completo com vídeo após congelar a candidata. Produto 0.3.0.

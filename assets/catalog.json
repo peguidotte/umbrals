@@ -81,6 +81,20 @@
         }
       }
     },
+    "attacks/grass-leaf-blades": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/attacks/grass-leaf-blades/versions/0.1.0/manifest.json",
+          "sha256": "297e6497f2ce530184887159fb22707905582fac3d4362492d7447ed54a18bca",
+          "status": "prototype"
+        },
+        "1.0.0": {
+          "manifest": "assets/attacks/grass-leaf-blades/versions/1.0.0/manifest.json",
+          "sha256": "729614b1665b0e8431f2876a1174181a40001116d81989ad5d16d55077f8dbe3",
+          "status": "production"
+        }
+      }
+    },
     "attacks/inferno": {
       "versions": {
         "1.0.0": {
@@ -420,6 +434,24 @@
         "1.0.0": {
           "manifest": "assets/characters/folife-pilot/versions/1.0.0/manifest.json",
           "sha256": "4258d1b40a0c6d019df3740859f8c6f6284d38d1490250838216e0d1b0e8b3a2",
+          "status": "production"
+        }
+      }
+    },
+    "characters/foslash-lifecycle": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/foslash-lifecycle/versions/1.0.0/manifest.json",
+          "sha256": "1ca3d763b23148ba2aff6e2056a2a039d00450ed8ba5f3b8c8f95022a66a3911",
+          "status": "production"
+        }
+      }
+    },
+    "characters/foslash-pilot": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/foslash-pilot/versions/1.0.0/manifest.json",
+          "sha256": "ca74402e84f2c371b0dc586e6fcc7f5b61ad05c082d1a2fb4cb0b830bb4f4ce0",
           "status": "production"
         }
       }

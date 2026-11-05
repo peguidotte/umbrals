@@ -2,6 +2,7 @@ extends RefCounted
 ## Private validated expeditions exercise production swap/damage/revive commands.
 const Expedition = preload("res://scripts/expedition/expedition.gd")
 const Rules = preload("res://scripts/rules.gd")
+const Content = preload("res://scripts/content.gd")
 
 static func fixture(kind: String, form: String = "moss") -> Dictionary:
 	for seed: int in range(42013,42045):
@@ -14,14 +15,21 @@ static func fixture(kind: String, form: String = "moss") -> Dictionary:
 		ember.slot = 1 if kind == "walk" else 0
 		game.party.append(ember)
 		game.next_uid = 3
-		if not run.choose_node("clearing"): return {}
 		if kind == "ko":
-			var aimed: bool = false
-			for plan in game.enemy_plan:
-				if str(plan.category) == "attack" and (int(plan.target_slot) == 1 or str(plan.get("scope","single")) != "single"): aimed = true
-			if not aimed: continue
+			# Commit the real enemy plan against the wounded individual. Mature
+			# defenses may fully absorb the opener, so observe actual round damage.
 			game.party[0].hp = 1
 			game.inventory.revive = 2
+		if not run.choose_node("clearing"): return {}
+		if kind == "ko":
+			for _round: int in range(4):
+				game._sync_compatibility()
+				var before: Dictionary = run.snapshot()
+				var probe = Expedition.new()
+				if not probe.restore(before): break
+				if probe.battle.redraw() and int(probe.battle.umbral_by_uid(1).hp) == 0 and int(probe.battle.umbral_by_uid(2).hp)>0: return before
+				if not game.redraw() or game.phase != "battle" or int(game.umbral_by_uid(2).hp)<=0: break
+			continue
 		game._sync_compatibility()
 		var snapshot: Dictionary = run.snapshot()
 		var checked = Expedition.new()
@@ -47,7 +55,7 @@ static func settle(app: Control) -> bool:
 	return not app.runtime.turn.busy
 
 static func run(app: Control, expect: Callable, observe: Callable = Callable(), form: String = "moss") -> void:
-	var name: String = "Foli" if form == "moss" else "Folife"
+	var name: String = Content.display_name({"species":"moss","form_id":form})
 	expect.call(bind(app,fixture("walk",form)),name+" walk fixture restores a validated expedition")
 	await app.get_tree().process_frame
 	var hud: Control = app.screen_host.battle_root.hud

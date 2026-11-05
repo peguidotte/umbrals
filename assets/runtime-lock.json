@@ -25,6 +25,11 @@
       "id": "attacks/flame-guard",
       "version": "1.0.0"
     },
+    "attacks/grass-leaf-blades": {
+      "file": "atlas",
+      "id": "attacks/grass-leaf-blades",
+      "version": "1.0.0"
+    },
     "attacks/inferno": {
       "file": "icon",
       "id": "attacks/inferno",
@@ -33,6 +38,11 @@
     "attacks/judgment": {
       "file": "icon",
       "id": "attacks/judgment",
+      "version": "1.0.0"
+    },
+    "attacks/leaf-foliage-icon": {
+      "file": "icon",
+      "id": "attacks/grass-leaf-blades",
       "version": "1.0.0"
     },
     "attacks/life-seed": {
@@ -155,6 +165,11 @@
       "id": "characters/battle-evolved",
       "version": "1.0.0"
     },
+    "characters/lifecycle-foslash": {
+      "file": "walk",
+      "id": "characters/foslash-lifecycle",
+      "version": "1.0.0"
+    },
     "characters/lifecycle-moss": {
       "file": "walk",
       "id": "characters/foli-lifecycle",
@@ -253,6 +268,11 @@
     "umbrals/ember": {
       "file": "portrait",
       "id": "umbrals/ember",
+      "version": "1.0.0"
+    },
+    "umbrals/foslash": {
+      "file": "portrait",
+      "id": "characters/foslash-pilot",
       "version": "1.0.0"
     },
     "umbrals/ignivar": {

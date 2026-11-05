@@ -1639,6 +1639,171 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 581579,
+      "id": "attacks/grass-leaf-blades@0.1.0:atlas",
+      "kind": "texture",
+      "module": "attacks/grass-leaf-blades",
+      "path": "assets/attacks/grass-leaf-blades/versions/0.1.0/leaf-blades.png",
+      "role": "atlas",
+      "sha256": "1d5738fe0093feb8638053370aacae20d55be146dbac77df7d1db3af7d6af791",
+      "source": {
+        "approval": "Source creature references approved; effect atlas selected by delegated art direction for draft. Actual game review pending.",
+        "generation_id": "exec-5495e458-5931-4833-9f55-26fd09cd949e",
+        "kind": "Image Gen edit of approved Foli lineage foliage",
+        "original_png_preserved": true,
+        "prompt": "Create a compact production-art CANDIDATE effects atlas for the game Umbral, based on the leaf weapons in the two attached approved hare designs. This is ONLY detached foliage and leaf-cut VFX, no characters. Preserve their visual language: sharp lanceolate fern/olive green leaves, pale yellow-green central veins, dark green-black thin outline, simple confident cel-painted planes, soft upper-left light, readable at 24–64 game pixels. Organic blades, not steel, no handles. Four separated objects in an exact 2 by 2 grid on a square canvas, TRUE transparent alpha. Each object must stay inside its equal quadrant with ample clear margin, not touching or overlapping another quadrant. Top-left: ONE narrow detached pointed leaf blade, horizontal, stem/base at LEFT and sharp tip at RIGHT, straight central vein, mostly green with a warm yellow-green edge. Top-right: ONE broad subtly curved detached guard leaf, also base LEFT tip RIGHT, proportion around 2.5 to 1. Bottom-left: ONE crisp curved green cutting crescent shaped from 3 overlapping narrow leaf planes, opening toward the RIGHT, no circular glow, no complete ring, only a compact slash silhouette. Bottom-right: ONE asymmetric contact burst made from 6 small detached green leaf shards and 2 short pale yellow-green cut strokes, directed mainly toward the RIGHT, sparse clear negative space. No ground, shadows, background color, scene, UI, frames, dividing lines, labels, text, numbers, signatures, duplicate grids, blur or glowing fireballs. This atlas is green physical foliage with crisp contour and true transparent pixels, consistent with the reference blades. Do not include rabbits or any anatomy.\n",
+        "references": [
+          {
+            "file_name": "lebre-linhagem-v11.png",
+            "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80"
+          },
+          {
+            "file_name": "lebre-silenciosa-refinada-v13.png",
+            "sha256": "f75649f947c34fa726d190eb1109f2313220759c50cee5e761394eb6a92bbb57"
+          }
+        ]
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 4064,
+      "id": "attacks/grass-leaf-blades@0.1.0:authoring",
+      "kind": "data",
+      "module": "attacks/grass-leaf-blades",
+      "path": "assets/attacks/grass-leaf-blades/versions/0.1.0/authoring.json",
+      "role": "authoring",
+      "sha256": "ff10d0b1f7ded1a557eaf169258f841b47eba8c4a07eae552438500d20bb33db",
+      "source": {
+        "approval": "Source creature references approved; effect atlas selected by delegated art direction for draft. Actual game review pending.",
+        "generation_id": "exec-5495e458-5931-4833-9f55-26fd09cd949e",
+        "kind": "Image Gen edit of approved Foli lineage foliage",
+        "original_png_preserved": true,
+        "prompt": "Create a compact production-art CANDIDATE effects atlas for the game Umbral, based on the leaf weapons in the two attached approved hare designs. This is ONLY detached foliage and leaf-cut VFX, no characters. Preserve their visual language: sharp lanceolate fern/olive green leaves, pale yellow-green central veins, dark green-black thin outline, simple confident cel-painted planes, soft upper-left light, readable at 24–64 game pixels. Organic blades, not steel, no handles. Four separated objects in an exact 2 by 2 grid on a square canvas, TRUE transparent alpha. Each object must stay inside its equal quadrant with ample clear margin, not touching or overlapping another quadrant. Top-left: ONE narrow detached pointed leaf blade, horizontal, stem/base at LEFT and sharp tip at RIGHT, straight central vein, mostly green with a warm yellow-green edge. Top-right: ONE broad subtly curved detached guard leaf, also base LEFT tip RIGHT, proportion around 2.5 to 1. Bottom-left: ONE crisp curved green cutting crescent shaped from 3 overlapping narrow leaf planes, opening toward the RIGHT, no circular glow, no complete ring, only a compact slash silhouette. Bottom-right: ONE asymmetric contact burst made from 6 small detached green leaf shards and 2 short pale yellow-green cut strokes, directed mainly toward the RIGHT, sparse clear negative space. No ground, shadows, background color, scene, UI, frames, dividing lines, labels, text, numbers, signatures, duplicate grids, blur or glowing fireballs. This atlas is green physical foliage with crisp contour and true transparent pixels, consistent with the reference blades. Do not include rabbits or any anatomy.\n",
+        "references": [
+          {
+            "file_name": "lebre-linhagem-v11.png",
+            "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80"
+          },
+          {
+            "file_name": "lebre-silenciosa-refinada-v13.png",
+            "sha256": "f75649f947c34fa726d190eb1109f2313220759c50cee5e761394eb6a92bbb57"
+          }
+        ]
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 581579,
+      "id": "attacks/grass-leaf-blades@1.0.0:atlas",
+      "kind": "texture",
+      "module": "attacks/grass-leaf-blades",
+      "path": "assets/attacks/grass-leaf-blades/versions/1.0.0/leaf-blades.png",
+      "role": "atlas",
+      "sha256": "1d5738fe0093feb8638053370aacae20d55be146dbac77df7d1db3af7d6af791",
+      "source": {
+        "approval": "Source creature references approved; effect atlas selected by delegated art direction for draft. Actual game review pending.",
+        "generation_id": "exec-5495e458-5931-4833-9f55-26fd09cd949e",
+        "kind": "Image Gen edit of approved Foli lineage foliage",
+        "original_png_preserved": true,
+        "prompt": "Create a compact production-art CANDIDATE effects atlas for the game Umbral, based on the leaf weapons in the two attached approved hare designs. This is ONLY detached foliage and leaf-cut VFX, no characters. Preserve their visual language: sharp lanceolate fern/olive green leaves, pale yellow-green central veins, dark green-black thin outline, simple confident cel-painted planes, soft upper-left light, readable at 24–64 game pixels. Organic blades, not steel, no handles. Four separated objects in an exact 2 by 2 grid on a square canvas, TRUE transparent alpha. Each object must stay inside its equal quadrant with ample clear margin, not touching or overlapping another quadrant. Top-left: ONE narrow detached pointed leaf blade, horizontal, stem/base at LEFT and sharp tip at RIGHT, straight central vein, mostly green with a warm yellow-green edge. Top-right: ONE broad subtly curved detached guard leaf, also base LEFT tip RIGHT, proportion around 2.5 to 1. Bottom-left: ONE crisp curved green cutting crescent shaped from 3 overlapping narrow leaf planes, opening toward the RIGHT, no circular glow, no complete ring, only a compact slash silhouette. Bottom-right: ONE asymmetric contact burst made from 6 small detached green leaf shards and 2 short pale yellow-green cut strokes, directed mainly toward the RIGHT, sparse clear negative space. No ground, shadows, background color, scene, UI, frames, dividing lines, labels, text, numbers, signatures, duplicate grids, blur or glowing fireballs. This atlas is green physical foliage with crisp contour and true transparent pixels, consistent with the reference blades. Do not include rabbits or any anatomy.\n",
+        "references": [
+          {
+            "file_name": "lebre-linhagem-v11.png",
+            "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80"
+          },
+          {
+            "file_name": "lebre-silenciosa-refinada-v13.png",
+            "sha256": "f75649f947c34fa726d190eb1109f2313220759c50cee5e761394eb6a92bbb57"
+          }
+        ]
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 4064,
+      "id": "attacks/grass-leaf-blades@1.0.0:authoring",
+      "kind": "data",
+      "module": "attacks/grass-leaf-blades",
+      "path": "assets/attacks/grass-leaf-blades/versions/1.0.0/authoring.json",
+      "role": "authoring",
+      "sha256": "ff10d0b1f7ded1a557eaf169258f841b47eba8c4a07eae552438500d20bb33db",
+      "source": {
+        "approval": "Source creature references approved; effect atlas selected by delegated art direction for draft. Actual game review pending.",
+        "generation_id": "exec-5495e458-5931-4833-9f55-26fd09cd949e",
+        "kind": "Image Gen edit of approved Foli lineage foliage",
+        "original_png_preserved": true,
+        "prompt": "Create a compact production-art CANDIDATE effects atlas for the game Umbral, based on the leaf weapons in the two attached approved hare designs. This is ONLY detached foliage and leaf-cut VFX, no characters. Preserve their visual language: sharp lanceolate fern/olive green leaves, pale yellow-green central veins, dark green-black thin outline, simple confident cel-painted planes, soft upper-left light, readable at 24–64 game pixels. Organic blades, not steel, no handles. Four separated objects in an exact 2 by 2 grid on a square canvas, TRUE transparent alpha. Each object must stay inside its equal quadrant with ample clear margin, not touching or overlapping another quadrant. Top-left: ONE narrow detached pointed leaf blade, horizontal, stem/base at LEFT and sharp tip at RIGHT, straight central vein, mostly green with a warm yellow-green edge. Top-right: ONE broad subtly curved detached guard leaf, also base LEFT tip RIGHT, proportion around 2.5 to 1. Bottom-left: ONE crisp curved green cutting crescent shaped from 3 overlapping narrow leaf planes, opening toward the RIGHT, no circular glow, no complete ring, only a compact slash silhouette. Bottom-right: ONE asymmetric contact burst made from 6 small detached green leaf shards and 2 short pale yellow-green cut strokes, directed mainly toward the RIGHT, sparse clear negative space. No ground, shadows, background color, scene, UI, frames, dividing lines, labels, text, numbers, signatures, duplicate grids, blur or glowing fireballs. This atlas is green physical foliage with crisp contour and true transparent pixels, consistent with the reference blades. Do not include rabbits or any anatomy.\n",
+        "references": [
+          {
+            "file_name": "lebre-linhagem-v11.png",
+            "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80"
+          },
+          {
+            "file_name": "lebre-silenciosa-refinada-v13.png",
+            "sha256": "f75649f947c34fa726d190eb1109f2313220759c50cee5e761394eb6a92bbb57"
+          }
+        ]
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 115442,
+      "id": "attacks/grass-leaf-blades@1.0.0:icon",
+      "kind": "texture",
+      "module": "attacks/grass-leaf-blades",
+      "path": "assets/attacks/grass-leaf-blades/versions/1.0.0/leaf-icon.png",
+      "role": "icon",
+      "sha256": "b5f3006fa7ec9e04f79136a11115f61e853d9305cd0c7546e8aa3d80da3f108d",
+      "source": {
+        "kind": "Lossless rectangular normalization from the preserved original atlas; no resampling, painting or alpha edit",
+        "rect": [
+          656,
+          207,
+          570,
+          214
+        ],
+        "source_role": "atlas",
+        "source_sha256": "1d5738fe0093feb8638053370aacae20d55be146dbac77df7d1db3af7d6af791"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          570,
+          214
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
       "bytes": 758,
       "id": "attacks/inferno@1.0.0:icon",
       "kind": "texture",
@@ -4369,6 +4534,241 @@
             "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
             "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80",
             "target": "Second form only"
+          }
+        ]
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 465173,
+      "id": "characters/foslash-lifecycle@1.0.0:knockout",
+      "kind": "texture",
+      "module": "characters/foslash-lifecycle",
+      "path": "assets/characters/foslash-lifecycle/versions/1.0.0/knockout.png",
+      "role": "knockout",
+      "sha256": "29764a340242508ca61c1647d71508c0eaa2ec0f58d8555f56679ff46d6f02cb",
+      "source": {
+        "approval": "Independent static technical GO for draft; cadence, floor depth and human aesthetics pending.",
+        "kind": "Image Gen edit of the project-owned Foslash front cutout",
+        "normalization": "Own rectangles and integer floor alignment; no resampling, repainting or alpha changes. Last KO uses one directed correction restoring the short blade.",
+        "originals_preserved": true,
+        "source_cutout_sha256": "d58dc597d8d09926f9402c44e310d0ab3dcd16f1e0356125c7b96469ffc31c37"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          362
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1581370,
+      "id": "characters/foslash-lifecycle@1.0.0:ko-correction",
+      "kind": "review",
+      "module": "characters/foslash-lifecycle",
+      "path": "assets/characters/foslash-lifecycle/versions/1.0.0/review/ko-correction-01/original.png",
+      "role": "ko-correction",
+      "sha256": "fa0272c61129accdbbf5da0ea0a530caa0c0458b359f28b92a92e9b8534123cc",
+      "source": {
+        "approval": "Independent static technical GO for draft; cadence, floor depth and human aesthetics pending.",
+        "kind": "Image Gen edit of the project-owned Foslash front cutout",
+        "normalization": "Own rectangles and integer floor alignment; no resampling, repainting or alpha changes. Last KO uses one directed correction restoring the short blade.",
+        "originals_preserved": true,
+        "source_cutout_sha256": "d58dc597d8d09926f9402c44e310d0ab3dcd16f1e0356125c7b96469ffc31c37"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1446,
+          1087
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 12554,
+      "id": "characters/foslash-lifecycle@1.0.0:normalization",
+      "kind": "data",
+      "module": "characters/foslash-lifecycle",
+      "path": "assets/characters/foslash-lifecycle/versions/1.0.0/normalization.json",
+      "role": "normalization",
+      "sha256": "7f6d48bd8b8140970951eb60cbba539c77d653dbb60be7f2b5d2195d9b442a34",
+      "source": {
+        "approval": "Independent static technical GO for draft; cadence, floor depth and human aesthetics pending.",
+        "kind": "Image Gen edit of the project-owned Foslash front cutout",
+        "normalization": "Own rectangles and integer floor alignment; no resampling, repainting or alpha changes. Last KO uses one directed correction restoring the short blade.",
+        "originals_preserved": true,
+        "source_cutout_sha256": "d58dc597d8d09926f9402c44e310d0ab3dcd16f1e0356125c7b96469ffc31c37"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1560262,
+      "id": "characters/foslash-lifecycle@1.0.0:original",
+      "kind": "review",
+      "module": "characters/foslash-lifecycle",
+      "path": "assets/characters/foslash-lifecycle/versions/1.0.0/review/original.png",
+      "role": "original",
+      "sha256": "f811f3b7f79dc8cdc117b3684de8a9316718d6f88e3e1bd35a78ef754ee70ac9",
+      "source": {
+        "approval": "Independent static technical GO for draft; cadence, floor depth and human aesthetics pending.",
+        "kind": "Image Gen edit of the project-owned Foslash front cutout",
+        "normalization": "Own rectangles and integer floor alignment; no resampling, repainting or alpha changes. Last KO uses one directed correction restoring the short blade.",
+        "originals_preserved": true,
+        "source_cutout_sha256": "d58dc597d8d09926f9402c44e310d0ab3dcd16f1e0356125c7b96469ffc31c37"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1447,
+          1087
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 289,
+      "id": "characters/foslash-lifecycle@1.0.0:profile",
+      "kind": "data",
+      "module": "characters/foslash-lifecycle",
+      "path": "assets/characters/foslash-lifecycle/versions/1.0.0/profile.json",
+      "role": "profile",
+      "sha256": "4825d2b0fd8902fb022bb4373b42c877d8810a61984f9026aba5333e52e1ee55",
+      "source": {
+        "approval": "Independent static technical GO for draft; cadence, floor depth and human aesthetics pending.",
+        "kind": "Image Gen edit of the project-owned Foslash front cutout",
+        "normalization": "Own rectangles and integer floor alignment; no resampling, repainting or alpha changes. Last KO uses one directed correction restoring the short blade.",
+        "originals_preserved": true,
+        "source_cutout_sha256": "d58dc597d8d09926f9402c44e310d0ab3dcd16f1e0356125c7b96469ffc31c37"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1017608,
+      "id": "characters/foslash-lifecycle@1.0.0:walk",
+      "kind": "texture",
+      "module": "characters/foslash-lifecycle",
+      "path": "assets/characters/foslash-lifecycle/versions/1.0.0/walk.png",
+      "role": "walk",
+      "sha256": "b7f21e3beac4c26f3383b7c1a939a0448c811605ae87e8a829728130468cab3a",
+      "source": {
+        "approval": "Independent static technical GO for draft; cadence, floor depth and human aesthetics pending.",
+        "kind": "Image Gen edit of the project-owned Foslash front cutout",
+        "normalization": "Own rectangles and integer floor alignment; no resampling, repainting or alpha changes. Last KO uses one directed correction restoring the short blade.",
+        "originals_preserved": true,
+        "source_cutout_sha256": "d58dc597d8d09926f9402c44e310d0ab3dcd16f1e0356125c7b96469ffc31c37"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 636,
+      "id": "characters/foslash-pilot@1.0.0:authoring",
+      "kind": "data",
+      "module": "characters/foslash-pilot",
+      "path": "assets/characters/foslash-pilot/versions/1.0.0/authoring.json",
+      "role": "authoring",
+      "sha256": "ae7a3892c37575dab3549a405171605154263bb658138ad04fa1fe96b54796db",
+      "source": {
+        "approval": "Independent static technical GO for draft; actual scene and human aesthetic approval pending.",
+        "kind": "Image Gen reference edit with own inspected biped anatomy",
+        "original_output_basename": "exec-5bf5f706-41d1-4fef-bfa0-985a9643c5c5.png",
+        "original_png_preserved": true,
+        "prompt": "Create ONE faithful full-body transparent game-character cutout of FOSLASH, the THIRD creature from the LEFT labeled \"Final · Padrão\" in the provided project-owned reference sheet lebre-linhagem-v11.png. Use ONLY that third creature, not the baby, intermediate or quadrupedal alternative. Match the approved design closely, as if removing it from the concept sheet and carefully finishing its edges. Right-facing three-quarter side view, slightly elevated horizontal battle camera. Preserve its athletic bipedal hare proportions, dark forest-green/charcoal fur, long brown swept-back hare ears tipped with small green buds, large swept-back green leaf mane, amber eye, cream muzzle/chest stripe/paws, green leaf forearm and shin accents with yellow veins, and large lobed leaf tail. Preserve the two separate leaf weapons: a long narrow green leaf-blade raised diagonally up-right in the forward hand, and the shorter broad pointed leaf-blade held near the hip, angled down-right. They are leaves, not metal swords. Keep the reference's compact ready stance with one hind foot planted and the other slightly lifted. Preserve anatomy and silhouette; do not add clothing, armor, extra weapons, horns, vines or extra floating decorations. Same clean dark contour, faceted painted shading, warm yellow-green foliage and cream highlights as reference. Strong readable silhouette when minified to about 118px visible height; do not simplify away the ears, tail, hands or either blade. Center the entire creature and both weapons in a square canvas with comfortable transparent margin around every extremity. TRANSPARENT RGBA background through native tool option. No paper, backdrop, floor, cast shadow, dust, glow, aura, UI, text, labels, border, watermark or additional creatures. One still pose, not an animation sheet. This is a cutout candidate for review, not a new character redesign.\n",
+        "references": [
+          {
+            "file_name": "lebre-linhagem-v11.png",
+            "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+            "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80",
+            "target": "Third form only"
+          }
+        ]
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1162072,
+      "id": "characters/foslash-pilot@1.0.0:motion",
+      "kind": "data",
+      "module": "characters/foslash-pilot",
+      "path": "assets/characters/foslash-pilot/versions/1.0.0/motion.json",
+      "role": "motion",
+      "sha256": "99abcfcb9cee1b8df20947c66badba2b95ce1058d5287d2afda69dc14d825072",
+      "source": {
+        "approval": "Independent static technical GO for draft; actual scene and human aesthetic approval pending.",
+        "kind": "Image Gen reference edit with own inspected biped anatomy",
+        "original_output_basename": "exec-5bf5f706-41d1-4fef-bfa0-985a9643c5c5.png",
+        "original_png_preserved": true,
+        "prompt": "Create ONE faithful full-body transparent game-character cutout of FOSLASH, the THIRD creature from the LEFT labeled \"Final · Padrão\" in the provided project-owned reference sheet lebre-linhagem-v11.png. Use ONLY that third creature, not the baby, intermediate or quadrupedal alternative. Match the approved design closely, as if removing it from the concept sheet and carefully finishing its edges. Right-facing three-quarter side view, slightly elevated horizontal battle camera. Preserve its athletic bipedal hare proportions, dark forest-green/charcoal fur, long brown swept-back hare ears tipped with small green buds, large swept-back green leaf mane, amber eye, cream muzzle/chest stripe/paws, green leaf forearm and shin accents with yellow veins, and large lobed leaf tail. Preserve the two separate leaf weapons: a long narrow green leaf-blade raised diagonally up-right in the forward hand, and the shorter broad pointed leaf-blade held near the hip, angled down-right. They are leaves, not metal swords. Keep the reference's compact ready stance with one hind foot planted and the other slightly lifted. Preserve anatomy and silhouette; do not add clothing, armor, extra weapons, horns, vines or extra floating decorations. Same clean dark contour, faceted painted shading, warm yellow-green foliage and cream highlights as reference. Strong readable silhouette when minified to about 118px visible height; do not simplify away the ears, tail, hands or either blade. Center the entire creature and both weapons in a square canvas with comfortable transparent margin around every extremity. TRANSPARENT RGBA background through native tool option. No paper, backdrop, floor, cast shadow, dust, glow, aura, UI, text, labels, border, watermark or additional creatures. One still pose, not an animation sheet. This is a cutout candidate for review, not a new character redesign.\n",
+        "references": [
+          {
+            "file_name": "lebre-linhagem-v11.png",
+            "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+            "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80",
+            "target": "Third form only"
+          }
+        ]
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1048904,
+      "id": "characters/foslash-pilot@1.0.0:portrait",
+      "kind": "texture",
+      "module": "characters/foslash-pilot",
+      "path": "assets/characters/foslash-pilot/versions/1.0.0/foslash.png",
+      "role": "portrait",
+      "sha256": "d58dc597d8d09926f9402c44e310d0ab3dcd16f1e0356125c7b96469ffc31c37",
+      "source": {
+        "approval": "Independent static technical GO for draft; actual scene and human aesthetic approval pending.",
+        "kind": "Image Gen reference edit with own inspected biped anatomy",
+        "original_output_basename": "exec-5bf5f706-41d1-4fef-bfa0-985a9643c5c5.png",
+        "original_png_preserved": true,
+        "prompt": "Create ONE faithful full-body transparent game-character cutout of FOSLASH, the THIRD creature from the LEFT labeled \"Final · Padrão\" in the provided project-owned reference sheet lebre-linhagem-v11.png. Use ONLY that third creature, not the baby, intermediate or quadrupedal alternative. Match the approved design closely, as if removing it from the concept sheet and carefully finishing its edges. Right-facing three-quarter side view, slightly elevated horizontal battle camera. Preserve its athletic bipedal hare proportions, dark forest-green/charcoal fur, long brown swept-back hare ears tipped with small green buds, large swept-back green leaf mane, amber eye, cream muzzle/chest stripe/paws, green leaf forearm and shin accents with yellow veins, and large lobed leaf tail. Preserve the two separate leaf weapons: a long narrow green leaf-blade raised diagonally up-right in the forward hand, and the shorter broad pointed leaf-blade held near the hip, angled down-right. They are leaves, not metal swords. Keep the reference's compact ready stance with one hind foot planted and the other slightly lifted. Preserve anatomy and silhouette; do not add clothing, armor, extra weapons, horns, vines or extra floating decorations. Same clean dark contour, faceted painted shading, warm yellow-green foliage and cream highlights as reference. Strong readable silhouette when minified to about 118px visible height; do not simplify away the ears, tail, hands or either blade. Center the entire creature and both weapons in a square canvas with comfortable transparent margin around every extremity. TRANSPARENT RGBA background through native tool option. No paper, backdrop, floor, cast shadow, dust, glow, aura, UI, text, labels, border, watermark or additional creatures. One still pose, not an animation sheet. This is a cutout candidate for review, not a new character redesign.\n",
+        "references": [
+          {
+            "file_name": "lebre-linhagem-v11.png",
+            "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+            "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80",
+            "target": "Third form only"
           }
         ]
       },

@@ -6,6 +6,7 @@ const Lifecycle = preload("res://scripts/ui/creature_lifecycle.gd")
 const GRID: int = 14
 const ANGLES: Dictionary = {"head": 8, "tail": 9, "fore": 10, "hind": 11, "crest": 12, "ear": 13, "jaw": 14, "wing": 15, "feeler": 16, "bough": 17, "fin": 18}
 var form_id: String = ""
+var art_view: String = "front"
 var source: Texture2D
 var texture: Texture2D
 var display_size: Vector2 = Vector2.ONE
@@ -30,11 +31,12 @@ var reaction_weight: float = 1.0
 var jump_scale: float = 1.0
 var lifecycle: Node2D
 
-func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2, mirror: bool) -> void:
-	var changed: bool = image != source or id != form_id
+func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2, mirror: bool, view: String = "front") -> void:
+	var changed: bool = image != source or id != form_id or view != art_view
 	source = image
 	form_id = id
-	definition = Motion.form(id)
+	art_view = view
+	definition = Motion.form(id, view)
 	display_size = dimensions
 	foot = pivot / dimensions
 	flipped = mirror
@@ -44,7 +46,7 @@ func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2
 	# Form-specific pins compose with the shared lifecycle fallback from Brasa.
 	var authored: Dictionary = Assets.bound_manifest("characters/lifecycle-" + id)
 	var reference: Dictionary = {"id": authored.id, "version": authored.version} if not authored.is_empty() else {}
-	lifecycle.configure(id, dimensions, pivot, mirror, reference)
+	lifecycle.configure(id, dimensions, pivot, mirror, reference, view)
 	texture = image.atlas if image is AtlasTexture else image
 	if changed:
 		reset()
@@ -187,15 +189,19 @@ func project(uv: Vector2) -> Vector2:
 	return pivot + local
 
 func socket(index: int, secondary: bool = false) -> Vector2:
-	var uv: Vector2 = Motion.socket(form_id, index)
-	if secondary and definition.has("anatomy"):
+	var uv: Vector2 = Motion.socket(form_id, index, art_view)
+	var leaf_blades: bool = str(definition.get("attack_presentation", {}).get("profile", "")) == "leaf_blades" and index in [3, 4, 5]
+	if leaf_blades:
+		var point: Array = definition.get("anatomy", {}).get("fore_secondary" if secondary else "fore", [uv.x, uv.y])
+		uv = Vector2(float(point[0]), float(point[1]))
+	elif secondary and definition.has("anatomy"):
 		var point: Array = definition.anatomy.get("antennaB", [uv.x, uv.y])
 		uv = Vector2(float(point[0]), float(point[1]))
 	return to_global(project(uv))
 
 func _refresh() -> void:
 	if texture == null or indices.is_empty(): return
-	pose = Motion.neutral() if reduced_motion else Motion.sample(form_id, mode, clip, fposmod(idle_time, 3.2) if mode == "states" and clip == 0 else elapsed)
+	pose = Motion.neutral() if reduced_motion else Motion.sample(form_id, mode, clip, fposmod(idle_time, 3.2) if mode == "states" and clip == 0 else elapsed, art_view)
 	if mode == "reactions" and not is_equal_approx(reaction_weight, 1.0):
 		var rest: Array = Motion.neutral()
 		for channel in range(pose.size()): pose[channel] = lerpf(float(rest[channel]), float(pose[channel]), reaction_weight)

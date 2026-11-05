@@ -2,6 +2,7 @@ extends Node2D
 ## Bounded elemental drawing. World positions come from the actual posed actors.
 const Assets = preload("res://scripts/assets/catalog.gd")
 const Motion = preload("res://scripts/ui/battle_motion.gd")
+const LeafBlades = preload("res://scripts/ui/leaf_blade_vfx.gd")
 const COLORS: Array[Color] = [Color("ef987b"), Color("91c8a1"), Color("80d7e5"), Color("e8cf81"), Color("e8cf81")]
 var index: int = -1
 var clock: float = 0.0
@@ -16,6 +17,8 @@ var flashes: bool = false
 var reduced_motion: bool = false
 var atlas: Texture2D
 var rectangles: Array[Rect2] = []
+var presentation_profile: String = ""
+var leaf_blades: RefCounted = LeafBlades.new()
 
 func _ready() -> void:
 	show_behind_parent = true
@@ -26,8 +29,14 @@ func _ready() -> void:
 
 func clear() -> void:
 	index = -1
+	presentation_profile = ""
 	target_points.clear()
 	queue_redraw()
+
+func configure_presentation(profile: Dictionary) -> void:
+	presentation_profile = ""
+	if str(profile.get("profile", "")) == "leaf_blades" and index in [3, 4, 5] and leaf_blades.configure(profile):
+		presentation_profile = "leaf_blades"
 
 func _stamp(art: int, at: Vector2, dimensions: Vector2, rotation_angle: float = 0.0, opacity: float = 1.0, mirror: float = 1.0) -> void:
 	if opacity <= 0 or dimensions.x < 1 or dimensions.y < 1: return
@@ -167,6 +176,9 @@ func _contact(to: Vector2, spec: Dictionary, delay: float, family: String) -> vo
 func _draw() -> void:
 	if index < 0 or atlas == null: return
 	var spec: Dictionary = Motion.spec(index)
+	if presentation_profile == "leaf_blades":
+		leaf_blades.draw_effect(self, index, clock, spec, {"source": source_point, "release": release_point, "secondary": secondary_point, "targets": target_points}, display_scale, flashes, reduced_motion)
+		return
 	if clock >= 0.2 and clock < float(spec.release) and not reduced_motion: _charge(spec, COLORS[index / 3])
 	for k in range(target_points.size()):
 		var to: Vector2 = target_points[k]
