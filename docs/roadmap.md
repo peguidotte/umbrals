@@ -1097,3 +1097,20 @@ aceitação integral e revisão visual do conjunto exato ainda são necessárias
 arte das quatro famílias, finais, casa narrativa completa ou entrega na main.
 [Origens, donos, plano de aceitação e limites](playable-integration-v05-01.md).
 Não há alteração de workflows, proteção ou versão do produto.
+
+### V04-CNT-01A — Foli e Folife com identidade preservada
+
+Primeira fatia do pedido de integrar as quatro famílias: os nomes e descrições
+de Foli e Folife entram no catálogo já usado pela escolha inicial, batalha,
+evolução e grimório. Espécie/formas/aresta conservam `moss`, `moss`/`verdalio` e
+`moss_to_verdalio`; gameplay e identidade dos saves continuam iguais. Catálogo,
+autoria, save, compatibilidade e história passaram nos gates focados; fechamento
+e capturas reais são registrados no PR. [Escopo e evidências](grass-family-v04-cnt-01a.md).
+
+Foslash e Folivel são nomes/conceitos aprovados, ainda sem novas formas jogáveis
+nesta fatia. As duas referências da Library foram resolvidas, mas a transferência
+oficial falhou: arte da lebre, poses e origens anatômicas não foram validadas.
+Continuam os retratos anteriores como fallback explícito na documentação.
+Próxima fatia: materializar e revisar a arte aprovada e integrar as formas finais
+com compatibilidade auditada. Versão continua 0.3.0; as quatro famílias não estão
+declaradas concluídas por esta entrega.
