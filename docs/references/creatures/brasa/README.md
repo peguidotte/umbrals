@@ -1,12 +1,10 @@
-# Família Brasa — Sendral aprovado, final de fogo em exploração
+# Família Brasa — conceitos de fogo e cinzas aprovados
 
-Pedro aprovou Sendral e pediu produção em ondas. Após um fechamento criativo
-inicial da família, **reabriu a forma final do ramo principal de fogo**: o desenho
-ainda parecia apenas crescimento e mais caudas. Não fixar nem produzir sua arte
-final enquanto ele revê o conceito. A orientação seguinte preserva o final original
-quadrúpede com três caudas e propõe uma juba menor inspirada na opção A; a nova
-imagem ainda aguarda validação. Sendral de cinzas continua aprovado.
-O fechamento criativo não aprova assets implementados, animações, atributos ou tipos.
+Pedro aprovou explicitamente o **final de fogo com juba completa, à direita da
+comparação v9**. Sendral de cinzas continua aprovado; a família de fogo está
+criativamente fechada. Essa decisão substitui a reabertura e a proposta de juba
+menor anteriores. Não equivale a aprovação de assets implementados, animações,
+atributos ou tipos.
 
 Árvore de referência: **Brasa → intermediário comum → final de fogo OU final
 de cinzas**. A main já usa `ember` e `ignivar`; esses IDs permanecem intactos.
@@ -14,15 +12,19 @@ Ignivar é o candidato existente ao intermediário. Andarvor e Sendral são nome
 preferidos falados, sem impor nova grafia ou identificadores para os finais.
 
 - Árvore exploratória: [abrir original na Library](https://chatgpt.com/api/library/files/libfile_299871807a048191ba2d69ae8bb42115/download).
-  A antiga aceitação do final de fogo foi supersedida pela reabertura acima.
-  A prancha continua uma exploração; a revisão posterior de Sendral prevalece
-  sobre seu desenho de cinzas.
+  A prancha continua histórica/exploratória. As referências finais seguintes
+  prevalecem sobre seus desenhos dos dois ramos.
 - Sendral final: [abrir original aprovado na Library](https://chatgpt.com/api/library/files/libfile_c3b38ea9bcd88191bc575a7414f977a0/download).
   Cauda livre de cinzas controladas e partículas envolvendo partes do corpo.
   Aprovação: “do Sendral gostei pra caramba ... pode dar a família ... como concluída”.
 
-**Arquivos PNG armazenados neste repositório: 0 de 2.** O fluxo oficial de
-materialização identificou ambos, mas cada transferência falhou com
+- Final principal de fogo: [comparação v9 aprovada](https://chatgpt.com/api/library/files/libfile_6ab7ff3bcbd88191a628e74f2b8e9421/download).
+  A escolha é a versão com juba completa **à direita**, mantendo o quadrúpede
+  com três caudas. A imagem comparativa inteira deve ser preservada como fonte;
+  não é um spritesheet nem comprovação de produção.
+
+**Arquivos PNG armazenados neste repositório: 0 de 3.** O fluxo oficial de
+materialização identificou as três referências, mas cada transferência falhou com
 `library file transfer failed: download failed`, antes da instalação. Não houve
 download alternativo. O [registro](reference-status.json) mantém os identificadores,
 versões e tamanhos devolvidos; nenhum hash de imagem foi inventado. Metadados
@@ -39,3 +41,6 @@ para validar o pipeline sem substituir sua arte ou criar formas no catálogo.
 
 Uma segunda tentativa pelo fluxo oficial repetiu a falha de transferência para
 ambas as imagens. O registro preserva essa tentativa; nenhum PNG foi instalado.
+
+A referência da juba completa também falhou na primeira transferência oficial.
+Sua aprovação foi registrada sem afirmar que os bytes já estavam disponíveis.

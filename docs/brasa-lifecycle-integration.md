@@ -3,7 +3,10 @@
 Continuação da [primeira fatia](brasa-pilot-v05-art-01b.md). O blocking rejeitado
 0.1.0 permanece intacto. O piloto usa somente `ember`, sem renomear IDs, alterar
 conteúdo mecânico, saves, naturezas ou produzir o final de fogo. Sendral continua
-aprovado; a proposta do final quadrúpede/três caudas/juba menor aguarda validação.
+aprovado e Pedro fechou criativamente o final quadrúpede com três caudas e
+juba completa, à direita da comparação v9. Sua referência está registrada como
+aprovada, mas a transferência oficial também falhou. Nenhum asset desse final
+foi produzido neste piloto de base.
 
 ## Recursos e reprodução
 
@@ -78,10 +81,11 @@ python tools/iterate.py --label brasa-lifecycle --goal 'Brasa entra com passos, 
 
 ## Referências e integração
 
-A segunda tentativa oficial das três referências também falhou antes da
-instalação. Os [registros de Brasa](references/creatures/brasa/README.md) e do
+A segunda tentativa oficial das três referências iniciais também falhou antes
+da instalação. A nova comparação v9 do final de fogo aprovado falhou na primeira
+tentativa. Os [registros de Brasa](references/creatures/brasa/README.md) e do
 [mineral futuro](references/creatures/future-mineral/README.md) têm as tentativas;
-continuam **sem PNGs locais**, sem rotas alternativas. Os assets desta fatia
+as quatro referências continuam **sem PNGs locais**, sem rotas alternativas. Os assets desta fatia
 derivam do Brasa que já estava no repositório, não de uma reconstrução de Sendral.
 
 A PR #9 foi incorporada pela main durante esta continuação. Seu contrato v1
