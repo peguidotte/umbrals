@@ -179,10 +179,15 @@ func _set_section(section: String) -> void:
 	navigation_changed.emit()
 	# Tab controls are already in-tree. Restore immediately so a fast next
 	# activation cannot have its focus stolen by a deferred tab restoration.
-	for control in find_children("*","Control",true,false):
-		if control.get_meta("ui_id","") == "codex.section."+section:
+	_focus_record_section()
+
+func _focus_record_section() -> void:
+	# Rendering removes the activated link. Focus the destination synchronously,
+	# after navigation_changed rebuilt its chain, before the next keyboard/pad event.
+	for control in details.find_children("*","Control",true,false):
+		if control.get_meta("ui_id","") == "codex.section."+record_section:
 			control.grab_focus()
-			break
+			return
 
 func _open_power(id: String) -> void:
 	_remember_record()
@@ -192,6 +197,7 @@ func _open_power(id: String) -> void:
 	for i in range(all.size()):
 		if all[i].id == id: page = i/Catalog.PAGE_SIZE
 	_refresh()
+	_focus_record_section()
 
 func _open_evolution(id: String) -> void:
 	if category == "umbrals" and selected == id: return
@@ -199,6 +205,7 @@ func _open_evolution(id: String) -> void:
 	if entry.is_empty(): return
 	_remember_record()
 	_select(entry)
+	_focus_record_section()
 
 func _remember_record() -> void:
 	var focused: Control = get_viewport().gui_get_focus_owner()

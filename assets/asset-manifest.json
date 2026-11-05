@@ -3894,6 +3894,240 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 1245,
+      "id": "characters/pietro-home@1.0.0:poses",
+      "kind": "data",
+      "module": "characters/pietro-home",
+      "path": "assets/characters/pietro-home/versions/1.0.0/poses.json",
+      "role": "poses",
+      "sha256": "08eabc7e8214f627f3a74b9ec0aab2e5fed77807fed5ffa2665a761b8c823938",
+      "source": {
+        "edit_history": "Original generated PNG preserved byte-for-byte including metadata; no pixel edits.",
+        "generation_brief": "Edit project traveler atlas to less caricatured young male, fair warm skin, curly hair, ivory shirt, blue/gold jacket, trousers and boots. Approved Library reference unavailable via official transfer; this is a provisional interpretation.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral, from project-owned references.",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Inspected source; provisional implementation pending Pedro review. Production denotes runtime eligibility, not approved likeness.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 780187,
+      "id": "characters/pietro-home@1.0.0:texture",
+      "kind": "texture",
+      "module": "characters/pietro-home",
+      "path": "assets/characters/pietro-home/versions/1.0.0/atlas.png",
+      "role": "texture",
+      "sha256": "70766b69dc8181769db2a049e06c13bdde91f4ab1ef34843e3ac84e00d2516ce",
+      "source": {
+        "edit_history": "Original generated PNG preserved byte-for-byte including metadata; no pixel edits.",
+        "generation_brief": "Edit project traveler atlas to less caricatured young male, fair warm skin, curly hair, ivory shirt, blue/gold jacket, trousers and boots. Approved Library reference unavailable via official transfer; this is a provisional interpretation.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral, from project-owned references.",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Inspected source; provisional implementation pending Pedro review. Production denotes runtime eligibility, not approved likeness.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2777227,
+      "id": "characters/pietro-home@2.0.0:approved-concept",
+      "kind": "review",
+      "module": "characters/pietro-home",
+      "path": "assets/characters/pietro-home/versions/2.0.0/review/approved-concept.png",
+      "role": "approved-concept",
+      "sha256": "341e3bacc0faff403b09c2698c7af0b0473842de36db264f49f9d2472ce39858",
+      "source": {
+        "edit_history": "Officially materialized and retained byte-identical; no edits.",
+        "kind": "approved project concept",
+        "library_file_id": "libfile_7a1f2d2e78ac8191a4109773df9dce86",
+        "version": 0
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 1448,
+      "id": "characters/pietro-home@2.0.0:poses",
+      "kind": "data",
+      "module": "characters/pietro-home",
+      "path": "assets/characters/pietro-home/versions/2.0.0/poses.json",
+      "role": "poses",
+      "sha256": "f1c2f9666fed31404c33b54e50568870038a7715d3d61c000a6c17a0cc946b89",
+      "source": {
+        "approved_identity_reference": {
+          "access": "Official Library prepare_materialize and current bundled library_file_transfer.py; byte count, SHA-256, Library xattrs and decoded pixels inspected in this executor before generation.",
+          "bytes": 2777227,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "file_id": "file_00000000706881fdbb9522eb790f66ac",
+          "library_file_id": "libfile_7a1f2d2e78ac8191a4109773df9dce86",
+          "original_file_name": "exec-b7298ec7-edce-4c34-a9c7-02f7584b7de9.png",
+          "retained_copy": "review/approved-concept.png",
+          "sha256": "341e3bacc0faff403b09c2698c7af0b0473842de36db264f49f9d2472ce39858",
+          "version": 0
+        },
+        "edit_history": "Byte-identical generated PNG with no pixel edits. Engine regions select frames; poses.json records foot pivots and world scale. No embedded metadata was present in the returned PNG.",
+        "generation_brief": "Reference-led Pietro identity: fair light skin, dark wavy hair, quiet expression with smaller eyes/head. Navy home overshirt, ivory sleeves, ochre scarf, slate trousers and boots, no backpack. Textured sprite shading informed by actual Umbral atlas; house provided palette only. Transparent 4 by 2 isolated full-body atlas facing right: idle, six walk poses, reserve standing pose. No scenery, text, effects, furniture or creature.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral from project-owned reference images.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-2fa1ab46-e786-475f-a1c5-8cc84767fbaa.png",
+        "original_sha256": "b682c7d9d6492062df4e0120b8cc20ee229ed081c18f1836c8c89b7493edb4bc",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Source inspected; runtime review and independent approval pending. Production status is runtime eligibility for this draft, not aesthetic approval by Pedro.",
+        "style_references": [
+          {
+            "file": "texture",
+            "id": "characters/battle-creatures",
+            "version": "1.0.0"
+          },
+          {
+            "file": "texture",
+            "id": "world/pietro-house-continuous",
+            "version": "1.0.0"
+          }
+        ],
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 2607,
+      "id": "characters/pietro-home@2.0.0:source-check",
+      "kind": "review",
+      "module": "characters/pietro-home",
+      "path": "assets/characters/pietro-home/versions/2.0.0/review/check_source.py",
+      "role": "source-check",
+      "sha256": "f3fb7e8176e02874a6c925aede0a345bbd61e16c2a30b7e13e3f63d0f4a72c1a",
+      "source": {
+        "approved_identity_reference": {
+          "access": "Official Library prepare_materialize and current bundled library_file_transfer.py; byte count, SHA-256, Library xattrs and decoded pixels inspected in this executor before generation.",
+          "bytes": 2777227,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "file_id": "file_00000000706881fdbb9522eb790f66ac",
+          "library_file_id": "libfile_7a1f2d2e78ac8191a4109773df9dce86",
+          "original_file_name": "exec-b7298ec7-edce-4c34-a9c7-02f7584b7de9.png",
+          "retained_copy": "review/approved-concept.png",
+          "sha256": "341e3bacc0faff403b09c2698c7af0b0473842de36db264f49f9d2472ce39858",
+          "version": 0
+        },
+        "edit_history": "Byte-identical generated PNG with no pixel edits. Engine regions select frames; poses.json records foot pivots and world scale. No embedded metadata was present in the returned PNG.",
+        "generation_brief": "Reference-led Pietro identity: fair light skin, dark wavy hair, quiet expression with smaller eyes/head. Navy home overshirt, ivory sleeves, ochre scarf, slate trousers and boots, no backpack. Textured sprite shading informed by actual Umbral atlas; house provided palette only. Transparent 4 by 2 isolated full-body atlas facing right: idle, six walk poses, reserve standing pose. No scenery, text, effects, furniture or creature.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral from project-owned reference images.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-2fa1ab46-e786-475f-a1c5-8cc84767fbaa.png",
+        "original_sha256": "b682c7d9d6492062df4e0120b8cc20ee229ed081c18f1836c8c89b7493edb4bc",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Source inspected; runtime review and independent approval pending. Production status is runtime eligibility for this draft, not aesthetic approval by Pedro.",
+        "style_references": [
+          {
+            "file": "texture",
+            "id": "characters/battle-creatures",
+            "version": "1.0.0"
+          },
+          {
+            "file": "texture",
+            "id": "world/pietro-house-continuous",
+            "version": "1.0.0"
+          }
+        ],
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 797521,
+      "id": "characters/pietro-home@2.0.0:texture",
+      "kind": "texture",
+      "module": "characters/pietro-home",
+      "path": "assets/characters/pietro-home/versions/2.0.0/atlas.png",
+      "role": "texture",
+      "sha256": "b682c7d9d6492062df4e0120b8cc20ee229ed081c18f1836c8c89b7493edb4bc",
+      "source": {
+        "approved_identity_reference": {
+          "access": "Official Library prepare_materialize and current bundled library_file_transfer.py; byte count, SHA-256, Library xattrs and decoded pixels inspected in this executor before generation.",
+          "bytes": 2777227,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "file_id": "file_00000000706881fdbb9522eb790f66ac",
+          "library_file_id": "libfile_7a1f2d2e78ac8191a4109773df9dce86",
+          "original_file_name": "exec-b7298ec7-edce-4c34-a9c7-02f7584b7de9.png",
+          "retained_copy": "review/approved-concept.png",
+          "sha256": "341e3bacc0faff403b09c2698c7af0b0473842de36db264f49f9d2472ce39858",
+          "version": 0
+        },
+        "edit_history": "Byte-identical generated PNG with no pixel edits. Engine regions select frames; poses.json records foot pivots and world scale. No embedded metadata was present in the returned PNG.",
+        "generation_brief": "Reference-led Pietro identity: fair light skin, dark wavy hair, quiet expression with smaller eyes/head. Navy home overshirt, ivory sleeves, ochre scarf, slate trousers and boots, no backpack. Textured sprite shading informed by actual Umbral atlas; house provided palette only. Transparent 4 by 2 isolated full-body atlas facing right: idle, six walk poses, reserve standing pose. No scenery, text, effects, furniture or creature.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral from project-owned reference images.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "original_output_basename": "exec-2fa1ab46-e786-475f-a1c5-8cc84767fbaa.png",
+        "original_sha256": "b682c7d9d6492062df4e0120b8cc20ee229ed081c18f1836c8c89b7493edb4bc",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Source inspected; runtime review and independent approval pending. Production status is runtime eligibility for this draft, not aesthetic approval by Pedro.",
+        "style_references": [
+          {
+            "file": "texture",
+            "id": "characters/battle-creatures",
+            "version": "1.0.0"
+          },
+          {
+            "file": "texture",
+            "id": "world/pietro-house-continuous",
+            "version": "1.0.0"
+          }
+        ],
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
       "bytes": 1246,
       "id": "characters/refuge-traveler@1.0.0:poses",
       "kind": "data",
@@ -4624,6 +4858,101 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 2975689,
+      "id": "world/pietro-house@1.0.0:first-source",
+      "kind": "review",
+      "module": "world/pietro-house",
+      "path": "assets/world/pietro-house/versions/1.0.0/review/first-source.png",
+      "role": "first-source",
+      "sha256": "386abdd923adae27c518a2d8f609e8e63452133eac76291df5644fb8be4347f4",
+      "source": {
+        "edit_history": "Both original generated PNG outputs preserved byte-for-byte. Runtime uses the doorway-continuity edit. Initial output retained in review/first-source.png. Regions 965x543, 965x543, 965x544 selected at runtime; no pixel edits.",
+        "generation_brief": "Three stacked side-on timber house rooms: single bed, kitchen/stair hall, mother bedroom. Clear foreground walking floor, no text or actors, teal forest and amber lighting.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral, using project-owned living room as style reference.",
+        "recorded_date_utc": "2026-11-04",
+        "review_status": "Source inspected; first implementation art, pending Pedro review and in-engine validation. Production denotes runtime eligibility, not user art approval.",
+        "style_reference": {
+          "path": "assets/world/refuge-lateral/versions/1.0.0/background.png",
+          "sha256": "25f8379d091ddf2e7ef2e92ac3817bca09d436747c59397a7b6f21336c50f42d"
+        },
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          965,
+          1629
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2714988,
+      "id": "world/pietro-house@1.0.0:texture",
+      "kind": "texture",
+      "module": "world/pietro-house",
+      "path": "assets/world/pietro-house/versions/1.0.0/rooms.png",
+      "role": "texture",
+      "sha256": "980a92569de41366de80d6053f52f1645b4cac8a2fe085423a06909ae814b686",
+      "source": {
+        "edit_history": "Both original generated PNG outputs preserved byte-for-byte. Runtime uses the doorway-continuity edit. Initial output retained in review/first-source.png. Regions 965x543, 965x543, 965x544 selected at runtime; no pixel edits.",
+        "generation_brief": "Three stacked side-on timber house rooms: single bed, kitchen/stair hall, mother bedroom. Clear foreground walking floor, no text or actors, teal forest and amber lighting.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral, using project-owned living room as style reference.",
+        "recorded_date_utc": "2026-11-04",
+        "review_status": "Source inspected; first implementation art, pending Pedro review and in-engine validation. Production denotes runtime eligibility, not user art approval.",
+        "style_reference": {
+          "path": "assets/world/refuge-lateral/versions/1.0.0/background.png",
+          "sha256": "25f8379d091ddf2e7ef2e92ac3817bca09d436747c59397a7b6f21336c50f42d"
+        },
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          965,
+          1630
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2740066,
+      "id": "world/pietro-house-continuous@1.0.0:texture",
+      "kind": "texture",
+      "module": "world/pietro-house-continuous",
+      "path": "assets/world/pietro-house-continuous/versions/1.0.0/background.png",
+      "role": "texture",
+      "sha256": "b9d208f58bf0c8465dde809671acfaafafded3344f1c2006362bff7f93946362",
+      "source": {
+        "edit_history": "Original generated PNG preserved byte-for-byte including metadata; no pixel edits.",
+        "generation_brief": "Single continuous cross-section timber house; clear side-scrolling floors, no actors or baked stairs.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral, from project-owned references.",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Inspected source; provisional implementation pending Pedro review. Production denotes runtime eligibility, not approved likeness.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1754,
+          896
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
       "bytes": 2841832,
       "id": "world/refuge-lateral@1.0.0:texture",
       "kind": "texture",
@@ -4656,6 +4985,39 @@
         "mode": "RGB"
       },
       "version": "1.0.0"
+    },
+    {
+      "bytes": 2656857,
+      "id": "world/refuge-lateral@1.1.0:texture",
+      "kind": "texture",
+      "module": "world/refuge-lateral",
+      "path": "assets/world/refuge-lateral/versions/1.1.0/background.png",
+      "role": "texture",
+      "sha256": "d96cc4de7c287d388f1beb4f224c9da89abf3bc3398827be752fdc102c62bd9e",
+      "source": {
+        "edit_history": "Original output PNG copied byte-identically, including embedded metadata; no pixel edits. Prior release retained unchanged.",
+        "generation_brief": "Preserve moonlit living-room composition, scale and exterior exit; integrate small bedroom and kitchen timber doorways.",
+        "kind": "generated original edit",
+        "license_record": "Original artwork generated for Umbral from project-owned living-room reference.",
+        "recorded_date_utc": "2026-11-04",
+        "review_status": "Source inspected; runtime and Pedro review recorded separately.",
+        "style_reference": {
+          "path": "assets/world/refuge-lateral/versions/1.0.0/background.png",
+          "sha256": "25f8379d091ddf2e7ef2e92ac3817bca09d436747c59397a7b6f21336c50f42d"
+        },
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.1.0"
     },
     {
       "bytes": 2627978,

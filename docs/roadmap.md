@@ -1092,3 +1092,88 @@ arestas, companheiro vivo ou migração integrada. Versos e quadros próprios ta
 faltam. A próxima fatia deve combinar a política de compatibilidade com o
 integrador das outras famílias, validar as finais e revisar o conjunto visual.
 Nenhum marco ou versão do produto foi encerrado.
+
+
+### V05-UX-05 — casa contínua de Pietro
+
+Pedro rejeitou as vistas separadas após ver o vídeo. A revisão mantém os quatro
+cômodos em um único mundo 2D, com câmera acompanhando, dois pisos conectados por
+escada física com apoio/oclusão e posição sem saltos nas divisas. A porta da cozinha
+conserva preparação/Continuar; casa inicial e futuro abrigo portátil têm identidades
+separadas. Ator provisório com pele mais clara, roupa azul/dourada e escala revista.
+A referência aprovada foi localizada mas a transferência oficial falhou; aprovação
+de semelhança e acabamento continua pendente. Base main 1523d0e incorporada, preservando a Nascente contextual e suas migrações.
+
+As evidências de cenas separadas estão superadas. A revisão contínua tem testes de
+coordenadas, câmera, apoio/retomada da escada, margens por resolução, limites, inputs
+e conservação de RNG/save, além de captura/vídeo reais em MP4. O fechamento registra
+os resultados efetivos e o merge exato; não há aceite estético automático nem merge
+na main. [Escopo e limites](house-v05-ux05.md). Próxima fatia: avaliação de Pedro,
+acabamento do ator/ambiente e abertura narrativa/entrega do abrigo, ainda ausentes.
+
+### V05-ART-01 — Pietro com referência oficialmente acessível
+
+O novo ambiente permitiu materializar e inspecionar a referência aprovada antes
+da geração. A revisão `characters/pietro-home@2.0.0` aproxima cabelo, pele clara,
+paleta azul/ocre e expressão do conceito, com roupa inicial simplificada, repouso
+e seis poses de caminhada. PNGs originais preservados e pivôs/escala calibrados;
+somente o pin do ator e índices gerados mudam. Casa/movimentos/saves pertencem
+ao PR #11 e não recebem alterações nesta branch. O gate focado passou com 79
+verificações da casa; fechamento, comparação em jogo e vídeo ficam registrados
+no PR/entrega. Draft sem merge, aguardando revisão independente e estética de
+Pedro. [Proveniência, contrato e limites](pietro-v05-art01.md).
+
+### V05-UX-06 — foco ao consultar formas e poderes no grimório
+
+Abrir outro registro removia o botão de origem sem focar o destino; Tab então
+alcançava o menu ao fundo. A ficha agora recebe foco síncrono na aba de leitura
+depois da reconstrução da cadeia. Voltar conserva forma, página, seção, rolagem
+e link de origem. O integrador é dono de `ui/codex.gd`, da regressão nativa de
+navegação e do cenário Web; não há mudança em arte, famílias, mecânicas ou saves.
+
+A nova regressão falhou quatro vezes antes da correção; o Web anterior também
+falhou com foco vazio. Depois passaram 645 verificações nativas (87 do grimório)
+e arquitetura, além de 92 verificações Web iniciais em 1600×900. O cenário final
+passou 156 verificações em 1024×768, nos textos normal e ampliado, por entradas
+reais: evolução por mouse/Enter, Tab/Shift+Tab, poder relacionado e retorno.
+Eventos nativos de A, direcional e B cobrem o controle; não é certificação de
+hardware físico. Perfil/checkpoints e estado/RNG permanecem idênticos.
+
+Evidências: `artifacts/harness/codex-record-focus-fixed-20261105T023545143346Z-1e7319/`
+e `artifacts/harness/codex-record-focus-revealed-20261105T024630756955Z-2722f5/`.
+A tentativa anterior em 4:3 foi preservada: o botão de poder estava recortado
+no painel. O teste agora revela o alvo por roda/Tab antes do clique real, sem
+retentar cliques nem remover verificações. A fixture usa apenas o perfil salvo
+isolado de descobertas, carregado pelo caminho normal de produção, sem setters.
+
+A correção foi publicada em `fix/codex-record-focus-20261105`; esta integração funcional
+reúne a casa #11, Pietro #17 e o foco sobre a main atual. Próximo passo: unir com as demais origens revisadas e validar o conjunto
+exato. O gate integral anterior não é atribuído a esta mudança. Ator/despertar e
+famílias continuam com os mesmos limites visuais; versão permanece 0.3.0.
+
+### V05-ART-REF-01 — referências disponíveis para produção de identidades
+
+Fatia documental de apoio ao acabamento da 0.5, sobre a main `1523d0e`:
+[oito pranchas conceituais](references/identidades/README.md) materializadas
+pelo fluxo oficial da Library e preservadas sem transformação. Protagonista,
+fogo, Sendral, lebre, alternativa da lebre, água e elétrica têm os escopos visuais
+registrados no acervo; mineral vivo permanece proposta futura, não aprovado como
+inicial. Água: somente o painel inferior direito da companheira. Fogo: o arquivo
+fornecido contém o comparativo do final, sem prancha independente de Brasa inicial.
+
+Integridade: tamanhos conferidos contra a origem, oito PNGs decodificados e
+inspecionados, hashes de arquivos e pixels no catálogo documental. Esta entrega
+não altera conteúdo, sprites, saves, módulos de assets ou runtime-lock. Não há
+novo resultado de gameplay nem aceitação em cena. PR draft isolado para revisão,
+sem merge automático; versão permanece 0.3.0. Próximo passo: revisar a importação
+e então produzir sprites/animações separados a partir das direções aprovadas,
+com os gates próprios de assets e experiência.
+
+### Consolidação funcional provisória — V05-UX-05 / ART-01
+
+A integração reúne casa, Pietro e foco do grimório, preservando o acervo documental
+do PR #26. Pedro rejeitou o visual atual de Pietro e da casa: esta integração
+funcional não representa aprovação artística. Despertar e escada continuam
+provisórios; o acabamento visual segue em revisão separada. A suíte integral do
+HEAD funcional `1994376` passou no push 41964934938. Novos jobs do Actions estão
+bloqueados por cobrança; nenhum job novo é registrado como aprovado por isso.
