@@ -72,7 +72,7 @@ func _pivot() -> void:
 	if is_instance_valid(portrait) and is_instance_valid(portrait.texture) and not ground_profile.is_empty():
 		var foot: Vector2 = Vector2(float(ground_profile.foot[0]), float(ground_profile.foot[1]))
 		var depth: float = [0.90, 1.0, 1.07][clampi(slot, 0, 2)]
-		var factor: float = minf((size.x - 32) / portrait.texture.get_width(), 118.0 * depth / maxf(1, foot.y - float(ground_profile.visible_top)))
+		var factor: float = minf((size.x - 32) / portrait.texture.get_width(), float(ground_profile.get("display_height", 118.0)) * depth / maxf(1, foot.y - float(ground_profile.visible_top)))
 		portrait.size = portrait.texture.get_size() * factor
 		rig.configure(portrait.texture, str(identity.get("art", "")).get_file() if not str(identity.get("art", "")).is_empty() else Content.art_binding(identity).get_file(), portrait.size, foot * factor, portrait.flip_h)
 		if portrait.flip_h: foot.x = portrait.texture.get_width() - foot.x
@@ -103,11 +103,12 @@ func set_identity(data: Dictionary, scale_text: float = 1.0) -> void:
 		var species: Dictionary = Content.SPECIES.get(data.get("species", ""), {})
 		var art: String = str(data.get("art", ""))
 		if art.is_empty() and not species.is_empty(): art = Content.art_binding(data)
-		portrait.texture = BattleArt.texture(art)
-		ground_profile = BattleArt.ground_profile(art)
+		portrait.texture = BattleArt.texture(art, enemy)
+		ground_profile = BattleArt.ground_profile(art, enemy)
 		portrait.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST if portrait.texture is AtlasTexture else CanvasItem.TEXTURE_FILTER_LINEAR
 		portrait.flip_h = enemy
 		var alive: bool = int(data.get("hp", 1)) > 0
+		rig.set_incapacitated(not alive)
 		portrait.modulate = (Color(0.94, 0.97, 1.0) if slot == 0 else Color.WHITE) if alive else Color(0.4, 0.48, 0.56, 0.6)
 		accent = Color(species.get("color", "dec88d"))
 		caption.text = str(data.name) if data.has("name") else Content.display_name(data)

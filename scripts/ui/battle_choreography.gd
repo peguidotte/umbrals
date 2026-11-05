@@ -54,7 +54,7 @@ func play(events: Array, context: Dictionary, present: Callable) -> int:
 	current_variant = Motion.variant_base(str(first.power), str(first.get("nature", ""))) + posmod(int(cycles.get(power_key, 0)) + offset, 3)
 	cycles[power_key] = int(cycles.get(power_key, 0)) + 1
 	var index: int = current_variant
-	current_source = Motion.part(index)
+	current_source = Motion.part(index, str(source.rig.form_id))
 	var spec: Dictionary = Motion.spec(index)
 	var targets: Array = []
 	var schedule: Array[float] = []

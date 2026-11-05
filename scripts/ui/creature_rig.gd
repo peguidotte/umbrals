@@ -26,6 +26,15 @@ var indices: PackedInt32Array
 var accumulator: float = 0.0
 var reaction_weight: float = 1.0
 var jump_scale: float = 1.0
+var incapacitated: bool = false
+var ko_elapsed: float = 0.0
+
+func set_incapacitated(value: bool) -> void:
+	if incapacitated == value: return
+	incapacitated = value
+	ko_elapsed = 0.0
+	reset()
+	_refresh()
 
 func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2, mirror: bool) -> void:
 	var changed: bool = image != source or id != form_id
@@ -81,7 +90,12 @@ func play_state(state: int) -> void:
 	_refresh()
 
 func _process(delta: float) -> void:
-	if source == null or paused or managed: return
+	if source == null or paused: return
+	if incapacitated and definition.get("states", {}).has("7"):
+		ko_elapsed = minf(ko_elapsed + delta, 3.2)
+		_refresh()
+		return
+	if managed: return
 	if reduced_motion:
 		if mode != "states" or clip != 0: reset()
 		if pose != Motion.neutral():
@@ -91,7 +105,7 @@ func _process(delta: float) -> void:
 	if still and mode == "states" and clip == 0: return
 	elapsed += delta
 	idle_time += delta
-	if (mode == "reactions" and elapsed >= 2.0) or (mode == "states" and clip != 0 and elapsed >= 3.2): reset()
+	if not incapacitated and ((mode == "reactions" and elapsed >= 2.0) or (mode == "states" and clip not in [0, 6] and elapsed >= 3.2)): reset()
 	accumulator += delta
 	if accumulator < 1.0 / 30: return
 	accumulator = 0
@@ -157,14 +171,18 @@ func project(uv: Vector2) -> Vector2:
 func socket(index: int, secondary: bool = false) -> Vector2:
 	var uv: Vector2 = Motion.socket(form_id, index)
 	if secondary and definition.has("anatomy"):
-		var point: Array = definition.anatomy.get("antennaB", [uv.x, uv.y])
+		var point: Array = definition.anatomy.get("secondary", definition.anatomy.get("antennaB", [uv.x, uv.y]))
 		uv = Vector2(float(point[0]), float(point[1]))
 	return to_global(project(uv))
 
 func _refresh() -> void:
 	if texture == null or indices.is_empty(): return
 	pose = Motion.neutral() if reduced_motion else Motion.sample(form_id, mode, clip, fposmod(idle_time, 3.2) if mode == "states" and clip == 0 else elapsed)
-	if mode == "reactions" and not is_equal_approx(reaction_weight, 1.0):
+	if not reduced_motion and mode == "states" and clip == 6:
+		pose = Motion.sample(form_id, mode, clip, fposmod(elapsed, 3.2))
+	if incapacitated and definition.get("states", {}).has("7"):
+		pose = Motion.sample(form_id, "states", 7, 3.2 if reduced_motion else ko_elapsed)
+	if not incapacitated and mode == "reactions" and not is_equal_approx(reaction_weight, 1.0):
 		var rest: Array = Motion.neutral()
 		for channel in range(pose.size()): pose[channel] = lerpf(float(rest[channel]), float(pose[channel]), reaction_weight)
 	var vertices: PackedVector2Array = PackedVector2Array()

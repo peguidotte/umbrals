@@ -1068,3 +1068,25 @@ controladas à distância. [Limites e próximo passo](../content/species/volt/RE
 Próxima fatia: obter a referência e produzir Nisca com estados corporais e origens
 de ataque verificadas, antes de avançar pins ou habilitar as formas finais.
 Versão do produto permanece 0.3.0; esta entrega não encerra o marco de arte.
+
+### V05-ART-02 — Nisca e Niscor com sprites e estados próprios
+
+Continuação sobre o PR #13 (`06806eb`), sem merge. A referência aprovada foi
+materializada oficialmente e inspecionada neste executor; hash e originais
+permanecem nos módulos. Nisca/Niscor têm corpos novos para os dois lados,
+apoio, idle, passada em quatro patas, dano, KO e origens anatômicas de ataque.
+A passada é um clip de apresentação em loop, não locomoção nova na expedição.
+A arte e os tracks de besouro não são apresentados como a nova família.
+
+Integração focada passou em catálogo, assets, saves e combate; a rodada nativa
+inicial passou com 63 verificações de movimento, incluindo KO persistente,
+reanimação e acessibilidade. Fechamento completo, CI e renders finais serão
+registrados no PR. Pins propostos mudam somente `umbrals/volt` e
+`umbrals/tempestral`; índices precisam de reconciliação pelo integrador.
+IDs, passivas, stats, poderes, cópias e saves permanecem.
+
+Auravel/Zuldar têm candidatas de corpo separadas, sem pin; rigs, animações,
+ataques e evolução jogável ainda não existem. Próxima fatia: articular asas e
+apoio bípede, revisar técnicas e criar arestas com compatibilidade explícita.
+Revisão humana e hardware continuam abertos; produto 0.3.0.
+[Escopo e handoff](electric-family-v05-art02.md).

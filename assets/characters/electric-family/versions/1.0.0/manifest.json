@@ -1,0 +1,139 @@
+{
+  "dependencies": [],
+  "description": "Nisca and Niscor directional sprites with authored mesh states, gait and anatomical attacks.",
+  "files": {
+    "motion": {
+      "bytes": 596921,
+      "kind": "data",
+      "path": "motion.json",
+      "sha256": "a98ddbfc9f15da2b24424e08e59b95bab2e5f008c49d24b395ef5c67dbcd70a8"
+    },
+    "nisca-ally": {
+      "bytes": 161226,
+      "kind": "texture",
+      "path": "nisca-ally.png",
+      "sha256": "8e46bf76e95b92ea30b192b8f5dcd5442719b59619317bee155d60c9ccf71932",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "height": 320,
+        "mode": "RGBA",
+        "width": 384
+      }
+    },
+    "nisca-enemy": {
+      "bytes": 161222,
+      "kind": "texture",
+      "path": "nisca-enemy.png",
+      "sha256": "6ca85144c7a672fe5c5843a8943edbc37fc030d3b1acde3f7a1276a925c7bcc1",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "height": 320,
+        "mode": "RGBA",
+        "width": 384
+      }
+    },
+    "niscor-ally": {
+      "bytes": 140636,
+      "kind": "texture",
+      "path": "niscor-ally.png",
+      "sha256": "ea3ccb965d3aa89d14e5eea0633eee5ad9514a105721a70a10aad1260a8481db",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "height": 320,
+        "mode": "RGBA",
+        "width": 384
+      }
+    },
+    "niscor-enemy": {
+      "bytes": 140103,
+      "kind": "texture",
+      "path": "niscor-enemy.png",
+      "sha256": "d01ddc8e005c430367a750340125728c83c8fb71d0be4669c66de2ced40c2b37",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "height": 320,
+        "mode": "RGBA",
+        "width": 384
+      }
+    },
+    "performances": {
+      "bytes": 3067,
+      "kind": "data",
+      "path": "performances.json",
+      "sha256": "2fee49f9b3284c976df497b0bfb9a0d8ea38b63228fd319e1e69294b4990bdae"
+    },
+    "presentation": {
+      "bytes": 449,
+      "kind": "data",
+      "path": "presentation.json",
+      "sha256": "89ca405b03ceda40af96748b2ad171d394649652d06f1d4234e806212814bc9d"
+    },
+    "source-approved-reference": {
+      "bytes": 2235483,
+      "kind": "review",
+      "path": "review/approved-reference.png",
+      "sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "source-generated-source": {
+      "bytes": 2014283,
+      "kind": "review",
+      "path": "review/generated-source.png",
+      "sha256": "b670bfe41c203509a5f90bed4975ff3449b931a47edb7a75a40c871ae18dae87",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/electric-family",
+  "provenance": {
+    "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+    "license": "Original project generated artwork and authored motion; no external game assets.",
+    "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+    "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+    "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+    "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+    "review": "Technical integration candidate in draft branch; final human art review pending."
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}
