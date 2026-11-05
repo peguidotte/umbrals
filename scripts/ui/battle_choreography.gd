@@ -54,7 +54,7 @@ func play(events: Array, context: Dictionary, present: Callable) -> int:
 	current_variant = Motion.variant_base(str(first.power), str(first.get("nature", ""))) + posmod(int(cycles.get(power_key, 0)) + offset, 3)
 	cycles[power_key] = int(cycles.get(power_key, 0)) + 1
 	var index: int = current_variant
-	current_source = Motion.part(index)
+	current_source = Motion.part(index, str(source.rig.form_id))
 	var spec: Dictionary = Motion.spec(index)
 	var targets: Array = []
 	var schedule: Array[float] = []
@@ -82,7 +82,8 @@ func play(events: Array, context: Dictionary, present: Callable) -> int:
 	var direction: float = -1.0 if source.enemy else 1.0
 	var scale_factor: float = maxf(source.portrait.size.x, source.portrait.size.y) / 166.0
 	var dash: Vector2 = mean_ground - source.visual_ground() - Vector2(direction * 80 * scale_factor, 0)
-	var headroom: float = minf(mean_ground.y, source.visual_ground().y) - 118.0 * [0.90, 1.0, 1.07][clampi(source.slot, 0, 2)] - 32.0
+	var body_height: float = float(source.ground_profile.get("display_height", 118.0))
+	var headroom: float = minf(mean_ground.y, source.visual_ground().y) - body_height * [0.90, 1.0, 1.07][clampi(source.slot, 0, 2)] - 32.0
 	source.rig.jump_scale = clampf(headroom / maxf(1, 117 * scale_factor), 0.15, 1.0)
 	source.rig.seek_cast(index, float(spec.release), dash)
 	renderer.release_point = renderer.to_local(source.emission_point(index))

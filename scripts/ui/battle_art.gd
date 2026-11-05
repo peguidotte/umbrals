@@ -2,14 +2,20 @@ class_name UmbralBattleArt
 extends RefCounted
 ## Atlas regions are applied at render time. Generated source PNGs stay untouched.
 const Assets = preload("res://scripts/assets/catalog.gd")
+const Presentation = preload("res://scripts/ui/creature_presentation.gd")
 const ATLAS_MODULES = ["characters/battle-creatures", "characters/battle-evolved"]
 const ATLAS_VERSION = "1.0.0"
 static var _loaded: bool = false
 static var _textures: Dictionary = {}
 static var _grounding: Dictionary = {}
 
-static func texture(art_id: String) -> Texture2D:
+static func texture(art_id: String, enemy: bool = false) -> Texture2D:
 	var region_id: String = art_id.get_file()
+	var authored: Dictionary = Presentation.form(region_id)
+	if not authored.is_empty():
+		var key: String = region_id + (":enemy" if enemy else ":ally")
+		if not _textures.has(key): _textures[key] = Presentation.texture(region_id, enemy)
+		return _textures[key]
 	# A deliberate portrait pin can supply its own battle art and floor profile.
 	var profile: Dictionary = Assets.bound_manifest(art_id).get("metadata", {}).get("battle_profile", {})
 	if not profile.is_empty():
@@ -42,6 +48,8 @@ static func texture(art_id: String) -> Texture2D:
 	_textures[region_id] = result
 	return result
 
-static func ground_profile(art_id: String) -> Dictionary:
-	var art: Texture2D = texture(art_id)
+static func ground_profile(art_id: String, enemy: bool = false) -> Dictionary:
+	var authored: Dictionary = Presentation.form(art_id.get_file())
+	if not authored.is_empty(): return authored["enemy" if enemy else "ally"]
+	var art: Texture2D = texture(art_id, enemy)
 	return _grounding.get(art_id, _grounding.get(art_id.get_file(), {"foot": [art.get_width() * 0.5, art.get_height() * 0.93], "width": art.get_width() * 0.6, "visible_top": art.get_height() * 0.10}))

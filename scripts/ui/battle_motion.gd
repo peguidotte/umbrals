@@ -1,6 +1,7 @@
 extends RefCounted
 ## Immutable tracks baked from the approved study. No session or gameplay state.
 const Assets = preload("res://scripts/assets/catalog.gd")
+const Presentation = preload("res://scripts/ui/creature_presentation.gd")
 const BINDING: String = "attacks/battle-performances"
 static var data: Dictionary = {}
 static var choreography: Dictionary = {}
@@ -13,16 +14,18 @@ static func ensure_loaded() -> void:
 	choreography = JSON.parse_string(FileAccess.get_file_as_string(Assets.bound_file(BINDING, "performances")))
 
 static func form(id: String) -> Dictionary:
+	var authored: Dictionary = Presentation.motion(id)
+	if not authored.is_empty(): return authored
 	ensure_loaded()
 	if not form_overrides.has(id):
 		var binding: String = "umbrals/" + id
 		var profile: Dictionary = Assets.bound_manifest(binding).get("metadata", {}).get("battle_profile", {})
 		var role: String = str(profile.get("motion_role", ""))
-		var authored: Dictionary = {}
+		var override: Dictionary = {}
 		if not role.is_empty():
 			var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(Assets.bound_file(binding, role)))
-			if parsed is Dictionary: authored = parsed.get("forms", {}).get(id, {})
-		form_overrides[id] = authored
+			if parsed is Dictionary: override = parsed.get("forms", {}).get(id, {})
+		form_overrides[id] = override
 	if not form_overrides[id].is_empty(): return form_overrides[id]
 	return data.forms.get(id, {})
 
@@ -30,7 +33,10 @@ static func spec(index: int) -> Dictionary:
 	ensure_loaded()
 	return choreography.specs[clampi(index, 0, 14)]
 
-static func part(index: int) -> String:
+static func part(index: int, id: String = "") -> String:
+	if not id.is_empty():
+		var parts: Array = form(id).get("parts", [])
+		if not parts.is_empty(): return str(parts[clampi(index, 0, parts.size() - 1)])
 	ensure_loaded()
 	return str(choreography.parts[clampi(index, 0, 14)])
 
@@ -65,7 +71,7 @@ static func sample(id: String, mode: String, clip: int, time: float) -> Array:
 
 static func socket(id: String, index: int) -> Vector2:
 	var anatomy: Dictionary = form(id).get("anatomy", {})
-	var point: Array = anatomy.get(part(index), anatomy.get("mouth", [0.78, 0.48]))
+	var point: Array = anatomy.get(part(index, id), anatomy.get("mouth", [0.78, 0.48]))
 	return Vector2(float(point[0]), float(point[1]))
 
 static func variant_base(power: String, nature: String) -> int:

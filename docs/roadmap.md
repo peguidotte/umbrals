@@ -1182,3 +1182,74 @@ próprios gates. A branch é local e não publicada. A abertura do novo PR públ
 para main continua bloqueada pela revisão automática, sem repetição da ação.
 Verso, cortes de postura, VFX próprios, desempenho e aprovação estética humana
 seguem abertos. Foslash/Folivel não jogáveis; produto permanece 0.3.0.
+### V04-CONT-01E — nomes aprovados da família elétrica
+
+Primeira fatia de consolidação sobre a main `1523d0e`: Nisca e Niscor aparecem
+nas formas existentes `volt` e `tempestral`, com histórias atualizadas e o nome
+correto em Juízo da tempestade. IDs, aresta de evolução, atributos, naturezas,
+poderes, passivas, cartas e pins de assets permanecem. O checkpoint inicial e
+a identidade de gameplay antes/depois são idênticos; não há migração nova.
+
+Catálogo (24 verificações), autoria, saves e histórias do grimório passaram nos
+alvos focados. A primeira tentativa preservada tinha uma expectativa incorreta
+no teste novo sobre estágio numérico; a correção usa o adaptador explícito de
+migração, sem alterar o runtime. Evidências em
+`artifacts/harness/electric-focused-20261105T011550466576Z-3b6958/` e
+`artifacts/harness/electric-catalog-fixed-20261105T011643734212Z-162200/`.
+O fechamento completo e a revisão dos renders desta revisão são registrados no PR;
+resultado focado não equivale a aceitação completa.
+
+Auravel (alado) e Zuldar (bípede, espinhos azuis carregados) são os nomes finais
+aprovados, ainda sem integração jogável. A referência aprovada da Library não
+pôde ser baixada pelo helper suportado; seus pixels não foram inspecionados.
+Os assets anteriores permanecem provisórios para a nova identidade, sem alegação
+de sprites novos ou de arte aprovada no motor. Niscor não ganha agulhas destacadas
+controladas à distância. [Limites e próximo passo](../content/species/volt/README.md).
+Próxima fatia: obter a referência e produzir Nisca com estados corporais e origens
+de ataque verificadas, antes de avançar pins ou habilitar as formas finais.
+Versão do produto permanece 0.3.0; esta entrega não encerra o marco de arte.
+
+### V05-ART-02 — Nisca e Niscor com sprites e estados próprios
+
+Continuação sobre o PR #13 (`06806eb`), sem merge. A referência aprovada foi
+materializada oficialmente e inspecionada neste executor; hash e originais
+permanecem nos módulos. Nisca/Niscor têm corpos novos para os dois lados,
+apoio, idle, passada em quatro patas, dano, KO e origens anatômicas de ataque.
+A passada é um clip de apresentação em loop, não locomoção nova na expedição.
+A arte e os tracks de besouro não são apresentados como a nova família.
+
+Integração focada passou em catálogo, assets, saves e combate; a rodada nativa
+inicial passou com 63 verificações de movimento, incluindo KO persistente,
+reanimação e acessibilidade. Fechamento completo, CI e renders finais serão
+registrados no PR. Pins propostos mudam somente `umbrals/volt` e
+`umbrals/tempestral`; índices precisam de reconciliação pelo integrador.
+IDs, passivas, stats, poderes, cópias e saves permanecem.
+
+Auravel/Zuldar têm candidatas de corpo separadas, sem pin; rigs, animações,
+ataques e evolução jogável ainda não existem. Próxima fatia: articular asas e
+apoio bípede, revisar técnicas e criar arestas com compatibilidade explícita.
+Revisão humana e hardware continuam abertos; produto 0.3.0.
+[Escopo e handoff](electric-family-v05-art02.md).
+
+Revisão de V05-ART-02: proxy legado da coruja corrigido em `2483729`; a
+release 2.0.0 propõe KO com olhos fechados, transição de recuperação e contatos
+de apoio da passada. A cadência agora é medida em captura nativa e Web real;
+vídeos anteriores muito lentos não contam como prova de movimento. Arte e
+movimento continuam candidatos à revisão humana, e CI cancelado não fecha
+aceitação. Detalhes e medições no documento da família elétrica.
+
+### V05-ART-03 — bifurcação elétrica jogável
+
+Continuação em draft separado sobre o PR #19: Auravel alado e Zuldar bípede
+recebem rigs, poses de KO, estados e origens de ataque no novo módulo 2.0.0.
+A escolha explícita após Niscor preserva indivíduo, cartas e proporção de HP.
+Novas ofertas são adiadas após as antigas para preservar replay por índice;
+migração auditada conserva a Nascente rules-3 e bloqueia futuros forjados.
+A referência e imagens originais foram recuperadas do executor, sem nova geração.
+
+Saves passaram com 113 assertions; fixtures corrigidas e projeção equivalente
+passaram nos runs focados. Fechamento completo e capturas finais serão registrados
+no PR. Balanceamento numérico é default de protótipo delegado, e revisão de arte,
+animação e hardware continua aberta. Próxima fatia: revisar a família jogando,
+refinar transições e asas de repouso, então coordenar integração. Produto 0.3.0.
+[Escopo, compatibilidade e evidências](electric-adults-v05-art03.md).

@@ -35,3 +35,27 @@ checkpoints. Tests compare normalized complete snapshots after two encounters
 and the old rest alternative, including RNG, plans, rewards and physical cards.
 Replay envelope version 2 and checkpoint envelope version 2 remain in use with
 the explicit new compatibility identity; unsupported versions still fail closed.
+
+## Rules 3: explicit electric lineage extension
+
+V05-ART-03 adds Auravel/Zuldar after the existing `volt`/`tempestral` forms.
+The ruleset remains `expedition-rules-3` by an explicit compatibility decision:
+all valid historical command indices retain their meaning and existing gameplay
+values stay equal. The content digest changes. A pinned pre-adult rules-3 identity
+uses the audited frozen manifest already retained for rules 2; its event revision
+and pending contextual room are preserved. Only rules-2 migrations reset revision 0.
+
+The separate `lineage_extension` comparator permits exact-prefix extensions of
+existing forms and edges. New edges must declare `deferred: true` and target a
+new appended form. Rewards appends these choices after all historical offers
+across the party, preserving capture RNG and existing reward indices. Existing
+species projection arrays retain their exact prefixes. Every other historical
+power, stat, pool, route, order, item effect and initial form stays equal under
+the original strict additive comparator. Unknown identities and historical
+snapshots claiming future forms remain rejected. Schema and envelope versions
+remain 2; migration never rewrites the source slot.
+
+A frozen pre-adult mixed-party replay verifies the unchanged historical offer
+prefix and complete resulting snapshot, including physical cards, RNG and enemy
+plans. Both adult choices are exercised separately and roundtrip as current saves.
+See [implementation and prototype limits](electric-adults-v05-art03.md).

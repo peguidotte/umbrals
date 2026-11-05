@@ -10,6 +10,7 @@ import symtable
 import tempfile
 import time
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
@@ -19,6 +20,7 @@ from harness_lib.runner import run
 from harness_lib.planning import plan
 from harness_lib.executor import Executor
 from harness_io import results_dir
+from harness_lib.browser_runtime import chromium_executable
 
 
 class NativePython(Executor):
@@ -27,6 +29,25 @@ class NativePython(Executor):
 
 
 class Contracts(unittest.TestCase):
+    def test_ci_browser_requires_an_explicit_executable(self):
+        with self.assertRaisesRegex(RuntimeError, 'CI must pin'):
+            chromium_executable({'GITHUB_ACTIONS': 'true'})
+
+    def test_missing_pinned_browser_never_falls_back_to_host(self):
+        with patch('harness_lib.browser_runtime.shutil.which', return_value='/usr/bin/chromium') as host:
+            with self.assertRaises(FileNotFoundError):
+                chromium_executable({'GITHUB_ACTIONS': 'true', 'UMBRAL_CHROMIUM_EXECUTABLE': str(self.root / 'missing-browser')})
+            host.assert_not_called()
+
+    def test_pinned_browser_is_shared_with_provenance(self):
+        executable = self.root / 'pinned-chromium'
+        executable.write_text('#!/bin/sh\nprintf "Chromium pinned-test\\n"\n')
+        executable.chmod(0o700)
+        with patch('harness_lib.browser_runtime.shutil.which', return_value='/usr/bin/unpinned') as host:
+            selected = chromium_executable({'GITHUB_ACTIONS': 'true', 'UMBRAL_CHROMIUM_EXECUTABLE': str(executable)})
+            self.assertEqual(subprocess.check_output([selected, '--version'], text=True).strip(), 'Chromium pinned-test')
+            host.assert_not_called()
+
     def test_fatal_engine_error_stops_a_hung_process_and_keeps_evidence(self):
         import contextlib
         import io

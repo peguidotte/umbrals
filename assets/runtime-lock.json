@@ -250,6 +250,11 @@
       "id": "ui/title-menu",
       "version": "1.0.0"
     },
+    "umbrals/auravel": {
+      "file": "auravel-ally",
+      "id": "characters/electric-adults",
+      "version": "2.0.0"
+    },
     "umbrals/dew": {
       "file": "portrait",
       "id": "umbrals/dew",
@@ -276,9 +281,9 @@
       "version": "1.0.0"
     },
     "umbrals/tempestral": {
-      "file": "portrait",
-      "id": "umbrals/tempestral",
-      "version": "1.0.0"
+      "file": "niscor-ally",
+      "id": "characters/electric-family",
+      "version": "2.1.0"
     },
     "umbrals/verdalio": {
       "file": "portrait",
@@ -286,9 +291,14 @@
       "version": "1.0.0"
     },
     "umbrals/volt": {
-      "file": "portrait",
-      "id": "umbrals/volt",
-      "version": "1.0.0"
+      "file": "nisca-ally",
+      "id": "characters/electric-family",
+      "version": "2.1.0"
+    },
+    "umbrals/zuldar": {
+      "file": "zuldar-ally",
+      "id": "characters/electric-adults",
+      "version": "2.0.0"
     },
     "world/battle-clearing": {
       "file": "background",
