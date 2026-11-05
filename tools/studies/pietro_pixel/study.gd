@@ -3,7 +3,7 @@ const Rig = preload("res://tools/studies/pietro_pixel/rig.gd")
 const WORLD: String = "res://assets/world/pietro-pixel-study/versions/0.1.0/"
 var rig: RefCounted = Rig.new()
 var plate: Texture2D = load(WORLD + "plate.png") as Texture2D
-var reference: Texture2D = load(WORLD + "review/approved-scene.png") as Texture2D
+var reference: Texture2D
 var mode: String = "static"
 var elapsed: float = 0
 var anchor: Vector2 = Vector2(620,812)
@@ -14,6 +14,10 @@ var buttons: Dictionary = {}
 
 func _ready() -> void:
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	var path: String = WORLD + "review/approved-scene.png"
+	# Review files stay outside the production importer. The standalone Web
+	# project imports its own copy; the source-project study reads the raw PNG.
+	reference = ImageTexture.create_from_image(Image.load_from_file(path)) if FileAccess.file_exists(path) else load(path) as Texture2D
 	for entry in [["static","Comparar parado"],["walk","Caminhada curta"],["reference","Conceito aprovado"]]:
 		var button: Button = Button.new()
 		button.text = entry[1]

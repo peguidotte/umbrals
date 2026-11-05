@@ -48,6 +48,10 @@ export de revisão usa um projeto temporário independente em `artifacts/`; não
 altera o boot, o projeto, as telas ou o runtime-lock do jogo. Os dois módulos
 novos têm status `prototype` e versão explícita 0.1.0, sem pins de produção.
 
+No projeto-fonte, a referência em `review/` é lida como PNG bruto, preservando
+sua exclusão dos imports de produção. O export Web de estudo importa sua própria
+cópia. A abertura nativa e os controles Web foram conferidos nos dois caminhos.
+
 ## Evidência e limites
 
 A QA verifica identidade do PNG, alfa, cobertura dos recortes e pivôs em pixels
