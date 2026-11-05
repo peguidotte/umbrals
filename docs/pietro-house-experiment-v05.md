@@ -14,7 +14,7 @@ não apresenta uma casa nova nem fecha a direção artística.
 ## Comparação e controles
 
 **Pietro atual** mostra o renderer de produção; **Pietro candidato** mostra o
-rig experimental 0.3.0 na mesma posição, câmera e escala de mundo. A imagem
+rig experimental 0.4.0 na mesma posição, câmera e escala de mundo. A imagem
 aprovada permanece byte a byte igual. Escala 0,5, próxima da altura do ator
 atual; esquerda é espelhamento da única vista de três quartos disponível.
 **Enquadrar sala** é um controle explícito de revisão que reposiciona apenas
@@ -66,6 +66,40 @@ A compensação vertical máxima é 23,45 pixels da origem, ou 11,73 pixels de m
 A leitura dos joelhos, tecido, passagem e sobreposição continua sujeita à revisão
 visual, sem aprovação artística automática pelos testes.
 
+## Volume da calça 0.4.0
+
+A revisão de 0.3.0 encontrou a calça reduzida a uma faixa em X sobre as barras.
+O teste de áreas orientadas passava porque os triângulos comprimidos mantinham
+sua orientação. Uma medição independente, ligada às UVs de seções opacas reais
+da calça, reproduz a falha: largura transversal mínima de 6,78% da original.
+
+0.4.0 desloca cada faixa horizontal uniformemente entre a pelve e a barra,
+compensa sua largura transversal e limita a compressão vertical. Uma peça de
+pelve amostrada do mesmo PNG cobre a junção superior; as pernas são desenhadas
+em ordem distante/próxima, com sobreposição opaca na passagem. O PNG, máscaras
+originais das pernas, apoios, rig antigo e material do cabelo ficam preservados.
+Não há novas poses geradas. As barras e botas continuam rígidas desde y=970.
+
+A regressão de volume mede oito seções por pose em 665 poses, incluindo
+entrada, saída e fases intermediárias: largura mínima 61,33% e altura mínima
+84,91%. Os limites de regressão são 60%/80%; o candidato anterior falha no
+critério de largura. Não se trata de conservação exata do volume nem de uma
+nota estética. O teste de orientação inclui agora a peça da pelve: 4.985 poses,
+6.206.325 triângulos, zero inversões/colapsos, razão mínima de área 0,33415.
+As 460.080 amostras de cintura continuam cobertas.
+
+A comparação controlada mostra oito fases de 0.3.0/0.4.0 com o renderer real,
+separada da casa jogável. Ela pode ser reproduzida com:
+
+```bash
+python tools/studies/pietro_volume/build_preview.py --output artifacts/pietro-volume-poses
+```
+
+Na inspeção desses quadros, a faixa fina em X desaparece e as barras mantêm
+cobertura de tecido. Há alguma distorção do tecido nas poses abertas e não há
+rolamento das botas. A candidata precisa de nova revisão visual independente
+e de Pedro; o teste não promove o personagem nem aprova a casa.
+
 ## Brilho do cabelo
 
 Pedro esclareceu que o destaque excessivo estava no cabelo. O material 0.3.0
@@ -105,11 +139,15 @@ Scripts de produção, conteúdo, Rules, saves, runtime-lock, registry e baselin
 não são modificados. Os testes de catálogo, integridade e arquitetura seguem
 proporcionais; evidência focada não é aceitação integral. Actions segue desativado.
 
-Na revisão atual passaram 20 verificações da integração, sete da passada maior
+Na revisão atual passaram 20 verificações da integração, 11 da passada maior
 e 13 do rig anterior. O teste de movimento reduzido compara a malha e o relógio
 do Brasa; a revisão Web também compara seus pixels renderizados entre quadros.
 RNG, equipe, checkpoint e estatísticas permanecem iguais após caminhada e
-acessibilidade. Nenhum resultado substitui o julgamento de Pedro.
+acessibilidade. A rodada Web 0.4.0 passou 19 verificações, com duas caminhadas
+de 360 pixels por inputs reais e vídeo. Catálogo (556 verificações), integridade
+de 101 releases/360 arquivos, imutabilidade contra `origin/main` e arquitetura
+passaram nos gates focados. Não foi repetida a aceitação integral do jogo.
+Nenhum resultado substitui o julgamento de Pedro.
 
 ## Evidência anterior preservada
 

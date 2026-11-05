@@ -1447,3 +1447,15 @@ atual continua rejeitado, ainda sem adaptação à direção pixel aprovada.
 O brilho excessivo indicado por Pedro é no cabelo. O material experimental
 seleciona somente essa borda luminosa, preservando o PNG aprovado e isolando
 rosto, roupa, cenário e Brasa. A edição tonal de referência não substitui o asset.
+
+Correção experimental 0.4.0 após revisão: a passada de 0.3.0 preservava a
+orientação dos triângulos, mas estreitava a calça até 6,78% da largura de origem,
+formando uma faixa em X. Faixas com deslocamento uniforme, compensação de
+largura e cobertura compartilhada da pelve removem esse pinçamento nos oito
+quadros comparados. Medição independente nas malhas: largura mínima 61,33%,
+altura 84,91%, 665 poses/5.320 seções; zero inversões/colapsos em 6.206.325
+triângulos. Passaram 11 verificações da passada e 20 da integração, mantendo
+330 pixels/s, 3 passos/s, movimento reduzido de Pietro/Brasa e cabelo suavizado.
+Também passaram 19 verificações Web, catálogo, integridade e arquitetura focados.
+Botas rígidas e distorção residual de tecido continuam limites visuais; próxima
+etapa é revisão independente e de Pedro. Sem promoção, merge ou aprovação da casa.

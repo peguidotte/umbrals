@@ -2,7 +2,7 @@ extends "res://scripts/ui/refuge_canvas.gd"
 ## Experimental renderer only. The real room still owns movement and camera.
 const PixelRig = preload("res://tools/studies/pietro_pixel/rig.gd")
 const PILOT_SCALE: float = 0.5
-const PILOT_ROOT: String = "res://assets/characters/pietro-pixel-pilot/versions/0.3.0/"
+const PILOT_ROOT: String = "res://assets/characters/pietro-pixel-pilot/versions/0.4.0/"
 var pilot: RefCounted = PixelRig.new(PILOT_ROOT)
 var candidate: bool = true
 var cycle: float = 0.5

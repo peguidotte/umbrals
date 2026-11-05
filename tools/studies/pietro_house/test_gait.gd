@@ -2,7 +2,8 @@ extends SceneTree
 const Rig = preload("res://tools/studies/pietro_pixel/rig.gd")
 const Coverage = preload("res://tools/studies/pietro_pixel/coverage.gd")
 const Winding = preload("res://tools/studies/pietro_pixel/winding.gd")
-const ROOT: String = "res://assets/characters/pietro-pixel-pilot/versions/0.3.0/"
+const Volume = preload("res://tools/studies/pietro_pixel/volume_check.gd")
+const ROOT: String = "res://assets/characters/pietro-pixel-pilot/versions/0.4.0/"
 func _init() -> void:
 	var rig: RefCounted = Rig.new(ROOT)
 	var failed: int = 0
@@ -27,6 +28,10 @@ func _init() -> void:
 				if rig.sources[leg][i].y>=970: rigid = maxf(rigid,vertices[i].distance_to(rig.sources[leg][i]+rig.feet[leg]-sole))
 	var waist: Dictionary = Coverage.sweep(rig,rig.texture.get_image())
 	var winding: Dictionary = Winding.sweep(rig)
+	var volume: Dictionary = Volume.sweep(rig)
+	# Oriented areas alone passed the old X-shaped pinch. Prove this independent
+	# source-UV cross-section measurement also detects that rejected candidate.
+	var rejected_volume: Dictionary = Volume.sweep(Rig.new("res://assets/characters/pietro-pixel-pilot/versions/0.3.0/"))
 	var contacts: Array[float] = []
 	for i in range(5):
 		var cycle: float = i*0.5
@@ -35,8 +40,8 @@ func _init() -> void:
 		contacts.append(cycle*220+(rig.feet[leg].x-620)*0.5)
 	var steps: Array[float] = []
 	for i in range(contacts.size()-1): steps.append(contacts[i+1]-contacts[i])
-	var values: Array[bool] = [FileAccess.get_sha256(ROOT+"source.png")=="cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa",identity<0.001,reach<0.01,rigid<0.001,steps.min()>100 and steps.max()<120,waist.uncovered==0,winding.inverted==0 and winding.collapsed==0]
+	var values: Array[bool] = [FileAccess.get_sha256(ROOT+"source.png")=="cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa",identity<0.001,reach<0.01,rigid<0.001,steps.min()>100 and steps.max()<120,waist.uncovered==0,winding.inverted==0 and winding.collapsed==0,volume.missing_bindings==0,volume.minimum_normal_width_ratio>=0.60,volume.minimum_vertical_scale>=0.80,rejected_volume.minimum_normal_width_ratio<0.10]
 	for value in values:
 		if not value:failed += 1
-	print(JSON.stringify({"suite":"pietro_house_long_stride","checks":values.size(),"failed":failed,"source_identity_delta":identity,"reach_error":reach,"boot_deformation":rigid,"support_step_distances_world_px":steps,"min_projected_foot_center_order_source_px":foot_gap,"max_pelvis_drop_source_px":drop,"waist":waist,"winding":winding}))
+	print(JSON.stringify({"suite":"pietro_house_long_stride","checks":values.size(),"failed":failed,"source_identity_delta":identity,"reach_error":reach,"boot_deformation":rigid,"support_step_distances_world_px":steps,"min_projected_foot_center_order_source_px":foot_gap,"max_pelvis_drop_source_px":drop,"waist":waist,"winding":winding,"volume":volume,"rejected_0_3_volume":rejected_volume}))
 	quit(failed)

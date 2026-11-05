@@ -16,6 +16,7 @@ static func sample(rig: RefCounted, image: Image, step: int = 2) -> Dictionary:
 			bounds = Rect2(world,Vector2.ZERO) if probes.size()==1 else bounds.expand(world)
 	var bins: Dictionary = {}
 	var meshes: Array[ArrayMesh] = [rig.legs[0],rig.legs[1],rig.upper.mesh]
+	if rig.pelvis!=null: meshes.append(rig.pelvis)
 	for mesh_index in range(meshes.size()):
 		var arrays: Array = meshes[mesh_index].surface_get_arrays(0)
 		var vertices: PackedVector2Array = arrays[Mesh.ARRAY_VERTEX]
@@ -39,7 +40,9 @@ static func sample(rig: RefCounted, image: Image, step: int = 2) -> Dictionary:
 	var uncovered: int = 0
 	var worst: Vector2 = Vector2.ZERO
 	for point in probes:
-		var alpha: Array[float] = [0,0,0]
+		var alpha: Array[float] = []
+		alpha.resize(meshes.size())
+		alpha.fill(0)
 		var key: Vector2i = Vector2i(int(floor(point.x/CELL)),int(floor(point.y/CELL)))
 		for triangle in bins.get(key,[]):
 			var delta: Vector2 = point-triangle[0]
@@ -49,7 +52,9 @@ static func sample(rig: RefCounted, image: Image, step: int = 2) -> Dictionary:
 			var texture: Vector2 = triangle[3]+triangle[4]*u+triangle[5]*v
 			var value: float = image.get_pixel(clampi(int(floor(texture.x*image.get_width())),0,image.get_width()-1),clampi(int(floor(texture.y*image.get_height())),0,image.get_height()-1)).a
 			alpha[triangle[7]] = maxf(alpha[triangle[7]],value)
-		var coverage: float = 1-(1-alpha[0])*(1-alpha[1])*(1-alpha[2])
+		var transparent: float = 1
+		for value in alpha: transparent *= 1-value
+		var coverage: float = 1-transparent
 		if coverage < 0.95: uncovered += 1
 		if coverage < minimum:
 			minimum = coverage

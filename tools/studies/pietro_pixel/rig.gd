@@ -2,10 +2,13 @@ extends RefCounted
 ## Study-only 3/4 gait. Approved pixels are sampled without redrawing the PNG.
 const Geometry = preload("res://tools/studies/pietro_pixel/texture_mesh.gd")
 const Upper = preload("res://tools/studies/pietro_pixel/upper_rig.gd")
+const VolumeRows = preload("res://tools/studies/pietro_pixel/volume_rows.gd")
 const ROOT: String = "res://assets/characters/pietro-pixel-pilot/versions/0.2.2/"
 var data: Dictionary
 var texture: Texture2D
 var upper: RefCounted
+var pelvis: ArrayMesh
+var pelvis_source: Dictionary = {}
 var legs: Array[ArrayMesh] = []
 var sources: Array[PackedVector2Array] = []
 var triangles: Array[PackedInt32Array] = []
@@ -23,6 +26,9 @@ func _init(root: String = ROOT) -> void:
 	data = JSON.parse_string(FileAccess.get_file_as_string(root+"rig.json"))
 	texture = load(root+"source.png") as Texture2D
 	upper = Upper.new(data.upper,data.body_mask)
+	if data.has("pelvis_mask"):
+		pelvis_source = Geometry.grid(Geometry.points(data.pelvis_mask),Rect2i(530,768,256,160),16)
+		pelvis = Geometry.create(pelvis_source.vertices,pelvis_source.indices,pelvis_source.uv)
 	for source in data.legs:
 		var grid: Dictionary = Geometry.grid(Geometry.points(source.mask),Rect2i(380,760,500,400),20)
 		if data.deformation.get("topology","")=="horizontal_strips":
@@ -80,6 +86,10 @@ func pose(cycle: float, gather: float = 1.0) -> void:
 		var height: float = sqrt(maxf(0,length*length-pow(ankle.x-hip.x,2)))
 		drop = maxf(drop,ankle.y-height-hip.y)
 	upper.pose(drop)
+	if pelvis!=null:
+		var vertices: PackedVector2Array = []
+		for point in pelvis_source.vertices: vertices.append(upper.transform*point+Vector2(0,drop))
+		pelvis = Geometry.create(vertices,pelvis_source.indices,pelvis_source.uv)
 	for leg in range(2): _leg(leg)
 
 func _leg(leg: int) -> void:
@@ -104,8 +114,14 @@ func _leg(leg: int) -> void:
 	var boot_offset: Vector2 = sole-_point(source.sole)
 	var vertices: PackedVector2Array = []
 	var ribbon: bool = data.deformation.get("mode","")=="position_ribbon"
+	var volume: bool = data.deformation.get("mode","")=="volume_rows"
+	var top_point: Vector2 = Vector2(620,float(data.deformation.get("volume_span_y",[780,970])[0]))
+	var top_offset: Vector2 = upper.transform*top_point-top_point+Vector2(0,drop)
 	for i in range(sources[leg].size()):
 		var point: Vector2 = sources[leg][i]
+		if volume:
+			vertices.append(VolumeRows.project(point,source,data.deformation,top_offset,boot_offset))
+			continue
 		var skinned: Vector2 = (upper_transform*point).lerp(lower_transform*point,knee_weights[leg][i])
 		if ribbon:
 			# Long strides use monotone row displacements between joint anchors.
@@ -129,6 +145,7 @@ func draw(canvas: CanvasItem, anchor: Vector2, original: bool = false, facing: f
 	else:
 		canvas.draw_mesh(legs[1],texture)
 		canvas.draw_mesh(legs[0],texture)
+		if pelvis!=null: canvas.draw_mesh(pelvis,texture)
 		canvas.draw_mesh(upper.mesh,texture)
 	canvas.draw_set_transform(Vector2.ZERO)
 
