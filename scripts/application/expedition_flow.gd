@@ -46,7 +46,7 @@ func resume() -> bool:
 	run_reset_requested.emit(game.seed_value, false)
 	game_changed.emit(game)
 	session.expedition.settle_battle()
-	if session.expedition.phase == "map":
+	if session.expedition.phase in ["map", "event"]:
 		screen_reset_requested.emit("map")
 	else:
 		battle_requested.emit()
@@ -59,7 +59,9 @@ func enter_node(id: String, busy: bool, screen: String) -> bool:
 	if busy or screen != "map" or not session.expedition_active: return false
 	if not session.expedition.choose_node(id): return false
 	checkpoint()
-	if session.expedition.phase == "map":
+	if session.expedition.phase == "event":
+		map_refresh_requested.emit()
+	elif session.expedition.phase == "map":
 		session.save_notice = "Nascente visitada: aliados vivos recuperaram até 25% do HP máximo. " + session.save_notice
 		map_refresh_requested.emit()
 	else:
@@ -68,3 +70,10 @@ func enter_node(id: String, busy: bool, screen: String) -> bool:
 		sound_requested.emit("draw")
 	logged.emit("node_entered", {"node": id})
 	return true
+
+func resolve_event(choice: String, details: Dictionary) -> void:
+	if not session.expedition_active or not session.expedition.choose_event(choice, details): return
+	checkpoint()
+	map_refresh_requested.emit()
+	sound_requested.emit("evolve" if choice == "practice" else "capture")
+	logged.emit("event_chosen", {"node": "spring", "choice": choice, "details": details})

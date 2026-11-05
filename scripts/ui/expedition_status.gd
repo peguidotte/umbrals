@@ -55,10 +55,12 @@ static func add_inventory_status(root: VBoxContainer, snapshot: Dictionary, ui: 
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	root.add_child(label)
 	register.call(label, "map.inventory")
+	add_save_notice(root, snapshot, ui, register)
+
+static func add_save_notice(root: VBoxContainer, snapshot: Dictionary, ui: UmbralUI, register: Callable) -> void:
 	var save_notice: String = str(snapshot.get("save_notice", "")).strip_edges()
 	if not save_notice.is_empty():
-		var notice := ui.paragraph(save_notice, 15, UI.MUTED)
-		notice.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		var notice := ui.paragraph("SALVAMENTO · " + save_notice, 19, UI.PAPER)
 		root.add_child(notice)
 		register.call(notice, "map.save_notice")
 

@@ -182,3 +182,14 @@ da fixture original, identidade e proteção de gravações incompatíveis.
 gerados por fixtures; arquivos antigos passam apenas pela migração explícita.
 Os fingerprints incluem Resources em `content/**`, catálogo e serviços de sessão;
 edições nesses contratos invalidam as tarefas dependentes, inclusive exports.
+
+
+## V05-EVT-01
+
+`python tools/harness.py check --suite spring-event` cobre limites de cópias,
+conservação de dono/instâncias, reservas, cancelamento, checkpoint e o replay da
+main anterior congelado antes das mudanças. `browser.rewards` também exercita a
+sala da Nascente com controles reais no build isolado de fixtures e sua matriz
+com texto ampliado; não acrescenta edição às recompensas. `browser.expedition`
+percorre a entrada real, recarrega a sala sem gastar o intervalo e confirma o
+descanso. A suíte e os dois cenários participam do fechamento completo.

@@ -2,10 +2,12 @@ extends RefCounted
 ## Builds the map from a public expedition snapshot and emits player intents.
 signal control_created(control: Control, id: String)
 signal node_requested(id: String)
+signal event_requested(choice: String, details: Dictionary)
 signal pause_requested
 signal selection_changed(id: String)
 signal formation_requested
 
+const SpringRoom = preload("res://scripts/ui/spring_room.gd")
 const ExpeditionMap = preload("res://scripts/ui/expedition_map.gd")
 var root: Control
 
@@ -13,6 +15,17 @@ func build(parent: Control, snapshot: Dictionary, text_scale: float, selection: 
 	if is_instance_valid(root):
 		root.hide()
 		root.queue_free()
+	if snapshot.get("phase") == "event":
+		var room = SpringRoom.new()
+		root = room
+		room.control_created.connect(control_created.emit)
+		room.event_requested.connect(event_requested.emit)
+		room.pause_requested.connect(pause_requested.emit)
+		room.populate(snapshot, text_scale)
+		parent.add_child(room)
+		room.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		_set_margins(room)
+		return room
 	var map = ExpeditionMap.new()
 	root = map
 	map.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)

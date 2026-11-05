@@ -43,12 +43,13 @@ NATIVE = {
     'codex-nav': ('codex_navigation_test.gd', 'codex_navigation', ()),
     'codex-story': ('codex_story_test.gd', 'codex_story', ()),
     'settings': ('settings_menu_test.gd', 'settings_menu', ()),
+    'spring-event': ('spring_event_test.gd', 'spring_event', ()),
     'expedition-rules': ('expedition_rules_test.gd', 'expedition_rules', ()),
     'expedition-save': ('expedition_save_test.gd', 'expedition_save', ()),
     'expedition-ui': ('expedition_ui_test.gd', 'expedition_ui', ()),
 }
 TITLE = ('asset-catalog', 'title', 'gold-ui', 'codex-nav', 'codex-story', 'settings', 'startup')
-EXPEDITION = ('expedition-rules', 'expedition-save', 'expedition-ui')
+EXPEDITION = ('spring-event', 'expedition-rules', 'expedition-save', 'expedition-ui')
 
 SCENARIOS = ('integration', 'layout', 'navigation', 'inventory', 'combat', 'rewards', 'replacement', 'persistence', 'expedition', 'title')
 FIXTURE_SCENARIOS = {'inventory', 'combat', 'rewards', 'replacement'}
@@ -78,7 +79,7 @@ def registry():
     }
     for name, (script, suite, cases) in NATIVE.items():
         pattern, minimum = patterns.get(name, ('', 1))
-        tasks[name] = Task(name, 'native', ('import',), inputs=(DATA if name in ('rules', 'harness-core', 'expedition-rules', 'expedition-save') else GAME) + ('tests/' + script, 'tests/support/**') + (('tests/fixtures/**',) if name == 'expedition-save' else ()), script='tests/' + script, suite=suite, report='suite-report.json', cases=cases, pattern=pattern, minimum=minimum)
+        tasks[name] = Task(name, 'native', ('import',), inputs=(DATA if name in ('rules', 'harness-core', 'expedition-rules', 'expedition-save') else GAME) + ('tests/' + script, 'tests/support/**') + (('tests/fixtures/**',) if name in ('expedition-save', 'spring-event') else ()), script='tests/' + script, suite=suite, report='suite-report.json', cases=cases, pattern=pattern, minimum=minimum)
     for name in SCENARIOS:
         dependency = 'packed-fixtures' if name in FIXTURE_SCENARIOS else 'packed-catalog'
         tasks['browser.' + name] = Task('browser.' + name, 'browser', (dependency,), inputs=GAME + ('tools/browser/session.py', 'tools/browser_smoke.py', 'tools/browser/__init__.py', 'tools/browser/scenarios/__init__.py', 'tools/refuge_browser_review.py') + (('tools/browser/' + name + '.py', 'tests/make_browser_plan.gd') if name in ('integration', 'layout') else ('tools/' + ('expedition_browser_smoke.py' if name == 'expedition' else 'title_browser_review.py'), 'tests/make_expedition_plan.gd') if name in ('expedition', 'title') else ('tools/browser/scenarios/' + name + '.py',)), script=name, suite='umbral_ui_experience', report='browser-report.json', lock='browser')
