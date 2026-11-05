@@ -28,6 +28,14 @@ inclusive RNG, planos, cartas, UID, HP e revisão. Identidade histórica com
 marcador de catálogo 5 é rejeitada. Os adaptadores anteriores permanecem
 exercitados pelo suite de saves e pelo gate migration-compat.
 
+A integração acrescenta uma segunda [fixture histórica de recompensa](../tests/fixtures/combined_catalog4_main_reward_60b4e30.md),
+capturada independentemente na mesma main intacta. Uma conjuração real gera
+cinco escolhas ordenadas (captura, duas finais de grama e duas elétricas).
+Cada escolha e o encontro seguinte são comparados integralmente com a main,
+com leitura de um arquivo antigo válido e save/reload após a migração. Nenhuma
+oferta foi escrita à mão; Lonaro continua sem finais no grafo 4. O manifesto
+congelado também coincide com a captura independente da integração.
+
 ## Arte e limites
 
 Referência de direção: Library `libfile_2c296e23cd5c819189c30eaa74c3da82`,
@@ -55,3 +63,19 @@ A primeira tentativa de movimento teve 1.001 checks sem falhas mas foi corretame
 GitHub Actions permanece desativado.
 A regressão integral do candidato combinado fica com a integração, conforme
 preferência por foco por feature e uma única regressão conjunta.
+
+## Evidência da integração
+
+O foco de saves da integração passou com 498 asserções, incluindo recompensa
+histórica pendente, cinco escolhas, próximo encontro, idempotência e rejeição
+atômica do grafo falsificado. A primeira montagem de arquivo no teste misturou
+identidades do envelope/snapshot; a tentativa falha foi preservada e corrigida
+para representar o envelope histórico válido. Não houve alteração de produção
+nessa correção. O movimento dessa tentativa não vale como aceite, pois as
+fontes foram corrigidas antes do término da tarefa.
+
+O relatório integral da revisão congelada fica em
+`artifacts/aquatic-finals-integration-full-proof.json`, com referência à pasta
+imutável da execução, hashes, logs e vídeo. Seu status e o SHA identificam o
+aceite efetivo; os focos acima não substituem esse gate. A apresentação da
+esfera não implementa uma entidade autônoma nem uma habilidade de ataque duplo.

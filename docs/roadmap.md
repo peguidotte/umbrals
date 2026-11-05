@@ -1432,4 +1432,8 @@ assets, migração, arquitetura e export Web. Vídeo real: três conjurações p
 final com áudio do jogo. GitHub Actions permanece desativado. Arte ainda é
 estudo procedural; versos, estados desenhados, balanceamento próprio e aceite
 visual/hardware continuam abertos. Sem alteração de outras frentes ou versão.
-Regressão integral fica para o candidato conjunto. [Escopo, evidência e limites](aquatic-finals-v05-09d.md).
+A integração acrescenta recompensa histórica real da main, cinco continuações
+e save/reload; foco de saves passou com 498 asserções. O gate integral do
+conjunto congelado é registrado em `artifacts/aquatic-finals-integration-full-proof.json`.
+A esfera é apresentação visual, sem entidade autônoma ou ataque duplo.
+[Escopo, evidência e limites](aquatic-finals-v05-09d.md).

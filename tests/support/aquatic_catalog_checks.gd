@@ -8,6 +8,7 @@ const Rules = preload("res://scripts/rules.gd")
 const Cards = preload("res://tests/support/catalog_union_checks.gd")
 
 static func run(expect: Callable) -> void:
+	preload("res://tests/support/aquatic_history_checks.gd").run(expect)
 	var history: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/combined_catalog4_60b4e30.json"))
 	expect.call(history.identity == Registry.COMBINED4_IDENTITY and Registry.supports(history.identity), "Frozen actual main catalog migrates through exact aquatic projection")
 	var old = Expedition.new()
