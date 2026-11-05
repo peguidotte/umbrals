@@ -8,6 +8,7 @@ const Lifecycle = preload("res://scripts/ui/creature_lifecycle.gd")
 const GRID: int = 14
 const ANGLES: Dictionary = {"head": 8, "tail": 9, "fore": 10, "hind": 11, "crest": 12, "ear": 13, "jaw": 14, "wing": 15, "feeler": 16, "bough": 17, "fin": 18, "wing_far": 16, "leg_far": 16, "arm_far": 17}
 var form_id: String = ""
+var art_view: String = "front"
 var source: Texture2D
 var texture: Texture2D
 var display_size: Vector2 = Vector2.ONE
@@ -54,11 +55,12 @@ func set_incapacitated(value: bool, animate: bool = true) -> void:
 		lifecycle.advance(0, paused, reduced_motion)
 	_refresh()
 
-func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2, mirror: bool) -> void:
-	var changed: bool = image != source or id != form_id or mirror != flipped
+func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2, mirror: bool, view: String = "front") -> void:
+	var changed: bool = image != source or id != form_id or mirror != flipped or view != art_view
 	source = image
 	form_id = id
-	definition = Motion.form(id)
+	art_view = view
+	definition = Motion.form(id, view)
 	display_size = dimensions
 	foot = pivot / dimensions
 	flipped = mirror
@@ -67,7 +69,7 @@ func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2
 		add_child(lifecycle)
 	var authored: Dictionary = Assets.bound_manifest("characters/lifecycle-" + id)
 	var reference: Dictionary = {"id": authored.id, "version": authored.version} if not authored.is_empty() else {}
-	lifecycle.configure(id, dimensions, pivot, mirror, reference)
+	lifecycle.configure(id, dimensions, pivot, mirror, reference, view)
 	texture = image.atlas if image is AtlasTexture else image
 	if changed:
 		ko_texture = Presentation.ko_texture(id, mirror)
@@ -291,24 +293,28 @@ func project(uv: Vector2, skinned: Variant = null, plant: Variant = null) -> Vec
 	return pivot + local
 
 func socket(index: int, secondary: bool = false) -> Vector2:
-	var uv: Vector2 = Motion.socket(form_id, index)
-	if secondary and definition.has("anatomy"):
+	var uv: Vector2 = Motion.socket(form_id, index, art_view)
+	var leaf_blades: bool = str(definition.get("attack_presentation", {}).get("profile", "")) == "leaf_blades" and index in [3, 4, 5]
+	if leaf_blades:
+		var point: Array = definition.get("anatomy", {}).get("fore_secondary" if secondary else "fore", [uv.x, uv.y])
+		uv = Vector2(float(point[0]), float(point[1]))
+	elif secondary and definition.has("anatomy"):
 		var point: Array = definition.anatomy.get("secondary", definition.anatomy.get("antennaB", [uv.x, uv.y]))
 		uv = Vector2(float(point[0]), float(point[1]))
 	return to_global(project(uv))
 
 func _refresh() -> void:
 	if texture == null or indices.is_empty(): return
-	pose = Motion.neutral() if reduced_motion else Motion.sample(form_id, mode, clip, fposmod(idle_time, 3.2) if mode == "states" and clip == 0 else elapsed)
+	pose = Motion.neutral() if reduced_motion else Motion.sample(form_id, mode, clip, fposmod(idle_time, 3.2) if mode == "states" and clip == 0 else elapsed, art_view)
 	if not reduced_motion and mode == "states" and clip == 6:
-		pose = Motion.sample(form_id, mode, clip, fposmod(elapsed, 3.2))
+		pose = Motion.sample(form_id, mode, clip, fposmod(elapsed, 3.2), art_view)
 	var ko_pose: bool = incapacitated and definition.get("states", {}).has("7")
 	if ko_pose:
-		pose = Motion.sample(form_id, "states", 7, 3.2 if reduced_motion else ko_elapsed)
+		pose = Motion.sample(form_id, "states", 7, 3.2 if reduced_motion else ko_elapsed, art_view)
 	ko_mix = 0.0
 	if ko_texture != null and (incapacitated or recovery_elapsed >= 0.0):
 		if incapacitated:
-			pose = Motion.sample(form_id, "states", 3, ko_elapsed) if not reduced_motion else Motion.neutral()
+			pose = Motion.sample(form_id, "states", 3, ko_elapsed, art_view) if not reduced_motion else Motion.neutral()
 			ko_mix = 1.0 if reduced_motion else smoothstep(.12, .6, ko_elapsed)
 		else:
 			pose = Motion.neutral()

@@ -25,6 +25,11 @@
       "id": "attacks/flame-guard",
       "version": "1.0.0"
     },
+    "attacks/grass-leaf-blades": {
+      "file": "atlas",
+      "id": "attacks/grass-leaf-blades",
+      "version": "1.0.0"
+    },
     "attacks/inferno": {
       "file": "icon",
       "id": "attacks/inferno",
@@ -33,6 +38,11 @@
     "attacks/judgment": {
       "file": "icon",
       "id": "attacks/judgment",
+      "version": "1.0.0"
+    },
+    "attacks/leaf-foliage-icon": {
+      "file": "icon",
+      "id": "attacks/grass-leaf-blades",
       "version": "1.0.0"
     },
     "attacks/life-seed": {
@@ -155,15 +165,25 @@
       "id": "characters/battle-evolved",
       "version": "1.0.0"
     },
+    "characters/lifecycle-folivel": {
+      "file": "walk-front",
+      "id": "characters/folivel-lifecycle",
+      "version": "1.0.0"
+    },
+    "characters/lifecycle-foslash": {
+      "file": "walk",
+      "id": "characters/foslash-lifecycle",
+      "version": "1.0.0"
+    },
     "characters/lifecycle-moss": {
       "file": "walk",
       "id": "characters/foli-lifecycle",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "characters/lifecycle-verdalio": {
       "file": "walk",
       "id": "characters/folife-lifecycle",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "characters/owl": {
       "file": "portrait",
@@ -265,6 +285,16 @@
       "id": "umbrals/ember",
       "version": "1.0.0"
     },
+    "umbrals/folivel": {
+      "file": "portrait",
+      "id": "characters/folivel-pilot",
+      "version": "1.0.0"
+    },
+    "umbrals/foslash": {
+      "file": "portrait",
+      "id": "characters/foslash-pilot",
+      "version": "1.0.0"
+    },
     "umbrals/ignivar": {
       "file": "portrait",
       "id": "umbrals/ignivar",
@@ -278,7 +308,7 @@
     "umbrals/moss": {
       "file": "portrait",
       "id": "characters/foli-pilot",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "umbrals/tempestral": {
       "file": "niscor-ally",
@@ -288,7 +318,7 @@
     "umbrals/verdalio": {
       "file": "portrait",
       "id": "characters/folife-pilot",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "umbrals/volt": {
       "file": "nisca-ally",

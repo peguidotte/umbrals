@@ -3,6 +3,7 @@ extends RefCounted
 const EncounterSetup = preload("res://scripts/battle/encounter_setup.gd")
 const Content = preload("res://scripts/content.gd")
 const Evolution = preload("res://scripts/battle/evolution.gd")
+const CatalogRevision = preload("res://scripts/battle/catalog_revision.gd")
 const Targeting = preload("res://scripts/battle/targeting.gd")
 
 static func by_uid(roster: Array, uid: int) -> Dictionary:
@@ -49,9 +50,11 @@ static func persist_card_collection(party: Array, hand: Array, deck: Array, disc
 		individual.cards = owned
 
 
-static func apply_offer(offer_index: int, replace_uid: int, capture_slot: int, phase: String, reward_offers: Array, party: Array, hand: Array, deck: Array, discard_pile: Array, suspended_cards: Dictionary, max_team: int) -> bool:
+static func apply_offer(offer_index: int, replace_uid: int, capture_slot: int, phase: String, reward_offers: Array, party: Array, hand: Array, deck: Array, discard_pile: Array, suspended_cards: Dictionary, max_team: int, catalog_revision: int) -> bool:
+	if not CatalogRevision.supported(catalog_revision): return false
 	if phase != "reward" or offer_index < 0 or offer_index >= reward_offers.size(): return false
 	var offer: Dictionary = reward_offers[offer_index]
+	if offer.kind == "capture" and not CatalogRevision.form_available(str(offer.umbral.species), str(offer.umbral.form_id), catalog_revision): return false
 	if replace_uid != -1 and (offer.kind != "capture" or party.size() < max_team): return false
 	if offer.kind == "capture" and party.size() >= max_team and by_uid(party, replace_uid).is_empty(): return false
 	var destination: int = -1
@@ -63,7 +66,7 @@ static func apply_offer(offer_index: int, replace_uid: int, capture_slot: int, p
 	elif capture_slot != -2: return false
 	if offer.kind != "capture":
 		var candidate: Dictionary = by_uid(party, int(offer.uid))
-		if candidate.is_empty() or not Evolution.valid(candidate, offer, Content.evolution_edges(candidate)): return false
+		if candidate.is_empty() or not Evolution.valid(candidate, offer, CatalogRevision.edges(candidate, catalog_revision)): return false
 	persist_card_collection(party, hand, deck, discard_pile, suspended_cards)
 	if offer.kind == "capture":
 		if party.size() >= max_team:
@@ -79,15 +82,16 @@ static func apply_offer(offer_index: int, replace_uid: int, capture_slot: int, p
 			party.append(captured)
 	else:
 		var individual: Dictionary = by_uid(party, int(offer.uid))
-		if individual.is_empty() or not Evolution.valid(individual, offer, Content.evolution_edges(individual)): return false
+		if individual.is_empty() or not Evolution.valid(individual, offer, CatalogRevision.edges(individual, catalog_revision)): return false
 		var evolved: Dictionary = individual.duplicate(true)
 		evolved.form_id = str(offer.target_form_id)
 		Evolution.apply(individual, evolved.form_id, Content.species_stats(evolved))
 		# Existing instances and learned power IDs survive. No automatic signature cards.
 	return true
 
-static func prepare(reward_offers: Array, party: Array, starter_species: String, encounter: int, expedition_mode: bool, next_uid: int, rng: RandomNumberGenerator) -> void:
+static func prepare(reward_offers: Array, party: Array, starter_species: String, encounter: int, expedition_mode: bool, next_uid: int, rng: RandomNumberGenerator, catalog_revision: int) -> void:
 	reward_offers.clear()
+	if not CatalogRevision.supported(catalog_revision): return
 	var route: Array = Content.CAPTURE_ROUTES[starter_species]
 	var reward_index: int = (0 if Content.ENCOUNTERS[encounter].get("id", "") == "clearing" else 1) if expedition_mode else encounter
 	var species: String = str(route[clampi(reward_index, 0, route.size() - 1)])
@@ -96,9 +100,8 @@ static func prepare(reward_offers: Array, party: Array, starter_species: String,
 	reward_offers.append({"kind": "capture", "umbral": EncounterSetup.make_umbral(species, passive, next_uid)})
 	var deferred: Array = []
 	for individual in party:
-		for edge in Content.evolution_edges(individual):
+		for edge in CatalogRevision.edges(individual, catalog_revision):
 			var offers: Array = Evolution.offers(individual, [edge])
 			if edge.get("deferred", false): deferred.append_array(offers)
 			else: reward_offers.append_array(offers)
-	# Keep historical reward commands valid when an existing lineage grows.
 	reward_offers.append_array(deferred)

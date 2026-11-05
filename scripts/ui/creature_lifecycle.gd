@@ -17,9 +17,10 @@ var state: String = ""
 var elapsed: float = 0.0
 var settle_from: String = ""
 
-func configure(form: String, dimensions: Vector2, pivot: Vector2, mirror: bool, reference: Dictionary = {}) -> void:
+func configure(form: String, dimensions: Vector2, pivot: Vector2, mirror: bool, reference: Dictionary = {}, view: String = "front") -> void:
 	var release: Dictionary = Assets.bound_manifest(BINDING) if reference.is_empty() else Assets.manifest(str(reference.id), str(reference.version))
-	var next_key: String = "%s:%s:%s" % [str(release.get("id", "")), str(release.get("version", "")), form]
+	var profile_key: String = form if view == "front" else form + ":" + view
+	var next_key: String = "%s:%s:%s" % [str(release.get("id", "")), str(release.get("version", "")), profile_key]
 	if key != next_key:
 		key = next_key
 		manifest = release
@@ -31,9 +32,10 @@ func configure(form: String, dimensions: Vector2, pivot: Vector2, mirror: bool, 
 		sprite = null
 		if not release.is_empty():
 			var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(Assets.file_path(str(release.id), str(release.version), "profile")))
-			profile = data.get("forms", {}).get(form, {})
+			profile = data.get("forms", {}).get(profile_key, {})
 		if not profile.is_empty():
-			for animation in [str(profile.walk), str(profile.ko)]:
+			for animation in [str(profile.get("walk", "")), str(profile.get("ko", ""))]:
+				if animation.is_empty(): continue
 				var cache_key: String = "%s@%s:%s" % [str(release.id), str(release.version), animation]
 				if not clip_cache.has(cache_key): clip_cache[cache_key] = Assets.sprite_frames(str(release.id), str(release.version), animation)
 				clips[animation] = clip_cache[cache_key]
@@ -51,7 +53,7 @@ func active() -> bool:
 	return not state.is_empty() and not profile.is_empty()
 
 func enter() -> void:
-	if profile.is_empty() or incapacitated: return
+	if profile.is_empty() or incapacitated or str(profile.get("walk", "")).is_empty(): return
 	state = "walk"
 	elapsed = 0.0
 	_set_clip(str(profile.walk))
@@ -60,6 +62,10 @@ func enter() -> void:
 func set_incapacitated(value: bool, animate: bool = true) -> void:
 	if profile.is_empty() or value == incapacitated: return
 	incapacitated = value
+	if str(profile.get("ko", "")).is_empty():
+		state = ""
+		_update_pose()
+		return
 	# Recovery reuses KO poses backwards; its visual quality still needs review.
 	state = "ko" if value else "revive" if animate else ""
 	elapsed = 0.0 if animate else float(profile.ko_seconds)

@@ -1,0 +1,105 @@
+{
+  "dependencies": [
+    {
+      "id": "attacks/grass-leaf-blades",
+      "version": "1.0.0"
+    }
+  ],
+  "description": "Folivel v13 quadrupedal final with own front and authored dorsal anatomy; technical draft review only.",
+  "files": {
+    "authoring": {
+      "bytes": 477,
+      "kind": "data",
+      "path": "authoring.json",
+      "sha256": "675ec1ba0eb1927b8b3d407da4b0a700f1d3c29a196cf729f64aed07ec91c6d9"
+    },
+    "back": {
+      "bytes": 931360,
+      "kind": "texture",
+      "path": "folivel-back.png",
+      "sha256": "ef99fb8d8cea56078db30e89800adc7abaeff4657023a430e62d5064d2b40d3a",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "motion": {
+      "bytes": 2325617,
+      "kind": "data",
+      "path": "motion.json",
+      "sha256": "50cefbe793c155a4d60e4530ba246a6294719b89ac2bc4eb01f3ee393e0c233e"
+    },
+    "portrait": {
+      "bytes": 905500,
+      "kind": "texture",
+      "path": "folivel.png",
+      "sha256": "8d6878d6532514362bc089b848b49dd5048c674d302b2a49706825cfc163ad8e",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/folivel-pilot",
+  "metadata": {
+    "battle_profile": {
+      "grounding": {
+        "foot": [
+          631.0,
+          998
+        ],
+        "height": 136,
+        "visible_top": 303,
+        "width": 1182
+      },
+      "motion_role": "motion",
+      "views": {
+        "back": {
+          "grounding": {
+            "foot": [
+              636.0,
+              1135
+            ],
+            "height": 110,
+            "visible_top": 149,
+            "width": 1048
+          },
+          "motion_key": "folivel:back",
+          "portrait_role": "back"
+        }
+      }
+    },
+    "limits": [
+      "Own front/back mesh casts; no authored cast poses.",
+      "Rear four-pose gait has limited near-hind alternation.",
+      "Static and animated silhouette handoffs require aesthetic approval."
+    ],
+    "production_ready": false
+  },
+  "provenance": {
+    "approval": "Independent static GO for draft experiment. No final aesthetic approval.",
+    "back_sha256": "ef99fb8d8cea56078db30e89800adc7abaeff4657023a430e62d5064d2b40d3a",
+    "front_sha256": "8d6878d6532514362bc089b848b49dd5048c674d302b2a49706825cfc163ad8e",
+    "kind": "Image Gen approved-reference edit; original PNG bytes and caBX preserved",
+    "reference": {
+      "file": "docs/references/creatures/foli/lebre-silenciosa-refinada-v13.png",
+      "library_file_id": "libfile_5e6845c3842c81919a200b01a1b0c40f",
+      "no_v11_alternative_used": true,
+      "pixels_inspected": true,
+      "sha256": "f75649f947c34fa726d190eb1109f2313220759c50cee5e761394eb6a92bbb57"
+    }
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

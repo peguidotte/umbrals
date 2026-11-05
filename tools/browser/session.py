@@ -37,6 +37,7 @@ class Session:
         self.version = re.search(r'config/version="([^"]+)"', (ROOT / 'project.godot').read_text()).group(1)
         self.checks, self.logs, self.errors, self.captures, self.matrix, self.timings = [], [], [], [], [], []
         self.plans = {}
+        self.failure_captured = False
         self.starter_choice_seen = False
         self.viewport = list(map(int, args.viewport.split('x'))) if args.viewport else None
         self.started = time.monotonic()
@@ -70,9 +71,16 @@ class Session:
         return self.page.evaluate('window.umbralState')
 
     def failure(self):
+        # Retain the first available state of this session, before PNG latency.
+        if self.failure_captured:
+            return
+        self.failure_captured = True
+        try:
+            (self.output / 'failure-state.json').write_text(json.dumps(self.state(), indent=2, ensure_ascii=False))
+        except Exception:
+            pass
         try:
             self.page.screenshot(path=str(self.output / 'failure.png'))
-            (self.output / 'failure-state.json').write_text(json.dumps(self.state(), indent=2, ensure_ascii=False))
         except Exception:
             pass
 
@@ -86,6 +94,11 @@ class Session:
         try:
             self.page.wait_for_function('window.umbralState && (' + expression + ')', timeout=timeout)
         except Exception:
+            try:
+                print(json.dumps({'event': 'browser_wait_failed', 'condition': expression,
+                                  'timeout_ms': timeout, 'seconds': round(time.monotonic() - self.started, 3)}), flush=True)
+            except Exception:
+                pass
             self.failure()
             raise
 

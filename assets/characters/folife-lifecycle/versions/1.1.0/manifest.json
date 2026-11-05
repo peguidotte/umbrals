@@ -1,0 +1,238 @@
+{
+  "animations": {
+    "knockout": {
+      "columns": 4,
+      "file": "knockout",
+      "fps": 6.666666666666667,
+      "frame_size": [
+        362,
+        362
+      ],
+      "frames": 4,
+      "loop": false,
+      "pivot": [
+        150,
+        340
+      ]
+    },
+    "knockout-back": {
+      "columns": 4,
+      "file": "knockout-back",
+      "fps": 6.666666666666667,
+      "frame_size": [
+        627,
+        627
+      ],
+      "frames": 4,
+      "loop": false,
+      "pivot": [
+        313,
+        620
+      ]
+    },
+    "walk": {
+      "columns": 4,
+      "file": "walk",
+      "fps": 10,
+      "frame_size": [
+        362,
+        362
+      ],
+      "frames": 8,
+      "loop": true,
+      "pivot": [
+        150,
+        340
+      ]
+    },
+    "walk-back": {
+      "columns": 4,
+      "file": "walk-back",
+      "fps": 5.0,
+      "frame_size": [
+        627,
+        627
+      ],
+      "frames": 4,
+      "loop": true,
+      "pivot": [
+        313,
+        620
+      ]
+    }
+  },
+  "changes": "Add own authored dorsal art, anatomy and clips; front pixels/tracks and timings unchanged.",
+  "dependencies": [
+    {
+      "id": "characters/folife-pilot",
+      "version": "1.1.0"
+    }
+  ],
+  "description": "Folife front clips unchanged plus own four-pose dorsal walk/KO; draft.",
+  "files": {
+    "back-provenance": {
+      "bytes": 1532,
+      "kind": "data",
+      "path": "back-provenance.json",
+      "sha256": "431cee72edd6948dc5ee19f97eec8e5d4f5f2ea0bbf904001e1036b1fbf65698"
+    },
+    "knockout": {
+      "bytes": 593646,
+      "kind": "texture",
+      "path": "knockout.png",
+      "sha256": "e8dee07fa35f9ea8d00453729d435e8f270be6c4a04f9bfa11c6eaaa9e9d9f5e",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          362
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "knockout-back": {
+      "bytes": 1514393,
+      "kind": "texture",
+      "path": "knockout-back.png",
+      "sha256": "ff54697b013006c6286995ed2cd32410ce629ffe13ef7349a4b88d5c59f6d357",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2508,
+          627
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "normalization": {
+      "bytes": 8634,
+      "kind": "data",
+      "path": "normalization.json",
+      "sha256": "a0e8c9ca9f6205346fb53f5c22ad25c966653bdfbe576af13fe4004e1e66c8a0"
+    },
+    "normalization-knockout-back": {
+      "bytes": 3560,
+      "kind": "data",
+      "path": "normalization-knockout-back.json",
+      "sha256": "7a6275816cef10ea521dfa21d86c977c02995c093a17d77162c59b4da81f2860"
+    },
+    "normalization-walk-back": {
+      "bytes": 3544,
+      "kind": "data",
+      "path": "normalization-walk-back.json",
+      "sha256": "c51070a92c71dd79905534e3eb84914e72146a4018f08470c724449890db4d63"
+    },
+    "original": {
+      "bytes": 1987621,
+      "kind": "review",
+      "path": "review/original.png",
+      "sha256": "ba8dbd1372b12d76be6e4e7bf314cd411566029ac1e718be072a2f5d8b425e66",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "original-knockout-back": {
+      "bytes": 1577301,
+      "kind": "review",
+      "path": "review/knockout-back-original.png",
+      "sha256": "38e17efe65dbac8622ec1113d5183eeaf9167b6f37ab36aab4e86a8abafa01d1",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "original-walk-back": {
+      "bytes": 1396472,
+      "kind": "review",
+      "path": "review/walk-back-original.png",
+      "sha256": "984d09026be755b49094a474bdbe267ce999df8c533a63778297014f25325af4",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "profile": {
+      "bytes": 562,
+      "kind": "data",
+      "path": "profile.json",
+      "sha256": "7a70973bc6ed4650a8409456ece6dcee4d179aafecd96e96a6c22b487be180e3"
+    },
+    "walk": {
+      "bytes": 1297652,
+      "kind": "texture",
+      "path": "walk.png",
+      "sha256": "aca590029d49459d1ed2fe52afd9e167492b8df6874e7e45ea0c43c20a9b70c1",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "walk-back": {
+      "bytes": 1357806,
+      "kind": "texture",
+      "path": "walk-back.png",
+      "sha256": "7477db3146d0e0ea46c211f0b0816fb780f38bf549d9d0e8d00ca7538bc2683d",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2508,
+          627
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/folife-lifecycle",
+  "metadata": {
+    "limits": [
+      "Dorsal four-pose gait and pop remain subject to scene/human review.",
+      "No front clip fallback for missing rear poses."
+    ],
+    "production_ready": false
+  },
+  "provenance": {
+    "back": "See original-back roles and back-provenance; exact crops/integer translation; no resampling",
+    "front": {
+      "approval": "Independent technical static review permits draft experiment only; native cadence and human aesthetic pending.",
+      "edit_history": "Exact rectangular copies and integer translations, no painting or alpha changes. See normalization.json.",
+      "generation_id": "exec-0c05ab3d-7de4-48af-9e64-1ade8605ea16",
+      "kind": "Image Gen edit of the Folife cutout",
+      "original_preserved": true,
+      "prompt": "Create a clean transparent production sprite sheet of the EXACT hare character in the attached cutout: Folife, intermediate leaf hare, NOT a baby and NOT a final evolution. Keep its exact adult-intermediate proportions, low quadrupedal body, broad muscular hindquarters, long ears (one green serrated leaf covering the backward ear; one upright brown ear with leaf bud), leafy neck/shoulder collar, little leaf tail, brown/olive fur, cream muzzle and paws, amber eye, yellow-green chevron on thigh, single short green leaf dagger held by one forepaw. Same painterly cel shading, bold dark contour and upper-left light as the cutout.\nOUTPUT: 12 full-body poses in one precise regular 4-column by 3-row grid. 1448 by 1086 pixel sheet, 362 by 362 equal cells. Every character stays facing RIGHT. All twelve figures have the same body proportions, zoom, camera, palette and root x position within their cells. Keep each figure fully inside its own cell with clear transparent margins. No labels or drawn grid.\nRows 1 and 2: eight successive genuinely different walking poses forming a small low bunny-step loop in place. Change limb joint positions, not just the entire image. Start neutral crouch, push back one large hind foot, reach the free forepaw, recover/tuck hind feet, alternate the next hind-foot push, return to neutral. One forepaw continuously holds the short leaf dagger off the ground, the other free forepaw can step. Keep the low hare anatomy; no biped or humanoid stance. Tiny vertical bounce only, avoid a dramatic jump. Ear leaves and collar react a little to the gait. Frame 8 closely approaches frame 1. Grounded foot contact has a consistent baseline near the bottom of every cell.\nRow 3: four successive distinct reversible knockout poses. First stagger with closed eye and drooping ears; second lowers/folds foreleg; third settles onto side with folded hindlegs; fourth rests fully on its side with closed eye, drooped ears, limbs tucked, leaf collar and short dagger visible. No blood, wounds or damage. Keep the exact same character identity and scale.\nALPHA REQUIREMENT: The empty area around and BETWEEN characters must be fully transparent alpha=0. ALL character interiors fully opaque. Clean antialiased silhouette boundaries only. No partially transparent clouds, fog, smoke, dither, colored fringe, aura, particles, cast shadow, ground, background texture, gradient, paper, lighting backdrop or raster checkerboard. No red or bright outline accents. The only edges are the source character's dark contour. Use native transparent background output, not a drawn background. No text, numbers, watermark, scenery, borders or extra subjects.\n",
+      "reference": {
+        "file": "portrait",
+        "id": "characters/folife-pilot",
+        "sha256": "3096668c4de905c44e5f1d6793b9fe5683e15d96f438e0dd1ad615bc0262ef1a",
+        "version": "1.0.0"
+      }
+    },
+    "original_png_preserved": true
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.1.0"
+}

@@ -5,8 +5,10 @@ const ATTACKS_CINDER_CLAW: String = "res://assets/attacks/cinder-claw/versions/1
 const ATTACKS_DEW_MEND: String = "res://assets/attacks/dew-mend/versions/1.0.0/icon.svg"
 const ATTACKS_FIREBALL: String = "res://assets/attacks/fireball/versions/1.0.0/icon.svg"
 const ATTACKS_FLAME_GUARD: String = "res://assets/attacks/flame-guard/versions/1.0.0/icon.svg"
+const ATTACKS_GRASS_LEAF_BLADES: String = "res://assets/attacks/grass-leaf-blades/versions/1.0.0/leaf-blades.png"
 const ATTACKS_INFERNO: String = "res://assets/attacks/inferno/versions/1.0.0/icon.svg"
 const ATTACKS_JUDGMENT: String = "res://assets/attacks/judgment/versions/1.0.0/icon.svg"
+const ATTACKS_LEAF_FOLIAGE_ICON: String = "res://assets/attacks/grass-leaf-blades/versions/1.0.0/leaf-icon.png"
 const ATTACKS_LIFE_SEED: String = "res://assets/attacks/life-seed/versions/1.0.0/icon.svg"
 const ATTACKS_LIGHTNING: String = "res://assets/attacks/lightning/versions/1.0.0/icon.svg"
 const ATTACKS_RAIN: String = "res://assets/attacks/rain/versions/1.0.0/icon.svg"
@@ -31,8 +33,10 @@ const AUDIO_SELECT: String = "res://assets/audio/select/versions/1.0.0/sound.wav
 const AUDIO_STORM: String = "res://assets/audio/storm/versions/1.0.0/sound.wav"
 const CHARACTERS_BATTLE_CREATURES: String = "res://assets/characters/battle-creatures/versions/1.0.0/texture.png"
 const CHARACTERS_BATTLE_EVOLVED: String = "res://assets/characters/battle-evolved/versions/1.0.0/texture.png"
-const CHARACTERS_LIFECYCLE_MOSS: String = "res://assets/characters/foli-lifecycle/versions/1.0.0/walk.png"
-const CHARACTERS_LIFECYCLE_VERDALIO: String = "res://assets/characters/folife-lifecycle/versions/1.0.0/walk.png"
+const CHARACTERS_LIFECYCLE_FOLIVEL: String = "res://assets/characters/folivel-lifecycle/versions/1.0.0/walk-front.png"
+const CHARACTERS_LIFECYCLE_FOSLASH: String = "res://assets/characters/foslash-lifecycle/versions/1.0.0/walk.png"
+const CHARACTERS_LIFECYCLE_MOSS: String = "res://assets/characters/foli-lifecycle/versions/1.1.0/walk.png"
+const CHARACTERS_LIFECYCLE_VERDALIO: String = "res://assets/characters/folife-lifecycle/versions/1.1.0/walk.png"
 const CHARACTERS_OWL: String = "res://assets/characters/owl/versions/1.0.0/portrait.svg"
 const CHARACTERS_PIETRO_HOME: String = "res://assets/characters/pietro-home/versions/2.0.0/atlas.png"
 const CHARACTERS_REFUGE_TRAVELER: String = "res://assets/characters/refuge-traveler/versions/1.0.0/atlas.png"
@@ -53,11 +57,13 @@ const UI_TITLE_MENU: String = "res://assets/ui/title-menu/versions/1.0.0/texture
 const UMBRALS_AURAVEL: String = "res://assets/characters/electric-adults/versions/2.0.0/auravel-ally.png"
 const UMBRALS_DEW: String = "res://assets/umbrals/dew/versions/1.0.0/portrait.svg"
 const UMBRALS_EMBER: String = "res://assets/umbrals/ember/versions/1.0.0/portrait.svg"
+const UMBRALS_FOLIVEL: String = "res://assets/characters/folivel-pilot/versions/1.0.0/folivel.png"
+const UMBRALS_FOSLASH: String = "res://assets/characters/foslash-pilot/versions/1.0.0/foslash.png"
 const UMBRALS_IGNIVAR: String = "res://assets/umbrals/ignivar/versions/1.0.0/portrait.svg"
 const UMBRALS_MAREVEU: String = "res://assets/umbrals/mareveu/versions/1.0.0/portrait.svg"
-const UMBRALS_MOSS: String = "res://assets/characters/foli-pilot/versions/1.0.0/foli.png"
+const UMBRALS_MOSS: String = "res://assets/characters/foli-pilot/versions/1.1.0/foli.png"
 const UMBRALS_TEMPESTRAL: String = "res://assets/characters/electric-family/versions/2.1.0/niscor-ally.png"
-const UMBRALS_VERDALIO: String = "res://assets/characters/folife-pilot/versions/1.0.0/folife.png"
+const UMBRALS_VERDALIO: String = "res://assets/characters/folife-pilot/versions/1.1.0/folife.png"
 const UMBRALS_VOLT: String = "res://assets/characters/electric-family/versions/2.1.0/nisca-ally.png"
 const UMBRALS_ZULDAR: String = "res://assets/characters/electric-adults/versions/2.0.0/zuldar-ally.png"
 const WORLD_BATTLE_CLEARING: String = "res://assets/world/battle-clearing/versions/1.0.0/background.png"
@@ -75,8 +81,10 @@ const PATHS: Dictionary = {
 	"attacks/dew-mend": ATTACKS_DEW_MEND,
 	"attacks/fireball": ATTACKS_FIREBALL,
 	"attacks/flame-guard": ATTACKS_FLAME_GUARD,
+	"attacks/grass-leaf-blades": ATTACKS_GRASS_LEAF_BLADES,
 	"attacks/inferno": ATTACKS_INFERNO,
 	"attacks/judgment": ATTACKS_JUDGMENT,
+	"attacks/leaf-foliage-icon": ATTACKS_LEAF_FOLIAGE_ICON,
 	"attacks/life-seed": ATTACKS_LIFE_SEED,
 	"attacks/lightning": ATTACKS_LIGHTNING,
 	"attacks/rain": ATTACKS_RAIN,
@@ -101,6 +109,8 @@ const PATHS: Dictionary = {
 	"audio/storm": AUDIO_STORM,
 	"characters/battle-creatures": CHARACTERS_BATTLE_CREATURES,
 	"characters/battle-evolved": CHARACTERS_BATTLE_EVOLVED,
+	"characters/lifecycle-folivel": CHARACTERS_LIFECYCLE_FOLIVEL,
+	"characters/lifecycle-foslash": CHARACTERS_LIFECYCLE_FOSLASH,
 	"characters/lifecycle-moss": CHARACTERS_LIFECYCLE_MOSS,
 	"characters/lifecycle-verdalio": CHARACTERS_LIFECYCLE_VERDALIO,
 	"characters/owl": CHARACTERS_OWL,
@@ -123,6 +133,8 @@ const PATHS: Dictionary = {
 	"umbrals/auravel": UMBRALS_AURAVEL,
 	"umbrals/dew": UMBRALS_DEW,
 	"umbrals/ember": UMBRALS_EMBER,
+	"umbrals/folivel": UMBRALS_FOLIVEL,
+	"umbrals/foslash": UMBRALS_FOSLASH,
 	"umbrals/ignivar": UMBRALS_IGNIVAR,
 	"umbrals/mareveu": UMBRALS_MAREVEU,
 	"umbrals/moss": UMBRALS_MOSS,

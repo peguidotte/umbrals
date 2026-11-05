@@ -181,6 +181,8 @@ func _run() -> void:
 	await preload("res://tests/support/foli_motion_checks.gd").run(app, expect)
 	await preload("res://tests/support/foli_lifecycle_checks.gd").run(app, expect)
 	await preload("res://tests/support/folife_motion_checks.gd").run(app, expect)
+	await preload("res://tests/support/grass_final_motion_checks.gd").run(app, expect)
+	await preload("res://tests/support/grass_leaf_blade_checks.gd").run(app, expect)
 	app._start_game(42013, "ember")
 	await process_frame
 	var hud: Control = app.screen_host.battle_root.hud

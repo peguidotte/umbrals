@@ -1,0 +1,709 @@
+{
+  "source_actual_size": [
+    1447,
+    1087
+  ],
+  "source_requested_size": [
+    1448,
+    1086
+  ],
+  "output_frame_size": [
+    362,
+    362
+  ],
+  "columns": 4,
+  "candidate_pivot": [
+    198,
+    340
+  ],
+  "candidate_floor_y": 340,
+  "floor_measure": "Substantial contact silhouette alpha>=128; KO2/KO3 use visually checked supporting-toe coordinates because their foreground leaf blade extends below the feet. Not yet verified in engine.",
+  "method": "Own-body rectangles with3px beyond alpha>=128 bbox; exact integer placement to floor340. No painting, alpha cleanup, scaling or resampling of candidate atlases. Original caBX intact. Frame11 comes from the one directed ImageGen correction restoring its short blade; other11 frames retain the initial source. Source dimensions differ from requested; output cells exact without resampling.",
+  "frames": [
+    {
+      "frame": 0,
+      "source_file": "original.png",
+      "source_bbox_alpha_ge_128": [
+        40,
+        29,
+        349,
+        340
+      ],
+      "source_rect": [
+        37,
+        26,
+        352,
+        343
+      ],
+      "nominal_grid_origin": [
+        0,
+        0
+      ],
+      "integer_translation_relative_to_nominal_grid": [
+        0,
+        0
+      ],
+      "destination_crop_top_left": [
+        37,
+        26
+      ],
+      "normalized_bbox_alpha_ge_128": [
+        40,
+        29,
+        349,
+        340
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          41853,
+          41853
+        ],
+        "64": [
+          40838,
+          40838
+        ],
+        "128": [
+          39945,
+          39945
+        ],
+        "240": [
+          37825,
+          37825
+        ]
+      },
+      "source_contact_floor_y": 340,
+      "pivot_candidate": [
+        198,
+        340
+      ]
+    },
+    {
+      "frame": 1,
+      "source_file": "original.png",
+      "source_bbox_alpha_ge_128": [
+        393,
+        28,
+        709,
+        340
+      ],
+      "source_rect": [
+        390,
+        25,
+        712,
+        343
+      ],
+      "nominal_grid_origin": [
+        362,
+        0
+      ],
+      "integer_translation_relative_to_nominal_grid": [
+        0,
+        0
+      ],
+      "destination_crop_top_left": [
+        28,
+        25
+      ],
+      "normalized_bbox_alpha_ge_128": [
+        31,
+        28,
+        347,
+        340
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          39834,
+          39834
+        ],
+        "64": [
+          38901,
+          38901
+        ],
+        "128": [
+          38014,
+          38014
+        ],
+        "240": [
+          35998,
+          35998
+        ]
+      },
+      "source_contact_floor_y": 340,
+      "pivot_candidate": [
+        198,
+        340
+      ]
+    },
+    {
+      "frame": 2,
+      "source_file": "original.png",
+      "source_bbox_alpha_ge_128": [
+        752,
+        27,
+        1070,
+        340
+      ],
+      "source_rect": [
+        749,
+        24,
+        1073,
+        343
+      ],
+      "nominal_grid_origin": [
+        724,
+        0
+      ],
+      "integer_translation_relative_to_nominal_grid": [
+        0,
+        0
+      ],
+      "destination_crop_top_left": [
+        25,
+        24
+      ],
+      "normalized_bbox_alpha_ge_128": [
+        28,
+        27,
+        347,
+        340
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          39792,
+          39792
+        ],
+        "64": [
+          38853,
+          38853
+        ],
+        "128": [
+          38007,
+          38007
+        ],
+        "240": [
+          36039,
+          36039
+        ]
+      },
+      "source_contact_floor_y": 340,
+      "pivot_candidate": [
+        198,
+        340
+      ]
+    },
+    {
+      "frame": 3,
+      "source_file": "original.png",
+      "source_bbox_alpha_ge_128": [
+        1114,
+        17,
+        1426,
+        339
+      ],
+      "source_rect": [
+        1111,
+        14,
+        1429,
+        342
+      ],
+      "nominal_grid_origin": [
+        1086,
+        0
+      ],
+      "integer_translation_relative_to_nominal_grid": [
+        0,
+        1
+      ],
+      "destination_crop_top_left": [
+        25,
+        15
+      ],
+      "normalized_bbox_alpha_ge_128": [
+        28,
+        18,
+        340,
+        340
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          39505,
+          39505
+        ],
+        "64": [
+          38496,
+          38496
+        ],
+        "128": [
+          37613,
+          37613
+        ],
+        "240": [
+          35584,
+          35584
+        ]
+      },
+      "source_contact_floor_y": 339,
+      "pivot_candidate": [
+        198,
+        340
+      ]
+    },
+    {
+      "frame": 4,
+      "source_file": "original.png",
+      "source_bbox_alpha_ge_128": [
+        38,
+        379,
+        348,
+        704
+      ],
+      "source_rect": [
+        35,
+        376,
+        351,
+        707
+      ],
+      "nominal_grid_origin": [
+        0,
+        362
+      ],
+      "integer_translation_relative_to_nominal_grid": [
+        0,
+        -2
+      ],
+      "destination_crop_top_left": [
+        35,
+        12
+      ],
+      "normalized_bbox_alpha_ge_128": [
+        38,
+        15,
+        348,
+        340
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          40239,
+          40239
+        ],
+        "64": [
+          39267,
+          39267
+        ],
+        "128": [
+          38390,
+          38390
+        ],
+        "240": [
+          36348,
+          36348
+        ]
+      },
+      "source_contact_floor_y": 704,
+      "pivot_candidate": [
+        198,
+        340
+      ]
+    },
+    {
+      "frame": 5,
+      "source_file": "original.png",
+      "source_bbox_alpha_ge_128": [
+        391,
+        385,
+        709,
+        701
+      ],
+      "source_rect": [
+        388,
+        382,
+        712,
+        704
+      ],
+      "nominal_grid_origin": [
+        362,
+        362
+      ],
+      "integer_translation_relative_to_nominal_grid": [
+        0,
+        1
+      ],
+      "destination_crop_top_left": [
+        26,
+        21
+      ],
+      "normalized_bbox_alpha_ge_128": [
+        29,
+        24,
+        347,
+        340
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          40901,
+          40901
+        ],
+        "64": [
+          39936,
+          39936
+        ],
+        "128": [
+          39090,
+          39090
+        ],
+        "240": [
+          37072,
+          37072
+        ]
+      },
+      "source_contact_floor_y": 701,
+      "pivot_candidate": [
+        198,
+        340
+      ]
+    },
+    {
+      "frame": 6,
+      "source_file": "original.png",
+      "source_bbox_alpha_ge_128": [
+        753,
+        389,
+        1068,
+        702
+      ],
+      "source_rect": [
+        750,
+        386,
+        1071,
+        705
+      ],
+      "nominal_grid_origin": [
+        724,
+        362
+      ],
+      "integer_translation_relative_to_nominal_grid": [
+        0,
+        0
+      ],
+      "destination_crop_top_left": [
+        26,
+        24
+      ],
+      "normalized_bbox_alpha_ge_128": [
+        29,
+        27,
+        344,
+        340
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          39982,
+          39982
+        ],
+        "64": [
+          38971,
+          38971
+        ],
+        "128": [
+          38077,
+          38077
+        ],
+        "240": [
+          36010,
+          36010
+        ]
+      },
+      "source_contact_floor_y": 702,
+      "pivot_candidate": [
+        198,
+        340
+      ]
+    },
+    {
+      "frame": 7,
+      "source_file": "original.png",
+      "source_bbox_alpha_ge_128": [
+        1112,
+        380,
+        1431,
+        703
+      ],
+      "source_rect": [
+        1109,
+        377,
+        1434,
+        706
+      ],
+      "nominal_grid_origin": [
+        1086,
+        362
+      ],
+      "integer_translation_relative_to_nominal_grid": [
+        0,
+        -1
+      ],
+      "destination_crop_top_left": [
+        23,
+        14
+      ],
+      "normalized_bbox_alpha_ge_128": [
+        26,
+        17,
+        346,
+        340
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          41594,
+          41594
+        ],
+        "64": [
+          40637,
+          40637
+        ],
+        "128": [
+          39707,
+          39707
+        ],
+        "240": [
+          37699,
+          37699
+        ]
+      },
+      "source_contact_floor_y": 703,
+      "pivot_candidate": [
+        198,
+        340
+      ]
+    },
+    {
+      "frame": 8,
+      "source_file": "original.png",
+      "source_bbox_alpha_ge_128": [
+        29,
+        752,
+        343,
+        1056
+      ],
+      "source_rect": [
+        26,
+        749,
+        346,
+        1059
+      ],
+      "nominal_grid_origin": [
+        0,
+        724
+      ],
+      "integer_translation_relative_to_nominal_grid": [
+        0,
+        8
+      ],
+      "destination_crop_top_left": [
+        26,
+        33
+      ],
+      "normalized_bbox_alpha_ge_128": [
+        29,
+        36,
+        343,
+        340
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          41154,
+          41154
+        ],
+        "64": [
+          40144,
+          40144
+        ],
+        "128": [
+          39316,
+          39316
+        ],
+        "240": [
+          37322,
+          37322
+        ]
+      },
+      "source_contact_floor_y": 1056,
+      "pivot_candidate": [
+        198,
+        340
+      ]
+    },
+    {
+      "frame": 9,
+      "source_file": "original.png",
+      "source_bbox_alpha_ge_128": [
+        383,
+        774,
+        700,
+        1055
+      ],
+      "source_rect": [
+        380,
+        771,
+        703,
+        1058
+      ],
+      "nominal_grid_origin": [
+        362,
+        724
+      ],
+      "integer_translation_relative_to_nominal_grid": [
+        0,
+        9
+      ],
+      "destination_crop_top_left": [
+        18,
+        56
+      ],
+      "normalized_bbox_alpha_ge_128": [
+        21,
+        59,
+        338,
+        340
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          39790,
+          39790
+        ],
+        "64": [
+          38956,
+          38956
+        ],
+        "128": [
+          38219,
+          38219
+        ],
+        "240": [
+          36446,
+          36446
+        ]
+      },
+      "source_contact_floor_y": 1055,
+      "pivot_candidate": [
+        198,
+        340
+      ]
+    },
+    {
+      "frame": 10,
+      "source_file": "original.png",
+      "source_bbox_alpha_ge_128": [
+        736,
+        826,
+        1056,
+        1056
+      ],
+      "source_rect": [
+        733,
+        823,
+        1059,
+        1059
+      ],
+      "nominal_grid_origin": [
+        724,
+        724
+      ],
+      "integer_translation_relative_to_nominal_grid": [
+        0,
+        11
+      ],
+      "destination_crop_top_left": [
+        9,
+        110
+      ],
+      "normalized_bbox_alpha_ge_128": [
+        12,
+        113,
+        332,
+        343
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          37272,
+          37272
+        ],
+        "64": [
+          36552,
+          36552
+        ],
+        "128": [
+          35888,
+          35888
+        ],
+        "240": [
+          34398,
+          34398
+        ]
+      },
+      "source_contact_floor_y": 1053,
+      "pivot_candidate": [
+        198,
+        340
+      ]
+    },
+    {
+      "frame": 11,
+      "source_file": "ko-correction-01/original.png",
+      "source_bbox_alpha_ge_128": [
+        1090,
+        870,
+        1433,
+        1065
+      ],
+      "source_rect": [
+        1087,
+        867,
+        1436,
+        1068
+      ],
+      "nominal_grid_origin": [
+        1086,
+        724
+      ],
+      "integer_translation_relative_to_nominal_grid": [
+        0,
+        10
+      ],
+      "destination_crop_top_left": [
+        1,
+        153
+      ],
+      "normalized_bbox_alpha_ge_128": [
+        4,
+        156,
+        347,
+        351
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          35179,
+          35179
+        ],
+        "64": [
+          34448,
+          34448
+        ],
+        "128": [
+          33826,
+          33826
+        ],
+        "240": [
+          32234,
+          32234
+        ]
+      },
+      "source_contact_floor_y": 1054,
+      "pivot_candidate": [
+        198,
+        340
+      ]
+    }
+  ],
+  "scope": "Staging only; no manifest/profile/pin/source/runtime edits"
+}

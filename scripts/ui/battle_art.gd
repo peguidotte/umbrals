@@ -1,27 +1,39 @@
 class_name UmbralBattleArt
 extends RefCounted
 ## Atlas regions are applied at render time. Generated source PNGs stay untouched.
-const Assets = preload("res://scripts/assets/catalog.gd")
 const Presentation = preload("res://scripts/ui/creature_presentation.gd")
+const Assets = preload("res://scripts/assets/catalog.gd")
 const ATLAS_MODULES = ["characters/battle-creatures", "characters/battle-evolved"]
 const ATLAS_VERSION = "1.0.0"
 static var _loaded: bool = false
 static var _textures: Dictionary = {}
 static var _grounding: Dictionary = {}
 
-static func texture(art_id: String, enemy: bool = false) -> Texture2D:
-	var region_id: String = art_id.get_file()
-	var authored: Dictionary = Presentation.form(region_id)
-	if not authored.is_empty():
-		var key: String = region_id + (":enemy" if enemy else ":ally")
-		if not _textures.has(key): _textures[key] = Presentation.texture(region_id, enemy)
-		return _textures[key]
-	# A deliberate portrait pin can supply its own battle art and floor profile.
+static func view_name(art_id: String, rear: bool = false) -> String:
+	if not Presentation.form(art_id.get_file()).is_empty(): return "enemy" if rear else "front"
 	var profile: Dictionary = Assets.bound_manifest(art_id).get("metadata", {}).get("battle_profile", {})
+	var back: Dictionary = profile.get("views", {}).get("back", {})
+	return "back" if rear and back.has("portrait_role") and back.has("grounding") and back.has("motion_key") else "front"
+
+static func view_profile(art_id: String, view: String = "front") -> Dictionary:
+	var profile: Dictionary = Assets.bound_manifest(art_id).get("metadata", {}).get("battle_profile", {})
+	return profile if view == "front" else profile.get("views", {}).get(view, {})
+
+static func texture(art_id: String, requested_view: Variant = "front") -> Texture2D:
+	var view: String = view_name(art_id, requested_view) if requested_view is bool else str(requested_view)
+	var region_id: String = art_id.get_file()
+	if not Presentation.form(region_id).is_empty():
+		var electric_key: String = region_id + ":" + view
+		if not _textures.has(electric_key): _textures[electric_key] = Presentation.texture(region_id, view == "enemy")
+		return _textures[electric_key]
+	# A deliberate portrait pin can supply its own battle art and floor profile.
+	var profile: Dictionary = view_profile(art_id, view)
 	if not profile.is_empty():
-		if not _textures.has(art_id): _textures[art_id] = Assets.texture(art_id)
-		_grounding[art_id] = profile.grounding
-		return _textures[art_id]
+		var key: String = art_id if view == "front" else art_id + ":" + view
+		if not _textures.has(key):
+			_textures[key] = Assets.texture(art_id) if view == "front" else load(Assets.bound_file(art_id, str(profile.portrait_role)))
+		_grounding[key] = profile.grounding
+		return _textures[key]
 	if _textures.has(region_id): return _textures[region_id]
 	if not _loaded:
 		_loaded = true
@@ -48,8 +60,10 @@ static func texture(art_id: String, enemy: bool = false) -> Texture2D:
 	_textures[region_id] = result
 	return result
 
-static func ground_profile(art_id: String, enemy: bool = false) -> Dictionary:
+static func ground_profile(art_id: String, requested_view: Variant = "front") -> Dictionary:
+	var view: String = view_name(art_id, requested_view) if requested_view is bool else str(requested_view)
 	var authored: Dictionary = Presentation.form(art_id.get_file())
-	if not authored.is_empty(): return authored["enemy" if enemy else "ally"]
-	var art: Texture2D = texture(art_id, enemy)
-	return _grounding.get(art_id, _grounding.get(art_id.get_file(), {"foot": [art.get_width() * 0.5, art.get_height() * 0.93], "width": art.get_width() * 0.6, "visible_top": art.get_height() * 0.10}))
+	if not authored.is_empty(): return authored["enemy" if view == "enemy" else "ally"]
+	var art: Texture2D = texture(art_id, view)
+	var key: String = art_id if view == "front" else art_id + ":" + view
+	return _grounding.get(key, _grounding.get(art_id.get_file(), {"foot": [art.get_width() * 0.5, art.get_height() * 0.93], "width": art.get_width() * 0.6, "visible_top": art.get_height() * 0.10}))

@@ -1253,3 +1253,44 @@ no PR. Balanceamento numérico é default de protótipo delegado, e revisão de 
 animação e hardware continua aberta. Próxima fatia: revisar a família jogando,
 refinar transições e asas de repouso, então coordenar integração. Produto 0.3.0.
 [Escopo, compatibilidade e evidências](electric-adults-v05-art03.md).
+
+### V05-CNT-02A — Foslash jogável e folhas-lâminas
+
+Foslash entra por aresta explícita de Folife, com anatomia frontal, oito
+poses de caminhada/quatro de KO e VFX próprios de folhas-lâminas para a
+linhagem. Ruleset 4 separa a revisão do catálogo da revisão de eventos;
+runs históricas mantêm o grafo antigo, UID/passiva/cartas e RNG. Atributos
+adultos repetem o incremento anterior como default provisório, sem nova
+regra definitiva de balanceamento.
+
+[Escopo, compatibilidade, tentativas e lacunas](foslash-playable-v05-cnt-02a.md).
+Gates focados passaram; mouse real validou evolução/boss/3 casts (25/0) e
+comandos de produção validaram HP 72→0→26 no mesmo UID (16/0). Draft técnico,
+sem aceitação integral desta candidata ainda. Verso de Foslash bloqueado na
+geração; pop de postura e lâmina pintada durante o projétil permanecem.
+Próxima fatia: Folivel jogável e versos próprios onde há arte válida;
+fechamento completo com vídeo após congelar a candidata. Produto 0.3.0.
+
+### V05-CNT-02B — Folivel jogável e dorsais próprios
+
+A alternativa Folivel da v13 entra por aresta explícita de Folife, com
+frente/verso e lifecycle próprios. Foli/Folife recebem dorsais em novas
+versões 1.1.0; as fontes frontais anteriores permanecem preservadas.
+Catálogo 2 mantém compatibilidade auditada com as revisões 0/1, sem
+acrescentar Folivel às ofertas de uma run histórica. Save252/0 e regras56/0
+passaram nos alvos puros; fechamento completo, input/vídeo e revisão do
+commit congelado ficam no PR.
+
+[Escopo, identidade, fontes e lacunas](folivel-playable-v05-cnt-02b.md).
+Marcha dorsal de Folivel tem alternância posterior limitada; verso de
+Foslash e casts de corpo em poses ainda faltam. Sem merge ou aprovação
+estética/performance por contagens de teste. Produto 0.3.0.
+
+
+### V05-CNT-02 — candidata local de união de linhagens
+
+Integração local sobre 4df4809 com fontes de grama a9dc51e e diagnóstico de
+cb713b2, preservando casa/foco/Pietro 2 e a elétrica. Históricos mantêm seus
+grafos0/1/2/3; novas expedições usam4. Movimento 829 e saves 433 passaram nos
+focos; a aceitação integral tem relatório próprio após congelar a composição.
+Não é família final, main ou aprovação estética. [Escopo e compatibilidade](lineage-union-candidate.md).

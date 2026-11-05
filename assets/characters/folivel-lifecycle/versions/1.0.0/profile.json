@@ -1,0 +1,25 @@
+{
+  "forms": {
+    "folivel": {
+      "ko": "knockout-front",
+      "ko_seconds": 0.6,
+      "settle_mode": "cut",
+      "source_height_ratio": 0.5542264752791068,
+      "standing_height": 212,
+      "stride_pixels": 62,
+      "walk": "walk-front",
+      "walk_seconds": 0.8
+    },
+    "folivel:back": {
+      "ko": "knockout-back",
+      "ko_seconds": 0.6,
+      "settle_mode": "cut",
+      "source_height_ratio": 0.7862838915470495,
+      "standing_height": 450,
+      "stride_pixels": 62,
+      "walk": "walk-back",
+      "walk_seconds": 0.8
+    }
+  },
+  "schema": 1
+}

@@ -59,3 +59,83 @@ A frozen pre-adult mixed-party replay verifies the unchanged historical offer
 prefix and complete resulting snapshot, including physical cards, RNG and enemy
 plans. Both adult choices are exercised separately and roundtrip as current saves.
 See [implementation and prototype limits](electric-adults-v05-art03.md).
+
+## Rules 4: explicit catalog revision for final grass forms
+
+The playable Foslash slice uses `expedition-rules-4`, retaining checkpoint,
+replay and snapshot version 2. A schema-2 snapshot now requires integer
+`catalog_revision`, stored once at expedition level and installed on its one
+Rules instance. Revision 0 retains the previous evolution graph; revision 1
+added form `foslash` and edge `verdalio_to_foslash`. New runs now use revision 2,
+also adding `folivel` and edge `verdalio_to_folivel`. This is separate
+from `event_revision`, which still selects only the spring behavior. Existing
+species `moss`, forms `moss` / `verdalio` and edge `moss_to_verdalio` stay stable.
+
+The registry explicitly pins the rules-3 identity with catalog digest
+`7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80` to the
+already frozen rules-2 gameplay manifest: those rulesets have the same catalog.
+Its reviewed transition removes only the registered appended Foslash form/edge
+and corresponding derived projection entries before applying the unchanged
+conservative comparator. Changed historical stats, edges, pools or ordering
+still reject migration; arbitrary extra final forms/edges are not admitted.
+No manifest is accepted from save data and no unregistered digest is trusted.
+
+Rules-3 snapshots retain their event revision (0 or 1) and migrate to catalog 0.
+Schema-1 and both pinned rules-2 identities retain event revision 0 and likewise
+use catalog 0. Migration remains detached and idempotent. Historical identities
+cannot claim a new catalog revision or contain its forms, captures or pending
+evolutions. Under the current identity, a revision-0 run still rejects a forged
+Foslash body/offer. Reward generation, command application and checkpoint restore
+all use the same revision query. Replays use those production command boundaries.
+Unsupported catalog revisions block load, overwrite and clear through the
+existing envelope validation. Ordinary reads never rewrite historical slots.
+
+The frozen rules-3 moss fixture records 59 real commands, the actual Foli-to-Folife
+choice, both encounters and their full pending rewards, plus a spring alternative
+and an actual checksum envelope. Tests preserve RNG, plans, card identities/zones
+and offers. Foslash provisionally repeats only the existing Foli-to-Folife
+numerical delta: HP/attack/defense/speed 72/14/6/12, living_roots 6, power profile
+damage/block/heal/burn/wet 10/8/4/2/2. Existing card instances improve without new
+power IDs or copies. These are revisable prototype values, not final balance.
+This adjustment affects only the new form available in catalogs 1/2; historical catalog-0 values
+and fixtures are unchanged. Its own art/VFX do not authorize new mechanics.
+
+## Catalog 2: preserve committed Foslash runs while adding Folivel
+
+The exact catalog-1 gameplay manifest from `c7f9ec1` is frozen in
+`expedition/catalog1_manifest.gd`, pinned to rules-4 digest
+`07942959b491e5c9466c7133b0a4b1809283f9aee7162d405af6ff31aa278442`.
+Its saves already require `catalog_revision` 0 or 1; migration preserves that
+value and its spring revision, rather than selecting 2. The old identity cannot
+claim revision 2 even when its party contains only an initial form. Boolean,
+string, fractional, missing and future revisions fail closed before migration.
+JSON's integral numeric 0/1 values remain accepted at the historical boundary.
+
+The extension adapter removes only registered appended suffixes, in reverse
+order: Folivel then Foslash for source catalog 0, and only Folivel for the
+catalog-1 manifest. The original conservative comparator then verifies every
+published definition, including Foslash. Both forms and corresponding projection
+entries remain explicitly ordered. An unregistered digest, form/edge/order or
+rewritten existing definition does not gain admission through the adapter.
+
+Current-identity runs retaining catalog 1 still reject Folivel bodies, captures,
+pending offers and injected commands/replays. Catalog 0 also rejects Foslash,
+including under the frozen catalog-1 source identity. Only a new run selects
+catalog 2 and sees the second final branch. Folivel provisionally shares Foslash's
+72/14/6/12 attributes, living_roots 6 and 10/8/4/2/2 profile; no new power IDs,
+card copies, canonical specialization or further evolution are introduced.
+
+Before the addition, a real catalog-1 replay recorded 61 production commands
+through the Foslash choice and next boss encounter. A real catalog-0 run migrated
+under that same rules-4 identity records 59 commands and its capture-only second
+reward. Their complete checkpoints, cards, offers, plans, RNG, source manifest
+and actual checksum envelope are frozen as independent migration fixtures.
+
+
+## União local das linhagens de grama e elétrica
+
+Na candidata descrita em [lineage-union-candidate.md](lineage-union-candidate.md),
+as revisões0/1/2 são preservadas;3 identifica o grafo elétrico independente e4
+o combinado das novas runs. Não tratar revisões como limites ordinais. As
+identidades históricas são auditadas com manifestos congelados, sem upgrade
+silencioso de formas ou de revisão da Nascente. Schema/envelope continuam2.

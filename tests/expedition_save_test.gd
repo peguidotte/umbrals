@@ -8,6 +8,8 @@ const Identity = preload("res://scripts/expedition/identity.gd")
 const Replay = preload("res://scripts/expedition/replay.gd")
 const Expedition = preload("res://scripts/expedition/expedition.gd")
 const Storage = preload("res://scripts/storage.gd")
+const GrassCatalog = preload("res://tests/support/grass_catalog_checks.gd")
+const FolivelCatalog = preload("res://tests/support/folivel_catalog_checks.gd")
 const PATH: String = "user://expedition_save_fixture.json"
 const KEY: String = "test.expedition.save"
 var failures: int = 0
@@ -188,6 +190,9 @@ func _initialize() -> void:
 	replay.identity.ruleset = "future"
 	expect(Replay.decode(replay).is_empty(), "Foreign replay rejected")
 	electric_extension()
+	GrassCatalog.run(expect)
+	FolivelCatalog.run(expect)
+	preload("res://tests/support/catalog_union_checks.gd").run(expect)
 	print("Expedition save: %d assertions, %d failures" % [assertions, failures])
 	quit(1 if failures else 0)
 
@@ -195,7 +200,7 @@ func electric_extension() -> void:
 	var old: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/electric_rules3_before_adults.json"))
 	expect(old.identity == Registry.ELECTRIC_SOURCE_IDENTITY and Registry.supports(old.identity), "Frozen pre-adult rules3 identity has an audited migration")
 	var source: Dictionary = preload("res://scripts/expedition/rules2_manifest.gd").DATA
-	var target: Dictionary = Identity.manifest()
+	var target: Dictionary = Registry.Electric3.DATA
 	expect(not Registry.additive(source, target) and Registry.lineage_extension(source, target), "Existing lineage extension is explicit, not a relaxed additive comparison")
 	var altered: Dictionary = target.duplicate(true)
 	altered.catalog.volt.forms[0].stats.speed += 1
@@ -215,12 +220,20 @@ func electric_extension() -> void:
 	expect(run.restore(old.initial_state), "Pre-adult mixed party checkpoint restores")
 	expect(Replay.execute(run, old.commands.slice(0, 3)).ok, "Historical battle commands still reach reward")
 	expect(JSON.parse_string(JSON.stringify(run.battle.reward_offers.slice(0, old.offer_prefix.size()))) == old.offer_prefix, "Capture and other owners' historical evolution indices remain an exact prefix")
-	expect(run.battle.reward_offers.slice(3).map(func(offer: Dictionary) -> String: return str(offer.target_form_id)) == ["auravel", "zuldar"], "Adult branches append after all historical offers")
+	expect(run.battle.catalog_revision == 0 and run.battle.reward_offers.size() == old.offer_prefix.size(), "Rules4 preserves the pre-adult historical graph")
 	var reward: Dictionary = run.snapshot()
 	expect(Replay.execute(run, old.commands.slice(3)).ok, "Historical reward index still chooses Brasa evolution")
 	var expected: Dictionary = old.expected.duplicate(true)
 	expected.identity = Identity.current()
-	expect(JSON.parse_string(JSON.stringify(run.snapshot())) == expected, "Historical replay preserves exact RNG, cards, party, plans and map after its reward choice")
+	expected.catalog_revision = 0
+	expect(JSON.parse_string(JSON.stringify(run.snapshot())) == JSON.parse_string(JSON.stringify(expected)), "Historical replay preserves exact RNG, cards, party, plans and map after its reward choice")
+	# This is an explicitly current, private fixture, not a historical save upgrade.
+	var current_fixture: Dictionary = old.initial_state.duplicate(true)
+	current_fixture.identity = Identity.current()
+	current_fixture.catalog_revision = preload("res://scripts/battle/catalog_revision.gd").CURRENT
+	expect(run.restore(current_fixture) and Replay.execute(run, old.commands.slice(0, 3)).ok, "Current catalog fixture reaches the real adult reward")
+	expect(run.battle.reward_offers.slice(3).map(func(offer: Dictionary) -> String: return str(offer.target_form_id)) == ["auravel", "zuldar"], "Current adult branches append after all historical offers")
+	reward = run.snapshot()
 	for index in [3, 4]:
 		for hp: int in [48, 1, 23, 47, 0]:
 			var health_case: Dictionary = reward.duplicate(true)
