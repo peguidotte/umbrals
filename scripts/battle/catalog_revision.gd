@@ -1,7 +1,7 @@
 extends RefCounted
 ## A run retains its authored evolution graph across catalog additions.
 const Content = preload("res://scripts/content.gd")
-const CURRENT: int = 1
+const CURRENT: int = 2
 
 static func supported(revision: int) -> bool:
 	return revision >= 0 and revision <= CURRENT

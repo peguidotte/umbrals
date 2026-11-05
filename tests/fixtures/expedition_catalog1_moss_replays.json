@@ -1,0 +1,3798 @@
+{
+  "catalog0_expected": {
+    "battle": {
+      "action_modifier": 0,
+      "actions": 14,
+      "deck": [],
+      "declined_replacements": {
+
+      },
+      "discard_pile": [
+        {
+          "instance_id": "1:root_wall:1",
+          "owner": 1,
+          "power": "root_wall"
+        },
+        {
+          "instance_id": "1:thorn_lash:1",
+          "owner": 1,
+          "power": "thorn_lash"
+        },
+        {
+          "instance_id": "1:root_wall:0",
+          "owner": 1,
+          "power": "root_wall"
+        },
+        {
+          "instance_id": "1:sowing:1",
+          "owner": 1,
+          "power": "sowing"
+        },
+        {
+          "instance_id": "1:sowing:0",
+          "owner": 1,
+          "power": "sowing"
+        },
+        {
+          "instance_id": "1:thorn_lash:0",
+          "owner": 1,
+          "power": "thorn_lash"
+        }
+      ],
+      "encounter": 1,
+      "encounter_rounds_resolved": 4,
+      "enemies": [
+        {
+          "art": "characters/owl",
+          "attack": 10,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "2001:lightning:0",
+              "owner": 2001,
+              "power": "lightning"
+            },
+            {
+              "instance_id": "2001:lightning:1",
+              "owner": 2001,
+              "power": "lightning"
+            },
+            {
+              "instance_id": "2001:interference:0",
+              "owner": 2001,
+              "power": "interference"
+            },
+            {
+              "instance_id": "2001:interference:1",
+              "owner": 2001,
+              "power": "interference"
+            },
+            {
+              "instance_id": "2001:storm_dive:0",
+              "owner": 2001,
+              "power": "storm_dive"
+            },
+            {
+              "instance_id": "2001:storm_dive:1",
+              "owner": 2001,
+              "power": "storm_dive"
+            }
+          ],
+          "defense": 1,
+          "form_id": "volt",
+          "hp": 0,
+          "known_powers": [
+            "lightning",
+            "interference",
+            "storm_dive"
+          ],
+          "max_hp": 46,
+          "name": "Coruja dos espinhos",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 0,
+              "category": "prepare",
+              "charge": 6,
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "lightning",
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 7,
+              "nature": "lightning",
+              "scope": "upper_pair",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+                "electrified": 2
+              },
+              "damage": 6,
+              "nature": "lightning",
+              "scope": "single",
+              "target_policy": "weakest",
+              "wet": 0
+            }
+          ],
+          "slot": 0,
+          "species": "volt",
+          "speed": 14,
+          "status_sources": {
+            "charge": {
+              "side": "enemy",
+              "uid": 2001
+            }
+          },
+          "statuses": {
+            "charge": 6
+          },
+          "uid": 2001
+        },
+        {
+          "art": "characters/spore",
+          "attack": 10,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "2002:thorn_lash:0",
+              "owner": 2002,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "2002:thorn_lash:1",
+              "owner": 2002,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "2002:root_wall:0",
+              "owner": 2002,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "2002:root_wall:1",
+              "owner": 2002,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "2002:sowing:0",
+              "owner": 2002,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "2002:sowing:1",
+              "owner": 2002,
+              "power": "sowing"
+            }
+          ],
+          "defense": 1,
+          "form_id": "moss",
+          "hp": 0,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 40,
+          "name": "Esporo vigia",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+                "seed": 3
+              },
+              "damage": 4,
+              "nature": "forest",
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 8,
+              "category": "defend",
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "forest",
+              "priority": 1,
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 6,
+              "nature": "forest",
+              "scope": "lower_pair",
+              "wet": 0
+            }
+          ],
+          "slot": 2,
+          "species": "moss",
+          "speed": 8,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 2002
+        }
+      ],
+      "enemy_plan": [
+        {
+          "actor_slot": 0,
+          "actor_uid": 2001,
+          "block": 0,
+          "category": "prepare",
+          "charge": 6,
+          "conditions": {
+
+          },
+          "damage": 0,
+          "heal": 0,
+          "nature": "lightning",
+          "power": "enemy_prepare",
+          "priority": 0,
+          "scope": "single",
+          "target_slot": 1,
+          "wet": 0
+        }
+      ],
+      "hand": [],
+      "hand_size_modifier": 0,
+      "information_mode": "partial",
+      "inventory": {
+        "potion": 2,
+        "revive": 1
+      },
+      "last_result": {
+        "actions": 3,
+        "applied_damage": 13,
+        "block": 19,
+        "bonuses": [],
+        "burn_added": 0,
+        "burn_tick": 0,
+        "damage": 24,
+        "direct_damage": 24,
+        "encounter_index": 1,
+        "energy": 3,
+        "events": [
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 19,
+            "kind": "block",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 59,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 1,
+            "kind": "heal",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 1,
+            "condition": "taunt",
+            "kind": "condition",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Coruja dos espinhos",
+            "actor_side": "enemy",
+            "actor_slot": 0,
+            "actor_uid": 2001,
+            "amount": 6,
+            "kind": "prepare",
+            "power": "enemy_prepare",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 13,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                },
+                "seed": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "charge": 6,
+                "seed": 2
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 11,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "sowing",
+            "resistance": 0,
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 2,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "condition": "seed",
+            "kind": "reaction",
+            "label": "Brotação",
+            "power": "sowing",
+            "reaction": "sprouting",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 2,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 6,
+            "kind": "block",
+            "power": "sowing",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 25,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 2,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "sowing",
+            "resistance": 0,
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 0,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "kind": "ko",
+            "power": "sowing",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 0,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          }
+        ],
+        "heal": 4,
+        "incoming": 0,
+        "name": "Poder de Folife",
+        "ok": true,
+        "passed": false,
+        "phase": "reward",
+        "reason": "",
+        "resolved_round": 4,
+        "valid": true
+      },
+      "next_uid": 2,
+      "party": [
+        {
+          "attack": 11,
+          "block": 25,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "1:sowing:0",
+              "owner": 1,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "1:thorn_lash:0",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:root_wall:0",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:thorn_lash:1",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:root_wall:1",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:sowing:1",
+              "owner": 1,
+              "power": "sowing"
+            }
+          ],
+          "defense": 5,
+          "form_id": "verdalio",
+          "hp": 60,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 60,
+          "passive": "resilient",
+          "slot": 1,
+          "species": "moss",
+          "speed": 10,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 1
+        }
+      ],
+      "pending_information_mode": "partial",
+      "phase": "reward",
+      "relics": [],
+      "reward_offers": [
+        {
+          "kind": "capture",
+          "umbral": {
+            "attack": 10,
+            "block": 0,
+            "can_act_round": 1,
+            "cards": [
+              {
+                "instance_id": "2:fireball:0",
+                "owner": 2,
+                "power": "fireball"
+              },
+              {
+                "instance_id": "2:fireball:1",
+                "owner": 2,
+                "power": "fireball"
+              },
+              {
+                "instance_id": "2:cinder_claw:0",
+                "owner": 2,
+                "power": "cinder_claw"
+              },
+              {
+                "instance_id": "2:cinder_claw:1",
+                "owner": 2,
+                "power": "cinder_claw"
+              },
+              {
+                "instance_id": "2:flame_guard:0",
+                "owner": 2,
+                "power": "flame_guard"
+              },
+              {
+                "instance_id": "2:flame_guard:1",
+                "owner": 2,
+                "power": "flame_guard"
+              }
+            ],
+            "defense": 2,
+            "form_id": "ember",
+            "hp": 40,
+            "known_powers": [
+              "fireball",
+              "cinder_claw",
+              "flame_guard"
+            ],
+            "max_hp": 40,
+            "passive": "swift",
+            "slot": -1,
+            "species": "ember",
+            "speed": 17,
+            "status_sources": {
+
+            },
+            "statuses": {
+
+            },
+            "uid": 2
+          }
+        }
+      ],
+      "rng_seed": "1",
+      "rng_state": "-7283321909363273689",
+      "round_number": 5,
+      "seed_value": "1",
+      "starter_species": "moss",
+      "suspended_cards": {
+
+      },
+      "total_damage": 144
+    },
+    "catalog_revision": 0,
+    "completed": [
+      "clearing"
+    ],
+    "current_node_id": "thicket",
+    "event_revision": 1,
+    "identity": {
+      "content_sha256": "07942959b491e5c9466c7133b0a4b1809283f9aee7162d405af6ff31aa278442",
+      "ruleset": "expedition-rules-4"
+    },
+    "phase": "reward",
+    "schema": 2
+  },
+  "catalog0_replay": {
+    "commands": [
+      {
+        "command": "node",
+        "id": "clearing"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "select",
+        "index": 5.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "select",
+        "index": 5.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 2.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 5.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 2.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "select",
+        "index": 5.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 2.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "reward",
+        "index": 1.0
+      },
+      {
+        "command": "node",
+        "id": "thicket"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 2.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 2.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "select",
+        "index": 5.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "cast"
+      }
+    ],
+    "identity": {
+      "content_sha256": "07942959b491e5c9466c7133b0a4b1809283f9aee7162d405af6ff31aa278442",
+      "ruleset": "expedition-rules-4"
+    },
+    "initial_state": {
+      "battle": {
+        "action_modifier": 0,
+        "actions": 0,
+        "deck": [],
+        "declined_replacements": {
+
+        },
+        "discard_pile": [],
+        "encounter": 0,
+        "encounter_rounds_resolved": 0,
+        "enemies": [],
+        "enemy_plan": [],
+        "hand": [],
+        "hand_size_modifier": 0,
+        "information_mode": "partial",
+        "inventory": {
+          "potion": 2,
+          "revive": 1
+        },
+        "last_result": {
+
+        },
+        "next_uid": 2,
+        "party": [
+          {
+            "attack": 8,
+            "block": 0,
+            "can_act_round": 1,
+            "cards": [
+              {
+                "instance_id": "1:thorn_lash:0",
+                "owner": 1,
+                "power": "thorn_lash"
+              },
+              {
+                "instance_id": "1:thorn_lash:1",
+                "owner": 1,
+                "power": "thorn_lash"
+              },
+              {
+                "instance_id": "1:root_wall:0",
+                "owner": 1,
+                "power": "root_wall"
+              },
+              {
+                "instance_id": "1:root_wall:1",
+                "owner": 1,
+                "power": "root_wall"
+              },
+              {
+                "instance_id": "1:sowing:0",
+                "owner": 1,
+                "power": "sowing"
+              },
+              {
+                "instance_id": "1:sowing:1",
+                "owner": 1,
+                "power": "sowing"
+              }
+            ],
+            "defense": 4,
+            "form_id": "moss",
+            "hp": 48,
+            "known_powers": [
+              "thorn_lash",
+              "root_wall",
+              "sowing"
+            ],
+            "max_hp": 48,
+            "passive": "resilient",
+            "slot": 1,
+            "species": "moss",
+            "speed": 8,
+            "status_sources": {
+
+            },
+            "statuses": {
+
+            },
+            "uid": 1
+          }
+        ],
+        "pending_information_mode": "partial",
+        "phase": "map",
+        "relics": [],
+        "reward_offers": [],
+        "rng_seed": "1",
+        "rng_state": "6844932353678761266",
+        "round_number": 1,
+        "seed_value": "1",
+        "starter_species": "moss",
+        "suspended_cards": {
+
+        },
+        "total_damage": 0
+      },
+      "catalog_revision": 0,
+      "completed": [],
+      "current_node_id": "",
+      "event_revision": 1,
+      "identity": {
+        "content_sha256": "07942959b491e5c9466c7133b0a4b1809283f9aee7162d405af6ff31aa278442",
+        "ruleset": "expedition-rules-4"
+      },
+      "phase": "map",
+      "schema": 2
+    },
+    "schema": "umbral.expedition.replay",
+    "version": 2
+  },
+  "catalog1_after_evolution": {
+    "battle": {
+      "action_modifier": 0,
+      "actions": 14,
+      "deck": [],
+      "declined_replacements": {
+
+      },
+      "discard_pile": [],
+      "encounter": 1,
+      "encounter_rounds_resolved": 4,
+      "enemies": [
+        {
+          "art": "characters/owl",
+          "attack": 10,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "2001:lightning:0",
+              "owner": 2001,
+              "power": "lightning"
+            },
+            {
+              "instance_id": "2001:lightning:1",
+              "owner": 2001,
+              "power": "lightning"
+            },
+            {
+              "instance_id": "2001:interference:0",
+              "owner": 2001,
+              "power": "interference"
+            },
+            {
+              "instance_id": "2001:interference:1",
+              "owner": 2001,
+              "power": "interference"
+            },
+            {
+              "instance_id": "2001:storm_dive:0",
+              "owner": 2001,
+              "power": "storm_dive"
+            },
+            {
+              "instance_id": "2001:storm_dive:1",
+              "owner": 2001,
+              "power": "storm_dive"
+            }
+          ],
+          "defense": 1,
+          "form_id": "volt",
+          "hp": 0,
+          "known_powers": [
+            "lightning",
+            "interference",
+            "storm_dive"
+          ],
+          "max_hp": 46,
+          "name": "Coruja dos espinhos",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 0,
+              "category": "prepare",
+              "charge": 6,
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "lightning",
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 7,
+              "nature": "lightning",
+              "scope": "upper_pair",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+                "electrified": 2
+              },
+              "damage": 6,
+              "nature": "lightning",
+              "scope": "single",
+              "target_policy": "weakest",
+              "wet": 0
+            }
+          ],
+          "slot": 0,
+          "species": "volt",
+          "speed": 14,
+          "status_sources": {
+            "charge": {
+              "side": "enemy",
+              "uid": 2001
+            }
+          },
+          "statuses": {
+            "charge": 6
+          },
+          "uid": 2001
+        },
+        {
+          "art": "characters/spore",
+          "attack": 10,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "2002:thorn_lash:0",
+              "owner": 2002,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "2002:thorn_lash:1",
+              "owner": 2002,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "2002:root_wall:0",
+              "owner": 2002,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "2002:root_wall:1",
+              "owner": 2002,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "2002:sowing:0",
+              "owner": 2002,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "2002:sowing:1",
+              "owner": 2002,
+              "power": "sowing"
+            }
+          ],
+          "defense": 1,
+          "form_id": "moss",
+          "hp": 0,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 40,
+          "name": "Esporo vigia",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+                "seed": 3
+              },
+              "damage": 4,
+              "nature": "forest",
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 8,
+              "category": "defend",
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "forest",
+              "priority": 1,
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 6,
+              "nature": "forest",
+              "scope": "lower_pair",
+              "wet": 0
+            }
+          ],
+          "slot": 2,
+          "species": "moss",
+          "speed": 8,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 2002
+        }
+      ],
+      "enemy_plan": [],
+      "hand": [],
+      "hand_size_modifier": 0,
+      "information_mode": "partial",
+      "inventory": {
+        "potion": 2,
+        "revive": 1
+      },
+      "last_result": {
+        "actions": 3,
+        "applied_damage": 13,
+        "block": 19,
+        "bonuses": [],
+        "burn_added": 0,
+        "burn_tick": 0,
+        "damage": 24,
+        "direct_damage": 24,
+        "encounter_index": 1,
+        "energy": 3,
+        "events": [
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 19,
+            "kind": "block",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 59,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 1,
+            "kind": "heal",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 1,
+            "condition": "taunt",
+            "kind": "condition",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Coruja dos espinhos",
+            "actor_side": "enemy",
+            "actor_slot": 0,
+            "actor_uid": 2001,
+            "amount": 6,
+            "kind": "prepare",
+            "power": "enemy_prepare",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 13,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                },
+                "seed": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "charge": 6,
+                "seed": 2
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 11,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "sowing",
+            "resistance": 0,
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 2,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "condition": "seed",
+            "kind": "reaction",
+            "label": "Brotação",
+            "power": "sowing",
+            "reaction": "sprouting",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 2,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 6,
+            "kind": "block",
+            "power": "sowing",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 25,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 2,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "sowing",
+            "resistance": 0,
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 0,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "kind": "ko",
+            "power": "sowing",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 0,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          }
+        ],
+        "heal": 4,
+        "incoming": 0,
+        "name": "Poder de Folife",
+        "ok": true,
+        "passed": false,
+        "phase": "reward",
+        "reason": "",
+        "resolved_round": 4,
+        "valid": true
+      },
+      "next_uid": 2,
+      "party": [
+        {
+          "attack": 14,
+          "block": 25,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "1:root_wall:1",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:thorn_lash:1",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:root_wall:0",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:sowing:1",
+              "owner": 1,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "1:sowing:0",
+              "owner": 1,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "1:thorn_lash:0",
+              "owner": 1,
+              "power": "thorn_lash"
+            }
+          ],
+          "defense": 6,
+          "form_id": "foslash",
+          "hp": 72,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 72,
+          "passive": "resilient",
+          "slot": 1,
+          "species": "moss",
+          "speed": 12,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 1
+        }
+      ],
+      "pending_information_mode": "partial",
+      "phase": "map",
+      "relics": [],
+      "reward_offers": [],
+      "rng_seed": "1",
+      "rng_state": "-7283321909363273689",
+      "round_number": 5,
+      "seed_value": "1",
+      "starter_species": "moss",
+      "suspended_cards": {
+
+      },
+      "total_damage": 144
+    },
+    "catalog_revision": 1,
+    "completed": [
+      "clearing",
+      "thicket"
+    ],
+    "current_node_id": "thicket",
+    "event_revision": 1,
+    "identity": {
+      "content_sha256": "07942959b491e5c9466c7133b0a4b1809283f9aee7162d405af6ff31aa278442",
+      "ruleset": "expedition-rules-4"
+    },
+    "phase": "map",
+    "schema": 2
+  },
+  "catalog1_expected": {
+    "battle": {
+      "action_modifier": 0,
+      "actions": 14,
+      "deck": [],
+      "declined_replacements": {
+
+      },
+      "discard_pile": [],
+      "encounter": 2,
+      "encounter_rounds_resolved": 0,
+      "enemies": [
+        {
+          "art": "characters/stag",
+          "attack": 12,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "3001:fireball:0",
+              "owner": 3001,
+              "power": "fireball"
+            },
+            {
+              "instance_id": "3001:fireball:1",
+              "owner": 3001,
+              "power": "fireball"
+            },
+            {
+              "instance_id": "3001:cinder_claw:0",
+              "owner": 3001,
+              "power": "cinder_claw"
+            },
+            {
+              "instance_id": "3001:cinder_claw:1",
+              "owner": 3001,
+              "power": "cinder_claw"
+            },
+            {
+              "instance_id": "3001:flame_guard:0",
+              "owner": 3001,
+              "power": "flame_guard"
+            },
+            {
+              "instance_id": "3001:flame_guard:1",
+              "owner": 3001,
+              "power": "flame_guard"
+            }
+          ],
+          "defense": 2,
+          "form_id": "ignivar",
+          "hp": 76,
+          "known_powers": [
+            "fireball",
+            "cinder_claw",
+            "flame_guard"
+          ],
+          "max_hp": 76,
+          "name": "O Rei sem Aurora",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 0,
+              "category": "prepare",
+              "charge": 6,
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "fire",
+              "scope": "all",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 10,
+              "nature": "fire",
+              "scope": "all",
+              "wet": 0
+            },
+            {
+              "block": 12,
+              "category": "defend",
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "fire",
+              "priority": 1,
+              "scope": "single",
+              "wet": 0
+            }
+          ],
+          "slot": 1,
+          "species": "ember",
+          "speed": 11,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 3001
+        },
+        {
+          "art": "characters/spore",
+          "attack": 10,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "3002:thorn_lash:0",
+              "owner": 3002,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "3002:thorn_lash:1",
+              "owner": 3002,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "3002:root_wall:0",
+              "owner": 3002,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "3002:root_wall:1",
+              "owner": 3002,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "3002:sowing:0",
+              "owner": 3002,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "3002:sowing:1",
+              "owner": 3002,
+              "power": "sowing"
+            }
+          ],
+          "defense": 2,
+          "form_id": "moss",
+          "hp": 40,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 40,
+          "name": "Raiz do crepúsculo",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 8,
+              "category": "defend",
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "forest",
+              "priority": 1,
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+                "seed": 3
+              },
+              "damage": 4,
+              "nature": "forest",
+              "scope": "lower_pair",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 6,
+              "nature": "forest",
+              "scope": "single",
+              "target_policy": "weakest",
+              "wet": 0
+            }
+          ],
+          "slot": 2,
+          "species": "moss",
+          "speed": 6,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 3002
+        },
+        {
+          "art": "characters/owl",
+          "attack": 10,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "3003:lightning:0",
+              "owner": 3003,
+              "power": "lightning"
+            },
+            {
+              "instance_id": "3003:lightning:1",
+              "owner": 3003,
+              "power": "lightning"
+            },
+            {
+              "instance_id": "3003:interference:0",
+              "owner": 3003,
+              "power": "interference"
+            },
+            {
+              "instance_id": "3003:interference:1",
+              "owner": 3003,
+              "power": "interference"
+            },
+            {
+              "instance_id": "3003:storm_dive:0",
+              "owner": 3003,
+              "power": "storm_dive"
+            },
+            {
+              "instance_id": "3003:storm_dive:1",
+              "owner": 3003,
+              "power": "storm_dive"
+            }
+          ],
+          "defense": 0,
+          "form_id": "volt",
+          "hp": 36,
+          "known_powers": [
+            "lightning",
+            "interference",
+            "storm_dive"
+          ],
+          "max_hp": 36,
+          "name": "Coruja da fenda",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 5,
+              "nature": "lightning",
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "prepare",
+              "charge": 6,
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "lightning",
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 7,
+              "nature": "lightning",
+              "scope": "upper_pair",
+              "wet": 0
+            }
+          ],
+          "slot": 0,
+          "species": "volt",
+          "speed": 15,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 3003
+        }
+      ],
+      "enemy_plan": [
+        {
+          "actor_slot": 1,
+          "actor_uid": 3001,
+          "block": 0,
+          "category": "prepare",
+          "charge": 6,
+          "conditions": {
+
+          },
+          "damage": 0,
+          "heal": 0,
+          "nature": "fire",
+          "power": "enemy_prepare",
+          "priority": 0,
+          "scope": "all",
+          "target_slot": 1,
+          "wet": 0
+        },
+        {
+          "actor_slot": 2,
+          "actor_uid": 3002,
+          "block": 8,
+          "category": "defend",
+          "conditions": {
+
+          },
+          "damage": 0,
+          "heal": 0,
+          "nature": "forest",
+          "power": "enemy_defend",
+          "priority": 1,
+          "scope": "single",
+          "target_slot": 1,
+          "wet": 0
+        },
+        {
+          "actor_slot": 0,
+          "actor_uid": 3003,
+          "block": 0,
+          "category": "attack",
+          "conditions": {
+
+          },
+          "damage": 5,
+          "heal": 0,
+          "nature": "lightning",
+          "power": "enemy_attack",
+          "priority": 0,
+          "scope": "single",
+          "target_slot": 1,
+          "wet": 0
+        }
+      ],
+      "hand": [
+        {
+          "instance_id": "1:thorn_lash:1",
+          "owner": 1,
+          "power": "thorn_lash",
+          "target_slot": 1
+        },
+        {
+          "instance_id": "1:root_wall:0",
+          "owner": 1,
+          "power": "root_wall",
+          "target_slot": 1
+        },
+        {
+          "instance_id": "1:root_wall:1",
+          "owner": 1,
+          "power": "root_wall",
+          "target_slot": 1
+        },
+        {
+          "instance_id": "1:sowing:1",
+          "owner": 1,
+          "power": "sowing",
+          "target_slot": 0
+        },
+        {
+          "instance_id": "1:thorn_lash:0",
+          "owner": 1,
+          "power": "thorn_lash",
+          "target_slot": 1
+        },
+        {
+          "instance_id": "1:sowing:0",
+          "owner": 1,
+          "power": "sowing",
+          "target_slot": 0
+        }
+      ],
+      "hand_size_modifier": 0,
+      "information_mode": "partial",
+      "inventory": {
+        "potion": 2,
+        "revive": 1
+      },
+      "last_result": {
+        "actions": 3,
+        "applied_damage": 13,
+        "block": 19,
+        "bonuses": [],
+        "burn_added": 0,
+        "burn_tick": 0,
+        "damage": 24,
+        "direct_damage": 24,
+        "encounter_index": 1,
+        "energy": 3,
+        "events": [
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 19,
+            "kind": "block",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 59,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 1,
+            "kind": "heal",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 1,
+            "condition": "taunt",
+            "kind": "condition",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Coruja dos espinhos",
+            "actor_side": "enemy",
+            "actor_slot": 0,
+            "actor_uid": 2001,
+            "amount": 6,
+            "kind": "prepare",
+            "power": "enemy_prepare",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 13,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                },
+                "seed": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "charge": 6,
+                "seed": 2
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 11,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "sowing",
+            "resistance": 0,
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 2,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "condition": "seed",
+            "kind": "reaction",
+            "label": "Brotação",
+            "power": "sowing",
+            "reaction": "sprouting",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 2,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 6,
+            "kind": "block",
+            "power": "sowing",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 25,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 2,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "sowing",
+            "resistance": 0,
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 0,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "kind": "ko",
+            "power": "sowing",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 0,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          }
+        ],
+        "heal": 4,
+        "incoming": 0,
+        "name": "Poder de Folife",
+        "ok": true,
+        "passed": false,
+        "phase": "reward",
+        "reason": "",
+        "resolved_round": 4,
+        "valid": true
+      },
+      "next_uid": 2,
+      "party": [
+        {
+          "attack": 14,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "1:root_wall:1",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:thorn_lash:1",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:root_wall:0",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:sowing:1",
+              "owner": 1,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "1:sowing:0",
+              "owner": 1,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "1:thorn_lash:0",
+              "owner": 1,
+              "power": "thorn_lash"
+            }
+          ],
+          "defense": 6,
+          "form_id": "foslash",
+          "hp": 72,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 72,
+          "passive": "resilient",
+          "slot": 1,
+          "species": "moss",
+          "speed": 12,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 1
+        }
+      ],
+      "pending_information_mode": "partial",
+      "phase": "battle",
+      "relics": [],
+      "reward_offers": [],
+      "rng_seed": "1",
+      "rng_state": "-2573701224064716914",
+      "round_number": 1,
+      "seed_value": "1",
+      "starter_species": "moss",
+      "suspended_cards": {
+
+      },
+      "total_damage": 144
+    },
+    "catalog_revision": 1,
+    "completed": [
+      "clearing",
+      "thicket"
+    ],
+    "current_node_id": "boss",
+    "event_revision": 1,
+    "identity": {
+      "content_sha256": "07942959b491e5c9466c7133b0a4b1809283f9aee7162d405af6ff31aa278442",
+      "ruleset": "expedition-rules-4"
+    },
+    "phase": "combat",
+    "schema": 2
+  },
+  "catalog1_replay": {
+    "commands": [
+      {
+        "command": "node",
+        "id": "clearing"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "select",
+        "index": 5.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "select",
+        "index": 5.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 2.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 5.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 2.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "select",
+        "index": 5.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 2.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "reward",
+        "index": 1.0
+      },
+      {
+        "command": "node",
+        "id": "thicket"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 2.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 2.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "select",
+        "index": 5.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0.0
+      },
+      {
+        "command": "select",
+        "index": 3.0
+      },
+      {
+        "command": "select",
+        "index": 4.0
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "reward",
+        "index": 1
+      },
+      {
+        "command": "node",
+        "id": "boss"
+      }
+    ],
+    "identity": {
+      "content_sha256": "07942959b491e5c9466c7133b0a4b1809283f9aee7162d405af6ff31aa278442",
+      "ruleset": "expedition-rules-4"
+    },
+    "initial_state": {
+      "battle": {
+        "action_modifier": 0,
+        "actions": 0,
+        "deck": [],
+        "declined_replacements": {
+
+        },
+        "discard_pile": [],
+        "encounter": 0,
+        "encounter_rounds_resolved": 0,
+        "enemies": [],
+        "enemy_plan": [],
+        "hand": [],
+        "hand_size_modifier": 0,
+        "information_mode": "partial",
+        "inventory": {
+          "potion": 2,
+          "revive": 1
+        },
+        "last_result": {
+
+        },
+        "next_uid": 2,
+        "party": [
+          {
+            "attack": 8,
+            "block": 0,
+            "can_act_round": 1,
+            "cards": [
+              {
+                "instance_id": "1:thorn_lash:0",
+                "owner": 1,
+                "power": "thorn_lash"
+              },
+              {
+                "instance_id": "1:thorn_lash:1",
+                "owner": 1,
+                "power": "thorn_lash"
+              },
+              {
+                "instance_id": "1:root_wall:0",
+                "owner": 1,
+                "power": "root_wall"
+              },
+              {
+                "instance_id": "1:root_wall:1",
+                "owner": 1,
+                "power": "root_wall"
+              },
+              {
+                "instance_id": "1:sowing:0",
+                "owner": 1,
+                "power": "sowing"
+              },
+              {
+                "instance_id": "1:sowing:1",
+                "owner": 1,
+                "power": "sowing"
+              }
+            ],
+            "defense": 4,
+            "form_id": "moss",
+            "hp": 48,
+            "known_powers": [
+              "thorn_lash",
+              "root_wall",
+              "sowing"
+            ],
+            "max_hp": 48,
+            "passive": "resilient",
+            "slot": 1,
+            "species": "moss",
+            "speed": 8,
+            "status_sources": {
+
+            },
+            "statuses": {
+
+            },
+            "uid": 1
+          }
+        ],
+        "pending_information_mode": "partial",
+        "phase": "map",
+        "relics": [],
+        "reward_offers": [],
+        "rng_seed": "1",
+        "rng_state": "6844932353678761266",
+        "round_number": 1,
+        "seed_value": "1",
+        "starter_species": "moss",
+        "suspended_cards": {
+
+        },
+        "total_damage": 0
+      },
+      "catalog_revision": 1,
+      "completed": [],
+      "current_node_id": "",
+      "event_revision": 1,
+      "identity": {
+        "content_sha256": "07942959b491e5c9466c7133b0a4b1809283f9aee7162d405af6ff31aa278442",
+        "ruleset": "expedition-rules-4"
+      },
+      "phase": "map",
+      "schema": 2
+    },
+    "schema": "umbral.expedition.replay",
+    "version": 2
+  },
+  "catalog1_reward": {
+    "battle": {
+      "action_modifier": 0,
+      "actions": 14,
+      "deck": [],
+      "declined_replacements": {
+
+      },
+      "discard_pile": [
+        {
+          "instance_id": "1:root_wall:1",
+          "owner": 1,
+          "power": "root_wall"
+        },
+        {
+          "instance_id": "1:thorn_lash:1",
+          "owner": 1,
+          "power": "thorn_lash"
+        },
+        {
+          "instance_id": "1:root_wall:0",
+          "owner": 1,
+          "power": "root_wall"
+        },
+        {
+          "instance_id": "1:sowing:1",
+          "owner": 1,
+          "power": "sowing"
+        },
+        {
+          "instance_id": "1:sowing:0",
+          "owner": 1,
+          "power": "sowing"
+        },
+        {
+          "instance_id": "1:thorn_lash:0",
+          "owner": 1,
+          "power": "thorn_lash"
+        }
+      ],
+      "encounter": 1,
+      "encounter_rounds_resolved": 4,
+      "enemies": [
+        {
+          "art": "characters/owl",
+          "attack": 10,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "2001:lightning:0",
+              "owner": 2001,
+              "power": "lightning"
+            },
+            {
+              "instance_id": "2001:lightning:1",
+              "owner": 2001,
+              "power": "lightning"
+            },
+            {
+              "instance_id": "2001:interference:0",
+              "owner": 2001,
+              "power": "interference"
+            },
+            {
+              "instance_id": "2001:interference:1",
+              "owner": 2001,
+              "power": "interference"
+            },
+            {
+              "instance_id": "2001:storm_dive:0",
+              "owner": 2001,
+              "power": "storm_dive"
+            },
+            {
+              "instance_id": "2001:storm_dive:1",
+              "owner": 2001,
+              "power": "storm_dive"
+            }
+          ],
+          "defense": 1,
+          "form_id": "volt",
+          "hp": 0,
+          "known_powers": [
+            "lightning",
+            "interference",
+            "storm_dive"
+          ],
+          "max_hp": 46,
+          "name": "Coruja dos espinhos",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 0,
+              "category": "prepare",
+              "charge": 6,
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "lightning",
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 7,
+              "nature": "lightning",
+              "scope": "upper_pair",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+                "electrified": 2
+              },
+              "damage": 6,
+              "nature": "lightning",
+              "scope": "single",
+              "target_policy": "weakest",
+              "wet": 0
+            }
+          ],
+          "slot": 0,
+          "species": "volt",
+          "speed": 14,
+          "status_sources": {
+            "charge": {
+              "side": "enemy",
+              "uid": 2001
+            }
+          },
+          "statuses": {
+            "charge": 6
+          },
+          "uid": 2001
+        },
+        {
+          "art": "characters/spore",
+          "attack": 10,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "2002:thorn_lash:0",
+              "owner": 2002,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "2002:thorn_lash:1",
+              "owner": 2002,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "2002:root_wall:0",
+              "owner": 2002,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "2002:root_wall:1",
+              "owner": 2002,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "2002:sowing:0",
+              "owner": 2002,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "2002:sowing:1",
+              "owner": 2002,
+              "power": "sowing"
+            }
+          ],
+          "defense": 1,
+          "form_id": "moss",
+          "hp": 0,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 40,
+          "name": "Esporo vigia",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+                "seed": 3
+              },
+              "damage": 4,
+              "nature": "forest",
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 8,
+              "category": "defend",
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "forest",
+              "priority": 1,
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 6,
+              "nature": "forest",
+              "scope": "lower_pair",
+              "wet": 0
+            }
+          ],
+          "slot": 2,
+          "species": "moss",
+          "speed": 8,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 2002
+        }
+      ],
+      "enemy_plan": [
+        {
+          "actor_slot": 0,
+          "actor_uid": 2001,
+          "block": 0,
+          "category": "prepare",
+          "charge": 6,
+          "conditions": {
+
+          },
+          "damage": 0,
+          "heal": 0,
+          "nature": "lightning",
+          "power": "enemy_prepare",
+          "priority": 0,
+          "scope": "single",
+          "target_slot": 1,
+          "wet": 0
+        }
+      ],
+      "hand": [],
+      "hand_size_modifier": 0,
+      "information_mode": "partial",
+      "inventory": {
+        "potion": 2,
+        "revive": 1
+      },
+      "last_result": {
+        "actions": 3,
+        "applied_damage": 13,
+        "block": 19,
+        "bonuses": [],
+        "burn_added": 0,
+        "burn_tick": 0,
+        "damage": 24,
+        "direct_damage": 24,
+        "encounter_index": 1,
+        "energy": 3,
+        "events": [
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 19,
+            "kind": "block",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 59,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 1,
+            "kind": "heal",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 1,
+            "condition": "taunt",
+            "kind": "condition",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Coruja dos espinhos",
+            "actor_side": "enemy",
+            "actor_slot": 0,
+            "actor_uid": 2001,
+            "amount": 6,
+            "kind": "prepare",
+            "power": "enemy_prepare",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 13,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                },
+                "seed": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "charge": 6,
+                "seed": 2
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 11,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "sowing",
+            "resistance": 0,
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 2,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "condition": "seed",
+            "kind": "reaction",
+            "label": "Brotação",
+            "power": "sowing",
+            "reaction": "sprouting",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 2,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 6,
+            "kind": "block",
+            "power": "sowing",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 25,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 2,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "sowing",
+            "resistance": 0,
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 0,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "kind": "ko",
+            "power": "sowing",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 0,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          }
+        ],
+        "heal": 4,
+        "incoming": 0,
+        "name": "Poder de Folife",
+        "ok": true,
+        "passed": false,
+        "phase": "reward",
+        "reason": "",
+        "resolved_round": 4,
+        "valid": true
+      },
+      "next_uid": 2,
+      "party": [
+        {
+          "attack": 11,
+          "block": 25,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "1:sowing:0",
+              "owner": 1,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "1:thorn_lash:0",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:root_wall:0",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:thorn_lash:1",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:root_wall:1",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:sowing:1",
+              "owner": 1,
+              "power": "sowing"
+            }
+          ],
+          "defense": 5,
+          "form_id": "verdalio",
+          "hp": 60,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 60,
+          "passive": "resilient",
+          "slot": 1,
+          "species": "moss",
+          "speed": 10,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 1
+        }
+      ],
+      "pending_information_mode": "partial",
+      "phase": "reward",
+      "relics": [],
+      "reward_offers": [
+        {
+          "kind": "capture",
+          "umbral": {
+            "attack": 10,
+            "block": 0,
+            "can_act_round": 1,
+            "cards": [
+              {
+                "instance_id": "2:fireball:0",
+                "owner": 2,
+                "power": "fireball"
+              },
+              {
+                "instance_id": "2:fireball:1",
+                "owner": 2,
+                "power": "fireball"
+              },
+              {
+                "instance_id": "2:cinder_claw:0",
+                "owner": 2,
+                "power": "cinder_claw"
+              },
+              {
+                "instance_id": "2:cinder_claw:1",
+                "owner": 2,
+                "power": "cinder_claw"
+              },
+              {
+                "instance_id": "2:flame_guard:0",
+                "owner": 2,
+                "power": "flame_guard"
+              },
+              {
+                "instance_id": "2:flame_guard:1",
+                "owner": 2,
+                "power": "flame_guard"
+              }
+            ],
+            "defense": 2,
+            "form_id": "ember",
+            "hp": 40,
+            "known_powers": [
+              "fireball",
+              "cinder_claw",
+              "flame_guard"
+            ],
+            "max_hp": 40,
+            "passive": "swift",
+            "slot": -1,
+            "species": "ember",
+            "speed": 17,
+            "status_sources": {
+
+            },
+            "statuses": {
+
+            },
+            "uid": 2
+          }
+        },
+        {
+          "kind": "evolve",
+          "source_form_id": "verdalio",
+          "target_form_id": "foslash",
+          "transition_id": "verdalio_to_foslash",
+          "uid": 1
+        }
+      ],
+      "rng_seed": "1",
+      "rng_state": "-7283321909363273689",
+      "round_number": 5,
+      "seed_value": "1",
+      "starter_species": "moss",
+      "suspended_cards": {
+
+      },
+      "total_damage": 144
+    },
+    "catalog_revision": 1,
+    "completed": [
+      "clearing"
+    ],
+    "current_node_id": "thicket",
+    "event_revision": 1,
+    "identity": {
+      "content_sha256": "07942959b491e5c9466c7133b0a4b1809283f9aee7162d405af6ff31aa278442",
+      "ruleset": "expedition-rules-4"
+    },
+    "phase": "reward",
+    "schema": 2
+  },
+  "identity": {
+    "content_sha256": "07942959b491e5c9466c7133b0a4b1809283f9aee7162d405af6ff31aa278442",
+    "ruleset": "expedition-rules-4"
+  },
+  "method": "Catalog1: new run seed1/moss,59 real commands, actual Foslash choice and boss entry; catalog0: real rules3 migration followed by59 commands. No state/catalog/RNG setters.",
+  "source_commit": "c7f9ec18ad2d218a5ffaf354472e2bf01197c07c"
+}

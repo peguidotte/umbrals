@@ -1,0 +1,322 @@
+{
+  "schema": 1,
+  "updated_utc": "2026-11-05T05:12:36.404702+00:00",
+  "scope": "Folivel new rear still, front8walk+4KO, separate4KO rear strip and separate4walk rear candidate; original full rear sheet rejected",
+  "reference": {
+    "file": "docs/references/creatures/foli/lebre-silenciosa-refinada-v13.png",
+    "library_file_id": "libfile_5e6845c3842c81919a200b01a1b0c40f",
+    "sha256": "f75649f947c34fa726d190eb1109f2313220759c50cee5e761394eb6a92bbb57",
+    "pixels_inspected": true,
+    "no_v11_alternative_used": true
+  },
+  "tool": "image_gen.imagegen, native transparent_background=true",
+  "correction_budget": {
+    "maximum": 1,
+    "used": 1,
+    "purpose": "remove fifth middle belly leg from static rear cutout"
+  },
+  "sources": [
+    {
+      "file": "rear-original.png",
+      "status": "rejected",
+      "reason": "Five paws/extra belly leg.",
+      "sha256": "abe315edfe915b7fdf6ebf744e8423ba1c7d1ccc5e685555c941cabb7d6cc203",
+      "bytes": 964413,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "source_basename": "exec-6eec342a-d4ef-4ed4-8388-4f2f6129f3bf.png",
+      "original_byte_equal": true,
+      "caBX_preserved": true,
+      "strong_red_opaque": 0
+    },
+    {
+      "file": "rear-corrected-original.png",
+      "status": "candidate for independent review",
+      "reason": "One ImageGen anatomy correction removed extra middle belly leg; four paws observed. Genuine new back 3/4 view facing right, not flip.",
+      "sha256": "ef99fb8d8cea56078db30e89800adc7abaeff4657023a430e62d5064d2b40d3a",
+      "bytes": 931360,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "source_basename": "exec-0cd0da2a-d853-4866-a74a-fdc9a3135368.png",
+      "original_byte_equal": true,
+      "caBX_preserved": true,
+      "strong_red_opaque": 0
+    },
+    {
+      "file": "front-states-original.png",
+      "status": "candidate for independent review",
+      "reason": "8 walk +4 reversible KO, exact4x3 cells362, opaque bodies fit; normalized by crop+integer y translation only.",
+      "sha256": "36e115e099b18ba478ca313682905ac611914edf1253fa7ca4c4a95457af5815",
+      "bytes": 1663969,
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "source_basename": "exec-8ee5d35e-1e99-4c00-b844-7c7088b9ac0c.png",
+      "original_byte_equal": true,
+      "caBX_preserved": true,
+      "strong_red_opaque": 0
+    },
+    {
+      "file": "rear-states-rejected-original.png",
+      "status": "rejected",
+      "reason": "Five-paw anatomy reappeared in several poses. No further correction allowed/requested.",
+      "sha256": "1050560887d41501516b2e3aed64c76d261b96928674d128b0ccdcde2164aee8",
+      "bytes": 1547820,
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "source_basename": "exec-013d5fc5-b441-4af8-b1b5-4451de4d7584.png",
+      "original_byte_equal": true,
+      "caBX_preserved": true,
+      "strong_red_opaque": 0
+    },
+    {
+      "file": "rear-ko-original.png",
+      "status": "candidate for independent review",
+      "reason": "Four sequential dorsal KO poses generated once from corrected rear still. No fifth paw seen in inspected sequence; far limbs become naturally occluded. Canvas differs from request, normalized losslessly to543px cells.",
+      "sha256": "f9b279796401432dd3a3020512b028d364bbe3a2be65e527358c0a263d798daa",
+      "bytes": 962476,
+      "dimensions": [
+        2172,
+        724
+      ],
+      "source_basename": "exec-187066bd-a9c3-4ba2-b0d8-79b0c48a9154.png",
+      "original_byte_equal": true,
+      "caBX_preserved": true,
+      "strong_red_opaque": 0
+    },
+    {
+      "file": "rear-walk4-original.png",
+      "status": "candidate for independent review",
+      "reason": "One new generation only. Four visible paws per figure, small articulated steps; far foreleg swings beneath chest. No fifth paw identified in inspected composite, but gait/limb chains need independent review.",
+      "sha256": "e10ce1d0cd6c52775e28903786af406ca71f168587e373da62dd4d9a07ec6de1",
+      "bytes": 1205940,
+      "dimensions": [
+        2172,
+        724
+      ],
+      "source_basename": "exec-241d3f10-b7f9-473f-b3bc-030b29d0138c.png",
+      "original_byte_equal": true,
+      "caBX_preserved": true,
+      "strong_red_opaque": 0
+    },
+    {
+      "file": "rear-nearhind2-original.png",
+      "status": "HOLD, not accepted for cycle6 integration",
+      "reason": "One generation creates near-hind lift/advanced plant, but only three leg/paw chains readable; far foreleg fully occluded. Native widths540px differ from prior471..496px. No resampling or integration performed.",
+      "sha256": "badc8a1bfb4db8c3ca53793a6dc4f4b1f8ebb8875d2bc2070a050d9ac1a0f22d",
+      "bytes": 687379,
+      "dimensions": [
+        1292,
+        1218
+      ],
+      "source_basename": "exec-0f2d275b-49c5-4822-9575-455ccd56bc27.png",
+      "original_byte_equal": true,
+      "caBX_preserved": true,
+      "strong_red_opaque": 0
+    }
+  ],
+  "normalized_front_files": [
+    {
+      "file": "front-normalized/00.png",
+      "sha256": "522115e59fb78741ab53da7f069ae9525c95f4dc1662c6df5940c02c4d508f0a",
+      "bytes": 131525
+    },
+    {
+      "file": "front-normalized/01.png",
+      "sha256": "e115e44986001934f59e90b3b01cc2dbcc875a1ea199e0c77e1f057b991d223f",
+      "bytes": 124810
+    },
+    {
+      "file": "front-normalized/02.png",
+      "sha256": "c9f3f42b6931a4c7818b1df921b94e190ef1964be94fa476359dab2759f62ef5",
+      "bytes": 125031
+    },
+    {
+      "file": "front-normalized/03.png",
+      "sha256": "1badab1ad1ea811c571cf3002a8ca6853c9d314e64ad7761b450a8dcf07b1e33",
+      "bytes": 116108
+    },
+    {
+      "file": "front-normalized/04.png",
+      "sha256": "b6055c2fb8ee12fdb8c8c5a66350427b84f67a48f380098d217a04091383f643",
+      "bytes": 124482
+    },
+    {
+      "file": "front-normalized/05.png",
+      "sha256": "b53083921ec3d277b515bc54da1845c1ba1c8418d36b93ec250db5ed01284b8c",
+      "bytes": 124582
+    },
+    {
+      "file": "front-normalized/06.png",
+      "sha256": "7151332c483a555132a350c5f0c0bc59bc6b598d4ec8f6d40a7ee01082b56810",
+      "bytes": 126255
+    },
+    {
+      "file": "front-normalized/07.png",
+      "sha256": "ed1769c8b70479362abf645f8af82b839fd8dbaea5603ba8fd33057ec2ef22d7",
+      "bytes": 129550
+    },
+    {
+      "file": "front-normalized/08.png",
+      "sha256": "9e7680461269aadc1deea9bc603af8c1ea07a3d7ee2b8a9a227587ac1b2b899a",
+      "bytes": 126011
+    },
+    {
+      "file": "front-normalized/09.png",
+      "sha256": "93794a1d29b75cfe9c4375b3240781f46327f86590392285f9ced9ec35ee5639",
+      "bytes": 122161
+    },
+    {
+      "file": "front-normalized/10.png",
+      "sha256": "24fc82ee987f7ffdf9cb825d88de45796655869c0d94c371ea73fcf8694cbcc4",
+      "bytes": 112764
+    },
+    {
+      "file": "front-normalized/11.png",
+      "sha256": "ba8d71841b01fdc9fc40518e1ec4b497210bd577baffb4e2fec449ae6ca32fff",
+      "bytes": 96750
+    },
+    {
+      "file": "front-normalized/knockout.png",
+      "sha256": "ac38df08342550fa927e9431e6e9daeb327ee533f0ae99d979392d37eaf9a0b6",
+      "bytes": 451239
+    },
+    {
+      "file": "front-normalized/normalization.json",
+      "sha256": "f1b3a57ebd896bf4236e14c3c018e5fb1b6c4f02348344513cca5a0c2304a0ae",
+      "bytes": 5410
+    },
+    {
+      "file": "front-normalized/walk.png",
+      "sha256": "6fd73fc9b83db076abe7af30eb0d2ab1be41a43171e23d10a91c0ba019f0d917",
+      "bytes": 989380
+    }
+  ],
+  "normalization": "Read front-normalized/normalization.json. Original source pixels preserved; fixed grid crop, integer vertical shift only; no pixel painting, resampling or alpha threshold applied to output pixels.",
+  "candidate_pivots": {
+    "front_frames": [
+      181,
+      330
+    ],
+    "rear_static": [
+      650,
+      1135
+    ],
+    "warning": "View-specific proposals; rear foreshortening differs from front. Not calibrated or approved in engine.",
+    "rear_ko_frames": [
+      271,
+      500
+    ],
+    "rear_walk4_frames": [
+      271,
+      500
+    ]
+  },
+  "qa": [
+    "Composite actual RGBA over light/dark backgrounds before interpreting red fringe.",
+    "Strong red opaque pixels are zero in all candidates; red RGB at alpha1 is not an opaque fringe.",
+    "Front alpha1 residue occupies much of the nominal empty sheet, but the composited preview has no visible paper or grid. Original retains all residue.",
+    "Front opaque bodies fit each cell with zero opaque border pixels; no limb or leaf clipped at alpha>=128.",
+    "Walking poses visibly articulate paws; KO lowers the same body to a held resting pose.",
+    "Rear static has four observed paws/leg blades after correction, not a mirror of front.",
+    "Rear still is substantially foreshortened; equal118px preview heights do not establish equal world scale.",
+    "Separate rear KO strip: four full bodies in2172x724 source. Four543x724 quarters contain no opaque edge pixels; normalized four543x543 cells preserve all alpha>=128 pixels.",
+    "Separate4walk rear strip:2172x724 source, four full bodies with zero opaque edge pixels. Lossless four543px cells preserve every alpha>=128 pixel. Near hind articulation is subtle; continuity, weight and idle handoff pending."
+  ],
+  "gates": {
+    "independent_review": "pending",
+    "in_engine_review": "not run",
+    "runtime_integration": "not performed",
+    "production_ready": false
+  },
+  "limits": [
+    "No attack/cast poses in these sheets.",
+    "No dedicated new rules, stats, evolution edges, saves or IDs.",
+    "No animation cadence or final loop/idle endpoint approval from static contact sheets.",
+    "Clean-cut handoff and proportions need independent/in-engine review.",
+    "Original full rear walk/KO sheet stays rejected. Separate4KO rear and4walk rear strips are review candidates only; animated rear coverage is not yet accepted.",
+    "Do not run a release from rejected rear sources.",
+    "Two new near-hind complements are on HOLD: fourth supporting foreleg/blade fully occluded and native scale differs. Existing four-frame rear gait still has limited near-hind motion; do not claim complete alternation."
+  ],
+  "normalized_rear_ko_files": [
+    {
+      "file": "rear-ko-normalized/00.png",
+      "sha256": "002d6d3412e389a60b4e1c1a0be8c0e478b22a8f9b1a649de0fa7807ba80335c",
+      "bytes": 262257
+    },
+    {
+      "file": "rear-ko-normalized/01.png",
+      "sha256": "7eec07f176f92f8ede7c7870bfad63e2dd39bd1d6c43d4706edc4c7bb60156f8",
+      "bytes": 238385
+    },
+    {
+      "file": "rear-ko-normalized/02.png",
+      "sha256": "a2d2d068f4370dc524ee7d36d27218f74778ea5aceaed414529164075736a210",
+      "bytes": 204574
+    },
+    {
+      "file": "rear-ko-normalized/03.png",
+      "sha256": "831450e368c76be1fa8fcc46e4a10e226fd48388367b9aeeff05b4e8dde51f29",
+      "bytes": 187589
+    },
+    {
+      "file": "rear-ko-normalized/knockout.png",
+      "sha256": "f702ed31b7b1d2040e3980c74a90671add200e98d45223fde978b3aea6ea6249",
+      "bytes": 901337
+    },
+    {
+      "file": "rear-ko-normalized/normalization.json",
+      "sha256": "316f820973e2ab0c37b68b0751a9d24eda1d39f9f3c8a7263d1e5dc7123bea75",
+      "bytes": 2899
+    }
+  ],
+  "normalized_rear_walk4_files": [
+    {
+      "file": "rear-walk4-normalized/00.png",
+      "sha256": "18ff9ebe177baa2c18c55b65933566c50f06441c2b3f9e5795a84cfb2ee62ec2",
+      "bytes": 273992
+    },
+    {
+      "file": "rear-walk4-normalized/01.png",
+      "sha256": "5a58d97b151012ef26ec66ca5a67a1fb2da101536edcc9836dfb9680f9bd8100",
+      "bytes": 266883
+    },
+    {
+      "file": "rear-walk4-normalized/02.png",
+      "sha256": "8ce0d4fb054e4726f3faa3ea205cf998bb47ace9776ed872663d65bf65b1d44c",
+      "bytes": 263032
+    },
+    {
+      "file": "rear-walk4-normalized/03.png",
+      "sha256": "603c72cb3598b0dbee416e55e4d1790c761411e1b78d3cdc8715d93805acc590",
+      "bytes": 272210
+    },
+    {
+      "file": "rear-walk4-normalized/normalization.json",
+      "sha256": "dc324ff165899df4c8e1a6d7cdec3f60c0c6b69cd3f4d0f12a99444a6483d512",
+      "bytes": 3046
+    },
+    {
+      "file": "rear-walk4-normalized/walk.png",
+      "sha256": "52909f62277da9da8426ee9344df97f0d564acc8b8652e548e71f75ef828e5ec",
+      "bytes": 1067397
+    }
+  ],
+  "near_hind_complement_gate": {
+    "generation_count": 1,
+    "retries": 0,
+    "independent_review": "not yet performed",
+    "four_supporting_limb_chains": "cannot verify fourth under full occlusion",
+    "native_scale_match": false,
+    "cycle6_authored": false,
+    "normalization_or_resampling": "none; raw source and native-pixel comparison only",
+    "qa": "rear-nearhind2-qa.json"
+  }
+}

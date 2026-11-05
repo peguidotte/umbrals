@@ -33,9 +33,10 @@ const AUDIO_SELECT: String = "res://assets/audio/select/versions/1.0.0/sound.wav
 const AUDIO_STORM: String = "res://assets/audio/storm/versions/1.0.0/sound.wav"
 const CHARACTERS_BATTLE_CREATURES: String = "res://assets/characters/battle-creatures/versions/1.0.0/texture.png"
 const CHARACTERS_BATTLE_EVOLVED: String = "res://assets/characters/battle-evolved/versions/1.0.0/texture.png"
+const CHARACTERS_LIFECYCLE_FOLIVEL: String = "res://assets/characters/folivel-lifecycle/versions/1.0.0/walk-front.png"
 const CHARACTERS_LIFECYCLE_FOSLASH: String = "res://assets/characters/foslash-lifecycle/versions/1.0.0/walk.png"
-const CHARACTERS_LIFECYCLE_MOSS: String = "res://assets/characters/foli-lifecycle/versions/1.0.0/walk.png"
-const CHARACTERS_LIFECYCLE_VERDALIO: String = "res://assets/characters/folife-lifecycle/versions/1.0.0/walk.png"
+const CHARACTERS_LIFECYCLE_MOSS: String = "res://assets/characters/foli-lifecycle/versions/1.1.0/walk.png"
+const CHARACTERS_LIFECYCLE_VERDALIO: String = "res://assets/characters/folife-lifecycle/versions/1.1.0/walk.png"
 const CHARACTERS_OWL: String = "res://assets/characters/owl/versions/1.0.0/portrait.svg"
 const CHARACTERS_REFUGE_TRAVELER: String = "res://assets/characters/refuge-traveler/versions/1.0.0/atlas.png"
 const CHARACTERS_SPORE: String = "res://assets/characters/spore/versions/1.0.0/portrait.svg"
@@ -54,12 +55,13 @@ const UI_TITLE_LOGO: String = "res://assets/ui/title-logo/versions/1.0.0/texture
 const UI_TITLE_MENU: String = "res://assets/ui/title-menu/versions/1.0.0/texture.png"
 const UMBRALS_DEW: String = "res://assets/umbrals/dew/versions/1.0.0/portrait.svg"
 const UMBRALS_EMBER: String = "res://assets/umbrals/ember/versions/1.0.0/portrait.svg"
+const UMBRALS_FOLIVEL: String = "res://assets/characters/folivel-pilot/versions/1.0.0/folivel.png"
 const UMBRALS_FOSLASH: String = "res://assets/characters/foslash-pilot/versions/1.0.0/foslash.png"
 const UMBRALS_IGNIVAR: String = "res://assets/umbrals/ignivar/versions/1.0.0/portrait.svg"
 const UMBRALS_MAREVEU: String = "res://assets/umbrals/mareveu/versions/1.0.0/portrait.svg"
-const UMBRALS_MOSS: String = "res://assets/characters/foli-pilot/versions/1.0.0/foli.png"
+const UMBRALS_MOSS: String = "res://assets/characters/foli-pilot/versions/1.1.0/foli.png"
 const UMBRALS_TEMPESTRAL: String = "res://assets/umbrals/tempestral/versions/1.0.0/portrait.svg"
-const UMBRALS_VERDALIO: String = "res://assets/characters/folife-pilot/versions/1.0.0/folife.png"
+const UMBRALS_VERDALIO: String = "res://assets/characters/folife-pilot/versions/1.1.0/folife.png"
 const UMBRALS_VOLT: String = "res://assets/umbrals/volt/versions/1.0.0/portrait.svg"
 const WORLD_BATTLE_CLEARING: String = "res://assets/world/battle-clearing/versions/1.0.0/background.png"
 const WORLD_BATTLE_CLEARING_DEPTH: String = "res://assets/world/battle-clearing-depth/versions/1.0.0/background.png"
@@ -102,6 +104,7 @@ const PATHS: Dictionary = {
 	"audio/storm": AUDIO_STORM,
 	"characters/battle-creatures": CHARACTERS_BATTLE_CREATURES,
 	"characters/battle-evolved": CHARACTERS_BATTLE_EVOLVED,
+	"characters/lifecycle-folivel": CHARACTERS_LIFECYCLE_FOLIVEL,
 	"characters/lifecycle-foslash": CHARACTERS_LIFECYCLE_FOSLASH,
 	"characters/lifecycle-moss": CHARACTERS_LIFECYCLE_MOSS,
 	"characters/lifecycle-verdalio": CHARACTERS_LIFECYCLE_VERDALIO,
@@ -123,6 +126,7 @@ const PATHS: Dictionary = {
 	"ui/title-menu": UI_TITLE_MENU,
 	"umbrals/dew": UMBRALS_DEW,
 	"umbrals/ember": UMBRALS_EMBER,
+	"umbrals/folivel": UMBRALS_FOLIVEL,
 	"umbrals/foslash": UMBRALS_FOSLASH,
 	"umbrals/ignivar": UMBRALS_IGNIVAR,
 	"umbrals/mareveu": UMBRALS_MAREVEU,

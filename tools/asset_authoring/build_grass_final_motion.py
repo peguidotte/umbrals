@@ -38,6 +38,69 @@ def definition(form, view):
                 'bough': [.380, .510, .287, .583, .13, .20],
             },
         }
+    if form == 'folivel':
+        # Pixel anchors were inspected on the two original 1254px portraits.
+        # A ground center may sit in transparent space between the supports.
+        def point(x, y):
+            return [x / 1254, y / 1254]
+
+        def bone(pivot, center, radius):
+            return point(*pivot) + point(*center) + list(radius)
+
+        if view == 'front':
+            return {
+                'anatomy': {
+                    'family': 'moss', 'name': 'Folivel',
+                    'eye': point(1095, 650), 'head': point(1094, 686),
+                    'mouth': point(1160, 729),
+                    'fore': point(875, 964),
+                    'fore_secondary': point(1095, 925),
+                    'root': point(631, 998), 'tail': point(118, 695),
+                    'crest': point(613, 464), 'hind': point(177, 954),
+                    'ears': point(850, 398), 'reservoir': point(797, 872),
+                    'antenna': point(613, 464),
+                    'antennaB': point(1095, 925), 'shell': point(639, 708),
+                },
+                'profile': {'name': 'Folivel', 'mass': 1.2, 'breath': .004, 'tempo': 1.0},
+                'ground': point(631, 998),
+                'joints': {
+                    'head': bone((930, 684), (1094, 667), (.135, .110)),
+                    'fore': bone((816, 764), (800, 878), (.090, .125)),
+                    'bough': bone((962, 805), (1039, 880), (.075, .100)),
+                    'tail': bone((213, 752), (118, 695), (.080, .092)),
+                    'crest': bone((953, 581), (613, 464), (.310, .135)),
+                    'ear': bone((1075, 594), (850, 398), (.220, .100)),
+                    'hind': bone((348, 732), (177, 888), (.100, .140)),
+                },
+            }
+        if view == 'back':
+            return {
+                'anatomy': {
+                    'family': 'moss', 'name': 'Folivel',
+                    'eye': point(1106, 413), 'head': point(1081, 423),
+                    'mouth': point(1104, 476),
+                    'fore': point(1032, 924),
+                    'fore_secondary': point(1105, 791),
+                    'root': point(636, 1135), 'tail': point(198, 725),
+                    'crest': point(587, 468), 'hind': point(420, 1100),
+                    'ears': point(807, 240), 'reservoir': point(956, 818),
+                    'antenna': point(587, 468),
+                    'antennaB': point(1105, 791), 'shell': point(725, 642),
+                },
+                'profile': {'name': 'Folivel', 'mass': 1.2, 'breath': .004, 'tempo': 1.0},
+                'ground': point(636, 1135),
+                'joints': {
+                    'head': bone((1008, 484), (1081, 423), (.085, .070)),
+                    'fore': bone((940, 578), (962, 812), (.095, .165)),
+                    'bough': bone((1053, 627), (1085, 745), (.065, .110)),
+                    'tail': bone((310, 786), (198, 725), (.100, .100)),
+                    'crest': bone((967, 391), (587, 468), (.320, .160)),
+                    'ear': bone((1065, 370), (807, 240), (.240, .120)),
+                    # The sampled hind channel stays neutral. This definition
+                    # does not manufacture the missing near-hind walk phase.
+                    'hind': bone((511, 755), (421, 989), (.130, .160)),
+                },
+            }
     raise ValueError('No inspected anatomy for ' + form + ':' + view)
 
 
