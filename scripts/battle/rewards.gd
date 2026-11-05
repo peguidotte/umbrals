@@ -94,5 +94,11 @@ static func prepare(reward_offers: Array, party: Array, starter_species: String,
 	var pool: Array = Content.PASSIVE_POOLS[species]
 	var passive: String = str(pool[rng.randi_range(0, pool.size() - 1)])
 	reward_offers.append({"kind": "capture", "umbral": EncounterSetup.make_umbral(species, passive, next_uid)})
+	var deferred: Array = []
 	for individual in party:
-		reward_offers.append_array(Evolution.offers(individual, Content.evolution_edges(individual)))
+		for edge in Content.evolution_edges(individual):
+			var offers: Array = Evolution.offers(individual, [edge])
+			if edge.get("deferred", false): deferred.append_array(offers)
+			else: reward_offers.append_array(offers)
+	# Keep historical reward commands valid when an existing lineage grows.
+	reward_offers.append_array(deferred)

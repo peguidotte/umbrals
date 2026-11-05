@@ -3,7 +3,7 @@ extends Node2D
 const Motion = preload("res://scripts/ui/battle_motion.gd")
 const Presentation = preload("res://scripts/ui/creature_presentation.gd")
 const GRID: int = 14
-const ANGLES: Dictionary = {"head": 8, "tail": 9, "fore": 10, "hind": 11, "crest": 12, "ear": 13, "jaw": 14, "wing": 15, "feeler": 16, "bough": 17, "fin": 18}
+const ANGLES: Dictionary = {"head": 8, "tail": 9, "fore": 10, "hind": 11, "crest": 12, "ear": 13, "jaw": 14, "wing": 15, "feeler": 16, "bough": 17, "fin": 18, "wing_far": 16, "leg_far": 16, "arm_far": 17}
 var form_id: String = ""
 var source: Texture2D
 var texture: Texture2D
@@ -35,6 +35,8 @@ var ko_mix: float = 0.0
 var skin_bindings: Array = []
 var pose_rotations: Dictionary = {}
 var walk_offsets: Array = []
+var projection_transform: Transform2D = Transform2D.IDENTITY
+var projection_bob: float = 0.0
 
 func set_incapacitated(value: bool) -> void:
 	if incapacitated == value: return
@@ -161,7 +163,35 @@ func _bind_skin(uv: Vector2) -> Dictionary:
 		var eye: Array = definition.anatomy.get("eye", [.7, .5])
 		var eye_uv: Vector2 = Vector2(float(eye[0]), float(eye[1]))
 		blink = (eye_uv.y - uv.y) * .9 * exp(-((uv - eye_uv) / Vector2(.065, .055)).length_squared() * 1.7)
-	return {"uv": uv, "bones": bones, "inflate": inflate, "blink": blink, "plant": _plant_weights(uv)}
+	return {"uv": uv, "bones": bones, "inflate": inflate, "blink": blink, "plant": _plant_weights(uv), "bob_weight": pow(clampf((foot.y - uv.y) / maxf(.01, foot.y), 0, 1), .7)}
+
+# The root transform is identical for every vertex. Sockets retain project()
+# below as the direct reference; the mesh applies this equivalent cached affine.
+func _prepare_projection() -> void:
+	var unit: float = maxf(display_size.x, display_size.y) / 166.0
+	projection_bob = float(pose[5]) * unit
+	var root: Vector2 = Vector2(float(pose[0]), float(pose[1]))
+	var travel: Vector2 = Vector2.ZERO
+	if mode == "attacks" and clip >= 12:
+		root.x -= 300 * float(pose[19])
+		if clip == 13: root.y *= jump_scale
+		if clip == 14:
+			var center: float = 66.0 if float(definition.get("profile", {}).get("mass", 1.2)) > 1.0 else 55.0
+			var correction: float = center * (cos(float(pose[2])) - 1)
+			root.y = correction + (root.y - correction) * jump_scale
+		travel = dash * float(pose[19])
+	var direction: Vector2 = Vector2(-1, 1) if flipped else Vector2.ONE
+	var pivot: Vector2 = foot * display_size
+	if flipped: pivot.x = display_size.x - pivot.x
+	var rotation: Transform2D = Transform2D(float(pose[2]), Vector2.ZERO)
+	var scale_pose: Vector2 = Vector2(float(pose[3]), float(pose[4])) * direction
+	projection_transform = Transform2D(rotation.x * scale_pose, rotation.y * scale_pose, pivot + (root * unit + travel) * direction)
+
+func _project_cached(binding: Dictionary) -> Vector2:
+	var local: Vector2 = (_cached_skin(binding) - foot) * display_size
+	local.y += float(binding.bob_weight) * projection_bob
+	for index in range(walk_offsets.size()): local += walk_offsets[index] * float(binding.plant[index])
+	return projection_transform * local
 
 func _plant_weights(uv: Vector2) -> Array:
 	var weights: Array = []
@@ -277,7 +307,8 @@ func _refresh() -> void:
 	pose_rotations.clear()
 	for channel in range(8, 19):
 		if not is_zero_approx(float(pose[channel])): pose_rotations[channel] = Transform2D(float(pose[channel]), Vector2.ZERO)
-	for binding in skin_bindings: vertices.append(project(binding.uv, _cached_skin(binding), binding.plant))
+	_prepare_projection()
+	for binding in skin_bindings: vertices.append(_project_cached(binding))
 	var arrays: Array = []
 	arrays.resize(Mesh.ARRAY_MAX)
 	arrays[Mesh.ARRAY_VERTEX] = vertices

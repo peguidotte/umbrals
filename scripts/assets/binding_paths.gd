@@ -47,14 +47,16 @@ const UI_GOLD_MENU_ART: String = "res://assets/ui/gold-approved/versions/1.0.0/m
 const UI_GOLD_MENU_SCENE: String = "res://assets/ui/gold-approved/versions/1.0.0/menu-scene.png"
 const UI_TITLE_LOGO: String = "res://assets/ui/title-logo/versions/1.0.0/texture.png"
 const UI_TITLE_MENU: String = "res://assets/ui/title-menu/versions/1.0.0/texture.png"
+const UMBRALS_AURAVEL: String = "res://assets/characters/electric-adults/versions/2.0.0/auravel-ally.png"
 const UMBRALS_DEW: String = "res://assets/umbrals/dew/versions/1.0.0/portrait.svg"
 const UMBRALS_EMBER: String = "res://assets/umbrals/ember/versions/1.0.0/portrait.svg"
 const UMBRALS_IGNIVAR: String = "res://assets/umbrals/ignivar/versions/1.0.0/portrait.svg"
 const UMBRALS_MAREVEU: String = "res://assets/umbrals/mareveu/versions/1.0.0/portrait.svg"
 const UMBRALS_MOSS: String = "res://assets/umbrals/moss/versions/1.0.0/portrait.svg"
-const UMBRALS_TEMPESTRAL: String = "res://assets/characters/electric-family/versions/2.0.0/niscor-ally.png"
+const UMBRALS_TEMPESTRAL: String = "res://assets/characters/electric-family/versions/2.1.0/niscor-ally.png"
 const UMBRALS_VERDALIO: String = "res://assets/umbrals/verdalio/versions/1.0.0/portrait.svg"
-const UMBRALS_VOLT: String = "res://assets/characters/electric-family/versions/2.0.0/nisca-ally.png"
+const UMBRALS_VOLT: String = "res://assets/characters/electric-family/versions/2.1.0/nisca-ally.png"
+const UMBRALS_ZULDAR: String = "res://assets/characters/electric-adults/versions/2.0.0/zuldar-ally.png"
 const WORLD_BATTLE_CLEARING: String = "res://assets/world/battle-clearing/versions/1.0.0/background.png"
 const WORLD_BATTLE_CLEARING_DEPTH: String = "res://assets/world/battle-clearing-depth/versions/1.0.0/background.png"
 const WORLD_GOLD_FOREST: String = "res://assets/world/gold-forest/versions/1.0.0/texture.png"
@@ -110,6 +112,7 @@ const PATHS: Dictionary = {
 	"ui/gold-menu-scene": UI_GOLD_MENU_SCENE,
 	"ui/title-logo": UI_TITLE_LOGO,
 	"ui/title-menu": UI_TITLE_MENU,
+	"umbrals/auravel": UMBRALS_AURAVEL,
 	"umbrals/dew": UMBRALS_DEW,
 	"umbrals/ember": UMBRALS_EMBER,
 	"umbrals/ignivar": UMBRALS_IGNIVAR,
@@ -118,6 +121,7 @@ const PATHS: Dictionary = {
 	"umbrals/tempestral": UMBRALS_TEMPESTRAL,
 	"umbrals/verdalio": UMBRALS_VERDALIO,
 	"umbrals/volt": UMBRALS_VOLT,
+	"umbrals/zuldar": UMBRALS_ZULDAR,
 	"world/battle-clearing": WORLD_BATTLE_CLEARING,
 	"world/battle-clearing-depth": WORLD_BATTLE_CLEARING_DEPTH,
 	"world/gold-forest": WORLD_GOLD_FOREST,

@@ -72,7 +72,8 @@ func _pivot() -> void:
 	if is_instance_valid(portrait) and is_instance_valid(portrait.texture) and not ground_profile.is_empty():
 		var foot: Vector2 = Vector2(float(ground_profile.foot[0]), float(ground_profile.foot[1]))
 		var depth: float = [0.90, 1.0, 1.07][clampi(slot, 0, 2)]
-		var factor: float = minf((size.x - 32) / portrait.texture.get_width(), float(ground_profile.get("display_height", 118.0)) * depth / maxf(1, foot.y - float(ground_profile.visible_top)))
+		var max_width: float = maxf(size.x - 32, float(ground_profile.get("display_width", 0.0)) * depth)
+		var factor: float = minf(max_width / portrait.texture.get_width(), float(ground_profile.get("display_height", 118.0)) * depth / maxf(1, foot.y - float(ground_profile.visible_top)))
 		portrait.size = portrait.texture.get_size() * factor
 		rig.configure(portrait.texture, str(identity.get("art", "")).get_file() if not str(identity.get("art", "")).is_empty() else Content.art_binding(identity).get_file(), portrait.size, foot * factor, portrait.flip_h)
 		if portrait.flip_h: foot.x = portrait.texture.get_width() - foot.x

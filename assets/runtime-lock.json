@@ -235,6 +235,11 @@
       "id": "ui/title-menu",
       "version": "1.0.0"
     },
+    "umbrals/auravel": {
+      "file": "auravel-ally",
+      "id": "characters/electric-adults",
+      "version": "2.0.0"
+    },
     "umbrals/dew": {
       "file": "portrait",
       "id": "umbrals/dew",
@@ -263,7 +268,7 @@
     "umbrals/tempestral": {
       "file": "niscor-ally",
       "id": "characters/electric-family",
-      "version": "2.0.0"
+      "version": "2.1.0"
     },
     "umbrals/verdalio": {
       "file": "portrait",
@@ -273,6 +278,11 @@
     "umbrals/volt": {
       "file": "nisca-ally",
       "id": "characters/electric-family",
+      "version": "2.1.0"
+    },
+    "umbrals/zuldar": {
+      "file": "zuldar-ally",
+      "id": "characters/electric-adults",
       "version": "2.0.0"
     },
     "world/battle-clearing": {

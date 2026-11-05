@@ -70,7 +70,7 @@ def track(form: dict, group: str, clip: str, label: str) -> list:
 
 def attack(form: dict, performances: dict, index: int, fps: int) -> dict:
     label = f"attack {index}"
-    specs, parts = performances.get("specs"), performances.get("parts")
+    specs, parts = performances.get("specs"), form.get("parts", performances.get("parts"))
     require(isinstance(specs, list) and isinstance(parts, list) and
             index < len(specs) and index < len(parts), f"{label}: missing performance")
     spec, socket = specs[index], parts[index]

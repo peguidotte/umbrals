@@ -105,6 +105,8 @@ def validate(path, bindings):
         if len(edge_ids) != len(set(edge_ids)) or any(not ID.fullmatch(i) for i in edge_ids):
             errors.append('edge IDs must be unique stable lowercase IDs')
         for edge in edges:
+            if 'deferred' in edge and not isinstance(edge['deferred'], bool):
+                errors.append('deferred evolution flag must be boolean')
             if edge.get('from') not in ids or edge.get('to') not in ids or edge.get('from') == edge.get('to'):
                 errors.append(f"invalid edge {edge.get('id')}")
         adjacency = {form_id: [] for form_id in ids}

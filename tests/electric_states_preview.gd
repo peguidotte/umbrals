@@ -4,6 +4,8 @@ const Actor = preload("res://scripts/ui/actor.gd")
 const Content = preload("res://scripts/content.gd")
 const Assets = preload("res://scripts/assets/catalog.gd")
 const UI = preload("res://scripts/ui/kit.gd")
+var adults: bool = false
+var selected_form: String = ""
 var actors: Array[Control] = []
 var phase: int = 0
 var title: Label
@@ -16,6 +18,11 @@ var output: String = ""
 var phase_frames: Dictionary = {}
 
 func _ready() -> void:
+	adults = bool(ProjectSettings.get_setting("electric_review/adults", false)) or "--adults" in OS.get_cmdline_user_args()
+	selected_form = str(ProjectSettings.get_setting("electric_review/form", ""))
+	var review_args: PackedStringArray = OS.get_cmdline_user_args()
+	var form_arg: int = review_args.find("--form")
+	if form_arg >= 0 and form_arg + 1 < review_args.size(): selected_form = review_args[form_arg + 1]
 	var background := TextureRect.new()
 	background.texture = Assets.texture("world/battle-clearing-depth")
 	background.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -30,12 +37,12 @@ func _ready() -> void:
 	note.position = Vector2(100, 835)
 	note.size = Vector2(1400, 40)
 	add_child(note)
-	for index in range(4):
-		var id: String = "volt" if index < 2 else "tempestral"
+	for index in range(2 if not selected_form.is_empty() else 4):
+		var id: String = selected_form if not selected_form.is_empty() else (("auravel" if index < 2 else "zuldar") if adults else ("volt" if index < 2 else "tempestral"))
 		var body: Control = Actor.new()
 		body.enemy = index % 2 == 1
 		body.slot = 1
-		body.position = Vector2(360 if index % 2 == 0 else 1020, 130 if index < 2 else 460)
+		body.position = Vector2(360 if index % 2 == 0 else 1020, 300 if not selected_form.is_empty() else (130 if index < 2 else 460))
 		body.size = Vector2(220, 260)
 		add_child(body)
 		var stats: Dictionary = Content.form_definition("volt", id).get("stats", {})
@@ -71,6 +78,8 @@ func _process(_delta: float) -> void:
 		for index in range(1, frame_times.size()): intervals.append(float(frame_times[index] - frame_times[index - 1]) / 1000.0)
 		intervals.sort()
 		var report: Dictionary = {"kind": "Native real-time actor review; no fixed-fps or movie mode", "frames": frame_times.size(), "seconds": seconds, "average_fps": frame_times.size() / seconds, "p95_frame_ms": intervals[int(intervals.size() * .95)], "renderer": RenderingServer.get_video_adapter_name()}
+		report["forms"] = [selected_form] if not selected_form.is_empty() else (["auravel", "zuldar"] if adults else ["volt", "tempestral"])
+		report["actor_count"] = actors.size()
 		var phases: Dictionary = {}
 		for index in phase_frames: phases[index] = float(phase_frames[index]) / 3.2
 		report["phase_fps"] = phases
@@ -100,7 +109,7 @@ func _apply() -> void:
 	if OS.has_feature("web"):
 		frame_times.clear()
 		JavaScriptBridge.eval("window.electricCadence = null")
-	title.text = ["Repouso · respiração e orelhas", "Movimento · passada em quatro patas", "Dano · recuo e recuperação", "Carga · espinhos presos ao corpo", "Incapacitado · queda e apoio", "Reanimado · retorna ao repouso", "Movimento reduzido · KO estático"][phase]
+	title.text = ["Repouso · respiração e orelhas", "Movimento · apoio e passada", "Dano · recuo e recuperação", "Carga · espinhos presos ao corpo", "Incapacitado · queda e apoio", "Reanimado · retorna ao repouso", "Movimento reduzido · KO estático"][phase]
 	for index in range(actors.size()):
 		var body: Control = actors[index]
 		body.reduced_motion = phase == 6

@@ -43,8 +43,10 @@ class Session:
         threading.Thread(target=self.server.serve_forever, daemon=True).start()
         self.base_url = f'http://127.0.0.1:{self.server.server_port}/index.html'
         self.playwright = sync_playwright().start()
+        native_gl = getattr(args, 'native_gl', False)
+        graphics = ['--no-sandbox', '--use-angle=gl', '--use-gl=angle', '--ignore-gpu-blocklist', '--disable-gpu-sandbox', '--window-position=0,0'] if native_gl else ['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader']
         self.browser = self.playwright.chromium.launch(executable_path='/usr/bin/chromium' if Path('/usr/bin/chromium').exists() else None,
-            headless=True, args=['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'],
+            headless=not native_gl, args=graphics,
             ignore_default_args=['--mute-audio'] if getattr(args, 'capture_audio', False) else [])
         self.browser_version = self.browser.version
         options = {'viewport': {'width': self.viewport[0], 'height': self.viewport[1]} if self.viewport else {'width': 1600, 'height': 900}, 'device_scale_factor': 1}

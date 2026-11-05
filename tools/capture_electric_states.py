@@ -26,7 +26,7 @@ def run(command):
         raise RuntimeError((result.stdout + result.stderr)[-12000:])
 
 
-def export_review(output):
+def export_review(output, adults=False, form=None):
     with tempfile.TemporaryDirectory(prefix='electric-state-review-', dir=output) as folder:
         project = Path(folder)
         for name in ['scripts', 'assets', 'content', 'scenes']:
@@ -40,6 +40,10 @@ def export_review(output):
             shutil.copy2(ROOT / 'tests' / name, project / 'tests' / name)
         configuration = (ROOT / 'project.godot').read_text().replace(
             'res://scenes/main.tscn', 'res://tests/electric_states_preview.tscn')
+        if adults or form:
+            configuration += '\n[electric_review]\n'
+            if adults: configuration += 'adults=true\n'
+            if form: configuration += 'form=' + json.dumps(form) + '\n'
         configuration += '\n[editor]\nimport/use_multiple_threads=false\n'
         (project / 'project.godot').write_text(configuration)
         (project / 'export_presets.cfg').write_text((ROOT / 'export_presets.cfg').read_text().replace('tests/*,', ''))
@@ -55,10 +59,12 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--build-dir', type=Path)
     parser.add_argument('--native-gl', action='store_true')
+    parser.add_argument('--adults', action='store_true')
+    parser.add_argument('--form', choices=['auravel', 'zuldar'])
     args = parser.parse_args()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
-    build = args.build_dir.resolve() if args.build_dir else export_review(output)
+    build = args.build_dir.resolve() if args.build_dir else export_review(output, args.adults, args.form)
     class Quiet(SimpleHTTPRequestHandler):
         def log_message(self, *_):
             pass
@@ -118,7 +124,7 @@ def main():
             capture_output=True, text=True, check=True)
         report = {'kind': 'Actual Godot actor review; no combat simulation', 'viewport': list(viewport.values()),
             'capture_backend': 'X11 / ANGLE OpenGL' if args.native_gl else 'canvas MediaRecorder / SwiftShader',
-            'forms': ['volt', 'tempestral'], 'sides': ['ally', 'enemy'], 'states': names,
+            'forms': [args.form] if args.form else (['auravel', 'zuldar'] if args.adults else ['volt', 'tempestral']), 'sides': ['ally', 'enemy'], 'states': names,
             'cadence': cadence, 'video_probe': json.loads(probe.stdout), 'errors': errors}
         report['sufficient_review_cadence'] = min(entry['fps'] for entry in cadence) >= 24
         (output / 'report.json').write_text(json.dumps(report, indent=2))
