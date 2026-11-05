@@ -1337,6 +1337,13 @@ joelhos e balanço de tronco, braços e mochila. A imagem aprovada e a versão 0
 ficam preservadas. Onze verificações nativas e dez Web passaram; a marcha continua
 candidata. É uma cena de estudo sobre base estática, sem casa jogável ou promoção.
 
+Correção 0.2.1: a cintura e a costura interna das duas pernas compartilham o
+movimento da pelve para fechar a abertura vista pela revisão de `41e51da`.
+O teste de cobertura usa triângulos deformados, UVs e alfa do PNG: zero amostras
+descobertas em 460.080, contra 62.277 na versão anterior. Doze casos nativos
+passam preservando os resultados de botas, joelhos e parte superior. A revisão
+visual da implementação continua aberta; módulos anteriores e pins preservados.
+
 ### V05-CNT-02 — consolidação técnica das linhagens sobre a main
 
 A candidata funcional `15dfe1b` passou aceitação integral local: 14.346 regras,

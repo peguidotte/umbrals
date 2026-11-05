@@ -1,5 +1,6 @@
 extends SceneTree
 const Rig = preload("res://tools/studies/pietro_pixel/rig.gd")
+const Coverage = preload("res://tools/studies/pietro_pixel/coverage.gd")
 var checks: int = 0
 var failed: int = 0
 func expect(value: bool, label: String) -> void:
@@ -78,7 +79,10 @@ func _init() -> void:
 				var local: Vector2 = rig.upper.transform.affine_inverse()*(body_vertices[i]-Vector2(0,rig.drop))
 				local_motion[part] = maxf(local_motion[part],local.distance_to(rig.upper.source.vertices[i]))
 	expect(local_motion[0]>8 and local_motion[1]>8 and local_motion[2]>2,"Both arms and the backpack move independently of the rigid torso transform")
-	print(JSON.stringify({"suite":"pietro_pixel_study","checks":checks,"failed":failed,"source_identity_delta":identity,"reach_error":reach,"boot_deformation":rigid_boot,"loop_delta":closure,"support_drift_source_px":drift,"boot_gap_source_px":boot_gap,"pelvis_drop_source_px":max_drop,"stance_knee_bend_degrees":support_bend,"independent_part_motion_source_px":local_motion}))
+	var source_image: Image = rig.texture.get_image()
+	var coverage: Dictionary = Coverage.sweep(rig,source_image)
+	expect(coverage.uncovered==0,"Opaque trouser interior stays covered by textured triangles throughout the cycle and both gather transitions")
+	print(JSON.stringify({"suite":"pietro_pixel_study","checks":checks,"failed":failed,"source_identity_delta":identity,"reach_error":reach,"boot_deformation":rigid_boot,"loop_delta":closure,"support_drift_source_px":drift,"boot_gap_source_px":boot_gap,"pelvis_drop_source_px":max_drop,"stance_knee_bend_degrees":support_bend,"independent_part_motion_source_px":local_motion,"waist_coverage":coverage}))
 	quit(failed)
 func _difference(a: PackedVector2Array,b: PackedVector2Array) -> float:
 	var result: float = 0

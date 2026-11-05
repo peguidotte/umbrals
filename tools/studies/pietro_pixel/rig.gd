@@ -2,7 +2,7 @@ extends RefCounted
 ## Study-only 3/4 gait. Approved pixels are sampled without redrawing the PNG.
 const Geometry = preload("res://tools/studies/pietro_pixel/texture_mesh.gd")
 const Upper = preload("res://tools/studies/pietro_pixel/upper_rig.gd")
-const ROOT: String = "res://assets/characters/pietro-pixel-pilot/versions/0.2.0/"
+const ROOT: String = "res://assets/characters/pietro-pixel-pilot/versions/0.2.1/"
 var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(ROOT+"rig.json"))
 var texture: Texture2D = load(ROOT+"source.png") as Texture2D
 var upper: RefCounted
@@ -11,6 +11,7 @@ var sources: Array[PackedVector2Array] = []
 var triangles: Array[PackedInt32Array] = []
 var knee_weights: Array[PackedFloat32Array] = []
 var boot_weights: Array[PackedFloat32Array] = []
+var waist_weights: Array[PackedFloat32Array] = []
 var leg_uvs: Array[PackedVector2Array] = []
 var feet: Array[Vector2] = []
 var knees: Array[Vector2] = []
@@ -27,11 +28,19 @@ func _init() -> void:
 		leg_uvs.append(grid.uv)
 		var knees_weight: PackedFloat32Array = []
 		var boots_weight: PackedFloat32Array = []
+		var waist_weight: PackedFloat32Array = []
 		for point in grid.vertices:
 			knees_weight.append(smoothstep(source.knee[1]-16,source.knee[1]+16,point.y))
 			boots_weight.append(smoothstep(source.ankle[1]-8,source.ankle[1]+8,point.y))
+			# Both panels share the same attachment at the belt and inner seam.
+			# Let the thighs take over gradually without pulling those edges apart.
+			var seam_distance: float = INF
+			for i in range(data.waist.seam.size()-1):
+				seam_distance = minf(seam_distance,point.distance_to(Geometry2D.get_closest_point_to_segment(point,_point(data.waist.seam[i]),_point(data.waist.seam[i+1]))))
+			waist_weight.append(smoothstep(data.waist.blend_y[0],data.waist.blend_y[1],point.y)*smoothstep(0,data.waist.seam_blend_width,seam_distance))
 		knee_weights.append(knees_weight)
 		boot_weights.append(boots_weight)
+		waist_weights.append(waist_weight)
 		legs.append(Geometry.create(grid.vertices,grid.indices,grid.uv))
 
 func pose(cycle: float, gather: float = 1.0) -> void:
@@ -85,7 +94,9 @@ func _leg(leg: int) -> void:
 	for i in range(sources[leg].size()):
 		var point: Vector2 = sources[leg][i]
 		var skinned: Vector2 = (upper_transform*point).lerp(lower_transform*point,knee_weights[leg][i])
-		vertices.append(skinned.lerp(point+boot_offset,boot_weights[leg][i]))
+		var pelvis: Vector2 = upper.transform*point+Vector2(0,drop)
+		var attached: Vector2 = pelvis.lerp(skinned,waist_weights[leg][i])
+		vertices.append(attached.lerp(point+boot_offset,boot_weights[leg][i]))
 	legs[leg] = Geometry.create(vertices,triangles[leg],leg_uvs[leg])
 
 func draw(canvas: CanvasItem, anchor: Vector2, original: bool = false) -> void:

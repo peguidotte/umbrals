@@ -48,8 +48,8 @@ python tools/studies/pietro_pixel/review.py --build-dir artifacts/pixel-study/bu
 Os arquivos do estudo ficam em `tools/`, excluídos dos exports de produção. O
 export de revisão usa um projeto temporário independente em `artifacts/`; não
 altera o boot, o projeto, as telas ou o runtime-lock do jogo. Os dois módulos
-novos têm status `prototype`, sem pins de produção. O ator usa 0.2.0 e a base da
-sala continua em 0.1.0. O ator 0.1.0 e o head anterior `e077079` ficam preservados.
+novos têm status `prototype`, sem pins de produção. O ator usa 0.2.1 e a base da
+sala continua em 0.1.0. Os atores 0.1.0 e 0.2.0 ficam preservados.
 
 No projeto-fonte, a referência em `review/` é lida como PNG bruto, preservando
 sua exclusão dos imports de produção. O export Web de estudo importa sua própria
@@ -97,6 +97,29 @@ independente dos braços/mochila e fechamento da malha superior.
 
 A cena informa explicitamente que é um candidato sobre base estática, sem
 casa jogável. Brasa, sofá e chão continuam fundidos à base visual desta prova.
+
+## Cobertura da cintura 0.2.1
+
+A revisão independente de `41e51da` encontrou piso aparecendo dentro da calça
+logo abaixo da cintura, aproximadamente em 0,5 e 1,3 segundos do trecho. As
+malhas das duas pernas se afastavam do casaco e uma da outra durante a passada,
+apesar de o PNG original ser opaco nessa região. A versão 0.2.1 prende o topo da
+calça e a costura interna ao mesmo movimento da pelve; a influência da coxa
+aumenta gradualmente abaixo dessa junção. Não há painel de cor ou novo desenho
+cobrindo o defeito. O alcance, os pés, os joelhos e o rig superior são preservados.
+
+O novo teste calcula a cobertura a partir dos triângulos deformados, seus UVs
+e o alfa da textura. Verifica o interior opaco abaixo da cintura e acima da
+abertura natural das pernas: retângulo [580,786,142,80] na imagem original,
+amostrado a cada dois pixels. São 460.080 amostras em 129 fases de ciclo e 33
+níveis de acomodação, com alfa mínimo exigido de 0,95. A versão anterior falha
+em 62.277 amostras, chegando a alfa zero; a correção tem zero descobertas e
+alfa mínimo 0,9882. Isso cobre a abertura reportada, sem julgar o tecido ou
+substituir a inspeção do vídeo. Os doze casos nativos passam e mantêm os mesmos
+resultados geométricos da versão 0.2.0.
+
+O PNG aprovado e as versões anteriores não mudaram. O teste de recortes da
+imagem parada continua separado: ele sozinho não detectava essa falha dinâmica.
 
 Ainda precisam de julgamento de Pedro a proporção em relação a Brasa, o contorno
 em escala real, as junções sob o casaco e a leitura da passada em três quartos.
