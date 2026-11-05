@@ -2,6 +2,7 @@ class_name UmbralBattleArt
 extends RefCounted
 ## Atlas regions are applied at render time. Generated source PNGs stay untouched.
 const Assets = preload("res://scripts/assets/catalog.gd")
+const Aquatic = preload("res://scripts/ui/aquatic_art.gd")
 const ATLAS_MODULES = ["characters/battle-creatures", "characters/battle-evolved"]
 const ATLAS_VERSION = "1.0.0"
 static var _loaded: bool = false
@@ -10,6 +11,7 @@ static var _grounding: Dictionary = {}
 
 static func texture(art_id: String) -> Texture2D:
 	var region_id: String = art_id.get_file()
+	if Aquatic.supports(region_id): return Aquatic.region(region_id)
 	if _textures.has(region_id): return _textures[region_id]
 	if not _loaded:
 		_loaded = true
@@ -37,5 +39,6 @@ static func texture(art_id: String) -> Texture2D:
 	return result
 
 static func ground_profile(art_id: String) -> Dictionary:
+	if Aquatic.supports(art_id.get_file()): return Aquatic.ground(art_id.get_file())
 	var art: Texture2D = texture(art_id)
 	return _grounding.get(art_id.get_file(), {"foot": [art.get_width() * 0.5, art.get_height() * 0.93], "width": art.get_width() * 0.6, "visible_top": art.get_height() * 0.10})

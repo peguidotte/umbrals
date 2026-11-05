@@ -320,6 +320,15 @@
         }
       }
     },
+    "characters/aquatic-family": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/aquatic-family/versions/1.0.0/manifest.json",
+          "sha256": "f401019d9a0b727c21d64c9ec56374ef6d94c891b57b0d37f0c70cbab3199b83",
+          "status": "production"
+        }
+      }
+    },
     "characters/battle-creatures": {
       "versions": {
         "1.0.0": {

@@ -1,0 +1,18 @@
+{
+  "reference_library_file_id": "libfile_2c296e23cd5c819189c30eaa74c3da82",
+  "reference_sha256": "61cde75a09c4675289232063f4c5eb3b41c6d7770e320fe341bea051288b8484",
+  "generated_at_utc": "2026-11-05",
+  "model": "Not exposed by tool; not inferred",
+  "outputs": [
+    {
+      "file": "bodies.png",
+      "original_basename": "exec-5dafb0d1-330f-4018-93d6-2e7f96c69b35.png",
+      "prompt": "Create production-source transparent sprite atlas for this original Umbral aquatic otter family, exactly respecting the supplied approved designs. No text, no labels, no background, no shadows. A clean 4 columns by 2 rows evenly spaced grid, each cell separated by generous transparent margins. Top row: the four PHYSICAL OTTER BODIES ONLY facing right, in this exact order: Lonlon (small cute starter at upper left of reference); Lonaro (middle quadruped); Londraval (large powerful upper right quadruped); Lonelo (sleek athletic lower-right blue otter alternative, NOT lower-left teal core alternative). Bottom row: corresponding four same bodies in rear three-quarter view facing left, matching proportions and design. Blue natural fur, cream muzzle/throat/belly, cyan water markings, dark clean outline, painterly cel-shaded 2D game sprites. No water spheres, no companions, no floating water, no attack effects: these will be separately animated. Preserve tails and all paws without clipping. Every otter fully isolated, feet on a consistent baseline within its cell. Crisp coherent family art faithful to reference; transparent background."
+    },
+    {
+      "file": "spheres.png",
+      "original_basename": "exec-0599e15f-18cf-494c-acab-0b6f4085858d.png",
+      "prompt": "Make one clean transparent game sprite atlas, 2 columns by 1 row, matching the water spheres in supplied original Umbral otter reference. LEFT: single round luminous blue water sphere, detailed swirling cyan-blue water, clean ink outline, restrained white highlights, absolutely NO FACE, no eyes. RIGHT: single living companion round water sphere with two expressive cyan dark-outlined eyes and tiny friendly mouth, as lower-right approved reference. Both equal size, fully separated, generous transparent margins, no droplets outside sphere, no otters, no text, no scenery, no shadow, genuine transparent alpha background. Crisp hand painted cel-shaded blue/cyan natural water, game sprite readable small, not photorealistic. Objects centered at one-quarter and three-quarters image width, same vertical center and diameter."
+    }
+  ]
+}

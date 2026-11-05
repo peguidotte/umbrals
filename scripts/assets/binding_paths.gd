@@ -29,6 +29,7 @@ const AUDIO_PLAY: String = "res://assets/audio/play/versions/1.0.0/sound.wav"
 const AUDIO_REWARD: String = "res://assets/audio/reward/versions/1.0.0/sound.wav"
 const AUDIO_SELECT: String = "res://assets/audio/select/versions/1.0.0/sound.wav"
 const AUDIO_STORM: String = "res://assets/audio/storm/versions/1.0.0/sound.wav"
+const CHARACTERS_AQUATIC_FAMILY: String = "res://assets/characters/aquatic-family/versions/1.0.0/bodies.png"
 const CHARACTERS_BATTLE_CREATURES: String = "res://assets/characters/battle-creatures/versions/1.0.0/texture.png"
 const CHARACTERS_BATTLE_EVOLVED: String = "res://assets/characters/battle-evolved/versions/1.0.0/texture.png"
 const CHARACTERS_OWL: String = "res://assets/characters/owl/versions/1.0.0/portrait.svg"
@@ -92,6 +93,7 @@ const PATHS: Dictionary = {
 	"audio/reward": AUDIO_REWARD,
 	"audio/select": AUDIO_SELECT,
 	"audio/storm": AUDIO_STORM,
+	"characters/aquatic-family": CHARACTERS_AQUATIC_FAMILY,
 	"characters/battle-creatures": CHARACTERS_BATTLE_CREATURES,
 	"characters/battle-evolved": CHARACTERS_BATTLE_EVOLVED,
 	"characters/owl": CHARACTERS_OWL,

@@ -100,6 +100,55 @@ func _run() -> void:
 	expect(hud.effects.trauma == 0 and hud.effects.particles.is_empty() and not hud.effects.choreography.active, "Enabling reduced motion clears an in-flight performance immediately and finishes snapshots")
 	for body in hud.actors + hud.enemy_actors:
 		expect(not body.rig.managed, "Accessibility cancellation releases every managed actor")
+	app._return_menu()
+	app.preferences.set_value("reduced_motion", false)
+	app._start_game(42013, "dew")
+	await process_frame
+	hud = app.screen_host.battle_root.hud
+	source = hud.actors[1]
+	var aquatic = preload("res://scripts/ui/aquatic_art.gd")
+	expect(source.rig.source == aquatic.region("dew"), "Lonlon uses the separate approved-direction otter body")
+	var body_rect: Rect2 = source.get_global_rect()
+	var aquatic_rng: int = app.game.rng.state
+	# visual=1 freezes ambient idle only, never a committed performance.
+	source.rig.still = true
+	for variant in range(6, 9):
+		var spec: Dictionary = Motion.spec(variant)
+		source.rig.seek_cast(variant, 0.0, Vector2(300, 0))
+		var home: Vector2 = aquatic.orb_center(source.rig)
+		source.rig.seek_cast(variant, float(spec.contact), Vector2(300, 0))
+		expect(aquatic.orb_center(source.rig).x > home.x + 200, "Water sphere leaves the otter toward the actual target for variant %d" % variant)
+		var unit: float = maxf(source.rig.display_size.x, source.rig.display_size.y) / 166.0
+		var destination: Vector2 = source.rig.project(source.rig.foot) + Vector2(300 + 80 * unit, -50 * unit)
+		expect(aquatic.orb_center(source.rig).distance_to(destination) < 0.01, "Sphere contact is relative to the target ground, not its elevated home")
+		expect(source.emission_point(variant).distance_to(source.rig.to_global(aquatic.orb_center(source.rig))) < 0.01, "Water emission follows the separate sphere")
+		source.rig.seek_cast(variant, float(spec.end), Vector2(300, 0))
+		expect(aquatic.orb_center(source.rig).distance_to(home) < 0.1, "Water sphere returns after variant %d" % variant)
+		source.stop_motion()
+	source.rig.still = false
+	source.rig.flipped = true
+	source.rig.seek_cast(6, 0.0, Vector2(-300, 0))
+	var mirrored_home: Vector2 = aquatic.orb_center(source.rig)
+	source.rig.seek_cast(6, float(Motion.spec(6).contact), Vector2(-300, 0))
+	expect(aquatic.orb_center(source.rig).x < mirrored_home.x - 200, "Opposing water sphere travels left without changing combat coordinates")
+	source.rig.flipped = false
+	source.stop_motion()
+	expect(source.get_global_rect() == body_rect and app.game.rng.state == aquatic_rng, "Sphere travel cannot move the targetable slot or consume gameplay RNG")
+	var water_index: int = -1
+	for i in range(app.game.hand.size()):
+		if app.game.hand[i].power == "tidal_splash": water_index = i; break
+	expect(water_index >= 0, "A real owned water power is available")
+	if water_index >= 0:
+		app.runtime.turn.select(water_index)
+		app.runtime.turn.cast()
+		await create_timer(0.3).timeout
+		expect(hud.effects.choreography.active and source.rig.managed, "Real water action drives the independent sphere clock")
+		app.preferences.set_value("reduced_motion", true)
+		await settle(2.0)
+		expect(not source.rig.managed and source.rig.mode == "states", "Reduced motion restores sphere and body after a real water cast")
+		var fixed: Vector2 = aquatic.orb_center(source.rig)
+		await create_timer(0.15).timeout
+		expect(aquatic.orb_center(source.rig).is_equal_approx(fixed), "Reduced-motion sphere remains still")
 	app.feedback.cancel()
 	app.audio.shutdown()
 	await create_timer(0.12).timeout
