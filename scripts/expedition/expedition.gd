@@ -6,6 +6,7 @@ const Rules = preload("res://scripts/rules.gd")
 const Content = preload("res://scripts/content.gd")
 const Migration = preload("res://scripts/expedition/migration.gd")
 const Identity = preload("res://scripts/expedition/identity.gd")
+const CatalogRevision = preload("res://scripts/battle/catalog_revision.gd")
 const Individual = preload("res://scripts/domain/models/individual.gd")
 const CardInstance = preload("res://scripts/domain/models/card_instance.gd")
 const BattleCommand = preload("res://scripts/domain/models/battle_command.gd")
@@ -101,7 +102,7 @@ func snapshot() -> Dictionary:
 	state["seed_value"] = str(battle.seed_value)
 	state["rng_seed"] = str(battle.rng.seed)
 	state["rng_state"] = str(battle.rng.state)
-	return {"schema": 2, "event_revision": event_revision, "identity": Identity.current(), "phase": phase, "current_node_id": current_node_id, "completed": completed.duplicate(), "battle": state}
+	return {"schema": 2, "event_revision": event_revision, "catalog_revision": battle.catalog_revision, "identity": Identity.current(), "phase": phase, "current_node_id": current_node_id, "completed": completed.duplicate(), "battle": state}
 
 # Validation is performed on a detached candidate before touching the live run.
 func restore(data: Dictionary) -> bool:
@@ -111,6 +112,7 @@ func restore(data: Dictionary) -> bool:
 	var s: Dictionary = data.battle
 	var candidate = Rules.new()
 	candidate.enable_expedition()
+	candidate.catalog_revision = int(data.catalog_revision)
 	candidate.seed_value = int(s.seed_value)
 	candidate.starter_species = s.starter_species
 	candidate.encounter = int(s.encounter)
@@ -165,6 +167,7 @@ func _int_keys(source: Dictionary) -> Dictionary:
 
 func _valid_snapshot(data: Dictionary) -> bool:
 	if not data.get("event_revision") is int or not data.event_revision in [0, 1]: return false
+	if not data.get("catalog_revision") is int or not CatalogRevision.supported(data.catalog_revision): return false
 	if data.get("schema") != 2 or not Identity.matches(data.get("identity")) or not data.get("battle") is Dictionary or not data.get("completed") is Array: return false
 	if data.has("checkpoint_id") and not data.checkpoint_id is String: return false
 	if not data.get("phase") in ["map", "event", "combat", "reward", "victory", "defeat"] or not data.get("current_node_id") is String: return false
@@ -206,14 +209,14 @@ func _valid_snapshot(data: Dictionary) -> bool:
 	var uids: Array = []
 	var slots: Array = []
 	for unit in s.party:
-		if not _valid_unit(unit) or unit.uid in uids or (unit.slot >= 0 and unit.slot in slots): return false
+		if not _valid_unit(unit, data.catalog_revision) or unit.uid in uids or (unit.slot >= 0 and unit.slot in slots): return false
 		uids.append(unit.uid)
 		if unit.uid >= s.next_uid: return false
 		if unit.slot >= 0: slots.append(unit.slot)
 	var enemy_uids: Array = []
 	var enemy_slots: Array = []
 	for unit in s.enemies:
-		if not _valid_unit(unit): return false
+		if not _valid_unit(unit, data.catalog_revision): return false
 		if unit.uid in enemy_uids or unit.slot < 0 or unit.slot in enemy_slots: return false
 		enemy_uids.append(unit.uid)
 		enemy_slots.append(unit.slot)
@@ -256,7 +259,7 @@ func _valid_snapshot(data: Dictionary) -> bool:
 	for offer in s.reward_offers:
 		if not offer is Dictionary or not offer.get("kind") in ["capture", "evolve"]: return false
 		if offer.kind == "capture":
-			if not _valid_unit(offer.get("umbral")): return false
+			if not _valid_unit(offer.get("umbral"), data.catalog_revision): return false
 			if offer.umbral.uid != s.next_uid or offer.umbral.uid in uids: return false
 			var offer_ids: Array = []
 			for card in offer.umbral.cards:
@@ -268,12 +271,12 @@ func _valid_snapshot(data: Dictionary) -> bool:
 			for unit in s.party:
 				if unit.uid == offer.uid: owner = unit
 			var valid_edge: bool = false
-			for edge in Content.evolution_edges(owner):
+			for edge in CatalogRevision.edges(owner, data.catalog_revision):
 				if offer.get("source_form_id") == edge.from and offer.get("target_form_id") == edge.to and offer.get("transition_id") == edge.id: valid_edge = true
 			if not valid_edge: return false
 	return true
 
-func _valid_unit(unit: Variant) -> bool:
+func _valid_unit(unit: Variant, catalog_revision: int) -> bool:
 	var parsed: Dictionary = Individual.try_from_dict(unit)
 	if not parsed.ok: return false
 	unit = parsed.value.to_dict()
@@ -281,7 +284,7 @@ func _valid_unit(unit: Variant) -> bool:
 		if not unit.get(key) is int: return false
 	if not unit.get("species") is String or not unit.species in Content.SPECIES or not unit.get("passive") is String: return false
 	if not unit.passive.is_empty() and not unit.passive in Content.PASSIVES: return false
-	if not unit.get("form_id") is String or Content.form_definition(unit.species, unit.form_id).is_empty() or unit.has("stage"): return false
+	if not unit.get("form_id") is String or not CatalogRevision.form_available(unit.species, unit.form_id, catalog_revision) or unit.has("stage"): return false
 	if unit.uid < 1 or unit.slot < -1 or unit.slot > 2 or unit.max_hp < 1 or unit.hp < 0 or unit.hp > unit.max_hp: return false
 	if not unit.get("statuses") is Dictionary or not unit.get("status_sources") is Dictionary or not unit.get("known_powers") is Array or not unit.get("cards") is Array: return false
 	for power in unit.known_powers:

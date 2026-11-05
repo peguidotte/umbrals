@@ -35,3 +35,46 @@ checkpoints. Tests compare normalized complete snapshots after two encounters
 and the old rest alternative, including RNG, plans, rewards and physical cards.
 Replay envelope version 2 and checkpoint envelope version 2 remain in use with
 the explicit new compatibility identity; unsupported versions still fail closed.
+
+## Rules 4: explicit catalog revision for final grass forms
+
+The playable Foslash slice uses `expedition-rules-4`, retaining checkpoint,
+replay and snapshot version 2. A schema-2 snapshot now requires integer
+`catalog_revision`, stored once at expedition level and installed on its one
+Rules instance. Revision 0 retains the previous evolution graph; new runs use
+revision 1, adding form `foslash` and edge `verdalio_to_foslash`. This is separate
+from `event_revision`, which still selects only the spring behavior. Existing
+species `moss`, forms `moss` / `verdalio` and edge `moss_to_verdalio` stay stable.
+
+The registry explicitly pins the rules-3 identity with catalog digest
+`7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80` to the
+already frozen rules-2 gameplay manifest: those rulesets have the same catalog.
+Its reviewed transition removes only the registered appended Foslash form/edge
+and corresponding derived projection entries before applying the unchanged
+conservative comparator. Changed historical stats, edges, pools or ordering
+still reject migration; arbitrary extra final forms/edges are not admitted.
+No manifest is accepted from save data and no unregistered digest is trusted.
+
+Rules-3 snapshots retain their event revision (0 or 1) and migrate to catalog 0.
+Schema-1 and both pinned rules-2 identities retain event revision 0 and likewise
+use catalog 0. Migration remains detached and idempotent. Historical identities
+cannot claim a new catalog revision or contain its forms, captures or pending
+evolutions. Under the current identity, a revision-0 run still rejects a forged
+Foslash body/offer. Reward generation, command application and checkpoint restore
+all use the same revision query. Replays use those production command boundaries.
+Unsupported catalog revisions block load, overwrite and clear through the
+existing envelope validation. Ordinary reads never rewrite historical slots.
+
+The frozen rules-3 moss fixture records 59 real commands, the actual Foli-to-Folife
+choice, both encounters and their full pending rewards, plus a spring alternative
+and an actual checksum envelope. Tests preserve RNG, plans, card identities/zones
+and offers. Foslash provisionally repeats only the existing Foli-to-Folife
+numerical delta: HP/attack/defense/speed 72/14/6/12, living_roots 6, power profile
+damage/block/heal/burn/wet 10/8/4/2/2. Existing card instances improve without new
+power IDs or copies. These are revisable prototype values, not final balance.
+This adjustment affects only the new catalog-1 form; historical catalog-0 values
+and fixtures are unchanged. Its own art/VFX do not authorize new mechanics.
+
+Folivel is deferred to a separate commit. Before introducing catalog revision 2,
+freeze revision 1's exact gameplay manifest/identity and register a transition
+that retains the saved catalog revision; do not silently upgrade existing runs.

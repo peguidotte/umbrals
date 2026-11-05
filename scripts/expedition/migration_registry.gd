@@ -3,8 +3,10 @@ extends RefCounted
 const Identity = preload("res://scripts/expedition/identity.gd")
 const Baseline = preload("res://scripts/expedition/baseline_manifest.gd")
 const Previous = preload("res://scripts/expedition/rules2_manifest.gd")
+const RULES3_IDENTITY = {"ruleset": "expedition-rules-3", "content_sha256": "7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80"}
 const PREVIOUS_IDENTITY = {"ruleset": "expedition-rules-2", "content_sha256": "7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80"}
 const BASE_IDENTITY = {"ruleset": "expedition-rules-2", "content_sha256": "022bb34bd69d87cace6a96eb130260f812133c318381a5bcd77fa0d981efca58"}
+const GRASS_EXTENSIONS = [{"species": "moss", "form": "foslash", "edge": "verdalio_to_foslash", "from": "verdalio", "revision": 1}]
 
 static func additive(old: Dictionary, target: Dictionary) -> bool:
 	if old.keys().size() != target.keys().size(): return false
@@ -37,23 +39,49 @@ static func _prefix(old: Array, target: Array) -> bool:
 static func supports(source: Variant) -> bool:
 	if source == Identity.current(): return true
 	# A registry entry is an audited source, never a user-supplied manifest.
-	if Identity.RULESET != "expedition-rules-3": return false
-	if source == PREVIOUS_IDENTITY:
-		return JSON.stringify(Previous.DATA).sha256_text() == PREVIOUS_IDENTITY.content_sha256 and additive(Previous.DATA, Identity.manifest())
+	if Identity.RULESET != "expedition-rules-4": return false
+	if source in [PREVIOUS_IDENTITY, RULES3_IDENTITY]:
+		return JSON.stringify(Previous.DATA).sha256_text() == source.content_sha256 and catalog_transition(Previous.DATA, Identity.manifest())
 	if source != BASE_IDENTITY: return false
 	if JSON.stringify(Baseline.DATA).sha256_text() != BASE_IDENTITY.content_sha256: return false
 	var adapted: Dictionary = Baseline.DATA.duplicate(true)
 	adapted["manifest_version"] = 2
 	adapted["item_effects"] = {"potion": "heal", "revive": "revive"}
-	return additive(adapted, Identity.manifest())
+	return catalog_transition(adapted, Identity.manifest())
+
+## Remove only these audited appended forms for runs retaining the old graph.
+## The original conservative comparator still checks every existing definition.
+static func catalog_transition(old: Dictionary, target: Dictionary) -> bool:
+	var historical: Dictionary = target.duplicate(true)
+	for extension in GRASS_EXTENSIONS:
+		if not historical.get("catalog") is Dictionary or not historical.catalog.has(extension.species) or not historical.get("species") is Dictionary or not historical.species.has(extension.species): return false
+		var entry: Dictionary = historical.catalog[extension.species]
+		var projection: Dictionary = historical.species[extension.species]
+		if not entry.get("forms") is Array or not entry.get("evolutions") is Array or entry.forms.is_empty() or entry.evolutions.is_empty(): return false
+		var form: Dictionary = entry.forms.back()
+		var expected_edge: Dictionary = {"id": extension.edge, "from": extension.from, "to": extension.form, "catalog_revision": extension.revision}
+		if form.get("id") != extension.form or form.get("catalog_revision") != extension.revision or entry.evolutions.back() != expected_edge: return false
+		for field in ["secondary_natures", "trait_values"]:
+			if not projection.get(field) is Array or projection[field].size() != entry.forms.size(): return false
+		if projection.secondary_natures.back() != form.get("secondary_nature") or projection.trait_values.back() != form.get("trait_value"): return false
+		entry.forms.pop_back()
+		entry.evolutions.pop_back()
+		projection.secondary_natures.pop_back()
+		projection.trait_values.pop_back()
+	return additive(old, historical)
 
 # A historical identity cannot legitimately contain definitions introduced later.
 static func source_state_valid(snapshot: Dictionary) -> bool:
 	if snapshot.get("identity") == Identity.current(): return true
-	var source: Dictionary = Previous.DATA if snapshot.get("identity") == PREVIOUS_IDENTITY else Baseline.DATA
-	if not snapshot.get("identity") in [BASE_IDENTITY, PREVIOUS_IDENTITY] or not snapshot.get("battle") is Dictionary: return false
+	var source: Dictionary = Previous.DATA if snapshot.get("identity") in [PREVIOUS_IDENTITY, RULES3_IDENTITY] else Baseline.DATA
+	if not snapshot.get("identity") in [BASE_IDENTITY, PREVIOUS_IDENTITY, RULES3_IDENTITY] or not snapshot.get("battle") is Dictionary: return false
+	var catalog_revision: Variant = snapshot.get("catalog_revision", 0)
+	if not (catalog_revision is int or catalog_revision is float) or catalog_revision != 0: return false
 	# Rules 2 cannot contain the new room or opt into its choices via migration.
-	if snapshot.get("phase") == "event" or snapshot.get("event_revision", 0) != 0: return false
+	if snapshot.identity == RULES3_IDENTITY:
+		var revision: Variant = snapshot.get("event_revision")
+		if not (revision is int or revision is float) or (revision != 0 and revision != 1): return false
+	elif snapshot.get("phase") == "event" or snapshot.get("event_revision", 0) != 0: return false
 	var battle: Dictionary = snapshot.battle
 	if not battle.get("starter_species") in source.extras.starters: return false
 	if not battle.get("inventory") is Dictionary: return false

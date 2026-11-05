@@ -100,6 +100,21 @@ def shard(folder, prepared, group):
     folder.mkdir(parents=True, exist_ok=False)
     (folder / '.gdignore').touch()
     executor = Executor(ROOT, folder, sources, options, threading.Event())
+    if executor.versions != prep['tools']:
+        expected, observed = prep['tools'], executor.versions
+        mismatch = {
+            'error': 'Mixed tool versions', 'group': group,
+            'source_hash': sources['sha256'],
+            'expected_tools': expected, 'observed_tools': observed,
+            'diff': {name: {'expected': expected.get(name), 'observed': observed.get(name)}
+                     for name in sorted(set(expected) | set(observed))
+                     if name not in expected or name not in observed or expected[name] != observed[name]},
+        }
+        print('CI tool version mismatch: ' + json.dumps(mismatch, sort_keys=True), flush=True)
+        try:
+            atomic_json(folder / 'tool-version-mismatch.json', mismatch)
+        except OSError as error:
+            print('Could not persist tool mismatch diagnostics: ' + str(error), flush=True)
     require(executor.versions == prep['tools'], 'Mixed tool versions')
     tasks = registry()
     records = {}
