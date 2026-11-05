@@ -160,6 +160,11 @@
       "id": "characters/foli-lifecycle",
       "version": "1.0.0"
     },
+    "characters/lifecycle-verdalio": {
+      "file": "walk",
+      "id": "characters/folife-lifecycle",
+      "version": "1.0.0"
+    },
     "characters/owl": {
       "file": "portrait",
       "id": "characters/owl",
@@ -272,7 +277,7 @@
     },
     "umbrals/verdalio": {
       "file": "portrait",
-      "id": "umbrals/verdalio",
+      "id": "characters/folife-pilot",
       "version": "1.0.0"
     },
     "umbrals/volt": {
