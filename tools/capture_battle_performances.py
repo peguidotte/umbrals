@@ -47,7 +47,7 @@ def main():
     session.context.add_init_script(AUDIO_CAPTURE)
     records = []
     powers = {'ember':['fireball'], 'ignivar':['fireball'], 'moss':['thorn_lash'],
-              'verdalio':['thorn_lash'], 'dew':['tidal_splash'], 'mareveu':['tidal_splash'],
+              'verdalio':['thorn_lash'], 'dew':['tidal_splash'], 'mareveu':['tidal_splash'], 'londraval':['tidal_splash'], 'lonelo':['tidal_splash'],
               'volt':['lightning','storm_dive'], 'tempestral':['lightning','storm_dive'], 'auravel':['lightning','storm_dive'], 'zuldar':['lightning','storm_dive']}
     try:
         for form in args.forms.split(','):

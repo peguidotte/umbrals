@@ -19,7 +19,7 @@ static func _select(app: Control, power: String) -> bool:
 	return false
 
 static func run(app: Control, expect: Callable) -> void:
-	for form_id: String in ["dew", "mareveu"]:
+	for form_id: String in ["dew", "mareveu", "londraval", "lonelo"]:
 		app._return_menu()
 		app.preferences.set_value("reduced_motion", false)
 		var fixture: Dictionary = Fixtures.make("motion_" + form_id)
@@ -35,6 +35,27 @@ static func run(app: Control, expect: Callable) -> void:
 		var source: Control = hud.actors[int(app.game.party[0].slot)]
 		expect.call(app.runtime.turn.game == app.game and app.game.party[0].form_id == form_id and source.identity.form_id == form_id, "Resume binds commands and visible water owner to the same actual form: " + form_id)
 		expect.call(source.rig.art_view == source.art_view and source.rig.source == Aquatic.region(form_id), "Both water forms retain the named-view rig contract and own source body")
+		if form_id == "lonelo":
+			# Companion floats on its own rhythm but cannot outlive owner control.
+			source.rig.idle_time = 0.0
+			var rest: Vector2 = Aquatic.orb_center(source.rig)
+			source.rig.idle_time = 0.7
+			expect.call(Aquatic.orb_center(source.rig).distance_to(rest) > .1, "Living companion has an independent idle gesture")
+			source.rig.paused = true
+			var frozen_center: Vector2 = Aquatic.orb_center(source.rig)
+			source.rig._process(.5)
+			expect.call(Aquatic.orb_center(source.rig) == frozen_center, "Pause freezes the living companion with its owner")
+			source.rig.paused = false
+			source.rig.set_incapacitated(true, false)
+			var collapsed: Vector2 = Aquatic.orb_center(source.rig)
+			source.rig.idle_time += 1.0
+			expect.call(Aquatic.orb_center(source.rig) == collapsed, "Incapacitated Lonelo cannot sustain independent companion motion")
+			source.rig.set_incapacitated(false, false)
+			source.rig.reduced_motion = true
+			var reduced: Vector2 = Aquatic.orb_center(source.rig)
+			source.rig.idle_time += 1.0
+			expect.call(Aquatic.orb_center(source.rig) == reduced, "Reduced motion keeps the living companion stable")
+			source.rig.reduced_motion = false
 		var bounds: Rect2 = source.get_global_rect()
 		var rng: int = app.game.rng.state
 		for mirrored: bool in [false, true]:

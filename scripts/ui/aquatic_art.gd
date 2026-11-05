@@ -6,7 +6,7 @@ static var data: Dictionary = {}
 static var regions: Dictionary = {}
 
 static func supports(id: String) -> bool:
-	return id in ["dew", "mareveu"]
+	return id in ["dew", "mareveu", "londraval", "lonelo"]
 
 static func load_data() -> void:
 	if data.is_empty():
@@ -51,8 +51,10 @@ static func pose(mode: String, clip: int, time: float) -> Array:
 
 static func orb_center(rig: Node2D) -> Vector2:
 	var anchor: Vector2 = Vector2(0.17, 0.21) if rig.form_id == "dew" else Vector2(0.81, 0.54)
+	if rig.form_id == "londraval": anchor = Vector2(0.98, 0.60)
+	if rig.form_id == "lonelo": anchor = Vector2(0.58, 0.06)
 	var center: Vector2 = rig.project(anchor)
-	if rig.reduced_motion: return center
+	if rig.reduced_motion or rig.incapacitated: return center
 	var unit: float = maxf(rig.display_size.x, rig.display_size.y) / 166.0
 	if rig.mode == "attacks" and rig.clip >= 6 and rig.clip <= 8:
 		var spec: Dictionary = rig.Motion.spec(rig.clip)
@@ -68,9 +70,13 @@ static func orb_center(rig: Node2D) -> Vector2:
 		center.y -= sin(progress * PI) * 18 * unit
 	elif not rig.still:
 		center.y += sin(rig.idle_time * 2.1) * 2.0 * unit
+		if rig.form_id == "lonelo":
+			# Independent visual rhythm; lifecycle and gameplay remain owned by Lonelo.
+			center.x += sin(rig.idle_time * 1.3) * 3.0 * unit
+			center.y += sin(rig.idle_time * 2.9) * 2.0 * unit
 	return center
 
 static func draw_orb(rig: Node2D) -> void:
 	var diameter: float = minf(rig.display_size.x, rig.display_size.y) * (0.38 if rig.form_id == "dew" else 0.32)
 	var dimensions: Vector2 = Vector2.ONE * diameter
-	rig.draw_texture_rect(region("water", "spheres"), Rect2(orb_center(rig) - dimensions * 0.5, dimensions), false)
+	rig.draw_texture_rect(region("living" if rig.form_id == "lonelo" else "water", "spheres"), Rect2(orb_center(rig) - dimensions * 0.5, dimensions), false)

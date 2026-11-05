@@ -676,6 +676,24 @@
         }
       }
     },
+    "umbrals/londraval": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/umbrals/londraval/versions/1.0.0/manifest.json",
+          "sha256": "125ed97985c83134f59915b2ff3e55e17531258957da8c28e0c8d285c210baa6",
+          "status": "production"
+        }
+      }
+    },
+    "umbrals/lonelo": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/umbrals/lonelo/versions/1.0.0/manifest.json",
+          "sha256": "f36055fae0776c79970379cd00d07b52f03f12971138034e57816cf2c7ddb18c",
+          "status": "production"
+        }
+      }
+    },
     "umbrals/mareveu": {
       "versions": {
         "1.0.0": {

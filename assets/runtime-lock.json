@@ -305,6 +305,16 @@
       "id": "umbrals/ignivar",
       "version": "1.0.0"
     },
+    "umbrals/londraval": {
+      "file": "portrait",
+      "id": "umbrals/londraval",
+      "version": "1.0.0"
+    },
+    "umbrals/lonelo": {
+      "file": "portrait",
+      "id": "umbrals/lonelo",
+      "version": "1.0.0"
+    },
     "umbrals/mareveu": {
       "file": "portrait",
       "id": "umbrals/mareveu",

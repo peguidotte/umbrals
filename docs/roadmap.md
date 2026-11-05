@@ -1419,3 +1419,21 @@ coordenadas antes do layout final da Nascente. O diagnóstico Web agora aguarda
 o frame desenhado, com regressão de reconstrução do rascunho por inputs reais.
 A tentativa completa anterior foi preservada e não é aceite; a fonte final
 recebe uma nova execução integral. Regras, saves, timeouts e baseline não mudam.
+
+### V05-ART-09D — finais aquáticas no grafo novo
+
+Londraval/Lonelo são alcançáveis por bifurcação explícita de Lonaro no catálogo
+5; saves de grafos 0–4 preservam ofertas e replay. A esfera de Lonelo usa o
+rosto vivo e ritmo próprio, dependente da pausa/KO da lontra, sem indivíduo
+ou ações extras. Fonte e direção azul existentes preservadas.
+
+Foco local congelado passou: 1.005 checks de movimento, 464 de saves, catálogo,
+assets, migração, arquitetura e export Web. Vídeo real: três conjurações por
+final com áudio do jogo. GitHub Actions permanece desativado. Arte ainda é
+estudo procedural; versos, estados desenhados, balanceamento próprio e aceite
+visual/hardware continuam abertos. Sem alteração de outras frentes ou versão.
+A integração acrescenta recompensa histórica real da main, cinco continuações
+e save/reload; foco de saves passou com 498 asserções. O gate integral do
+conjunto congelado é registrado em `artifacts/aquatic-finals-integration-full-proof.json`.
+A esfera é apresentação visual, sem entidade autônoma ou ataque duplo.
+[Escopo, evidência e limites](aquatic-finals-v05-09d.md).
