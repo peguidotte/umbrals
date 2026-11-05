@@ -1090,3 +1090,18 @@ O vídeo nativo documenta eventos e poses, mas a cena completa deste executor
 ficou em cerca de 8,4 fps; a fluidez segue aberta. A CI do #18 não aceita
 automaticamente esta nova fatia ou a combinação com a candidata. Lâminas
 próprias, verso, Folife e as duas finais continuam pendentes. Produto 0.3.0.
+
+### V05-ART-02H — piloto visual da Folife
+
+A intermediária recebe recorte da segunda forma v11, anatomia própria e
+oito poses de caminhada/quatro de KO reversível, em draft separado sobre
+#20. Preserva `verdalio`, evolução, UID, poderes, regras e saves. Revisões
+independentes de recorte, atlas e preview permitem experimento técnico em
+draft, sem aprovação estética. O ciclo real passou 16 checks, HP 60→0→21 no
+mesmo UID; o MP4 preserva timestamps e medição de cadência desta execução.
+
+[Escopo, fontes, tentativas e lacunas](folife-pilot-v05-art-02h.md). A origem
+de raízes detectada pelo teste inicial foi corrigida sem remover checks.
+Chevron/colar, cortes, verso e VFX próprios continuam abertos. Foslash e
+Folivel têm candidatas estáticas separadas, sem novas formas/regras jogáveis.
+Produto 0.3.0; sem merge ou promoção da família.
