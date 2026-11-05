@@ -131,8 +131,12 @@ def responsive_home(session, width, height):
 
 
 def pause_stairs(page, wait):
-    page.keyboard.press('d', delay=80)
-    wait("window.umbralState.refuge.on_stairs && window.umbralState.refuge.stair_automatic === 0", timeout=20000)
+    # Hold until a physics tick acknowledges the input, including slow WebGL frames.
+    page.keyboard.down('d')
+    try:
+        wait("window.umbralState.refuge.on_stairs && window.umbralState.refuge.stair_automatic === 0", timeout=20000)
+    finally:
+        page.keyboard.up('d')
 
 
 def review_stairs(page, state, wait, key, click, capture, check):
