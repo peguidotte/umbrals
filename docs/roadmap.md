@@ -1099,6 +1099,201 @@ A correção foi publicada em `fix/codex-record-focus-20261105`; esta integraç�
 reúne a casa #11, Pietro #17 e o foco sobre a main atual. Próximo passo: unir com as demais origens revisadas e validar o conjunto
 exato. O gate integral anterior não é atribuído a esta mudança. Ator/despertar e
 famílias continuam com os mesmos limites visuais; versão permanece 0.3.0.
+### V04-CNT-01A — Foli e Folife com identidade preservada
+
+Primeira fatia do pedido de integrar as quatro famílias: os nomes e descrições
+de Foli e Folife entram no catálogo já usado pela escolha inicial, batalha,
+evolução e grimório. Espécie/formas/aresta conservam `moss`, `moss`/`verdalio` e
+`moss_to_verdalio`; gameplay e identidade dos saves continuam iguais. Catálogo,
+autoria, save, compatibilidade e história passaram nos gates focados; fechamento
+e capturas reais são registrados no PR. [Escopo e evidências](grass-family-v04-cnt-01a.md).
+
+Foslash e Folivel são nomes/conceitos aprovados, ainda sem novas formas jogáveis
+nesta fatia. As duas referências da Library foram resolvidas, mas a transferência
+oficial falhou: arte da lebre, poses e origens anatômicas não foram validadas.
+Continuam os retratos anteriores como fallback explícito na documentação.
+Próxima fatia: materializar e revisar a arte aprovada e integrar as formas finais
+com compatibilidade auditada. Versão continua 0.3.0; as quatro famílias não estão
+declaradas concluídas por esta entrega.
+
+
+### V05-ART-02F — piloto visual da Foli
+
+Sobre a fatia de nomes do PR #14, a inicial recebe recorte transparente e
+rig próprios, mantendo IDs, mecânicas e saves. As duas referências aprovadas
+foram materializadas pelo fluxo oficial e inspecionadas; os PNGs originais
+estão versionados em `docs/references/creatures/foli/`. Apenas o pin
+`umbrals/moss` muda; arte antiga de Folife permanece explícita.
+
+[Escopo, contratos, evidências e lacunas](foli-pilot-v05-art-02f.md). Checks
+focados de movimento (68) passaram após corrigir o cache do atlas antigo;
+captura por cliques reais registrou três casts com áudio real, mas a baixa
+cadência do MP4 não comprova fluidez. Fechamento integral e revisão ficam
+registrados no PR. Caminhada/KO próprios, Folife/Foslash/Folivel, VFX de
+folhas e revisão estética permanecem pendentes. Produto 0.3.0; sem merge ou
+encerramento da família/marco por esta fatia.
+
+### V05-ART-02G — poses de caminhada e KO da Foli
+
+Continuação em draft sobre #18, sem merge. O pin aditivo por forma seleciona
+oito poses de caminhada e quatro de KO reversível, preservando retrato, IDs,
+regras e saves. Troca confirmada, KO por dano e reanimação do mesmo UID
+passaram 16 verificações na cena real; o alvo de movimento inclui esses
+contratos. A revisão independente permite integração técnica em draft após
+eliminar a dupla silhueta, mantendo aprovação estética pendente.
+
+[Escopo, contrato compartilhado e evidências](foli-lifecycle-v05-art-02g.md).
+O vídeo nativo documenta eventos e poses, mas a cena completa deste executor
+ficou em cerca de 8,4 fps; a fluidez segue aberta. A CI do #18 não aceita
+automaticamente esta nova fatia ou a combinação com a candidata. Lâminas
+próprias, verso, Folife e as duas finais continuam pendentes. Produto 0.3.0.
+
+### V05-ART-02H — piloto visual da Folife
+
+A intermediária recebe recorte da segunda forma v11, anatomia própria e
+oito poses de caminhada/quatro de KO reversível, em draft separado sobre
+#20. Preserva `verdalio`, evolução, UID, poderes, regras e saves. Revisões
+independentes de recorte, atlas e preview permitem experimento técnico em
+draft, sem aprovação estética. O ciclo real passou 16 checks, HP 60→0→21 no
+mesmo UID; o MP4 preserva timestamps e medição de cadência desta execução.
+
+[Escopo, fontes, tentativas e lacunas](folife-pilot-v05-art-02h.md). A origem
+de raízes detectada pelo teste inicial foi corrigida sem remover checks.
+Chevron/colar, cortes, verso e VFX próprios continuam abertos. Foslash e
+Folivel têm candidatas estáticas separadas, sem novas formas/regras jogáveis.
+Produto 0.3.0; sem merge ou promoção da família.
+
+### Candidata local — casa/foco com Foli e Folife
+
+A candidata funcional `1994376` passou na aceitação integral do push
+41964934938 e na jornada gravada de 405 verificações com fonte inalterada.
+Esta união local incorpora a sequência #14 → #18 → #20 → #21 (`b708c91`),
+preservando casa #11, Pietro #17 2.0.0 e a correção de foco do grimório.
+O integrador é o único editor desta união e dos conflitos documentais; os
+assets/contratos de origem são preservados. Não incorpora Brasa, elétrica,
+água ou o PR bloqueado da biblioteca de conceitos.
+
+Conflitos limitados a dois documentos foram resolvidos conservando ambos os
+registros. A CI de push do #20 passou; a de #21 e a revisão independente mais
+recente permanecem pendentes no início da união. A próxima etapa são os gates
+focados de movimento, assets, save, casa e foco. Nenhuma aceitação integral ou
+visual desta combinação é atribuída às bases; a fonte exata precisa de seus
+próprios gates. A branch é local e não publicada. A abertura do novo PR público
+para main continua bloqueada pela revisão automática, sem repetição da ação.
+Verso, cortes de postura, VFX próprios, desempenho e aprovação estética humana
+seguem abertos. Foslash/Folivel não jogáveis; produto permanece 0.3.0.
+### V04-CONT-01E — nomes aprovados da família elétrica
+
+Primeira fatia de consolidação sobre a main `1523d0e`: Nisca e Niscor aparecem
+nas formas existentes `volt` e `tempestral`, com histórias atualizadas e o nome
+correto em Juízo da tempestade. IDs, aresta de evolução, atributos, naturezas,
+poderes, passivas, cartas e pins de assets permanecem. O checkpoint inicial e
+a identidade de gameplay antes/depois são idênticos; não há migração nova.
+
+Catálogo (24 verificações), autoria, saves e histórias do grimório passaram nos
+alvos focados. A primeira tentativa preservada tinha uma expectativa incorreta
+no teste novo sobre estágio numérico; a correção usa o adaptador explícito de
+migração, sem alterar o runtime. Evidências em
+`artifacts/harness/electric-focused-20261105T011550466576Z-3b6958/` e
+`artifacts/harness/electric-catalog-fixed-20261105T011643734212Z-162200/`.
+O fechamento completo e a revisão dos renders desta revisão são registrados no PR;
+resultado focado não equivale a aceitação completa.
+
+Auravel (alado) e Zuldar (bípede, espinhos azuis carregados) são os nomes finais
+aprovados, ainda sem integração jogável. A referência aprovada da Library não
+pôde ser baixada pelo helper suportado; seus pixels não foram inspecionados.
+Os assets anteriores permanecem provisórios para a nova identidade, sem alegação
+de sprites novos ou de arte aprovada no motor. Niscor não ganha agulhas destacadas
+controladas à distância. [Limites e próximo passo](../content/species/volt/README.md).
+Próxima fatia: obter a referência e produzir Nisca com estados corporais e origens
+de ataque verificadas, antes de avançar pins ou habilitar as formas finais.
+Versão do produto permanece 0.3.0; esta entrega não encerra o marco de arte.
+
+### V05-ART-02 — Nisca e Niscor com sprites e estados próprios
+
+Continuação sobre o PR #13 (`06806eb`), sem merge. A referência aprovada foi
+materializada oficialmente e inspecionada neste executor; hash e originais
+permanecem nos módulos. Nisca/Niscor têm corpos novos para os dois lados,
+apoio, idle, passada em quatro patas, dano, KO e origens anatômicas de ataque.
+A passada é um clip de apresentação em loop, não locomoção nova na expedição.
+A arte e os tracks de besouro não são apresentados como a nova família.
+
+Integração focada passou em catálogo, assets, saves e combate; a rodada nativa
+inicial passou com 63 verificações de movimento, incluindo KO persistente,
+reanimação e acessibilidade. Fechamento completo, CI e renders finais serão
+registrados no PR. Pins propostos mudam somente `umbrals/volt` e
+`umbrals/tempestral`; índices precisam de reconciliação pelo integrador.
+IDs, passivas, stats, poderes, cópias e saves permanecem.
+
+Auravel/Zuldar têm candidatas de corpo separadas, sem pin; rigs, animações,
+ataques e evolução jogável ainda não existem. Próxima fatia: articular asas e
+apoio bípede, revisar técnicas e criar arestas com compatibilidade explícita.
+Revisão humana e hardware continuam abertos; produto 0.3.0.
+[Escopo e handoff](electric-family-v05-art02.md).
+
+Revisão de V05-ART-02: proxy legado da coruja corrigido em `2483729`; a
+release 2.0.0 propõe KO com olhos fechados, transição de recuperação e contatos
+de apoio da passada. A cadência agora é medida em captura nativa e Web real;
+vídeos anteriores muito lentos não contam como prova de movimento. Arte e
+movimento continuam candidatos à revisão humana, e CI cancelado não fecha
+aceitação. Detalhes e medições no documento da família elétrica.
+
+### V05-ART-03 — bifurcação elétrica jogável
+
+Continuação em draft separado sobre o PR #19: Auravel alado e Zuldar bípede
+recebem rigs, poses de KO, estados e origens de ataque no novo módulo 2.0.0.
+A escolha explícita após Niscor preserva indivíduo, cartas e proporção de HP.
+Novas ofertas são adiadas após as antigas para preservar replay por índice;
+migração auditada conserva a Nascente rules-3 e bloqueia futuros forjados.
+A referência e imagens originais foram recuperadas do executor, sem nova geração.
+
+Saves passaram com 113 assertions; fixtures corrigidas e projeção equivalente
+passaram nos runs focados. Fechamento completo e capturas finais serão registrados
+no PR. Balanceamento numérico é default de protótipo delegado, e revisão de arte,
+animação e hardware continua aberta. Próxima fatia: revisar a família jogando,
+refinar transições e asas de repouso, então coordenar integração. Produto 0.3.0.
+[Escopo, compatibilidade e evidências](electric-adults-v05-art03.md).
+
+### V05-CNT-02A — Foslash jogável e folhas-lâminas
+
+Foslash entra por aresta explícita de Folife, com anatomia frontal, oito
+poses de caminhada/quatro de KO e VFX próprios de folhas-lâminas para a
+linhagem. Ruleset 4 separa a revisão do catálogo da revisão de eventos;
+runs históricas mantêm o grafo antigo, UID/passiva/cartas e RNG. Atributos
+adultos repetem o incremento anterior como default provisório, sem nova
+regra definitiva de balanceamento.
+
+[Escopo, compatibilidade, tentativas e lacunas](foslash-playable-v05-cnt-02a.md).
+Gates focados passaram; mouse real validou evolução/boss/3 casts (25/0) e
+comandos de produção validaram HP 72→0→26 no mesmo UID (16/0). Draft técnico,
+sem aceitação integral desta candidata ainda. Verso de Foslash bloqueado na
+geração; pop de postura e lâmina pintada durante o projétil permanecem.
+Próxima fatia: Folivel jogável e versos próprios onde há arte válida;
+fechamento completo com vídeo após congelar a candidata. Produto 0.3.0.
+
+### V05-CNT-02B — Folivel jogável e dorsais próprios
+
+A alternativa Folivel da v13 entra por aresta explícita de Folife, com
+frente/verso e lifecycle próprios. Foli/Folife recebem dorsais em novas
+versões 1.1.0; as fontes frontais anteriores permanecem preservadas.
+Catálogo 2 mantém compatibilidade auditada com as revisões 0/1, sem
+acrescentar Folivel às ofertas de uma run histórica. Save252/0 e regras56/0
+passaram nos alvos puros; fechamento completo, input/vídeo e revisão do
+commit congelado ficam no PR.
+
+[Escopo, identidade, fontes e lacunas](folivel-playable-v05-cnt-02b.md).
+Marcha dorsal de Folivel tem alternância posterior limitada; verso de
+Foslash e casts de corpo em poses ainda faltam. Sem merge ou aprovação
+estética/performance por contagens de teste. Produto 0.3.0.
+
+
+### V05-CNT-02 — candidata local de união de linhagens
+
+Integração local sobre 4df4809 com fontes de grama a9dc51e e diagnóstico de
+cb713b2, preservando casa/foco/Pietro 2 e a elétrica. Históricos mantêm seus
+grafos0/1/2/3; novas expedições usam4. Movimento 829 e saves 433 passaram nos
+focos; a aceitação integral tem relatório próprio após congelar a composição.
+Não é família final, main ou aprovação estética. [Escopo e compatibilidade](lineage-union-candidate.md).
 
 ### V05-ART-REF-01 — referências disponíveis para produção de identidades
 
@@ -1126,3 +1321,29 @@ funcional não representa aprovação artística. Despertar e escada continuam
 provisórios; o acabamento visual segue em revisão separada. A suíte integral do
 HEAD funcional `1994376` passou no push 41964934938. Novos jobs do Actions estão
 bloqueados por cobrança; nenhum job novo é registrado como aprovado por isso.
+
+### V05-CNT-02 — consolidação técnica das linhagens sobre a main
+
+A candidata funcional `15dfe1b` passou aceitação integral local: 14.346 regras,
+2.902 verificações nativas, 2.935 Web, 8 mutações, 5 viewports e 189 capturas.
+A revisão independente do adaptador não encontrou bloqueio funcional: confirmou
+433 saves, 24 de catálogo, 5 migrações, 14.346 regras e 279 verificações
+suplementares, manifestos históricos, ordem/idempotência e preservação do grafo
+de saves antigos. Continuar não libera as novas finais de outro catálogo.
+
+A integração com a main `8d514bf` preserva referências e ambos os registros de
+roadmap; a reconciliação altera apenas documentação, sem mudar runtime, testes,
+conteúdo ou pins da candidata validada. Evidência integral original em
+`artifacts/lineage-union-full-proof.json`; testes da reconciliação e prova de
+equivalência ficam registrados no fechamento do PR. Actions foi desativado a
+pedido de Pedro, e validações locais continuam obrigatórias. Sem novo aceite de
+CI remoto e sem aumento da versão 0.3.0.
+
+Pietro e casa foram visualmente rejeitados por Pedro; integração funcional
+provisória, sem aprovação artística. Elétrica e grama têm quatro formas no
+runtime, mas permanecem parciais: recuperação elétrica sobreposta, Foslash sem
+verso próprio, casts corporais de grama em staging e marcha dorsal Folivel
+limitada. Cadência e hardware ainda abertos; Brasa revisado e água não entram
+neste conjunto. Pietro45d56a1 segue fora por origem indisponível. Próxima fatia:
+revisão visual comparativa e acabamento separado, preservando os contratos de
+save já revisados. [Escopo técnico](lineage-union-candidate.md).

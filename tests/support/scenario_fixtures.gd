@@ -2,11 +2,12 @@ extends RefCounted
 const Expedition = preload("res://scripts/expedition/expedition.gd")
 const Rules = preload("res://scripts/rules.gd")
 const Replay = preload("res://scripts/expedition/replay.gd")
-const NAMES = ["spring_room", "spring_approach", "battle", "wounded", "enemy_shield", "rewards", "rewards_many", "replacement", "inventory_full", "motion_ember", "motion_ignivar", "motion_moss", "motion_verdalio", "motion_dew", "motion_mareveu", "motion_volt", "motion_tempestral"]
+const NAMES = ["spring_room", "spring_approach", "battle", "wounded", "enemy_shield", "rewards", "rewards_many", "replacement", "inventory_full", "motion_ember", "motion_ignivar", "motion_moss", "motion_verdalio", "motion_dew", "motion_mareveu", "motion_volt", "motion_tempestral", "motion_auravel", "motion_zuldar", "electric_branches"]
 
 static func make(name: String) -> Dictionary:
 	if name not in NAMES: return {}
 	if name in ["spring_room", "spring_approach"]: return _spring(name == "spring_room")
+	if name == "electric_branches": return _electric_branches()
 	if name.begins_with("motion_"): return _motion(name)
 	var run = Expedition.new()
 	run.new_run(42013, "full", "ember")
@@ -39,7 +40,7 @@ static func make(name: String) -> Dictionary:
 static func _motion(name: String) -> Dictionary:
 	# Test-only, validated checkpoints. Receivers have endurance so all three
 	# presentations can be observed through real owned cards and normal commits.
-	var cases: Dictionary = {"ember": ["ember", "ember", 1], "ignivar": ["ember", "ignivar", 1], "moss": ["moss", "moss", 2], "verdalio": ["moss", "verdalio", 0], "dew": ["dew", "dew", 1], "mareveu": ["dew", "mareveu", 2], "volt": ["volt", "volt", 0], "tempestral": ["volt", "tempestral", 1]}
+	var cases: Dictionary = {"ember": ["ember", "ember", 1], "ignivar": ["ember", "ignivar", 1], "moss": ["moss", "moss", 2], "verdalio": ["moss", "verdalio", 0], "dew": ["dew", "dew", 1], "mareveu": ["dew", "mareveu", 2], "volt": ["volt", "volt", 0], "tempestral": ["volt", "tempestral", 1], "auravel": ["volt", "auravel", 0], "zuldar": ["volt", "zuldar", 2]}
 	var definition: Array = cases[name.trim_prefix("motion_")]
 	var run = Expedition.new()
 	run.new_run(42013, "full", str(definition[0]))
@@ -75,4 +76,21 @@ static func _spring(enter: bool) -> Dictionary:
 	if not Replay.execute(run, commands).ok or run.phase != ("event" if enter else "map"): return {}
 	var result: Dictionary = Replay.envelope(initial, commands)
 	result.merge({"name": "spring_room" if enter else "spring_approach", "snapshot": run.snapshot()})
+	return result
+
+static func _electric_branches() -> Dictionary:
+	var run = Expedition.new()
+	run.new_run(42013, "full", "volt")
+	run.battle.party[0] = Rules.make_umbral("volt", "ardent", 1, "tempestral")
+	run.battle.party[0].slot = 1
+	if not run.choose_node("clearing"): return {}
+	run.battle.enemies[0].hp = 1
+	run.battle._sync_compatibility()
+	var initial: Dictionary = run.snapshot()
+	var commands: Array = []
+	for index in run.battle.best_selection(): commands.append({"command": "select", "index": index})
+	commands.append({"command": "cast"})
+	if not Replay.execute(run, commands).ok or run.phase != "reward": return {}
+	var result: Dictionary = Replay.envelope(initial, commands)
+	result.merge({"name": "electric_branches", "snapshot": run.snapshot()})
 	return result

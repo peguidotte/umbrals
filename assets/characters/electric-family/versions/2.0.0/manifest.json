@@ -1,0 +1,205 @@
+{
+  "changes": "Add authored closed-eye KO poses, stance contacts and transition/recovery roles. Requires the pose-aware consumer.",
+  "dependencies": [],
+  "description": "Nisca/Niscor directional sprites and motion candidates revised after independent review; human acceptance pending.",
+  "files": {
+    "motion": {
+      "bytes": 597164,
+      "kind": "data",
+      "path": "motion.json",
+      "sha256": "073d4735f66b8198e6d79d51b6c6f4650d36b9882d406037ac71891df32f70bd"
+    },
+    "nisca-ally": {
+      "bytes": 161226,
+      "kind": "texture",
+      "path": "nisca-ally.png",
+      "sha256": "8e46bf76e95b92ea30b192b8f5dcd5442719b59619317bee155d60c9ccf71932",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "nisca-enemy": {
+      "bytes": 161222,
+      "kind": "texture",
+      "path": "nisca-enemy.png",
+      "sha256": "6ca85144c7a672fe5c5843a8943edbc37fc030d3b1acde3f7a1276a925c7bcc1",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "nisca-ko-ally": {
+      "bytes": 137236,
+      "kind": "texture",
+      "path": "nisca-ko-ally.png",
+      "sha256": "409f902659f83b68f860d7ce16e4cd52de542099a9ce805450a1f75127eb19e0",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "nisca-ko-enemy": {
+      "bytes": 138219,
+      "kind": "texture",
+      "path": "nisca-ko-enemy.png",
+      "sha256": "deb8a0a17dbe3a9b3be81ddaa99cbc2ffaae49b07f8b3ff95d4475a7d32132b2",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "niscor-ally": {
+      "bytes": 140636,
+      "kind": "texture",
+      "path": "niscor-ally.png",
+      "sha256": "ea3ccb965d3aa89d14e5eea0633eee5ad9514a105721a70a10aad1260a8481db",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "niscor-enemy": {
+      "bytes": 140103,
+      "kind": "texture",
+      "path": "niscor-enemy.png",
+      "sha256": "d01ddc8e005c430367a750340125728c83c8fb71d0be4669c66de2ced40c2b37",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "niscor-ko-ally": {
+      "bytes": 134419,
+      "kind": "texture",
+      "path": "niscor-ko-ally.png",
+      "sha256": "652674d0d8adbb8c7194f2ed06631672169842e44ef8fd8ccb276265f5ddd69e",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "niscor-ko-enemy": {
+      "bytes": 133101,
+      "kind": "texture",
+      "path": "niscor-ko-enemy.png",
+      "sha256": "d34b7586703302e151e0a5be180da44b95c269cf75b6d9f64b0e0c307db21bc3",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "performances": {
+      "bytes": 3067,
+      "kind": "data",
+      "path": "performances.json",
+      "sha256": "2fee49f9b3284c976df497b0bfb9a0d8ea38b63228fd319e1e69294b4990bdae"
+    },
+    "presentation": {
+      "bytes": 681,
+      "kind": "data",
+      "path": "presentation.json",
+      "sha256": "e634ba847c6f56815cf4301fd22e4ff5cf8aa106a5e95ca3de906f84e8cd417a"
+    },
+    "source-approved-reference": {
+      "bytes": 2235483,
+      "kind": "review",
+      "path": "review/approved-reference.png",
+      "sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "source-generated-source": {
+      "bytes": 2014283,
+      "kind": "review",
+      "path": "review/generated-source.png",
+      "sha256": "b670bfe41c203509a5f90bed4975ff3449b931a47edb7a75a40c871ae18dae87",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "source-ko-source": {
+      "bytes": 2020109,
+      "kind": "review",
+      "path": "review/ko-source.png",
+      "sha256": "913aecf648903980ed09ddbef515438dea6699cc8ffad89ec072da1f34a59ddc",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/electric-family",
+  "provenance": {
+    "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+    "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+    "license": "Original project generated artwork and authored motion; no external game assets.",
+    "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+    "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+    "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+    "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+    "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+    "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "2.0.0"
+}

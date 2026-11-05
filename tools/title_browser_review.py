@@ -1,3 +1,4 @@
+from harness_lib.browser_runtime import chromium_executable
 from refuge_browser_review import depart, point_walk, touch_depart
 """Real browser input and captures for the title menu and its card effect."""
 import argparse
@@ -98,7 +99,7 @@ def attach_errors(p):
 
 try:
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(executable_path='/usr/bin/chromium', headless=True,
+        browser = playwright.chromium.launch(executable_path=chromium_executable(), headless=True,
             args=['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'])
         expected = {'menu.play', 'menu.codex', 'menu.settings', 'menu.help', 'menu.credits'}
         room_options = {'viewport': {'width': 1672, 'height': 941}, 'device_scale_factor': 1}

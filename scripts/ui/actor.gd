@@ -30,6 +30,7 @@ var acting: bool = false
 var public_intent: Dictionary = {}
 var text_scale: float = 1.0
 var ground_profile: Dictionary = {}
+var art_view: String = "front"
 var shadow_width: float = 80.0
 
 func _ready() -> void:
@@ -72,9 +73,10 @@ func _pivot() -> void:
 	if is_instance_valid(portrait) and is_instance_valid(portrait.texture) and not ground_profile.is_empty():
 		var foot: Vector2 = Vector2(float(ground_profile.foot[0]), float(ground_profile.foot[1]))
 		var depth: float = [0.90, 1.0, 1.07][clampi(slot, 0, 2)]
-		var factor: float = minf((size.x - 32) / portrait.texture.get_width(), 118.0 * depth / maxf(1, foot.y - float(ground_profile.visible_top)))
+		var max_width: float = maxf(size.x - 32, float(ground_profile.get("display_width", 0.0)) * depth)
+		var factor: float = minf(max_width / portrait.texture.get_width(), float(ground_profile.get("display_height", ground_profile.get("height", 118.0))) * depth / maxf(1, foot.y - float(ground_profile.visible_top)))
 		portrait.size = portrait.texture.get_size() * factor
-		rig.configure(portrait.texture, str(identity.get("art", "")).get_file() if not str(identity.get("art", "")).is_empty() else Content.art_binding(identity).get_file(), portrait.size, foot * factor, portrait.flip_h)
+		rig.configure(portrait.texture, str(identity.get("art", "")).get_file() if not str(identity.get("art", "")).is_empty() else Content.art_binding(identity).get_file(), portrait.size, foot * factor, portrait.flip_h, art_view)
 		if portrait.flip_h: foot.x = portrait.texture.get_width() - foot.x
 		portrait.pivot_offset = foot * factor
 		# The opaque feet, rather than the transparent atlas rectangle, meet the floor.
@@ -85,8 +87,13 @@ func _pivot() -> void:
 func _ground() -> Vector2:
 	return Vector2(size.x * 0.5, size.y - 58)
 
-func set_identity(data: Dictionary, scale_text: float = 1.0) -> void:
-	if is_instance_valid(rig) and int(identity.get("uid", -1)) != int(data.get("uid", -1)): rig.reset()
+func set_identity(data: Dictionary, scale_text: float = 1.0, animate_lifecycle: bool = false) -> void:
+	var previous_uid: int = int(identity.get("uid", -1))
+	var same_individual: bool = previous_uid == int(data.get("uid", -2))
+	var was_alive: bool = int(identity.get("hp", 0)) > 0
+	if is_instance_valid(rig) and int(identity.get("uid", -1)) != int(data.get("uid", -1)):
+		rig.set_incapacitated(false, false)
+		rig.reset()
 	identity = data.duplicate(true)
 	text_scale = scale_text
 	if data.is_empty():
@@ -103,12 +110,16 @@ func set_identity(data: Dictionary, scale_text: float = 1.0) -> void:
 		var species: Dictionary = Content.SPECIES.get(data.get("species", ""), {})
 		var art: String = str(data.get("art", ""))
 		if art.is_empty() and not species.is_empty(): art = Content.art_binding(data)
-		portrait.texture = BattleArt.texture(art)
-		ground_profile = BattleArt.ground_profile(art)
+		art_view = BattleArt.view_name(art, enemy)
+		portrait.texture = BattleArt.texture(art, art_view)
+		ground_profile = BattleArt.ground_profile(art, art_view)
 		portrait.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST if portrait.texture is AtlasTexture else CanvasItem.TEXTURE_FILTER_LINEAR
 		portrait.flip_h = enemy
 		var alive: bool = int(data.get("hp", 1)) > 0
 		portrait.modulate = (Color(0.94, 0.97, 1.0) if slot == 0 else Color.WHITE) if alive else Color(0.4, 0.48, 0.56, 0.6)
+		if not alive and ground_profile.has("ko_tint"):
+			var tint: Array = ground_profile.ko_tint
+			portrait.modulate = Color(float(tint[0]), float(tint[1]), float(tint[2]), float(tint[3]))
 		accent = Color(species.get("color", "dec88d"))
 		caption.text = str(data.name) if data.has("name") else Content.display_name(data)
 		if not enemy: caption.text += " · %d" % int(data.uid)
@@ -129,6 +140,9 @@ func set_identity(data: Dictionary, scale_text: float = 1.0) -> void:
 	intent_caption.add_theme_font_size_override("font_size", int(14 * scale_text))
 	set_intent(public_intent)
 	_pivot()
+	if not data.is_empty():
+		var alive_changed: bool = was_alive != (int(data.get("hp", 0)) > 0)
+		rig.set_incapacitated(int(data.get("hp", 0)) <= 0, animate_lifecycle and same_individual and alive_changed)
 	queue_redraw()
 
 func set_intent(data: Dictionary) -> void:

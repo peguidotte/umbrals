@@ -1,0 +1,134 @@
+{
+  "animations": {
+    "knockout": {
+      "columns": 4,
+      "file": "knockout",
+      "fps": 6.666666666666667,
+      "frame_size": [
+        362,
+        362
+      ],
+      "frames": 4,
+      "loop": false,
+      "pivot": [
+        198,
+        340
+      ]
+    },
+    "walk": {
+      "columns": 4,
+      "file": "walk",
+      "fps": 10,
+      "frame_size": [
+        362,
+        362
+      ],
+      "frames": 8,
+      "loop": true,
+      "pivot": [
+        198,
+        340
+      ]
+    }
+  },
+  "dependencies": [
+    {
+      "id": "characters/foslash-pilot",
+      "version": "1.0.0"
+    }
+  ],
+  "description": "Foslash own eight front walk poses and four reversible KO poses, selected only in draft.",
+  "files": {
+    "knockout": {
+      "bytes": 465173,
+      "kind": "texture",
+      "path": "knockout.png",
+      "sha256": "29764a340242508ca61c1647d71508c0eaa2ec0f58d8555f56679ff46d6f02cb",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          362
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "ko-correction": {
+      "bytes": 1581370,
+      "kind": "review",
+      "path": "review/ko-correction-01/original.png",
+      "sha256": "fa0272c61129accdbbf5da0ea0a530caa0c0458b359f28b92a92e9b8534123cc",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1446,
+          1087
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "normalization": {
+      "bytes": 12554,
+      "kind": "data",
+      "path": "normalization.json",
+      "sha256": "7f6d48bd8b8140970951eb60cbba539c77d653dbb60be7f2b5d2195d9b442a34"
+    },
+    "original": {
+      "bytes": 1560262,
+      "kind": "review",
+      "path": "review/original.png",
+      "sha256": "f811f3b7f79dc8cdc117b3684de8a9316718d6f88e3e1bd35a78ef754ee70ac9",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1447,
+          1087
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "profile": {
+      "bytes": 289,
+      "kind": "data",
+      "path": "profile.json",
+      "sha256": "4825d2b0fd8902fb022bb4373b42c877d8810a61984f9026aba5333e52e1ee55"
+    },
+    "walk": {
+      "bytes": 1017608,
+      "kind": "texture",
+      "path": "walk.png",
+      "sha256": "b7f21e3beac4c26f3383b7c1a939a0448c811605ae87e8a829728130468cab3a",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/foslash-lifecycle",
+  "metadata": {
+    "limits": [
+      "No rear locomotion or KO; rear generation blocked",
+      "KO weapon tip extends slightly below toe floor in two poses; scene review required",
+      "Posture endpoints and consistency require native review"
+    ],
+    "production_ready": false
+  },
+  "provenance": {
+    "approval": "Independent static technical GO for draft; cadence, floor depth and human aesthetics pending.",
+    "kind": "Image Gen edit of the project-owned Foslash front cutout",
+    "normalization": "Own rectangles and integer floor alignment; no resampling, repainting or alpha changes. Last KO uses one directed correction restoring the short blade.",
+    "originals_preserved": true,
+    "source_cutout_sha256": "d58dc597d8d09926f9402c44e310d0ab3dcd16f1e0356125c7b96469ffc31c37"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

@@ -193,3 +193,14 @@ sala da Nascente com controles reais no build isolado de fixtures e sua matriz
 com texto ampliado; não acrescenta edição às recompensas. `browser.expedition`
 percorre a entrada real, recarrega a sala sem gastar o intervalo e confirma o
 descanso. A suíte e os dois cenários participam do fechamento completo.
+
+
+CI browser provenance uses the same explicit executable as browser execution.
+Preparation and browser workers install the Chromium bundled with the pinned
+Playwright package; `UMBRAL_CHROMIUM_EXECUTABLE` points to that actual binary.
+Desktop build workers pin it before constructing the shared executor as well.
+CI rejects a missing pin or missing executable instead of falling back to a host
+browser. Local runs retain host Chromium unless an override is supplied. Actual
+`--version` remains in the strict preparation/shard comparison; mismatch diagnostics
+now print both version dictionaries. This addresses mixed runner images without
+relaxing source, tool, output, run-id or run-attempt checks.

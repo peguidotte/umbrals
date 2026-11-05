@@ -45,7 +45,12 @@ func _initialize() -> void:
 	check(fixture.forms[0].id == "seed", "fixture isolation")
 	check(Progress.observed_form_ids({"species": "moss", "form_id": "branch"}, "seed") == ["seed", "branch"], "species ID cannot discover an unrelated form")
 	check(Content.species_ids() == ["ember", "moss", "volt", "dew"], "manifest ordering")
-	check(Content.form_ids("volt") == ["volt", "tempestral"], "form ordering")
+	check(Content.form_ids("volt") == ["volt", "tempestral", "auravel", "zuldar"], "form ordering")
+	check(Content.display_name({"species": "volt", "form_id": "volt"}) == "Nisca", "approved electric starter uses its stable form ID")
+	check(Content.display_name({"species": "volt", "form_id": "tempestral"}) == "Niscor", "approved electric evolution uses its stable form ID")
+	check(Content.display_name({"species": "volt", "form_id": Content.legacy_form("volt", 1)}) == "Nisca" and Content.display_name({"species": "volt", "form_id": Content.legacy_form("volt", 2)}) == "Niscor", "explicit legacy migration mapping resolves approved names without new IDs")
+	check(Content.evolution_edges({"species": "volt", "form_id": "volt"}) == [{"id": "volt_to_tempestral", "from": "volt", "to": "tempestral"}], "renaming preserves existing evolution offers and saved transition IDs")
+	check(Progress.observed_form_ids({"species": "volt", "form_id": "tempestral"}, "volt") == ["volt", "tempestral"], "existing discovery IDs still reveal the renamed electric forms")
 	var owner = {"species": "volt", "form_id": "tempestral"}
 	check(Content.natures(owner) == ["lightning", "water"], "form natures")
 	check(Content.power_stats("life_seed", owner).heal == 8, "learned power profile")

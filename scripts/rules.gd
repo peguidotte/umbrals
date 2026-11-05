@@ -10,6 +10,7 @@ const BattleView = preload("res://scripts/battle/battle_view.gd")
 const RoundAftermath = preload("res://scripts/battle/round_aftermath.gd")
 const EncounterSetup = preload("res://scripts/battle/encounter_setup.gd")
 const Rewards = preload("res://scripts/battle/rewards.gd")
+const CatalogRevision = preload("res://scripts/battle/catalog_revision.gd")
 const Planning = preload("res://scripts/battle/planning.gd")
 const CardCycle = preload("res://scripts/battle/card_cycle.gd")
 const RoundResolution = preload("res://scripts/battle/round_resolution.gd")
@@ -56,6 +57,7 @@ var total_damage: int = 0
 var actions: int = 0 # Total committed rounds, retained for run statistics.
 var last_result: Dictionary = {}
 var expedition_mode: bool = false
+var catalog_revision: int = CatalogRevision.CURRENT
 # Read-only compatibility aggregates for previous presentation/statistics callers.
 var max_hp: int = 40
 var player_hp: int = 40
@@ -68,6 +70,7 @@ static func make_umbral(species: String, passive: String, uid: int, form_id: Str
 	return EncounterSetup.make_umbral(species, passive, uid, form_id)
 
 func new_run(run_seed: int, mode: String = "partial", starter: String = "ember") -> void:
+	catalog_revision = CatalogRevision.CURRENT
 	seed_value = run_seed
 	rng.seed = run_seed
 	encounter = 0
@@ -371,13 +374,13 @@ func finish_replacements() -> bool:
 	return true
 
 func _prepare_rewards() -> void:
-	Rewards.prepare(reward_offers, party, starter_species, encounter, expedition_mode, next_uid, rng)
+	Rewards.prepare(reward_offers, party, starter_species, encounter, expedition_mode, next_uid, rng, catalog_revision)
 
 func capture_destinations(offer_index: int, replace_uid: int = -1) -> Array[int]:
 	return Rewards.capture_destinations(offer_index, replace_uid, phase, reward_offers, party)
 
 func choose_reward(offer_index: int, replace_uid: int = -1, capture_slot: int = -2) -> bool:
-	if not Rewards.apply_offer(offer_index, replace_uid, capture_slot, phase, reward_offers, party, hand, deck, discard_pile, suspended_cards, MAX_TEAM): return false
+	if not Rewards.apply_offer(offer_index, replace_uid, capture_slot, phase, reward_offers, party, hand, deck, discard_pile, suspended_cards, MAX_TEAM, catalog_revision): return false
 	if reward_offers[offer_index].kind == "capture": next_uid += 1
 	if expedition_mode:
 		reward_offers.clear()

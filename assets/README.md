@@ -1,5 +1,22 @@
 # Assets
 
+## Electric family — V05-ART-02
+
+`characters/electric-family@2.0.0` contains new Nisca/Niscor sprites, separately
+generated views for each side, original anatomical mesh tracks, in-place gait,
+hurt/KO and attached attack origins. It is the proposed production target of
+the existing `umbrals/volt` and `umbrals/tempestral` bindings in the draft branch.
+It replaces their old beetle representation without changing content IDs or stats.
+The official Library reference and both original generated PNGs retain their
+bytes/metadata under the releases' `review/` folders. The reference hash and
+normalization are recorded in the manifests. Runtime PNGs use explicit alpha,
+nearest filtering and grounded pivots. These are mesh animations, not redrawn
+frame sequences. Final human art approval remains open.
+
+`characters/electric-adults@1.0.0` is an **unpinned prototype**: Auravel with wings
+and Zuldar as a biped with attached blue quills. No evolution, stats, rig, attack
+origin or playable adult is claimed. See [scope and handoff](../docs/electric-family-v05-art02.md).
+
 Referências conceituais de personagens e Umbrais ficam no
 [acervo documental](../docs/references/identidades/README.md), com origem,
 hashes e limites de aprovação por prancha. São fontes para produção posterior,
@@ -123,3 +140,29 @@ identidade Library, pivôs e escala explícitos. Repouso e seis poses de caminha
 usam o consumidor da casa existente. O único pin alterado é o do protagonista;
 nenhum script de geometria, movimento ou save mudou. Aprovação estética do
 sprite continua pendente. Ver [referência, integração e limites](../docs/pietro-v05-art01.md).
+
+## Foli initial-form pilot — V05-ART-02F
+
+`characters/foli-pilot@1.0.0` preserves the original transparent Image Gen
+cutout (`exec-7dccbeb5-ce85-494c-997a-2ef723555560`) and its own anatomical
+mesh tracks. The only changed runtime binding is `umbrals/moss`; historical
+modules remain intact. Reference originals and Library provenance live under
+`docs/references/creatures/foli/`. This draft selects the cutout for visual
+review; it has no authored walk or persistent KO pose. Folife still uses the
+historical art. See [scope and evidence](../docs/foli-pilot-v05-art-02f.md).
+
+### Foli/Folife com lifecycle — V05-ART-02G/H
+
+As descrições do piloto inicial acima são históricas. Esta união local seleciona
+`characters/foli-pilot@1.0.0` e `characters/folife-pilot@1.0.0` para os dois
+retratos, com oito poses de caminhada e quatro de KO em módulos próprios de
+lifecycle `1.0.0`. Os pins por forma compõem com o adaptador compartilhado;
+nenhum asset/pin de Brasa é incorporado por esta união. O Pietro 2.0.0 e a casa
+permanecem selecionados. As referências originais ficam excluídas da exportação.
+Revisão técnica permite experimento em draft; não há aprovação estética nem
+família completa. Ver os escopos de Foli/Folife e os pareceres independentes.
+Auravel/Zuldar: `characters/electric-adults@2.0.0` contém originais referenciados
+à família aprovada, duas vistas, rigs e poses desenhadas de KO. Arte/movimento
+continuam candidatos à revisão; [escopo e limites](../docs/electric-adults-v05-art03.md).
+`characters/electric-family@2.1.0` move a origem secundária do Niscor para pixels
+opacos de um espinho preso; releases anteriores permanecem íntegros.

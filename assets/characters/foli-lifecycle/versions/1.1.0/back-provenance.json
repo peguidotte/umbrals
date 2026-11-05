@@ -1,0 +1,37 @@
+{
+  "status": "STAGING_ONLY_NO_RUNTIME_SELECTION",
+  "species": "foli",
+  "targets": [
+    {
+      "role": "static rear3/4 facingRIGHT",
+      "provenance": "static-01/provenance.json",
+      "original": "static-01/original.png",
+      "sha256": "cf0caad407c3b463a91c1342446215f193050e49ab8cdea0e554c846c7c9d7c9",
+      "preview118": "static-01/front-rear-scale-review.png"
+    },
+    {
+      "role": "4dorsalKO stages",
+      "provenance": "ko-01/provenance.json",
+      "original": "ko-01/original.png",
+      "sha256": "5082ddbeae397cdea389365015c1ef6081a7478d5e7d31e529c88dc5bfb166ca",
+      "native_candidate": "ko-01/knockout-native-candidate.png",
+      "preview118": "ko-01/native118-review.png"
+    },
+    {
+      "role": "4dorsalwalk phases",
+      "provenance": "walk-01/provenance.json",
+      "original": "walk-01/original.png",
+      "sha256": "e16a9e7f8ea28a77450f6800d4da9ea879693e9378bafe0a8eeee229667da54c",
+      "native_candidate": "walk-01/walk-native-candidate.png",
+      "preview118": "walk-01/native118-review.png"
+    }
+  ],
+  "original_media_metadata": "Both PNG originals copied byte-for-byte; caBX preserved. Technical derivatives reference originals via provenance.",
+  "generation_count": 3,
+  "retry_count": 0,
+  "manual_write_scope": "builds/asset-work/foli-views",
+  "published_files_modified": false,
+  "engine_or_ci_run": false,
+  "runtime_pins_or_catalog_modified": false,
+  "foslash_block": "No retry, route, file edit or generation was attempted for blocked Foslash rear in this slice."
+}

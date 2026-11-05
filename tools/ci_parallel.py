@@ -100,7 +100,7 @@ def shard(folder, prepared, group):
     folder.mkdir(parents=True, exist_ok=False)
     (folder / '.gdignore').touch()
     executor = Executor(ROOT, folder, sources, options, threading.Event())
-    require(executor.versions == prep['tools'], 'Mixed tool versions')
+    require(executor.versions == prep['tools'], 'Mixed tool versions: expected=' + json.dumps(prep['tools'], sort_keys=True) + ', actual=' + json.dumps(executor.versions, sort_keys=True))
     tasks = registry()
     records = {}
     for scenario in GROUPS[group]:

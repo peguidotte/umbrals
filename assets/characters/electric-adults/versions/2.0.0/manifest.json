@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "id": "characters/electric-adults",
+  "version": "2.0.0",
+  "status": "production",
+  "description": "Auravel winged quadruped and Zuldar biped: directional actors, anatomical motion and drawn KO/recovery candidates.",
+  "dependencies": [
+    {
+      "id": "characters/electric-family",
+      "version": "2.1.0"
+    }
+  ],
+  "files": {
+    "auravel-ally": {
+      "path": "auravel-ally.png",
+      "kind": "texture",
+      "sha256": "9e3428ebeb484f11493adfcfa230dabf0446e9af2acfeb622fbcf05fe216a976",
+      "bytes": 206210,
+      "technical": {
+        "dimensions": [
+          512,
+          384
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    },
+    "auravel-enemy": {
+      "path": "auravel-enemy.png",
+      "kind": "texture",
+      "sha256": "aa75a0937748406347cec2ef7472323e86164fdba79e14bf2e5e8acb0caefcae",
+      "bytes": 204152,
+      "technical": {
+        "dimensions": [
+          512,
+          384
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    },
+    "auravel-ko-ally": {
+      "path": "auravel-ko-ally.png",
+      "kind": "texture",
+      "sha256": "2531f30a50989f651fe7bde8091b1fa13e7158d001fba1ae9dcae9589ae4080d",
+      "bytes": 178154,
+      "technical": {
+        "dimensions": [
+          512,
+          384
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    },
+    "auravel-ko-enemy": {
+      "path": "auravel-ko-enemy.png",
+      "kind": "texture",
+      "sha256": "43267c14bd38e09e9d198ee6b634749b47f81ba20a4a9ddfa51d6d009ada2ebb",
+      "bytes": 179688,
+      "technical": {
+        "dimensions": [
+          512,
+          384
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    },
+    "motion": {
+      "path": "motion.json",
+      "kind": "data",
+      "sha256": "173d318468b548a01fcb3fc3129c94ccbbcff218c506a3a42ec49fa757d28056",
+      "bytes": 626522
+    },
+    "performances": {
+      "path": "performances.json",
+      "kind": "data",
+      "sha256": "2fee49f9b3284c976df497b0bfb9a0d8ea38b63228fd319e1e69294b4990bdae",
+      "bytes": 3067
+    },
+    "presentation": {
+      "path": "presentation.json",
+      "kind": "data",
+      "sha256": "02088daf1606a5d1b3eff982ba52e411be9e506d8c33c3e84592ce07346b5de0",
+      "bytes": 768
+    },
+    "source-approved-reference": {
+      "path": "review/approved-reference.png",
+      "kind": "review",
+      "sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+      "bytes": 2235483,
+      "technical": {
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGB",
+        "frames": 1,
+        "alpha": false
+      }
+    },
+    "source-generated-source": {
+      "path": "review/generated-source.png",
+      "kind": "review",
+      "sha256": "07d88b414d072102d08b3f7bae51ff8dac5b308ddde43b07c2cce94d96fc4bac",
+      "bytes": 2196036,
+      "technical": {
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    },
+    "source-ko-source": {
+      "path": "review/ko-source.png",
+      "kind": "review",
+      "sha256": "710d14bdc5e158c2c53722e11ca09cfb4f12ef6df12b8b1c6a171f3bcc693227",
+      "bytes": 2166432,
+      "technical": {
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    },
+    "zuldar-ally": {
+      "path": "zuldar-ally.png",
+      "kind": "texture",
+      "sha256": "cae1ed80b5f04eecdab0fedd66c95b16b2328e53f4c449eca357e525f27a7ec4",
+      "bytes": 176878,
+      "technical": {
+        "dimensions": [
+          512,
+          384
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    },
+    "zuldar-enemy": {
+      "path": "zuldar-enemy.png",
+      "kind": "texture",
+      "sha256": "1439dd95d0dd82cbf829f911787a377424308ada693323a9e14e7f82be217402",
+      "bytes": 175737,
+      "technical": {
+        "dimensions": [
+          512,
+          384
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    },
+    "zuldar-ko-ally": {
+      "path": "zuldar-ko-ally.png",
+      "kind": "texture",
+      "sha256": "6cc742807bfe39a9ca4631f7955bb0b3465732fa16808cab7801dc01ba35d747",
+      "bytes": 176190,
+      "technical": {
+        "dimensions": [
+          512,
+          384
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    },
+    "zuldar-ko-enemy": {
+      "path": "zuldar-ko-enemy.png",
+      "kind": "texture",
+      "sha256": "3add0c771808c44a9d9124427afde3fef7a97795566690f822c0e0dbebabc6d2",
+      "bytes": 175836,
+      "technical": {
+        "dimensions": [
+          512,
+          384
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    }
+  },
+  "provenance": {
+    "kind": "Original Image Gen referenced to approved electric family; original images and metadata retained.",
+    "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+    "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+    "normalization": "Fixed alpha >=192, crop, nearest fit, 512x384 canvas; opposite view canonicalized before runtime mirror.",
+    "motion": "Own wing and biped joints, explicit support contacts, original curves with shared attack event clocks.",
+    "limits": "Review candidates; KO uses closed-eye drawn poses with crossfade. Auravel resting wings remain raised. No claim of final hand-drawn animation or final balance.",
+    "license": "Original project generated artwork and authored motion."
+  }
+}

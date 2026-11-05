@@ -1,0 +1,170 @@
+{
+  "changes": "Add own authored dorsal art, anatomy and clips; front pixels/tracks and timings unchanged.",
+  "dependencies": [],
+  "description": "Folife own front and authored dorsal view/anatomy, technical draft only.",
+  "files": {
+    "authoring": {
+      "bytes": 649,
+      "kind": "data",
+      "path": "authoring.json",
+      "sha256": "8507d2cee2394665fc157f7a243f4ff6ea1c36ee7a1fa479cd52cdeead2d0351"
+    },
+    "back": {
+      "bytes": 1307026,
+      "kind": "texture",
+      "path": "folife-back.png",
+      "sha256": "ee03b7256f06113a28538d39eb34c23a738b1f89a1f1ebf06e991b8cca149d4d",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "back-authoring": {
+      "bytes": 197,
+      "kind": "data",
+      "path": "back-authoring.json",
+      "sha256": "93b51a9b96962e6a276d3d16dcbbf8dbc28c93c21957964d9396eec8aa613379"
+    },
+    "motion": {
+      "bytes": 2317562,
+      "kind": "data",
+      "path": "motion.json",
+      "sha256": "d2486347144344bc2d042ab7c3feedefec59467a332543ba84efaeb5365b1c45"
+    },
+    "portrait": {
+      "bytes": 1303516,
+      "kind": "texture",
+      "path": "folife.png",
+      "sha256": "3096668c4de905c44e5f1d6793b9fe5683e15d96f438e0dd1ad615bc0262ef1a",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/folife-pilot",
+  "metadata": {
+    "battle_profile": {
+      "grounding": {
+        "foot": [
+          500,
+          1174
+        ],
+        "visible_top": 55,
+        "width": 850
+      },
+      "motion_role": "motion",
+      "views": {
+        "back": {
+          "grounding": {
+            "foot": [
+              620,
+              1246
+            ],
+            "height": 118,
+            "visible_top": 5,
+            "width": 760
+          },
+          "motion_key": "verdalio:back",
+          "portrait_role": "back"
+        }
+      }
+    },
+    "limits": [
+      "Dorsal own four-pose walk and KO remain an experiment; no authored cast poses.",
+      "Volume/posture handoffs require aesthetic review."
+    ],
+    "production_ready": false,
+    "review_record": "docs/folife-independent-review.md",
+    "review_sha256": "76fbda7fde7008a801a72ed1448dccdacf1ee031c06e359c28954d47b43beb00",
+    "sides": "Right-facing source mirrored; no drawn opposite view",
+    "visual_review": "Independent static and native technical GO for draft; human aesthetic and hardware approval pending"
+  },
+  "provenance": {
+    "back": {
+      "corrective_generation_attempts": 0,
+      "creatively_edited_by": "ImageGen only",
+      "engine_or_ci_run": false,
+      "generation_attempts_this_item": 1,
+      "generation_id": "exec-10b7b09a-b82e-4b2c-a3c0-38d357214ba3",
+      "independent_review": false,
+      "model_version": "Not exposed",
+      "original": {
+        "automatic_tool_original": "/workspace/generated_images/exec-10b7b09a-b82e-4b2c-a3c0-38d357214ba3.png",
+        "byte_identical": true,
+        "bytes": 1307026,
+        "caBX_preserved": true,
+        "file": "original.png",
+        "sha256": "ee03b7256f06113a28538d39eb34c23a738b1f89a1f1ebf06e991b8cca149d4d"
+      },
+      "production_ready": false,
+      "prompt": "Create one new REAR THREE-QUARTER game view of the exact intermediate hare FOLIFE in the attached published cutout. Keep the CHARACTER FACING RIGHT. Rotate the camera to its dorsal side; do not mirror the cutout and do not repeat its chest-facing/front view.\nVIEW: Slightly elevated camera behind the hare's left shoulder/rear quarter. Its broad brown BACK, rounded hindquarters, back of neck, back of head and outside/back surfaces of both long ears should dominate. The layered green leaf collar wraps the back of the neck and shoulders with clear rear overlaps. Hide the cream chest/belly and most of the far/front forelimb behind the torso/collar. The head/nose still point RIGHT, allowing only a small partial right profile and a glimpse of amber eye at the right edge. Keep real dorsal occlusions. The near hind flank and its pale yellow-green angular chevron remain visible, along with the little pointed leaf tail at the rear-left.\nIDENTITY LOCK: Same low compact quadrupedal/intermediate hare anatomy, warm olive-brown fur, powerful folded hind legs, cream toes and muzzle edge. Exactly two long actual hare ears: one swept-back/upper-left ear has the broad serrated green leaf; the other is upright brown with one small green bud at its tip. Preserve the large layered sharp green leafy collar. Keep ONE short broad green leaf blade held by a forepaw near the front/right side, peeking visibly beyond the collar with its thin stem grip; blade remains short, directed downward, not a long sword. Keep the reference chevron, proportions, collar, tail, feet and held short leaf blade. Do not turn it into a small upright baby, tall biped or final long-bodied form.\nART: Same rich cel-painted shading, faceted warm brown fur, dark clean contour, fern/olive leaves with yellow-green midribs, upper-left lighting and detail density as the published cutout. Same crouched pose/scale, genuinely seen from the rear quarter.\nOUTPUT: One isolated full-body Folife only, square TRUE transparent-alpha PNG with clear margins around ears, tail, all feet and short blade. Opaque character interiors with clean antialiasing; fully transparent surroundings. No ground or shadow, scenery, fog, aura, backdrop, raster checkerboard, text, labels, border or extra figures.\n",
+      "qa_file": "qa.json",
+      "reference": {
+        "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+        "pixels_inspected_before_generation": true,
+        "published_path": "assets/characters/folife-pilot/versions/1.0.0/folife.png",
+        "published_sha256": "3096668c4de905c44e5f1d6793b9fe5683e15d96f438e0dd1ad615bc0262ef1a",
+        "v11_path": "docs/references/creatures/foli/lebre-linhagem-v11.png",
+        "v11_sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80",
+        "v11_target": "Second intermediate Folife"
+      },
+      "review_preview": "front-rear-scale-review.png",
+      "runtime_or_pin_edit": false,
+      "runtime_pivot": "Not selected; static staging candidate only",
+      "status": "STAGING_STATIC_REAR_CANDIDATE",
+      "technical_derivatives": "Preview crops/resizing/RGBA compositing only. Original PNG not re-encoded.",
+      "tool": "image_gen.imagegen",
+      "unverified": [
+        "Human aesthetic acceptance and independent review",
+        "Runtime scale/pivot/contact calibration",
+        "Motion cadence/volume stability and transition to published view",
+        "Rear walk, cast/attack/hit and other states"
+      ],
+      "view": "Rear3/4, character still facingRIGHT, not a flip",
+      "visual_review": {
+        "correct_rgba_composites_inspected": true,
+        "deviations": [
+          "Dorsal angle remains oblique with a broad flank visible, not a straight back view.",
+          "Hindquarters/feet are rounder and larger than published source.",
+          "Bud and near foot have tight5px/8px substantial canvas margins."
+        ],
+        "identity": "Intermediate low hare, leafy collar, short held leaf blade, thigh chevron, leaf tail and two long ears retained; not a final form.",
+        "independent_review": false,
+        "legibility118": "Collar, chevron, ears and short blade read; finger/eye detail is small.",
+        "pixels_inspected": true,
+        "rear_geometry": "Back/rump and rear collar/ear surfaces dominate more than published side/front; cream chest hidden, right-facing muzzle is partially visible.",
+        "static_self_review": "Candidate for independent review only"
+      }
+    },
+    "front": {
+      "approval": "Reference approved by Pedro. Independent technical cutout review permits draft pilot; human aesthetic and runtime review remain pending.",
+      "generation_id": "exec-2d8f7e88-8e07-4901-85e8-552da7c1a7fb",
+      "kind": "Image Gen reference edit with own intermediate-hare anatomical tracks",
+      "original_png_preserved": true,
+      "prompt": "ROLE/PURPOSE: Extract a faithful single-character production-art candidate for the game Umbral from the attached approved four-form creature concept sheet. Use ONLY THE SECOND CREATURE FROM THE LEFT, the one labeled \"Intermediária\". This is Folife, the intermediate hare. Reproduce that exact character and exact crouched pose as a clean isolated transparent full-body cutout, enlarged with crisp faithful cel-painted detail. Do not redesign it.\nSUBJECT/LOCKS: Facing RIGHT. Compact brown/olive hare body in a low four-limbed forward crouch, large powerful folded hind legs, small cream toes/paws, cream muzzle and cheek slash, golden amber visible eye with black outline, alert determined expression. Very long actual hare ears: the rearward ear extends upper-left and carries a broad serrated green leaf blade; the other ear rises upward and ends in a small folded pointed green leaf bud. A large layered sharp green leaf collar/mantle surrounds the neck and shoulders. Small pointed green leaf tail at the back. A single pale yellow-green angular chevron marking on the outer visible haunch. The nearer forepaw, held at chest height, grips the thin brown/green stem handle of one short leaf-blade dagger: grip extends upper-right, green blade points diagonally down-left toward the planted forepaw. Keep the reference's paws and grip, not a humanoid hand. Keep ALL four limbs, leaf collar, short dagger, long ears, fur colors, outline style and proportions faithful to this second source creature.\nVIEW/ART DIRECTION: Same side-three-quarter view and camera as that second creature, warm olive-brown fur, cream muzzle and toes, layered saturated fern/olive leaves with yellow-green midribs, confident dark contour, stylized hand-painted cel shading, upper-left soft lighting, clear small-scale silhouette. It is the intermediate animal hare, with grounded quadruped anatomy. Preserve its exact reference design.\nTECHNICAL OUTPUT: One isolated full-body Folife only, large square canvas, native TRUE transparent alpha background; generous clear transparent margins around ears, tail, toes and dagger. No ground, floor, contact shadow, background color, parchment, scenery, props other than the held reference leaf dagger, text, labels, signature, border or UI. Do not include any of the other three creatures. Do not turn this into the small upright initial creature, a biped swordsman, or the long-bodied final form. No extra floating leaves.\n",
+      "references": [
+        {
+          "file_name": "lebre-linhagem-v11.png",
+          "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+          "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80",
+          "target": "Second form only"
+        }
+      ]
+    },
+    "original_png_preserved": true
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.1.0"
+}
