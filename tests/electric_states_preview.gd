@@ -57,6 +57,20 @@ func _ready() -> void:
 		output = args[1]
 		DirAccess.make_dir_recursive_absolute(output)
 		started_us = Time.get_ticks_usec()
+		if "--capture-ready" in args:
+			automatic = false
+			call_deferred("_arm_capture")
+
+func _arm_capture() -> void:
+	await RenderingServer.frame_post_draw
+	FileAccess.open(output.path_join("ready.flag"), FileAccess.WRITE).store_string("first visible frame drawn")
+	while not FileAccess.file_exists(output.path_join("begin.flag")): await get_tree().process_frame
+	# Video frames are extracted after recording; GPU readbacks must not stall motion.
+	captured = {0: true, 1: true, 2: true, 3: true, 4: true, 5: true, 6: true}
+	frame_times.clear()
+	phase_frames.clear()
+	started_us = Time.get_ticks_usec()
+	automatic = true
 
 func _process(_delta: float) -> void:
 	if not automatic:
