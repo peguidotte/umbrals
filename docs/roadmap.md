@@ -1459,3 +1459,19 @@ triângulos. Passaram 11 verificações da passada e 20 da integração, mantend
 Também passaram 19 verificações Web, catálogo, integridade e arquitetura focados.
 Botas rígidas e distorção residual de tecido continuam limites visuais; próxima
 etapa é revisão independente e de Pedro. Sem promoção, merge ou aprovação da casa.
+
+
+Correção do gate em 0.4.1: os 61,33% de 0.4.0 eram o mínimo de quatro alturas,
+não global. Reproduzidos 54,85% em y=964/fase 0 e 52,72% em y=963. Acomodação
+da tangente na barra, colunas menores nas faixas e linhas nos pontos de mudança
+da deformação elevam o mínimo amostrado para 91,33%. Regressão ampliada para
+187 alturas por perna, 2.465 poses e 921.910 seções; altura mínima 82,62%,
+zero inversões/colapsos em 9.202.310 triângulos. Inclui o falso positivo do gate
+anterior e o caso exato da revisão. É uma grade finita, sem alegação de mínimo
+global contínuo. Máscaras, PNG, cabelo, apoios e contratos da casa preservados.
+A candidata continua sujeita a inspeção visual e revisão de Pedro, sem promoção.
+Passaram 14 verificações da passada, 20 da casa, 13 do rig anterior e 19 Web;
+um timeout de captura antes do A/B foi preservado, e a repetição no mesmo build
+passou. Catálogo, integridade de 102 releases/363 arquivos e arquitetura focados
+passaram. A silhueta abre mais nas poses extremas; revisão visual e adaptação
+da casa à direção aprovada continuam abertas. Sem merge ou promoção.

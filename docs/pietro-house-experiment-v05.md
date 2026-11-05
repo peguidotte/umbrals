@@ -14,7 +14,7 @@ não apresenta uma casa nova nem fecha a direção artística.
 ## Comparação e controles
 
 **Pietro atual** mostra o renderer de produção; **Pietro candidato** mostra o
-rig experimental 0.4.0 na mesma posição, câmera e escala de mundo. A imagem
+rig experimental 0.4.1 na mesma posição, câmera e escala de mundo. A imagem
 aprovada permanece byte a byte igual. Escala 0,5, próxima da altura do ator
 atual; esquerda é espelhamento da única vista de três quartos disponível.
 **Enquadrar sala** é um controle explícito de revisão que reposiciona apenas
@@ -66,39 +66,52 @@ A compensação vertical máxima é 23,45 pixels da origem, ou 11,73 pixels de m
 A leitura dos joelhos, tecido, passagem e sobreposição continua sujeita à revisão
 visual, sem aprovação artística automática pelos testes.
 
-## Volume da calça 0.4.0
+## Volume da calça e correção do gate 0.4.1
 
 A revisão de 0.3.0 encontrou a calça reduzida a uma faixa em X sobre as barras.
 O teste de áreas orientadas passava porque os triângulos comprimidos mantinham
-sua orientação. Uma medição independente, ligada às UVs de seções opacas reais
-da calça, reproduz a falha: largura transversal mínima de 6,78% da original.
+sua orientação. A medição inicial de quatro alturas reproduziu o pinçamento,
+registrando 6,78% de largura transversal em uma dessas seções.
 
-0.4.0 desloca cada faixa horizontal uniformemente entre a pelve e a barra,
-compensa sua largura transversal e limita a compressão vertical. Uma peça de
-pelve amostrada do mesmo PNG cobre a junção superior; as pernas são desenhadas
-em ordem distante/próxima, com sobreposição opaca na passagem. O PNG, máscaras
-originais das pernas, apoios, rig antigo e material do cabelo ficam preservados.
-Não há novas poses geradas. As barras e botas continuam rígidas desde y=970.
+0.4.0 passou a deslocar faixas uniformemente, compensar largura e cobrir a
+junção superior com uma peça da pelve amostrada do mesmo PNG. A composição
+continua distante/próxima/pelve/corpo, com sobreposição opaca. A comparação
+visual removeu o X fino, mas o gate de volume ainda tinha uma lacuna: os 61,33%
+eram o mínimo de quatro alturas, não um mínimo global. A revisão independente
+apontou 54,85% em y=964/fase 0; reproduzimos exatamente esse resultado e 52,72%
+em y=963 ao medir cada linha entre 900 e 970. O vídeo e os dados anteriores
+continuam evidência da candidata anterior, com essa limitação reconhecida.
 
-A regressão de volume mede oito seções por pose em 665 poses, incluindo
-entrada, saída e fases intermediárias: largura mínima 61,33% e altura mínima
-84,91%. Os limites de regressão são 60%/80%; o candidato anterior falha no
-critério de largura. Não se trata de conservação exata do volume nem de uma
-nota estética. O teste de orientação inclui agora a peça da pelve: 4.985 poses,
-6.206.325 triângulos, zero inversões/colapsos, razão mínima de área 0,33415.
-As 460.080 amostras de cintura continuam cobertas.
+0.4.1 acomoda juntos o deslocamento e sua tangente até a barra rígida, sem um
+afinamento de largura independente enquanto o tecido ainda se desloca de lado.
+As faixas são subdivididas em colunas de até 32 pixels de origem; isso evita
+que uma única diagonal atravessando a perna inteira gere tangentes distintas.
+Os pontos de mudança da deformação também viram linhas explícitas da malha.
+As máscaras mantêm sua área (erro relativo abaixo de 0,000001); PNG, material
+do cabelo, pelve, apoios e versões anteriores permanecem preservados. Não há
+novas poses geradas. Barras e botas continuam rígidas desde y=970.
 
-A comparação controlada mostra oito fases de 0.3.0/0.4.0 com o renderer real,
-separada da casa jogável. Ela pode ser reproduzida com:
+A regressão agora mede cada linha inteira de origem de 784 a 970, nos centros
+dos pixels, usando tangentes de +/-4 pixels. São 187 alturas por perna e 2.465
+poses, com fases intermediárias de acomodação espaçadas em 1/128 de ciclo:
+921.910 seções. O mínimo **amostrado** de largura é 91,33%, e o de altura,
+82,62%, mantendo os limites de 60%/80%. No caso exato de y=964/fase 0, a largura
+passa de 54,85% para 104,37%. O teste inclui o falso positivo das quatro alturas
+e o reproduzido em y=963/964. Trata-se de uma grade finita de poses/seções, não
+de prova de volume contínuo global ou de uma nota estética.
+
+O teste de orientação cobre 4.985 poses e 9.202.310 triângulos: zero inversões
+ou colapsos e razão mínima de área 0,33415. As 460.080 amostras de cintura
+continuam cobertas. A comparação controlada de oito fases usa o renderer real
+para 0.4.0/0.4.1 e fica separada da casa jogável:
 
 ```bash
 python tools/studies/pietro_volume/build_preview.py --output artifacts/pietro-volume-poses
 ```
 
-Na inspeção desses quadros, a faixa fina em X desaparece e as barras mantêm
-cobertura de tecido. Há alguma distorção do tecido nas poses abertas e não há
-rolamento das botas. A candidata precisa de nova revisão visual independente
-e de Pedro; o teste não promove o personagem nem aprova a casa.
+A candidata precisa de nova revisão visual independente e de Pedro; o teste
+não promove o personagem nem aprova a casa. Botas rígidas e deformação do
+tecido nas poses abertas continuam pontos para inspeção visual.
 
 ## Brilho do cabelo
 
@@ -139,14 +152,17 @@ Scripts de produção, conteúdo, Rules, saves, runtime-lock, registry e baselin
 não são modificados. Os testes de catálogo, integridade e arquitetura seguem
 proporcionais; evidência focada não é aceitação integral. Actions segue desativado.
 
-Na revisão atual passaram 20 verificações da integração, 11 da passada maior
+Na revisão atual passaram 20 verificações da integração, 14 da passada maior
 e 13 do rig anterior. O teste de movimento reduzido compara a malha e o relógio
 do Brasa; a revisão Web também compara seus pixels renderizados entre quadros.
 RNG, equipe, checkpoint e estatísticas permanecem iguais após caminhada e
-acessibilidade. A rodada Web 0.4.0 passou 19 verificações, com duas caminhadas
-de 360 pixels por inputs reais e vídeo. Catálogo (556 verificações), integridade
-de 101 releases/360 arquivos, imutabilidade contra `origin/main` e arquitetura
-passaram nos gates focados. Não foi repetida a aceitação integral do jogo.
+acessibilidade. A rodada Web 0.4.1 passou 19 verificações, com duas caminhadas de 360 pixels
+por inputs reais e vídeo. Uma tentativa anterior parou num timeout ao localizar
+o canvas antes do A/B, sem erros registrados da aplicação; a repetição no mesmo
+build passou e ambas as tentativas foram preservadas. Catálogo (556 verificações),
+integridade de 102 releases/363 arquivos, imutabilidade contra `origin/main` e
+arquitetura passaram nos gates focados. Não foi repetida a aceitação integral
+do jogo.
 Nenhum resultado substitui o julgamento de Pedro.
 
 ## Evidência anterior preservada

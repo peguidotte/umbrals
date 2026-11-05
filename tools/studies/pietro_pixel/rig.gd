@@ -33,6 +33,9 @@ func _init(root: String = ROOT) -> void:
 		var grid: Dictionary = Geometry.grid(Geometry.points(source.mask),Rect2i(380,760,500,400),20)
 		if data.deformation.get("topology","")=="horizontal_strips":
 			grid = Geometry.strips(Geometry.points(source.mask),Rect2i(380,760,500,400),int(data.deformation.grid_step))
+		elif data.deformation.get("topology","")=="subdivided_strips":
+			var knots: PackedFloat32Array = PackedFloat32Array([data.deformation.volume_span_y[0],data.deformation.settle_y,data.deformation.volume_span_y[1]])
+			grid = Geometry.subdivided_strips(Geometry.points(source.mask),Rect2i(380,760,500,400),int(data.deformation.grid_step),float(data.deformation.column_step),knots)
 		sources.append(grid.vertices)
 		triangles.append(grid.indices)
 		leg_uvs.append(grid.uv)
@@ -114,7 +117,7 @@ func _leg(leg: int) -> void:
 	var boot_offset: Vector2 = sole-_point(source.sole)
 	var vertices: PackedVector2Array = []
 	var ribbon: bool = data.deformation.get("mode","")=="position_ribbon"
-	var volume: bool = data.deformation.get("mode","")=="volume_rows"
+	var volume: bool = data.deformation.get("mode","") in ["volume_rows","volume_rows_settled"]
 	var top_point: Vector2 = Vector2(620,float(data.deformation.get("volume_span_y",[780,970])[0]))
 	var top_offset: Vector2 = upper.transform*top_point-top_point+Vector2(0,drop)
 	for i in range(sources[leg].size()):

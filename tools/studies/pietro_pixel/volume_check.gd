@@ -1,13 +1,34 @@
 extends RefCounted
 ## Measures actual deformed, textured leg sections through source-UV bindings.
 static func sweep(rig: RefCounted) -> Dictionary:
+	var rows: Array[int] = []
+	# Every source pixel row from four pixels below the attachment through
+	# the cloth/cuff join. The +/-4 tangent fits inside this source domain.
+	# Includes y=964 from review; four 20px-spaced rows missed that minimum.
+	for y in range(784,971): rows.append(y)
+	var probes: Array = _probes(rig,rows)
+	var report: Dictionary = _report(rows)
+	if not _bindings_valid(probes,report): return report
+	for i in range(401): _sample(rig,probes,report,i/400.0,1)
+	for i in range(129): _sample(rig,probes,report,0.5,i/128.0)
+	for g in range(1,16):
+		for i in range(129): _sample(rig,probes,report,i/128.0,g/16.0)
+	return report
+
+static func at_pose(rig: RefCounted, rows: Array[int], cycle: float, gather: float) -> Dictionary:
+	var probes: Array = _probes(rig,rows)
+	var report: Dictionary = _report(rows)
+	if _bindings_valid(probes,report): _sample(rig,probes,report,cycle,gather)
+	return report
+
+static func _probes(rig: RefCounted, rows: Array[int]) -> Array:
 	var image: Image = rig.texture.get_image()
 	var probes: Array = []
 	for leg in range(2):
 		var polygon: PackedVector2Array = []
 		for p in rig.data.legs[leg].mask: polygon.append(Vector2(p[0],p[1]))
 		var slope: float = float(rig.data.legs[leg].ankle[0]-rig.data.legs[leg].hip[0])/float(rig.data.legs[leg].ankle[1]-rig.data.legs[leg].hip[1])
-		for y in [900,920,940,960]:
+		for y in rows:
 			var runs: Array = []
 			var start: int = -1
 			for x in range(380,881):
@@ -27,16 +48,18 @@ static func sweep(rig: RefCounted) -> Dictionary:
 			for point in [left,right,center-Vector2(slope*4,4),center+Vector2(slope*4,4)]:
 				bindings.append(_bind(rig.sources[leg],rig.triangles[leg],point))
 			probes.append({"leg":leg,"y":y,"bindings":bindings,"reference_width":(right.x-left.x)/sqrt(1+slope*slope)})
-	var report: Dictionary = {"poses":0,"sections":0,"minimum_normal_width_ratio":INF,"minimum_vertical_scale":INF,"worst_width":{},"worst_height":{},"missing_bindings":0}
+	return probes
+
+static func _report(rows: Array[int]) -> Dictionary:
+	var consecutive: bool = true
+	for i in range(1,rows.size()): consecutive=consecutive and rows[i]==rows[i-1]+1
+	return {"poses":0,"sections":0,"source_rows_per_leg":rows.size(),"source_y_range":[rows.min(),rows.max()],"source_y_values":rows if not consecutive else [],"source_y_step":1 if consecutive else 0,"sample_y_offset":0.5,"tangent_half_span":4,"partial_gather_phase_step":1.0/128,"minimum_normal_width_ratio":INF,"minimum_vertical_scale":INF,"worst_width":{},"worst_height":{},"missing_bindings":0,"limits":"Finite integer source rows and phase/gather grid; not a global continuous-volume proof."}
+
+static func _bindings_valid(probes: Array, report: Dictionary) -> bool:
 	for probe in probes:
 		for binding in probe.bindings:
 			if binding.is_empty(): report.missing_bindings+=1
-	if report.missing_bindings>0: return report
-	for i in range(401): _sample(rig,probes,report,i/400.0,1)
-	for i in range(129): _sample(rig,probes,report,0.5,i/128.0)
-	for g in range(1,16):
-		for i in range(9): _sample(rig,probes,report,i/8.0,g/16.0)
-	return report
+	return report.missing_bindings==0
 
 static func _bind(source: PackedVector2Array, indices: PackedInt32Array, point: Vector2) -> Array:
 	for i in range(0,indices.size(),3):

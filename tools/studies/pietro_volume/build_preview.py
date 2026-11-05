@@ -9,7 +9,7 @@ out = a.output.resolve(); project = out/'project'; build = out/'build'
 project.mkdir(parents=True, exist_ok=True); build.mkdir(exist_ok=True)
 files = [f'tools/studies/pietro_pixel/{name}.gd' for name in ['rig','upper_rig','texture_mesh','volume_rows']]
 files += ['tools/studies/pietro_volume/review.gd','tools/studies/pietro_volume/review.tscn']
-for version in ['0.3.0','0.4.0']:
+for version in ['0.4.0','0.4.1']:
  files += [f'assets/characters/pietro-pixel-pilot/versions/{version}/{name}' for name in ['source.png','rig.json']]
 inputs = {}
 for rel in files:

@@ -48,6 +48,47 @@ static func strips(mask: PackedVector2Array, bounds: Rect2i, step: int) -> Dicti
 	for point in vertices: uv.append(point/1254.0)
 	return {"vertices":vertices,"indices":indices,"uv":uv}
 
+static func subdivided_strips(mask: PackedVector2Array, bounds: Rect2i, step: int, width: float, knots: PackedFloat32Array = PackedFloat32Array()) -> Dictionary:
+	# Keep every authored row, then split wide trapezoids across the leg.
+	# A single diagonal across an entire changing-width panel gives its two
+	# triangles different tangents, even when the row projection is smooth.
+	var base: Dictionary = strips(mask,bounds,step)
+	var rows: Array[float] = []
+	for point in base.vertices:
+		if not rows.has(point.y): rows.append(point.y)
+	for y in knots:
+		if y>bounds.position.y and y<bounds.end.y and not rows.has(y): rows.append(y)
+	rows.sort()
+	var vertices: PackedVector2Array = []
+	var indices: PackedInt32Array = []
+	for row in range(rows.size()-1):
+		var y0: float = rows[row]
+		var y1: float = rows[row+1]
+		var band: PackedVector2Array = [Vector2(bounds.position.x,y0),Vector2(bounds.end.x,y0),Vector2(bounds.end.x,y1),Vector2(bounds.position.x,y1)]
+		for polygon in Geometry2D.intersect_polygons(band,mask):
+			var left: Vector2 = Vector2(INF,INF)
+			var right: Vector2 = Vector2(-INF,-INF)
+			for point in polygon:
+				if absf(point.y-y0)<0.01:
+					left.x=minf(left.x,point.x); right.x=maxf(right.x,point.x)
+				if absf(point.y-y1)<0.01:
+					left.y=minf(left.y,point.x); right.y=maxf(right.y,point.x)
+			if not left.is_finite() or not right.is_finite(): continue
+			var slices: int = maxi(1,int(ceil(maxf(right.x-left.x,right.y-left.y)/width)))
+			var offset: int = vertices.size()
+			for i in range(slices+1):
+				var fraction: float = float(i)/slices
+				vertices.append(Vector2(lerpf(left.x,right.x,fraction),y0))
+				vertices.append(Vector2(lerpf(left.y,right.y,fraction),y1))
+			for i in range(slices):
+				for triangle in [[offset+i*2,offset+(i+1)*2,offset+i*2+1],[offset+(i+1)*2,offset+(i+1)*2+1,offset+i*2+1]]:
+					var a: Vector2 = vertices[triangle[0]]
+					if absf((vertices[triangle[1]]-a).cross(vertices[triangle[2]]-a))>0.0001:
+						indices.append_array(PackedInt32Array(triangle))
+	var uv: PackedVector2Array = []
+	for point in vertices: uv.append(point/1254.0)
+	return {"vertices":vertices,"indices":indices,"uv":uv}
+
 static func point(value: Array) -> Vector2:
 	return Vector2(value[0],value[1])
 
