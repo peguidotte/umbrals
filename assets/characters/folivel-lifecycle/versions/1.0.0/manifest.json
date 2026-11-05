@@ -1,0 +1,232 @@
+{
+  "animations": {
+    "knockout-back": {
+      "columns": 4,
+      "file": "knockout-back",
+      "fps": 6.666666666666667,
+      "frame_size": [
+        543,
+        543
+      ],
+      "frames": 4,
+      "loop": false,
+      "pivot": [
+        271,
+        500
+      ]
+    },
+    "knockout-front": {
+      "columns": 4,
+      "file": "knockout-front",
+      "fps": 6.666666666666667,
+      "frame_size": [
+        362,
+        362
+      ],
+      "frames": 4,
+      "loop": false,
+      "pivot": [
+        181,
+        330
+      ]
+    },
+    "walk-back": {
+      "columns": 4,
+      "file": "walk-back",
+      "fps": 5.0,
+      "frame_size": [
+        543,
+        543
+      ],
+      "frames": 4,
+      "loop": true,
+      "pivot": [
+        271,
+        500
+      ]
+    },
+    "walk-front": {
+      "columns": 4,
+      "file": "walk-front",
+      "fps": 10.0,
+      "frame_size": [
+        362,
+        362
+      ],
+      "frames": 8,
+      "loop": true,
+      "pivot": [
+        181,
+        330
+      ]
+    }
+  },
+  "dependencies": [
+    {
+      "id": "characters/folivel-pilot",
+      "version": "1.0.0"
+    }
+  ],
+  "description": "Folivel own8front walk/4front KO and4dorsal walk/4dorsal KO; limited dorsal gait, draft only.",
+  "files": {
+    "knockout-back": {
+      "bytes": 901337,
+      "kind": "texture",
+      "path": "knockout-back.png",
+      "sha256": "f702ed31b7b1d2040e3980c74a90671add200e98d45223fde978b3aea6ea6249",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2172,
+          543
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "knockout-front": {
+      "bytes": 451239,
+      "kind": "texture",
+      "path": "knockout-front.png",
+      "sha256": "ac38df08342550fa927e9431e6e9daeb327ee533f0ae99d979392d37eaf9a0b6",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          362
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "normalization-back-ko": {
+      "bytes": 2899,
+      "kind": "data",
+      "path": "normalization-back-ko.json",
+      "sha256": "316f820973e2ab0c37b68b0751a9d24eda1d39f9f3c8a7263d1e5dc7123bea75"
+    },
+    "normalization-back-walk": {
+      "bytes": 3046,
+      "kind": "data",
+      "path": "normalization-back-walk.json",
+      "sha256": "dc324ff165899df4c8e1a6d7cdec3f60c0c6b69cd3f4d0f12a99444a6483d512"
+    },
+    "normalization-front": {
+      "bytes": 5410,
+      "kind": "data",
+      "path": "normalization-front.json",
+      "sha256": "f1b3a57ebd896bf4236e14c3c018e5fb1b6c4f02348344513cca5a0c2304a0ae"
+    },
+    "original-back-ko": {
+      "bytes": 962476,
+      "kind": "review",
+      "path": "review/rear-ko-original.png",
+      "sha256": "f9b279796401432dd3a3020512b028d364bbe3a2be65e527358c0a263d798daa",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "original-back-walk": {
+      "bytes": 1205940,
+      "kind": "review",
+      "path": "review/rear-walk4-original.png",
+      "sha256": "e10ce1d0cd6c52775e28903786af406ca71f168587e373da62dd4d9a07ec6de1",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "original-front": {
+      "bytes": 1663969,
+      "kind": "review",
+      "path": "review/front-states-original.png",
+      "sha256": "36e115e099b18ba478ca313682905ac611914edf1253fa7ca4c4a95457af5815",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "profile": {
+      "bytes": 572,
+      "kind": "data",
+      "path": "profile.json",
+      "sha256": "e4bf6b4dc3121d8829fe44d3ab34a223751d6a5e58ef18106aeaf35815d2f971"
+    },
+    "provenance": {
+      "bytes": 12515,
+      "kind": "data",
+      "path": "provenance.json",
+      "sha256": "932675e638726981516da55433ddea44200616bcae8eb8b2074969d673c338c9"
+    },
+    "walk-back": {
+      "bytes": 1067397,
+      "kind": "texture",
+      "path": "walk-back.png",
+      "sha256": "52909f62277da9da8426ee9344df97f0d564acc8b8652e548e71f75ef828e5ec",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2172,
+          543
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "walk-front": {
+      "bytes": 989380,
+      "kind": "texture",
+      "path": "walk-front.png",
+      "sha256": "6fd73fc9b83db076abe7af30eb0d2ab1be41a43171e23d10a91c0ba019f0d917",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/folivel-lifecycle",
+  "metadata": {
+    "limits": [
+      "Rejected fifth-paw source and inconsistent near-hind complement are never selected.",
+      "Rear near hind remains mostly planted; limited four-pose experiment, not complete gait.",
+      "Casts use own anatomy mesh, no pose sheet."
+    ],
+    "production_ready": false
+  },
+  "provenance": {
+    "approval": "Independent static GO only. Native scene review required.",
+    "kind": "Image Gen own views, exact grid crop and integer translation only",
+    "original_png_preserved": true,
+    "reference": {
+      "file": "docs/references/creatures/foli/lebre-silenciosa-refinada-v13.png",
+      "library_file_id": "libfile_5e6845c3842c81919a200b01a1b0c40f",
+      "no_v11_alternative_used": true,
+      "pixels_inspected": true,
+      "sha256": "f75649f947c34fa726d190eb1109f2313220759c50cee5e761394eb6a92bbb57"
+    }
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

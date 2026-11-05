@@ -1,0 +1,156 @@
+{
+  "dependencies": [],
+  "description": "Detached leaf-blade launch, controlled foliage travel and cut impacts for the approved grass hare family. Presentation only.",
+  "files": {
+    "atlas": {
+      "bytes": 581579,
+      "kind": "texture",
+      "path": "leaf-blades.png",
+      "sha256": "1d5738fe0093feb8638053370aacae20d55be146dbac77df7d1db3af7d6af791",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "filtering": "nearest",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "authoring": {
+      "bytes": 4064,
+      "kind": "data",
+      "path": "authoring.json",
+      "sha256": "ff10d0b1f7ded1a557eaf169258f841b47eba8c4a07eae552438500d20bb33db"
+    },
+    "icon": {
+      "bytes": 115442,
+      "kind": "texture",
+      "path": "leaf-icon.png",
+      "provenance": {
+        "kind": "Lossless rectangular normalization from the preserved original atlas; no resampling, painting or alpha edit",
+        "rect": [
+          656,
+          207,
+          570,
+          214
+        ],
+        "source_role": "atlas",
+        "source_sha256": "1d5738fe0093feb8638053370aacae20d55be146dbac77df7d1db3af7d6af791"
+      },
+      "sha256": "b5f3006fa7ec9e04f79136a11115f61e853d9305cd0c7546e8aa3d80da3f108d",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          570,
+          214
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "attacks/grass-leaf-blades",
+  "metadata": {
+    "actor_profiles": {
+      "folivel": {
+        "binding": "attacks/grass-leaf-blades",
+        "blade_scale": 1.1,
+        "profile": "leaf_blades"
+      },
+      "foslash": {
+        "binding": "attacks/grass-leaf-blades",
+        "blade_scale": 1.1,
+        "profile": "leaf_blades"
+      },
+      "moss": {
+        "binding": "attacks/grass-leaf-blades",
+        "blade_scale": 0.72,
+        "profile": "leaf_blades"
+      },
+      "verdalio": {
+        "binding": "attacks/grass-leaf-blades",
+        "blade_scale": 0.9,
+        "profile": "leaf_blades"
+      }
+    },
+    "leaf_blades": {
+      "impact_duration": 0.64,
+      "maximum_fragments": 7,
+      "rects": {
+        "blade": [
+          36,
+          277,
+          557,
+          98
+        ],
+        "crescent": [
+          77,
+          726,
+          469,
+          437
+        ],
+        "guard": [
+          656,
+          207,
+          570,
+          214
+        ],
+        "impact": [
+          695,
+          751,
+          480,
+          364
+        ]
+      },
+      "variants": [
+        {
+          "arc": 22.0,
+          "blades": 1,
+          "pattern": "single_cut",
+          "spread": 0.0
+        },
+        {
+          "arc": 52.0,
+          "blades": 3,
+          "pattern": "crossing_fan",
+          "spread": 22.0
+        },
+        {
+          "arc": 14.0,
+          "blades": 3,
+          "pattern": "guided_burst",
+          "spread": 12.0
+        }
+      ]
+    },
+    "limits": [
+      "Three cosmetic presentations of existing powers, not new power IDs or rules",
+      "No gameplay RNG, hit schedule or damage changes",
+      "Independent visual review pending"
+    ],
+    "production_ready": false,
+    "review": "Independent static technical GO for draft; native scene and human aesthetics pending."
+  },
+  "provenance": {
+    "approval": "Source creature references approved; effect atlas selected by delegated art direction for draft. Actual game review pending.",
+    "generation_id": "exec-5495e458-5931-4833-9f55-26fd09cd949e",
+    "kind": "Image Gen edit of approved Foli lineage foliage",
+    "original_png_preserved": true,
+    "prompt": "Create a compact production-art CANDIDATE effects atlas for the game Umbral, based on the leaf weapons in the two attached approved hare designs. This is ONLY detached foliage and leaf-cut VFX, no characters. Preserve their visual language: sharp lanceolate fern/olive green leaves, pale yellow-green central veins, dark green-black thin outline, simple confident cel-painted planes, soft upper-left light, readable at 24–64 game pixels. Organic blades, not steel, no handles. Four separated objects in an exact 2 by 2 grid on a square canvas, TRUE transparent alpha. Each object must stay inside its equal quadrant with ample clear margin, not touching or overlapping another quadrant. Top-left: ONE narrow detached pointed leaf blade, horizontal, stem/base at LEFT and sharp tip at RIGHT, straight central vein, mostly green with a warm yellow-green edge. Top-right: ONE broad subtly curved detached guard leaf, also base LEFT tip RIGHT, proportion around 2.5 to 1. Bottom-left: ONE crisp curved green cutting crescent shaped from 3 overlapping narrow leaf planes, opening toward the RIGHT, no circular glow, no complete ring, only a compact slash silhouette. Bottom-right: ONE asymmetric contact burst made from 6 small detached green leaf shards and 2 short pale yellow-green cut strokes, directed mainly toward the RIGHT, sparse clear negative space. No ground, shadows, background color, scene, UI, frames, dividing lines, labels, text, numbers, signatures, duplicate grids, blur or glowing fireballs. This atlas is green physical foliage with crisp contour and true transparent pixels, consistent with the reference blades. Do not include rabbits or any anatomy.\n",
+    "references": [
+      {
+        "file_name": "lebre-linhagem-v11.png",
+        "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80"
+      },
+      {
+        "file_name": "lebre-silenciosa-refinada-v13.png",
+        "sha256": "f75649f947c34fa726d190eb1109f2313220759c50cee5e761394eb6a92bbb57"
+      }
+    ]
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

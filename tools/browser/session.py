@@ -1,4 +1,5 @@
 from refuge_browser_review import depart
+from harness_lib.browser_runtime import chromium_executable
 """Browser lifecycle, read-only diagnostics, real input, geometry and action timings."""
 from contextlib import contextmanager
 from functools import partial
@@ -36,6 +37,7 @@ class Session:
         self.version = re.search(r'config/version="([^"]+)"', (ROOT / 'project.godot').read_text()).group(1)
         self.checks, self.logs, self.errors, self.captures, self.matrix, self.timings = [], [], [], [], [], []
         self.plans = {}
+        self.failure_captured = False
         self.starter_choice_seen = False
         self.viewport = list(map(int, args.viewport.split('x'))) if args.viewport else None
         self.started = time.monotonic()
@@ -43,8 +45,10 @@ class Session:
         threading.Thread(target=self.server.serve_forever, daemon=True).start()
         self.base_url = f'http://127.0.0.1:{self.server.server_port}/index.html'
         self.playwright = sync_playwright().start()
-        self.browser = self.playwright.chromium.launch(executable_path='/usr/bin/chromium' if Path('/usr/bin/chromium').exists() else None,
-            headless=True, args=['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'],
+        native_gl = getattr(args, 'native_gl', False)
+        graphics = ['--no-sandbox', '--use-angle=gl', '--use-gl=angle', '--ignore-gpu-blocklist', '--disable-gpu-sandbox', '--window-position=0,0'] if native_gl else ['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader']
+        self.browser = self.playwright.chromium.launch(executable_path=chromium_executable(),
+            headless=not native_gl, args=graphics,
             ignore_default_args=['--mute-audio'] if getattr(args, 'capture_audio', False) else [])
         self.browser_version = self.browser.version
         options = {'viewport': {'width': self.viewport[0], 'height': self.viewport[1]} if self.viewport else {'width': 1600, 'height': 900}, 'device_scale_factor': 1}
@@ -67,9 +71,16 @@ class Session:
         return self.page.evaluate('window.umbralState')
 
     def failure(self):
+        # Retain the first available state of this session, before PNG latency.
+        if self.failure_captured:
+            return
+        self.failure_captured = True
+        try:
+            (self.output / 'failure-state.json').write_text(json.dumps(self.state(), indent=2, ensure_ascii=False))
+        except Exception:
+            pass
         try:
             self.page.screenshot(path=str(self.output / 'failure.png'))
-            (self.output / 'failure-state.json').write_text(json.dumps(self.state(), indent=2, ensure_ascii=False))
         except Exception:
             pass
 
@@ -83,6 +94,11 @@ class Session:
         try:
             self.page.wait_for_function('window.umbralState && (' + expression + ')', timeout=timeout)
         except Exception:
+            try:
+                print(json.dumps({'event': 'browser_wait_failed', 'condition': expression,
+                                  'timeout_ms': timeout, 'seconds': round(time.monotonic() - self.started, 3)}), flush=True)
+            except Exception:
+                pass
             self.failure()
             raise
 

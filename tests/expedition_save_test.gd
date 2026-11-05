@@ -8,6 +8,8 @@ const Identity = preload("res://scripts/expedition/identity.gd")
 const Replay = preload("res://scripts/expedition/replay.gd")
 const Expedition = preload("res://scripts/expedition/expedition.gd")
 const Storage = preload("res://scripts/storage.gd")
+const GrassCatalog = preload("res://tests/support/grass_catalog_checks.gd")
+const FolivelCatalog = preload("res://tests/support/folivel_catalog_checks.gd")
 const PATH: String = "user://expedition_save_fixture.json"
 const KEY: String = "test.expedition.save"
 var failures: int = 0
@@ -187,5 +189,72 @@ func _initialize() -> void:
 	expect(not Replay.decode(replay).is_empty() and not Replay.decode({"initial_state": legacy, "commands": []}).is_empty(), "Versioned and legacy replays decode")
 	replay.identity.ruleset = "future"
 	expect(Replay.decode(replay).is_empty(), "Foreign replay rejected")
+	electric_extension()
+	GrassCatalog.run(expect)
+	FolivelCatalog.run(expect)
+	preload("res://tests/support/catalog_union_checks.gd").run(expect)
 	print("Expedition save: %d assertions, %d failures" % [assertions, failures])
 	quit(1 if failures else 0)
+
+func electric_extension() -> void:
+	var old: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/electric_rules3_before_adults.json"))
+	expect(old.identity == Registry.ELECTRIC_SOURCE_IDENTITY and Registry.supports(old.identity), "Frozen pre-adult rules3 identity has an audited migration")
+	var source: Dictionary = preload("res://scripts/expedition/rules2_manifest.gd").DATA
+	var target: Dictionary = Registry.Electric3.DATA
+	expect(not Registry.additive(source, target) and Registry.lineage_extension(source, target), "Existing lineage extension is explicit, not a relaxed additive comparison")
+	var altered: Dictionary = target.duplicate(true)
+	altered.catalog.volt.forms[0].stats.speed += 1
+	expect(not Registry.lineage_extension(source, altered), "Lineage migration rejects changed old stats")
+	altered = target.duplicate(true)
+	altered.catalog.volt.forms.reverse()
+	expect(not Registry.lineage_extension(source, altered), "Lineage migration rejects reordered old forms")
+	altered = target.duplicate(true)
+	altered.catalog.volt.evolutions[1].erase("deferred")
+	expect(not Registry.lineage_extension(source, altered), "Lineage migration requires appended reward ordering")
+	altered = target.duplicate(true)
+	altered.catalog.volt.evolutions[1].to = "volt"
+	expect(not Registry.lineage_extension(source, altered), "Lineage migration rejects a new edge into an old form")
+	var spring: Dictionary = Migration.checkpoint(old.spring)
+	expect(not spring.is_empty() and spring.phase == "event" and spring.event_revision == 1, "Pre-adult rules3 event state and event revision survive migration")
+	var run = Expedition.new()
+	expect(run.restore(old.initial_state), "Pre-adult mixed party checkpoint restores")
+	expect(Replay.execute(run, old.commands.slice(0, 3)).ok, "Historical battle commands still reach reward")
+	expect(JSON.parse_string(JSON.stringify(run.battle.reward_offers.slice(0, old.offer_prefix.size()))) == old.offer_prefix, "Capture and other owners' historical evolution indices remain an exact prefix")
+	expect(run.battle.catalog_revision == 0 and run.battle.reward_offers.size() == old.offer_prefix.size(), "Rules4 preserves the pre-adult historical graph")
+	var reward: Dictionary = run.snapshot()
+	expect(Replay.execute(run, old.commands.slice(3)).ok, "Historical reward index still chooses Brasa evolution")
+	var expected: Dictionary = old.expected.duplicate(true)
+	expected.identity = Identity.current()
+	expected.catalog_revision = 0
+	expect(JSON.parse_string(JSON.stringify(run.snapshot())) == JSON.parse_string(JSON.stringify(expected)), "Historical replay preserves exact RNG, cards, party, plans and map after its reward choice")
+	# This is an explicitly current, private fixture, not a historical save upgrade.
+	var current_fixture: Dictionary = old.initial_state.duplicate(true)
+	current_fixture.identity = Identity.current()
+	current_fixture.catalog_revision = preload("res://scripts/battle/catalog_revision.gd").CURRENT
+	expect(run.restore(current_fixture) and Replay.execute(run, old.commands.slice(0, 3)).ok, "Current catalog fixture reaches the real adult reward")
+	expect(run.battle.reward_offers.slice(3).map(func(offer: Dictionary) -> String: return str(offer.target_form_id)) == ["auravel", "zuldar"], "Current adult branches append after all historical offers")
+	reward = run.snapshot()
+	for index in [3, 4]:
+		for hp: int in [48, 1, 23, 47, 0]:
+			var health_case: Dictionary = reward.duplicate(true)
+			health_case.battle.party[0].hp = hp
+			expect(run.restore(health_case), "Full, wounded and KO adult branch fixtures restore as valid checkpoints")
+			var before: Dictionary = run.battle.party[0].duplicate(true)
+			expect(run.choose_reward(index), "Adult branch can be selected through the expedition API")
+			var after: Dictionary = run.battle.party[0]
+			var before_cards: Array = before.cards.duplicate(true)
+			var after_cards: Array = after.cards.duplicate(true)
+			before_cards.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return str(a.instance_id) < str(b.instance_id))
+			after_cards.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return str(a.instance_id) < str(b.instance_id))
+			expect(after.form_id == ["auravel", "zuldar"][index - 3], "Explicit edge selects the requested adult")
+			expect(after.uid == before.uid and after.passive == before.passive and after.slot == before.slot and after.known_powers == before.known_powers and after_cards == before_cards, "Adult evolution preserves the individual and every owned physical card")
+			var expected_hp: int = ceili(float(before.hp) / before.max_hp * after.max_hp) if before.hp > 0 else 0
+			expect(after.hp == expected_hp, "Adult evolution applies the production ceiling to living HP and preserves KO")
+			expect((after.hp == 0) == (hp == 0), "Adult evolution cannot revive KO or incapacitate a living individual")
+			var resumed = Expedition.new()
+			expect(resumed.restore(run.snapshot()) and resumed.snapshot() == run.snapshot(), "Adult snapshot roundtrips without rebuilding cards")
+	var forged: Dictionary = old.initial_state.duplicate(true)
+	forged.battle.party[0].form_id = "auravel"
+	expect(Migration.checkpoint(forged).is_empty(), "A historical identity cannot forge a future adult")
+	var envelope: Dictionary = {"schema": Replay.SCHEMA, "version": Replay.VERSION, "identity": old.identity, "initial_state": old.initial_state, "commands": old.commands}
+	expect(not Replay.decode(envelope).is_empty(), "Versioned historical replay decodes through the audited lineage migration")

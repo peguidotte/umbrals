@@ -1,3 +1,4 @@
+from harness_lib.browser_runtime import chromium_executable
 from refuge_browser_review import depart
 """Replay native expedition plans through real Chromium canvas input and preserve evidence."""
 import argparse
@@ -37,7 +38,7 @@ def check(condition, message):
 
 try:
     with sync_playwright() as p:
-        browser = p.chromium.launch(executable_path='/usr/bin/chromium' if Path('/usr/bin/chromium').exists() else None,
+        browser = p.chromium.launch(executable_path=chromium_executable(),
                                     headless=True, args=['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'])
         browser_version = browser.version
         context = browser.new_context(viewport={'width':1600, 'height':900}, device_scale_factor=1, has_touch=True)

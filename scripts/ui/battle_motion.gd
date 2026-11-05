@@ -1,9 +1,11 @@
 extends RefCounted
 ## Immutable tracks baked from the approved study. No session or gameplay state.
+const Presentation = preload("res://scripts/ui/creature_presentation.gd")
 const Assets = preload("res://scripts/assets/catalog.gd")
 const BINDING: String = "attacks/battle-performances"
 static var data: Dictionary = {}
 static var choreography: Dictionary = {}
+static var form_overrides: Dictionary = {}
 
 static func ensure_loaded() -> void:
 	if not data.is_empty(): return
@@ -11,28 +13,50 @@ static func ensure_loaded() -> void:
 	data = JSON.parse_string(FileAccess.get_file_as_string(path))
 	choreography = JSON.parse_string(FileAccess.get_file_as_string(Assets.bound_file(BINDING, "performances")))
 
-static func form(id: String) -> Dictionary:
+static func form(id: String, view: String = "front") -> Dictionary:
+	var electric: Dictionary = Presentation.motion(id)
+	if not electric.is_empty(): return electric
 	ensure_loaded()
-	return data.forms.get(id, {})
+	var key: String = id if view == "front" else id + ":" + view
+	if not form_overrides.has(key):
+		var binding: String = "umbrals/" + id
+		var profile: Dictionary = Assets.bound_manifest(binding).get("metadata", {}).get("battle_profile", {})
+		var role: String = str(profile.get("motion_role", ""))
+		var motion_key: String = id if view == "front" else str(profile.get("views", {}).get(view, {}).get("motion_key", ""))
+		var authored: Dictionary = {}
+		if not role.is_empty() and not motion_key.is_empty():
+			var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(Assets.bound_file(binding, role)))
+			if parsed is Dictionary: authored = parsed.get("forms", {}).get(motion_key, {})
+		# A new pinned effect module can route existing, immutable own-body tracks.
+		if not authored.is_empty() and not authored.has("attack_presentation"):
+			var routed: Dictionary = Assets.bound_manifest("attacks/grass-leaf-blades").get("metadata", {}).get("actor_profiles", {}).get(id, {})
+			if not routed.is_empty(): authored["attack_presentation"] = routed
+		form_overrides[key] = authored
+	if not form_overrides[key].is_empty(): return form_overrides[key]
+	return data.forms.get(id, {}) if view == "front" else {}
 
 static func spec(index: int) -> Dictionary:
 	ensure_loaded()
 	return choreography.specs[clampi(index, 0, 14)]
 
-static func part(index: int) -> String:
+static func part(index: int, id: String = "", view: String = "front") -> String:
+	if not id.is_empty():
+		var parts: Array = form(id, view).get("parts", [])
+		if not parts.is_empty(): return str(parts[clampi(index, 0, parts.size() - 1)])
 	ensure_loaded()
 	return str(choreography.parts[clampi(index, 0, 14)])
 
 static func neutral() -> Array:
 	return [0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
-static func sample(id: String, mode: String, clip: int, time: float) -> Array:
-	var definition: Dictionary = form(id)
+static func sample(id: String, mode: String, clip: int, time: float, view: String = "front") -> Array:
+	var definition: Dictionary = form(id, view)
 	if definition.is_empty():
 		# Existing enemy illustrations inherit material pacing without borrowing
 		# another creature's joints or changing their authored anatomy/identity.
 		var proxy: String = {"spore": "moss", "owl": "volt", "stag": "ignivar"}.get(id, "")
-		if not proxy.is_empty(): return sample(proxy, mode, clip, time)
+		if view == "front" and not proxy.is_empty(): definition = data.forms.get(proxy, {})
+	if definition.is_empty():
 		var rest: Array = neutral()
 		if mode == "states" and clip == 0:
 			rest[3] = 1.0 + sin(time * 1.4) * 0.006
@@ -51,9 +75,9 @@ static func sample(id: String, mode: String, clip: int, time: float) -> Array:
 	for channel in range(frames[first].size()): result.append(lerpf(float(frames[first][channel]), float(frames[second][channel]), position - first))
 	return result
 
-static func socket(id: String, index: int) -> Vector2:
-	var anatomy: Dictionary = form(id).get("anatomy", {})
-	var point: Array = anatomy.get(part(index), anatomy.get("mouth", [0.78, 0.48]))
+static func socket(id: String, index: int, view: String = "front") -> Vector2:
+	var anatomy: Dictionary = form(id, view).get("anatomy", {})
+	var point: Array = anatomy.get(part(index, id, view), anatomy.get("mouth", [0.78, 0.48]))
 	return Vector2(float(point[0]), float(point[1]))
 
 static func variant_base(power: String, nature: String) -> int:

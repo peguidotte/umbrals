@@ -67,13 +67,32 @@ func run() -> void:
 	app._pop()
 	for frame in range(4): await process_frame
 	await press("codex.entry.moss")
-	expect(Content.UMBRAL_LORE.moss.text in text_of(app.screen_host.modal_root.details),"Musgo has distinct lore")
+	expect(Content.UMBRAL_LORE.moss.text in text_of(app.screen_host.modal_root.details),"Foli has distinct lore")
+	var current_name: String = Content.display_name({"species": "moss", "form_id": "moss"})
+	var visible_gallery_name: bool = false
+	for label in app.screen_host.modal_root.entries.find_children("*", "Label", true, false):
+		if label.text == current_name and label.modulate.a > 0:
+			visible_gallery_name = true
+	expect(visible_gallery_name,"Renamed gallery entry shows the current catalog name instead of the painted reference name")
 	expect(not has_control("codex.evolution"),"Undiscovered evolution has no revealing shortcut")
-	expect(not "Verdálio" in text_of(app.screen_host.modal_root.details),"Undiscovered evolution name stays hidden")
-	await capture("03-musgo-history")
+	var hidden_form: String = Content.display_name({"species": "moss", "form_id": "verdalio"})
+	expect(not hidden_form in text_of(app.screen_host.modal_root.details),"Undiscovered evolution name stays hidden")
+	await capture("03-foli-history")
 	await press("codex.entry.volt")
 	expect(not has_control("codex.section.story"),"Unknown record cannot open lore tabs")
 	expect(not Content.UMBRAL_LORE.volt.text in text_of(app.screen_host.modal_root.details),"Unknown lore remains hidden")
+	app._pop()
+	for frame in range(4): await process_frame
+	for id in ["volt", "tempestral"]: app.codex_progress.mark("umbrals",id)
+	await press("menu.codex")
+	await press("codex.entry.volt")
+	expect("NISCA" in text_of(app.screen_host.modal_root.details) and Content.UMBRAL_LORE.volt.text in text_of(app.screen_host.modal_root.details),"Existing discovery IDs render Nisca and its authored story")
+	expect(app.registry["codex.evolution"].text == "Ver Niscor","Known electric evolution links to its approved name")
+	await capture("07-nisca-history")
+	await press("codex.evolution")
+	expect("NISCOR" in text_of(app.screen_host.modal_root.details) and Content.UMBRAL_LORE.tempestral.text in text_of(app.screen_host.modal_root.details),"Electric form link renders Niscor and its own story")
+	expect(app.registry["codex.evolution"].text == "Ver Nisca","Electric return link keeps the stable discovery record")
+	await capture("08-niscor-history")
 	await press("codex.tab.items")
 	expect(app.registry["codex.section.story"].text == "Descrição","Items use Description tab")
 	expect(Content.ITEM_DESCRIPTIONS.potion in text_of(app.screen_host.modal_root.details),"Item has authored descriptive content")

@@ -25,6 +25,11 @@
       "id": "attacks/flame-guard",
       "version": "1.0.0"
     },
+    "attacks/grass-leaf-blades": {
+      "file": "atlas",
+      "id": "attacks/grass-leaf-blades",
+      "version": "1.0.0"
+    },
     "attacks/inferno": {
       "file": "icon",
       "id": "attacks/inferno",
@@ -33,6 +38,11 @@
     "attacks/judgment": {
       "file": "icon",
       "id": "attacks/judgment",
+      "version": "1.0.0"
+    },
+    "attacks/leaf-foliage-icon": {
+      "file": "icon",
+      "id": "attacks/grass-leaf-blades",
       "version": "1.0.0"
     },
     "attacks/life-seed": {
@@ -155,6 +165,26 @@
       "id": "characters/battle-evolved",
       "version": "1.0.0"
     },
+    "characters/lifecycle-folivel": {
+      "file": "walk-front",
+      "id": "characters/folivel-lifecycle",
+      "version": "1.0.0"
+    },
+    "characters/lifecycle-foslash": {
+      "file": "walk",
+      "id": "characters/foslash-lifecycle",
+      "version": "1.0.0"
+    },
+    "characters/lifecycle-moss": {
+      "file": "walk",
+      "id": "characters/foli-lifecycle",
+      "version": "1.1.0"
+    },
+    "characters/lifecycle-verdalio": {
+      "file": "walk",
+      "id": "characters/folife-lifecycle",
+      "version": "1.1.0"
+    },
     "characters/owl": {
       "file": "portrait",
       "id": "characters/owl",
@@ -240,6 +270,11 @@
       "id": "ui/title-menu",
       "version": "1.0.0"
     },
+    "umbrals/auravel": {
+      "file": "auravel-ally",
+      "id": "characters/electric-adults",
+      "version": "2.0.0"
+    },
     "umbrals/dew": {
       "file": "portrait",
       "id": "umbrals/dew",
@@ -248,6 +283,16 @@
     "umbrals/ember": {
       "file": "portrait",
       "id": "umbrals/ember",
+      "version": "1.0.0"
+    },
+    "umbrals/folivel": {
+      "file": "portrait",
+      "id": "characters/folivel-pilot",
+      "version": "1.0.0"
+    },
+    "umbrals/foslash": {
+      "file": "portrait",
+      "id": "characters/foslash-pilot",
       "version": "1.0.0"
     },
     "umbrals/ignivar": {
@@ -262,23 +307,28 @@
     },
     "umbrals/moss": {
       "file": "portrait",
-      "id": "umbrals/moss",
-      "version": "1.0.0"
+      "id": "characters/foli-pilot",
+      "version": "1.1.0"
     },
     "umbrals/tempestral": {
-      "file": "portrait",
-      "id": "umbrals/tempestral",
-      "version": "1.0.0"
+      "file": "niscor-ally",
+      "id": "characters/electric-family",
+      "version": "2.1.0"
     },
     "umbrals/verdalio": {
       "file": "portrait",
-      "id": "umbrals/verdalio",
-      "version": "1.0.0"
+      "id": "characters/folife-pilot",
+      "version": "1.1.0"
     },
     "umbrals/volt": {
-      "file": "portrait",
-      "id": "umbrals/volt",
-      "version": "1.0.0"
+      "file": "nisca-ally",
+      "id": "characters/electric-family",
+      "version": "2.1.0"
+    },
+    "umbrals/zuldar": {
+      "file": "zuldar-ally",
+      "id": "characters/electric-adults",
+      "version": "2.0.0"
     },
     "world/battle-clearing": {
       "file": "background",

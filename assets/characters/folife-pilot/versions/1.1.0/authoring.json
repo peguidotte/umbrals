@@ -1,0 +1,33 @@
+{
+  "attacks": [
+    3,
+    4,
+    5
+  ],
+  "form_id": "verdalio",
+  "format": "battle-motion-v1",
+  "motion_source": {
+    "id": "characters/folife-pilot",
+    "role": "motion",
+    "version": "1.0.0"
+  },
+  "performances_source": {
+    "id": "attacks/woodland-elements",
+    "role": "performances",
+    "version": "1.1.0"
+  },
+  "schema_version": 1,
+  "states": {
+    "hurt": {
+      "clip": "3",
+      "group": "states"
+    },
+    "idle": {
+      "clip": "0",
+      "group": "states"
+    },
+    "walk": {
+      "missing": "Authored walk and KO use the separate CreatureLifecycle module, not mesh tracks in this authoring-v1 profile."
+    }
+  }
+}

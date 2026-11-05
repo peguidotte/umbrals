@@ -1,6 +1,22 @@
 extends "res://scripts/main.gd"
 var fixture_name: String = ""
 var fixture_ready: bool = false
+var cadence_start: int = 0
+var cadence_frame: int = 0
+var cadence: Array = []
+
+func _process(_delta: float) -> void:
+	if not OS.has_feature("web") or not fixture_ready: return
+	var now: int = Time.get_ticks_usec()
+	if cadence_start == 0:
+		cadence_start = now
+		cadence_frame = Engine.get_frames_drawn()
+	elif now - cadence_start >= 2000000:
+		var frames: int = Engine.get_frames_drawn() - cadence_frame
+		cadence.append({"time_us": now, "frames": frames, "fps": frames * 1000000.0 / (now - cadence_start)})
+		JavaScriptBridge.eval("window.fixtureCadence = " + JSON.stringify(cadence))
+		cadence_start = now
+		cadence_frame = Engine.get_frames_drawn()
 func _ready() -> void:
 	super._ready()
 	if OS.has_feature("web"):
