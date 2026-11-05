@@ -296,7 +296,8 @@ func _layout() -> void:
 	room_label.size = Vector2(800 * zoom, 70)
 
 func public_state() -> Dictionary:
-	var state: Dictionary = {"location": "pietro_house", "room": canvas.room, "position": [canvas.point.x, canvas.point.y], "nearby": Space.nearest(canvas.room, canvas.point), "active": active, "armed": armed, "notice": notice, "stride": canvas.stride, "exit_ready": exit_ready, "pointer_walking": not is_nan(pointer_target), "scene_origin": [canvas.position.x, canvas.position.y], "scene_scale": canvas.scale.x}
+	var frame: Rect2 = canvas.transform * canvas.actor_bounds()
+	var state: Dictionary = {"location": "pietro_house", "room": canvas.room, "position": [canvas.point.x, canvas.point.y], "nearby": Space.nearest(canvas.room, canvas.point), "active": active, "armed": armed, "notice": notice, "stride": canvas.stride, "exit_ready": exit_ready, "pointer_walking": not is_nan(pointer_target), "scene_origin": [canvas.position.x, canvas.position.y], "scene_scale": canvas.scale.x, "actor_frame": [frame.position.x, frame.position.y, frame.size.x, frame.size.y]}
 	state.merge(motion.public_state())
 	return state
 

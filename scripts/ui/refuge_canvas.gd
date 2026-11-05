@@ -26,9 +26,22 @@ func _draw() -> void:
 		draw_circle(Vector2.ZERO, 43, Color(0.01, 0.025, 0.035, 0.12))
 		draw_circle(Vector2.ZERO, 30, Color(0.01, 0.025, 0.035, 0.32))
 	draw_set_transform(point, rest_angle, Vector2(-1 if facing.x < 0 else 1, 1) * float(poses.source_scale) * ACTOR_SCALE_MULTIPLIER)
-	var index: int = int(poses.walk[int(stride) % poses.walk.size()]) if stride > 0 else int(poses.idle)
-	var pose: Dictionary = poses.frames[index]
+	var pose: Dictionary = current_pose()
 	var region: Array = pose.region
 	var rect = Rect2(float(region[0]), float(region[1]), float(region[2]), float(region[3]))
 	draw_texture_rect_region(actor, Rect2(-Vector2(pose.pivot[0], pose.pivot[1]), rect.size), rect, Color(0.96, 0.98, 0.92))
 	draw_set_transform(Vector2.ZERO)
+
+func current_pose() -> Dictionary:
+	var index: int = int(poses.walk[int(stride) % poses.walk.size()]) if stride > 0 else int(poses.idle)
+	return poses.frames[index]
+
+func actor_bounds() -> Rect2:
+	# Conservative full atlas frame, including transparent padding around hair.
+	var pose: Dictionary = current_pose()
+	var region: Array = pose.region
+	var transform = Transform2D(rest_angle, point)
+	var actor_scale: float = float(poses.source_scale) * ACTOR_SCALE_MULTIPLIER
+	transform.x *= (-1 if facing.x < 0 else 1) * actor_scale
+	transform.y *= actor_scale
+	return transform * Rect2(-Vector2(pose.pivot[0], pose.pivot[1]), Vector2(region[2], region[3]))

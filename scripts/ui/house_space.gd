@@ -9,7 +9,9 @@ const RIGHT = Legacy.RIGHT
 const EXIT = Legacy.EXIT
 const SPAWN = Vector2(570, FLOOR_Y)
 const STAIR_BOTTOM = Vector2(695, FLOOR_Y)
-const STAIR_TOP = Vector2(225, 245)
+# Upper-floor handoff stays on the painted diagonal before any full walk frame
+# reaches the ceiling. This reserves at least 32 reference pixels around hair.
+const STAIR_TOP = Vector2(346, 385)
 const BED = Vector2(565, 620)
 const TITLES = {"bedroom": "Casa de Pietro · Quarto", "living": "Casa de Pietro · Sala", "kitchen": "Casa de Pietro · Cozinha", "mother": "Andar de cima · Quarto da mãe"}
 const OBJECTS = {

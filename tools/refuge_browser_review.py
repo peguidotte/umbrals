@@ -44,15 +44,7 @@ def review_room(page, state, wait, key, click, shot, check):
     click('refuge.kitchen')
     wait("window.umbralState.refuge.room === 'kitchen'", 20000)
     shot('house-kitchen.png')
-    click('refuge.stairs')
-    wait("window.umbralState.refuge.on_stairs && window.umbralState.refuge.stair_progress > 0.3", 20000)
-    shot('house-stair-ascent.png')
-    wait("window.umbralState.refuge.room === 'mother'", 20000)
-    shot('house-mother-bedroom.png')
-    click('refuge.stairs')
-    wait("window.umbralState.refuge.room === 'kitchen' && window.umbralState.refuge.on_stairs", 20000)
-    shot('house-stair-descent.png')
-    wait("!window.umbralState.refuge.on_stairs", 20000)
+    review_stairs(page, state, wait, key, click, lambda name: shot('house-' + name + '.png'), check)
     click('refuge.living')
     wait("window.umbralState.refuge.room === 'living'", 20000)
     click('refuge.codex')
@@ -108,11 +100,59 @@ def responsive_home(session, width, height):
     wait("window.umbralState.refuge.room === 'kitchen'", timeout=20000)
     session.geometry(f'Kitchen {width}×{height}')
     shot(f'matrix-house-kitchen-{width}x{height}')
-    click('refuge.stairs')
-    wait("window.umbralState.refuge.room === 'mother'", timeout=20000)
-    session.geometry(f'Mother bedroom {width}×{height}')
-    shot(f'matrix-house-mother-{width}x{height}')
-    click('refuge.stairs')
-    wait("window.umbralState.refuge.room === 'kitchen' && !window.umbralState.refuge.on_stairs", timeout=20000)
+    def capture_stairs(name):
+        if name == 'mother-bedroom':
+            session.geometry(f'Mother bedroom {width}×{height}')
+            shot(f'matrix-house-mother-{width}x{height}')
+        else:
+            shot(f'matrix-house-{name}-{width}x{height}')
+    review_stairs(session.page, session.state, wait, session.key, click, capture_stairs, session.check)
     click('refuge.living')
     wait("window.umbralState.refuge.room === 'living'", timeout=20000)
+
+
+def actor_margin(state, check, label):
+    home = state()['refuge']
+    x, y, w, h = home['actor_frame']
+    ox, oy = home['scene_origin']
+    scale = home['scene_scale']
+    inset = 32 * scale
+    check(x >= ox + inset - .5 and y >= oy + inset - .5
+          and x+w <= ox + 1672*scale - inset + .5
+          and y+h <= oy + 941*scale - inset + .5,
+          'Full actor frame retains 32-reference-pixel room margin: ' + label)
+
+
+def pause_stairs(page, wait):
+    # A real horizontal movement input pauses both pointer and E approaches.
+    page.keyboard.press('d', delay=80)
+    wait("window.umbralState.refuge.on_stairs && window.umbralState.refuge.stair_automatic === 0", timeout=20000)
+
+
+def review_stairs(page, state, wait, key, click, capture, check):
+    click('refuge.stairs')
+    wait("window.umbralState.refuge.on_stairs && window.umbralState.refuge.stair_progress >= .739", timeout=20000)
+    pause_stairs(page, wait)
+    up = state()['refuge']['stair_progress']
+    actor_margin(state, check, 'paused ascent')
+    capture('stair-ascent')
+    key('e')
+    wait(f"window.umbralState.refuge.room === 'mother' || window.umbralState.refuge.stair_progress > {up + .005}", timeout=20000)
+    check(state()['refuge']['stair_direction'] == 1, 'E resumes a paused upper-half ascent in the same direction')
+    wait("window.umbralState.refuge.room === 'mother'", timeout=20000)
+    actor_margin(state, check, 'upstairs arrival')
+    capture('mother-bedroom')
+    click('refuge.stairs')
+    wait("window.umbralState.refuge.room === 'kitchen' && window.umbralState.refuge.on_stairs", timeout=20000)
+    pause_stairs(page, wait)
+    actor_margin(state, check, 'upper descent; original hair-clipping case')
+    capture('stair-descent')
+    key('e')
+    wait("window.umbralState.refuge.on_stairs && window.umbralState.refuge.stair_progress < .45", timeout=20000)
+    pause_stairs(page, wait)
+    down = state()['refuge']['stair_progress']
+    click('refuge.stairs')
+    wait(f"!window.umbralState.refuge.on_stairs || window.umbralState.refuge.stair_progress < {down - .005}", timeout=20000)
+    check(state()['refuge']['stair_direction'] == -1, 'Click resumes a paused lower-half descent in the same direction')
+    wait("!window.umbralState.refuge.on_stairs", timeout=20000)
+    actor_margin(state, check, 'kitchen return')

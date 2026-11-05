@@ -1028,3 +1028,12 @@ resultado final/CI ficam no PR de rascunho. Não é aceite completo por esses
 resultados focados. [Escopo, revisão e limites](house-v05-ux05.md). Próxima fatia:
 cena com a mãe e entrega posterior do abrigo, sem assumir economia/cosmologia
 ou aprovar um desenho de Umbral por inferência. Versão permanece 0.3.0.
+
+
+V05-UX-05, revisão da escada: reproduzidos corte de cabelo na borda superior e
+retomada que invertia uma subida pausada acima da metade. O ponto de passagem
+entre andares reserva margem para todas as poses; E/clique guarda a direção,
+com inversão explícita por cima/baixo. A regressão anterior falhou em sete casos;
+a correção passou 53 checks nativos e arquitetura. Validação Web por resolução
+e aceite integral devem rodar no HEAD que incorpora main 1198404; resultados
+finais e vídeo são entregues à coordenação, mantendo o PR em rascunho.

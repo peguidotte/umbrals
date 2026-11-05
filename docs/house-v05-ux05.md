@@ -89,3 +89,30 @@ módulos/pins sem sobrescrever releases. A única mudança no cenário de layout
 harness chama o helper da casa. Não há edição do registry, baseline, main, combate
 ou fluxo de run. A branch fica em PR de rascunho para integração coordenada;
 nenhum merge automático ou manual é realizado aqui.
+
+
+## Correção após revisão independente — escada
+
+A captura anterior de descida mostrava cabelo cortado no alto. O antigo ponto
+(225, 245) levava parte do ator acima da imagem. A passagem para o andar superior
+fica agora em (346, 385), no trecho superior da mesma diagonal pintada, enquanto
+a pose inteira ainda cabe no quadro com pelo menos 32 pixels de referência.
+Escala, pivôs, ordem de desenho e áreas de interação permanecem iguais; a mudança
+é no ponto de transição entre as duas vistas. Não se usa máscara para esconder
+o cabelo, nem se reduz o ator. A oclusão dedicada do corrimão continua futura.
+
+Também foi reproduzida a retomada inesperada: em uma subida pausada a 73,9%, E
+escolhia descer por estar acima da metade. A apresentação guarda agora a última
+direção. E/clique a retoma; cima/baixo escolhe explicitamente subir ou descer.
+O teste cobre também uma descida pausada abaixo da metade e movimento reduzido.
+
+As novas regressões falharam antes da correção: dois casos de retomada e a margem
+nas cinco resoluções. Depois passaram 53 checks nativos e arquitetura; o primeiro cenário Web passou
+78 verificações com vídeo real. Os 31 testes do contrato de autoria trazido pela
+main também passaram. O cenário
+Web passa a pausar e fotografar a descida no caso que cortava a cabeça, verificar
+a margem da pose inteira e retomar por E e por clique em todos os cinco formatos.
+A nova base inclui main 1198404 por merge explícito, preservando o contrato de
+autoria de atores. Aceitação/CI e vídeos novos devem identificar o novo HEAD;
+o CI anterior sobre 030ee7d não aprova este merge. O PR continua em rascunho,
+sem atualizar a descrição bloqueada e sem merge na main antes da revisão final.

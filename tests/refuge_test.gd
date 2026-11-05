@@ -1,5 +1,6 @@
 extends SceneTree
 const Space = preload("res://scripts/ui/house_space.gd")
+const StairCases = preload("res://tests/support/house_stair_cases.gd")
 var app: Control
 var room: Control
 var checks: int = 0
@@ -55,6 +56,7 @@ func _init() -> void:
 	call_deferred("run")
 
 func run() -> void:
+	StairCases.resume_cases(expect)
 	var straight: Vector2 = Space.walk(Space.SPAWN, Vector2.RIGHT, 0.1)
 	expect(straight == Space.walk(Space.SPAWN, Vector2.ONE, 0.1), "Floor walking retains one horizontal lane and speed")
 	var wall: Vector2 = Space.SPAWN
@@ -68,6 +70,7 @@ func run() -> void:
 	app.registry["menu.play"].pressed.emit()
 	await process_frame
 	room = app.screen_host.refuge_root
+	StairCases.clearance_cases(room, expect)
 	expect(app.screens.entries == ["refuge"] and room.has_focus(), "Play enters a focused spatial root")
 	expect(room.canvas.room == "bedroom" and room.motion.waking and room.canvas.rest_angle < -1, "First entry begins on Pietro's bed")
 	var before: String = snapshot()
