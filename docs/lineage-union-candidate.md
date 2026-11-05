@@ -75,3 +75,26 @@ corporais em staging; Folivel dorsal com marcha limitada; estética, cadência e
 hardware abertos. Recuperação elétrica ainda sobrepõe corpos; números são
 provisórios. Pietro45d56a1 permanece fora por origem indisponível neste executor.
 Nenhuma geração bloqueada ou publicação de PR negada foi repetida.
+
+## Integração após revisão independente
+
+A aceitação integral da candidata `15dfe1b` terminou aprovada com fonte
+`c216da15fca80f29e7f145af48460de9efdc8044ebbd22ee2bbd6cb7379e26e6`: 14.346
+regras, 2.902 verificações nativas, 2.935 Web, 8 mutações, 5 viewports e 189
+capturas, incluindo casa→expedição→combate→escolha→save/reload. O relatório
+original não é reatribuído à reconciliação documental posterior.
+
+A revisão independente do adaptador não encontrou bloqueio funcional; confirmou
+433 saves, 24 verificações de catálogo, 5 migrações, 14.346 regras e 279 testes
+suplementares. Dois manifestos históricos, ordem/idempotência e manutenção dos
+grafos antigos foram conferidos. A main atual `8d514bf` contém casa/foco e as
+referências; a nova integração preserva tudo isso. Diferenças contra a candidata
+validada são somente documentação; provas de equivalência e validação local do
+merge são registradas separadamente no fechamento. Actions permanece desativado
+a pedido de Pedro e não substitui os gates locais.
+
+Pietro e casa foram visualmente rejeitados por Pedro. A integração é funcional
+provisória; não representa aprovação artística ou famílias acabadas. Permanecem
+os limites de cadência, verso de Foslash, casts em staging, marcha dorsal Folivel
+e recuperação elétrica. Brasa revisado, água e Pietro45d56a1 não fazem parte
+desta integração. Não houve nova geração nem mudança de regras nesta etapa.

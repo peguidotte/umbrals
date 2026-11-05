@@ -1294,3 +1294,56 @@ cb713b2, preservando casa/foco/Pietro 2 e a elétrica. Históricos mantêm seus
 grafos0/1/2/3; novas expedições usam4. Movimento 829 e saves 433 passaram nos
 focos; a aceitação integral tem relatório próprio após congelar a composição.
 Não é família final, main ou aprovação estética. [Escopo e compatibilidade](lineage-union-candidate.md).
+
+### V05-ART-REF-01 — referências disponíveis para produção de identidades
+
+Fatia documental de apoio ao acabamento da 0.5, sobre a main `1523d0e`:
+[oito pranchas conceituais](references/identidades/README.md) materializadas
+pelo fluxo oficial da Library e preservadas sem transformação. Protagonista,
+fogo, Sendral, lebre, alternativa da lebre, água e elétrica têm os escopos visuais
+registrados no acervo; mineral vivo permanece proposta futura, não aprovado como
+inicial. Água: somente o painel inferior direito da companheira. Fogo: o arquivo
+fornecido contém o comparativo do final, sem prancha independente de Brasa inicial.
+
+Integridade: tamanhos conferidos contra a origem, oito PNGs decodificados e
+inspecionados, hashes de arquivos e pixels no catálogo documental. Esta entrega
+não altera conteúdo, sprites, saves, módulos de assets ou runtime-lock. Não há
+novo resultado de gameplay nem aceitação em cena. PR draft isolado para revisão,
+sem merge automático; versão permanece 0.3.0. Próximo passo: revisar a importação
+e então produzir sprites/animações separados a partir das direções aprovadas,
+com os gates próprios de assets e experiência.
+
+### Consolidação funcional provisória — V05-UX-05 / ART-01
+
+A integração reúne casa, Pietro e foco do grimório, preservando o acervo documental
+do PR #26. Pedro rejeitou o visual atual de Pietro e da casa: esta integração
+funcional não representa aprovação artística. Despertar e escada continuam
+provisórios; o acabamento visual segue em revisão separada. A suíte integral do
+HEAD funcional `1994376` passou no push 41964934938. Novos jobs do Actions estão
+bloqueados por cobrança; nenhum job novo é registrado como aprovado por isso.
+
+### V05-CNT-02 — consolidação técnica das linhagens sobre a main
+
+A candidata funcional `15dfe1b` passou aceitação integral local: 14.346 regras,
+2.902 verificações nativas, 2.935 Web, 8 mutações, 5 viewports e 189 capturas.
+A revisão independente do adaptador não encontrou bloqueio funcional: confirmou
+433 saves, 24 de catálogo, 5 migrações, 14.346 regras e 279 verificações
+suplementares, manifestos históricos, ordem/idempotência e preservação do grafo
+de saves antigos. Continuar não libera as novas finais de outro catálogo.
+
+A integração com a main `8d514bf` preserva referências e ambos os registros de
+roadmap; a reconciliação altera apenas documentação, sem mudar runtime, testes,
+conteúdo ou pins da candidata validada. Evidência integral original em
+`artifacts/lineage-union-full-proof.json`; testes da reconciliação e prova de
+equivalência ficam registrados no fechamento do PR. Actions foi desativado a
+pedido de Pedro, e validações locais continuam obrigatórias. Sem novo aceite de
+CI remoto e sem aumento da versão 0.3.0.
+
+Pietro e casa foram visualmente rejeitados por Pedro; integração funcional
+provisória, sem aprovação artística. Elétrica e grama têm quatro formas no
+runtime, mas permanecem parciais: recuperação elétrica sobreposta, Foslash sem
+verso próprio, casts corporais de grama em staging e marcha dorsal Folivel
+limitada. Cadência e hardware ainda abertos; Brasa revisado e água não entram
+neste conjunto. Pietro45d56a1 segue fora por origem indisponível. Próxima fatia:
+revisão visual comparativa e acabamento separado, preservando os contratos de
+save já revisados. [Escopo técnico](lineage-union-candidate.md).

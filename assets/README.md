@@ -17,6 +17,13 @@ frame sequences. Final human art approval remains open.
 and Zuldar as a biped with attached blue quills. No evolution, stats, rig, attack
 origin or playable adult is claimed. See [scope and handoff](../docs/electric-family-v05-art02.md).
 
+Referências conceituais de personagens e Umbrais ficam no
+[acervo documental](../docs/references/identidades/README.md), com origem,
+hashes e limites de aprovação por prancha. São fontes para produção posterior,
+separadas dos módulos e do manifesto gerado de runtime; não representam sprites
+ou animações prontos. O mineral é proposta futura e a água tem aprovação restrita
+ao painel da companheira indicado no acervo.
+
 Asset modules live at `<domain>/<slug>/versions/<semver>/`. Each release owns a manifest with file roles, provenance, hashes, animation contracts and exact dependencies. Demo actors and earlier attack studies remain prototypes; the approved battle performances have explicit production pins.
 
 Read [the architecture and workflow](../docs/assets/README.md) before adding or evolving art. `runtime-lock.json` pins production art; `catalog.json`, `asset-manifest.json` and the Godot binding paths are generated with `python tools/assets.py build`. Validate with `python tools/assets.py validate --base-ref origin/main`.
