@@ -71,6 +71,7 @@ func _label(parent: Control, text: String, rect: Rect2, font_size: int, color: C
 func _card_picture(entry: Dictionary, known: bool) -> Texture2D:
 	if not known:
 		return RefArt.region("ui/gold-codex-art",Rect2(670,285,168,292) if category == "umbrals" else Rect2(1080,705,103,106))
+	if category == "umbrals" and not Assets.bound_manifest(entry.art).get("metadata", {}).get("battle_profile", {}).is_empty(): return null
 	if category == "umbrals" and entry.id == "ember": return RefArt.region("ui/gold-codex-art",Rect2(292,279,176,306))
 	if category == "umbrals" and entry.id == "moss": return RefArt.region("ui/gold-codex-art",Rect2(488,285,164,292))
 	return null

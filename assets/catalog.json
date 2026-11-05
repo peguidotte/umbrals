@@ -383,6 +383,15 @@
         }
       }
     },
+    "characters/foli-pilot": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/foli-pilot/versions/1.0.0/manifest.json",
+          "sha256": "5c5a6db93eb4d23a2b821fb82319d992a662e43bee7ce329911e958b0added8c",
+          "status": "production"
+        }
+      }
+    },
     "characters/owl": {
       "versions": {
         "1.0.0": {

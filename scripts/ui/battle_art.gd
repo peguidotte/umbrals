@@ -10,6 +10,12 @@ static var _grounding: Dictionary = {}
 
 static func texture(art_id: String) -> Texture2D:
 	var region_id: String = art_id.get_file()
+	# A deliberate portrait pin can supply its own battle art and floor profile.
+	var profile: Dictionary = Assets.bound_manifest(art_id).get("metadata", {}).get("battle_profile", {})
+	if not profile.is_empty():
+		if not _textures.has(art_id): _textures[art_id] = Assets.texture(art_id)
+		_grounding[art_id] = profile.grounding
+		return _textures[art_id]
 	if _textures.has(region_id): return _textures[region_id]
 	if not _loaded:
 		_loaded = true
@@ -38,4 +44,4 @@ static func texture(art_id: String) -> Texture2D:
 
 static func ground_profile(art_id: String) -> Dictionary:
 	var art: Texture2D = texture(art_id)
-	return _grounding.get(art_id.get_file(), {"foot": [art.get_width() * 0.5, art.get_height() * 0.93], "width": art.get_width() * 0.6, "visible_top": art.get_height() * 0.10})
+	return _grounding.get(art_id, _grounding.get(art_id.get_file(), {"foot": [art.get_width() * 0.5, art.get_height() * 0.93], "width": art.get_width() * 0.6, "visible_top": art.get_height() * 0.10}))

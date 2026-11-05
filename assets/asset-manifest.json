@@ -3768,6 +3768,72 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 611,
+      "id": "characters/foli-pilot@1.0.0:authoring",
+      "kind": "data",
+      "module": "characters/foli-pilot",
+      "path": "assets/characters/foli-pilot/versions/1.0.0/authoring.json",
+      "role": "authoring",
+      "sha256": "cfcd02cac9f935379ea2b408b19884a887493e0d78ef8bfbd498eed3861e9046",
+      "source": {
+        "kind": "Original Foli anatomical tracks; no historical moss tracks copied",
+        "source": "tools/asset_authoring/build_foli_motion.py"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1165323,
+      "id": "characters/foli-pilot@1.0.0:motion",
+      "kind": "data",
+      "module": "characters/foli-pilot",
+      "path": "assets/characters/foli-pilot/versions/1.0.0/motion.json",
+      "role": "motion",
+      "sha256": "a37a5c225d7795632680cfb7003bc057b0a88f21bd8434967e43ef9b1723d412",
+      "source": {
+        "kind": "Original Foli anatomical tracks; no historical moss tracks copied",
+        "source": "tools/asset_authoring/build_foli_motion.py"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 764944,
+      "id": "characters/foli-pilot@1.0.0:portrait",
+      "kind": "texture",
+      "module": "characters/foli-pilot",
+      "path": "assets/characters/foli-pilot/versions/1.0.0/foli.png",
+      "role": "portrait",
+      "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+      "source": {
+        "approval": "Pedro approved the reference lineage and delegated integration. This new cutout and mesh are a draft pilot awaiting visual review, not approval of all poses or the complete family.",
+        "generation_id": "exec-7dccbeb5-ce85-494c-997a-2ef723555560",
+        "kind": "Image Gen reference edit and original anatomical mesh tracks",
+        "original_png_preserved": true,
+        "prompt": "Create one clean production game character cutout of FOLI, strictly the first/smallest hare at far left of the approved lineup. Preserve warm olive-brown fur, cream muzzle/throat/paws, one upright leaf ear and one leaf ear swept left, amber eye, leaf tail, seated alert right-facing slightly elevated side view with forepaws near chest. Exactly three detached blade leaves in front of forepaws/face. Match hand-painted cel-shaded fantasy reference, dark outline, organic leaf texture, warm highlights and olive shadows. Fully visible with transparent alpha, no text, scenery, shadow ellipse, clothing, weapons or duplicate creatures.",
+        "references": [
+          {
+            "file_name": "lebre-linhagem-v11.png",
+            "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+            "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80"
+          }
+        ]
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
       "bytes": 1416,
       "id": "characters/owl@1.0.0:portrait",
       "kind": "texture",
