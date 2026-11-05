@@ -105,3 +105,14 @@ a referência Library aprovada não pôde ser transferida oficialmente. Os PNGs
 gerados e seus metadados estão preservados byte a byte. A escala e os pivôs são
 dados; degraus/corrimão e oclusão são geometria nativa. As releases anteriores
 continuam imutáveis. Ver [escopo e limites](../docs/house-v05-ux05.md).
+
+### Pietro a partir do conceito — V05-ART-01
+
+`characters/pietro-home@2.0.0` usa a referência aprovada da Library, materializada
+oficialmente e inspecionada neste executor antes da geração. Pele clara, cabelo
+escuro ondulado, rosto mais contido e lenço ocre aproximam o ator do conceito.
+O PNG original transparente e a referência permanecem intactos, com hashes,
+identidade Library, pivôs e escala explícitos. Repouso e seis poses de caminhada
+usam o consumidor da casa existente. O único pin alterado é o do protagonista;
+nenhum script de geometria, movimento ou save mudou. Aprovação estética do
+sprite continua pendente. Ver [referência, integração e limites](../docs/pietro-v05-art01.md).

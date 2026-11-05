@@ -1059,3 +1059,15 @@ e conservação de RNG/save, além de captura/vídeo reais em MP4. O fechamento 
 os resultados efetivos e o merge exato; não há aceite estético automático nem merge
 na main. [Escopo e limites](house-v05-ux05.md). Próxima fatia: avaliação de Pedro,
 acabamento do ator/ambiente e abertura narrativa/entrega do abrigo, ainda ausentes.
+
+### V05-ART-01 — Pietro com referência oficialmente acessível
+
+O novo ambiente permitiu materializar e inspecionar a referência aprovada antes
+da geração. A revisão `characters/pietro-home@2.0.0` aproxima cabelo, pele clara,
+paleta azul/ocre e expressão do conceito, com roupa inicial simplificada, repouso
+e seis poses de caminhada. PNGs originais preservados e pivôs/escala calibrados;
+somente o pin do ator e índices gerados mudam. Casa/movimentos/saves pertencem
+ao PR #11 e não recebem alterações nesta branch. O gate focado passou com 79
+verificações da casa; fechamento, comparação em jogo e vídeo ficam registrados
+no PR/entrega. Draft sem merge, aguardando revisão independente e estética de
+Pedro. [Proveniência, contrato e limites](pietro-v05-art01.md).
