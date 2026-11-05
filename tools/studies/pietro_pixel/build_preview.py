@@ -3,9 +3,9 @@ import argparse,hashlib,json,shutil,subprocess
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
 p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args();out=a.output.resolve();project=out/'project';build=out/'build';project.mkdir(parents=True,exist_ok=True);build.mkdir(exist_ok=True)
-for rel in ['assets/characters/pietro-pixel-pilot/versions/0.2.1','assets/world/pietro-pixel-study/versions/0.1.0','tools/studies/pietro_pixel']:
+for rel in ['assets/characters/pietro-pixel-pilot/versions/0.2.2','assets/world/pietro-pixel-study/versions/0.1.0','tools/studies/pietro_pixel']:
  shutil.copytree(ROOT/rel,project/rel,dirs_exist_ok=True)
-inputs={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for folder in ['assets/characters/pietro-pixel-pilot/versions/0.2.1','assets/world/pietro-pixel-study/versions/0.1.0','tools/studies/pietro_pixel'] for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix not in ('.uid','.import','.pyc') and '__pycache__' not in p.parts}
+inputs={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for folder in ['assets/characters/pietro-pixel-pilot/versions/0.2.2','assets/world/pietro-pixel-study/versions/0.1.0','tools/studies/pietro_pixel'] for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix not in ('.uid','.import','.pyc') and '__pycache__' not in p.parts}
 # Review-only reference is deliberately included in this standalone study.
 for ignore in project.rglob('.gdignore'):ignore.unlink()
 (project/'project.godot').write_text('''config_version=5

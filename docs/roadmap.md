@@ -1344,6 +1344,13 @@ descobertas em 460.080, contra 62.277 na versão anterior. Doze casos nativos
 passam preservando os resultados de botas, joelhos e parte superior. A revisão
 visual da implementação continua aberta; módulos anteriores e pins preservados.
 
+Correção 0.2.2: transições mais largas da deformação de joelhos, tornozelos e
+costura evitam o dobramento dos triângulos. A nova regressão cobre 4.985 poses
+e 7.896.240 triângulos, incluindo ciclo 0,22 e acomodações intermediárias:
+28.048 inversões na versão anterior, zero na candidata, razão mínima de área
+0,20365. Treze casos nativos passam, mantendo cobertura da cintura, pés e IK.
+Segue necessária a revisão visual do tecido; sem aprovação artística ou promoção.
+
 ### V05-CNT-02 — consolidação técnica das linhagens sobre a main
 
 A candidata funcional `15dfe1b` passou aceitação integral local: 14.346 regras,

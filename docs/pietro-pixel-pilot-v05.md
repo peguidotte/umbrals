@@ -48,8 +48,8 @@ python tools/studies/pietro_pixel/review.py --build-dir artifacts/pixel-study/bu
 Os arquivos do estudo ficam em `tools/`, excluídos dos exports de produção. O
 export de revisão usa um projeto temporário independente em `artifacts/`; não
 altera o boot, o projeto, as telas ou o runtime-lock do jogo. Os dois módulos
-novos têm status `prototype`, sem pins de produção. O ator usa 0.2.1 e a base da
-sala continua em 0.1.0. Os atores 0.1.0 e 0.2.0 ficam preservados.
+novos têm status `prototype`, sem pins de produção. O ator usa 0.2.2 e a base da
+sala continua em 0.1.0. Os atores 0.1.0, 0.2.0 e 0.2.1 ficam preservados.
 
 No projeto-fonte, a referência em `review/` é lida como PNG bruto, preservando
 sua exclusão dos imports de produção. O export Web de estudo importa sua própria
@@ -120,6 +120,34 @@ resultados geométricos da versão 0.2.0.
 
 O PNG aprovado e as versões anteriores não mudaram. O teste de recortes da
 imagem parada continua separado: ele sozinho não detectava essa falha dinâmica.
+
+## Orientação dos triângulos 0.2.2
+
+A revisão de `1b9812f` confirmou a cintura, mas encontrou inversão de triângulos
+no joelho distante em ciclo 0,22. Misturar as rotações da coxa e da canela em
+apenas 32 pixels da origem fazia a malha dobrar sobre si mesma. A junção da
+bota e a transição lateral da costura também precisavam de uma faixa maior.
+0.2.2 distribui a deformação por faixas mais largas: joelho com 96 pixels para
+cada lado, bota entre 80 pixels acima e oito abaixo do tornozelo, e ligação à
+pelve entre y=820 e y=970, com transição lateral de 120 pixels. A bota continua
+inteiramente rígida abaixo de y=1038. Sem mudança do PNG, das trajetórias dos
+pés, do IK, do tronco, dos braços ou da mochila.
+
+A regressão compara cada triângulo deformado à orientação de sua referência,
+incluindo recortes pequenos do contorno. São 1.584 triângulos por pose, nas
+duas pernas e no corpo superior, com 4.985 poses e 7.896.240 verificações:
+1.001 fases do ciclo, 129 níveis da acomodação usada pelo trecho e uma malha
+adicional de 257 fases por 15 níveis intermediários de acomodação. Inclui o
+ciclo 0,22 exato. Um triângulo de área nula já presente na geometria original
+é registrado e excluído da razão de áreas. A versão anterior produz 28.048
+inversões nesse teste; 0.2.2 produz zero inversões e zero áreas abaixo de 5%
+da referência. A menor razão de área é 0,20365.
+
+Os treze casos nativos passam. A cobertura da cintura continua sem amostras
+descobertas, e os resultados de apoio, separação das botas, flexão dos joelhos
+e movimento independente da parte superior permanecem iguais aos de 0.2.1.
+Essa amostragem geométrica não substitui a avaliação visual da deformação do
+tecido ou a revisão de Pedro. O estudo continua candidato, sem promoção.
 
 Ainda precisam de julgamento de Pedro a proporção em relação a Brasa, o contorno
 em escala real, as junções sob o casaco e a leitura da passada em três quartos.

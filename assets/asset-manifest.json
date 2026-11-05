@@ -8819,6 +8819,54 @@
       "version": "0.2.1"
     },
     {
+      "bytes": 4824,
+      "id": "characters/pietro-pixel-pilot@0.2.2:rig",
+      "kind": "data",
+      "module": "characters/pietro-pixel-pilot",
+      "path": "assets/characters/pietro-pixel-pilot/versions/0.2.2/rig.json",
+      "role": "rig",
+      "sha256": "f7994e1cfddabb34171244d964d928e3ea5b959644c8de81a8765dd04c604089",
+      "source": {
+        "approval_scope": "Pedro approved the isolated identity. Runtime composition and gait remain candidates.",
+        "edit_history": "Approved original RGBA copied byte-identically. Broader JSON deformation bands and orientation regression; no regenerated image.",
+        "kind": "project-approved generated reference",
+        "recorded_date_utc": "2026-11-05",
+        "source_name": "Pietro-autosprite-source.png",
+        "source_sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.2.2"
+    },
+    {
+      "bytes": 546680,
+      "id": "characters/pietro-pixel-pilot@0.2.2:texture",
+      "kind": "texture",
+      "module": "characters/pietro-pixel-pilot",
+      "path": "assets/characters/pietro-pixel-pilot/versions/0.2.2/source.png",
+      "role": "texture",
+      "sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa",
+      "source": {
+        "approval_scope": "Pedro approved the isolated identity. Runtime composition and gait remain candidates.",
+        "edit_history": "Approved original RGBA copied byte-identically. Broader JSON deformation bands and orientation regression; no regenerated image.",
+        "kind": "project-approved generated reference",
+        "recorded_date_utc": "2026-11-05",
+        "source_name": "Pietro-autosprite-source.png",
+        "source_sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.2"
+    },
+    {
       "bytes": 1246,
       "id": "characters/refuge-traveler@1.0.0:poses",
       "kind": "data",

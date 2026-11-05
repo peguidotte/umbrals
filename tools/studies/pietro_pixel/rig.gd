@@ -2,7 +2,7 @@ extends RefCounted
 ## Study-only 3/4 gait. Approved pixels are sampled without redrawing the PNG.
 const Geometry = preload("res://tools/studies/pietro_pixel/texture_mesh.gd")
 const Upper = preload("res://tools/studies/pietro_pixel/upper_rig.gd")
-const ROOT: String = "res://assets/characters/pietro-pixel-pilot/versions/0.2.1/"
+const ROOT: String = "res://assets/characters/pietro-pixel-pilot/versions/0.2.2/"
 var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(ROOT+"rig.json"))
 var texture: Texture2D = load(ROOT+"source.png") as Texture2D
 var upper: RefCounted
@@ -30,8 +30,9 @@ func _init() -> void:
 		var boots_weight: PackedFloat32Array = []
 		var waist_weight: PackedFloat32Array = []
 		for point in grid.vertices:
-			knees_weight.append(smoothstep(source.knee[1]-16,source.knee[1]+16,point.y))
-			boots_weight.append(smoothstep(source.ankle[1]-8,source.ankle[1]+8,point.y))
+			# Broad transitions keep the inner knee from folding over itself.
+			knees_weight.append(smoothstep(source.knee[1]-data.deformation.knee_half_width,source.knee[1]+data.deformation.knee_half_width,point.y))
+			boots_weight.append(smoothstep(source.ankle[1]-data.deformation.boot_blend_above,source.ankle[1]+data.deformation.boot_blend_below,point.y))
 			# Both panels share the same attachment at the belt and inner seam.
 			# Let the thighs take over gradually without pulling those edges apart.
 			var seam_distance: float = INF

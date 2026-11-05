@@ -1,6 +1,7 @@
 extends SceneTree
 const Rig = preload("res://tools/studies/pietro_pixel/rig.gd")
 const Coverage = preload("res://tools/studies/pietro_pixel/coverage.gd")
+const Winding = preload("res://tools/studies/pietro_pixel/winding.gd")
 var checks: int = 0
 var failed: int = 0
 func expect(value: bool, label: String) -> void:
@@ -82,7 +83,9 @@ func _init() -> void:
 	var source_image: Image = rig.texture.get_image()
 	var coverage: Dictionary = Coverage.sweep(rig,source_image)
 	expect(coverage.uncovered==0,"Opaque trouser interior stays covered by textured triangles throughout the cycle and both gather transitions")
-	print(JSON.stringify({"suite":"pietro_pixel_study","checks":checks,"failed":failed,"source_identity_delta":identity,"reach_error":reach,"boot_deformation":rigid_boot,"loop_delta":closure,"support_drift_source_px":drift,"boot_gap_source_px":boot_gap,"pelvis_drop_source_px":max_drop,"stance_knee_bend_degrees":support_bend,"independent_part_motion_source_px":local_motion,"waist_coverage":coverage}))
+	var winding: Dictionary = Winding.sweep(rig)
+	expect(winding.inverted==0 and winding.collapsed==0 and winding.triangles_per_pose.min()>0,"Every nondegenerate rendered triangle retains its source orientation and more than 5% area through the cycle and partial gather phases")
+	print(JSON.stringify({"suite":"pietro_pixel_study","checks":checks,"failed":failed,"source_identity_delta":identity,"reach_error":reach,"boot_deformation":rigid_boot,"loop_delta":closure,"support_drift_source_px":drift,"boot_gap_source_px":boot_gap,"pelvis_drop_source_px":max_drop,"stance_knee_bend_degrees":support_bend,"independent_part_motion_source_px":local_motion,"waist_coverage":coverage,"triangle_winding":winding}))
 	quit(failed)
 func _difference(a: PackedVector2Array,b: PackedVector2Array) -> float:
 	var result: float = 0

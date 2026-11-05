@@ -566,6 +566,11 @@
           "manifest": "assets/characters/pietro-pixel-pilot/versions/0.2.1/manifest.json",
           "sha256": "bc90e560b0869f88d97acc4a56c5aaedd26667c4fc29bb622710a1b4a3ab4480",
           "status": "prototype"
+        },
+        "0.2.2": {
+          "manifest": "assets/characters/pietro-pixel-pilot/versions/0.2.2/manifest.json",
+          "sha256": "3480da9c4c08a830ca6dfe0257eaaac56615fdef5931de05d602ad6deae61fc9",
+          "status": "prototype"
         }
       }
     },

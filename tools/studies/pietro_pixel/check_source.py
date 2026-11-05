@@ -3,7 +3,7 @@ from pathlib import Path
 import hashlib,json
 from PIL import Image,ImageDraw
 ROOT=Path(__file__).resolve().parents[3]
-c=ROOT/'assets/characters/pietro-pixel-pilot/versions/0.2.1';w=ROOT/'assets/world/pietro-pixel-study/versions/0.1.0';p=c/'source.png';im=Image.open(p);data=json.loads((c/'rig.json').read_text())
+c=ROOT/'assets/characters/pietro-pixel-pilot/versions/0.2.2';w=ROOT/'assets/world/pietro-pixel-study/versions/0.1.0';p=c/'source.png';im=Image.open(p);data=json.loads((c/'rig.json').read_text())
 assert hashlib.sha256(p.read_bytes()).hexdigest()=='cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa'
 assert im.mode=='RGBA' and im.size==(1254,1254)
 alpha=im.getchannel('A');mask=Image.new('L',im.size);d=ImageDraw.Draw(mask)
