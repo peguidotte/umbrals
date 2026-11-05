@@ -1,48 +1,90 @@
 # V05-ART-08B — Pietro candidato na casa real
 
-Experimento em branch separada sobre a main `60b4e30`, preservando o piloto
-aquático e os demais contratos atuais. Não substitui a casa ou o ator de produção.
-O boot opcional instancia `scenes/main.tscn`, usa o `RefugeRoom` real e troca
-somente seu canvas por uma subclasse experimental. Cenário, escada, câmera,
-hotspots, grimório, fluxo da run e saves continuam nos donos existentes.
+Experimento em branch separada sobre a main `60b4e30`. Não substitui a casa ou
+o ator de produção. O boot opcional instancia `scenes/main.tscn`, usa o
+`RefugeRoom` real e troca somente seu canvas por uma subclasse experimental.
+Cenário, escada, câmera, hotspots, grimório, fluxo da run e saves continuam nos
+donos existentes. O piloto aquático e os demais contratos da main são preservados.
 
-O botão **Pietro atual** mostra o renderer de produção; **Pietro candidato**
-mostra o rig 0.2.2, na mesma posição, câmera e escala de mundo. A imagem aprovada
-permanece byte a byte igual. Escala do piloto 0,5, próxima da altura do ator
+**O cenário atual não está aprovado.** Pedro rejeitou seu visual e ainda falta
+adaptá-lo à direção pixel aprovada. A legenda do experimento informa essa
+pendência. Esta prova compara personagem e Umbral no ambiente real atual;
+não apresenta uma casa nova nem fecha a direção artística.
+
+## Comparação e controles
+
+**Pietro atual** mostra o renderer de produção; **Pietro candidato** mostra o
+rig experimental 0.3.0 na mesma posição, câmera e escala de mundo. A imagem
+aprovada permanece byte a byte igual. Escala 0,5, próxima da altura do ator
 atual; esquerda é espelhamento da única vista de três quartos disponível.
-**Enquadrar sala** é um controle explícito de revisão: reposiciona apenas esta
-cena experimental. Não é uma ação da casa de produção.
+**Enquadrar sala** é um controle explícito de revisão que reposiciona apenas
+o experimento. Não é uma ação da casa de produção.
 
 Brasa é um `CreatureRig` vivo, usando `BattleArt.texture("umbrals/ember")` e o
-perfil de chão do runtime atual, separado da textura da casa. Fica no mesmo
-piso do protagonista para comparar tamanho e acabamento. Não é o Brasa fundido
-à prancha estática anterior nem a nova arte de Brasa ainda fora da main. Sua
+perfil de chão do runtime atual, separado da textura da casa. Não é o Brasa
+fundido à prancha estática anterior nem a arte nova ainda fora da main. Sua
 presença aqui não cria companheiro, diálogo, save ou comportamento de jogo.
 
-A câmera e a casa são as atuais, cujo visual Pedro rejeitou. Esta prova compara
-o candidato nesse ambiente real; não apresenta uma nova casa ou aprovação de
-direção artística.
+**Reduzir movimento** aciona a preferência real do jogo. Pietro usa a pose
+neutra, Brasa recebe `reduced_motion`, seu estado transitório é reiniciado e
+sua malha e relógio de repouso ficam estáticos. Desativar a preferência retoma
+o movimento. Câmera e deslocamento seguem a implementação original da casa,
+incluindo o enquadramento imediato já existente para movimento reduzido.
 
-## Movimento e limites
+O antigo botão de caminhada lenta foi removido. O host não chama mais o
+callback de física da casa nem escala seu delta: observa o resultado depois
+do controlador real. Todas as opções conservam 330 pixels de mundo por segundo.
+Câmera lenta, quando útil para revisão, deve ser uma reprodução do vídeo gravado.
 
-A velocidade padrão conserva os 330 pixels de mundo por segundo da casa.
-O ciclo é dirigido pela distância percorrida; com amplitude 40 da origem e
-escala 0,5, cada ciclo cobre apenas 80 pixels de mundo. Isso produz cadência
-alta em velocidade normal, um limite importante do passo curto já apontado
-pela revisão. As botas continuam rígidas, sem rolamento desenhado.
+## Cadência e deformação 0.3.0
 
-**Caminhada lenta** é uma opção explícita do experimento: o host fornece um
-delta menor ao mesmo controlador, resultando em 100 pixels de mundo por segundo.
-Ela permite examinar a passada; não altera `HouseSpace.SPEED`, controles ou
-contratos da casa de produção. A legenda identifica a velocidade em uso.
+0.2.2 cobria 80 pixels de mundo por ciclo nessa escala, o que resultava em 8,25
+passos/s à velocidade normal. 0.3.0 amplia o deslocamento para 220 pixels por
+ciclo: 3 passos/s, sem reduzir a velocidade lógica ou limitar o relógio enquanto
+os pés deslizam. A fase continua dirigida pela distância percorrida.
+
+Para essa amplitude, a antiga mistura de rotações dobrava triângulos estreitos
+do recorte quadriculado. O novo modo usa faixas horizontais com todas as alturas
+dos vértices das máscaras e interpola deslocamentos entre articulações. As
+máscaras e o PNG permanecem iguais aos de 0.2.2. A cintura compartilha a pelve;
+as botas e a faixa clara acima delas continuam rígidas a partir de y=970
+da origem. O modo antigo e todas as versões anteriores ficam
+preservados e continuam passando seus testes.
+
+A regressão da passada maior cobre 4.985 poses e 4.860.375 triângulos: zero
+inversões ou colapsos, razão mínima de área 0,12989 e cintura sem amostras
+descobertas. O teste de integração mede 3 passos/s em 330 pixels percorridos,
+deriva zero de vértices reais da bota de apoio e nenhuma interferência do host
+na posição ou câmera após o callback original.
+
+Os apoios durante a caminhada são equilibrados em torno do corpo: os contatos
+alternam distâncias de 115 e 105 pixels de mundo. Isso evita ampliar apenas a
+amplitude mantendo uma passada curta ou para trás e outra longa. A pose parada
+larga aprovada permanece intacta; a acomodação desloca os apoios para caminhar.
+Os pés alternam a ordem projetada e seus contornos podem se sobrepor na passagem.
+A compensação vertical máxima é 23,45 pixels da origem, ou 11,73 pixels de mundo.
+A leitura dos joelhos, tecido, passagem e sobreposição continua sujeita à revisão
+visual, sem aprovação artística automática pelos testes.
+
+## Brilho do cabelo
+
+Pedro esclareceu que o destaque excessivo estava no cabelo. O material 0.3.0
+seleciona em UV apenas a borda dourada do cabelo e reduz sua intensidade para um
+castanho/cobre discreto. Alfa, geometria e PNG aprovado permanecem intactos.
+O material fica num nó de desenho exclusivo de Pietro; chão, cenário, Brasa,
+rosto, olhos, roupa e acessórios não recebem a correção. **Luz original** permite
+comparar o ajuste no mesmo quadro, sem reposicionar o personagem.
+
+Foi criada uma única referência tonal por edição de imagem. Ela alterou também
+pixels fora do cabelo e do alfa; por isso não substitui a textura aprovada.
+A implementação é o material localizado, verificado por comparação de pixels
+na renderização real. Não houve geração de novas folhas ou poses.
+
 Entrada e saída da passada usam acomodação de 0,2 segundo, conservando a fase
-se o movimento for retomado. A malha 0.2.2 mantém as correções de cintura e
-orientação de triângulos. A aprovação do rig em estudo não aprova essa adaptação.
-
-Não há novas poses de despertar, escada ou giro. O experimento começa na sala
-e usa a pose neutra nesses estados fora do estudo de caminhada. Não interpretar
-o deslocamento da casa como animação dedicada. Permanecem abertos julgamento
-visual do tecido, cadência em hardware, outras vistas e integração definitiva.
+se o movimento for retomado. Não há novas poses de despertar, escada ou giro.
+O experimento começa na sala e usa pose neutra nesses estados fora do estudo
+de caminhada. Botas sem rolamento, outras vistas, desempenho em hardware e
+integração definitiva permanecem abertos.
 
 ## Reprodução e validação
 
@@ -50,36 +92,31 @@ visual do tecido, cadência em hardware, outras vistas e integração definitiva
 source tools/environment.sh
 XDG_DATA_HOME="$PWD/artifacts/pietro-house-user" godot --path . tools/studies/pietro_house/study.tscn
 XDG_DATA_HOME="$PWD/artifacts/pietro-house-test-user" godot --headless --path . --script tools/studies/pietro_house/test_house.gd
+godot --headless --path . --script tools/studies/pietro_house/test_gait.gd
 godot --headless --path . --script tools/studies/pietro_pixel/test_rig.gd
 python tools/studies/pietro_house/build_preview.py --output artifacts/pietro-house-preview
 python tools/studies/pietro_house/review.py --build-dir artifacts/pietro-house-preview/build --output artifacts/pietro-house-review
 ```
 
-O build de revisão copia as fontes atuais para um projeto temporário e troca
-somente seu boot e diretório de usuário. Os presets e o projeto de produção
-permanecem intactos; `tools/` continua excluído do export normal. Os assets do
-piloto continuam prototype, sem pins novos. Não foram modificados scripts de
-produção, conteúdo, Rules, saves, runtime-lock, registry ou baseline.
+O build copia as fontes atuais para um projeto temporário e troca somente seu
+boot e diretório de usuário. Presets e projeto de produção permanecem intactos;
+`tools/` continua excluído do export normal. Assets prototype, sem pins novos.
+Scripts de produção, conteúdo, Rules, saves, runtime-lock, registry e baseline
+não são modificados. Os testes de catálogo, integridade e arquitetura seguem
+proporcionais; evidência focada não é aceitação integral. Actions segue desativado.
 
-O teste nativo verifica a integração, fonte real do cenário e de Brasa, velocidade
-normal e lenta, A/B sem reposicionamento, acomodação e preservação de RNG, equipe,
-checkpoint e estatísticas. A revisão Web usa botões, teclado e o grimório reais,
-grava vídeo e observa câmera e movimento. Os testes do rig, da casa original,
-catálogo, integridade e arquitetura continuam separados e proporcionais.
-Evidência focada não é aceitação integral ou aprovação artística; Actions segue
-desativado e não é atribuído como aprovado. Sem merge ou promoção nesta entrega.
+Na revisão atual passaram 20 verificações da integração, sete da passada maior
+e 13 do rig anterior. O teste de movimento reduzido compara a malha e o relógio
+do Brasa; a revisão Web também compara seus pixels renderizados entre quadros.
+RNG, equipe, checkpoint e estatísticas permanecem iguais após caminhada e
+acessibilidade. Nenhum resultado substitui o julgamento de Pedro.
 
-Resultado local: 12 verificações do experimento, 13 do rig, 79 da casa original,
-556 de catálogo, integridade de 99 releases/354 arquivos e arquitetura passaram.
-A revisão Web passou 14 verificações com inputs reais, incluindo A/B, duas
-velocidades, câmera, retorno à pose neutra e abrir/fechar o grimório real.
-O primeiro lançamento da revisão omitiu `?test=1` e falhou ao consultar o snapshot
-de diagnóstico; o lançamento corrigido usa a flag existente, sem mudar a bridge.
-Uma sequência posterior reenquadra a sala entre os percursos para que Brasa não
-encubra os joelhos. As tentativas anteriores permanecem nos artefatos locais.
+## Evidência anterior preservada
 
-Na inspeção, o candidato tem altura próxima à do ator atual, com contorno mais
-marcado; ambos aparecem sobre o mesmo cenário e piso. O vídeo mostra a cadência
-alta em velocidade normal e o percurso lento explicitamente identificado. São
-evidências para revisão de proporção e integração, não aprovação de estilo,
-movimento ou desempenho em hardware.
+`374bd3e` e seu vídeo registram a comparação inicial, 12 testes próprios, 13 do
+rig, 79 da casa original, 556 de catálogo, integridade e arquitetura, e 14 Web.
+Esse candidato tinha cadência alta, modo lento por delta e não propagava a
+preferência ao Brasa. Os arquivos e vídeos anteriores permanecem no histórico
+e na Library; não são reclassificados como evidência da correção atual.
+
+Sem merge, promoção ou aprovação de cenário nesta entrega.

@@ -3,8 +3,8 @@ extends RefCounted
 const Geometry = preload("res://tools/studies/pietro_pixel/texture_mesh.gd")
 const Upper = preload("res://tools/studies/pietro_pixel/upper_rig.gd")
 const ROOT: String = "res://assets/characters/pietro-pixel-pilot/versions/0.2.2/"
-var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(ROOT+"rig.json"))
-var texture: Texture2D = load(ROOT+"source.png") as Texture2D
+var data: Dictionary
+var texture: Texture2D
 var upper: RefCounted
 var legs: Array[ArrayMesh] = []
 var sources: Array[PackedVector2Array] = []
@@ -19,10 +19,14 @@ var hips: Array[Vector2] = []
 var reach_error: float = 0
 var drop: float = 0
 
-func _init() -> void:
+func _init(root: String = ROOT) -> void:
+	data = JSON.parse_string(FileAccess.get_file_as_string(root+"rig.json"))
+	texture = load(root+"source.png") as Texture2D
 	upper = Upper.new(data.upper,data.body_mask)
 	for source in data.legs:
 		var grid: Dictionary = Geometry.grid(Geometry.points(source.mask),Rect2i(380,760,500,400),20)
+		if data.deformation.get("topology","")=="horizontal_strips":
+			grid = Geometry.strips(Geometry.points(source.mask),Rect2i(380,760,500,400),int(data.deformation.grid_step))
 		sources.append(grid.vertices)
 		triangles.append(grid.indices)
 		leg_uvs.append(grid.uv)
@@ -32,7 +36,10 @@ func _init() -> void:
 		for point in grid.vertices:
 			# Broad transitions keep the inner knee from folding over itself.
 			knees_weight.append(smoothstep(source.knee[1]-data.deformation.knee_half_width,source.knee[1]+data.deformation.knee_half_width,point.y))
-			boots_weight.append(smoothstep(source.ankle[1]-data.deformation.boot_blend_above,source.ankle[1]+data.deformation.boot_blend_below,point.y))
+			if data.deformation.has("boot_blend_y"):
+				boots_weight.append(smoothstep(data.deformation.boot_blend_y[0],data.deformation.boot_blend_y[1],point.y))
+			else:
+				boots_weight.append(smoothstep(source.ankle[1]-data.deformation.boot_blend_above,source.ankle[1]+data.deformation.boot_blend_below,point.y))
 			# Both panels share the same attachment at the belt and inner seam.
 			# Let the thighs take over gradually without pulling those edges apart.
 			var seam_distance: float = INF
@@ -60,6 +67,10 @@ func pose(cycle: float, gather: float = 1.0) -> void:
 		var weight: float = smoothstep(0,0.5,gather) if leg == 0 else smoothstep(0.5,1,gather)
 		# The approved three-quarter pose has two distinct support lanes.
 		var sole: Vector2 = _point(source.sole)+Vector2(x,-lift)*weight
+		if data.walk.has("support_centers"):
+			# A walking stance has balanced contact spacing; preserve the wider
+			# approved stance at gather=0 instead of biasing one step backwards.
+			sole.x += (float(data.walk.support_centers[leg])-float(source.sole[0]))*weight
 		if gather > 0 and gather < 1: sole.y -= sin(weight*PI)*8
 		feet.append(sole)
 		var hip: Vector2 = upper.transform*_point(source.hip)+Vector2(x*weight*float(data.walk.hip_follow),0)
@@ -92,9 +103,19 @@ func _leg(leg: int) -> void:
 	var lower_transform: Transform2D = Transform2D(b,knee-_point(source.knee).rotated(b))
 	var boot_offset: Vector2 = sole-_point(source.sole)
 	var vertices: PackedVector2Array = []
+	var ribbon: bool = data.deformation.get("mode","")=="position_ribbon"
 	for i in range(sources[leg].size()):
 		var point: Vector2 = sources[leg][i]
 		var skinned: Vector2 = (upper_transform*point).lerp(lower_transform*point,knee_weights[leg][i])
+		if ribbon:
+			# Long strides use monotone row displacements between joint anchors.
+			# Rotational blends across the wide trouser panel can fold its edges.
+			var displacement: Vector2
+			if point.y<float(source.knee[1]):
+				displacement = (hip-_point(source.hip)).lerp(knee-_point(source.knee),smoothstep(source.hip[1],source.knee[1],point.y))
+			else:
+				displacement = (knee-_point(source.knee)).lerp(ankle-_point(source.ankle),smoothstep(source.knee[1],source.ankle[1],point.y))
+			skinned = point+displacement
 		var pelvis: Vector2 = upper.transform*point+Vector2(0,drop)
 		var attached: Vector2 = pelvis.lerp(skinned,waist_weights[leg][i])
 		vertices.append(attached.lerp(point+boot_offset,boot_weights[leg][i]))

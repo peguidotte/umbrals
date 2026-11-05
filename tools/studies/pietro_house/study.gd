@@ -9,14 +9,12 @@ var app: Control
 var room: Control
 var canvas: Node2D
 var brasa: Node2D
-var slow: bool = false
 var controls: Dictionary = {}
 var overlay: CanvasLayer
 var caption: Label
 var initialized_host: bool = false
 const START: Vector2 = Vector2(1540,Space.FLOOR_Y)
 const BRASA: Vector2 = Vector2(2030,Space.FLOOR_Y)
-const STUDY_SPEED: float = 100
 
 func _ready() -> void:
 	app = Main.instantiate()
@@ -32,9 +30,8 @@ func _ready() -> void:
 	room.canvas = canvas
 	old.queue_free()
 	room.entered = true
-	# The host delegates the same physics callback, optionally slowing only this
-	# experiment. Space.SPEED and the production room script are never changed.
-	room.set_physics_process(false)
+	# Observe after the real house physics callback. Never rescale its delta.
+	process_physics_priority = 10
 	_make_brasa()
 	_make_controls()
 	app.registry["menu.play"].pressed.emit()
@@ -77,7 +74,7 @@ func _make_controls() -> void:
 	column.add_child(caption)
 	var row: HBoxContainer = HBoxContainer.new()
 	column.add_child(row)
-	for entry in [["candidate","Pietro candidato"],["current","Pietro atual"],["pace","Caminhada lenta"],["frame","Enquadrar sala"]]:
+	for entry in [["candidate","Pietro candidato"],["current","Pietro atual"],["hair","Luz original"],["motion","Reduzir movimento"],["frame","Enquadrar sala"]]:
 		var button: Button = Button.new()
 		button.text = entry[1]
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -89,7 +86,8 @@ func _make_controls() -> void:
 func select(key: String) -> void:
 	if key=="candidate": canvas.candidate = true
 	elif key=="current": canvas.candidate = false
-	elif key=="pace": slow = not slow
+	elif key=="hair": canvas.soft_hair = not canvas.soft_hair
+	elif key=="motion": app.preferences.set_value("reduced_motion",not room.reduced)
 	elif key=="frame":
 		room._stop_walk()
 		room.motion.waking = false
@@ -105,21 +103,25 @@ func select(key: String) -> void:
 		room._room_changed()
 		room.camera.follow(START,0,true)
 		room._project()
+	canvas.sync_layers()
 	canvas.queue_redraw()
 	room.grab_focus()
 
 func _physics_process(delta: float) -> void:
 	if not initialized_host: return
-	var factor: float = STUDY_SPEED/Space.SPEED if slow and not room.motion.on_stairs and not room.motion.waking else 1
-	room._physics_process(delta*factor)
 	if room.active: canvas.advance(delta,room.reduced)
+	if brasa.reduced_motion != room.reduced:
+		brasa.reduced_motion = room.reduced
+		brasa.reset()
+		brasa._refresh()
 	brasa.paused = not room.active
 
 func _process(_delta: float) -> void:
 	if not initialized_host: return
 	overlay.visible = room.active
-	caption.text = "Experimento · casa e Brasa atuais · "+("Pietro candidato" if canvas.candidate else "Pietro atual")+" · "+("caminhada lenta" if slow else "velocidade atual da casa")
-	controls.pace.text = "Velocidade da casa" if slow else "Caminhada lenta"
+	caption.text = "Experimento · cenário atual ainda não aprovado · "+("Pietro candidato" if canvas.candidate else "Pietro atual")+" · "+("movimento reduzido" if room.reduced else "velocidade atual da casa")
+	controls.motion.text = "Restaurar movimento" if room.reduced else "Reduzir movimento"
+	controls.hair.text = "Luz original" if canvas.soft_hair else "Suavizar cabelo"
 	if OS.has_feature("web"):
 		JavaScriptBridge.eval("window.pietroHouseStudy="+JSON.stringify(public_state())+";",true)
 
@@ -128,4 +130,4 @@ func public_state() -> Dictionary:
 	for key in controls:
 		var rect: Rect2 = controls[key].get_global_rect()
 		buttons[key] = [rect.get_center().x,rect.get_center().y]
-	return {"scope":"experimental renderer in real house; no promotion","base":"60b4e3045ebb9188f2a1f67771a8f6bf37d714f9","candidate":canvas.candidate,"slow":slow,"speed":STUDY_SPEED if slow else Space.SPEED,"cycle":canvas.cycle,"gather":canvas.gather,"pilot_scale":PilotCanvas.PILOT_SCALE,"travelled":canvas.travelled,"room":room.public_state(),"brasa":{"binding":"umbrals/ember","world_foot":[BRASA.x,BRASA.y],"idle_time":brasa.idle_time,"texture":brasa.texture.resource_path},"controls":buttons}
+	return {"scope":"experimental renderer in real house; scenery not approved; no promotion","base":"60b4e3045ebb9188f2a1f67771a8f6bf37d714f9","candidate":canvas.candidate,"soft_hair":canvas.soft_hair,"reduced":room.reduced,"speed":Space.SPEED,"steps_per_second":2*Space.SPEED/(4*float(canvas.pilot.data.walk.amplitude)*PilotCanvas.PILOT_SCALE),"cycle":canvas.cycle,"cycles_advanced":canvas.cycles_advanced,"moving_time":canvas.moving_time,"gather":canvas.gather,"pilot_scale":PilotCanvas.PILOT_SCALE,"travelled":canvas.travelled,"room":room.public_state(),"brasa":{"binding":"umbrals/ember","world_foot":[BRASA.x,BRASA.y],"reduced_motion":brasa.reduced_motion,"idle_time":brasa.idle_time,"texture":brasa.texture.resource_path},"controls":buttons}

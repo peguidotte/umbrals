@@ -1435,3 +1435,15 @@ Evidência local do experimento: 12 verificações próprias, 13 do rig, 79 da c
 556 de catálogo, integridade de 99 releases/354 arquivos e arquitetura passaram;
 14 Web com inputs reais e vídeo A/B. A velocidade normal evidencia a cadência
 alta; a opção lenta permanece identificada. Revisão de Pedro continua aberta.
+
+Correção experimental 0.3.0: passada de 220 pixels de mundo por ciclo mede
+3 passos/s a 330 pixels/s, com apoio plantado. Faixas horizontais da malha
+preservam a cintura e evitam inversões na amplitude maior. A física e a câmera
+voltam a ser executadas somente pela casa original; o modo lento foi removido.
+Movimento reduzido chega a Pietro e ao Brasa vivo. Passaram 20 verificações da
+integração, sete da passada maior e os 13 casos anteriores do rig. O cenário
+atual continua rejeitado, ainda sem adaptação à direção pixel aprovada.
+
+O brilho excessivo indicado por Pedro é no cabelo. O material experimental
+seleciona somente essa borda luminosa, preservando o PNG aprovado e isolando
+rosto, roupa, cenário e Brasa. A edição tonal de referência não substitui o asset.
