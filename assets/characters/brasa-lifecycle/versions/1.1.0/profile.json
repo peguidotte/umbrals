@@ -1,0 +1,227 @@
+{
+  "forms": {
+    "ember": {
+      "clock": "minimum_pose_dwell_no_skipped_drawings",
+      "ko": "knockout",
+      "ko_seconds": 0.5,
+      "revive": "revive",
+      "settle": "settle",
+      "source_height_ratio": 0.9313186813186813,
+      "standing_height": 339,
+      "timelines": {
+        "knockout": [
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "revive": [
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "settle": [
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "duration": 0.125,
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "walk": [
+          {
+            "contact": [
+              357,
+              400
+            ],
+            "duration": 0.13333333333333333,
+            "offset": [
+              -195,
+              0
+            ],
+            "support": "stance_a"
+          },
+          {
+            "contact": [
+              343,
+              400
+            ],
+            "duration": 0.13333333333333333,
+            "offset": [
+              -181,
+              0
+            ],
+            "support": "stance_a"
+          },
+          {
+            "contact": [
+              265,
+              400
+            ],
+            "duration": 0.13333333333333333,
+            "offset": [
+              -103,
+              0
+            ],
+            "support": "stance_a"
+          },
+          {
+            "contact": [
+              251,
+              400
+            ],
+            "duration": 0.13333333333333333,
+            "offset": [
+              -89,
+              0
+            ],
+            "support": "stance_a"
+          },
+          {
+            "contact": [
+              351,
+              400
+            ],
+            "duration": 0.13333333333333333,
+            "offset": [
+              -99,
+              0
+            ],
+            "support": "stance_b"
+          },
+          {
+            "contact": [
+              317,
+              400
+            ],
+            "duration": 0.13333333333333333,
+            "offset": [
+              -65,
+              0
+            ],
+            "support": "stance_b"
+          },
+          {
+            "contact": [
+              265,
+              400
+            ],
+            "duration": 0.13333333333333333,
+            "offset": [
+              -13,
+              0
+            ],
+            "support": "stance_b"
+          },
+          {
+            "contact": [
+              252,
+              400
+            ],
+            "duration": 0.13333333333333333,
+            "offset": [
+              0,
+              0
+            ],
+            "support": "stance_b"
+          }
+        ]
+      },
+      "walk": "walk",
+      "walk_seconds": 1.0666666666666667
+    }
+  },
+  "schema_version": 2
+}

@@ -3908,6 +3908,207 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 490441,
+      "id": "characters/brasa-lifecycle@1.1.0:knockout",
+      "kind": "texture",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/1.1.0/knockout.png",
+      "role": "knockout",
+      "sha256": "1bb0609e65e4eea94b6058af9e7559d285d941328c6303b4f29cb1ff7bb67378",
+      "source": {
+        "edit_history": "Original retained byte-identically. Normalization and exact atlas/KO endpoints recorded in normalization.json.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral, project-owned references.",
+        "original_output_basename": "exec-3ff840bd-b9e4-42fc-b704-5ae01087fdb8.png",
+        "original_sha256": "49a4e2c87b145f882edcd6bbd823990df09e197ba5f57485f26bbc24649eb33b",
+        "recorded_date_utc": "2026-11-05",
+        "reference": "Existing Brasa atlas and retained 1.0.0 pose sheet",
+        "review_status": "Rejected by independent visual review: body jumps, tail discontinuity and incomplete encoded Web pose coverage. Keep production_ready false.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2048,
+          448
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 5090,
+      "id": "characters/brasa-lifecycle@1.1.0:normalization",
+      "kind": "data",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/1.1.0/normalization.json",
+      "role": "normalization",
+      "sha256": "834ac69cf2f48b9d6602526fb2d277cf97eebdad411e4a71f692b65473b85688",
+      "source": {
+        "edit_history": "Original retained byte-identically. Normalization and exact atlas/KO endpoints recorded in normalization.json.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral, project-owned references.",
+        "original_output_basename": "exec-3ff840bd-b9e4-42fc-b704-5ae01087fdb8.png",
+        "original_sha256": "49a4e2c87b145f882edcd6bbd823990df09e197ba5f57485f26bbc24649eb33b",
+        "recorded_date_utc": "2026-11-05",
+        "reference": "Existing Brasa atlas and retained 1.0.0 pose sheet",
+        "review_status": "Rejected by independent visual review: body jumps, tail discontinuity and incomplete encoded Web pose coverage. Keep production_ready false.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 1608384,
+      "id": "characters/brasa-lifecycle@1.1.0:original",
+      "kind": "review",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/1.1.0/review/original.png",
+      "role": "original",
+      "sha256": "49a4e2c87b145f882edcd6bbd823990df09e197ba5f57485f26bbc24649eb33b",
+      "source": {
+        "edit_history": "Original retained byte-identically. Normalization and exact atlas/KO endpoints recorded in normalization.json.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral, project-owned references.",
+        "original_output_basename": "exec-3ff840bd-b9e4-42fc-b704-5ae01087fdb8.png",
+        "original_sha256": "49a4e2c87b145f882edcd6bbd823990df09e197ba5f57485f26bbc24649eb33b",
+        "recorded_date_utc": "2026-11-05",
+        "reference": "Existing Brasa atlas and retained 1.0.0 pose sheet",
+        "review_status": "Rejected by independent visual review: body jumps, tail discontinuity and incomplete encoded Web pose coverage. Keep production_ready false.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1266,
+          1242
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 4460,
+      "id": "characters/brasa-lifecycle@1.1.0:profile",
+      "kind": "data",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/1.1.0/profile.json",
+      "role": "profile",
+      "sha256": "4568db891dec13502b8f67ba7f01b67952ec3b8d379652ebf353d621319cf82e",
+      "source": {
+        "edit_history": "Original retained byte-identically. Normalization and exact atlas/KO endpoints recorded in normalization.json.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral, project-owned references.",
+        "original_output_basename": "exec-3ff840bd-b9e4-42fc-b704-5ae01087fdb8.png",
+        "original_sha256": "49a4e2c87b145f882edcd6bbd823990df09e197ba5f57485f26bbc24649eb33b",
+        "recorded_date_utc": "2026-11-05",
+        "reference": "Existing Brasa atlas and retained 1.0.0 pose sheet",
+        "review_status": "Rejected by independent visual review: body jumps, tail discontinuity and incomplete encoded Web pose coverage. Keep production_ready false.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 743056,
+      "id": "characters/brasa-lifecycle@1.1.0:revive",
+      "kind": "texture",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/1.1.0/revive.png",
+      "role": "revive",
+      "sha256": "f803681cfdd838908f80f543bd223d3f150312857a714c0587a91d9670d072d1",
+      "source": {
+        "edit_history": "Original retained byte-identically. Normalization and exact atlas/KO endpoints recorded in normalization.json.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral, project-owned references.",
+        "original_output_basename": "exec-3ff840bd-b9e4-42fc-b704-5ae01087fdb8.png",
+        "original_sha256": "49a4e2c87b145f882edcd6bbd823990df09e197ba5f57485f26bbc24649eb33b",
+        "recorded_date_utc": "2026-11-05",
+        "reference": "Existing Brasa atlas and retained 1.0.0 pose sheet",
+        "review_status": "Rejected by independent visual review: body jumps, tail discontinuity and incomplete encoded Web pose coverage. Keep production_ready false.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2048,
+          896
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 637942,
+      "id": "characters/brasa-lifecycle@1.1.0:settle",
+      "kind": "texture",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/1.1.0/settle.png",
+      "role": "settle",
+      "sha256": "22855f40799fa047f6291ac013380548541b81449701a292f5566470e39e4be0",
+      "source": {
+        "edit_history": "Original retained byte-identically. Normalization and exact atlas/KO endpoints recorded in normalization.json.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral, project-owned references.",
+        "original_output_basename": "exec-3ff840bd-b9e4-42fc-b704-5ae01087fdb8.png",
+        "original_sha256": "49a4e2c87b145f882edcd6bbd823990df09e197ba5f57485f26bbc24649eb33b",
+        "recorded_date_utc": "2026-11-05",
+        "reference": "Existing Brasa atlas and retained 1.0.0 pose sheet",
+        "review_status": "Rejected by independent visual review: body jumps, tail discontinuity and incomplete encoded Web pose coverage. Keep production_ready false.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2048,
+          896
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "bytes": 940794,
+      "id": "characters/brasa-lifecycle@1.1.0:walk",
+      "kind": "texture",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/1.1.0/walk.png",
+      "role": "walk",
+      "sha256": "dc90e6c0f19acd357d4e1c32e2cac2ce408eb3b53b516c7dd02620bacf2aa6b5",
+      "source": {
+        "edit_history": "Original retained byte-identically. Normalization and exact atlas/KO endpoints recorded in normalization.json.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral, project-owned references.",
+        "original_output_basename": "exec-3ff840bd-b9e4-42fc-b704-5ae01087fdb8.png",
+        "original_sha256": "49a4e2c87b145f882edcd6bbd823990df09e197ba5f57485f26bbc24649eb33b",
+        "recorded_date_utc": "2026-11-05",
+        "reference": "Existing Brasa atlas and retained 1.0.0 pose sheet",
+        "review_status": "Rejected by independent visual review: body jumps, tail discontinuity and incomplete encoded Web pose coverage. Keep production_ready false.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2048,
+          896
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.1.0"
+    },
+    {
       "bytes": 14307,
       "id": "characters/brasa-pilot@0.1.0:walk",
       "kind": "data",

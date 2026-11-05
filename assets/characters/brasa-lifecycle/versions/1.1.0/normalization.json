@@ -1,0 +1,319 @@
+{
+  "cells": [
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 280,
+      "source_cell": 0,
+      "source_rect": [
+        0,
+        0,
+        316,
+        310
+      ],
+      "translation": [
+        60,
+        36
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 280,
+      "source_cell": 1,
+      "source_rect": [
+        316,
+        0,
+        633,
+        310
+      ],
+      "translation": [
+        60,
+        36
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 280,
+      "source_cell": 2,
+      "source_rect": [
+        633,
+        0,
+        949,
+        310
+      ],
+      "translation": [
+        60,
+        36
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 280,
+      "source_cell": 3,
+      "source_rect": [
+        949,
+        0,
+        1266,
+        310
+      ],
+      "translation": [
+        60,
+        36
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 284,
+      "source_cell": 4,
+      "source_rect": [
+        0,
+        310,
+        316,
+        621
+      ],
+      "translation": [
+        60,
+        31
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 283,
+      "source_cell": 5,
+      "source_rect": [
+        316,
+        310,
+        633,
+        621
+      ],
+      "translation": [
+        60,
+        32
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 283,
+      "source_cell": 6,
+      "source_rect": [
+        633,
+        310,
+        949,
+        621
+      ],
+      "translation": [
+        60,
+        32
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 283,
+      "source_cell": 7,
+      "source_rect": [
+        949,
+        310,
+        1266,
+        621
+      ],
+      "translation": [
+        60,
+        32
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 283,
+      "source_cell": 8,
+      "source_rect": [
+        0,
+        621,
+        316,
+        931
+      ],
+      "translation": [
+        60,
+        32
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 283,
+      "source_cell": 9,
+      "source_rect": [
+        316,
+        621,
+        633,
+        931
+      ],
+      "translation": [
+        65,
+        32
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 283,
+      "source_cell": 10,
+      "source_rect": [
+        633,
+        621,
+        949,
+        931
+      ],
+      "translation": [
+        75,
+        32
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 281,
+      "source_cell": 11,
+      "source_rect": [
+        949,
+        621,
+        1266,
+        931
+      ],
+      "translation": [
+        80,
+        35
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 278,
+      "source_cell": 12,
+      "source_rect": [
+        0,
+        931,
+        316,
+        1242
+      ],
+      "translation": [
+        80,
+        39
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 279,
+      "source_cell": 13,
+      "source_rect": [
+        316,
+        931,
+        633,
+        1242
+      ],
+      "translation": [
+        80,
+        38
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 280,
+      "source_cell": 14,
+      "source_rect": [
+        633,
+        931,
+        949,
+        1242
+      ],
+      "translation": [
+        80,
+        36
+      ]
+    },
+    {
+      "nearest_scale": 1.2988505747126438,
+      "sole_y": 284,
+      "source_cell": 15,
+      "source_rect": [
+        949,
+        931,
+        1266,
+        1242
+      ],
+      "translation": [
+        80,
+        31
+      ]
+    }
+  ],
+  "idle_endpoint": {
+    "crop": [
+      40,
+      54,
+      411,
+      418
+    ],
+    "resampled": false,
+    "sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+    "source": "assets/characters/battle-creatures/versions/1.0.0/texture.png",
+    "translation": [
+      90,
+      50
+    ]
+  },
+  "ko_source": {
+    "nearest_scale": 1.1262458471760797,
+    "sha256": "65d34bd436cc90d389d4647d970300cb42084fa66c7a6b69d6c3c5a118836020",
+    "source": "assets/characters/brasa-lifecycle/versions/1.0.0/knockout.png"
+  },
+  "operation": "Grid slicing, documented nearest normalization and integer translation. No painted or synthesized in-between pixels.",
+  "schema_version": 2,
+  "shared_cell": [
+    512,
+    448
+  ],
+  "shared_pivot": [
+    300,
+    400
+  ],
+  "source_sha256": "49a4e2c87b145f882edcd6bbd823990df09e197ba5f57485f26bbc24649eb33b",
+  "walk_contacts": [
+    [
+      357,
+      400
+    ],
+    [
+      343,
+      400
+    ],
+    [
+      265,
+      400
+    ],
+    [
+      251,
+      400
+    ],
+    [
+      351,
+      400
+    ],
+    [
+      317,
+      400
+    ],
+    [
+      265,
+      400
+    ],
+    [
+      252,
+      400
+    ]
+  ],
+  "walk_offsets": [
+    -195,
+    -181,
+    -103,
+    -89,
+    -99,
+    -65,
+    -13,
+    0
+  ]
+}

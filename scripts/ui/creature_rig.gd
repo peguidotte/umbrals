@@ -106,6 +106,10 @@ func _process(delta: float) -> void:
 	if is_instance_valid(lifecycle):
 		var was_active: bool = lifecycle.active()
 		lifecycle.advance(delta, paused, reduced_motion)
+		if was_active and not lifecycle.active() and not managed:
+			idle_time = 0.0
+			reset()
+			_refresh()
 		if was_active or lifecycle.active(): queue_redraw()
 	if source == null or paused or managed: return
 	if reduced_motion:

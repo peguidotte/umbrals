@@ -136,8 +136,9 @@ func lifecycle_checks() -> void:
 	while int(body.identity.get("uid", -1)) != 1 and Time.get_ticks_msec() < deadline: await process_frame
 	expect(int(body.identity.uid) == 1 and body.rig.lifecycle.state == "walk", "Committed substitution plays the incoming form's authored walk")
 	var first_position: Vector2 = body.rig.lifecycle.position
-	await create_timer(0.15).timeout
-	expect(body.rig.lifecycle.sprite.frame > 0 and body.rig.lifecycle.position.distance_to(first_position) > 1 and body.get_global_rect() == bounds, "Leg poses and visual root advance while slot targeting stays fixed")
+	deadline = Time.get_ticks_msec() + 2000
+	while body.rig.lifecycle.state == "walk" and body.rig.lifecycle.sprite.frame == 0 and Time.get_ticks_msec() < deadline: await process_frame
+	expect(body.rig.lifecycle.state == "walk" and body.rig.lifecycle.sprite.frame > 0 and body.rig.lifecycle.position.distance_to(first_position) > 1 and body.get_global_rect() == bounds, "Leg poses and visual root advance while slot targeting stays fixed")
 	var clock: float = body.rig.lifecycle.elapsed
 	app._push("pause")
 	await create_timer(0.12).timeout
@@ -219,24 +220,45 @@ func lifecycle_alignment_checks() -> void:
 			body.rig.set_incapacitated(false, false)
 			expect(not body.rig.lifecycle.active() and body.rig.to_global(body.rig.project(body.rig.foot)).distance_to(floor) < 0.05, "Restored mesh returns to the same floor: " + label)
 			body.rig.enter_field()
-			body.rig.lifecycle.advance(0.799, false, false)
-			error = lifecycle_foot(body).distance_to(floor)
-			expect(error < 0.2, "Last entry pose approaches the mesh floor: %s (%.3f px)" % [label, error])
-			body.rig.lifecycle.advance(0.02, false, false)
-			expect(body.rig.lifecycle.mesh_weight() > 0 and body.rig.lifecycle.mesh_weight() < 1, "Entry blends its last pose into the existing mesh: " + label)
-			body.rig.lifecycle.advance(0.12, false, false)
+			body.rig.lifecycle.advance(0, false, false)
+			var previous_contact: Vector2 = Vector2.ZERO
+			var previous_support: String = ""
+			for frame in range(8):
+				var life: Node2D = body.rig.lifecycle
+				var track: Dictionary = life.profile.timelines.walk[frame]
+				var contact: Vector2 = life.sprite.to_global(Vector2(float(track.contact[0]), float(track.contact[1])))
+				expect(life.sprite.frame == frame, "Every entry drawing is presented in order: %s frame %d" % [label, frame])
+				expect(absf(contact.y - floor.y) < 0.05, "Actual sole meets ground: %s frame %d" % [label, frame])
+				if str(track.support) == previous_support:
+					expect(contact.distance_to(previous_contact) < 0.05, "Same stance pixel stays planted between poses: %s frame %d" % [label, frame])
+				life.advance(0.05, false, false)
+				expect(life.sprite.to_global(Vector2(float(track.contact[0]), float(track.contact[1]))).distance_to(contact) < 0.05, "Sole does not slide during a held drawing: " + label)
+				expect(life.mesh_weight() == 0 and life.sprite.modulate.a == 1, "Exactly one opaque silhouette during entry: " + label)
+				previous_contact = contact
+				previous_support = str(track.support)
+				life.advance(0.09, false, false)
+			expect(body.rig.lifecycle.state == "settle", "Arrival uses its own linking poses: " + label)
+			body.rig.lifecycle.advance(0, false, false)
+			for frame in range(5):
+				expect(body.rig.lifecycle.sprite.frame == frame and body.rig.lifecycle.mesh_weight() == 0, "Linking pose has no mesh dissolve: " + label)
+				body.rig.lifecycle.advance(0.13, false, false)
 			expect(not body.rig.lifecycle.active() and body.get_global_rect() == bounds, "Entry returns to idle without moving target geometry: " + label)
 			body.rig.set_incapacitated(true, false)
 			body.rig.set_incapacitated(false, true)
-			expect(body.rig.lifecycle.state == "revive" and body.rig.lifecycle.sprite.frame == 3, "Event revival starts from the held lying pose: " + label)
-			body.rig.lifecycle.advance(0.31, false, false)
+			expect(body.rig.lifecycle.state == "revive" and body.rig.lifecycle.sprite.frame == 0 and body.rig.lifecycle.sprite.animation == "revive", "Recovery begins with its own lying endpoint: " + label)
+			body.rig.lifecycle.advance(0, false, false)
+			body.rig.lifecycle.advance(0.13, false, false)
+			body.rig.lifecycle.advance(0.13, false, false)
 			var clock: float = body.rig.lifecycle.elapsed
 			body.rig.lifecycle.advance(0.3, true, false)
-			expect(body.rig.lifecycle.sprite.frame == 1 and is_equal_approx(body.rig.lifecycle.elapsed, clock), "Recovery reverses the existing KO poses and respects pause: " + label)
-			body.rig.lifecycle.advance(0.30, false, false)
-			expect(body.rig.lifecycle.state == "settle" and lifecycle_foot(body).distance_to(floor) < 0.05, "Recovery blends back at the same floor: " + label)
+			expect(body.rig.lifecycle.sprite.frame == 2 and is_equal_approx(body.rig.lifecycle.elapsed, clock), "Active push-up poses run forward and respect pause: " + label)
 			body.rig.lifecycle.advance(0, false, true)
 			expect(not body.rig.lifecycle.active() and body.rig.to_global(body.rig.project(body.rig.foot)).distance_to(floor) < 0.05, "Reduced motion settles recovery immediately at the mesh floor: " + label)
+			body.rig.enter_field()
+			body.rig.lifecycle.advance(0, false, false)
+			for frame in range(8):
+				expect(body.rig.lifecycle.sprite.frame == frame, "A slow render cannot skip a walk drawing: " + label)
+				body.rig.lifecycle.advance(0.4, false, false)
 			body.rig.set_incapacitated(true, false)
 			body.rig.set_incapacitated(false, true)
 			body.rig.seek_cast(0, 0.1, Vector2.ZERO)

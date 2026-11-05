@@ -1,0 +1,181 @@
+{
+  "animations": {
+    "knockout": {
+      "columns": 4,
+      "file": "knockout",
+      "fps": 8,
+      "frame_size": [
+        512,
+        448
+      ],
+      "frames": 4,
+      "loop": false,
+      "pivot": [
+        300,
+        400
+      ]
+    },
+    "revive": {
+      "columns": 4,
+      "file": "revive",
+      "fps": 8,
+      "frame_size": [
+        512,
+        448
+      ],
+      "frames": 6,
+      "loop": false,
+      "pivot": [
+        300,
+        400
+      ]
+    },
+    "settle": {
+      "columns": 4,
+      "file": "settle",
+      "fps": 8,
+      "frame_size": [
+        512,
+        448
+      ],
+      "frames": 5,
+      "loop": false,
+      "pivot": [
+        300,
+        400
+      ]
+    },
+    "walk": {
+      "columns": 4,
+      "file": "walk",
+      "fps": 7.5,
+      "frame_size": [
+        512,
+        448
+      ],
+      "frames": 8,
+      "loop": false,
+      "pivot": [
+        300,
+        400
+      ]
+    }
+  },
+  "dependencies": [
+    {
+      "id": "characters/battle-creatures",
+      "version": "1.0.0"
+    }
+  ],
+  "description": "Brasa contact study with drawn arrival and active recovery; independent review pending.",
+  "files": {
+    "knockout": {
+      "bytes": 490441,
+      "kind": "texture",
+      "path": "knockout.png",
+      "sha256": "1bb0609e65e4eea94b6058af9e7559d285d941328c6303b4f29cb1ff7bb67378",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2048,
+          448
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "normalization": {
+      "bytes": 5090,
+      "kind": "data",
+      "path": "normalization.json",
+      "sha256": "834ac69cf2f48b9d6602526fb2d277cf97eebdad411e4a71f692b65473b85688"
+    },
+    "original": {
+      "bytes": 1608384,
+      "kind": "review",
+      "path": "review/original.png",
+      "sha256": "49a4e2c87b145f882edcd6bbd823990df09e197ba5f57485f26bbc24649eb33b",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1266,
+          1242
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "profile": {
+      "bytes": 4460,
+      "kind": "data",
+      "path": "profile.json",
+      "sha256": "4568db891dec13502b8f67ba7f01b67952ec3b8d379652ebf353d621319cf82e"
+    },
+    "revive": {
+      "bytes": 743056,
+      "kind": "texture",
+      "path": "revive.png",
+      "sha256": "f803681cfdd838908f80f543bd223d3f150312857a714c0587a91d9670d072d1",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2048,
+          896
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "settle": {
+      "bytes": 637942,
+      "kind": "texture",
+      "path": "settle.png",
+      "sha256": "22855f40799fa047f6291ac013380548541b81449701a292f5566470e39e4be0",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2048,
+          896
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "walk": {
+      "bytes": 940794,
+      "kind": "texture",
+      "path": "walk.png",
+      "sha256": "dc90e6c0f19acd357d4e1c32e2cac2ce408eb3b53b516c7dd02620bacf2aa6b5",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2048,
+          896
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/brasa-lifecycle",
+  "metadata": {
+    "independent_review": "rejected",
+    "integration_candidate": false,
+    "production_ready": false,
+    "review_record": "docs/brasa-contact-v05-art-01d.md"
+  },
+  "provenance": {
+    "edit_history": "Original retained byte-identically. Normalization and exact atlas/KO endpoints recorded in normalization.json.",
+    "kind": "generated original animation poses",
+    "license_record": "Original generated artwork for Umbral, project-owned references.",
+    "original_output_basename": "exec-3ff840bd-b9e4-42fc-b704-5ae01087fdb8.png",
+    "original_sha256": "49a4e2c87b145f882edcd6bbd823990df09e197ba5f57485f26bbc24649eb33b",
+    "recorded_date_utc": "2026-11-05",
+    "reference": "Existing Brasa atlas and retained 1.0.0 pose sheet",
+    "review_status": "Rejected by independent visual review: body jumps, tail discontinuity and incomplete encoded Web pose coverage. Keep production_ready false.",
+    "tool": "OpenAI Image Gen"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.1.0"
+}

@@ -358,6 +358,11 @@
           "manifest": "assets/characters/brasa-lifecycle/versions/1.0.0/manifest.json",
           "sha256": "3d4c51893696b81b988cb2ca0304dde735ae2d629e964befc966a3d7f6744b23",
           "status": "production"
+        },
+        "1.1.0": {
+          "manifest": "assets/characters/brasa-lifecycle/versions/1.1.0/manifest.json",
+          "sha256": "247937ee43faf58dc17be1c64c58cdd179aba304674e0312568a8cf3a97336e2",
+          "status": "production"
         }
       }
     },

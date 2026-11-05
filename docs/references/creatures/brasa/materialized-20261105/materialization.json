@@ -1,0 +1,26 @@
+{
+  "recorded_date_utc": "2026-11-05",
+  "references": [
+    {
+      "library_file_id": "libfile_c3b38ea9bcd88191bc575a7414f977a0",
+      "version": 0,
+      "file_name": "sendral-cinzas-livres-v6.png",
+      "bytes": 2634665,
+      "sha256": "3a26166ca7f2e65ecb2843a42927d2aff583d643eca0e0b46de763c141517453",
+      "transfer": "official materialization succeeded with Library identity metadata",
+      "inspected_pixels": true,
+      "selection": "approved ash concept"
+    },
+    {
+      "library_file_id": "libfile_6ab7ff3bcbd88191a628e74f2b8e9421",
+      "version": 0,
+      "file_name": "final-fogo-juba-completa-comparativo-v9.png",
+      "bytes": 2367963,
+      "sha256": "1b399eb0c0733cf5ee27212fae7996cff1afe5dc37afe5d85da40d8e71ca77ce",
+      "transfer": "official materialization succeeded with Library identity metadata",
+      "inspected_pixels": true,
+      "selection": "right/full mane"
+    }
+  ],
+  "scope": "Only Brasa base locomotion changes in this slice. References are guidance, not implemented final forms."
+}
