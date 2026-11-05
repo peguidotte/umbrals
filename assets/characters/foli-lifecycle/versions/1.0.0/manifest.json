@@ -1,0 +1,132 @@
+{
+  "animations": {
+    "knockout": {
+      "columns": 4,
+      "file": "knockout",
+      "fps": 6.666666666666667,
+      "frame_size": [
+        362,
+        362
+      ],
+      "frames": 4,
+      "loop": false,
+      "pivot": [
+        198,
+        340
+      ]
+    },
+    "walk": {
+      "columns": 4,
+      "file": "walk",
+      "fps": 10,
+      "frame_size": [
+        362,
+        362
+      ],
+      "frames": 8,
+      "loop": true,
+      "pivot": [
+        198,
+        340
+      ]
+    }
+  },
+  "dependencies": [
+    {
+      "id": "characters/foli-pilot",
+      "version": "1.0.0"
+    }
+  ],
+  "description": "Foli authored walk and reversible KO, selected only in draft after independent technical review.",
+  "files": {
+    "knockout": {
+      "bytes": 401660,
+      "kind": "texture",
+      "path": "knockout.png",
+      "sha256": "19bffac7b9582c0115720709901f3db4b82533247b368adafc1e2bfde1b12247",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          362
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "normalization": {
+      "bytes": 3881,
+      "kind": "data",
+      "path": "normalization.json",
+      "sha256": "c623a8231458cefca16b792ad6d3b95a2df26e7b96d9ffdffd540c12193d71de"
+    },
+    "original": {
+      "bytes": 1339032,
+      "kind": "review",
+      "path": "review/original.png",
+      "sha256": "68e2cb82686989626f441867b58d6be931b3f665233bb3a63821c3845de2e104",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "profile": {
+      "bytes": 287,
+      "kind": "data",
+      "path": "profile.json",
+      "sha256": "8a0d964aef21919f0056744d16b75bc4f8c0c868895d4b5304adedea6af9d50f"
+    },
+    "walk": {
+      "bytes": 835923,
+      "kind": "texture",
+      "path": "walk.png",
+      "sha256": "ce9b7f5ad7069993b2e3facbf0e831c8553d8e12c2bb3ba3b6b5e47184bfcea2",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/foli-lifecycle",
+  "metadata": {
+    "independent_review": "GO for draft integration after v3 clean cuts; human aesthetic approval remains pending",
+    "limits": [
+      "Brief posture pop at cut",
+      "Opposite side mirrored",
+      "Preview capture has variable cadence and one possible tearing frame",
+      "Full-game native renderer measured about 8.4 fps; fluency remains unapproved",
+      "No combined-candidate acceptance"
+    ],
+    "production_ready": false,
+    "review_record": "docs/foli-lifecycle-independent-review.md",
+    "runtime_contract": "CreatureLifecycle from Brasa; per-form pin additive",
+    "review_sha256": "66ee49c9d851d82228ca65de99c4ed1f0ab23599e30002aa48ad1a051a14c412"
+  },
+  "provenance": {
+    "approval": "Independent technical review permits draft integration only. No main promotion or complete family claim.",
+    "brief": "Exact Foli, 4x3 transparent sheet: 8 alternating hind-foot walk poses, 4 reversible KO poses, same scale, right facing; preserve leaf ears, brown fur, cream paws, amber eye and three hovering leaves. No shadows/text/scenery/injuries.",
+    "edit_history": "Crop into 362x362 cells; integer vertical translations align opaque floor at y340. No image resampling or creative pixel changes.",
+    "kind": "Image Gen edit of the project-owned Foli pilot",
+    "original_output_basename": "exec-b049a45e-7b25-4c18-9fb8-cce5c90991fe.png",
+    "original_preserved": true,
+    "reference": {
+      "id": "characters/foli-pilot",
+      "role": "portrait",
+      "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+      "version": "1.0.0"
+    }
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

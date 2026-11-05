@@ -383,6 +383,47 @@
         }
       }
     },
+    "characters/foli-lifecycle": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/characters/foli-lifecycle/versions/0.1.0/manifest.json",
+          "sha256": "b7409970ab1bb4ddd438ec35ba1552559db36c395059edaf103e2c198989f91f",
+          "status": "prototype"
+        },
+        "1.0.0": {
+          "manifest": "assets/characters/foli-lifecycle/versions/1.0.0/manifest.json",
+          "sha256": "4f74479f17fe6396d7b4a71afbb59dbcf82f45d2f70a6fa303849ea1c66dd235",
+          "status": "production"
+        }
+      }
+    },
+    "characters/foli-pilot": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/foli-pilot/versions/1.0.0/manifest.json",
+          "sha256": "5c5a6db93eb4d23a2b821fb82319d992a662e43bee7ce329911e958b0added8c",
+          "status": "production"
+        }
+      }
+    },
+    "characters/folife-lifecycle": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/folife-lifecycle/versions/1.0.0/manifest.json",
+          "sha256": "8b8d45f6835e92950f7b573e9f1e081fd851e86aea01c86ab89492b788509d08",
+          "status": "production"
+        }
+      }
+    },
+    "characters/folife-pilot": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/folife-pilot/versions/1.0.0/manifest.json",
+          "sha256": "4258d1b40a0c6d019df3740859f8c6f6284d38d1490250838216e0d1b0e8b3a2",
+          "status": "production"
+        }
+      }
+    },
     "characters/owl": {
       "versions": {
         "1.0.0": {

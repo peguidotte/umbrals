@@ -116,3 +116,24 @@ identidade Library, pivôs e escala explícitos. Repouso e seis poses de caminha
 usam o consumidor da casa existente. O único pin alterado é o do protagonista;
 nenhum script de geometria, movimento ou save mudou. Aprovação estética do
 sprite continua pendente. Ver [referência, integração e limites](../docs/pietro-v05-art01.md).
+
+## Foli initial-form pilot — V05-ART-02F
+
+`characters/foli-pilot@1.0.0` preserves the original transparent Image Gen
+cutout (`exec-7dccbeb5-ce85-494c-997a-2ef723555560`) and its own anatomical
+mesh tracks. The only changed runtime binding is `umbrals/moss`; historical
+modules remain intact. Reference originals and Library provenance live under
+`docs/references/creatures/foli/`. This draft selects the cutout for visual
+review; it has no authored walk or persistent KO pose. Folife still uses the
+historical art. See [scope and evidence](../docs/foli-pilot-v05-art-02f.md).
+
+### Foli/Folife com lifecycle — V05-ART-02G/H
+
+As descrições do piloto inicial acima são históricas. Esta união local seleciona
+`characters/foli-pilot@1.0.0` e `characters/folife-pilot@1.0.0` para os dois
+retratos, com oito poses de caminhada e quatro de KO em módulos próprios de
+lifecycle `1.0.0`. Os pins por forma compõem com o adaptador compartilhado;
+nenhum asset/pin de Brasa é incorporado por esta união. O Pietro 2.0.0 e a casa
+permanecem selecionados. As referências originais ficam excluídas da exportação.
+Revisão técnica permite experimento em draft; não há aprovação estética nem
+família completa. Ver os escopos de Foli/Folife e os pareceres independentes.

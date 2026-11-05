@@ -1099,3 +1099,86 @@ A correção foi publicada em `fix/codex-record-focus-20261105`; esta integraç�
 reúne a casa #11, Pietro #17 e o foco sobre a main atual. Próximo passo: unir com as demais origens revisadas e validar o conjunto
 exato. O gate integral anterior não é atribuído a esta mudança. Ator/despertar e
 famílias continuam com os mesmos limites visuais; versão permanece 0.3.0.
+### V04-CNT-01A — Foli e Folife com identidade preservada
+
+Primeira fatia do pedido de integrar as quatro famílias: os nomes e descrições
+de Foli e Folife entram no catálogo já usado pela escolha inicial, batalha,
+evolução e grimório. Espécie/formas/aresta conservam `moss`, `moss`/`verdalio` e
+`moss_to_verdalio`; gameplay e identidade dos saves continuam iguais. Catálogo,
+autoria, save, compatibilidade e história passaram nos gates focados; fechamento
+e capturas reais são registrados no PR. [Escopo e evidências](grass-family-v04-cnt-01a.md).
+
+Foslash e Folivel são nomes/conceitos aprovados, ainda sem novas formas jogáveis
+nesta fatia. As duas referências da Library foram resolvidas, mas a transferência
+oficial falhou: arte da lebre, poses e origens anatômicas não foram validadas.
+Continuam os retratos anteriores como fallback explícito na documentação.
+Próxima fatia: materializar e revisar a arte aprovada e integrar as formas finais
+com compatibilidade auditada. Versão continua 0.3.0; as quatro famílias não estão
+declaradas concluídas por esta entrega.
+
+
+### V05-ART-02F — piloto visual da Foli
+
+Sobre a fatia de nomes do PR #14, a inicial recebe recorte transparente e
+rig próprios, mantendo IDs, mecânicas e saves. As duas referências aprovadas
+foram materializadas pelo fluxo oficial e inspecionadas; os PNGs originais
+estão versionados em `docs/references/creatures/foli/`. Apenas o pin
+`umbrals/moss` muda; arte antiga de Folife permanece explícita.
+
+[Escopo, contratos, evidências e lacunas](foli-pilot-v05-art-02f.md). Checks
+focados de movimento (68) passaram após corrigir o cache do atlas antigo;
+captura por cliques reais registrou três casts com áudio real, mas a baixa
+cadência do MP4 não comprova fluidez. Fechamento integral e revisão ficam
+registrados no PR. Caminhada/KO próprios, Folife/Foslash/Folivel, VFX de
+folhas e revisão estética permanecem pendentes. Produto 0.3.0; sem merge ou
+encerramento da família/marco por esta fatia.
+
+### V05-ART-02G — poses de caminhada e KO da Foli
+
+Continuação em draft sobre #18, sem merge. O pin aditivo por forma seleciona
+oito poses de caminhada e quatro de KO reversível, preservando retrato, IDs,
+regras e saves. Troca confirmada, KO por dano e reanimação do mesmo UID
+passaram 16 verificações na cena real; o alvo de movimento inclui esses
+contratos. A revisão independente permite integração técnica em draft após
+eliminar a dupla silhueta, mantendo aprovação estética pendente.
+
+[Escopo, contrato compartilhado e evidências](foli-lifecycle-v05-art-02g.md).
+O vídeo nativo documenta eventos e poses, mas a cena completa deste executor
+ficou em cerca de 8,4 fps; a fluidez segue aberta. A CI do #18 não aceita
+automaticamente esta nova fatia ou a combinação com a candidata. Lâminas
+próprias, verso, Folife e as duas finais continuam pendentes. Produto 0.3.0.
+
+### V05-ART-02H — piloto visual da Folife
+
+A intermediária recebe recorte da segunda forma v11, anatomia própria e
+oito poses de caminhada/quatro de KO reversível, em draft separado sobre
+#20. Preserva `verdalio`, evolução, UID, poderes, regras e saves. Revisões
+independentes de recorte, atlas e preview permitem experimento técnico em
+draft, sem aprovação estética. O ciclo real passou 16 checks, HP 60→0→21 no
+mesmo UID; o MP4 preserva timestamps e medição de cadência desta execução.
+
+[Escopo, fontes, tentativas e lacunas](folife-pilot-v05-art-02h.md). A origem
+de raízes detectada pelo teste inicial foi corrigida sem remover checks.
+Chevron/colar, cortes, verso e VFX próprios continuam abertos. Foslash e
+Folivel têm candidatas estáticas separadas, sem novas formas/regras jogáveis.
+Produto 0.3.0; sem merge ou promoção da família.
+
+### Candidata local — casa/foco com Foli e Folife
+
+A candidata funcional `1994376` passou na aceitação integral do push
+41964934938 e na jornada gravada de 405 verificações com fonte inalterada.
+Esta união local incorpora a sequência #14 → #18 → #20 → #21 (`b708c91`),
+preservando casa #11, Pietro #17 2.0.0 e a correção de foco do grimório.
+O integrador é o único editor desta união e dos conflitos documentais; os
+assets/contratos de origem são preservados. Não incorpora Brasa, elétrica,
+água ou o PR bloqueado da biblioteca de conceitos.
+
+Conflitos limitados a dois documentos foram resolvidos conservando ambos os
+registros. A CI de push do #20 passou; a de #21 e a revisão independente mais
+recente permanecem pendentes no início da união. A próxima etapa são os gates
+focados de movimento, assets, save, casa e foco. Nenhuma aceitação integral ou
+visual desta combinação é atribuída às bases; a fonte exata precisa de seus
+próprios gates. A branch é local e não publicada. A abertura do novo PR público
+para main continua bloqueada pela revisão automática, sem repetição da ação.
+Verso, cortes de postura, VFX próprios, desempenho e aprovação estética humana
+seguem abertos. Foslash/Folivel não jogáveis; produto permanece 0.3.0.

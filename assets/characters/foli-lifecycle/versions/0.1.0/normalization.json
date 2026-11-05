@@ -1,0 +1,282 @@
+{
+  "frames": [
+    {
+      "frame": 0,
+      "integer_translation": [
+        0,
+        8
+      ],
+      "opaque_bbox": [
+        67,
+        15,
+        308,
+        332
+      ],
+      "pivot": [
+        198,
+        340
+      ],
+      "source_rect": [
+        0,
+        0,
+        362,
+        362
+      ]
+    },
+    {
+      "frame": 1,
+      "integer_translation": [
+        0,
+        8
+      ],
+      "opaque_bbox": [
+        64,
+        22,
+        310,
+        332
+      ],
+      "pivot": [
+        198,
+        340
+      ],
+      "source_rect": [
+        362,
+        0,
+        724,
+        362
+      ]
+    },
+    {
+      "frame": 2,
+      "integer_translation": [
+        0,
+        9
+      ],
+      "opaque_bbox": [
+        65,
+        23,
+        311,
+        331
+      ],
+      "pivot": [
+        198,
+        340
+      ],
+      "source_rect": [
+        724,
+        0,
+        1086,
+        362
+      ]
+    },
+    {
+      "frame": 3,
+      "integer_translation": [
+        0,
+        9
+      ],
+      "opaque_bbox": [
+        68,
+        19,
+        312,
+        331
+      ],
+      "pivot": [
+        198,
+        340
+      ],
+      "source_rect": [
+        1086,
+        0,
+        1448,
+        362
+      ]
+    },
+    {
+      "frame": 4,
+      "integer_translation": [
+        0,
+        7
+      ],
+      "opaque_bbox": [
+        71,
+        21,
+        311,
+        333
+      ],
+      "pivot": [
+        198,
+        340
+      ],
+      "source_rect": [
+        0,
+        362,
+        362,
+        724
+      ]
+    },
+    {
+      "frame": 5,
+      "integer_translation": [
+        0,
+        7
+      ],
+      "opaque_bbox": [
+        68,
+        23,
+        311,
+        333
+      ],
+      "pivot": [
+        198,
+        340
+      ],
+      "source_rect": [
+        362,
+        362,
+        724,
+        724
+      ]
+    },
+    {
+      "frame": 6,
+      "integer_translation": [
+        0,
+        8
+      ],
+      "opaque_bbox": [
+        68,
+        18,
+        308,
+        332
+      ],
+      "pivot": [
+        198,
+        340
+      ],
+      "source_rect": [
+        724,
+        362,
+        1086,
+        724
+      ]
+    },
+    {
+      "frame": 7,
+      "integer_translation": [
+        0,
+        8
+      ],
+      "opaque_bbox": [
+        63,
+        16,
+        312,
+        332
+      ],
+      "pivot": [
+        198,
+        340
+      ],
+      "source_rect": [
+        1086,
+        362,
+        1448,
+        724
+      ]
+    },
+    {
+      "frame": 8,
+      "integer_translation": [
+        0,
+        20
+      ],
+      "opaque_bbox": [
+        75,
+        28,
+        309,
+        320
+      ],
+      "pivot": [
+        198,
+        340
+      ],
+      "source_rect": [
+        0,
+        724,
+        362,
+        1086
+      ]
+    },
+    {
+      "frame": 9,
+      "integer_translation": [
+        0,
+        21
+      ],
+      "opaque_bbox": [
+        67,
+        54,
+        310,
+        319
+      ],
+      "pivot": [
+        198,
+        340
+      ],
+      "source_rect": [
+        362,
+        724,
+        724,
+        1086
+      ]
+    },
+    {
+      "frame": 10,
+      "integer_translation": [
+        0,
+        22
+      ],
+      "opaque_bbox": [
+        40,
+        115,
+        311,
+        318
+      ],
+      "pivot": [
+        198,
+        340
+      ],
+      "source_rect": [
+        724,
+        724,
+        1086,
+        1086
+      ]
+    },
+    {
+      "frame": 11,
+      "integer_translation": [
+        0,
+        17
+      ],
+      "opaque_bbox": [
+        13,
+        176,
+        315,
+        323
+      ],
+      "pivot": [
+        198,
+        340
+      ],
+      "source_rect": [
+        1086,
+        724,
+        1448,
+        1086
+      ]
+    }
+  ],
+  "method": "Grid slicing and integer vertical translation only; original retained unchanged. No rescaling, repainting or alpha cleanup.",
+  "threshold_for_floor_measurement": 128
+}

@@ -31,6 +31,8 @@ const AUDIO_SELECT: String = "res://assets/audio/select/versions/1.0.0/sound.wav
 const AUDIO_STORM: String = "res://assets/audio/storm/versions/1.0.0/sound.wav"
 const CHARACTERS_BATTLE_CREATURES: String = "res://assets/characters/battle-creatures/versions/1.0.0/texture.png"
 const CHARACTERS_BATTLE_EVOLVED: String = "res://assets/characters/battle-evolved/versions/1.0.0/texture.png"
+const CHARACTERS_LIFECYCLE_MOSS: String = "res://assets/characters/foli-lifecycle/versions/1.0.0/walk.png"
+const CHARACTERS_LIFECYCLE_VERDALIO: String = "res://assets/characters/folife-lifecycle/versions/1.0.0/walk.png"
 const CHARACTERS_OWL: String = "res://assets/characters/owl/versions/1.0.0/portrait.svg"
 const CHARACTERS_PIETRO_HOME: String = "res://assets/characters/pietro-home/versions/2.0.0/atlas.png"
 const CHARACTERS_REFUGE_TRAVELER: String = "res://assets/characters/refuge-traveler/versions/1.0.0/atlas.png"
@@ -52,9 +54,9 @@ const UMBRALS_DEW: String = "res://assets/umbrals/dew/versions/1.0.0/portrait.sv
 const UMBRALS_EMBER: String = "res://assets/umbrals/ember/versions/1.0.0/portrait.svg"
 const UMBRALS_IGNIVAR: String = "res://assets/umbrals/ignivar/versions/1.0.0/portrait.svg"
 const UMBRALS_MAREVEU: String = "res://assets/umbrals/mareveu/versions/1.0.0/portrait.svg"
-const UMBRALS_MOSS: String = "res://assets/umbrals/moss/versions/1.0.0/portrait.svg"
+const UMBRALS_MOSS: String = "res://assets/characters/foli-pilot/versions/1.0.0/foli.png"
 const UMBRALS_TEMPESTRAL: String = "res://assets/umbrals/tempestral/versions/1.0.0/portrait.svg"
-const UMBRALS_VERDALIO: String = "res://assets/umbrals/verdalio/versions/1.0.0/portrait.svg"
+const UMBRALS_VERDALIO: String = "res://assets/characters/folife-pilot/versions/1.0.0/folife.png"
 const UMBRALS_VOLT: String = "res://assets/umbrals/volt/versions/1.0.0/portrait.svg"
 const WORLD_BATTLE_CLEARING: String = "res://assets/world/battle-clearing/versions/1.0.0/background.png"
 const WORLD_BATTLE_CLEARING_DEPTH: String = "res://assets/world/battle-clearing-depth/versions/1.0.0/background.png"
@@ -97,6 +99,8 @@ const PATHS: Dictionary = {
 	"audio/storm": AUDIO_STORM,
 	"characters/battle-creatures": CHARACTERS_BATTLE_CREATURES,
 	"characters/battle-evolved": CHARACTERS_BATTLE_EVOLVED,
+	"characters/lifecycle-moss": CHARACTERS_LIFECYCLE_MOSS,
+	"characters/lifecycle-verdalio": CHARACTERS_LIFECYCLE_VERDALIO,
 	"characters/owl": CHARACTERS_OWL,
 	"characters/pietro-home": CHARACTERS_PIETRO_HOME,
 	"characters/refuge-traveler": CHARACTERS_REFUGE_TRAVELER,

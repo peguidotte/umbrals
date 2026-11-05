@@ -6,6 +6,8 @@ const Assets = preload("res://scripts/assets/catalog.gd")
 const RefArt = preload("res://scripts/ui/reference_art.gd")
 const Plate = preload("res://scripts/ui/reference_button.gd")
 const CardFrame = preload("res://scripts/ui/reference_card_frame.gd")
+# Painted reference labels are valid only while they match the live catalog.
+const PAINTED_NAMES = {"ember": "Brasa", "moss": "Musgo"}
 signal entry_selected(entry: Dictionary)
 var progress: RefCounted
 var register: Callable
@@ -49,7 +51,7 @@ func render(items: Array, kind: String, selected_id: String) -> void:
 		selection_frames[entry.id] = frame
 		var label: Label = _label(self,entry.name if known else "???",Rect2(x,310,card_size.x,38),26)
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		if known and category == "umbrals" and entry.id in ["ember","moss"] and text_scale <= 1.0:
+		if known and category == "umbrals" and entry.name == PAINTED_NAMES.get(entry.id, "") and text_scale <= 1.0:
 			label.modulate.a = 0
 			var label_rect: Rect2 = Rect2(326,586,120,42) if entry.id == "ember" else Rect2(519,586,140,42)
 			RefArt.patch(self,"ui/gold-codex-art",label_rect,Rect2(x+(34 if entry.id == "ember" else 31),307,label_rect.size.x,42))
@@ -69,6 +71,7 @@ func _label(parent: Control, text: String, rect: Rect2, font_size: int, color: C
 func _card_picture(entry: Dictionary, known: bool) -> Texture2D:
 	if not known:
 		return RefArt.region("ui/gold-codex-art",Rect2(670,285,168,292) if category == "umbrals" else Rect2(1080,705,103,106))
+	if category == "umbrals" and not Assets.bound_manifest(entry.art).get("metadata", {}).get("battle_profile", {}).is_empty(): return null
 	if category == "umbrals" and entry.id == "ember": return RefArt.region("ui/gold-codex-art",Rect2(292,279,176,306))
 	if category == "umbrals" and entry.id == "moss": return RefArt.region("ui/gold-codex-art",Rect2(488,285,164,292))
 	return null
