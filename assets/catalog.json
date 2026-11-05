@@ -398,6 +398,11 @@
           "manifest": "assets/characters/pietro-home/versions/1.0.0/manifest.json",
           "sha256": "79bfcd3b045b5ef68e5d64a87f9a8632cfecc2b862cb21b52c05d09c0a1c6c5a",
           "status": "production"
+        },
+        "2.0.0": {
+          "manifest": "assets/characters/pietro-home/versions/2.0.0/manifest.json",
+          "sha256": "082c35f79302cdc05133acb475bd37008deeed3ec22bff3e41cde8a0a4a74d6a",
+          "status": "production"
         }
       }
     },
