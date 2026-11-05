@@ -1,4 +1,4 @@
-from refuge_browser_review import depart
+from refuge_browser_review import depart, responsive_home
 """Five current-product layouts; independent from the full combat route."""
 def run(session):
     page, contracts, matrix = session.page, session.contracts, session.matrix
@@ -14,6 +14,7 @@ def run(session):
         click('menu.play')
         geometry(f'Refuge {width}×{height}')
         shot(f'matrix-refuge-{width}x{height}')
+        responsive_home(session, width, height)
         depart(session.page, session.wait)
         geometry(f'Expedition choices {width}×{height}')
         shot(f'matrix-lobby-{width}x{height}')

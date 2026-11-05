@@ -91,3 +91,27 @@ modules remain intact. Reference originals and Library provenance live under
 `docs/references/creatures/foli/`. This draft selects the cutout for visual
 review; it has no authored walk or persistent KO pose. Folife still uses the
 historical art. See [scope and evidence](../docs/foli-pilot-v05-art-02f.md).
+## Casa inicial de Pietro — V05-UX-05
+
+Histórico da primeira tentativa, superado pela revisão contínua abaixo:
+
+`world/pietro-house@1.0.0` fornece três regiões de cenário (quarto de Pietro,
+cozinha/escada e quarto da mãe) em um atlas original sem atores. O PNG da primeira
+geração permanece em `review/`; o PNG de runtime corrige a vista pela porta do
+quarto para um corredor interno. Os dois originais mantêm bytes/metadados.
+`world/refuge-lateral@1.1.0` acrescenta passagens pintadas para quarto e cozinha,
+preservando composição/móveis da sala e saída externa; 1.0.0 continua intacta.
+As imagens usam a própria sala anterior como referência de família. O atlas
+do viajante continua separado e inalterado; tint/apoio e a breve saída da cama
+são apresentação no motor. Os manifestos distinguem uso no runtime de aprovação
+estética por Pedro. [Escopo e limites](../docs/house-v05-ux05.md).
+
+### Revisão contínua da casa de Pietro
+
+`world/pietro-house-continuous@1.0.0` substitui a seleção por cômodo por uma única
+pintura de casa, sem atores ou escada embutida. `characters/pietro-home@1.0.0`
+fornece ator separado de pele mais clara e roupa inicial azul/dourada, provisório:
+a referência Library aprovada não pôde ser transferida oficialmente. Os PNGs
+gerados e seus metadados estão preservados byte a byte. A escala e os pivôs são
+dados; degraus/corrimão e oclusão são geometria nativa. As releases anteriores
+continuam imutáveis. Ver [escopo e limites](../docs/house-v05-ux05.md).

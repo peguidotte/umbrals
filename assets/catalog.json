@@ -347,6 +347,29 @@
         }
       }
     },
+    "characters/brasa-lifecycle": {
+      "versions": {
+        "0.2.0": {
+          "manifest": "assets/characters/brasa-lifecycle/versions/0.2.0/manifest.json",
+          "sha256": "fd09d3093f1a2b6d30f7c4f5601884e7fcba459f190bb0422ed865ffeca17232",
+          "status": "prototype"
+        },
+        "1.0.0": {
+          "manifest": "assets/characters/brasa-lifecycle/versions/1.0.0/manifest.json",
+          "sha256": "3d4c51893696b81b988cb2ca0304dde735ae2d629e964befc966a3d7f6744b23",
+          "status": "production"
+        }
+      }
+    },
+    "characters/brasa-pilot": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/characters/brasa-pilot/versions/0.1.0/manifest.json",
+          "sha256": "f43789c35ddc49e2ed489570a322ec859de2139ac22b135635480387526afe13",
+          "status": "prototype"
+        }
+      }
+    },
     "characters/demo-acrobat": {
       "versions": {
         "1.0.0": {
@@ -411,6 +434,15 @@
         "1.0.0": {
           "manifest": "assets/characters/owl/versions/1.0.0/manifest.json",
           "sha256": "34d6ac943ca3bdff92c436a297092dff663da93cc5463df53c0a14b7930d7504",
+          "status": "production"
+        }
+      }
+    },
+    "characters/pietro-home": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/pietro-home/versions/1.0.0/manifest.json",
+          "sha256": "79bfcd3b045b5ef68e5d64a87f9a8632cfecc2b862cb21b52c05d09c0a1c6c5a",
           "status": "production"
         }
       }
@@ -613,11 +645,34 @@
         }
       }
     },
+    "world/pietro-house": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/world/pietro-house/versions/1.0.0/manifest.json",
+          "sha256": "f1579afbab754568bcfd74dbe2de1a23a6a0781646939b8ce98309b9fcd5dcbb",
+          "status": "production"
+        }
+      }
+    },
+    "world/pietro-house-continuous": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/world/pietro-house-continuous/versions/1.0.0/manifest.json",
+          "sha256": "6a86970944028e8796049fcb41a44caae72a0b2a3837447a6de95e62a9d02702",
+          "status": "production"
+        }
+      }
+    },
     "world/refuge-lateral": {
       "versions": {
         "1.0.0": {
           "manifest": "assets/world/refuge-lateral/versions/1.0.0/manifest.json",
           "sha256": "d4c985940b2f330c426664c152a9fda1a9a13b94ae2b98a8be7093a6f716a9bf",
+          "status": "production"
+        },
+        "1.1.0": {
+          "manifest": "assets/world/refuge-lateral/versions/1.1.0/manifest.json",
+          "sha256": "e3865e792d4881a2c7f562def5ac4cbdeaef55ead4e6cd37db6a3eda400718de",
           "status": "production"
         }
       }
