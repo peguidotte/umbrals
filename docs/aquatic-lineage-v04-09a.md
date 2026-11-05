@@ -27,7 +27,8 @@ Referência Library: `libfile_2c296e23cd5c819189c30eaa74c3da82`.
 | Londraval | Ainda não registrado | Final principal aprovada, produção pendente |
 | Lonelo | Ainda não registrado | Final alternativa aprovada, produção pendente |
 
-Somente nomes e prosa mudam nos Resources da linhagem e de Maré lunar. As descrições usam o controle da água
+Somente nomes e prosa mudam nos Resources da linhagem e de Maré lunar.
+As descrições usam o controle da água
 confirmado, sem manter a origem na Fenda como cosmologia. Não há alteração de
 atributos, traço, cópias, assinatura, natureza, resistências, RNG, rotas ou arestas.
 A seleção inicial, rótulos de combate, recompensas, inspeção e grimório consultam
@@ -70,7 +71,49 @@ A baseline da escolha inicial está em `artifacts/aquatic-before/`.
 As nove verificações dos três checkpoints passaram. Catálogo, autoria e saves
 passaram no run focado
 `artifacts/harness/aquatic-focused-20261105T011851799497Z-e28226/`.
-O fechamento completo e a revisão dos renders serão registrados ao final.
+O grafo oficial completo passou com fontes congeladas em
+`artifacts/aquatic-names-final/`: cobertura completa, 14.419 checks de regras,
+oito mutações detectadas, 1.520 checks nativos de UI/domínio, 2.607 checks Web,
+dez cenários e cinco resoluções. Fonte verificada:
+`bc9a151c4288a465a48dac7a4244b8e180806ce65afc99ee78e150a37e1fb81f`.
+Somente documentação foi atualizada depois desse gate; os inputs do jogo foram
+comparados para confirmar que permanecem iguais.
+
+Evidências para revisão:
+
+- `artifacts/aquatic-names-final/review.html`: revisão portátil do grafo oficial.
+- `artifacts/aquatic-names-final/manual-review-notes.json`: observações dos renders.
+- `artifacts/aquatic-playthrough/`: controles reais desde a escolha de Lonlon,
+  quatro turnos, oferta/confirmação de Lonaro, inspeção e as duas histórias.
+- `artifacts/aquatic-playthrough/gameplay.webm`: 105 s, VP8, 1280×720, sem áudio;
+  decodificação completa sem erros. As imagens mostram a arte antiga como fallback.
+- `artifacts/aquatic-compatibility/`: checkpoints anteriores, comparação do catálogo,
+  validação de releases contra main e comparação do defeito de foco abaixo.
+
+Revisão dos pixels: Lonlon cabe no botão inicial nas cinco resoluções; nomes
+coincidem em ator, cartas, recompensa e grimório. As duas histórias cabem em
+1600×900 sem corte. Menu, chefe, substituição e batalha 4:3 com texto ampliado
+foram inspecionados. A identidade visual da lontra continua pendente e não recebe
+aprovação por estes checks. Esta fatia não modifica movimento ou som.
+
+## Achado existente para o integrador: foco do grimório
+
+O roteiro complementar **falhou** ao exigir foco visível após clicar em
+`codex.evolution`. As 70 checagens anteriores, incluindo evolução, UID/passiva,
+cartas e leitura das histórias, passaram. O mesmo roteiro no Web da main anterior
+reproduziu a mesma falha: `focused` vazio depois de “Ver Marevéu”, agora “Ver Lonaro”.
+Os três scripts do grimório são idênticos aos da base. Ambos os relatórios e
+capturas de falha permanecem preservados; esse resultado não foi convertido em
+aprovação nem removido do teste.
+
+Passos: iniciar treino de água, vencer a Clareira, escolher a evolução, voltar ao
+menu, abrir o grimório, escolher a forma inicial e consultar a evolução. O link
+é reconstruído por `scripts/ui/codex.gd` / `scripts/ui/codex/record.gd` sem repor o
+foco no novo controle. O integrador do dono compartilhado deve corrigir e cobrir
+esse caminho; este PR de conteúdo não altera esses arquivos.
+
+Checkpoint de código publicado em `e570902`,
+[PR draft #16](https://github.com/peguidotte/umbrals/pull/16). Sem merge.
 
 A primeira tentativa completa em `artifacts/aquatic-names/` foi interrompida
 deliberadamente após detectar a descrição de Maré lunar ainda citando Marevéu.
