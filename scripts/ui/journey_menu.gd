@@ -103,6 +103,7 @@ static func checkpoint_summary(saved: Dictionary) -> String:
 	var phase: String = str(saved.get("phase", "map"))
 	var titles = {"clearing": "Clareira", "thicket": "Mata fechada", "spring": "Nascente", "boss": "Guardião"}
 	if phase == "combat": return "%s · Combate em andamento" % titles.get(current, "Bosque")
+	if phase == "event": return "%s · Descansar ou praticar" % titles.get(current, "Bosque")
 	if phase == "reward": return "%s · Recompensa à espera" % titles.get(current, "Bosque")
 	var available: Array[String] = []
 	for node in saved.get("nodes", []):

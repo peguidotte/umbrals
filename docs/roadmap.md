@@ -1010,6 +1010,38 @@ lore/segunda sala. Protagonista é exploração separada; nome provisório não 
 código. Aceitação integral e CI do HEAD final são gates antes do merge; resultados
 finais registrados no PR. Versão permanece 0.3.0.
 
+### V05-EVT-01 — decisão contextual na Nascente (protótipo revisável)
+
+Pedro aceitou a viabilidade da edição de cópias, mas rejeitou oferecê-la como
+recompensa genérica pós-combate. Pediu salas/NPCs/situações com decisões, citando
+Hades/Balatro e possíveis compras/vendas. A fatia experimental usa a Nascente já
+existente: descansar ou abrir mão da cura para praticar com um Umbral vivo.
+Uma cópia muda entre técnicas conhecidas do mesmo dono, preservando instâncias e
+total; confirmação mostra consequências e cancelamento descarta só o rascunho.
+Captura/evolução de combate permanecem. Não há moeda, mercador ou economia nova.
+
+Ruleset 3 com migração explícita: expedições antigas mantêm o descanso imediato
+e o replay anterior; novas runs persistem a sala antes da escolha. Limites de
+1–3 cópias e a situação são defaults experimentais, sem aprovação final de design.
+[Escopo, alternativas de conteúdo e evidências](spring-event-v05-01.md).
+Próxima fatia: avaliar a decisão e definir identidade/NPC ou uma primeira economia
+antes de afirmar compra/venda. Versão continua 0.3.0; critérios humanos e demais
+conteúdos de 0.5 permanecem abertos.
+
+
+Revisão de V05-EVT-01: o aviso de gravação agora aparece também na Nascente,
+fora da rolagem, com o mesmo componente do mapa. Foram verificados recusa real
+no Web Storage e os estados de sucesso, recuperação e dados protegidos; 109
+checks nativos e o cenário Web focado passaram. A integração da main `030ee7d`
+preserva o refúgio do PR #8 e os dois registros de roadmap. Evidência focada em
+`artifacts/harness/spring-notice-regressions-20261104T225648522434Z-fba9e0/`;
+fechamento integral e CI do novo HEAD registrados no PR. Rascunho aguarda revisão,
+sem merge. Não há nova mecânica ou mudança de compatibilidade por este ajuste.
+
+A atualização de base para `1198404` incorpora também o PR #9. A aceitação
+contra `030ee7d` permanece histórica; a integração atual recebe gates próprios,
+incluindo autoria de atores, e o resultado do merge exato é registrado no PR.
+
 
 ### V05-UX-05 — casa contínua de Pietro
 
@@ -1019,7 +1051,7 @@ escada física com apoio/oclusão e posição sem saltos nas divisas. A porta da
 conserva preparação/Continuar; casa inicial e futuro abrigo portátil têm identidades
 separadas. Ator provisório com pele mais clara, roupa azul/dourada e escala revista.
 A referência aprovada foi localizada mas a transferência oficial falhou; aprovação
-de semelhança e acabamento continua pendente. Base main 1198404 incorporada.
+de semelhança e acabamento continua pendente. Base main 1523d0e incorporada, preservando a Nascente contextual e suas migrações.
 
 As evidências de cenas separadas estão superadas. A revisão contínua tem testes de
 coordenadas, câmera, apoio/retomada da escada, margens por resolução, limites, inputs

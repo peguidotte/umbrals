@@ -11,3 +11,27 @@ Replay decoding validates a detached expedition candidate before accepting a che
 The compatibility registry pins an audited gameplay manifest to the schema 2 identity from `6e1b2ed`. A source identity is accepted only when it is current or has an explicit registry entry. The registry verifies the pinned manifest's digest and allows an additive transition only when every existing species, form, power, passive and encounter definition remains equal, encounter and species order remain prefixes, and every existing pool, route and other gameplay extra remains equal. New species and their passive pools, powers, and consumables may be added without changing existing selections. Manifest version 2 also binds each item ID to its effect ID. The audited old manifest lacked those bindings, so its explicit adapter supplies the historical potion/heal and revive/revive mappings before comparing it with the current manifest; the new digest is intentionally different. This conservative rule preserves the random choices and numeric encounter indices of existing expeditions; changing an existing definition, selection pool or ordering requires an explicitly reviewed migration or ruleset decision. Cosmetic fields are excluded by the gameplay projection. Unknown identities and future versions still block loading, saving and clearing.
 
 Migration operates on a detached copy and updates its identity only after an audited transition succeeds; repeated migration is idempotent. Schema 1 first uses its pinned adapter and then the same registry transition. Checkpoint and replay envelope identities must agree with the enclosed schema 2 snapshot, preventing mixed lineage. The registry's frozen source data is part of the game, never supplied by an untrusted save. A new registry entry must pin an audited source manifest and define an ordered, behavior-preserving path; it must not merely replace a digest. The two-slot checksum, generation and tombstone rules continue to apply across migrations.
+
+
+## Rules 3: contextual spring, preserving rules-2 runs
+
+V05-EVT-01 explicitly bumps the ruleset to `expedition-rules-3`. Schema 2 now
+requires integer `event_revision` (0 or 1). New runs use 1 and persist a stable
+`event` phase at the spring, with battle remaining on the map and empty zones.
+The event command either applies the existing rest or transfers one physical
+copy between known techniques of one living owner; drafts are never persisted.
+
+Migration accepts the pinned rules-2 main identity
+`7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80`
+and the existing audited baseline, verifying their frozen gameplay manifests
+through the conservative additive comparator. Both migrate to revision 0:
+old expeditions retain immediate spring healing and unchanged reward generation.
+The current rules-3 identity continues to carry revision 0 on subsequent saves.
+The legacy schema-1 adapter follows the same path. Historical identities cannot
+contain the new event phase or opt into revision 1. Unknown identities stay blocked.
+
+The frozen main replay fixture records real pre-change commands and expected
+checkpoints. Tests compare normalized complete snapshots after two encounters
+and the old rest alternative, including RNG, plans, rewards and physical cards.
+Replay envelope version 2 and checkpoint envelope version 2 remain in use with
+the explicit new compatibility identity; unsupported versions still fail closed.

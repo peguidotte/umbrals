@@ -320,7 +320,9 @@ func _selected_summary() -> String:
 		return "Selecione um ponto da trilha para ver seus detalhes."
 	var kind: String = str(node.get("kind", "battle"))
 	var detail: String = str(node.get("description", ""))
-	if kind == "rest":
+	if kind == "event":
+		detail += " Custo: abrir mão do combate da Mata fechada e de sua recompensa."
+	elif kind == "rest":
 		detail = "Descanso: cura 25% do HP máximo dos integrantes vivos. Custo: abrir mão do combate e de sua recompensa."
 	else:
 		if kind == "boss":

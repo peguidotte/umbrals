@@ -148,7 +148,10 @@ class Session:
             if 'foreground' in c:
                 check(contrast(c['foreground'], c['background']) >= 4.5,
                       description + ': solid button text has ≥4.5 contrast — ' + identity)
-        if s['screen'] not in ['menu','battle','refuge']:
+        if s['screen'] == 'map':
+            check(s['stack'] == ['map'] and not any(c['visible'] for k,c in s['controls'].items() if k.startswith('hand.')),
+                  description + ': route room owns the root and hides battle cards')
+        elif s['screen'] not in ['menu','battle','refuge']:
             check(s['overlay_z'] > s['card_max_z'], description + ': modal stays above elevated cards')
         check(s['focused'] in active, description + ': visible focus stays in the active screen')
         return {'screen':s['screen'], 'active_controls':len(active), 'logical_size':s['logical_size'], 'focused':s['focused']}

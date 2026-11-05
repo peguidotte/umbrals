@@ -1,6 +1,7 @@
 class_name Expedition
 extends RefCounted
 
+const Practice = preload("res://scripts/battle/technique_practice.gd")
 const Rules = preload("res://scripts/rules.gd")
 const Content = preload("res://scripts/content.gd")
 const Migration = preload("res://scripts/expedition/migration.gd")
@@ -16,12 +17,14 @@ const DESCRIPTIONS = ["Um primeiro encontro no bosque.", "Enfrente outro encontr
 const NEXT = [["thicket", "spring"], ["boss"], ["boss"], []]
 const BATTLE_FIELDS = ["seed_value", "starter_species", "encounter", "round_number", "encounter_rounds_resolved", "phase", "party", "enemies", "hand", "deck", "discard_pile", "suspended_cards", "declined_replacements", "inventory", "relics", "hand_size_modifier", "action_modifier", "enemy_plan", "information_mode", "pending_information_mode", "reward_offers", "next_uid", "total_damage", "actions", "last_result"]
 
+var event_revision: int = 1
 var battle = Rules.new()
 var phase: String = "map"
 var current_node_id: String = ""
 var completed: Array = []
 
 func new_run(seed: int, mode: String = "partial", starter: String = "ember") -> void:
+	event_revision = 1
 	battle = Rules.new()
 	battle.enable_expedition()
 	battle.new_run(seed, mode, starter)
@@ -40,22 +43,40 @@ func public_state() -> Dictionary:
 	var nodes: Array = []
 	for i in range(IDS.size()):
 		var available: bool = _available(IDS[i])
-		nodes.append({"id": IDS[i], "title": TITLES[i], "kind": KINDS[i], "description": DESCRIPTIONS[i], "available": available, "completed": IDS[i] in completed, "locked": not available and not IDS[i] in completed, "encounter_id": IDS[i] if IDS[i] != "spring" else "", "next": NEXT[i].duplicate()})
-	return {"phase": phase, "seed": str(battle.seed_value), "biome": "Bosque", "current_node_id": current_node_id, "nodes": nodes, "party": battle.party.duplicate(true), "inventory": battle.inventory.duplicate(true)}
+		var kind: String = "event" if IDS[i] == "spring" and event_revision == 1 else KINDS[i]
+		var description: String = "Descanse para recuperar HP ou abra mão da cura para praticar uma técnica conhecida." if kind == "event" else DESCRIPTIONS[i]
+		nodes.append({"id": IDS[i], "title": TITLES[i], "kind": kind, "description": description, "available": available, "completed": IDS[i] in completed, "locked": not available and not IDS[i] in completed, "encounter_id": IDS[i] if IDS[i] != "spring" else "", "next": NEXT[i].duplicate()})
+	return {"phase": phase, "seed": str(battle.seed_value), "biome": "Bosque", "current_node_id": current_node_id, "nodes": nodes, "party": battle.party.duplicate(true), "inventory": battle.inventory.duplicate(true), "event": {"id": "spring", "practice": Practice.options(battle.party)} if phase == "event" else {}}
 
 func choose_node(id: String) -> bool:
 	if not _available(id): return false
 	if id == "spring":
 		current_node_id = id
-		for individual in battle.party:
-			if int(individual.hp) > 0:
-				individual.hp = mini(int(individual.max_hp), int(individual.hp) + ceili(float(individual.max_hp) * 0.25))
-		battle._sync_compatibility()
-		completed.append(id)
+		if event_revision == 1:
+			phase = "event"
+		else:
+			_rest()
+			completed.append(id)
 		return true
 	if not battle.start_route_encounter(id): return false
 	current_node_id = id
 	phase = "combat"
+	return true
+
+func _rest() -> void:
+	for individual in battle.party:
+		if int(individual.hp) > 0:
+			individual.hp = mini(int(individual.max_hp), int(individual.hp) + ceili(float(individual.max_hp) * 0.25))
+	battle._sync_compatibility()
+
+func choose_event(choice: String, details: Dictionary = {}) -> bool:
+	if phase != "event" or event_revision != 1 or current_node_id != "spring" or battle.phase != "map": return false
+	if choice == "rest" and details.is_empty(): _rest()
+	elif choice == "practice":
+		if not Practice.apply(battle.party, details): return false
+	else: return false
+	completed.append(current_node_id)
+	phase = "map"
 	return true
 
 func settle_battle() -> void:
@@ -80,7 +101,7 @@ func snapshot() -> Dictionary:
 	state["seed_value"] = str(battle.seed_value)
 	state["rng_seed"] = str(battle.rng.seed)
 	state["rng_state"] = str(battle.rng.state)
-	return {"schema": 2, "identity": Identity.current(), "phase": phase, "current_node_id": current_node_id, "completed": completed.duplicate(), "battle": state}
+	return {"schema": 2, "event_revision": event_revision, "identity": Identity.current(), "phase": phase, "current_node_id": current_node_id, "completed": completed.duplicate(), "battle": state}
 
 # Validation is performed on a detached candidate before touching the live run.
 func restore(data: Dictionary) -> bool:
@@ -118,6 +139,7 @@ func restore(data: Dictionary) -> bool:
 	candidate.rng.seed = int(s.rng_seed)
 	candidate.rng.state = int(s.rng_state)
 	candidate._sync_compatibility()
+	event_revision = int(data.event_revision)
 	battle = candidate
 	phase = data.phase
 	current_node_id = data.current_node_id
@@ -142,9 +164,10 @@ func _int_keys(source: Dictionary) -> Dictionary:
 	return result
 
 func _valid_snapshot(data: Dictionary) -> bool:
+	if not data.get("event_revision") is int or not data.event_revision in [0, 1]: return false
 	if data.get("schema") != 2 or not Identity.matches(data.get("identity")) or not data.get("battle") is Dictionary or not data.get("completed") is Array: return false
 	if data.has("checkpoint_id") and not data.checkpoint_id is String: return false
-	if not data.get("phase") in ["map", "combat", "reward", "victory", "defeat"] or not data.get("current_node_id") is String: return false
+	if not data.get("phase") in ["map", "event", "combat", "reward", "victory", "defeat"] or not data.get("current_node_id") is String: return false
 	var current: String = data.current_node_id
 	if current != "" and not current in IDS: return false
 	var done: Array = data.completed
@@ -174,9 +197,10 @@ func _valid_snapshot(data: Dictionary) -> bool:
 	if not s.starter_species is String or not s.information_mode is String or not s.pending_information_mode is String or not s.phase is String: return false
 	if not s.starter_species in Content.STARTERS or not s.information_mode in ["hidden", "partial", "full"] or not s.pending_information_mode in ["hidden", "partial", "full"]: return false
 	if int(s.seed_value) != int(s.rng_seed): return false
-	if data.phase != "map" and s.encounter != Rules.encounter_index(current): return false
+	if data.phase in ["combat", "reward", "victory", "defeat"] and s.encounter != Rules.encounter_index(current): return false
 	if s.encounter < 0 or s.encounter > 2 or s.round_number < 1 or s.next_uid < 2 or s.party.is_empty() or s.party.size() > 6 or s.enemies.size() > 3: return false
-	if data.phase == "map" and s.phase != "map": return false
+	if data.phase in ["map", "event"] and s.phase != "map": return false
+	if data.phase == "event" and (data.event_revision != 1 or current != "spring" or done != ["clearing"]): return false
 	if data.phase == "combat" and (not s.phase in ["battle", "replacement", "reward", "victory", "defeat"] or not current in ["clearing", "thicket", "boss"]): return false
 	if data.phase in ["reward", "victory", "defeat"] and s.phase != data.phase: return false
 	var uids: Array = []
@@ -218,7 +242,7 @@ func _valid_snapshot(data: Dictionary) -> bool:
 		if not _valid_card(card, uids) or card_ids.has(card.instance_id) or not canonical.has(card.instance_id): return false
 		if canonical[card.instance_id] != {"owner": card.owner, "power": card.power}: return false
 		card_ids[card.instance_id] = true
-	if data.phase == "map":
+	if data.phase in ["map", "event"]:
 		if not cards.is_empty(): return false
 	elif card_ids.size() != canonical.size(): return false
 	for entry in s.enemy_plan:

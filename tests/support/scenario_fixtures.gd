@@ -2,10 +2,11 @@ extends RefCounted
 const Expedition = preload("res://scripts/expedition/expedition.gd")
 const Rules = preload("res://scripts/rules.gd")
 const Replay = preload("res://scripts/expedition/replay.gd")
-const NAMES = ["battle", "wounded", "enemy_shield", "rewards", "rewards_many", "replacement", "inventory_full", "motion_ember", "motion_ignivar", "motion_moss", "motion_verdalio", "motion_dew", "motion_mareveu", "motion_volt", "motion_tempestral"]
+const NAMES = ["spring_room", "spring_approach", "battle", "wounded", "enemy_shield", "rewards", "rewards_many", "replacement", "inventory_full", "motion_ember", "motion_ignivar", "motion_moss", "motion_verdalio", "motion_dew", "motion_mareveu", "motion_volt", "motion_tempestral"]
 
 static func make(name: String) -> Dictionary:
 	if name not in NAMES: return {}
+	if name in ["spring_room", "spring_approach"]: return _spring(name == "spring_room")
 	if name.begins_with("motion_"): return _motion(name)
 	var run = Expedition.new()
 	run.new_run(42013, "full", "ember")
@@ -60,4 +61,18 @@ static func _motion(name: String) -> Dictionary:
 	var snapshot: Dictionary = run.snapshot()
 	var result: Dictionary = Replay.envelope(snapshot, [])
 	result.merge({"name": name, "snapshot": snapshot})
+	return result
+
+static func _spring(enter: bool) -> Dictionary:
+	var base: Dictionary = make("rewards_many")
+	var initial: Dictionary = base.initial_state.duplicate(true)
+	for unit in initial.battle.party: unit.hp = int(unit.max_hp) - 12
+	var run = Expedition.new()
+	if not run.restore(initial): return {}
+	var commands: Array = base.commands.duplicate(true)
+	commands.append({"command": "reward", "index": 1})
+	if enter: commands.append({"command": "node", "id": "spring"})
+	if not Replay.execute(run, commands).ok or run.phase != ("event" if enter else "map"): return {}
+	var result: Dictionary = Replay.envelope(initial, commands)
+	result.merge({"name": "spring_room" if enter else "spring_approach", "snapshot": run.snapshot()})
 	return result

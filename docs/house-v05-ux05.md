@@ -1,7 +1,8 @@
 # V05-UX-05 — casa contínua de Pietro
 
-Base atual: main `11984047578652faf442d0e45666a9e361582a35`, incorporada na
-branch e confirmada por preflight com fetch. A versão anterior usava vistas
+Base atual: main `1523d0e7a34ef605bab140f9a979bc06a917f185`, incorporada na
+branch após fetch explícito de main. A Nascente contextual, ruleset 3 e migrações
+da run trazidas pela main foram preservadas sem alteração. A versão anterior usava vistas
 separadas; Pedro rejeitou essa solução após ver o vídeo. Ela está superada.
 Esta revisão mantém quarto, sala, cozinha e quarto da mãe em um único mundo 2D.
 O abrigo portátil dentro de um Umbral, que a mãe dará depois, é outro local futuro.
