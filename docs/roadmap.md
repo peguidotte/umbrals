@@ -1086,3 +1086,14 @@ controladas à distância. [Limites e próximo passo](../content/species/volt/RE
 Próxima fatia: obter a referência e produzir Nisca com estados corporais e origens
 de ataque verificadas, antes de avançar pins ou habilitar as formas finais.
 Versão do produto permanece 0.3.0; esta entrega não encerra o marco de arte.
+
+### V05-INT-01 — candidata de consolidação jogável
+
+Casa contínua (#11), locomoção/KO/reanimação de Brasa (#12) e nomes Nisca/Niscor
+(#13) foram revisados e reunidos localmente sobre main `1523d0e`, com união dos
+assets e preservação dos contratos da Nascente/save. O grupo focado passou;
+aceitação integral e revisão visual do conjunto exato ainda são necessárias.
+Água e grama não têm commits publicados nesta composição inicial. Não se declara
+arte das quatro famílias, finais, casa narrativa completa ou entrega na main.
+[Origens, donos, plano de aceitação e limites](playable-integration-v05-01.md).
+Não há alteração de workflows, proteção ou versão do produto.

@@ -2,8 +2,9 @@
 
 O blocking de malha 0.1.0 permanece reprovado e preservado. Esta revisão avalia
 poses novas da mesma forma `ember`, sem explorar ou produzir o final de fogo.
-Sendral continua aprovado; o final principal aguarda a nova proposta quadrúpede
-com três caudas e juba menor. Nenhuma dessas decisões aprova automaticamente
+Sendral continua aprovado; o final principal aprovado é o quadrúpede de três
+caudas com juba completa, à direita da comparação v9. Sua referência não pôde
+ser transferida e nenhum asset desse final foi produzido. Essas decisões não aprovam automaticamente
 os pixels novos de Brasa.
 
 A fonte `exec-90926448-5f64-4ca6-8e15-070e807370c9.png` foi criada por Image Gen
