@@ -71,6 +71,7 @@ func seek_cast(index: int, time: float, world_dash: Vector2) -> void:
 	_refresh()
 
 func seek_reaction(index: int, time: float) -> void:
+	if is_instance_valid(lifecycle): lifecycle.cancel_transient()
 	managed = true
 	mode = "reactions"
 	clip = index

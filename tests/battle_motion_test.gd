@@ -241,5 +241,9 @@ func lifecycle_alignment_checks() -> void:
 			body.rig.set_incapacitated(false, true)
 			body.rig.seek_cast(0, 0.1, Vector2.ZERO)
 			expect(not body.rig.lifecycle.active(), "A new cast can preempt cosmetic recovery without waiting: " + label)
+			body.rig.set_incapacitated(true, false)
+			body.rig.set_incapacitated(false, true)
+			body.rig.seek_reaction(0, 0.1)
+			expect(not body.rig.lifecycle.active() and body.rig.lifecycle.mesh_weight() == 1.0, "An impact exposes the existing hurt reaction during recovery: " + label)
 			body.queue_free()
 	await process_frame
