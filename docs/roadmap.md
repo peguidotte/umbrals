@@ -1099,3 +1099,30 @@ A correção foi publicada em `fix/codex-record-focus-20261105`; esta integraç�
 reúne a casa #11, Pietro #17 e o foco sobre a main atual. Próximo passo: unir com as demais origens revisadas e validar o conjunto
 exato. O gate integral anterior não é atribuído a esta mudança. Ator/despertar e
 famílias continuam com os mesmos limites visuais; versão permanece 0.3.0.
+
+### V05-ART-REF-01 — referências disponíveis para produção de identidades
+
+Fatia documental de apoio ao acabamento da 0.5, sobre a main `1523d0e`:
+[oito pranchas conceituais](references/identidades/README.md) materializadas
+pelo fluxo oficial da Library e preservadas sem transformação. Protagonista,
+fogo, Sendral, lebre, alternativa da lebre, água e elétrica têm os escopos visuais
+registrados no acervo; mineral vivo permanece proposta futura, não aprovado como
+inicial. Água: somente o painel inferior direito da companheira. Fogo: o arquivo
+fornecido contém o comparativo do final, sem prancha independente de Brasa inicial.
+
+Integridade: tamanhos conferidos contra a origem, oito PNGs decodificados e
+inspecionados, hashes de arquivos e pixels no catálogo documental. Esta entrega
+não altera conteúdo, sprites, saves, módulos de assets ou runtime-lock. Não há
+novo resultado de gameplay nem aceitação em cena. PR draft isolado para revisão,
+sem merge automático; versão permanece 0.3.0. Próximo passo: revisar a importação
+e então produzir sprites/animações separados a partir das direções aprovadas,
+com os gates próprios de assets e experiência.
+
+### Consolidação funcional provisória — V05-UX-05 / ART-01
+
+A integração reúne casa, Pietro e foco do grimório, preservando o acervo documental
+do PR #26. Pedro rejeitou o visual atual de Pietro e da casa: esta integração
+funcional não representa aprovação artística. Despertar e escada continuam
+provisórios; o acabamento visual segue em revisão separada. A suíte integral do
+HEAD funcional `1994376` passou no push 41964934938. Novos jobs do Actions estão
+bloqueados por cobrança; nenhum job novo é registrado como aprovado por isso.

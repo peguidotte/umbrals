@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-11-05T03:00:19.656052+00:00",
+  "base_commit": "1523d0e7a34ef605bab140f9a979bc06a917f185",
+  "source_thread_id": "01a1995a-68d5-732a-8d6d-7913234900ee",
+  "purpose": "Concept references for later production; approval scope belongs to each record.",
+  "runtime_policy": "Documentation only. No asset module, production binding or runtime-lock change.",
+  "image_count": 8,
+  "images": [
+    {
+      "id": "protagonista",
+      "title": "Protagonista — referência visual",
+      "path": "direcoes/protagonista.png",
+      "role": "concept_reference_board",
+      "runtime_ready": false,
+      "approval": {
+        "status": "approved_visual_direction",
+        "scope": "Prancha de aparência do protagonista: cabelo escuro, lenço dourado, casaco azul com bordados, mochila, grimório e cartas.",
+        "limits": "Não fixa nome canônico, lore, escala em cena, frames de movimento ou sprite pronto.",
+        "evidence": "Parent-thread delegation on 2026-11-05; supplied Library IDs and approval scopes."
+      },
+      "source": {
+        "kind": "concept reference supplied from ChatGPT Library",
+        "library_file_id": "libfile_7a1f2d2e78ac8191a4109773df9dce86",
+        "file_id": "file_00000000706881fdbb9522eb790f66ac",
+        "library_version": 0,
+        "original_filename": "exec-b7298ec7-edce-4c34-a9c7-02f7584b7de9.png",
+        "generation_tool_model_prompt": "Not supplied by materialization; no inference from filename or style.",
+        "rights": "Project concept references supplied for this repository; no new third-party license inferred.",
+        "edit_history": "Byte-identical copy of the materialized original; no crop, resample, recompression or metadata removal."
+      },
+      "integrity": {
+        "sha256": "341e3bacc0faff403b09c2698c7af0b0473842de36db264f49f9d2472ce39858",
+        "bytes": 2777227,
+        "reported_source_bytes": 2777227,
+        "format": "PNG",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGB",
+        "pixel_sha256": "21923a6cdb5be62be82157823f75093206c07728452e5693fd50a55cbd489ad7",
+        "pillow_metadata_keys": []
+      },
+      "inspection": {
+        "png_verify": "passed",
+        "full_pixel_decode": "passed",
+        "byte_identical_to_materialized_source": true,
+        "visual_review": "Personagem em corpo inteiro, vistas, expressões, acessórios e estudo pixelado no mesmo painel.",
+        "in_engine_validation": "Not performed; reference only."
+      }
+    },
+    {
+      "id": "fogo-final-juba",
+      "title": "Brasa — final principal com juba completa",
+      "path": "direcoes/fogo-final-juba-completa.png",
+      "role": "concept_reference_board",
+      "runtime_ready": false,
+      "approval": {
+        "status": "approved_visual_direction",
+        "scope": "Final principal de fogo: variante da direita, rotulada Juba completa; três caudas preservadas.",
+        "limits": "O comparativo não contém uma prancha independente da forma inicial Brasa. A variante Original à esquerda é contexto; não promove arte a runtime.",
+        "evidence": "Parent-thread delegation on 2026-11-05; supplied Library IDs and approval scopes."
+      },
+      "source": {
+        "kind": "concept reference supplied from ChatGPT Library",
+        "library_file_id": "libfile_6ab7ff3bcbd88191a628e74f2b8e9421",
+        "file_id": "file_0000000086ac81fd90a26aaa3b980940",
+        "library_version": 0,
+        "original_filename": "final-fogo-juba-completa-comparativo-v9.png",
+        "generation_tool_model_prompt": "Not supplied by materialization; no inference from filename or style.",
+        "rights": "Project concept references supplied for this repository; no new third-party license inferred.",
+        "edit_history": "Byte-identical copy of the materialized original; no crop, resample, recompression or metadata removal."
+      },
+      "integrity": {
+        "sha256": "1b399eb0c0733cf5ee27212fae7996cff1afe5dc37afe5d85da40d8e71ca77ce",
+        "bytes": 2367963,
+        "reported_source_bytes": 2367963,
+        "format": "PNG",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGB",
+        "pixel_sha256": "38d5a2f3e334b00f5cc18fefc8b268e17cfac5183809db1577733c42d106e12c",
+        "pillow_metadata_keys": []
+      },
+      "inspection": {
+        "png_verify": "passed",
+        "full_pixel_decode": "passed",
+        "byte_identical_to_materialized_source": true,
+        "visual_review": "Comparação lado a lado do mesmo quadrúpede com três caudas em chamas; a direita tem juba contínua no pescoço.",
+        "in_engine_validation": "Not performed; reference only."
+      }
+    },
+    {
+      "id": "sendral",
+      "title": "Sendral — cinzas livres",
+      "path": "direcoes/sendral-cinzas-livres.png",
+      "role": "concept_reference_board",
+      "runtime_ready": false,
+      "approval": {
+        "status": "approved_visual_direction",
+        "scope": "Direção visual de Sendral e das cinzas livres junto ao corpo e na cauda.",
+        "limits": "Não fecha natureza, forma mecânica, poderes ou efeitos de combate. A frase impressa em aberto permanece na fonte histórica.",
+        "evidence": "Parent-thread delegation on 2026-11-05; supplied Library IDs and approval scopes."
+      },
+      "source": {
+        "kind": "concept reference supplied from ChatGPT Library",
+        "library_file_id": "libfile_c3b38ea9bcd88191bc575a7414f977a0",
+        "file_id": "file_00000000b9fc81fdb4f24b6680cba654",
+        "library_version": 0,
+        "original_filename": "sendral-cinzas-livres-v6.png",
+        "generation_tool_model_prompt": "Not supplied by materialization; no inference from filename or style.",
+        "rights": "Project concept references supplied for this repository; no new third-party license inferred.",
+        "edit_history": "Byte-identical copy of the materialized original; no crop, resample, recompression or metadata removal."
+      },
+      "integrity": {
+        "sha256": "3a26166ca7f2e65ecb2843a42927d2aff583d643eca0e0b46de763c141517453",
+        "bytes": 2634665,
+        "reported_source_bytes": 2634665,
+        "format": "PNG",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGB",
+        "pixel_sha256": "62926f976b06f43dce4d8bba2ce5da3d397ff71e533593ab8b5de4398ad53434",
+        "pillow_metadata_keys": []
+      },
+      "inspection": {
+        "png_verify": "passed",
+        "full_pixel_decode": "passed",
+        "byte_identical_to_materialized_source": true,
+        "visual_review": "Quadrúpede cinza/violeta, cauda em fluxo de cinzas e dois detalhes ampliados.",
+        "in_engine_validation": "Not performed; reference only."
+      }
+    },
+    {
+      "id": "lebre-linhagem",
+      "title": "Lebre — estudo de linhagem",
+      "path": "direcoes/lebre-linhagem.png",
+      "role": "concept_reference_board",
+      "runtime_ready": false,
+      "approval": {
+        "status": "approved_visual_direction",
+        "scope": "Prancha de referência da linhagem de lebre; consultar também o refinamento aprovado da alternativa.",
+        "limits": "A alternativa desta prancha tem refinamento separado em lebre-alternativa. As legendas não criam espécies, arestas de evolução, naturezas ou armas mecânicas.",
+        "evidence": "Parent-thread delegation on 2026-11-05; supplied Library IDs and approval scopes."
+      },
+      "source": {
+        "kind": "concept reference supplied from ChatGPT Library",
+        "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+        "file_id": "file_00000000c39c81fdbcd4fb2a7905d6c6",
+        "library_version": 0,
+        "original_filename": "lebre-linhagem-v11.png",
+        "generation_tool_model_prompt": "Not supplied by materialization; no inference from filename or style.",
+        "rights": "Project concept references supplied for this repository; no new third-party license inferred.",
+        "edit_history": "Byte-identical copy of the materialized original; no crop, resample, recompression or metadata removal."
+      },
+      "integrity": {
+        "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80",
+        "bytes": 2084314,
+        "reported_source_bytes": 2084314,
+        "format": "PNG",
+        "dimensions": [
+          1774,
+          887
+        ],
+        "mode": "RGB",
+        "pixel_sha256": "ed8e5ef0831b2e0d5e7d4416866c7cd1dc96bb1068248c5cd56405848c9b85bb",
+        "pillow_metadata_keys": []
+      },
+      "inspection": {
+        "png_verify": "passed",
+        "full_pixel_decode": "passed",
+        "byte_identical_to_materialized_source": true,
+        "visual_review": "Inicial, intermediária, final padrão com folha longa e final alternativa quadrúpede.",
+        "in_engine_validation": "Not performed; reference only."
+      }
+    },
+    {
+      "id": "lebre-alternativa",
+      "title": "Lebre — alternativa silenciosa refinada",
+      "path": "direcoes/lebre-alternativa-silenciosa.png",
+      "role": "concept_reference_board",
+      "runtime_ready": false,
+      "approval": {
+        "status": "approved_visual_direction",
+        "scope": "Refinamento aprovado da final alternativa silenciosa, com folhagem cortante integrada nos quatro membros.",
+        "limits": "Não atribui dano, elemento, habilidade, frames de ataque ou prontidão para o jogo.",
+        "evidence": "Parent-thread delegation on 2026-11-05; supplied Library IDs and approval scopes."
+      },
+      "source": {
+        "kind": "concept reference supplied from ChatGPT Library",
+        "library_file_id": "libfile_5e6845c3842c81919a200b01a1b0c40f",
+        "file_id": "file_00000000669081fd86a54531d7388e14",
+        "library_version": 0,
+        "original_filename": "lebre-silenciosa-refinada-v13.png",
+        "generation_tool_model_prompt": "Not supplied by materialization; no inference from filename or style.",
+        "rights": "Project concept references supplied for this repository; no new third-party license inferred.",
+        "edit_history": "Byte-identical copy of the materialized original; no crop, resample, recompression or metadata removal."
+      },
+      "integrity": {
+        "sha256": "f75649f947c34fa726d190eb1109f2313220759c50cee5e761394eb6a92bbb57",
+        "bytes": 1902868,
+        "reported_source_bytes": 1902868,
+        "format": "PNG",
+        "dimensions": [
+          1774,
+          887
+        ],
+        "mode": "RGB",
+        "pixel_sha256": "1c00da915f0479e518aa7bdd234aa58015186b3962aa7cfb402a9b68fcc69c5f",
+        "pillow_metadata_keys": []
+      },
+      "inspection": {
+        "png_verify": "passed",
+        "full_pixel_decode": "passed",
+        "byte_identical_to_materialized_source": true,
+        "visual_review": "Lebre quadrúpede alongada, orelhas e lâminas de folhagem integradas.",
+        "in_engine_validation": "Not performed; reference only."
+      }
+    },
+    {
+      "id": "agua-companheira",
+      "title": "Água — esfera como companheira",
+      "path": "direcoes/agua-companheira.png",
+      "role": "concept_reference_board",
+      "runtime_ready": false,
+      "approval": {
+        "status": "approved_visual_direction",
+        "scope": "Somente o painel inferior direito, rotulado 02 · ESFERA COMO COMPANHEIRO, é a direção aprovada nesta importação.",
+        "limits": "A linha superior e o painel 01 · ESFERA COMO NÚCLEO são contexto preservado. A legenda Linha aprovada impressa no topo não amplia a aprovação recebida. Relação/ações mostradas não definem mecânicas.",
+        "evidence": "Parent-thread delegation on 2026-11-05; supplied Library IDs and approval scopes."
+      },
+      "source": {
+        "kind": "concept reference supplied from ChatGPT Library",
+        "library_file_id": "libfile_2c296e23cd5c819189c30eaa74c3da82",
+        "file_id": "file_000000006c6481fdb93fdfc78bf60df4",
+        "library_version": 0,
+        "original_filename": "familia-agua-companheiro-azul-v10.png",
+        "generation_tool_model_prompt": "Not supplied by materialization; no inference from filename or style.",
+        "rights": "Project concept references supplied for this repository; no new third-party license inferred.",
+        "edit_history": "Byte-identical copy of the materialized original; no crop, resample, recompression or metadata removal."
+      },
+      "integrity": {
+        "sha256": "61cde75a09c4675289232063f4c5eb3b41c6d7770e320fe341bea051288b8484",
+        "bytes": 2270346,
+        "reported_source_bytes": 2270346,
+        "format": "PNG",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGB",
+        "pixel_sha256": "cd7e07455c3b19940397df705dab7df8976a75cf5c12690394d3781eb1299eb2",
+        "pillow_metadata_keys": []
+      },
+      "inspection": {
+        "png_verify": "passed",
+        "full_pixel_decode": "passed",
+        "byte_identical_to_materialized_source": true,
+        "visual_review": "Lontra azul física e companheira de água em formas próprias no painel inferior direito.",
+        "in_engine_validation": "Not performed; reference only."
+      }
+    },
+    {
+      "id": "eletrica",
+      "title": "Elétrica — rostos e pelos azuis",
+      "path": "direcoes/eletrica-rostos-pelos-azuis.png",
+      "role": "concept_reference_board",
+      "runtime_ready": false,
+      "approval": {
+        "status": "approved_visual_direction",
+        "scope": "Família elétrica como referência visual fornecida: rostos, pelagem azul/violeta, espinhos e acentos elétricos.",
+        "limits": "A prancha conserva rótulos de proposta nos estágios seguintes. Não infere seleção exclusiva entre finais A/B, nomes, atributos ou catálogo aprovado.",
+        "evidence": "Parent-thread delegation on 2026-11-05; supplied Library IDs and approval scopes."
+      },
+      "source": {
+        "kind": "concept reference supplied from ChatGPT Library",
+        "library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "file_id": "file_00000000958081fda94d70eedbc95315",
+        "library_version": 0,
+        "original_filename": "familia-eletrica-rostos-pelos-azuis-v10.png",
+        "generation_tool_model_prompt": "Not supplied by materialization; no inference from filename or style.",
+        "rights": "Project concept references supplied for this repository; no new third-party license inferred.",
+        "edit_history": "Byte-identical copy of the materialized original; no crop, resample, recompression or metadata removal."
+      },
+      "integrity": {
+        "sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "bytes": 2235483,
+        "reported_source_bytes": 2235483,
+        "format": "PNG",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGB",
+        "pixel_sha256": "f9ece5a25f06791584d4434a775d5f7e4b2fd0fc39baa9ea7633e1ec11a8aba7",
+        "pillow_metadata_keys": []
+      },
+      "inspection": {
+        "png_verify": "passed",
+        "full_pixel_decode": "passed",
+        "byte_identical_to_materialized_source": true,
+        "visual_review": "Base e intermediária à esquerda; final A alada acima à direita e final B bípede com espinhos azuis abaixo.",
+        "in_engine_validation": "Not performed; reference only."
+      }
+    },
+    {
+      "id": "mineral-futuro",
+      "title": "Mineral vivo — proposta futura",
+      "path": "propostas/mineral-futuro-comparativo.png",
+      "role": "concept_reference_board",
+      "runtime_ready": false,
+      "approval": {
+        "status": "future_proposal",
+        "scope": "Somente a opção C · Mineral vivo é preservada como proposta para consideração futura.",
+        "limits": "Não aprovado como inicial. A · Vaga-lume e B · Nuvem viva são contexto da comparação histórica, sem nova aprovação. O título Inicial elétrico da imagem não altera esse status.",
+        "evidence": "Parent-thread delegation on 2026-11-05; supplied Library IDs and approval scopes."
+      },
+      "source": {
+        "kind": "concept reference supplied from ChatGPT Library",
+        "library_file_id": "libfile_b948146749bc81918d88318dc2d04f22",
+        "file_id": "file_0000000088e881fdb4f0c0696296dc54",
+        "library_version": 0,
+        "original_filename": "inicial-eletrico-novas-direcoes.png",
+        "generation_tool_model_prompt": "Not supplied by materialization; no inference from filename or style.",
+        "rights": "Project concept references supplied for this repository; no new third-party license inferred.",
+        "edit_history": "Byte-identical copy of the materialized original; no crop, resample, recompression or metadata removal."
+      },
+      "integrity": {
+        "sha256": "ff1f453e3b52008ddbbaf9dc38063661f5601425a0f7db2448eab1c83e255061",
+        "bytes": 2181401,
+        "reported_source_bytes": 2181401,
+        "format": "PNG",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "pixel_sha256": "1e76cf0f7e529b02064f8198a63481d6c6b448ebb496d92b90a103fdd4ec557a",
+        "pillow_metadata_keys": []
+      },
+      "inspection": {
+        "png_verify": "passed",
+        "full_pixel_decode": "passed",
+        "byte_identical_to_materialized_source": true,
+        "visual_review": "Três estudos lado a lado: vaga-lume, nuvem viva e mineral escuro com cristais dourados.",
+        "in_engine_validation": "Not performed; reference only."
+      }
+    }
+  ]
+}
