@@ -383,6 +383,20 @@
         }
       }
     },
+    "characters/foli-lifecycle": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/characters/foli-lifecycle/versions/0.1.0/manifest.json",
+          "sha256": "b7409970ab1bb4ddd438ec35ba1552559db36c395059edaf103e2c198989f91f",
+          "status": "prototype"
+        },
+        "1.0.0": {
+          "manifest": "assets/characters/foli-lifecycle/versions/1.0.0/manifest.json",
+          "sha256": "4f74479f17fe6396d7b4a71afbb59dbcf82f45d2f70a6fa303849ea1c66dd235",
+          "status": "production"
+        }
+      }
+    },
     "characters/foli-pilot": {
       "versions": {
         "1.0.0": {

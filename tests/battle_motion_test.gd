@@ -54,6 +54,7 @@ func _run() -> void:
 	await process_frame
 	app.preferences.set_value("reduced_motion", false)
 	await preload("res://tests/support/foli_motion_checks.gd").run(app, expect)
+	await preload("res://tests/support/foli_lifecycle_checks.gd").run(app, expect)
 	app._start_game(42013, "ember")
 	await process_frame
 	var hud: Control = app.screen_host.battle_root.hud
