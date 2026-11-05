@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "id": "characters/pietro-home-transitions",
+  "version": "1.0.0",
+  "status": "production",
+  "description": "Generated whole-body wake, ascent and descent drawings for Pietro; visual prototype with stair gait still under review",
+  "dependencies": [
+    {
+      "id": "characters/pietro-home",
+      "version": "2.0.0"
+    }
+  ],
+  "files": {
+    "wake": {
+      "path": "wake.png",
+      "kind": "texture",
+      "sha256": "77539ed7328e7836af262043467c63f499b023f3c8eab2caf4e3eeb862ce8a87",
+      "bytes": 1802711,
+      "technical": {
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      },
+      "provenance": {
+        "kind": "generated original",
+        "original_output_basename": "exec-14545153-982b-407d-aa53-69812ea31f4d.png",
+        "original_sha256": "77539ed7328e7836af262043467c63f499b023f3c8eab2caf4e3eeb862ce8a87",
+        "edit_history": "Byte-identical original PNG; no raster edits."
+      }
+    },
+    "ascent": {
+      "path": "ascent.png",
+      "kind": "texture",
+      "sha256": "371f4fd34b64dd5f24ca5f594f775aa5cc65665bb64ddfd0ccdf4c3f0b03f8b0",
+      "bytes": 1272928,
+      "technical": {
+        "dimensions": [
+          1774,
+          887
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      },
+      "provenance": {
+        "kind": "generated original",
+        "original_output_basename": "exec-9fd588fb-aad6-4090-a165-042531d65b63.png",
+        "original_sha256": "371f4fd34b64dd5f24ca5f594f775aa5cc65665bb64ddfd0ccdf4c3f0b03f8b0",
+        "edit_history": "Byte-identical original PNG; no raster edits."
+      }
+    },
+    "descent": {
+      "path": "descent.png",
+      "kind": "texture",
+      "sha256": "ab9b6867d762796ed6de7f9e2ae5cdeb83d5b1f810b25725dc7a20b665fe118b",
+      "bytes": 827417,
+      "technical": {
+        "dimensions": [
+          1774,
+          887
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      },
+      "provenance": {
+        "kind": "generated original",
+        "original_output_basename": "exec-77d75ee5-53ab-4e23-8882-90138c20bdc5.png",
+        "original_sha256": "ab9b6867d762796ed6de7f9e2ae5cdeb83d5b1f810b25725dc7a20b665fe118b",
+        "edit_history": "Byte-identical original PNG; no raster edits."
+      }
+    },
+    "poses": {
+      "path": "poses.json",
+      "kind": "data",
+      "sha256": "7071d67635518d7e115eeb34c70e618ebb403f0fc2678643ac6cbe5929404781",
+      "bytes": 8126
+    },
+    "generation-prompts": {
+      "path": "generation-prompts.json",
+      "kind": "data",
+      "sha256": "ff6ff246a11273c25218281607482810114a6a42accfc171e997f2d785a5bf2a",
+      "bytes": 8906
+    },
+    "ascent-initial": {
+      "path": "review/ascent-initial.png",
+      "kind": "review",
+      "sha256": "70b8d7b069e3c6153ae62db062eb715f1be45fa059c202a5472f6ead2c6221e4",
+      "bytes": 948381,
+      "technical": {
+        "dimensions": [
+          1774,
+          887
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    },
+    "source-check": {
+      "path": "review/check_source.py",
+      "kind": "review",
+      "sha256": "d7469bf15dff6921f0b9285da434e5b9fa2101edbf2880d4b4d9a91e36ed4daf",
+      "bytes": 2587
+    },
+    "ascent-alternation-attempt": {
+      "path": "review/ascent-alternation-attempt.png",
+      "kind": "review",
+      "sha256": "e2028d987ef076f54f660f0bd97df9d27c889f01a4f245de007e3ef6af59683e",
+      "bytes": 1052442,
+      "technical": {
+        "dimensions": [
+          1774,
+          887
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    },
+    "ascent-alternation-prompt": {
+      "path": "review/ascent-alternation-prompt.txt",
+      "kind": "review",
+      "sha256": "d55641ee40333902c865752eb941a130eac7de182dcc7862d618238d96830d65",
+      "bytes": 2130
+    }
+  },
+  "provenance": {
+    "kind": "generated original",
+    "tool": "OpenAI Image Gen",
+    "recorded_date_utc": "2026-11-05",
+    "license_record": "Original artwork for Umbral from project-owned Pietro home atlas and approved identity reference.",
+    "identity_reference": {
+      "id": "characters/pietro-home",
+      "version": "2.0.0",
+      "file": "texture",
+      "approved_library_concept": "libfile_7a1f2d2e78ac8191a4109773df9dce86"
+    },
+    "edit_history": "Three generated PNG originals preserved without pixel edits. Ascent uses an Image Gen refinement of its first source to reduce excessive step height. Earlier source and QA remain in ignored artifacts. Wake regions normalize irregular sheet placement at runtime.",
+    "model_version": "Not exposed by tool; none inferred.",
+    "review_status": "Source pixels, native input/state and first real Web traversal inspected. Wake is a candidate improvement. Stair drawings are distinct from walking, but strong leg alternation and frame-to-frame planted-foot continuity are not yet convincing enough for aesthetic approval. Keep in draft; no merge.",
+    "ascent_initial_source": {
+      "file": "review/ascent-initial.png",
+      "original_output_basename": "exec-2d182da3-bf7f-4fc1-8c15-504e621e49e2.png",
+      "sha256": "70b8d7b069e3c6153ae62db062eb715f1be45fa059c202a5472f6ead2c6221e4",
+      "reason_for_refinement": "Raised foot spacing was excessive for the home treads. Source retained; not selected by runtime."
+    },
+    "ascent_alternation_attempt": {
+      "file": "review/ascent-alternation-attempt.png",
+      "original_output_basename": "exec-2e10f25d-1b69-4469-b928-1e4206ffe74d.png",
+      "sha256": "e2028d987ef076f54f660f0bd97df9d27c889f01a4f245de007e3ef6af59683e",
+      "review": "Not selected. Near-leg knee stayed dominant and the stride became wider; this did not resolve the remaining gait issue."
+    }
+  }
+}

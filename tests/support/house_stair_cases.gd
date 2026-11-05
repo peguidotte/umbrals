@@ -38,7 +38,15 @@ static func clearance_cases(room: Control, expect: Callable) -> void:
 	var old_stride: float = actor.stride
 	var old_facing: Vector2 = actor.facing
 	var old_angle: float = actor.rest_angle
+	var old_wake: float = actor.wake_phase
+	var old_stair: float = actor.stair_progress
+	var old_direction: float = actor.stair_direction
+	var old_on_stairs: bool = actor.on_stairs
+	var old_reduced: bool = actor.reduced_motion
 	actor.rest_angle = 0
+	actor.wake_phase = -1
+	actor.on_stairs = true
+	actor.reduced_motion = false
 	for viewport in [Vector2(1280, 720), Vector2(1440, 900), Vector2(1920, 1080), Vector2(1024, 768), Vector2(2560, 1080)]:
 		var camera: RefCounted = Camera.new()
 		camera.layout(viewport)
@@ -49,8 +57,9 @@ static func clearance_cases(room: Control, expect: Callable) -> void:
 			camera.follow(actor.point, 0, true)
 			for direction in [-1, 1]:
 				actor.facing = Vector2(direction, 0)
-				for stride in range(7):
-					actor.stride = stride
+				actor.stair_direction = direction
+				for frame in range(8):
+					actor.stair_progress = float(frame) / 8 * 2 / Space.STEPS
 					contained = contained and safe.encloses(camera.projection() * actor.actor_bounds())
 			expect.call((camera.projection().affine_inverse() * (camera.projection() * actor.point)).distance_to(actor.point) < 0.01, "Pointer projection round-trips on stairs at %dx%d" % [viewport.x, viewport.y])
 		expect.call(contained, "Full atlas frames retain camera margin across stairs at %dx%d" % [viewport.x, viewport.y])
@@ -58,3 +67,8 @@ static func clearance_cases(room: Control, expect: Callable) -> void:
 	actor.stride = old_stride
 	actor.facing = old_facing
 	actor.rest_angle = old_angle
+	actor.wake_phase = old_wake
+	actor.stair_progress = old_stair
+	actor.stair_direction = old_direction
+	actor.on_stairs = old_on_stairs
+	actor.reduced_motion = old_reduced

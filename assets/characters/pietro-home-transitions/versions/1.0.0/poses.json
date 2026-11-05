@@ -1,0 +1,450 @@
+{
+  "schema_version": 1,
+  "duration": 2.4,
+  "stair_steps_per_cycle": 2,
+  "clips": {
+    "wake": {
+      "file": "wake",
+      "scale": 0.96,
+      "boundaries": [
+        0,
+        0.18,
+        0.34,
+        0.5,
+        0.66,
+        0.86,
+        1.0
+      ],
+      "frames": [
+        {
+          "region": [
+            12,
+            195,
+            522,
+            163
+          ],
+          "pivot": [
+            270,
+            98
+          ],
+          "bed_offset": [
+            -200,
+            -30
+          ],
+          "name": "lying"
+        },
+        {
+          "region": [
+            557,
+            96,
+            458,
+            259
+          ],
+          "pivot": [
+            222,
+            202
+          ],
+          "bed_offset": [
+            -200,
+            -30
+          ],
+          "name": "propped"
+        },
+        {
+          "region": [
+            1092,
+            41,
+            362,
+            341
+          ],
+          "pivot": [
+            136,
+            280
+          ],
+          "bed_offset": [
+            -200,
+            -30
+          ],
+          "name": "knees_seated"
+        },
+        {
+          "region": [
+            123,
+            504,
+            294,
+            457
+          ],
+          "pivot": [
+            111,
+            276
+          ],
+          "bed_offset": [
+            -100,
+            -30
+          ],
+          "name": "edge_seated"
+        },
+        {
+          "region": [
+            626,
+            510,
+            229,
+            453
+          ],
+          "pivot": [
+            114,
+            260
+          ],
+          "bed_offset": [
+            -30,
+            103.36
+          ],
+          "name": "rising",
+          "floor_contact": true,
+          "sole_y": 444
+        },
+        {
+          "region": [
+            1157,
+            428,
+            183,
+            535
+          ],
+          "pivot": [
+            63,
+            297
+          ],
+          "bed_offset": [
+            0,
+            59.2
+          ],
+          "name": "standing",
+          "floor_contact": true,
+          "sole_y": 527
+        }
+      ]
+    },
+    "ascent": {
+      "file": "ascent",
+      "scale": 1.28,
+      "frames": [
+        {
+          "region": [
+            135,
+            36,
+            180,
+            401
+          ],
+          "pivot": [
+            85,
+            394
+          ],
+          "name": "ascent_0",
+          "source_visible_bounds": [
+            140,
+            41,
+            310,
+            432
+          ]
+        },
+        {
+          "region": [
+            583,
+            35,
+            180,
+            397
+          ],
+          "pivot": [
+            80,
+            395
+          ],
+          "name": "ascent_1",
+          "source_visible_bounds": [
+            145,
+            40,
+            315,
+            427
+          ]
+        },
+        {
+          "region": [
+            1029,
+            36,
+            172,
+            379
+          ],
+          "pivot": [
+            78,
+            394
+          ],
+          "name": "ascent_2",
+          "source_visible_bounds": [
+            147,
+            41,
+            309,
+            410
+          ]
+        },
+        {
+          "region": [
+            1477,
+            36,
+            169,
+            367
+          ],
+          "pivot": [
+            73,
+            394
+          ],
+          "name": "ascent_3",
+          "source_visible_bounds": [
+            152,
+            41,
+            311,
+            398
+          ]
+        },
+        {
+          "region": [
+            148,
+            480,
+            166,
+            378
+          ],
+          "pivot": [
+            72,
+            393
+          ],
+          "name": "ascent_4",
+          "source_visible_bounds": [
+            153,
+            42,
+            309,
+            410
+          ]
+        },
+        {
+          "region": [
+            594,
+            479,
+            164,
+            390
+          ],
+          "pivot": [
+            69,
+            394
+          ],
+          "name": "ascent_5",
+          "source_visible_bounds": [
+            156,
+            41,
+            310,
+            421
+          ]
+        },
+        {
+          "region": [
+            1043,
+            479,
+            158,
+            398
+          ],
+          "pivot": [
+            64,
+            394
+          ],
+          "name": "ascent_6",
+          "source_visible_bounds": [
+            161,
+            41,
+            309,
+            429
+          ]
+        },
+        {
+          "region": [
+            1470,
+            479,
+            177,
+            398
+          ],
+          "pivot": [
+            80,
+            394
+          ],
+          "name": "ascent_7",
+          "source_visible_bounds": [
+            145,
+            41,
+            312,
+            429
+          ]
+        }
+      ]
+    },
+    "descent": {
+      "file": "descent",
+      "scale": 1.28,
+      "frames": [
+        {
+          "region": [
+            124,
+            20,
+            191,
+            408
+          ],
+          "pivot": [
+            96,
+            410
+          ],
+          "name": "descent_0",
+          "source_visible_bounds": [
+            129,
+            25,
+            310,
+            423
+          ]
+        },
+        {
+          "region": [
+            569,
+            33,
+            158,
+            396
+          ],
+          "pivot": [
+            94,
+            397
+          ],
+          "name": "descent_1",
+          "source_visible_bounds": [
+            131,
+            38,
+            279,
+            424
+          ]
+        },
+        {
+          "region": [
+            1016,
+            39,
+            155,
+            389
+          ],
+          "pivot": [
+            91,
+            391
+          ],
+          "name": "descent_2",
+          "source_visible_bounds": [
+            134,
+            44,
+            279,
+            423
+          ]
+        },
+        {
+          "region": [
+            1458,
+            48,
+            199,
+            392
+          ],
+          "pivot": [
+            92,
+            382
+          ],
+          "name": "descent_3",
+          "source_visible_bounds": [
+            133,
+            53,
+            322,
+            435
+          ]
+        },
+        {
+          "region": [
+            131,
+            487,
+            160,
+            395
+          ],
+          "pivot": [
+            89,
+            386
+          ],
+          "name": "descent_4",
+          "source_visible_bounds": [
+            136,
+            49,
+            286,
+            434
+          ]
+        },
+        {
+          "region": [
+            569,
+            496,
+            153,
+            388
+          ],
+          "pivot": [
+            94,
+            377
+          ],
+          "name": "descent_5",
+          "source_visible_bounds": [
+            131,
+            58,
+            274,
+            436
+          ]
+        },
+        {
+          "region": [
+            1010,
+            495,
+            151,
+            390
+          ],
+          "pivot": [
+            97,
+            378
+          ],
+          "name": "descent_6",
+          "source_visible_bounds": [
+            128,
+            57,
+            269,
+            437
+          ]
+        },
+        {
+          "region": [
+            1454,
+            496,
+            185,
+            391
+          ],
+          "pivot": [
+            96,
+            377
+          ],
+          "name": "descent_7",
+          "source_visible_bounds": [
+            129,
+            58,
+            304,
+            443
+          ]
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Original PNGs remain byte-identical; regions are selected only in the engine.",
+    "Wake sheet does not have a reliable regular grid; six disjoint connected figures use explicit regions.",
+    "Up/down poses select by actual tread progress, never by the walking FPS clock.",
+    "Stair pivot is common per original cell, preserving torso placement instead of renormalizing each lifted foot."
+  ]
+}

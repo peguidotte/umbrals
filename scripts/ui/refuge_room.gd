@@ -24,6 +24,7 @@ var exit_ready: bool = true
 var pointer_target: float = NAN
 var pointer_intent: String = ""
 var walking: bool = false
+var published_pose: Dictionary = {}
 var hotspots: Dictionary = {}
 var notice_label: Label
 var room_label: Label
@@ -96,6 +97,7 @@ func set_active(value: bool) -> void:
 
 func apply_preferences(motion_reduced: bool, text_scale: float) -> void:
 	reduced = motion_reduced
+	canvas.reduced_motion = reduced
 	notice_label.add_theme_font_size_override("font_size", int(20 * text_scale))
 	room_label.add_theme_font_size_override("font_size", int(26 * text_scale))
 	if reduced:
@@ -182,9 +184,12 @@ func _publish_motion(previous: Vector2, delta: float, old_room: String, arrived:
 	canvas.nearby = Space.nearest(canvas.point, motion.upper, motion.on_stairs)
 	canvas.on_stairs = motion.on_stairs
 	canvas.queue_redraw()
+	var pose: Dictionary = canvas.pose_state()
+	var pose_changed: bool = pose != published_pose
+	published_pose = pose
 	if canvas.room != old_room: _room_changed()
 	elapsed += delta
-	if arrived or movement_changed or ((moving or camera.center.distance_to(prior_camera) > 0.01) and (elapsed >= 0.1 or canvas.point.x in [Space.LEFT, Space.RIGHT, Space.UPPER_LEFT, Space.UPPER_RIGHT])):
+	if arrived or movement_changed or pose_changed or ((moving or camera.center.distance_to(prior_camera) > 0.01) and (elapsed >= 0.1 or canvas.point.x in [Space.LEFT, Space.RIGHT, Space.UPPER_LEFT, Space.UPPER_RIGHT])):
 		elapsed = 0
 		changed.emit()
 
@@ -306,6 +311,7 @@ func public_state() -> Dictionary:
 	var frame: Rect2 = canvas.transform * canvas.actor_bounds()
 	var state: Dictionary = {"location": "pietro_house", "room": canvas.room, "position": [canvas.point.x, canvas.point.y], "nearby": Space.nearest(canvas.point, motion.upper, motion.on_stairs), "active": active, "armed": armed, "notice": notice, "stride": canvas.stride, "exit_ready": exit_ready, "pointer_walking": not is_nan(pointer_target), "scene_origin": [canvas.position.x, canvas.position.y], "scene_scale": canvas.scale.x, "world_size": [Space.SIZE.x, Space.SIZE.y], "camera_center": [camera.center.x, camera.center.y], "viewport": [size.x, size.y], "actor_frame": [frame.position.x, frame.position.y, frame.size.x, frame.size.y]}
 	state.merge(motion.public_state())
+	state["actor_pose"] = canvas.pose_state()
 	return state
 
 func _draw() -> void:

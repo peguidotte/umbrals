@@ -4024,6 +4024,334 @@
       "version": "2.0.0"
     },
     {
+      "bytes": 1272928,
+      "id": "characters/pietro-home-transitions@1.0.0:ascent",
+      "kind": "texture",
+      "module": "characters/pietro-home-transitions",
+      "path": "assets/characters/pietro-home-transitions/versions/1.0.0/ascent.png",
+      "role": "ascent",
+      "sha256": "371f4fd34b64dd5f24ca5f594f775aa5cc65665bb64ddfd0ccdf4c3f0b03f8b0",
+      "source": {
+        "edit_history": "Byte-identical original PNG; no raster edits.",
+        "kind": "generated original",
+        "original_output_basename": "exec-9fd588fb-aad6-4090-a165-042531d65b63.png",
+        "original_sha256": "371f4fd34b64dd5f24ca5f594f775aa5cc65665bb64ddfd0ccdf4c3f0b03f8b0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1052442,
+      "id": "characters/pietro-home-transitions@1.0.0:ascent-alternation-attempt",
+      "kind": "review",
+      "module": "characters/pietro-home-transitions",
+      "path": "assets/characters/pietro-home-transitions/versions/1.0.0/review/ascent-alternation-attempt.png",
+      "role": "ascent-alternation-attempt",
+      "sha256": "e2028d987ef076f54f660f0bd97df9d27c889f01a4f245de007e3ef6af59683e",
+      "source": {
+        "ascent_alternation_attempt": {
+          "file": "review/ascent-alternation-attempt.png",
+          "original_output_basename": "exec-2e10f25d-1b69-4469-b928-1e4206ffe74d.png",
+          "review": "Not selected. Near-leg knee stayed dominant and the stride became wider; this did not resolve the remaining gait issue.",
+          "sha256": "e2028d987ef076f54f660f0bd97df9d27c889f01a4f245de007e3ef6af59683e"
+        },
+        "ascent_initial_source": {
+          "file": "review/ascent-initial.png",
+          "original_output_basename": "exec-2d182da3-bf7f-4fc1-8c15-504e621e49e2.png",
+          "reason_for_refinement": "Raised foot spacing was excessive for the home treads. Source retained; not selected by runtime.",
+          "sha256": "70b8d7b069e3c6153ae62db062eb715f1be45fa059c202a5472f6ead2c6221e4"
+        },
+        "edit_history": "Three generated PNG originals preserved without pixel edits. Ascent uses an Image Gen refinement of its first source to reduce excessive step height. Earlier source and QA remain in ignored artifacts. Wake regions normalize irregular sheet placement at runtime.",
+        "identity_reference": {
+          "approved_library_concept": "libfile_7a1f2d2e78ac8191a4109773df9dce86",
+          "file": "texture",
+          "id": "characters/pietro-home",
+          "version": "2.0.0"
+        },
+        "kind": "generated original",
+        "license_record": "Original artwork for Umbral from project-owned Pietro home atlas and approved identity reference.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Source pixels, native input/state and first real Web traversal inspected. Wake is a candidate improvement. Stair drawings are distinct from walking, but strong leg alternation and frame-to-frame planted-foot continuity are not yet convincing enough for aesthetic approval. Keep in draft; no merge.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2130,
+      "id": "characters/pietro-home-transitions@1.0.0:ascent-alternation-prompt",
+      "kind": "review",
+      "module": "characters/pietro-home-transitions",
+      "path": "assets/characters/pietro-home-transitions/versions/1.0.0/review/ascent-alternation-prompt.txt",
+      "role": "ascent-alternation-prompt",
+      "sha256": "d55641ee40333902c865752eb941a130eac7de182dcc7862d618238d96830d65",
+      "source": {
+        "ascent_alternation_attempt": {
+          "file": "review/ascent-alternation-attempt.png",
+          "original_output_basename": "exec-2e10f25d-1b69-4469-b928-1e4206ffe74d.png",
+          "review": "Not selected. Near-leg knee stayed dominant and the stride became wider; this did not resolve the remaining gait issue.",
+          "sha256": "e2028d987ef076f54f660f0bd97df9d27c889f01a4f245de007e3ef6af59683e"
+        },
+        "ascent_initial_source": {
+          "file": "review/ascent-initial.png",
+          "original_output_basename": "exec-2d182da3-bf7f-4fc1-8c15-504e621e49e2.png",
+          "reason_for_refinement": "Raised foot spacing was excessive for the home treads. Source retained; not selected by runtime.",
+          "sha256": "70b8d7b069e3c6153ae62db062eb715f1be45fa059c202a5472f6ead2c6221e4"
+        },
+        "edit_history": "Three generated PNG originals preserved without pixel edits. Ascent uses an Image Gen refinement of its first source to reduce excessive step height. Earlier source and QA remain in ignored artifacts. Wake regions normalize irregular sheet placement at runtime.",
+        "identity_reference": {
+          "approved_library_concept": "libfile_7a1f2d2e78ac8191a4109773df9dce86",
+          "file": "texture",
+          "id": "characters/pietro-home",
+          "version": "2.0.0"
+        },
+        "kind": "generated original",
+        "license_record": "Original artwork for Umbral from project-owned Pietro home atlas and approved identity reference.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Source pixels, native input/state and first real Web traversal inspected. Wake is a candidate improvement. Stair drawings are distinct from walking, but strong leg alternation and frame-to-frame planted-foot continuity are not yet convincing enough for aesthetic approval. Keep in draft; no merge.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 948381,
+      "id": "characters/pietro-home-transitions@1.0.0:ascent-initial",
+      "kind": "review",
+      "module": "characters/pietro-home-transitions",
+      "path": "assets/characters/pietro-home-transitions/versions/1.0.0/review/ascent-initial.png",
+      "role": "ascent-initial",
+      "sha256": "70b8d7b069e3c6153ae62db062eb715f1be45fa059c202a5472f6ead2c6221e4",
+      "source": {
+        "ascent_alternation_attempt": {
+          "file": "review/ascent-alternation-attempt.png",
+          "original_output_basename": "exec-2e10f25d-1b69-4469-b928-1e4206ffe74d.png",
+          "review": "Not selected. Near-leg knee stayed dominant and the stride became wider; this did not resolve the remaining gait issue.",
+          "sha256": "e2028d987ef076f54f660f0bd97df9d27c889f01a4f245de007e3ef6af59683e"
+        },
+        "ascent_initial_source": {
+          "file": "review/ascent-initial.png",
+          "original_output_basename": "exec-2d182da3-bf7f-4fc1-8c15-504e621e49e2.png",
+          "reason_for_refinement": "Raised foot spacing was excessive for the home treads. Source retained; not selected by runtime.",
+          "sha256": "70b8d7b069e3c6153ae62db062eb715f1be45fa059c202a5472f6ead2c6221e4"
+        },
+        "edit_history": "Three generated PNG originals preserved without pixel edits. Ascent uses an Image Gen refinement of its first source to reduce excessive step height. Earlier source and QA remain in ignored artifacts. Wake regions normalize irregular sheet placement at runtime.",
+        "identity_reference": {
+          "approved_library_concept": "libfile_7a1f2d2e78ac8191a4109773df9dce86",
+          "file": "texture",
+          "id": "characters/pietro-home",
+          "version": "2.0.0"
+        },
+        "kind": "generated original",
+        "license_record": "Original artwork for Umbral from project-owned Pietro home atlas and approved identity reference.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Source pixels, native input/state and first real Web traversal inspected. Wake is a candidate improvement. Stair drawings are distinct from walking, but strong leg alternation and frame-to-frame planted-foot continuity are not yet convincing enough for aesthetic approval. Keep in draft; no merge.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 827417,
+      "id": "characters/pietro-home-transitions@1.0.0:descent",
+      "kind": "texture",
+      "module": "characters/pietro-home-transitions",
+      "path": "assets/characters/pietro-home-transitions/versions/1.0.0/descent.png",
+      "role": "descent",
+      "sha256": "ab9b6867d762796ed6de7f9e2ae5cdeb83d5b1f810b25725dc7a20b665fe118b",
+      "source": {
+        "edit_history": "Byte-identical original PNG; no raster edits.",
+        "kind": "generated original",
+        "original_output_basename": "exec-77d75ee5-53ab-4e23-8882-90138c20bdc5.png",
+        "original_sha256": "ab9b6867d762796ed6de7f9e2ae5cdeb83d5b1f810b25725dc7a20b665fe118b"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 8906,
+      "id": "characters/pietro-home-transitions@1.0.0:generation-prompts",
+      "kind": "data",
+      "module": "characters/pietro-home-transitions",
+      "path": "assets/characters/pietro-home-transitions/versions/1.0.0/generation-prompts.json",
+      "role": "generation-prompts",
+      "sha256": "ff6ff246a11273c25218281607482810114a6a42accfc171e997f2d785a5bf2a",
+      "source": {
+        "ascent_alternation_attempt": {
+          "file": "review/ascent-alternation-attempt.png",
+          "original_output_basename": "exec-2e10f25d-1b69-4469-b928-1e4206ffe74d.png",
+          "review": "Not selected. Near-leg knee stayed dominant and the stride became wider; this did not resolve the remaining gait issue.",
+          "sha256": "e2028d987ef076f54f660f0bd97df9d27c889f01a4f245de007e3ef6af59683e"
+        },
+        "ascent_initial_source": {
+          "file": "review/ascent-initial.png",
+          "original_output_basename": "exec-2d182da3-bf7f-4fc1-8c15-504e621e49e2.png",
+          "reason_for_refinement": "Raised foot spacing was excessive for the home treads. Source retained; not selected by runtime.",
+          "sha256": "70b8d7b069e3c6153ae62db062eb715f1be45fa059c202a5472f6ead2c6221e4"
+        },
+        "edit_history": "Three generated PNG originals preserved without pixel edits. Ascent uses an Image Gen refinement of its first source to reduce excessive step height. Earlier source and QA remain in ignored artifacts. Wake regions normalize irregular sheet placement at runtime.",
+        "identity_reference": {
+          "approved_library_concept": "libfile_7a1f2d2e78ac8191a4109773df9dce86",
+          "file": "texture",
+          "id": "characters/pietro-home",
+          "version": "2.0.0"
+        },
+        "kind": "generated original",
+        "license_record": "Original artwork for Umbral from project-owned Pietro home atlas and approved identity reference.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Source pixels, native input/state and first real Web traversal inspected. Wake is a candidate improvement. Stair drawings are distinct from walking, but strong leg alternation and frame-to-frame planted-foot continuity are not yet convincing enough for aesthetic approval. Keep in draft; no merge.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 8126,
+      "id": "characters/pietro-home-transitions@1.0.0:poses",
+      "kind": "data",
+      "module": "characters/pietro-home-transitions",
+      "path": "assets/characters/pietro-home-transitions/versions/1.0.0/poses.json",
+      "role": "poses",
+      "sha256": "7071d67635518d7e115eeb34c70e618ebb403f0fc2678643ac6cbe5929404781",
+      "source": {
+        "ascent_alternation_attempt": {
+          "file": "review/ascent-alternation-attempt.png",
+          "original_output_basename": "exec-2e10f25d-1b69-4469-b928-1e4206ffe74d.png",
+          "review": "Not selected. Near-leg knee stayed dominant and the stride became wider; this did not resolve the remaining gait issue.",
+          "sha256": "e2028d987ef076f54f660f0bd97df9d27c889f01a4f245de007e3ef6af59683e"
+        },
+        "ascent_initial_source": {
+          "file": "review/ascent-initial.png",
+          "original_output_basename": "exec-2d182da3-bf7f-4fc1-8c15-504e621e49e2.png",
+          "reason_for_refinement": "Raised foot spacing was excessive for the home treads. Source retained; not selected by runtime.",
+          "sha256": "70b8d7b069e3c6153ae62db062eb715f1be45fa059c202a5472f6ead2c6221e4"
+        },
+        "edit_history": "Three generated PNG originals preserved without pixel edits. Ascent uses an Image Gen refinement of its first source to reduce excessive step height. Earlier source and QA remain in ignored artifacts. Wake regions normalize irregular sheet placement at runtime.",
+        "identity_reference": {
+          "approved_library_concept": "libfile_7a1f2d2e78ac8191a4109773df9dce86",
+          "file": "texture",
+          "id": "characters/pietro-home",
+          "version": "2.0.0"
+        },
+        "kind": "generated original",
+        "license_record": "Original artwork for Umbral from project-owned Pietro home atlas and approved identity reference.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Source pixels, native input/state and first real Web traversal inspected. Wake is a candidate improvement. Stair drawings are distinct from walking, but strong leg alternation and frame-to-frame planted-foot continuity are not yet convincing enough for aesthetic approval. Keep in draft; no merge.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2587,
+      "id": "characters/pietro-home-transitions@1.0.0:source-check",
+      "kind": "review",
+      "module": "characters/pietro-home-transitions",
+      "path": "assets/characters/pietro-home-transitions/versions/1.0.0/review/check_source.py",
+      "role": "source-check",
+      "sha256": "d7469bf15dff6921f0b9285da434e5b9fa2101edbf2880d4b4d9a91e36ed4daf",
+      "source": {
+        "ascent_alternation_attempt": {
+          "file": "review/ascent-alternation-attempt.png",
+          "original_output_basename": "exec-2e10f25d-1b69-4469-b928-1e4206ffe74d.png",
+          "review": "Not selected. Near-leg knee stayed dominant and the stride became wider; this did not resolve the remaining gait issue.",
+          "sha256": "e2028d987ef076f54f660f0bd97df9d27c889f01a4f245de007e3ef6af59683e"
+        },
+        "ascent_initial_source": {
+          "file": "review/ascent-initial.png",
+          "original_output_basename": "exec-2d182da3-bf7f-4fc1-8c15-504e621e49e2.png",
+          "reason_for_refinement": "Raised foot spacing was excessive for the home treads. Source retained; not selected by runtime.",
+          "sha256": "70b8d7b069e3c6153ae62db062eb715f1be45fa059c202a5472f6ead2c6221e4"
+        },
+        "edit_history": "Three generated PNG originals preserved without pixel edits. Ascent uses an Image Gen refinement of its first source to reduce excessive step height. Earlier source and QA remain in ignored artifacts. Wake regions normalize irregular sheet placement at runtime.",
+        "identity_reference": {
+          "approved_library_concept": "libfile_7a1f2d2e78ac8191a4109773df9dce86",
+          "file": "texture",
+          "id": "characters/pietro-home",
+          "version": "2.0.0"
+        },
+        "kind": "generated original",
+        "license_record": "Original artwork for Umbral from project-owned Pietro home atlas and approved identity reference.",
+        "model_version": "Not exposed by tool; none inferred.",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Source pixels, native input/state and first real Web traversal inspected. Wake is a candidate improvement. Stair drawings are distinct from walking, but strong leg alternation and frame-to-frame planted-foot continuity are not yet convincing enough for aesthetic approval. Keep in draft; no merge.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1802711,
+      "id": "characters/pietro-home-transitions@1.0.0:wake",
+      "kind": "texture",
+      "module": "characters/pietro-home-transitions",
+      "path": "assets/characters/pietro-home-transitions/versions/1.0.0/wake.png",
+      "role": "wake",
+      "sha256": "77539ed7328e7836af262043467c63f499b023f3c8eab2caf4e3eeb862ce8a87",
+      "source": {
+        "edit_history": "Byte-identical original PNG; no raster edits.",
+        "kind": "generated original",
+        "original_output_basename": "exec-14545153-982b-407d-aa53-69812ea31f4d.png",
+        "original_sha256": "77539ed7328e7836af262043467c63f499b023f3c8eab2caf4e3eeb862ce8a87"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
       "bytes": 1246,
       "id": "characters/refuge-traveler@1.0.0:poses",
       "kind": "data",

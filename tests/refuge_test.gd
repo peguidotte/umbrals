@@ -1,6 +1,7 @@
 extends SceneTree
 const Space = preload("res://scripts/ui/house_space.gd")
 const StairCases = preload("res://tests/support/house_stair_cases.gd")
+const PietroCases = preload("res://tests/support/pietro_pose_cases.gd")
 var app: Control
 var room: Control
 var checks: int = 0
@@ -57,6 +58,7 @@ func _init() -> void:
 
 func run() -> void:
 	StairCases.resume_cases(expect)
+	PietroCases.run(expect)
 	var straight: Vector2 = Space.walk(Space.SPAWN, Vector2.RIGHT, 0.1)
 	expect(straight == Space.walk(Space.SPAWN, Vector2.ONE, 0.1), "Floor walking retains one horizontal lane and speed")
 	var wall: Vector2 = Space.SPAWN
@@ -77,11 +79,11 @@ func run() -> void:
 	room = app.screen_host.refuge_root
 	StairCases.clearance_cases(room, expect)
 	expect(app.screens.entries == ["refuge"] and room.has_focus(), "Play enters a focused spatial root")
-	expect(room.canvas.room == "bedroom" and room.motion.waking and room.canvas.rest_angle < -1, "First entry begins on Pietro's bed")
+	expect(room.canvas.room == "bedroom" and room.motion.waking and room.canvas.pose_state().pose == "lying" and room.canvas.rest_angle == 0, "First entry begins with the drawn lying pose on Pietro's bed")
 	var before: String = snapshot()
 	app.registry["refuge.exit"].pressed.emit()
 	expect(app.screens.top() == "refuge" and is_nan(room.pointer_target), "Hidden objects cannot open remotely from another room")
-	await settle(100)
+	await settle(160)
 	expect(not room.motion.waking and room.canvas.point == Space.SPAWN and room.canvas.rest_angle == 0, "Wake settles at the bed's floor without game-state changes")
 	await key(KEY_E, true)
 	await key(KEY_E, false)

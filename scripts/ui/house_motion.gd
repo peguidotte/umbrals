@@ -15,7 +15,9 @@ func wake(canvas: Node2D, reduced: bool) -> void:
 	upper = false
 	on_stairs = false
 	canvas.point = Space.BED if waking else Space.SPAWN
-	canvas.rest_angle = -PI / 2 if waking else 0.0
+	canvas.rest_angle = 0
+	canvas.wake_phase = 0.0 if waking else -1.0
+	canvas.reduced_motion = reduced
 
 func cancel_approach() -> void:
 	automatic = 0
@@ -29,15 +31,22 @@ func use_stairs(canvas: Node2D) -> void:
 	on_stairs = true
 	automatic = stair_direction
 	canvas.point = Space.stair_point(progress)
+	canvas.on_stairs = true
+	canvas.stair_progress = progress
+	canvas.stair_direction = stair_direction
 
 func step(canvas: Node2D, direction: Vector2, delta: float, reduced: bool) -> bool:
 	if waking:
 		wake_time += delta
-		if not direction.is_zero_approx() or reduced: wake_time = 1.4
-		var weight: float = smoothstep(0, 1, clampf((wake_time - 0.5) / 0.9, 0, 1))
+		var duration: float = canvas.wake_duration()
+		if not direction.is_zero_approx() or reduced: wake_time = duration
+		var phase: float = clampf(wake_time / duration, 0, 1)
+		var weight: float = smoothstep(0.4, 0.9, phase)
 		canvas.point = Space.BED.lerp(Space.SPAWN, weight)
-		canvas.rest_angle = lerpf(-PI / 2, 0, weight)
-		waking = wake_time < 1.4
+		canvas.rest_angle = 0
+		waking = phase < 1
+		canvas.wake_phase = phase if waking else -1.0
+		canvas.reduced_motion = reduced
 		return true
 	if not on_stairs: return false
 	if not direction.is_zero_approx(): automatic = 0
@@ -53,6 +62,10 @@ func step(canvas: Node2D, direction: Vector2, delta: float, reduced: bool) -> bo
 	elif progress <= 0 and travel < 0:
 		upper = false
 		on_stairs = false
+	canvas.on_stairs = on_stairs
+	canvas.stair_progress = progress
+	canvas.stair_direction = stair_direction
+	canvas.reduced_motion = reduced
 	return true
 
 func public_state() -> Dictionary:

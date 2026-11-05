@@ -116,3 +116,14 @@ identidade Library, pivôs e escala explícitos. Repouso e seis poses de caminha
 usam o consumidor da casa existente. O único pin alterado é o do protagonista;
 nenhum script de geometria, movimento ou save mudou. Aprovação estética do
 sprite continua pendente. Ver [referência, integração e limites](../docs/pietro-v05-art01.md).
+
+### Despertar e escada de Pietro — V05-ART-02 (protótipo visual)
+
+`characters/pietro-home-transitions@1.0.0` acrescenta três atlas transparentes
+originais separados: seis desenhos de despertar e oito de cada direção da
+escada. A família depende do personagem de casa 2.0.0, sem alterar seus pixels.
+Prompts, pivôs e tentativas não selecionadas preservam a proveniência. O último
+frame de descida tem margem opaca de um pixel. A escada ainda precisa de melhor
+alternância e continuidade de apoio; não tem aceite estético. O status técnico
+production permite o preview nesta branch draft e não declara arte final.
+[Integração, evidências e limites](../docs/pietro-v05-art02.md).

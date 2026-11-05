@@ -1071,3 +1071,16 @@ ao PR #11 e não recebem alterações nesta branch. O gate focado passou com 79
 verificações da casa; fechamento, comparação em jogo e vídeo ficam registrados
 no PR/entrega. Draft sem merge, aguardando revisão independente e estética de
 Pedro. [Proveniência, contrato e limites](pietro-v05-art01.md).
+
+### V05-ART-02 — despertar e escada com poses próprias, em avaliação
+
+Branch separada do PR #17, preservando sua revisão congelada. O despertar passa
+por seis desenhos próprios em vez de girar o ator em pé; subir e descer usam
+famílias de oito poses, ligadas ao progresso real, com pausa/inversão e movimento
+reduzido. Pivôs finais do despertar são calibrados contra os pixels das solas.
+Geometria, velocidade da escada, saves e RNG não mudam. O primeiro percurso Web
+passou 17 verificações e o gate nativo sincronizado passou 99; o handoff registra
+a revisão final dos pivôs e os testes correspondentes. A escada continua
+visualmente parcial: a perna dianteira domina e faltam alternância e continuidade
+fina dos apoios. Não promover nem declarar pronto com base na automação.
+[Escopo, proveniência e limitações](pietro-v05-art02.md).

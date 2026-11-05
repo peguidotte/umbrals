@@ -406,6 +406,15 @@
         }
       }
     },
+    "characters/pietro-home-transitions": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/pietro-home-transitions/versions/1.0.0/manifest.json",
+          "sha256": "eb15440c8b08e80e4a774d8ed57c83ce8d04c0642d8eeb7ac8a21e0ecdf138ad",
+          "status": "production"
+        }
+      }
+    },
     "characters/refuge-traveler": {
       "versions": {
         "1.0.0": {
