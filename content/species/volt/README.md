@@ -14,13 +14,18 @@ Niscor conserva alguns pelos azuis, sem agulhas suspensas. Animações usam
 malhas sobre sprites novos, não frames redesenhados.
 
 IDs de espécie, formas, descoberta e aresta `volt_to_tempestral` permanecem.
-Atributos, naturezas, poderes, passivas, cópias e saves não mudam.
+Atributos e naturezas das duas formas existentes permanecem; novas formas têm defaults explícitos.
 Sprites antigos e seus releases permanecem imutáveis para rastreabilidade.
 
-Auravel alado e Zuldar bípede com espinhos azuis têm candidatas de corpo
-nos dois lados em `characters/electric-adults@1.0.0`, prototype, sem pin.
-Não são formas jogáveis. Faltam rigs, estados, sockets, arestas explícitas,
-stats/poderes revisados e decisão de compatibilidade do catálogo.
+Auravel alado e Zuldar bípede com espinhos azuis recebem pins próprios em
+`characters/electric-adults@2.0.0`, com rigs, estados, sockets e arestas jogáveis
+`tempestral_to_auravel` / `tempestral_to_zuldar`. As candidatas 1.0.0 ficam
+imutáveis. Novos stats são defaults de protótipo por delegação, não números
+aprovados como balanceamento final. [Implementação e migração](../../../docs/electric-adults-v05-art03.md).
+
+A continuação propõe Nisca/Niscor em 2.1.0: corrige a origem secundária do
+Niscor para um espinho visível nas duas vistas. Saves antigos conservam seus
+comandos por migração auditada e ordenação das novas ofertas ao final.
 
 O rascunho parte do PR #13 e não faz merge. O integrador revisa os dois pins
 e reconcilia os índices gerados. `main.gd`, Rules, registro e baseline não mudam.

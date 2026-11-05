@@ -39,8 +39,12 @@ jobs:
             ${{ runner.temp }}/umbral-tools/.local/bin/godot
             ${{ runner.temp }}/umbral-tools/.local/share/godot/export_templates
           key: godot-4.6.3-${{ runner.os }}-${{ runner.arch }}-release-v2
-      - name: Install verified engine
-        run: source tools/environment.sh && python tools/install_godot.py
+      - name: Install verified tools
+        run: |
+          source tools/environment.sh
+          python tools/install_godot.py
+          python -m playwright install --with-deps chromium
+          python tools/harness_lib/browser_runtime.py --github-env "$GITHUB_ENV"
       - name: Execute complete headless and export graph
         run: python tools/ci_parallel.py prepare --output artifacts/ci-prepare
       - name: Prepare headless diagnostics
@@ -95,6 +99,7 @@ jobs:
           python tools/install_godot.py
           python -m pip install -r tools/requirements-browser.txt
           python -m playwright install --with-deps chromium
+          python tools/harness_lib/browser_runtime.py --github-env "$GITHUB_ENV"
       - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         with:
           name: umbral-preparation
@@ -166,6 +171,8 @@ jobs:
           source tools/environment.sh
           python tools/install_godot.py
           python -m pip install -r tools/requirements-browser.txt
+          python -m playwright install --with-deps chromium
+          export UMBRAL_CHROMIUM_EXECUTABLE="$(python tools/harness_lib/browser_runtime.py)"
           mkdir -p artifacts
           tar -xf "$RUNNER_TEMP/preparation/prepare.tar" -C artifacts
           PYTHONPATH=tools python -c "from ci_parallel import preparation; from harness_lib.builds import publish_build; from pathlib import Path; p=preparation(Path('artifacts/ci-prepare').resolve()); publish_build(p['tasks']['web']['build_directory'], 'Web')"

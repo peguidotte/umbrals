@@ -123,3 +123,7 @@ teve quatro jobs Web cancelados e o agregador falhou por falta do resultado
 completo. O workflow usa concurrency por branch/ref com cancel-in-progress;
 o novo HEAD recebeu nova execução. A aceitação final precisa fechar o HEAD
 atual com cobertura completa, sem aproveitar esse cancelamento como aprovação.
+
+A continuação [V05-ART-03](electric-adults-v05-art03.md) adiciona as adultas em
+PR separado e corrige a origem secundária do Niscor pela release 2.1.0.
+Os limites acima registram o escopo de ART-02, não a conclusão das adultas.

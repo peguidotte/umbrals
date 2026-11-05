@@ -1097,3 +1097,24 @@ de apoio da passada. A cadência agora é medida em captura nativa e Web real;
 vídeos anteriores muito lentos não contam como prova de movimento. Arte e
 movimento continuam candidatos à revisão humana, e CI cancelado não fecha
 aceitação. Detalhes e medições no documento da família elétrica.
+
+### V05-ART-03 — bifurcação elétrica jogável
+
+Continuação em draft separado sobre o PR #19: Auravel alado e Zuldar bípede
+recebem rigs, poses de KO, estados e origens de ataque no novo módulo 2.0.0.
+A escolha explícita após Niscor preserva indivíduo, cartas e proporção de HP.
+Novas ofertas são adiadas após as antigas para preservar replay por índice;
+migração auditada conserva a Nascente rules-3 e bloqueia futuros forjados.
+A referência e imagens originais foram recuperadas do executor, sem nova geração.
+
+Saves passaram com 113 assertions; fixtures corrigidas e projeção equivalente
+passaram nos runs focados. Fechamento completo e capturas finais serão registrados
+no PR. Balanceamento numérico é default de protótipo delegado, e revisão de arte,
+animação e hardware continua aberta. Próxima fatia: revisar a família jogando,
+refinar transições e asas de repouso, então coordenar integração. Produto 0.3.0.
+[Escopo, compatibilidade e evidências](electric-adults-v05-art03.md).
+
+Revisão posterior ampliou saves para 167 assertions: ambas as adultas evoluem
+com HP cheio, ferido e zero, com retomada exata de cada snapshot. A expectativa
+agora verifica o `ceili` histórico; trocar a regra por `roundi` é detectado nos
+quatro casos feridos. Nenhum número de balanceamento foi alterado.

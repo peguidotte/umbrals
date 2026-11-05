@@ -75,6 +75,16 @@ class ActorAuthoringTests(unittest.TestCase):
         self.assertEqual([g["requirement"] for g in report["gaps"]], ["walk"])
         self.assertEqual(report["attacks"][0]["normalized_source_point"], [0.8, 0.4])
 
+    def test_form_socket_override_matches_runtime(self):
+        self.form["parts"] = ["wing"]
+        self.form["anatomy"]["wing"] = [0.2, 0.3]
+        self.save()
+        report = self.validate()
+        self.assertEqual(report["attacks"][0]["socket"], "wing")
+        self.assertEqual(report["attacks"][0]["normalized_source_point"], [0.2, 0.3])
+        self.form["parts"] = []
+        self.rejects("missing performance")
+
     def test_missing_requirement_cannot_disappear(self):
         del self.profile["states"]["walk"]
         self.rejects("Profile schema")
@@ -215,12 +225,12 @@ class ActorAuthoringTests(unittest.TestCase):
 
 class PublishedCompatibilityTests(unittest.TestCase):
     def test_new_electric_profiles_have_states_and_attached_origins(self):
-        for form_id in ['volt', 'tempestral']:
+        for form_id in ['volt', 'tempestral', 'auravel', 'zuldar']:
             with self.subTest(form=form_id):
                 report = validate_profile(Path(__file__).parent / f'examples/{form_id}-v1.json')
                 self.assertTrue(report['complete'])
                 self.assertEqual(report['gaps'], [])
-                self.assertEqual([a['socket'] for a in report['attacks']], ['quills', 'crest', 'fore', 'shoulder', 'quills', 'flank'])
+                self.assertEqual([a['socket'] for a in report['attacks']], ['secondary' if form_id == 'auravel' else 'quills', 'crest', 'fore', 'shoulder', 'quills', 'flank'])
 
     def test_brasa_profile_reads_real_releases(self):
         report = validate_profile(Path(__file__).parent / "examples/brasa-v1.json")

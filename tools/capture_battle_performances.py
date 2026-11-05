@@ -48,7 +48,7 @@ def main():
     records = []
     powers = {'ember':['fireball'], 'ignivar':['fireball'], 'moss':['thorn_lash'],
               'verdalio':['thorn_lash'], 'dew':['tidal_splash'], 'mareveu':['tidal_splash'],
-              'volt':['lightning','storm_dive'], 'tempestral':['lightning','storm_dive']}
+              'volt':['lightning','storm_dive'], 'tempestral':['lightning','storm_dive'], 'auravel':['lightning','storm_dive'], 'zuldar':['lightning','storm_dive']}
     try:
         for form in args.forms.split(','):
             assert form in powers, form

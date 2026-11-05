@@ -97,3 +97,9 @@ O atlas de criaturas existente orientou o acabamento; os Umbrais não ganharam
 animações de caminhada por esta alteração. PNGs originais mantêm bytes e
 metadados; manifests registram origem, hashes e referências. A fonte Cormorant
 e sua licença existente são reutilizadas. Ver `docs/refuge-v05-ux03.md`.
+
+Auravel/Zuldar: `characters/electric-adults@2.0.0` contém originais referenciados
+à família aprovada, duas vistas, rigs e poses desenhadas de KO. Arte/movimento
+continuam candidatos à revisão; [escopo e limites](../docs/electric-adults-v05-art03.md).
+`characters/electric-family@2.1.0` move a origem secundária do Niscor para pixels
+opacos de um espinho preso; releases anteriores permanecem íntegros.

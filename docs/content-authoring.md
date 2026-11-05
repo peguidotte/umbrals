@@ -60,3 +60,9 @@ alteram automaticamente a rota existente: a lista de IDs da rota é explícita.
 `gameplay_catalog.gd` constrói snapshots isolados e seus métodos devolvem cópias;
 os testes, passe manifestos próprios em vez de alterar o catálogo de produção.
 Descrições e história são apresentação e ficam fora da identidade de gameplay.
+
+New edges on an existing lineage may declare `deferred: true` when an audited
+compatibility migration requires new choices to follow all historical reward
+choices. This flag changes offer ordering across the party, not edge eligibility
+or progression stage. It must be boolean. Do not apply it retroactively to an
+old edge; follow the explicit compatibility process in `docs/save-format.md`.
