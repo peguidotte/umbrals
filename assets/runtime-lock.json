@@ -160,6 +160,11 @@
       "id": "characters/owl",
       "version": "1.0.0"
     },
+    "characters/pietro-home": {
+      "file": "texture",
+      "id": "characters/pietro-home",
+      "version": "1.0.0"
+    },
     "characters/refuge-traveler": {
       "file": "texture",
       "id": "characters/refuge-traveler",
@@ -295,10 +300,20 @@
       "id": "world/moonlit-clearing",
       "version": "1.0.0"
     },
+    "world/pietro-house": {
+      "file": "texture",
+      "id": "world/pietro-house",
+      "version": "1.0.0"
+    },
+    "world/pietro-house-continuous": {
+      "file": "texture",
+      "id": "world/pietro-house-continuous",
+      "version": "1.0.0"
+    },
     "world/refuge-lateral": {
       "file": "texture",
       "id": "world/refuge-lateral",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "world/title-forest": {
       "file": "texture",

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "world/refuge-lateral",
+  "version": "1.1.0",
+  "status": "production",
+  "description": "Pietro living room with painted bedroom and kitchen passages, retaining the exterior exit",
+  "dependencies": [],
+  "files": {
+    "texture": {
+      "path": "background.png",
+      "kind": "texture",
+      "sha256": "d96cc4de7c287d388f1beb4f224c9da89abf3bc3398827be752fdc102c62bd9e",
+      "bytes": 2656857,
+      "technical": {
+        "dimensions": [
+          1672,
+          941
+        ],
+        "mode": "RGB",
+        "frames": 1,
+        "alpha": false
+      }
+    }
+  },
+  "provenance": {
+    "kind": "generated original edit",
+    "tool": "OpenAI Image Gen",
+    "recorded_date_utc": "2026-11-04",
+    "license_record": "Original artwork generated for Umbral from project-owned living-room reference.",
+    "edit_history": "Original output PNG copied byte-identically, including embedded metadata; no pixel edits. Prior release retained unchanged.",
+    "review_status": "Source inspected; runtime and Pedro review recorded separately.",
+    "style_reference": {
+      "path": "assets/world/refuge-lateral/versions/1.0.0/background.png",
+      "sha256": "25f8379d091ddf2e7ef2e92ac3817bca09d436747c59397a7b6f21336c50f42d"
+    },
+    "generation_brief": "Preserve moonlit living-room composition, scale and exterior exit; integrate small bedroom and kitchen timber doorways."
+  },
+  "changes": "Adds interior doorways while preserving living-room composition and original 1.0.0 release."
+}

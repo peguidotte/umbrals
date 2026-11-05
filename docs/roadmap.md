@@ -1041,3 +1041,21 @@ sem merge. Não há nova mecânica ou mudança de compatibilidade por este ajust
 A atualização de base para `1198404` incorpora também o PR #9. A aceitação
 contra `030ee7d` permanece histórica; a integração atual recebe gates próprios,
 incluindo autoria de atores, e o resultado do merge exato é registrado no PR.
+
+
+### V05-UX-05 — casa contínua de Pietro
+
+Pedro rejeitou as vistas separadas após ver o vídeo. A revisão mantém os quatro
+cômodos em um único mundo 2D, com câmera acompanhando, dois pisos conectados por
+escada física com apoio/oclusão e posição sem saltos nas divisas. A porta da cozinha
+conserva preparação/Continuar; casa inicial e futuro abrigo portátil têm identidades
+separadas. Ator provisório com pele mais clara, roupa azul/dourada e escala revista.
+A referência aprovada foi localizada mas a transferência oficial falhou; aprovação
+de semelhança e acabamento continua pendente. Base main 1523d0e incorporada, preservando a Nascente contextual e suas migrações.
+
+As evidências de cenas separadas estão superadas. A revisão contínua tem testes de
+coordenadas, câmera, apoio/retomada da escada, margens por resolução, limites, inputs
+e conservação de RNG/save, além de captura/vídeo reais em MP4. O fechamento registra
+os resultados efetivos e o merge exato; não há aceite estético automático nem merge
+na main. [Escopo e limites](house-v05-ux05.md). Próxima fatia: avaliação de Pedro,
+acabamento do ator/ambiente e abertura narrativa/entrega do abrigo, ainda ausentes.
