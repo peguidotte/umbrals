@@ -26,7 +26,7 @@ não altera as regras descritas aqui nem substitui decisões do roadmap.
 - **Web:** extraia o bundle Web, execute `python -m http.server 8000` nessa pasta e abra `http://localhost:8000`. Abrir o HTML por `file://` não funciona.
 - **Godot:** importe `project.godot` e pressione F5, ou execute `godot --path .`.
 
-Escolha **Iniciar expedição** e seu primeiro vínculo: Brasa, Musgo, Faísca ou Orvalho. No mapa, selecione um caminho e confirme. A Clareira leva à Mata fechada (combate/recompensa) ou à Nascente (cura limitada), e depois ao Guardião. **Continuar expedição** retoma o último estado confirmado. **Treino de batalha** mantém o percurso curto anterior sem sobrescrever a expedição salva. Clique nos poderes ou use **1–6**. **Espaço** conjura; **R** resortear passa a rodada inteira; **C** inspeciona; **Esc** pausa/volta. Setas/Tab navegam e **Enter** ativa o item em foco. No controle: direcional navega, **A** seleciona, **X** conjura, **RB** resortear, **Y** inspeciona e **B** volta.
+Escolha **Iniciar expedição** e seu primeiro vínculo: Brasa, Musgo, Faísca ou Lonlon. No mapa, selecione um caminho e confirme. A Clareira leva à Mata fechada (combate/recompensa) ou à Nascente (cura limitada), e depois ao Guardião. **Continuar expedição** retoma o último estado confirmado. **Treino de batalha** mantém o percurso curto anterior sem sobrescrever a expedição salva. Clique nos poderes ou use **1–6**. **Espaço** conjura; **R** resortear passa a rodada inteira; **C** inspeciona; **Esc** pausa/volta. Setas/Tab navegam e **Enter** ativa o item em foco. No controle: direcional navega, **A** seleciona, **X** conjura, **RB** resortear, **Y** inspeciona e **B** volta.
 
 Comece com **um Umbral**, até **três ativos por escolha** e **seis integrantes no time**. A mão base tem **seis cartas**; há **três ações compartilhadas**, com custos por poder, troca ou consumível. Cada indivíduo tem HP, Ataque, Defesa e Velocidade. Aliados e adversários atuam por velocidade e prioridades explícitas. Selecione uma carta e clique no alvo; poderes podem atingir superior + central, central + inferior, todos ou uma vaga individual, sem retaguarda.
 
@@ -43,7 +43,9 @@ Ao vencer, **Capturar** permite escolher uma vaga livre no campo ou a reserva, c
 | Brasa → Ignivar | Combustão: ataques aplicam queimadura | Bola de fogo, Garra de brasas, Manto de cinzas; Sol devorador é técnica de linhagem |
 | Musgo → Verdálio | Raízes Vivas: proteger também cura uma vez por rodada | Chicote de espinhos, Muralha de raízes, Semeadura; Santuário ancestral é técnica de linhagem |
 | Faísca → Tempestral | Circuito Vivo: ataques ganham dano por outro Umbral ativo | Arco elétrico, Interferência, Mergulho trovão; Juízo da tempestade é técnica de linhagem |
-| Orvalho → Marevéu | Maré Marcada: água deixa Encharcado | Jato de orvalho, Chuva lateral, Gota serena |
+| Lonlon → Lonaro | Maré Marcada: água deixa Encharcado | Jato de orvalho, Chuva lateral, Gota serena |
+
+A família aquática está parcialmente integrada: Lonlon e Lonaro usam a arte anterior como fallback. Londraval/Lonelo, a lontra aprovada e a esfera destacável ainda estão pendentes; veja [escopo e evidências](docs/aquatic-lineage-v04-09a.md).
 
 Passivas individuais: **Feroz**, **Resiliente**, **Vital**, **Ardente** e **Ágil**. O sorteio usa pools úteis para cada espécie. Ágil concede +3 Velocidade ao indivíduo. Os números do catálogo são valores iniciais de protótipo.
 
