@@ -1126,3 +1126,13 @@ funcional não representa aprovação artística. Despertar e escada continuam
 provisórios; o acabamento visual segue em revisão separada. A suíte integral do
 HEAD funcional `1994376` passou no push 41964934938. Novos jobs do Actions estão
 bloqueados por cobrança; nenhum job novo é registrado como aprovado por isso.
+
+### V05-ART-08 — piloto da direção pixelada de Pietro, candidato
+
+Pedro aprovou a cena unificada e o novo Pietro isolado. Uma prova pequena usa
+o PNG aprovado sem alteração na comparação parada, ao lado de Brasa e cenário,
+e um rig controlado para três ciclos de caminhada. A base da sala foi reconstruída
+uma única vez para retirar o Pietro fundido ao fundo; Brasa é estático nessa base.
+Módulos prototype sem pins e cena de estudo separada do fluxo principal. QA,
+testes proporcionais e vídeo acompanham o candidato. A aprovação artística da
+implementação continua pendente com Pedro. [Contrato e limites](pietro-pixel-pilot-v05.md).

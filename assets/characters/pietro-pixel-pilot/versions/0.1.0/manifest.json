@@ -1,0 +1,50 @@
+{
+  "changes": "First small prototype from the newly approved pixel direction; does not replace production art.",
+  "dependencies": [],
+  "description": "Approved isolated pixel Pietro, unchanged, with a controlled study-only leg rig and static comparison.",
+  "files": {
+    "rig": {
+      "bytes": 2567,
+      "kind": "data",
+      "path": "rig.json",
+      "sha256": "a1df80ef8651dbdc1f2df85eec0f80270f41e248cc3e9938715181c670803b89"
+    },
+    "texture": {
+      "bytes": 546680,
+      "kind": "texture",
+      "path": "source.png",
+      "sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/pietro-pixel-pilot",
+  "metadata": {
+    "consumer": "tools/studies/pietro_pixel; excluded from production exports",
+    "filtering": "nearest",
+    "runtime_pin": "none",
+    "states": [
+      "static",
+      "short controlled walk"
+    ],
+    "view": "Three-quarter right only; no new directions or additional animations"
+  },
+  "provenance": {
+    "approval_scope": "Pedro approved the isolated identity. Runtime composition and gait remain candidates.",
+    "edit_history": "Original approved RGBA PNG byte-identical. Source polygons and bone landmarks are separate JSON; no regenerated sprite frames.",
+    "kind": "project-approved generated reference",
+    "recorded_date_utc": "2026-11-05",
+    "source_name": "Pietro-autosprite-source.png",
+    "source_sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.1.0"
+}

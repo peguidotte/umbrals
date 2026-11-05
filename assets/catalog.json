@@ -406,6 +406,15 @@
         }
       }
     },
+    "characters/pietro-pixel-pilot": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/characters/pietro-pixel-pilot/versions/0.1.0/manifest.json",
+          "sha256": "345032a40b72eb2971245cd1ee5741f7b82772f15b88658cd1ff01f8de7eaeaf",
+          "status": "prototype"
+        }
+      }
+    },
     "characters/refuge-traveler": {
       "versions": {
         "1.0.0": {
@@ -619,6 +628,15 @@
           "manifest": "assets/world/pietro-house-continuous/versions/1.0.0/manifest.json",
           "sha256": "6a86970944028e8796049fcb41a44caae72a0b2a3837447a6de95e62a9d02702",
           "status": "production"
+        }
+      }
+    },
+    "world/pietro-pixel-study": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/world/pietro-pixel-study/versions/0.1.0/manifest.json",
+          "sha256": "37491e977b74808a56e86f03007faa0d5bf210af3e3d80248cd72cbf5b524ee9",
+          "status": "prototype"
         }
       }
     },
