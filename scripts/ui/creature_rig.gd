@@ -49,7 +49,7 @@ func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2
 
 func reset() -> void:
 	if is_instance_valid(lifecycle):
-		lifecycle.cancel_walk()
+		lifecycle.cancel_transient()
 		lifecycle.advance(0, paused, reduced_motion)
 	mode = "states"
 	clip = 0
@@ -61,7 +61,7 @@ func reset() -> void:
 	pose = Motion.neutral()
 
 func seek_cast(index: int, time: float, world_dash: Vector2) -> void:
-	if is_instance_valid(lifecycle): lifecycle.cancel_walk()
+	if is_instance_valid(lifecycle): lifecycle.cancel_transient()
 	managed = true
 	mode = "attacks"
 	clip = index
@@ -71,6 +71,7 @@ func seek_cast(index: int, time: float, world_dash: Vector2) -> void:
 	_refresh()
 
 func seek_reaction(index: int, time: float) -> void:
+	if is_instance_valid(lifecycle): lifecycle.cancel_transient()
 	managed = true
 	mode = "reactions"
 	clip = index
@@ -79,7 +80,7 @@ func seek_reaction(index: int, time: float) -> void:
 	_refresh()
 
 func play_state(state: int) -> void:
-	if is_instance_valid(lifecycle): lifecycle.cancel_walk()
+	if is_instance_valid(lifecycle): lifecycle.cancel_entry()
 	if reduced_motion:
 		reset()
 		_refresh()
@@ -205,8 +206,10 @@ func _refresh() -> void:
 	queue_redraw()
 
 func _draw() -> void:
+	var weight: float = lifecycle.mesh_weight() if is_instance_valid(lifecycle) else 1.0
+	if weight <= 0: return
+	if mesh.get_surface_count() > 0: draw_mesh(mesh, texture, Transform2D.IDENTITY, Color(1, 1, 1, weight))
 	if is_instance_valid(lifecycle) and lifecycle.active(): return
-	if mesh.get_surface_count() > 0: draw_mesh(mesh, texture)
 	if reduced_motion or pose.is_empty() or not definition.has("anatomy"): return
 	var anatomy: Dictionary = definition.anatomy
 	var unit: float = maxf(display_size.x, display_size.y) / 166.0
