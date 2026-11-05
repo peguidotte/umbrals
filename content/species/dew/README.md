@@ -25,3 +25,12 @@ da Library nesta execução; seus pixels não foram inspecionados. Não houve tr
 de pin, cópia de arte conceitual ou declaração de sprite final. Quando o conjunto
 correto estiver disponível, registre corpo e esfera separadamente, ambos os
 lados e estados no release versionado, fixe-o no runtime-lock e valide no jogo.
+
+## Retomada V04-ART-09B
+
+O impedimento de transferência acima é histórico. A referência foi lida em um
+novo ambiente e gerou o piloto `characters/aquatic-family@1.0.0`. `BattleArt`
+resolve os corpos de Lonlon/Lonaro pelo binding explícito; `CreatureRig` desenha
+a esfera separadamente. Os bindings SVG acima continuam como fallback de
+consumidores diretos. Finais, versos no runtime e animação desenhada seguem
+pendentes. Veja [resultados e limites](../../../docs/aquatic-pilot-v04-09b.md).

@@ -45,7 +45,7 @@ Ao vencer, **Capturar** permite escolher uma vaga livre no campo ou a reserva, c
 | Faísca → Tempestral | Circuito Vivo: ataques ganham dano por outro Umbral ativo | Arco elétrico, Interferência, Mergulho trovão; Juízo da tempestade é técnica de linhagem |
 | Lonlon → Lonaro | Maré Marcada: água deixa Encharcado | Jato de orvalho, Chuva lateral, Gota serena |
 
-A família aquática está parcialmente integrada: Lonlon e Lonaro usam a arte anterior como fallback. Londraval/Lonelo, a lontra aprovada e a esfera destacável ainda estão pendentes; veja [escopo e evidências](docs/aquatic-lineage-v04-09a.md).
+A família aquática está parcialmente integrada: Lonlon e Lonaro usam corpos de lontra e esfera separada no combate. Londraval/Lonelo, o companheiro vivo e animações finais ainda estão pendentes; veja [piloto, evidências e limites](docs/aquatic-pilot-v04-09b.md).
 
 Passivas individuais: **Feroz**, **Resiliente**, **Vital**, **Ardente** e **Ágil**. O sorteio usa pools úteis para cada espécie. Ágil concede +3 Velocidade ao indivíduo. Os números do catálogo são valores iniciais de protótipo.
 

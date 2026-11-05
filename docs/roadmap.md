@@ -1075,3 +1075,20 @@ sem merge. Esta atualização posterior ao gate altera somente documentação; o
 inputs do jogo permanecem iguais. Nenhum marco ou versão foi encerrado. A próxima
 fatia depende de pixels aprovados legíveis e produção dos corpos/esfera, estados
 e finais com decisão explícita de compatibilidade.
+
+### V04-ART-09B — retomada do piloto aquático
+
+Novo ambiente sobre main `1523d0e`, incorporando o PR #16. A referência aprovada
+foi materializada e inspecionada; Lonlon/Lonaro agora usam corpos de lontra azul
+e esfera separada que parte, chega à altura do alvo e retorna no relógio real
+dos ataques. IDs, regras, atributos, cópias, UID/passiva, RNG e saves permanecem
+iguais. Testes focados passaram; vídeos registram seis conjurações reais com
+áudio. O grafo completo isolado foi interrompido ao conciliar o fluxo aprovado
+de regressão única da candidata integrada; não há aceitação completa ou CI remoto
+atribuído a esta fatia. [Evidências e limites](aquatic-pilot-v04-09b.md).
+
+Londraval/Lonelo têm somente estudos de corpo e esfera, sem formas jogáveis,
+arestas, companheiro vivo ou migração integrada. Versos e quadros próprios também
+faltam. A próxima fatia deve combinar a política de compatibilidade com o
+integrador das outras famílias, validar as finais e revisar o conjunto visual.
+Nenhum marco ou versão do produto foi encerrado.

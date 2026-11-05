@@ -80,3 +80,11 @@ O atlas de criaturas existente orientou o acabamento; os Umbrais não ganharam
 animações de caminhada por esta alteração. PNGs originais mantêm bytes e
 metadados; manifests registram origem, hashes e referências. A fonte Cormorant
 e sua licença existente são reutilizadas. Ver `docs/refuge-v05-ux03.md`.
+
+## Aquatic presentation pilot
+
+`characters/aquatic-family@1.0.0` contains untouched generated body/sphere PNGs
+and their prompts/reference identity in `source.json`. Lonlon and Lonaro are
+bound through the battle renderer. Final-form bodies, reverse views and the
+living sphere remain source studies, not completed playable animations. See
+[scope and evidence](../docs/aquatic-pilot-v04-09b.md).
