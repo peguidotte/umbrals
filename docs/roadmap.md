@@ -1058,3 +1058,20 @@ Continuam os retratos anteriores como fallback explícito na documentação.
 Próxima fatia: materializar e revisar a arte aprovada e integrar as formas finais
 com compatibilidade auditada. Versão continua 0.3.0; as quatro famílias não estão
 declaradas concluídas por esta entrega.
+
+
+### V05-ART-02F — piloto visual da Foli
+
+Sobre a fatia de nomes do PR #14, a inicial recebe recorte transparente e
+rig próprios, mantendo IDs, mecânicas e saves. As duas referências aprovadas
+foram materializadas pelo fluxo oficial e inspecionadas; os PNGs originais
+estão versionados em `docs/references/creatures/foli/`. Apenas o pin
+`umbrals/moss` muda; arte antiga de Folife permanece explícita.
+
+[Escopo, contratos, evidências e lacunas](foli-pilot-v05-art-02f.md). Checks
+focados de movimento (68) passaram após corrigir o cache do atlas antigo;
+captura por cliques reais registrou três casts com áudio real, mas a baixa
+cadência do MP4 não comprova fluidez. Fechamento integral e revisão ficam
+registrados no PR. Caminhada/KO próprios, Folife/Foslash/Folivel, VFX de
+folhas e revisão estética permanecem pendentes. Produto 0.3.0; sem merge ou
+encerramento da família/marco por esta fatia.
