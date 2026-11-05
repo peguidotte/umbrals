@@ -107,6 +107,12 @@ func _run() -> void:
 	var hud: Control = app.screen_host.battle_root.hud
 	var source: Control = hud.actors[1]
 	var target: Control = hud.enemy_actors[1]
+	source.rig.set_incapacitated(true)
+	source.rig.seek_reaction(0, 2.1)
+	source.rig.managed = false
+	source.rig._process(.04)
+	expect(source.rig.mode == "states" and source.rig.clip == 0, "Older forms without a KO clip stop completed reactions and retain their still-state behavior")
+	source.rig.set_incapacitated(false)
 	var rect: Rect2 = source.get_global_rect()
 	var old_socket: Vector2 = source.emission_point(0)
 	source.rig.seek_cast(0, 0.72, Vector2.ZERO)

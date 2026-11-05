@@ -105,7 +105,7 @@ func _process(delta: float) -> void:
 	if still and mode == "states" and clip == 0: return
 	elapsed += delta
 	idle_time += delta
-	if not incapacitated and ((mode == "reactions" and elapsed >= 2.0) or (mode == "states" and clip not in [0, 6] and elapsed >= 3.2)): reset()
+	if (mode == "reactions" and elapsed >= 2.0) or (mode == "states" and clip not in [0, 6] and elapsed >= 3.2): reset()
 	accumulator += delta
 	if accumulator < 1.0 / 30: return
 	accumulator = 0
@@ -180,9 +180,10 @@ func _refresh() -> void:
 	pose = Motion.neutral() if reduced_motion else Motion.sample(form_id, mode, clip, fposmod(idle_time, 3.2) if mode == "states" and clip == 0 else elapsed)
 	if not reduced_motion and mode == "states" and clip == 6:
 		pose = Motion.sample(form_id, mode, clip, fposmod(elapsed, 3.2))
-	if incapacitated and definition.get("states", {}).has("7"):
+	var ko_pose: bool = incapacitated and definition.get("states", {}).has("7")
+	if ko_pose:
 		pose = Motion.sample(form_id, "states", 7, 3.2 if reduced_motion else ko_elapsed)
-	if not incapacitated and mode == "reactions" and not is_equal_approx(reaction_weight, 1.0):
+	if not ko_pose and mode == "reactions" and not is_equal_approx(reaction_weight, 1.0):
 		var rest: Array = Motion.neutral()
 		for channel in range(pose.size()): pose[channel] = lerpf(float(rest[channel]), float(pose[channel]), reaction_weight)
 	var vertices: PackedVector2Array = PackedVector2Array()
