@@ -1,0 +1,1210 @@
+{
+	"after": {
+		"battle": {
+			"action_modifier": 0,
+			"actions": 1,
+			"deck": [],
+			"declined_replacements": {
+
+			},
+			"discard_pile": [],
+			"encounter": 0,
+			"encounter_rounds_resolved": 1,
+			"enemies": [
+				{
+					"attack": 11,
+					"block": 0,
+					"can_act_round": 1,
+					"cards": [
+						{
+							"instance_id": "9000:thorn_lash:0",
+							"owner": 9000,
+							"power": "thorn_lash"
+						},
+						{
+							"instance_id": "9000:thorn_lash:1",
+							"owner": 9000,
+							"power": "thorn_lash"
+						},
+						{
+							"instance_id": "9000:root_wall:0",
+							"owner": 9000,
+							"power": "root_wall"
+						},
+						{
+							"instance_id": "9000:root_wall:1",
+							"owner": 9000,
+							"power": "root_wall"
+						},
+						{
+							"instance_id": "9000:sowing:0",
+							"owner": 9000,
+							"power": "sowing"
+						},
+						{
+							"instance_id": "9000:sowing:1",
+							"owner": 9000,
+							"power": "sowing"
+						}
+					],
+					"defense": 5,
+					"form_id": "verdalio",
+					"hp": 250,
+					"known_powers": [
+						"thorn_lash",
+						"root_wall",
+						"sowing"
+					],
+					"max_hp": 250,
+					"passive": "",
+					"pattern": [
+						{
+							"block": 1,
+							"category": "defend",
+							"conditions": {
+
+							},
+							"damage": 0,
+							"heal": 0,
+							"nature": "forest",
+							"priority": 1,
+							"scope": "single"
+						}
+					],
+					"slot": 0,
+					"species": "moss",
+					"speed": 10,
+					"status_sources": {
+
+					},
+					"statuses": {
+
+					},
+					"uid": 9000
+				},
+				{
+					"attack": 12,
+					"block": 0,
+					"can_act_round": 1,
+					"cards": [
+						{
+							"instance_id": "9001:tidal_splash:0",
+							"owner": 9001,
+							"power": "tidal_splash"
+						},
+						{
+							"instance_id": "9001:tidal_splash:1",
+							"owner": 9001,
+							"power": "tidal_splash"
+						},
+						{
+							"instance_id": "9001:rain_sweep:0",
+							"owner": 9001,
+							"power": "rain_sweep"
+						},
+						{
+							"instance_id": "9001:rain_sweep:1",
+							"owner": 9001,
+							"power": "rain_sweep"
+						},
+						{
+							"instance_id": "9001:dew_mend:0",
+							"owner": 9001,
+							"power": "dew_mend"
+						},
+						{
+							"instance_id": "9001:dew_mend:1",
+							"owner": 9001,
+							"power": "dew_mend"
+						}
+					],
+					"defense": 3,
+					"form_id": "mareveu",
+					"hp": 237,
+					"known_powers": [
+						"tidal_splash",
+						"rain_sweep",
+						"dew_mend"
+					],
+					"max_hp": 250,
+					"passive": "",
+					"pattern": [
+						{
+							"block": 1,
+							"category": "defend",
+							"conditions": {
+
+							},
+							"damage": 0,
+							"heal": 0,
+							"nature": "forest",
+							"priority": 1,
+							"scope": "single"
+						}
+					],
+					"slot": 1,
+					"species": "dew",
+					"speed": 22,
+					"status_sources": {
+						"wet": {
+							"side": "ally",
+							"uid": 1
+						}
+					},
+					"statuses": {
+						"wet": 3
+					},
+					"uid": 9001
+				},
+				{
+					"attack": 14,
+					"block": 0,
+					"can_act_round": 1,
+					"cards": [
+						{
+							"instance_id": "9002:lightning:0",
+							"owner": 9002,
+							"power": "lightning"
+						},
+						{
+							"instance_id": "9002:lightning:1",
+							"owner": 9002,
+							"power": "lightning"
+						},
+						{
+							"instance_id": "9002:interference:0",
+							"owner": 9002,
+							"power": "interference"
+						},
+						{
+							"instance_id": "9002:interference:1",
+							"owner": 9002,
+							"power": "interference"
+						},
+						{
+							"instance_id": "9002:storm_dive:0",
+							"owner": 9002,
+							"power": "storm_dive"
+						},
+						{
+							"instance_id": "9002:storm_dive:1",
+							"owner": 9002,
+							"power": "storm_dive"
+						}
+					],
+					"defense": 2,
+					"form_id": "tempestral",
+					"hp": 250,
+					"known_powers": [
+						"lightning",
+						"interference",
+						"storm_dive"
+					],
+					"max_hp": 250,
+					"passive": "",
+					"pattern": [
+						{
+							"block": 1,
+							"category": "defend",
+							"conditions": {
+
+							},
+							"damage": 0,
+							"heal": 0,
+							"nature": "forest",
+							"priority": 1,
+							"scope": "single"
+						}
+					],
+					"slot": 2,
+					"species": "volt",
+					"speed": 20,
+					"status_sources": {
+
+					},
+					"statuses": {
+
+					},
+					"uid": 9002
+				}
+			],
+			"enemy_plan": [
+				{
+					"actor_slot": 0,
+					"actor_uid": 9000,
+					"block": 1,
+					"category": "defend",
+					"conditions": {
+
+					},
+					"damage": 0,
+					"heal": 0,
+					"nature": "forest",
+					"power": "enemy_defend",
+					"priority": 1,
+					"scope": "single",
+					"target_slot": 2,
+					"wet": 0
+				},
+				{
+					"actor_slot": 1,
+					"actor_uid": 9001,
+					"block": 1,
+					"category": "defend",
+					"conditions": {
+
+					},
+					"damage": 0,
+					"heal": 0,
+					"nature": "forest",
+					"power": "enemy_defend",
+					"priority": 1,
+					"scope": "single",
+					"target_slot": 2,
+					"wet": 0
+				},
+				{
+					"actor_slot": 2,
+					"actor_uid": 9002,
+					"block": 1,
+					"category": "defend",
+					"conditions": {
+
+					},
+					"damage": 0,
+					"heal": 0,
+					"nature": "forest",
+					"power": "enemy_defend",
+					"priority": 1,
+					"scope": "single",
+					"target_slot": 2,
+					"wet": 0
+				}
+			],
+			"hand": [
+				{
+					"instance_id": "1:dew_mend:0",
+					"owner": 1,
+					"power": "dew_mend",
+					"target_slot": 2
+				},
+				{
+					"instance_id": "1:rain_sweep:0",
+					"owner": 1,
+					"power": "rain_sweep",
+					"target_slot": 0
+				},
+				{
+					"instance_id": "1:dew_mend:1",
+					"owner": 1,
+					"power": "dew_mend",
+					"target_slot": 2
+				},
+				{
+					"instance_id": "1:tidal_splash:1",
+					"owner": 1,
+					"power": "tidal_splash",
+					"target_slot": 0
+				},
+				{
+					"instance_id": "1:tidal_splash:0",
+					"owner": 1,
+					"power": "tidal_splash",
+					"target_slot": 0
+				},
+				{
+					"instance_id": "1:rain_sweep:1",
+					"owner": 1,
+					"power": "rain_sweep",
+					"target_slot": 0
+				}
+			],
+			"hand_size_modifier": 0,
+			"information_mode": "full",
+			"inventory": {
+				"potion": 2,
+				"revive": 1
+			},
+			"last_result": {
+				"actions": 1,
+				"applied_damage": 13,
+				"block": 0,
+				"bonuses": [],
+				"burn_added": 0,
+				"burn_tick": 0,
+				"damage": 23,
+				"direct_damage": 23,
+				"encounter_index": 0,
+				"energy": 1,
+				"events": [
+					{
+						"actor_name": "Lonaro",
+						"actor_side": "enemy",
+						"actor_slot": 1,
+						"actor_uid": 9001,
+						"amount": 1,
+						"kind": "block",
+						"power": "enemy_defend",
+						"target_name": "Lonaro",
+						"target_side": "enemy",
+						"target_slot": 1,
+						"target_state": {
+							"attack": 12,
+							"block": 1,
+							"can_act_round": 1,
+							"defense": 3,
+							"form_id": "mareveu",
+							"hp": 250,
+							"max_hp": 250,
+							"passive": "",
+							"slot": 1,
+							"species": "dew",
+							"speed": 22,
+							"status_sources": {
+
+							},
+							"statuses": {
+
+							},
+							"uid": 9001
+						},
+						"target_uid": 9001
+					},
+					{
+						"actor_name": "Niscor",
+						"actor_side": "enemy",
+						"actor_slot": 2,
+						"actor_uid": 9002,
+						"amount": 1,
+						"kind": "block",
+						"power": "enemy_defend",
+						"target_name": "Niscor",
+						"target_side": "enemy",
+						"target_slot": 2,
+						"target_state": {
+							"attack": 14,
+							"block": 1,
+							"can_act_round": 1,
+							"defense": 2,
+							"form_id": "tempestral",
+							"hp": 250,
+							"max_hp": 250,
+							"passive": "",
+							"slot": 2,
+							"species": "volt",
+							"speed": 20,
+							"status_sources": {
+
+							},
+							"statuses": {
+
+							},
+							"uid": 9002
+						},
+						"target_uid": 9002
+					},
+					{
+						"actor_name": "Folife",
+						"actor_side": "enemy",
+						"actor_slot": 0,
+						"actor_uid": 9000,
+						"amount": 1,
+						"kind": "block",
+						"power": "enemy_defend",
+						"target_name": "Folife",
+						"target_side": "enemy",
+						"target_slot": 0,
+						"target_state": {
+							"attack": 11,
+							"block": 1,
+							"can_act_round": 1,
+							"defense": 5,
+							"form_id": "verdalio",
+							"hp": 250,
+							"max_hp": 250,
+							"passive": "",
+							"slot": 0,
+							"species": "moss",
+							"speed": 10,
+							"status_sources": {
+
+							},
+							"statuses": {
+
+							},
+							"uid": 9000
+						},
+						"target_uid": 9000
+					},
+					{
+						"actor_name": "Lonelo",
+						"actor_side": "ally",
+						"actor_slot": 2,
+						"actor_uid": 1,
+						"amount": 13,
+						"amplified": false,
+						"blocked": 1,
+						"kind": "attack",
+						"nature": "water",
+						"power": "tidal_splash",
+						"resistance": 25,
+						"target_name": "Lonaro",
+						"target_side": "enemy",
+						"target_slot": 1,
+						"target_state": {
+							"attack": 12,
+							"block": 0,
+							"can_act_round": 1,
+							"defense": 3,
+							"form_id": "mareveu",
+							"hp": 237,
+							"max_hp": 250,
+							"passive": "",
+							"slot": 1,
+							"species": "dew",
+							"speed": 22,
+							"status_sources": {
+
+							},
+							"statuses": {
+
+							},
+							"uid": 9001
+						},
+						"target_uid": 9001,
+						"weakened": false
+					},
+					{
+						"actor_name": "Lonelo",
+						"actor_side": "ally",
+						"actor_slot": 2,
+						"actor_uid": 1,
+						"amount": 4,
+						"condition": "wet",
+						"kind": "wet",
+						"power": "tidal_splash",
+						"target_name": "Lonaro",
+						"target_side": "enemy",
+						"target_slot": 1,
+						"target_state": {
+							"attack": 12,
+							"block": 0,
+							"can_act_round": 1,
+							"defense": 3,
+							"form_id": "mareveu",
+							"hp": 237,
+							"max_hp": 250,
+							"passive": "",
+							"slot": 1,
+							"species": "dew",
+							"speed": 22,
+							"status_sources": {
+								"wet": {
+									"side": "ally",
+									"uid": 1
+								}
+							},
+							"statuses": {
+								"wet": 4
+							},
+							"uid": 9001
+						},
+						"target_uid": 9001
+					}
+				],
+				"heal": 0,
+				"incoming": 0,
+				"name": "Poder de Lonelo",
+				"ok": true,
+				"passed": false,
+				"phase": "battle",
+				"reason": "",
+				"resolved_round": 1,
+				"valid": true
+			},
+			"next_uid": 2,
+			"party": [
+				{
+					"attack": 15,
+					"block": 0,
+					"can_act_round": 1,
+					"cards": [
+						{
+							"instance_id": "1:tidal_splash:0",
+							"owner": 1,
+							"power": "tidal_splash"
+						},
+						{
+							"instance_id": "1:tidal_splash:1",
+							"owner": 1,
+							"power": "tidal_splash"
+						},
+						{
+							"instance_id": "1:rain_sweep:0",
+							"owner": 1,
+							"power": "rain_sweep"
+						},
+						{
+							"instance_id": "1:rain_sweep:1",
+							"owner": 1,
+							"power": "rain_sweep"
+						},
+						{
+							"instance_id": "1:dew_mend:0",
+							"owner": 1,
+							"power": "dew_mend"
+						},
+						{
+							"instance_id": "1:dew_mend:1",
+							"owner": 1,
+							"power": "dew_mend"
+						}
+					],
+					"defense": 4,
+					"form_id": "lonelo",
+					"hp": 66,
+					"known_powers": [
+						"tidal_splash",
+						"rain_sweep",
+						"dew_mend"
+					],
+					"max_hp": 66,
+					"passive": "vital",
+					"slot": 2,
+					"species": "dew",
+					"speed": 24,
+					"status_sources": {
+
+					},
+					"statuses": {
+
+					},
+					"uid": 1
+				}
+			],
+			"pending_information_mode": "full",
+			"phase": "battle",
+			"relics": [],
+			"reward_offers": [],
+			"rng_seed": "42013",
+			"rng_state": "-1534813806244647156",
+			"round_number": 2,
+			"seed_value": "42013",
+			"starter_species": "dew",
+			"suspended_cards": {
+
+			},
+			"total_damage": 13
+		},
+		"catalog_revision": 5,
+		"completed": [],
+		"current_node_id": "clearing",
+		"event_revision": 1,
+		"identity": {
+			"content_sha256": "cdefbb7c0dfe65b32aecb1ba32f08a60c941a6287638959381b8e5ae8c516d50",
+			"ruleset": "expedition-rules-4"
+		},
+		"phase": "combat",
+		"schema": 2
+	},
+	"commands": [
+		{
+			"command": "select",
+			"index": 5
+		},
+		{
+			"command": "cast"
+		}
+	],
+	"events": [
+		{
+			"actor_name": "Lonaro",
+			"actor_side": "enemy",
+			"actor_slot": 1,
+			"actor_uid": 9001,
+			"amount": 1,
+			"kind": "block",
+			"power": "enemy_defend",
+			"target_name": "Lonaro",
+			"target_side": "enemy",
+			"target_slot": 1,
+			"target_state": {
+				"attack": 12,
+				"block": 1,
+				"can_act_round": 1,
+				"defense": 3,
+				"form_id": "mareveu",
+				"hp": 250,
+				"max_hp": 250,
+				"passive": "",
+				"slot": 1,
+				"species": "dew",
+				"speed": 22,
+				"status_sources": {
+
+				},
+				"statuses": {
+
+				},
+				"uid": 9001
+			},
+			"target_uid": 9001
+		},
+		{
+			"actor_name": "Niscor",
+			"actor_side": "enemy",
+			"actor_slot": 2,
+			"actor_uid": 9002,
+			"amount": 1,
+			"kind": "block",
+			"power": "enemy_defend",
+			"target_name": "Niscor",
+			"target_side": "enemy",
+			"target_slot": 2,
+			"target_state": {
+				"attack": 14,
+				"block": 1,
+				"can_act_round": 1,
+				"defense": 2,
+				"form_id": "tempestral",
+				"hp": 250,
+				"max_hp": 250,
+				"passive": "",
+				"slot": 2,
+				"species": "volt",
+				"speed": 20,
+				"status_sources": {
+
+				},
+				"statuses": {
+
+				},
+				"uid": 9002
+			},
+			"target_uid": 9002
+		},
+		{
+			"actor_name": "Folife",
+			"actor_side": "enemy",
+			"actor_slot": 0,
+			"actor_uid": 9000,
+			"amount": 1,
+			"kind": "block",
+			"power": "enemy_defend",
+			"target_name": "Folife",
+			"target_side": "enemy",
+			"target_slot": 0,
+			"target_state": {
+				"attack": 11,
+				"block": 1,
+				"can_act_round": 1,
+				"defense": 5,
+				"form_id": "verdalio",
+				"hp": 250,
+				"max_hp": 250,
+				"passive": "",
+				"slot": 0,
+				"species": "moss",
+				"speed": 10,
+				"status_sources": {
+
+				},
+				"statuses": {
+
+				},
+				"uid": 9000
+			},
+			"target_uid": 9000
+		},
+		{
+			"actor_name": "Lonelo",
+			"actor_side": "ally",
+			"actor_slot": 2,
+			"actor_uid": 1,
+			"amount": 13,
+			"amplified": false,
+			"blocked": 1,
+			"kind": "attack",
+			"nature": "water",
+			"power": "tidal_splash",
+			"resistance": 25,
+			"target_name": "Lonaro",
+			"target_side": "enemy",
+			"target_slot": 1,
+			"target_state": {
+				"attack": 12,
+				"block": 0,
+				"can_act_round": 1,
+				"defense": 3,
+				"form_id": "mareveu",
+				"hp": 237,
+				"max_hp": 250,
+				"passive": "",
+				"slot": 1,
+				"species": "dew",
+				"speed": 22,
+				"status_sources": {
+
+				},
+				"statuses": {
+
+				},
+				"uid": 9001
+			},
+			"target_uid": 9001,
+			"weakened": false
+		},
+		{
+			"actor_name": "Lonelo",
+			"actor_side": "ally",
+			"actor_slot": 2,
+			"actor_uid": 1,
+			"amount": 4,
+			"condition": "wet",
+			"kind": "wet",
+			"power": "tidal_splash",
+			"target_name": "Lonaro",
+			"target_side": "enemy",
+			"target_slot": 1,
+			"target_state": {
+				"attack": 12,
+				"block": 0,
+				"can_act_round": 1,
+				"defense": 3,
+				"form_id": "mareveu",
+				"hp": 237,
+				"max_hp": 250,
+				"passive": "",
+				"slot": 1,
+				"species": "dew",
+				"speed": 22,
+				"status_sources": {
+					"wet": {
+						"side": "ally",
+						"uid": 1
+					}
+				},
+				"statuses": {
+					"wet": 4
+				},
+				"uid": 9001
+			},
+			"target_uid": 9001
+		}
+	],
+	"identity": {
+		"content_sha256": "cdefbb7c0dfe65b32aecb1ba32f08a60c941a6287638959381b8e5ae8c516d50",
+		"ruleset": "expedition-rules-4"
+	},
+	"initial_state": {
+		"battle": {
+			"action_modifier": 0,
+			"actions": 0,
+			"deck": [],
+			"declined_replacements": {
+
+			},
+			"discard_pile": [],
+			"encounter": 0,
+			"encounter_rounds_resolved": 0,
+			"enemies": [
+				{
+					"attack": 11,
+					"block": 0,
+					"can_act_round": 1,
+					"cards": [
+						{
+							"instance_id": "9000:thorn_lash:0",
+							"owner": 9000,
+							"power": "thorn_lash"
+						},
+						{
+							"instance_id": "9000:thorn_lash:1",
+							"owner": 9000,
+							"power": "thorn_lash"
+						},
+						{
+							"instance_id": "9000:root_wall:0",
+							"owner": 9000,
+							"power": "root_wall"
+						},
+						{
+							"instance_id": "9000:root_wall:1",
+							"owner": 9000,
+							"power": "root_wall"
+						},
+						{
+							"instance_id": "9000:sowing:0",
+							"owner": 9000,
+							"power": "sowing"
+						},
+						{
+							"instance_id": "9000:sowing:1",
+							"owner": 9000,
+							"power": "sowing"
+						}
+					],
+					"defense": 5,
+					"form_id": "verdalio",
+					"hp": 250,
+					"known_powers": [
+						"thorn_lash",
+						"root_wall",
+						"sowing"
+					],
+					"max_hp": 250,
+					"passive": "",
+					"pattern": [
+						{
+							"block": 1,
+							"category": "defend",
+							"conditions": {
+
+							},
+							"damage": 0,
+							"heal": 0,
+							"nature": "forest",
+							"priority": 1,
+							"scope": "single"
+						}
+					],
+					"slot": 0,
+					"species": "moss",
+					"speed": 10,
+					"status_sources": {
+
+					},
+					"statuses": {
+
+					},
+					"uid": 9000
+				},
+				{
+					"attack": 12,
+					"block": 0,
+					"can_act_round": 1,
+					"cards": [
+						{
+							"instance_id": "9001:tidal_splash:0",
+							"owner": 9001,
+							"power": "tidal_splash"
+						},
+						{
+							"instance_id": "9001:tidal_splash:1",
+							"owner": 9001,
+							"power": "tidal_splash"
+						},
+						{
+							"instance_id": "9001:rain_sweep:0",
+							"owner": 9001,
+							"power": "rain_sweep"
+						},
+						{
+							"instance_id": "9001:rain_sweep:1",
+							"owner": 9001,
+							"power": "rain_sweep"
+						},
+						{
+							"instance_id": "9001:dew_mend:0",
+							"owner": 9001,
+							"power": "dew_mend"
+						},
+						{
+							"instance_id": "9001:dew_mend:1",
+							"owner": 9001,
+							"power": "dew_mend"
+						}
+					],
+					"defense": 3,
+					"form_id": "mareveu",
+					"hp": 250,
+					"known_powers": [
+						"tidal_splash",
+						"rain_sweep",
+						"dew_mend"
+					],
+					"max_hp": 250,
+					"passive": "",
+					"pattern": [
+						{
+							"block": 1,
+							"category": "defend",
+							"conditions": {
+
+							},
+							"damage": 0,
+							"heal": 0,
+							"nature": "forest",
+							"priority": 1,
+							"scope": "single"
+						}
+					],
+					"slot": 1,
+					"species": "dew",
+					"speed": 22,
+					"status_sources": {
+
+					},
+					"statuses": {
+
+					},
+					"uid": 9001
+				},
+				{
+					"attack": 14,
+					"block": 0,
+					"can_act_round": 1,
+					"cards": [
+						{
+							"instance_id": "9002:lightning:0",
+							"owner": 9002,
+							"power": "lightning"
+						},
+						{
+							"instance_id": "9002:lightning:1",
+							"owner": 9002,
+							"power": "lightning"
+						},
+						{
+							"instance_id": "9002:interference:0",
+							"owner": 9002,
+							"power": "interference"
+						},
+						{
+							"instance_id": "9002:interference:1",
+							"owner": 9002,
+							"power": "interference"
+						},
+						{
+							"instance_id": "9002:storm_dive:0",
+							"owner": 9002,
+							"power": "storm_dive"
+						},
+						{
+							"instance_id": "9002:storm_dive:1",
+							"owner": 9002,
+							"power": "storm_dive"
+						}
+					],
+					"defense": 2,
+					"form_id": "tempestral",
+					"hp": 250,
+					"known_powers": [
+						"lightning",
+						"interference",
+						"storm_dive"
+					],
+					"max_hp": 250,
+					"passive": "",
+					"pattern": [
+						{
+							"block": 1,
+							"category": "defend",
+							"conditions": {
+
+							},
+							"damage": 0,
+							"heal": 0,
+							"nature": "forest",
+							"priority": 1,
+							"scope": "single"
+						}
+					],
+					"slot": 2,
+					"species": "volt",
+					"speed": 20,
+					"status_sources": {
+
+					},
+					"statuses": {
+
+					},
+					"uid": 9002
+				}
+			],
+			"enemy_plan": [
+				{
+					"actor_slot": 0,
+					"actor_uid": 9000,
+					"block": 1,
+					"category": "defend",
+					"conditions": {
+
+					},
+					"damage": 0,
+					"heal": 0,
+					"nature": "forest",
+					"power": "enemy_defend",
+					"priority": 1,
+					"scope": "single",
+					"target_slot": 2,
+					"wet": 0
+				},
+				{
+					"actor_slot": 1,
+					"actor_uid": 9001,
+					"block": 1,
+					"category": "defend",
+					"conditions": {
+
+					},
+					"damage": 0,
+					"heal": 0,
+					"nature": "forest",
+					"power": "enemy_defend",
+					"priority": 1,
+					"scope": "single",
+					"target_slot": 2,
+					"wet": 0
+				},
+				{
+					"actor_slot": 2,
+					"actor_uid": 9002,
+					"block": 1,
+					"category": "defend",
+					"conditions": {
+
+					},
+					"damage": 0,
+					"heal": 0,
+					"nature": "forest",
+					"power": "enemy_defend",
+					"priority": 1,
+					"scope": "single",
+					"target_slot": 2,
+					"wet": 0
+				}
+			],
+			"hand": [
+				{
+					"instance_id": "1:dew_mend:0",
+					"owner": 1,
+					"power": "dew_mend",
+					"target_slot": 2
+				},
+				{
+					"instance_id": "1:rain_sweep:1",
+					"owner": 1,
+					"power": "rain_sweep",
+					"target_slot": 1
+				},
+				{
+					"instance_id": "1:dew_mend:1",
+					"owner": 1,
+					"power": "dew_mend",
+					"target_slot": 2
+				},
+				{
+					"instance_id": "1:tidal_splash:0",
+					"owner": 1,
+					"power": "tidal_splash",
+					"target_slot": 1
+				},
+				{
+					"instance_id": "1:rain_sweep:0",
+					"owner": 1,
+					"power": "rain_sweep",
+					"target_slot": 1
+				},
+				{
+					"instance_id": "1:tidal_splash:1",
+					"owner": 1,
+					"power": "tidal_splash",
+					"target_slot": 1
+				}
+			],
+			"hand_size_modifier": 0,
+			"information_mode": "full",
+			"inventory": {
+				"potion": 2,
+				"revive": 1
+			},
+			"last_result": {
+
+			},
+			"next_uid": 2,
+			"party": [
+				{
+					"attack": 15,
+					"block": 0,
+					"can_act_round": 1,
+					"cards": [
+						{
+							"instance_id": "1:tidal_splash:0",
+							"owner": 1,
+							"power": "tidal_splash"
+						},
+						{
+							"instance_id": "1:tidal_splash:1",
+							"owner": 1,
+							"power": "tidal_splash"
+						},
+						{
+							"instance_id": "1:rain_sweep:0",
+							"owner": 1,
+							"power": "rain_sweep"
+						},
+						{
+							"instance_id": "1:rain_sweep:1",
+							"owner": 1,
+							"power": "rain_sweep"
+						},
+						{
+							"instance_id": "1:dew_mend:0",
+							"owner": 1,
+							"power": "dew_mend"
+						},
+						{
+							"instance_id": "1:dew_mend:1",
+							"owner": 1,
+							"power": "dew_mend"
+						}
+					],
+					"defense": 4,
+					"form_id": "lonelo",
+					"hp": 66,
+					"known_powers": [
+						"tidal_splash",
+						"rain_sweep",
+						"dew_mend"
+					],
+					"max_hp": 66,
+					"passive": "vital",
+					"slot": 2,
+					"species": "dew",
+					"speed": 24,
+					"status_sources": {
+
+					},
+					"statuses": {
+
+					},
+					"uid": 1
+				}
+			],
+			"pending_information_mode": "full",
+			"phase": "battle",
+			"relics": [],
+			"reward_offers": [],
+			"rng_seed": "42013",
+			"rng_state": "2560921280294097913",
+			"round_number": 1,
+			"seed_value": "42013",
+			"starter_species": "dew",
+			"suspended_cards": {
+
+			},
+			"total_damage": 0
+		},
+		"catalog_revision": 5,
+		"completed": [],
+		"current_node_id": "clearing",
+		"event_revision": 1,
+		"identity": {
+			"content_sha256": "cdefbb7c0dfe65b32aecb1ba32f08a60c941a6287638959381b8e5ae8c516d50",
+			"ruleset": "expedition-rules-4"
+		},
+		"phase": "combat",
+		"schema": 2
+	}
+}

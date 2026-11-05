@@ -1,6 +1,7 @@
 extends RefCounted
 ## Pure plan validation over public battle data; no RNG or mutation of state.
 const ItemEffects = preload("res://scripts/battle/item_effects/registry.gd")
+const Companion = preload("res://scripts/battle/aquatic_companion.gd")
 const Content = preload("res://scripts/content.gd")
 const Targeting = preload("res://scripts/battle/targeting.gd")
 const PowerEvaluation = preload("res://scripts/battle/power_evaluation.gd")
@@ -26,7 +27,7 @@ static func target_options(index: int, hand: Array, party: Array, enemies: Array
 	if owner.is_empty() or not Content.POWERS.has(card.power): return []
 	return Targeting.options(Content.power_stats(str(card.power), owner), owner, party, enemies)
 
-static func preview_selection(indices: Array[int], hand: Array, party: Array, enemies: Array, phase: String, round_number: int, queued_swaps: Array, queued_items: Array, budget: int) -> Dictionary:
+static func preview_selection(indices: Array[int], hand: Array, party: Array, enemies: Array, phase: String, round_number: int, queued_swaps: Array, queued_items: Array, budget: int, revision: int = 0) -> Dictionary:
 	var cards: Array = []
 	for index in indices:
 		if index >= 0 and index < hand.size(): cards.append(hand[index])
@@ -52,6 +53,13 @@ static func preview_selection(indices: Array[int], hand: Array, party: Array, en
 			result.valid = false
 			result.reason = "Escolha uma vaga com alvo apto no alcance do poder"
 			return result
+	for card: Dictionary in cards:
+		var owner: Dictionary = by_uid(party, int(card.owner))
+		var stats: Dictionary = PowerEvaluation.power_effect(card, owner, 0)
+		if Companion.available(owner, stats, revision):
+			result.bonuses.append(Companion.description())
+			result.direct_damage += floori(Companion.BASE_POWER * float(stats.attack_multiplier))
+	result.damage = result.direct_damage
 	result.actions += queued_swaps.size()
 	for item in queued_items: result.actions += int(Content.CONSUMABLES[item.item].cost)
 	result.energy = result.actions

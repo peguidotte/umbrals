@@ -1437,3 +1437,16 @@ e save/reload; foco de saves passou com 498 asserções. O gate integral do
 conjunto congelado é registrado em `artifacts/aquatic-finals-integration-full-proof.json`.
 A esfera é apresentação visual, sem entidade autônoma ou ataque duplo.
 [Escopo, evidência e limites](aquatic-finals-v05-09d.md).
+
+### V05-BAT-10 — segundo golpe da companheira de Lonelo
+
+Ruleset 5/catálogo 6: ataques individuais de água de Lonelo recebem um segundo
+golpe de potência 6, limitado ao mesmo alvo sobrevivente, sem outra carta/ação.
+Defesa/resistência/escudo valem por golpe; não duplica condições ou reações.
+KO/reserva/revive da lontra impedem a técnica. Números e restrições provisórios.
+Saves 0–5 conservam o comportamento antigo por revisão, com replay congelado
+da main 8d1a3ae. Foco local: 14.321 checks de regras, 531 de saves, 1.012 de
+movimento, migração, arquitetura e export Web passaram; vídeo real confirma
+o segundo golpe. Arte não finalizada, sem alterações de outras famílias.
+Aguarda revisão independente e regressão de integração; Actions desligado.
+[Regra, migração, evidência e limites](lonelo-companion-v05-bat10.md).
