@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "world/pietro-house-continuous",
+  "version": "1.0.0",
+  "status": "production",
+  "description": "Continuous family home with separately rendered stairs and actor",
+  "dependencies": [],
+  "files": {
+    "texture": {
+      "path": "background.png",
+      "kind": "texture",
+      "bytes": 2740066,
+      "sha256": "b9d208f58bf0c8465dde809671acfaafafded3344f1c2006362bff7f93946362",
+      "technical": {
+        "dimensions": [
+          1754,
+          896
+        ],
+        "mode": "RGB",
+        "frames": 1,
+        "alpha": false
+      }
+    }
+  },
+  "provenance": {
+    "kind": "generated original",
+    "tool": "OpenAI Image Gen",
+    "recorded_date_utc": "2026-11-05",
+    "license_record": "Original artwork generated for Umbral, from project-owned references.",
+    "edit_history": "Original generated PNG preserved byte-for-byte including metadata; no pixel edits.",
+    "review_status": "Inspected source; provisional implementation pending Pedro review. Production denotes runtime eligibility, not approved likeness.",
+    "generation_brief": "Single continuous cross-section timber house; clear side-scrolling floors, no actors or baked stairs."
+  },
+  "metadata": {
+    "logical_world_size": [
+      4200,
+      2145
+    ],
+    "ground_y": 1730,
+    "upper_y": 742
+  }
+}

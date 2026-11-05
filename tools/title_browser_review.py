@@ -1,4 +1,4 @@
-from refuge_browser_review import depart, point_walk
+from refuge_browser_review import depart, point_walk, touch_depart
 """Real browser input and captures for the title menu and its card effect."""
 import argparse
 import functools
@@ -192,9 +192,7 @@ try:
         shot('touch-menu.png')
         click('menu.play', touch=True)
         wait("window.umbralState.refuge.armed && !window.umbralState.refuge.waking")
-        click('refuge.living', touch=True)
-        wait("window.umbralState.refuge.room === 'living'", 20000)
-        point_walk(page, state, wait, 450, "window.umbralState.refuge.position[0] < 500", touch=True)
+        point_walk(page, state, wait, 920, "window.umbralState.refuge.position[0] > 910", touch=True)
         check(state()['screen'] == 'refuge', 'Touch on floor walks without opening a panel')
         click('refuge.codex', touch=True)
         check(state()['screen'] == 'refuge', 'Touch on distant book cannot open it remotely')
@@ -202,8 +200,7 @@ try:
         check(state()['refuge']['nearby'] == 'codex', 'Real touch reaches and opens the codex without keyboard')
         click('codex.back', touch=True)
         wait("window.umbralState.screen === 'refuge'")
-        click('refuge.exit', touch=True)
-        wait("window.umbralState.screen === 'journey'", 20000)
+        touch_depart(page, state, wait, click)
         check(all(state()['controls'][k]['visible'] and state()['controls'][k]['active']
                   for k in ('journey.new', 'journey.continue', 'journey.practice', 'journey.back')),
               'Touch viewport displays all journey choices')

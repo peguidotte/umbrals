@@ -1011,29 +1011,19 @@ código. Aceitação integral e CI do HEAD final são gates antes do merge; resu
 finais registrados no PR. Versão permanece 0.3.0.
 
 
-### V05-UX-05 — casa inicial de Pietro
+### V05-UX-05 — casa contínua de Pietro
 
-A orientação de Pedro fixa a sala como parte da casa inicial, separada do futuro
-abrigo dentro do Umbral da mãe. A primeira implementação começa com uma saída
-breve da cama e permite percorrer quarto → sala → cozinha, subir/descer a escada
-e explorar o quarto da mãe. Portas/objetos exigem aproximação; não há seletor de
-cômodos. A saída externa mantém a preparação e o save/continuar exato existentes.
+Pedro rejeitou as vistas separadas após ver o vídeo. A revisão mantém os quatro
+cômodos em um único mundo 2D, com câmera acompanhando, dois pisos conectados por
+escada física com apoio/oclusão e posição sem saltos nas divisas. A porta da cozinha
+conserva preparação/Continuar; casa inicial e futuro abrigo portátil têm identidades
+separadas. Ator provisório com pele mais clara, roupa azul/dourada e escala revista.
+A referência aprovada foi localizada mas a transferência oficial falhou; aprovação
+de semelhança e acabamento continua pendente. Base main 1198404 incorporada.
 
-`house-input` passou 44 checks nativos; `house-painted-visual` passou 71 checks Web
-com vídeo e capturas reais após a revisão de arte das passagens. A tentativa
-`house-painted-passages` detectou fonte editada durante o teste e permanece
-invalidada, apesar de suas 44 asserções sem falha. O fechamento roda novamente
-com fontes congeladas, incluindo os cinco formatos com todos os cômodos;
-resultado final/CI ficam no PR de rascunho. Não é aceite completo por esses
-resultados focados. [Escopo, revisão e limites](house-v05-ux05.md). Próxima fatia:
-cena com a mãe e entrega posterior do abrigo, sem assumir economia/cosmologia
-ou aprovar um desenho de Umbral por inferência. Versão permanece 0.3.0.
-
-
-V05-UX-05, revisão da escada: reproduzidos corte de cabelo na borda superior e
-retomada que invertia uma subida pausada acima da metade. O ponto de passagem
-entre andares reserva margem para todas as poses; E/clique guarda a direção,
-com inversão explícita por cima/baixo. A regressão anterior falhou em sete casos;
-a correção passou 53 checks nativos e arquitetura. Validação Web por resolução
-e aceite integral devem rodar no HEAD que incorpora main 1198404; resultados
-finais e vídeo são entregues à coordenação, mantendo o PR em rascunho.
+As evidências de cenas separadas estão superadas. A revisão contínua tem testes de
+coordenadas, câmera, apoio/retomada da escada, margens por resolução, limites, inputs
+e conservação de RNG/save, além de captura/vídeo reais em MP4. O fechamento registra
+os resultados efetivos e o merge exato; não há aceite estético automático nem merge
+na main. [Escopo e limites](house-v05-ux05.md). Próxima fatia: avaliação de Pedro,
+acabamento do ator/ambiente e abertura narrativa/entrega do abrigo, ainda ausentes.

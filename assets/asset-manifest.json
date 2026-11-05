@@ -3790,6 +3790,56 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 1245,
+      "id": "characters/pietro-home@1.0.0:poses",
+      "kind": "data",
+      "module": "characters/pietro-home",
+      "path": "assets/characters/pietro-home/versions/1.0.0/poses.json",
+      "role": "poses",
+      "sha256": "08eabc7e8214f627f3a74b9ec0aab2e5fed77807fed5ffa2665a761b8c823938",
+      "source": {
+        "edit_history": "Original generated PNG preserved byte-for-byte including metadata; no pixel edits.",
+        "generation_brief": "Edit project traveler atlas to less caricatured young male, fair warm skin, curly hair, ivory shirt, blue/gold jacket, trousers and boots. Approved Library reference unavailable via official transfer; this is a provisional interpretation.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral, from project-owned references.",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Inspected source; provisional implementation pending Pedro review. Production denotes runtime eligibility, not approved likeness.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 780187,
+      "id": "characters/pietro-home@1.0.0:texture",
+      "kind": "texture",
+      "module": "characters/pietro-home",
+      "path": "assets/characters/pietro-home/versions/1.0.0/atlas.png",
+      "role": "texture",
+      "sha256": "70766b69dc8181769db2a049e06c13bdde91f4ab1ef34843e3ac84e00d2516ce",
+      "source": {
+        "edit_history": "Original generated PNG preserved byte-for-byte including metadata; no pixel edits.",
+        "generation_brief": "Edit project traveler atlas to less caricatured young male, fair warm skin, curly hair, ivory shirt, blue/gold jacket, trousers and boots. Approved Library reference unavailable via official transfer; this is a provisional interpretation.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral, from project-owned references.",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Inspected source; provisional implementation pending Pedro review. Production denotes runtime eligibility, not approved likeness.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
       "bytes": 1246,
       "id": "characters/refuge-traveler@1.0.0:poses",
       "kind": "data",
@@ -4579,6 +4629,35 @@
         "dimensions": [
           965,
           1630
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2740066,
+      "id": "world/pietro-house-continuous@1.0.0:texture",
+      "kind": "texture",
+      "module": "world/pietro-house-continuous",
+      "path": "assets/world/pietro-house-continuous/versions/1.0.0/background.png",
+      "role": "texture",
+      "sha256": "b9d208f58bf0c8465dde809671acfaafafded3344f1c2006362bff7f93946362",
+      "source": {
+        "edit_history": "Original generated PNG preserved byte-for-byte including metadata; no pixel edits.",
+        "generation_brief": "Single continuous cross-section timber house; clear side-scrolling floors, no actors or baked stairs.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral, from project-owned references.",
+        "recorded_date_utc": "2026-11-05",
+        "review_status": "Inspected source; provisional implementation pending Pedro review. Production denotes runtime eligibility, not approved likeness.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1754,
+          896
         ],
         "frames": 1,
         "mode": "RGB"

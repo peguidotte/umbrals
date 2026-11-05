@@ -6,7 +6,9 @@ const TitleTheme = preload("res://scripts/ui/title_theme.gd")
 const UI = preload("res://scripts/ui/kit.gd")
 const Space = preload("res://scripts/ui/house_space.gd")
 const Motion = preload("res://scripts/ui/house_motion.gd")
+const Camera = preload("res://scripts/ui/house_camera.gd")
 const Canvas = preload("res://scripts/ui/refuge_canvas.gd")
+var camera: RefCounted = Camera.new()
 var canvas: Node2D
 var motion: RefCounted = Motion.new()
 var active: bool = false
@@ -81,6 +83,7 @@ func enter() -> void:
 		motion.wake(canvas, reduced)
 	_clear_pointer()
 	_notice("")
+	camera.follow(canvas.point, 0, true)
 	_room_changed()
 
 func set_active(value: bool) -> void:
@@ -110,7 +113,7 @@ func handle_input(event: InputEvent, current_device: String) -> bool:
 		if event is InputEventKey and event.echo: return event.is_action("umbral_refuge_interact")
 	if event.is_action_pressed("umbral_refuge_interact") and has_focus():
 		if motion.waking: motion.step(canvas, Vector2.RIGHT, 0, reduced)
-		elif armed: _interact(Space.nearest(canvas.room, canvas.point))
+		elif armed: _interact(Space.nearest(canvas.point, motion.upper, motion.on_stairs))
 		return true
 	return false
 
@@ -141,14 +144,18 @@ func _physics_process(delta: float) -> void:
 		_publish_motion(previous, delta, old_room)
 		return
 	if not direction.is_zero_approx(): _clear_pointer()
-	if not is_zero_approx(direction.y) and Space.nearest(canvas.room, canvas.point) == "stairs":
-		if (canvas.room == "kitchen" and direction.y < 0) or (canvas.room == "mother" and direction.y > 0):
-			motion.use_stairs(canvas)
-			motion.automatic = 0
+	if not is_zero_approx(direction.y) and Space.nearest(canvas.point, motion.upper, motion.on_stairs) == "stairs":
+		if (not motion.upper and direction.y < 0) or (motion.upper and direction.y > 0):
+			var entry_x: float = Space.station("stairs", motion.upper)
+			if not is_equal_approx(canvas.point.x, entry_x): canvas.facing = Vector2(signf(entry_x - canvas.point.x), 0)
+			canvas.point.x = move_toward(canvas.point.x, entry_x, Space.SPEED * minf(delta, 0.1))
+			if is_equal_approx(canvas.point.x, entry_x):
+				motion.use_stairs(canvas)
+				motion.automatic = 0
 			_publish_motion(previous, delta, old_room)
 			return
 	if is_zero_approx(direction.x) and not is_nan(pointer_target): direction.x = signf(pointer_target - canvas.point.x)
-	canvas.point = Space.walk(previous, direction, delta)
+	canvas.point = Space.walk(previous, direction, delta, motion.upper)
 	if not is_nan(pointer_target) and absf(pointer_target - previous.x) <= absf(canvas.point.x - previous.x):
 		canvas.point.x = pointer_target
 		arrived = true
@@ -156,13 +163,10 @@ func _physics_process(delta: float) -> void:
 		_clear_pointer()
 		if not intent.is_empty(): _interact(intent)
 	if not is_zero_approx(direction.x): canvas.facing = Vector2(direction.x, 0)
-	var boundary: String = Space.threshold(canvas.room, previous, canvas.point) if canvas.room == old_room and not motion.on_stairs else ""
-	if boundary == "journey":
-		if exit_ready:
-			exit_ready = false
-			_request("journey")
-	elif not boundary.is_empty(): _switch_room(boundary)
-	if canvas.room == "living" and canvas.point.x < Space.EXIT - 65: exit_ready = true
+	if not motion.upper and previous.x < Space.EXIT and canvas.point.x >= Space.EXIT and exit_ready:
+		exit_ready = false
+		_request("journey")
+	if canvas.point.x < Space.EXIT - 65: exit_ready = true
 	_publish_motion(previous, delta, old_room, arrived)
 
 func _publish_motion(previous: Vector2, delta: float, old_room: String, arrived: bool = false) -> void:
@@ -171,11 +175,15 @@ func _publish_motion(previous: Vector2, delta: float, old_room: String, arrived:
 	walking = moving
 	if not motion.on_stairs and not motion.waking:
 		canvas.stride = canvas.stride + delta * 9 if moving and not reduced else 0
-	canvas.nearby = Space.nearest(canvas.room, canvas.point)
+	if not motion.on_stairs: canvas.room = Space.zone(canvas.point, motion.upper)
+	var prior_camera: Vector2 = camera.center
+	camera.follow(canvas.point, delta, reduced)
+	_project()
+	canvas.nearby = Space.nearest(canvas.point, motion.upper, motion.on_stairs)
 	canvas.queue_redraw()
 	if canvas.room != old_room: _room_changed()
 	elapsed += delta
-	if arrived or movement_changed or (moving and (elapsed >= 0.1 or canvas.point.x in [Space.LEFT, Space.RIGHT])):
+	if arrived or movement_changed or ((moving or camera.center.distance_to(prior_camera) > 0.01) and (elapsed >= 0.1 or canvas.point.x in [Space.LEFT, Space.RIGHT, Space.UPPER_LEFT, Space.UPPER_RIGHT])):
 		elapsed = 0
 		changed.emit()
 
@@ -198,7 +206,7 @@ func _stop_walk() -> void:
 	changed.emit()
 
 func _approach(identity: String) -> void:
-	if not active or not Space.OBJECTS[canvas.room].has(identity): return
+	if not active or not hotspots.has(identity) or not hotspots[identity].visible: return
 	grab_focus()
 	if motion.waking: motion.step(canvas, Vector2.RIGHT, 0, reduced)
 	armed = true
@@ -207,30 +215,21 @@ func _approach(identity: String) -> void:
 		if identity == "stairs": motion.use_stairs(canvas)
 		return
 	if identity == "exit": exit_ready = true
-	pointer_target = Space.station(canvas.room, identity)
-	pointer_intent = "" if identity == "exit" else identity
+	pointer_target = Space.station(identity, motion.upper)
+	pointer_intent = identity
 
 func _interact(identity: String) -> void:
-	if not active or not armed or identity.is_empty() or identity != Space.nearest(canvas.room, canvas.point): return
+	if not active or not armed or identity.is_empty() or identity != Space.nearest(canvas.point, motion.upper, motion.on_stairs): return
 	if identity == "stairs":
-		var old_room: String = canvas.room
-		motion.use_stairs(canvas)
-		if old_room != canvas.room: _room_changed()
+		if not motion.on_stairs and absf(canvas.point.x - Space.station("stairs", motion.upper)) > 0.1:
+			pointer_target = Space.station("stairs", motion.upper)
+			pointer_intent = "stairs"
+		else: motion.use_stairs(canvas)
 	elif identity == "improvements": _notice("Melhorias indisponíveis nesta versão.")
 	elif identity == "codex": _request(identity)
 	elif identity == "exit":
 		exit_ready = false
 		_request("journey")
-	else: _switch_room(identity)
-
-func _switch_room(identity: String) -> void:
-	var target: Dictionary = Space.destination(canvas.room, identity)
-	if target.is_empty(): return
-	canvas.room = target.room
-	canvas.point = Vector2(target.x, Space.FLOOR_Y)
-	canvas.stride = 0
-	_clear_pointer()
-	_room_changed()
 
 func _room_changed() -> void:
 	room_label.text = Space.TITLES[canvas.room]
@@ -239,7 +238,7 @@ func _room_changed() -> void:
 	title_left = 2.5
 	accessibility_name = room_label.text + ". A/D: caminhar. E: objeto próximo. Cima/baixo: escada. Tab: objetos."
 	_update_objects()
-	_layout()
+	_project()
 	canvas.queue_redraw()
 	changed.emit()
 
@@ -247,7 +246,8 @@ func _update_objects() -> void:
 	if not is_instance_valid(canvas): return
 	var chain: Array = [self]
 	for identity in hotspots:
-		var shown: bool = Space.OBJECTS[canvas.room].has(identity)
+		var rect: Rect2 = Space.object_rect(identity, motion.upper, motion.on_stairs, canvas.point)
+		var shown: bool = rect.intersection(camera.visible_world()).size.x >= 80 and rect.intersection(camera.visible_world()).size.y >= 80
 		hotspots[identity].visible = shown
 		hotspots[identity].disabled = not active or not shown
 		if shown: chain.append(hotspots[identity])
@@ -268,36 +268,42 @@ func _request(intent: String) -> void:
 func _pointed(event: InputEvent) -> void:
 	if not active or motion.waking or not event is InputEventMouseButton or not event.pressed or event.button_index != MOUSE_BUTTON_LEFT: return
 	var target: Vector2 = canvas.transform.affine_inverse() * event.position
-	if not Rect2(Vector2(0, 705), Vector2(Space.SIZE.x, 190)).has_point(target): return
+	var floor_y: float = Space.UPPER_Y if motion.upper else Space.FLOOR_Y
+	if absf(target.y - floor_y) > 95: return
 	grab_focus()
 	armed = true
 	if motion.on_stairs: return
-	pointer_target = clampf(target.x, Space.LEFT, Space.RIGHT)
+	pointer_target = clampf(target.x, Space.UPPER_LEFT if motion.upper else Space.LEFT, Space.UPPER_RIGHT if motion.upper else Space.RIGHT)
 	pointer_intent = ""
 	_notice("")
 
 func _layout() -> void:
 	if not is_instance_valid(canvas): return
-	var zoom: float = minf(size.x / Space.SIZE.x, size.y / Space.SIZE.y)
-	canvas.scale = Vector2.ONE * zoom
-	canvas.position = (size - Space.SIZE * zoom) / 2
-	for identity in hotspots:
-		if not Space.OBJECTS[canvas.room].has(identity): continue
-		var rect: Rect2 = Space.OBJECTS[canvas.room][identity]
-		hotspots[identity].position = canvas.position + rect.position * zoom
-		hotspots[identity].size = rect.size * zoom
+	camera.layout(size)
+	camera.follow(canvas.point, 0, true)
+	_project()
 	var pixel_scale: float = float(DisplayServer.window_get_size().y) / maxf(1, size.y)
 	var target_size: float = maxf(48, 44 / maxf(0.1, pixel_scale))
 	title_button.position = Vector2(size.x - target_size - 20, 16)
 	title_button.size = Vector2.ONE * target_size
-	notice_label.position = canvas.position + Vector2(800, 105) * zoom
-	notice_label.size = Vector2(600 * zoom, 90)
-	room_label.position = canvas.position + Vector2(36, 38) * zoom
-	room_label.size = Vector2(800 * zoom, 70)
+	notice_label.position = Vector2(size.x * 0.5, 90)
+	notice_label.size = Vector2(size.x * 0.45, 90)
+	room_label.position = Vector2(36, 38)
+	room_label.size = Vector2(size.x - 110, 70)
+
+func _project() -> void:
+	canvas.transform = camera.projection()
+	for identity in hotspots:
+		var rect: Rect2 = Space.object_rect(identity, motion.upper, motion.on_stairs, canvas.point)
+		rect = rect.intersection(camera.visible_world())
+		var projected: Rect2 = canvas.transform * rect
+		hotspots[identity].position = projected.position
+		hotspots[identity].size = projected.size
+	_update_objects()
 
 func public_state() -> Dictionary:
 	var frame: Rect2 = canvas.transform * canvas.actor_bounds()
-	var state: Dictionary = {"location": "pietro_house", "room": canvas.room, "position": [canvas.point.x, canvas.point.y], "nearby": Space.nearest(canvas.room, canvas.point), "active": active, "armed": armed, "notice": notice, "stride": canvas.stride, "exit_ready": exit_ready, "pointer_walking": not is_nan(pointer_target), "scene_origin": [canvas.position.x, canvas.position.y], "scene_scale": canvas.scale.x, "actor_frame": [frame.position.x, frame.position.y, frame.size.x, frame.size.y]}
+	var state: Dictionary = {"location": "pietro_house", "room": canvas.room, "position": [canvas.point.x, canvas.point.y], "nearby": Space.nearest(canvas.point, motion.upper, motion.on_stairs), "active": active, "armed": armed, "notice": notice, "stride": canvas.stride, "exit_ready": exit_ready, "pointer_walking": not is_nan(pointer_target), "scene_origin": [canvas.position.x, canvas.position.y], "scene_scale": canvas.scale.x, "world_size": [Space.SIZE.x, Space.SIZE.y], "camera_center": [camera.center.x, camera.center.y], "viewport": [size.x, size.y], "actor_frame": [frame.position.x, frame.position.y, frame.size.x, frame.size.y]}
 	state.merge(motion.public_state())
 	return state
 

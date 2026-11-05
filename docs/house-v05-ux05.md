@@ -1,118 +1,84 @@
-# V05-UX-05 — primeira casa de Pietro
+# V05-UX-05 — casa contínua de Pietro
 
-Base: main `030ee7d` (PR #8), confirmada por preflight com fetch. Pedro definiu que
-esta sala pertence à casa inicial e pediu abertura saindo da cama, cômodos
-percorríveis em 2D e escada para o quarto da mãe. O abrigo dentro de um Umbral,
-que a mãe dará depois, é outro lugar. Esta revisão não implementa a entrega.
+Base atual: main `11984047578652faf442d0e45666a9e361582a35`, incorporada na
+branch e confirmada por preflight com fetch. A versão anterior usava vistas
+separadas; Pedro rejeitou essa solução após ver o vídeo. Ela está superada.
+Esta revisão mantém quarto, sala, cozinha e quarto da mãe em um único mundo 2D.
+O abrigo portátil dentro de um Umbral, que a mãe dará depois, é outro local futuro.
 
-## Percurso implementado
+## Comportamento
 
-- Na primeira entrada de cada sessão, Pietro aparece sobre a cama e vai ao chão
-  em 1,4 segundo. Uma direção ou ativação explícita da porta antecipa essa saída.
-  Movimento reduzido começa ao lado da cama, sem rotação. O viajante atual é
-  reutilizado; não existe uma animação de despertar dedicada.
-- Caminhar à porta direita do quarto entra na sala. A passagem esquerda da sala
-  retorna ao quarto. O livro abre o grimório real; a bancada conserva o aviso de
-  melhorias indisponíveis.
-- A passagem interna à direita da sala, ao lado da saída externa, leva à cozinha.
-  E/Enter/A ou clique/toque aproxima antes de atravessar. A porta esquerda da
-  cozinha retorna à sala; não existe menu de seleção de cômodos.
-- A escada está na cozinha. Cima/baixo percorre sua diagonal, podendo parar e
-  inverter o movimento; E/A ou ativação por ponteiro faz o percurso à velocidade
-  de caminhada. O topo abre o quarto da mãe. A descida volta pela mesma escada.
-- A porta externa da sala continua abrindo a preparação: Continuar, Nova com
-  confirmação e Treino preservam os contratos existentes. Voltar restaura posição
-  e foco, sem reabrir o painel automaticamente no limiar.
+A primeira entrada começa sobre a cama: uma apresentação de 1,4 segundo gira a
+pose de repouso até ficar em pé. Direção/E antecipa a saída; movimento reduzido
+começa no chão. Não existe animação dedicada de despertar.
 
-O nome do cômodo aparece por 2,5 segundos; não há barra permanente de instruções.
-Os objetos atuais têm nome, tooltip e foco por Tab. Como jogar documenta controles.
-Mouse/toque no chão define um destino físico; clicar na pintura fora do chão não
-teleporta. Movimento direto, modal, troca de foco e perda de foco da aplicação
-cancelam aproximações. Uma escada pausada pode ser retomada ou revertida.
+Quarto de Pietro à esquerda, sala ao centro e cozinha à direita compartilham o
+mesmo piso. Caminhar muda apenas a região semântica, sem trocar textura, cena,
+posição ou escala. A câmera acompanha nos dois eixos, com limites do mundo e
+projeção inversa compartilhada com os cliques no chão. O andar superior fica à
+esquerda do vão da escada; após subir, caminhar à esquerda alcança o quarto da mãe.
+A borda do piso superior bloqueia a caminhada para o vão.
 
-## Estado e donos
+A escada possui degraus, apoio e corrimão distante antes do ator; postes, viga e
+corrimão próximo depois do ator. Os pés seguem patamares com uma curta elevação
+entre eles. E/clique aproxima até a extremidade exata e faz o percurso físico;
+cima/baixo permite controlar e inverter o movimento. Entrada lateral aproxima
+antes de subir, sem reposicionar o ator por salto. Pausar conserva a última
+direção: E/clique retoma a subida ou descida, inclusive acima/abaixo da metade.
 
-`house_space.gd` possui geometria/adjacência. `house_motion.gd` possui somente
-apresentação transitória de cama/escada. `refuge_room.gd` coordena esse espaço e
-emite as intenções já existentes; `refuge_canvas.gd` desenha cenários/ator separados.
-Os IDs `refuge.*` e o root antigo são aliases de compatibilidade de UI; o snapshot
-público identifica `location: pietro_house` e o cômodo atual. Eles não definem que
-a casa seja um abrigo portátil.
+Livro abre o grimório real, bancada avisa melhorias indisponíveis. A porta externa
+da cozinha abre a preparação existente, sem iniciar uma run automaticamente.
+Voltar conserva posição e foco sem reabrir a porta. Mouse/toque caminha pelo chão;
+movimento direto, Tab, modal e perda de foco cancelam aproximações. Objetos têm
+nomes e foco por Tab apenas quando uma área utilizável está visível na câmera.
+Não há seletor de cômodos nem barra permanente de instruções.
 
-Nenhuma alteração em main, aplicação, Rules, sessão, catálogo, RNG ou schema de
-save. Posição da casa é transitória e conservada ao voltar ao título nesta sessão;
-reload reabre no quarto. Continuar só restaura a expedição ao confirmar a opção
-existente. Não se grava um segundo checkpoint da run ao caminhar na casa.
+## Donos e continuidade
 
-A implementação do abrigo futuro deve ter identidade, geometria, arte e entrada
-próprias; não pode reutilizar esta casa nem transformar o quarto da mãe num botão
-que dá o Umbral. A cena de conversa/entrega e a continuidade narrativa da abertura
-são a próxima fatia. Não há NPC, diálogo, cura, inventário doméstico, afinidade ou
-economia inventados nesta revisão.
+`house_space.gd`: coordenadas, pisos e regiões. `house_motion.gd`: cama/escada e
+andar transitório. `house_camera.gd`: enquadramento/projeção. `house_stairs.gd`:
+camadas de profundidade. `refuge_canvas.gd`: um cenário e ator separados.
+`refuge_room.gd`: entrada, foco e intenções já existentes. Os IDs `refuge.*`
+continuam aliases de compatibilidade; o snapshot identifica `pietro_house`.
 
-## Arte e proporção
+Rules, main, aplicação, RNG, conteúdo mecânico e schema de save permanecem nos
+donos existentes. Caminhar não grava um segundo checkpoint. Posição da casa é
+conservada na sessão; reload recomeça no quarto. Continuar restaura a expedição
+pela opção existente. Nenhum NPC, diálogo de entrega, cura, economia ou abrigo
+portátil foi inventado para completar esta fatia.
 
-A sala conserva a composição do PR #8 e recebe passagens pintadas em
-`world/refuge-lateral@1.1.0`; a release 1.0.0 é imutável. Os outros cômodos usam
-`world/pietro-house@1.0.0`, atlas original com regiões explícitas. Os PNGs originais
-e metadados permanecem intactos; geração/referências/hashes constam dos manifests.
-O sprite separado não muda de identidade, escala relativa ou pixels entre salas;
-um tom levemente quente e sombras de contato em duas camadas o apoiam no piso.
+## Arte e limites
 
-Revisão das capturas reais: a primeira sobreposição de portas parecia um bloco
-sobre a pintura e foi removida. A versão pintada mantém a mesa, sofá e saída,
-com vistas para interiores nos acessos. Os novos quartos e cozinha mantêm madeira,
-luz âmbar e janelas azul-esverdeadas. O atlas tem menos resolução por sala que o
-cenário original; acabamento final e aprovação de Pedro continuam separados de
-validação funcional. O corpo de Pietro sobe na frente da escada, sem uma camada
-de corrimão que o oculte; animação/oclusão dedicada é refinamento posterior.
+`world/pietro-house-continuous@1.0.0`: um PNG original, sem atores ou escada
+embutida. `characters/pietro-home@1.0.0`: atlas separado, pele mais clara,
+cabelo escuro encaracolado, roupa inicial azul/dourada e proporção menos caricata.
+Cenário e ator usam contornos e paleta próximos; a escala foi calibrada sobre
+mobília e porta nas capturas reais. Todos os PNGs/metadados originais ficam
+intactos, com pivôs e escala em JSON, hashes e pins explícitos. Releases anteriores
+continuam imutáveis; os novos bindings selecionam a revisão contínua.
 
-## Evidência e integração
+A Library confirmou a referência aprovada `libfile_7a1f2d2e78ac8191a4109773df9dce86`
+mas sua transferência oficial falhou (`download failed`). O ator é uma
+interpretação provisória, não uma reprodução fiel da imagem que não foi aberta.
+O corrimão é geometria nativa com acabamento inicial; caminhada usa sete poses,
+sem animação específica de subir escada. Aprovação estética permanece com Pedro.
 
-`house-input`: 44 checks nativos e arquitetura passaram. `house-painted-visual`:
-71 checks Web, vídeo e capturas dos quatro cômodos, subida/descida, grimório,
-ponteiro/toque e fluxo exato de Continuar passaram. Primeiro teste com expectativas
-antigas foi preservado com falha; a tentativa intermediária `house-painted-passages`
-foi invalidada pelo próprio harness ao detectar edição de fonte durante o teste,
-ainda que suas 44 asserções tenham passado. Nenhum gate foi reduzido.
+## Validação e integração
 
-O fechamento repete os testes com fontes congeladas e acrescenta captura e
-geometria de todos os cômodos nos cinco formatos contratados. O PR registra o
-resultado final, hashes e CI reais. Evidência focada não é aceite integral.
-Teclado/controle no Godot são eventos injetados; mouse, teclado e toque Web usam
-entrada real do navegador. Não se declara teste de controle físico, áudio,
-performance em hardware, animação final ou aprovação subjetiva de Pedro.
+As tentativas anteriores de cenas separadas e seus vídeos não aprovam esta versão.
+Os testes desta revisão verificam continuidade de coordenadas/câmera, projeção de
+ponteiro, limites dos dois pisos, margem do atlas na escada em cinco resoluções,
+pausa/retomada/inversão, foco/modal, teclado/controle injetados no Godot, mouse e
+toque real em Chromium e preservação do checkpoint/RNG. Os relatórios novos
+identificam o HEAD e a base exatos. Evidência focada não é aceitação integral.
 
-Riscos de integração: catálogo/proveniência/bindings de assets e runtime-lock são
-gerados e podem conflitar com a frente de ferramentas; regenerar a união dos
-módulos/pins sem sobrescrever releases. A única mudança no cenário de layout do
-harness chama o helper da casa. Não há edição do registry, baseline, main, combate
-ou fluxo de run. A branch fica em PR de rascunho para integração coordenada;
-nenhum merge automático ou manual é realizado aqui.
+Capturas e vídeo reais são revisados; MP4 é transcodificação do vídeo de navegador,
+sem quadros fabricados. Não se declara controle físico, celular físico, áudio ou
+performance em hardware. Os resultados finais e caminhos estão no relatório de
+entrega; falhas intermediárias são preservadas em `artifacts/harness/`.
 
-
-## Correção após revisão independente — escada
-
-A captura anterior de descida mostrava cabelo cortado no alto. O antigo ponto
-(225, 245) levava parte do ator acima da imagem. A passagem para o andar superior
-fica agora em (346, 385), no trecho superior da mesma diagonal pintada, enquanto
-a pose inteira ainda cabe no quadro com pelo menos 32 pixels de referência.
-Escala, pivôs, ordem de desenho e áreas de interação permanecem iguais; a mudança
-é no ponto de transição entre as duas vistas. Não se usa máscara para esconder
-o cabelo, nem se reduz o ator. A oclusão dedicada do corrimão continua futura.
-
-Também foi reproduzida a retomada inesperada: em uma subida pausada a 73,9%, E
-escolhia descer por estar acima da metade. A apresentação guarda agora a última
-direção. E/clique a retoma; cima/baixo escolhe explicitamente subir ou descer.
-O teste cobre também uma descida pausada abaixo da metade e movimento reduzido.
-
-As novas regressões falharam antes da correção: dois casos de retomada e a margem
-nas cinco resoluções. Depois passaram 53 checks nativos e arquitetura; o primeiro cenário Web passou
-78 verificações com vídeo real. Os 31 testes do contrato de autoria trazido pela
-main também passaram. O cenário
-Web passa a pausar e fotografar a descida no caso que cortava a cabeça, verificar
-a margem da pose inteira e retomar por E e por clique em todos os cinco formatos.
-A nova base inclui main 1198404 por merge explícito, preservando o contrato de
-autoria de atores. Aceitação/CI e vídeos novos devem identificar o novo HEAD;
-o CI anterior sobre 030ee7d não aprova este merge. O PR continua em rascunho,
-sem atualizar a descrição bloqueada e sem merge na main antes da revisão final.
+Arquivos gerados de assets/runtime-lock podem conflitar com a frente de autoria;
+regenerar a união de módulos/pins, sem sobrescrever releases. Não foram alterados
+registry, baseline, main, batalha ou fluxo da run. PR #11 permanece rascunho,
+sem merge até revisão coordenada. A atualização de descrição anteriormente negada
+não foi repetida nem publicada por outra via.
