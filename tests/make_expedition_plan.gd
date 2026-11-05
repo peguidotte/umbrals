@@ -15,6 +15,9 @@ func make_plan(branch: String) -> Dictionary:
 				push_error("Cannot enter " + node)
 				break
 			plan.append({"action": "node", "id": node, "party_after": game.party.duplicate(true)})
+		elif run.phase == "event":
+			if not run.choose_event("rest"): break
+			plan.append({"action": "event", "choice": "rest", "party_after": game.party.duplicate(true)})
 		elif run.phase == "reward":
 			var offer: Dictionary = game.reward_offers[0].duplicate(true)
 			var destination: int = (0 if branch == "spring" else -1) if offer.kind == "capture" else -2

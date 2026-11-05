@@ -30,7 +30,7 @@ func _initialize() -> void:
  var first: Dictionary = Replay.execute(a, replay.commands)
  var second: Dictionary = Replay.execute(b, replay.commands)
  check(first.ok and second.ok and first.snapshot == second.snapshot, "replay produces identical semantic state")
- var current: Dictionary = old.duplicate(true)
+ var current: Dictionary = preload("res://scripts/expedition/migration.gd").checkpoint(old)
  current.identity = Identity.current()
  current.battle.party[0].species = "future_species"
  current.battle.party[0].known_powers[0] = "future_power"

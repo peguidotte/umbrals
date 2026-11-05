@@ -16,6 +16,10 @@ static func apply(run: RefCounted, command: Dictionary) -> bool:
 			return true
 		"item": return command.get("item") is String and integer(command.get("uid")) and game.queue_item(command.item, int(command.uid))
 		"reward": return integer(command.get("index")) and integer(command.get("replace_uid", -1)) and integer(command.get("slot", -2)) and run.choose_reward(int(command.index), int(command.get("replace_uid", -1)), int(command.get("slot", -2)))
+		"event":
+			if command.get("choice") == "rest": return command.keys().size() == 2 and run.choose_event("rest")
+			if command.get("choice") != "practice" or command.keys().size() != 5 or not integer(command.get("uid")) or not command.get("from_power") is String or not command.get("to_power") is String: return false
+			return run.choose_event("practice", {"uid": int(command.uid), "from_power": command.from_power, "to_power": command.to_power})
 		"node": return command.get("id") is String and run.choose_node(command.id)
 	return false
 

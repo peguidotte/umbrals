@@ -67,3 +67,20 @@ Resultados usam um identificador próprio por expedição e um diário limitado 
 perfil para contar uma conclusão uma única vez. Um checkpoint cujo ID já foi
 concluído não reabre a batalha. Web escreve e verifica por leitura síncrona;
 a retomada não confia somente no retorno de um booleano da ponte JavaScript.
+
+
+## V05-EVT-01 — sala da Nascente (experimental)
+
+Em expedições novas, `spring` é um nó `event`, mantendo o grafo e seus IDs.
+Confirmar sua entrada persiste `phase=event`, sem cura ou edição antecipada;
+a Rules permanece em `map`. `choose_event(choice, details={}) -> bool` aceita
+`rest` ou `practice` com `{uid, from_power, to_power}`. Confirmar conclui a sala
+uma vez e devolve ao mapa; cancelamento de rascunho não chama essa API.
+`public_state().event` contém ID e opções públicas de prática, sem RNG/checkpoint
+privado. Descansar e praticar abrem mão um do outro; sem economia.
+
+O snapshot schema 2 recebe `event_revision`. Novas runs usam 1; migrações auditadas
+do ruleset 2 usam 0 e conservam o descanso imediato antigo. O ruleset 3 e seu
+caminho de migração estão em [save-format](save-format.md). Treino permanece
+sequencial; recompensas de combate continuam captura/evolução.
+[Proposta, implementação e critérios](spring-event-v05-01.md).

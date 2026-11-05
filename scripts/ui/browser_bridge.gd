@@ -51,6 +51,7 @@ static func controls_snapshot(registry: Dictionary, screen: String) -> Dictionar
 		var rect: Rect2 = control.get_global_rect()
 		var data: Dictionary = {"x": rect.position.x, "y": rect.position.y, "w": control.size.x, "h": control.size.y, "cx": center.x, "cy": center.y, "visible": control.is_visible_in_tree(), "active": control.get_meta("ui_screen", "") == screen, "disabled": control.disabled if control is BaseButton else false, "focused": control.has_focus()}
 		if control is BaseButton: data["text"] = control.text
+		if control is Label: data["text"] = control.text
 		data["instance_id"] = control.get_instance_id()
 		if control is PowerCard:
 			data["nature"] = control.power.nature

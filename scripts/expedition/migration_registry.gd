@@ -2,6 +2,8 @@ extends RefCounted
 ## Ordered, audited source identities. Each edge must preserve existing behavior.
 const Identity = preload("res://scripts/expedition/identity.gd")
 const Baseline = preload("res://scripts/expedition/baseline_manifest.gd")
+const Previous = preload("res://scripts/expedition/rules2_manifest.gd")
+const PREVIOUS_IDENTITY = {"ruleset": "expedition-rules-2", "content_sha256": "7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80"}
 const BASE_IDENTITY = {"ruleset": "expedition-rules-2", "content_sha256": "022bb34bd69d87cace6a96eb130260f812133c318381a5bcd77fa0d981efca58"}
 
 static func additive(old: Dictionary, target: Dictionary) -> bool:
@@ -35,7 +37,10 @@ static func _prefix(old: Array, target: Array) -> bool:
 static func supports(source: Variant) -> bool:
 	if source == Identity.current(): return true
 	# A registry entry is an audited source, never a user-supplied manifest.
-	if source != BASE_IDENTITY or Identity.RULESET != BASE_IDENTITY.ruleset: return false
+	if Identity.RULESET != "expedition-rules-3": return false
+	if source == PREVIOUS_IDENTITY:
+		return JSON.stringify(Previous.DATA).sha256_text() == PREVIOUS_IDENTITY.content_sha256 and additive(Previous.DATA, Identity.manifest())
+	if source != BASE_IDENTITY: return false
 	if JSON.stringify(Baseline.DATA).sha256_text() != BASE_IDENTITY.content_sha256: return false
 	var adapted: Dictionary = Baseline.DATA.duplicate(true)
 	adapted["manifest_version"] = 2
@@ -45,51 +50,54 @@ static func supports(source: Variant) -> bool:
 # A historical identity cannot legitimately contain definitions introduced later.
 static func source_state_valid(snapshot: Dictionary) -> bool:
 	if snapshot.get("identity") == Identity.current(): return true
-	if snapshot.get("identity") != BASE_IDENTITY or not snapshot.get("battle") is Dictionary: return false
+	var source: Dictionary = Previous.DATA if snapshot.get("identity") == PREVIOUS_IDENTITY else Baseline.DATA
+	if not snapshot.get("identity") in [BASE_IDENTITY, PREVIOUS_IDENTITY] or not snapshot.get("battle") is Dictionary: return false
+	# Rules 2 cannot contain the new room or opt into its choices via migration.
+	if snapshot.get("phase") == "event" or snapshot.get("event_revision", 0) != 0: return false
 	var battle: Dictionary = snapshot.battle
-	if not battle.get("starter_species") in Baseline.DATA.extras.starters: return false
+	if not battle.get("starter_species") in source.extras.starters: return false
 	if not battle.get("inventory") is Dictionary: return false
 	for id in battle.inventory:
-		if not Baseline.DATA.extras.consumables.has(id): return false
+		if not source.extras.consumables.has(id): return false
 	for group in ["party", "enemies"]:
 		if not battle.get(group) is Array: return false
 		for unit in battle[group]:
-			if not _source_unit(unit): return false
+			if not _source_unit(unit, source): return false
 	for offer in battle.get("reward_offers", []):
 		if not offer is Dictionary: return false
-		if offer.get("kind") == "capture" and not _source_unit(offer.get("umbral")): return false
-		if offer.get("kind") == "evolve" and not _source_evolution(offer, battle.party): return false
+		if offer.get("kind") == "capture" and not _source_unit(offer.get("umbral"), source): return false
+		if offer.get("kind") == "evolve" and not _source_evolution(offer, battle.party, source): return false
 	for zone in ["hand", "deck", "discard_pile"]:
 		if not battle.get(zone) is Array: return false
 		for card in battle[zone]:
-			if not _source_card(card): return false
+			if not _source_card(card, source): return false
 	if not battle.get("suspended_cards") is Dictionary: return false
 	for zone in battle.suspended_cards.values():
 		if not zone is Dictionary or not zone.get("deck") is Array or not zone.get("discard") is Array: return false
 		for card in zone.deck + zone.discard:
-			if not _source_card(card): return false
+			if not _source_card(card, source): return false
 	return true
 
-static func _source_unit(unit: Variant) -> bool:
-	if not unit is Dictionary or not Baseline.DATA.species.has(unit.get("species")): return false
+static func _source_unit(unit: Variant, source: Dictionary) -> bool:
+	if not unit is Dictionary or not source.species.has(unit.get("species")): return false
 	var form_found: bool = false
-	for form in Baseline.DATA.catalog[unit.species].forms:
+	for form in source.catalog[unit.species].forms:
 		if form.id == unit.get("form_id"): form_found = true
 	if not form_found: return false
-	if not unit.get("passive") is String or (not unit.passive.is_empty() and not Baseline.DATA.passives.has(unit.passive)): return false
+	if not unit.get("passive") is String or (not unit.passive.is_empty() and not source.passives.has(unit.passive)): return false
 	if not unit.get("known_powers") is Array or not unit.get("cards") is Array: return false
 	for power in unit.known_powers:
-		if not Baseline.DATA.powers.has(power): return false
+		if not source.powers.has(power): return false
 	for card in unit.cards:
-		if not _source_card(card): return false
+		if not _source_card(card, source): return false
 	return true
 
-static func _source_card(card: Variant) -> bool:
-	return card is Dictionary and Baseline.DATA.powers.has(card.get("power"))
+static func _source_card(card: Variant, source: Dictionary) -> bool:
+	return card is Dictionary and source.powers.has(card.get("power"))
 
-static func _source_evolution(offer: Dictionary, party: Array) -> bool:
+static func _source_evolution(offer: Dictionary, party: Array, source: Dictionary) -> bool:
 	for unit in party:
 		if unit.get("uid") != offer.get("uid"): continue
-		for edge in Baseline.DATA.catalog[unit.species].evolutions:
+		for edge in source.catalog[unit.species].evolutions:
 			if edge.get("id") == offer.get("transition_id") and edge.get("from") == offer.get("source_form_id") and edge.get("to") == offer.get("target_form_id"): return true
 	return false

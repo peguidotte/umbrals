@@ -68,6 +68,7 @@ func _ready() -> void:
 	get_tree().root.close_requested.connect(_quit)
 	expedition_screen.control_created.connect(func(control: Control, id: String): _register(control, id, "map"))
 	expedition_screen.node_requested.connect(_enter_node)
+	expedition_screen.event_requested.connect(runtime.expedition.resolve_event)
 	expedition_screen.pause_requested.connect(_push.bind("pause"))
 	expedition_screen.selection_changed.connect(func(id: String): map_selection = id)
 	expedition_screen.formation_requested.connect(commands.open_formation)
