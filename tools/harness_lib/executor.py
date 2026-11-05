@@ -12,6 +12,7 @@ import sys
 import time
 import shutil
 from .manifest import digest, matches, file_hashes, source_manifest
+from harness_lib.browser_runtime import chromium_executable
 
 
 def environment(root):
@@ -61,8 +62,8 @@ class Executor:
             self.versions['godot'] = subprocess.run(['godot', '--version'], env=self.env, capture_output=True, text=True, timeout=15).stdout.strip() or 'unavailable'
         except OSError:
             self.versions['godot'] = 'unavailable'
-        chromium = shutil.which('chromium', path=self.env['PATH'])
-        self.versions['chromium'] = subprocess.run([chromium, '--version'], capture_output=True, text=True, timeout=15).stdout.strip() if chromium else 'playwright-bundled'
+        chromium = chromium_executable(self.env)
+        self.versions['chromium'] = subprocess.run([chromium, '--version'], env=self.env, capture_output=True, text=True, timeout=15).stdout.strip() if chromium else 'playwright-bundled'
 
     def arguments(self, task):
         if task.kind == 'native' and task.name == self.options.get('case_task'):

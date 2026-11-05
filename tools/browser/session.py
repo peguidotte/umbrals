@@ -1,4 +1,5 @@
 from refuge_browser_review import depart
+from harness_lib.browser_runtime import chromium_executable
 """Browser lifecycle, read-only diagnostics, real input, geometry and action timings."""
 from contextlib import contextmanager
 from functools import partial
@@ -45,7 +46,7 @@ class Session:
         self.playwright = sync_playwright().start()
         native_gl = getattr(args, 'native_gl', False)
         graphics = ['--no-sandbox', '--use-angle=gl', '--use-gl=angle', '--ignore-gpu-blocklist', '--disable-gpu-sandbox', '--window-position=0,0'] if native_gl else ['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader']
-        self.browser = self.playwright.chromium.launch(executable_path='/usr/bin/chromium' if Path('/usr/bin/chromium').exists() else None,
+        self.browser = self.playwright.chromium.launch(executable_path=chromium_executable(),
             headless=not native_gl, args=graphics,
             ignore_default_args=['--mute-audio'] if getattr(args, 'capture_audio', False) else [])
         self.browser_version = self.browser.version
