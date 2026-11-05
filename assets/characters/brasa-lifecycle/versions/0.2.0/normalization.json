@@ -1,0 +1,171 @@
+{
+  "cells": [
+    {
+      "resampled": false,
+      "source_rect": [
+        0,
+        0,
+        362,
+        362
+      ],
+      "translation": [
+        0,
+        0
+      ]
+    },
+    {
+      "resampled": false,
+      "source_rect": [
+        362,
+        0,
+        724,
+        362
+      ],
+      "translation": [
+        0,
+        0
+      ]
+    },
+    {
+      "resampled": false,
+      "source_rect": [
+        724,
+        0,
+        1086,
+        362
+      ],
+      "translation": [
+        0,
+        0
+      ]
+    },
+    {
+      "resampled": false,
+      "source_rect": [
+        1086,
+        0,
+        1448,
+        362
+      ],
+      "translation": [
+        0,
+        0
+      ]
+    },
+    {
+      "resampled": false,
+      "source_rect": [
+        0,
+        362,
+        362,
+        724
+      ],
+      "translation": [
+        0,
+        2
+      ]
+    },
+    {
+      "resampled": false,
+      "source_rect": [
+        362,
+        362,
+        724,
+        724
+      ],
+      "translation": [
+        0,
+        2
+      ]
+    },
+    {
+      "resampled": false,
+      "source_rect": [
+        724,
+        362,
+        1086,
+        724
+      ],
+      "translation": [
+        0,
+        2
+      ]
+    },
+    {
+      "resampled": false,
+      "source_rect": [
+        1086,
+        362,
+        1448,
+        724
+      ],
+      "translation": [
+        0,
+        2
+      ]
+    },
+    {
+      "resampled": false,
+      "source_rect": [
+        0,
+        724,
+        362,
+        1086
+      ],
+      "translation": [
+        0,
+        19
+      ]
+    },
+    {
+      "resampled": false,
+      "source_rect": [
+        362,
+        724,
+        724,
+        1086
+      ],
+      "translation": [
+        0,
+        19
+      ]
+    },
+    {
+      "resampled": false,
+      "source_rect": [
+        724,
+        724,
+        1086,
+        1086
+      ],
+      "translation": [
+        0,
+        19
+      ]
+    },
+    {
+      "resampled": false,
+      "source_rect": [
+        1086,
+        724,
+        1448,
+        1086
+      ],
+      "translation": [
+        0,
+        19
+      ]
+    }
+  ],
+  "operation": "Whole-cell slicing and integer translations only; original PNG copied byte-identically.",
+  "schema_version": 1,
+  "shared_cell": [
+    362,
+    362
+  ],
+  "shared_pivot": [
+    210,
+    324
+  ],
+  "source_sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb"
+}

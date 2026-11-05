@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "id": "world/pietro-house",
+  "version": "1.0.0",
+  "status": "production",
+  "description": "Initial family home: Pietro bedroom, kitchen with staircase and upstairs mother bedroom. Living room remains separately pinned.",
+  "dependencies": [],
+  "files": {
+    "texture": {
+      "path": "rooms.png",
+      "kind": "texture",
+      "sha256": "980a92569de41366de80d6053f52f1645b4cac8a2fe085423a06909ae814b686",
+      "bytes": 2714988,
+      "technical": {
+        "dimensions": [
+          965,
+          1630
+        ],
+        "mode": "RGB",
+        "frames": 1,
+        "alpha": false
+      }
+    },
+    "first-source": {
+      "path": "review/first-source.png",
+      "kind": "review",
+      "sha256": "386abdd923adae27c518a2d8f609e8e63452133eac76291df5644fb8be4347f4",
+      "bytes": 2975689,
+      "technical": {
+        "dimensions": [
+          965,
+          1629
+        ],
+        "mode": "RGB",
+        "frames": 1,
+        "alpha": false
+      }
+    }
+  },
+  "provenance": {
+    "kind": "generated original",
+    "tool": "OpenAI Image Gen",
+    "recorded_date_utc": "2026-11-04",
+    "license_record": "Original artwork generated for Umbral, using project-owned living room as style reference.",
+    "edit_history": "Both original generated PNG outputs preserved byte-for-byte. Runtime uses the doorway-continuity edit. Initial output retained in review/first-source.png. Regions 965x543, 965x543, 965x544 selected at runtime; no pixel edits.",
+    "review_status": "Source inspected; first implementation art, pending Pedro review and in-engine validation. Production denotes runtime eligibility, not user art approval.",
+    "style_reference": {
+      "path": "assets/world/refuge-lateral/versions/1.0.0/background.png",
+      "sha256": "25f8379d091ddf2e7ef2e92ac3817bca09d436747c59397a7b6f21336c50f42d"
+    },
+    "generation_brief": "Three stacked side-on timber house rooms: single bed, kitchen/stair hall, mother bedroom. Clear foreground walking floor, no text or actors, teal forest and amber lighting."
+  },
+  "metadata": {
+    "rooms": {
+      "bedroom": [
+        0,
+        0,
+        965,
+        543
+      ],
+      "kitchen": [
+        0,
+        543,
+        965,
+        543
+      ],
+      "mother": [
+        0,
+        1086,
+        965,
+        544
+      ]
+    },
+    "logical_room_size": [
+      1672,
+      941
+    ]
+  }
+}
