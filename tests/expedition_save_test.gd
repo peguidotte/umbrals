@@ -8,6 +8,8 @@ const Identity = preload("res://scripts/expedition/identity.gd")
 const Replay = preload("res://scripts/expedition/replay.gd")
 const Expedition = preload("res://scripts/expedition/expedition.gd")
 const Storage = preload("res://scripts/storage.gd")
+const GrassCatalog = preload("res://tests/support/grass_catalog_checks.gd")
+const FolivelCatalog = preload("res://tests/support/folivel_catalog_checks.gd")
 const PATH: String = "user://expedition_save_fixture.json"
 const KEY: String = "test.expedition.save"
 var failures: int = 0
@@ -187,5 +189,7 @@ func _initialize() -> void:
 	expect(not Replay.decode(replay).is_empty() and not Replay.decode({"initial_state": legacy, "commands": []}).is_empty(), "Versioned and legacy replays decode")
 	replay.identity.ruleset = "future"
 	expect(Replay.decode(replay).is_empty(), "Foreign replay rejected")
+	GrassCatalog.run(expect)
+	FolivelCatalog.run(expect)
 	print("Expedition save: %d assertions, %d failures" % [assertions, failures])
 	quit(1 if failures else 0)

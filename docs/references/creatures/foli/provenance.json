@@ -1,0 +1,22 @@
+[
+  {
+    "file_name": "lebre-linhagem-v11.png",
+    "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+    "file_id": "file_00000000c39c81fdbcd4fb2a7905d6c6",
+    "version": 0,
+    "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80",
+    "bytes": 2084314,
+    "transfer": "Library supported materialization helper, 2026-11-05",
+    "pixels_inspected": true
+  },
+  {
+    "file_name": "lebre-silenciosa-refinada-v13.png",
+    "library_file_id": "libfile_5e6845c3842c81919a200b01a1b0c40f",
+    "file_id": "file_00000000669081fd86a54531d7388e14",
+    "version": 0,
+    "sha256": "f75649f947c34fa726d190eb1109f2313220759c50cee5e761394eb6a92bbb57",
+    "bytes": 1902868,
+    "transfer": "Library supported materialization helper, 2026-11-05",
+    "pixels_inspected": true
+  }
+]

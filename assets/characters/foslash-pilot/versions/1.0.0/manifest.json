@@ -1,0 +1,78 @@
+{
+  "dependencies": [
+    {
+      "id": "attacks/grass-leaf-blades",
+      "version": "1.0.0"
+    }
+  ],
+  "description": "Foslash final biped hare: own front anatomy and leaf-blade presentation, draft technical review only.",
+  "files": {
+    "authoring": {
+      "bytes": 636,
+      "kind": "data",
+      "path": "authoring.json",
+      "sha256": "ae7a3892c37575dab3549a405171605154263bb658138ad04fa1fe96b54796db"
+    },
+    "motion": {
+      "bytes": 1162072,
+      "kind": "data",
+      "path": "motion.json",
+      "sha256": "99abcfcb9cee1b8df20947c66badba2b95ce1058d5287d2afda69dc14d825072"
+    },
+    "portrait": {
+      "bytes": 1048904,
+      "kind": "texture",
+      "path": "foslash.png",
+      "sha256": "d58dc597d8d09926f9402c44e310d0ab3dcd16f1e0356125c7b96469ffc31c37",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/foslash-pilot",
+  "metadata": {
+    "battle_profile": {
+      "grounding": {
+        "foot": [
+          650,
+          1184
+        ],
+        "height": 136,
+        "visible_top": 72,
+        "width": 800
+      },
+      "motion_role": "motion"
+    },
+    "limits": [
+      "Rear ImageGen moderation_blocked output/other, no file or retry",
+      "Painted held leaves remain visible during projectile presentation",
+      "Prototype adult scale requires real scene review"
+    ],
+    "production_ready": false,
+    "sides": "Front source only; opposite facing mirrored. Rear generation blocked before file creation; no authored rear claimed."
+  },
+  "provenance": {
+    "approval": "Independent static technical GO for draft; actual scene and human aesthetic approval pending.",
+    "kind": "Image Gen reference edit with own inspected biped anatomy",
+    "original_output_basename": "exec-5bf5f706-41d1-4fef-bfa0-985a9643c5c5.png",
+    "original_png_preserved": true,
+    "prompt": "Create ONE faithful full-body transparent game-character cutout of FOSLASH, the THIRD creature from the LEFT labeled \"Final · Padrão\" in the provided project-owned reference sheet lebre-linhagem-v11.png. Use ONLY that third creature, not the baby, intermediate or quadrupedal alternative. Match the approved design closely, as if removing it from the concept sheet and carefully finishing its edges. Right-facing three-quarter side view, slightly elevated horizontal battle camera. Preserve its athletic bipedal hare proportions, dark forest-green/charcoal fur, long brown swept-back hare ears tipped with small green buds, large swept-back green leaf mane, amber eye, cream muzzle/chest stripe/paws, green leaf forearm and shin accents with yellow veins, and large lobed leaf tail. Preserve the two separate leaf weapons: a long narrow green leaf-blade raised diagonally up-right in the forward hand, and the shorter broad pointed leaf-blade held near the hip, angled down-right. They are leaves, not metal swords. Keep the reference's compact ready stance with one hind foot planted and the other slightly lifted. Preserve anatomy and silhouette; do not add clothing, armor, extra weapons, horns, vines or extra floating decorations. Same clean dark contour, faceted painted shading, warm yellow-green foliage and cream highlights as reference. Strong readable silhouette when minified to about 118px visible height; do not simplify away the ears, tail, hands or either blade. Center the entire creature and both weapons in a square canvas with comfortable transparent margin around every extremity. TRANSPARENT RGBA background through native tool option. No paper, backdrop, floor, cast shadow, dust, glow, aura, UI, text, labels, border, watermark or additional creatures. One still pose, not an animation sheet. This is a cutout candidate for review, not a new character redesign.\n",
+    "references": [
+      {
+        "file_name": "lebre-linhagem-v11.png",
+        "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+        "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80",
+        "target": "Third form only"
+      }
+    ]
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

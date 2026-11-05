@@ -1,0 +1,13 @@
+{
+  "grounding": {
+    "foot": [
+      620,
+      1246
+    ],
+    "visible_top": 5,
+    "width": 760,
+    "height": 118
+  },
+  "standing_height": 549,
+  "source_height_ratio": 0.9896331738437002
+}

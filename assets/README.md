@@ -81,6 +81,16 @@ animações de caminhada por esta alteração. PNGs originais mantêm bytes e
 metadados; manifests registram origem, hashes e referências. A fonte Cormorant
 e sua licença existente são reutilizadas. Ver `docs/refuge-v05-ux03.md`.
 
+
+## Foli initial-form pilot — V05-ART-02F
+
+`characters/foli-pilot@1.0.0` preserves the original transparent Image Gen
+cutout (`exec-7dccbeb5-ce85-494c-997a-2ef723555560`) and its own anatomical
+mesh tracks. The only changed runtime binding is `umbrals/moss`; historical
+modules remain intact. Reference originals and Library provenance live under
+`docs/references/creatures/foli/`. This draft selects the cutout for visual
+review; it has no authored walk or persistent KO pose. Folife still uses the
+historical art. See [scope and evidence](../docs/foli-pilot-v05-art-02f.md).
 ## Casa inicial de Pietro — V05-UX-05
 
 Histórico da primeira tentativa, superado pela revisão contínua abaixo:

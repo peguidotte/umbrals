@@ -1,0 +1,3517 @@
+{
+  "after_evolution": {
+    "battle": {
+      "action_modifier": 0,
+      "actions": 10,
+      "deck": [],
+      "declined_replacements": {
+
+      },
+      "discard_pile": [],
+      "encounter": 0,
+      "encounter_rounds_resolved": 10,
+      "enemies": [
+        {
+          "art": "characters/spore",
+          "attack": 10,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "1001:thorn_lash:0",
+              "owner": 1001,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1001:thorn_lash:1",
+              "owner": 1001,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1001:root_wall:0",
+              "owner": 1001,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1001:root_wall:1",
+              "owner": 1001,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1001:sowing:0",
+              "owner": 1001,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "1001:sowing:1",
+              "owner": 1001,
+              "power": "sowing"
+            }
+          ],
+          "defense": 0,
+          "form_id": "moss",
+          "hp": 0,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 58,
+          "name": "Esporo errante",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 8,
+              "nature": "forest",
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 7,
+              "category": "defend",
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "forest",
+              "priority": 1,
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 11,
+              "nature": "forest",
+              "scope": "single",
+              "target_policy": "weakest",
+              "wet": 0
+            }
+          ],
+          "slot": 1,
+          "species": "moss",
+          "speed": 8,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 1001
+        }
+      ],
+      "enemy_plan": [],
+      "hand": [],
+      "hand_size_modifier": 0,
+      "information_mode": "partial",
+      "inventory": {
+        "potion": 2,
+        "revive": 1
+      },
+      "last_result": {
+        "actions": 3,
+        "applied_damage": 7,
+        "block": 29,
+        "bonuses": [],
+        "burn_added": 0,
+        "burn_tick": 0,
+        "damage": 12,
+        "direct_damage": 12,
+        "encounter_index": 0,
+        "energy": 3,
+        "events": [
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 15,
+            "kind": "block",
+            "power": "root_wall",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 15,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "kind": "heal",
+            "power": "root_wall",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 15,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 1,
+            "condition": "taunt",
+            "kind": "condition",
+            "power": "root_wall",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 15,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 4,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "thorn_lash",
+            "resistance": 25,
+            "target_name": "Esporo errante",
+            "target_side": "enemy",
+            "target_slot": 1,
+            "target_state": {
+              "art": "characters/spore",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 0,
+              "form_id": "moss",
+              "hp": 3,
+              "max_hp": 58,
+              "name": "Esporo errante",
+              "passive": "",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1001
+            },
+            "target_uid": 1001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 7,
+            "kind": "block",
+            "power": "thorn_lash",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 22,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 3,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "thorn_lash",
+            "resistance": 25,
+            "target_name": "Esporo errante",
+            "target_side": "enemy",
+            "target_slot": 1,
+            "target_state": {
+              "art": "characters/spore",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 0,
+              "form_id": "moss",
+              "hp": 0,
+              "max_hp": 58,
+              "name": "Esporo errante",
+              "passive": "",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1001
+            },
+            "target_uid": 1001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "kind": "ko",
+            "power": "thorn_lash",
+            "target_name": "Esporo errante",
+            "target_side": "enemy",
+            "target_slot": 1,
+            "target_state": {
+              "art": "characters/spore",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 0,
+              "form_id": "moss",
+              "hp": 0,
+              "max_hp": 58,
+              "name": "Esporo errante",
+              "passive": "",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1001
+            },
+            "target_uid": 1001
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 7,
+            "kind": "block",
+            "power": "thorn_lash",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 29,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Esporo errante",
+            "actor_side": "enemy",
+            "actor_slot": 1,
+            "actor_uid": 1001,
+            "amount": 0,
+            "kind": "canceled",
+            "power": "",
+            "reason": "incapacitado",
+            "target_name": "Umbral",
+            "target_side": "ally",
+            "target_slot": -1,
+            "target_state": {
+
+            },
+            "target_uid": -1
+          }
+        ],
+        "heal": 2,
+        "incoming": 0,
+        "name": "Poder de Foli",
+        "ok": true,
+        "passed": false,
+        "phase": "reward",
+        "reason": "",
+        "resolved_round": 10,
+        "valid": true
+      },
+      "next_uid": 2,
+      "party": [
+        {
+          "attack": 11,
+          "block": 29,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "1:sowing:0",
+              "owner": 1,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "1:thorn_lash:0",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:root_wall:0",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:thorn_lash:1",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:root_wall:1",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:sowing:1",
+              "owner": 1,
+              "power": "sowing"
+            }
+          ],
+          "defense": 5,
+          "form_id": "verdalio",
+          "hp": 60,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 60,
+          "passive": "resilient",
+          "slot": 1,
+          "species": "moss",
+          "speed": 10,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 1
+        }
+      ],
+      "pending_information_mode": "partial",
+      "phase": "map",
+      "relics": [],
+      "reward_offers": [],
+      "rng_seed": "1",
+      "rng_state": "4262579450725261831",
+      "round_number": 11,
+      "seed_value": "1",
+      "starter_species": "moss",
+      "suspended_cards": {
+
+      },
+      "total_damage": 58
+    },
+    "completed": [
+      "clearing"
+    ],
+    "current_node_id": "clearing",
+    "event_revision": 1,
+    "identity": {
+      "content_sha256": "7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80",
+      "ruleset": "expedition-rules-3"
+    },
+    "phase": "map",
+    "schema": 2
+  },
+  "expected": {
+    "battle": {
+      "action_modifier": 0,
+      "actions": 14,
+      "deck": [],
+      "declined_replacements": {
+
+      },
+      "discard_pile": [
+        {
+          "instance_id": "1:root_wall:1",
+          "owner": 1,
+          "power": "root_wall"
+        },
+        {
+          "instance_id": "1:thorn_lash:1",
+          "owner": 1,
+          "power": "thorn_lash"
+        },
+        {
+          "instance_id": "1:root_wall:0",
+          "owner": 1,
+          "power": "root_wall"
+        },
+        {
+          "instance_id": "1:sowing:1",
+          "owner": 1,
+          "power": "sowing"
+        },
+        {
+          "instance_id": "1:sowing:0",
+          "owner": 1,
+          "power": "sowing"
+        },
+        {
+          "instance_id": "1:thorn_lash:0",
+          "owner": 1,
+          "power": "thorn_lash"
+        }
+      ],
+      "encounter": 1,
+      "encounter_rounds_resolved": 4,
+      "enemies": [
+        {
+          "art": "characters/owl",
+          "attack": 10,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "2001:lightning:0",
+              "owner": 2001,
+              "power": "lightning"
+            },
+            {
+              "instance_id": "2001:lightning:1",
+              "owner": 2001,
+              "power": "lightning"
+            },
+            {
+              "instance_id": "2001:interference:0",
+              "owner": 2001,
+              "power": "interference"
+            },
+            {
+              "instance_id": "2001:interference:1",
+              "owner": 2001,
+              "power": "interference"
+            },
+            {
+              "instance_id": "2001:storm_dive:0",
+              "owner": 2001,
+              "power": "storm_dive"
+            },
+            {
+              "instance_id": "2001:storm_dive:1",
+              "owner": 2001,
+              "power": "storm_dive"
+            }
+          ],
+          "defense": 1,
+          "form_id": "volt",
+          "hp": 0,
+          "known_powers": [
+            "lightning",
+            "interference",
+            "storm_dive"
+          ],
+          "max_hp": 46,
+          "name": "Coruja dos espinhos",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 0,
+              "category": "prepare",
+              "charge": 6,
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "lightning",
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 7,
+              "nature": "lightning",
+              "scope": "upper_pair",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+                "electrified": 2
+              },
+              "damage": 6,
+              "nature": "lightning",
+              "scope": "single",
+              "target_policy": "weakest",
+              "wet": 0
+            }
+          ],
+          "slot": 0,
+          "species": "volt",
+          "speed": 14,
+          "status_sources": {
+            "charge": {
+              "side": "enemy",
+              "uid": 2001
+            }
+          },
+          "statuses": {
+            "charge": 6
+          },
+          "uid": 2001
+        },
+        {
+          "art": "characters/spore",
+          "attack": 10,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "2002:thorn_lash:0",
+              "owner": 2002,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "2002:thorn_lash:1",
+              "owner": 2002,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "2002:root_wall:0",
+              "owner": 2002,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "2002:root_wall:1",
+              "owner": 2002,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "2002:sowing:0",
+              "owner": 2002,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "2002:sowing:1",
+              "owner": 2002,
+              "power": "sowing"
+            }
+          ],
+          "defense": 1,
+          "form_id": "moss",
+          "hp": 0,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 40,
+          "name": "Esporo vigia",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+                "seed": 3
+              },
+              "damage": 4,
+              "nature": "forest",
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 8,
+              "category": "defend",
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "forest",
+              "priority": 1,
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 6,
+              "nature": "forest",
+              "scope": "lower_pair",
+              "wet": 0
+            }
+          ],
+          "slot": 2,
+          "species": "moss",
+          "speed": 8,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 2002
+        }
+      ],
+      "enemy_plan": [
+        {
+          "actor_slot": 0,
+          "actor_uid": 2001,
+          "block": 0,
+          "category": "prepare",
+          "charge": 6,
+          "conditions": {
+
+          },
+          "damage": 0,
+          "heal": 0,
+          "nature": "lightning",
+          "power": "enemy_prepare",
+          "priority": 0,
+          "scope": "single",
+          "target_slot": 1,
+          "wet": 0
+        }
+      ],
+      "hand": [],
+      "hand_size_modifier": 0,
+      "information_mode": "partial",
+      "inventory": {
+        "potion": 2,
+        "revive": 1
+      },
+      "last_result": {
+        "actions": 3,
+        "applied_damage": 13,
+        "block": 19,
+        "bonuses": [],
+        "burn_added": 0,
+        "burn_tick": 0,
+        "damage": 24,
+        "direct_damage": 24,
+        "encounter_index": 1,
+        "energy": 3,
+        "events": [
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 19,
+            "kind": "block",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 59,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 1,
+            "kind": "heal",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 1,
+            "condition": "taunt",
+            "kind": "condition",
+            "power": "root_wall",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 19,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Coruja dos espinhos",
+            "actor_side": "enemy",
+            "actor_slot": 0,
+            "actor_uid": 2001,
+            "amount": 6,
+            "kind": "prepare",
+            "power": "enemy_prepare",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 13,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                },
+                "seed": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "charge": 6,
+                "seed": 2
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 11,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "sowing",
+            "resistance": 0,
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 2,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "condition": "seed",
+            "kind": "reaction",
+            "label": "Brotação",
+            "power": "sowing",
+            "reaction": "sprouting",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 2,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 6,
+            "kind": "block",
+            "power": "sowing",
+            "target_name": "Folife",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 11,
+              "block": 25,
+              "can_act_round": 1,
+              "defense": 5,
+              "form_id": "verdalio",
+              "hp": 60,
+              "max_hp": 60,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 10,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 2,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "sowing",
+            "resistance": 0,
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 0,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Folife",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "kind": "ko",
+            "power": "sowing",
+            "target_name": "Coruja dos espinhos",
+            "target_side": "enemy",
+            "target_slot": 0,
+            "target_state": {
+              "art": "characters/owl",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 1,
+              "form_id": "volt",
+              "hp": 0,
+              "max_hp": 46,
+              "name": "Coruja dos espinhos",
+              "passive": "",
+              "slot": 0,
+              "species": "volt",
+              "speed": 14,
+              "status_sources": {
+                "charge": {
+                  "side": "enemy",
+                  "uid": 2001
+                }
+              },
+              "statuses": {
+                "charge": 6
+              },
+              "uid": 2001
+            },
+            "target_uid": 2001
+          }
+        ],
+        "heal": 4,
+        "incoming": 0,
+        "name": "Poder de Folife",
+        "ok": true,
+        "passed": false,
+        "phase": "reward",
+        "reason": "",
+        "resolved_round": 4,
+        "valid": true
+      },
+      "next_uid": 2,
+      "party": [
+        {
+          "attack": 11,
+          "block": 25,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "1:sowing:0",
+              "owner": 1,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "1:thorn_lash:0",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:root_wall:0",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:thorn_lash:1",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:root_wall:1",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:sowing:1",
+              "owner": 1,
+              "power": "sowing"
+            }
+          ],
+          "defense": 5,
+          "form_id": "verdalio",
+          "hp": 60,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 60,
+          "passive": "resilient",
+          "slot": 1,
+          "species": "moss",
+          "speed": 10,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 1
+        }
+      ],
+      "pending_information_mode": "partial",
+      "phase": "reward",
+      "relics": [],
+      "reward_offers": [
+        {
+          "kind": "capture",
+          "umbral": {
+            "attack": 10,
+            "block": 0,
+            "can_act_round": 1,
+            "cards": [
+              {
+                "instance_id": "2:fireball:0",
+                "owner": 2,
+                "power": "fireball"
+              },
+              {
+                "instance_id": "2:fireball:1",
+                "owner": 2,
+                "power": "fireball"
+              },
+              {
+                "instance_id": "2:cinder_claw:0",
+                "owner": 2,
+                "power": "cinder_claw"
+              },
+              {
+                "instance_id": "2:cinder_claw:1",
+                "owner": 2,
+                "power": "cinder_claw"
+              },
+              {
+                "instance_id": "2:flame_guard:0",
+                "owner": 2,
+                "power": "flame_guard"
+              },
+              {
+                "instance_id": "2:flame_guard:1",
+                "owner": 2,
+                "power": "flame_guard"
+              }
+            ],
+            "defense": 2,
+            "form_id": "ember",
+            "hp": 40,
+            "known_powers": [
+              "fireball",
+              "cinder_claw",
+              "flame_guard"
+            ],
+            "max_hp": 40,
+            "passive": "swift",
+            "slot": -1,
+            "species": "ember",
+            "speed": 17,
+            "status_sources": {
+
+            },
+            "statuses": {
+
+            },
+            "uid": 2
+          }
+        }
+      ],
+      "rng_seed": "1",
+      "rng_state": "-7283321909363273689",
+      "round_number": 5,
+      "seed_value": "1",
+      "starter_species": "moss",
+      "suspended_cards": {
+
+      },
+      "total_damage": 144
+    },
+    "completed": [
+      "clearing"
+    ],
+    "current_node_id": "thicket",
+    "event_revision": 1,
+    "identity": {
+      "content_sha256": "7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80",
+      "ruleset": "expedition-rules-3"
+    },
+    "phase": "reward",
+    "schema": 2
+  },
+  "pending_reward": {
+    "battle": {
+      "action_modifier": 0,
+      "actions": 10,
+      "deck": [],
+      "declined_replacements": {
+
+      },
+      "discard_pile": [
+        {
+          "instance_id": "1:sowing:0",
+          "owner": 1,
+          "power": "sowing"
+        },
+        {
+          "instance_id": "1:thorn_lash:0",
+          "owner": 1,
+          "power": "thorn_lash"
+        },
+        {
+          "instance_id": "1:root_wall:0",
+          "owner": 1,
+          "power": "root_wall"
+        },
+        {
+          "instance_id": "1:thorn_lash:1",
+          "owner": 1,
+          "power": "thorn_lash"
+        },
+        {
+          "instance_id": "1:root_wall:1",
+          "owner": 1,
+          "power": "root_wall"
+        },
+        {
+          "instance_id": "1:sowing:1",
+          "owner": 1,
+          "power": "sowing"
+        }
+      ],
+      "encounter": 0,
+      "encounter_rounds_resolved": 10,
+      "enemies": [
+        {
+          "art": "characters/spore",
+          "attack": 10,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "1001:thorn_lash:0",
+              "owner": 1001,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1001:thorn_lash:1",
+              "owner": 1001,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1001:root_wall:0",
+              "owner": 1001,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1001:root_wall:1",
+              "owner": 1001,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1001:sowing:0",
+              "owner": 1001,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "1001:sowing:1",
+              "owner": 1001,
+              "power": "sowing"
+            }
+          ],
+          "defense": 0,
+          "form_id": "moss",
+          "hp": 0,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 58,
+          "name": "Esporo errante",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 8,
+              "nature": "forest",
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 7,
+              "category": "defend",
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "forest",
+              "priority": 1,
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 11,
+              "nature": "forest",
+              "scope": "single",
+              "target_policy": "weakest",
+              "wet": 0
+            }
+          ],
+          "slot": 1,
+          "species": "moss",
+          "speed": 8,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 1001
+        }
+      ],
+      "enemy_plan": [
+        {
+          "actor_slot": 1,
+          "actor_uid": 1001,
+          "block": 0,
+          "category": "attack",
+          "conditions": {
+
+          },
+          "damage": 8,
+          "heal": 0,
+          "nature": "forest",
+          "power": "enemy_attack",
+          "priority": 0,
+          "scope": "single",
+          "target_slot": 1,
+          "wet": 0
+        }
+      ],
+      "hand": [],
+      "hand_size_modifier": 0,
+      "information_mode": "partial",
+      "inventory": {
+        "potion": 2,
+        "revive": 1
+      },
+      "last_result": {
+        "actions": 3,
+        "applied_damage": 7,
+        "block": 29,
+        "bonuses": [],
+        "burn_added": 0,
+        "burn_tick": 0,
+        "damage": 12,
+        "direct_damage": 12,
+        "encounter_index": 0,
+        "energy": 3,
+        "events": [
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 15,
+            "kind": "block",
+            "power": "root_wall",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 15,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "kind": "heal",
+            "power": "root_wall",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 15,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 1,
+            "condition": "taunt",
+            "kind": "condition",
+            "power": "root_wall",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 15,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 4,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "thorn_lash",
+            "resistance": 25,
+            "target_name": "Esporo errante",
+            "target_side": "enemy",
+            "target_slot": 1,
+            "target_state": {
+              "art": "characters/spore",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 0,
+              "form_id": "moss",
+              "hp": 3,
+              "max_hp": 58,
+              "name": "Esporo errante",
+              "passive": "",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1001
+            },
+            "target_uid": 1001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 7,
+            "kind": "block",
+            "power": "thorn_lash",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 22,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 3,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "thorn_lash",
+            "resistance": 25,
+            "target_name": "Esporo errante",
+            "target_side": "enemy",
+            "target_slot": 1,
+            "target_state": {
+              "art": "characters/spore",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 0,
+              "form_id": "moss",
+              "hp": 0,
+              "max_hp": 58,
+              "name": "Esporo errante",
+              "passive": "",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1001
+            },
+            "target_uid": 1001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "kind": "ko",
+            "power": "thorn_lash",
+            "target_name": "Esporo errante",
+            "target_side": "enemy",
+            "target_slot": 1,
+            "target_state": {
+              "art": "characters/spore",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 0,
+              "form_id": "moss",
+              "hp": 0,
+              "max_hp": 58,
+              "name": "Esporo errante",
+              "passive": "",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1001
+            },
+            "target_uid": 1001
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 7,
+            "kind": "block",
+            "power": "thorn_lash",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 29,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Esporo errante",
+            "actor_side": "enemy",
+            "actor_slot": 1,
+            "actor_uid": 1001,
+            "amount": 0,
+            "kind": "canceled",
+            "power": "",
+            "reason": "incapacitado",
+            "target_name": "Umbral",
+            "target_side": "ally",
+            "target_slot": -1,
+            "target_state": {
+
+            },
+            "target_uid": -1
+          }
+        ],
+        "heal": 2,
+        "incoming": 0,
+        "name": "Poder de Foli",
+        "ok": true,
+        "passed": false,
+        "phase": "reward",
+        "reason": "",
+        "resolved_round": 10,
+        "valid": true
+      },
+      "next_uid": 2,
+      "party": [
+        {
+          "attack": 8,
+          "block": 29,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "1:thorn_lash:0",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:thorn_lash:1",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:root_wall:0",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:root_wall:1",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:sowing:0",
+              "owner": 1,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "1:sowing:1",
+              "owner": 1,
+              "power": "sowing"
+            }
+          ],
+          "defense": 4,
+          "form_id": "moss",
+          "hp": 48,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 48,
+          "passive": "resilient",
+          "slot": 1,
+          "species": "moss",
+          "speed": 8,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 1
+        }
+      ],
+      "pending_information_mode": "partial",
+      "phase": "reward",
+      "relics": [],
+      "reward_offers": [
+        {
+          "kind": "capture",
+          "umbral": {
+            "attack": 9,
+            "block": 0,
+            "can_act_round": 1,
+            "cards": [
+              {
+                "instance_id": "2:tidal_splash:0",
+                "owner": 2,
+                "power": "tidal_splash"
+              },
+              {
+                "instance_id": "2:tidal_splash:1",
+                "owner": 2,
+                "power": "tidal_splash"
+              },
+              {
+                "instance_id": "2:rain_sweep:0",
+                "owner": 2,
+                "power": "rain_sweep"
+              },
+              {
+                "instance_id": "2:rain_sweep:1",
+                "owner": 2,
+                "power": "rain_sweep"
+              },
+              {
+                "instance_id": "2:dew_mend:0",
+                "owner": 2,
+                "power": "dew_mend"
+              },
+              {
+                "instance_id": "2:dew_mend:1",
+                "owner": 2,
+                "power": "dew_mend"
+              }
+            ],
+            "defense": 2,
+            "form_id": "dew",
+            "hp": 42,
+            "known_powers": [
+              "tidal_splash",
+              "rain_sweep",
+              "dew_mend"
+            ],
+            "max_hp": 42,
+            "passive": "swift",
+            "slot": -1,
+            "species": "dew",
+            "speed": 23,
+            "status_sources": {
+
+            },
+            "statuses": {
+
+            },
+            "uid": 2
+          }
+        },
+        {
+          "kind": "evolve",
+          "source_form_id": "moss",
+          "target_form_id": "verdalio",
+          "transition_id": "moss_to_verdalio",
+          "uid": 1
+        }
+      ],
+      "rng_seed": "1",
+      "rng_state": "4262579450725261831",
+      "round_number": 11,
+      "seed_value": "1",
+      "starter_species": "moss",
+      "suspended_cards": {
+
+      },
+      "total_damage": 58
+    },
+    "completed": [],
+    "current_node_id": "clearing",
+    "event_revision": 1,
+    "identity": {
+      "content_sha256": "7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80",
+      "ruleset": "expedition-rules-3"
+    },
+    "phase": "reward",
+    "schema": 2
+  },
+  "provenance": {
+    "head": "b708c910d8eaaf0f281a6cc616d5fdae99907cfa",
+    "identity": {
+      "content_sha256": "7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80",
+      "ruleset": "expedition-rules-3"
+    },
+    "method": "Production whitelist commands only; no unit/stat/RNG/catalog mutations",
+    "seed": 1
+  },
+  "replay": {
+    "commands": [
+      {
+        "command": "node",
+        "id": "clearing"
+      },
+      {
+        "command": "select",
+        "index": 0
+      },
+      {
+        "command": "select",
+        "index": 3
+      },
+      {
+        "command": "select",
+        "index": 4
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0
+      },
+      {
+        "command": "select",
+        "index": 4
+      },
+      {
+        "command": "select",
+        "index": 5
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0
+      },
+      {
+        "command": "select",
+        "index": 1
+      },
+      {
+        "command": "select",
+        "index": 3
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0
+      },
+      {
+        "command": "select",
+        "index": 4
+      },
+      {
+        "command": "select",
+        "index": 5
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1
+      },
+      {
+        "command": "select",
+        "index": 2
+      },
+      {
+        "command": "select",
+        "index": 3
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0
+      },
+      {
+        "command": "select",
+        "index": 1
+      },
+      {
+        "command": "select",
+        "index": 5
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1
+      },
+      {
+        "command": "select",
+        "index": 2
+      },
+      {
+        "command": "select",
+        "index": 4
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1
+      },
+      {
+        "command": "select",
+        "index": 4
+      },
+      {
+        "command": "select",
+        "index": 5
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0
+      },
+      {
+        "command": "select",
+        "index": 1
+      },
+      {
+        "command": "select",
+        "index": 3
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1
+      },
+      {
+        "command": "select",
+        "index": 2
+      },
+      {
+        "command": "select",
+        "index": 3
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "reward",
+        "index": 1
+      },
+      {
+        "command": "node",
+        "id": "thicket"
+      },
+      {
+        "command": "select",
+        "index": 0
+      },
+      {
+        "command": "select",
+        "index": 2
+      },
+      {
+        "command": "select",
+        "index": 3
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0
+      },
+      {
+        "command": "select",
+        "index": 2
+      },
+      {
+        "command": "select",
+        "index": 4
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 1
+      },
+      {
+        "command": "select",
+        "index": 4
+      },
+      {
+        "command": "select",
+        "index": 5
+      },
+      {
+        "command": "cast"
+      },
+      {
+        "command": "select",
+        "index": 0
+      },
+      {
+        "command": "select",
+        "index": 3
+      },
+      {
+        "command": "select",
+        "index": 4
+      },
+      {
+        "command": "cast"
+      }
+    ],
+    "identity": {
+      "content_sha256": "7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80",
+      "ruleset": "expedition-rules-3"
+    },
+    "initial_state": {
+      "battle": {
+        "action_modifier": 0,
+        "actions": 0,
+        "deck": [],
+        "declined_replacements": {
+
+        },
+        "discard_pile": [],
+        "encounter": 0,
+        "encounter_rounds_resolved": 0,
+        "enemies": [],
+        "enemy_plan": [],
+        "hand": [],
+        "hand_size_modifier": 0,
+        "information_mode": "partial",
+        "inventory": {
+          "potion": 2,
+          "revive": 1
+        },
+        "last_result": {
+
+        },
+        "next_uid": 2,
+        "party": [
+          {
+            "attack": 8,
+            "block": 0,
+            "can_act_round": 1,
+            "cards": [
+              {
+                "instance_id": "1:thorn_lash:0",
+                "owner": 1,
+                "power": "thorn_lash"
+              },
+              {
+                "instance_id": "1:thorn_lash:1",
+                "owner": 1,
+                "power": "thorn_lash"
+              },
+              {
+                "instance_id": "1:root_wall:0",
+                "owner": 1,
+                "power": "root_wall"
+              },
+              {
+                "instance_id": "1:root_wall:1",
+                "owner": 1,
+                "power": "root_wall"
+              },
+              {
+                "instance_id": "1:sowing:0",
+                "owner": 1,
+                "power": "sowing"
+              },
+              {
+                "instance_id": "1:sowing:1",
+                "owner": 1,
+                "power": "sowing"
+              }
+            ],
+            "defense": 4,
+            "form_id": "moss",
+            "hp": 48,
+            "known_powers": [
+              "thorn_lash",
+              "root_wall",
+              "sowing"
+            ],
+            "max_hp": 48,
+            "passive": "resilient",
+            "slot": 1,
+            "species": "moss",
+            "speed": 8,
+            "status_sources": {
+
+            },
+            "statuses": {
+
+            },
+            "uid": 1
+          }
+        ],
+        "pending_information_mode": "partial",
+        "phase": "map",
+        "relics": [],
+        "reward_offers": [],
+        "rng_seed": "1",
+        "rng_state": "6844932353678761266",
+        "round_number": 1,
+        "seed_value": "1",
+        "starter_species": "moss",
+        "suspended_cards": {
+
+        },
+        "total_damage": 0
+      },
+      "completed": [],
+      "current_node_id": "",
+      "event_revision": 1,
+      "identity": {
+        "content_sha256": "7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80",
+        "ruleset": "expedition-rules-3"
+      },
+      "phase": "map",
+      "schema": 2
+    },
+    "schema": "umbral.expedition.replay",
+    "version": 2
+  },
+  "spring_expected": {
+    "battle": {
+      "action_modifier": 0,
+      "actions": 10,
+      "deck": [],
+      "declined_replacements": {
+
+      },
+      "discard_pile": [],
+      "encounter": 0,
+      "encounter_rounds_resolved": 10,
+      "enemies": [
+        {
+          "art": "characters/spore",
+          "attack": 10,
+          "block": 0,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "1001:thorn_lash:0",
+              "owner": 1001,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1001:thorn_lash:1",
+              "owner": 1001,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1001:root_wall:0",
+              "owner": 1001,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1001:root_wall:1",
+              "owner": 1001,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1001:sowing:0",
+              "owner": 1001,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "1001:sowing:1",
+              "owner": 1001,
+              "power": "sowing"
+            }
+          ],
+          "defense": 0,
+          "form_id": "moss",
+          "hp": 0,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 58,
+          "name": "Esporo errante",
+          "passive": "",
+          "pattern": [
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 8,
+              "nature": "forest",
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 7,
+              "category": "defend",
+              "conditions": {
+
+              },
+              "damage": 0,
+              "nature": "forest",
+              "priority": 1,
+              "scope": "single",
+              "wet": 0
+            },
+            {
+              "block": 0,
+              "category": "attack",
+              "conditions": {
+
+              },
+              "damage": 11,
+              "nature": "forest",
+              "scope": "single",
+              "target_policy": "weakest",
+              "wet": 0
+            }
+          ],
+          "slot": 1,
+          "species": "moss",
+          "speed": 8,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 1001
+        }
+      ],
+      "enemy_plan": [],
+      "hand": [],
+      "hand_size_modifier": 0,
+      "information_mode": "partial",
+      "inventory": {
+        "potion": 2,
+        "revive": 1
+      },
+      "last_result": {
+        "actions": 3,
+        "applied_damage": 7,
+        "block": 29,
+        "bonuses": [],
+        "burn_added": 0,
+        "burn_tick": 0,
+        "damage": 12,
+        "direct_damage": 12,
+        "encounter_index": 0,
+        "energy": 3,
+        "events": [
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 15,
+            "kind": "block",
+            "power": "root_wall",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 15,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "kind": "heal",
+            "power": "root_wall",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 15,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 1,
+            "condition": "taunt",
+            "kind": "condition",
+            "power": "root_wall",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 15,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 4,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "thorn_lash",
+            "resistance": 25,
+            "target_name": "Esporo errante",
+            "target_side": "enemy",
+            "target_slot": 1,
+            "target_state": {
+              "art": "characters/spore",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 0,
+              "form_id": "moss",
+              "hp": 3,
+              "max_hp": 58,
+              "name": "Esporo errante",
+              "passive": "",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1001
+            },
+            "target_uid": 1001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 7,
+            "kind": "block",
+            "power": "thorn_lash",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 22,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 3,
+            "amplified": false,
+            "blocked": 0,
+            "kind": "attack",
+            "nature": "forest",
+            "power": "thorn_lash",
+            "resistance": 25,
+            "target_name": "Esporo errante",
+            "target_side": "enemy",
+            "target_slot": 1,
+            "target_state": {
+              "art": "characters/spore",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 0,
+              "form_id": "moss",
+              "hp": 0,
+              "max_hp": 58,
+              "name": "Esporo errante",
+              "passive": "",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1001
+            },
+            "target_uid": 1001,
+            "weakened": false
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 0,
+            "kind": "ko",
+            "power": "thorn_lash",
+            "target_name": "Esporo errante",
+            "target_side": "enemy",
+            "target_slot": 1,
+            "target_state": {
+              "art": "characters/spore",
+              "attack": 10,
+              "block": 0,
+              "can_act_round": 1,
+              "defense": 0,
+              "form_id": "moss",
+              "hp": 0,
+              "max_hp": 58,
+              "name": "Esporo errante",
+              "passive": "",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 1001
+            },
+            "target_uid": 1001
+          },
+          {
+            "actor_name": "Foli",
+            "actor_side": "ally",
+            "actor_slot": 1,
+            "actor_uid": 1,
+            "amount": 7,
+            "kind": "block",
+            "power": "thorn_lash",
+            "target_name": "Foli",
+            "target_side": "ally",
+            "target_slot": 1,
+            "target_state": {
+              "attack": 8,
+              "block": 29,
+              "can_act_round": 1,
+              "defense": 4,
+              "form_id": "moss",
+              "hp": 48,
+              "max_hp": 48,
+              "passive": "resilient",
+              "slot": 1,
+              "species": "moss",
+              "speed": 8,
+              "status_sources": {
+                "taunt": {
+                  "side": "ally",
+                  "uid": 1
+                }
+              },
+              "statuses": {
+                "taunt": 1
+              },
+              "uid": 1
+            },
+            "target_uid": 1
+          },
+          {
+            "actor_name": "Esporo errante",
+            "actor_side": "enemy",
+            "actor_slot": 1,
+            "actor_uid": 1001,
+            "amount": 0,
+            "kind": "canceled",
+            "power": "",
+            "reason": "incapacitado",
+            "target_name": "Umbral",
+            "target_side": "ally",
+            "target_slot": -1,
+            "target_state": {
+
+            },
+            "target_uid": -1
+          }
+        ],
+        "heal": 2,
+        "incoming": 0,
+        "name": "Poder de Foli",
+        "ok": true,
+        "passed": false,
+        "phase": "reward",
+        "reason": "",
+        "resolved_round": 10,
+        "valid": true
+      },
+      "next_uid": 2,
+      "party": [
+        {
+          "attack": 11,
+          "block": 29,
+          "can_act_round": 1,
+          "cards": [
+            {
+              "instance_id": "1:sowing:0",
+              "owner": 1,
+              "power": "sowing"
+            },
+            {
+              "instance_id": "1:thorn_lash:0",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:root_wall:0",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:thorn_lash:1",
+              "owner": 1,
+              "power": "thorn_lash"
+            },
+            {
+              "instance_id": "1:root_wall:1",
+              "owner": 1,
+              "power": "root_wall"
+            },
+            {
+              "instance_id": "1:sowing:1",
+              "owner": 1,
+              "power": "sowing"
+            }
+          ],
+          "defense": 5,
+          "form_id": "verdalio",
+          "hp": 60,
+          "known_powers": [
+            "thorn_lash",
+            "root_wall",
+            "sowing"
+          ],
+          "max_hp": 60,
+          "passive": "resilient",
+          "slot": 1,
+          "species": "moss",
+          "speed": 10,
+          "status_sources": {
+
+          },
+          "statuses": {
+
+          },
+          "uid": 1
+        }
+      ],
+      "pending_information_mode": "partial",
+      "phase": "map",
+      "relics": [],
+      "reward_offers": [],
+      "rng_seed": "1",
+      "rng_state": "4262579450725261831",
+      "round_number": 11,
+      "seed_value": "1",
+      "starter_species": "moss",
+      "suspended_cards": {
+
+      },
+      "total_damage": 58
+    },
+    "completed": [
+      "clearing",
+      "spring"
+    ],
+    "current_node_id": "spring",
+    "event_revision": 1,
+    "identity": {
+      "content_sha256": "7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80",
+      "ruleset": "expedition-rules-3"
+    },
+    "phase": "map",
+    "schema": 2
+  },
+  "spring_replay": {
+    "commands": [
+      {
+        "command": "reward",
+        "index": 1
+      },
+      {
+        "command": "node",
+        "id": "spring"
+      },
+      {
+        "choice": "rest",
+        "command": "event"
+      }
+    ],
+    "identity": {
+      "content_sha256": "7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80",
+      "ruleset": "expedition-rules-3"
+    },
+    "initial_state": {
+      "battle": {
+        "action_modifier": 0,
+        "actions": 10,
+        "deck": [],
+        "declined_replacements": {
+
+        },
+        "discard_pile": [
+          {
+            "instance_id": "1:sowing:0",
+            "owner": 1,
+            "power": "sowing"
+          },
+          {
+            "instance_id": "1:thorn_lash:0",
+            "owner": 1,
+            "power": "thorn_lash"
+          },
+          {
+            "instance_id": "1:root_wall:0",
+            "owner": 1,
+            "power": "root_wall"
+          },
+          {
+            "instance_id": "1:thorn_lash:1",
+            "owner": 1,
+            "power": "thorn_lash"
+          },
+          {
+            "instance_id": "1:root_wall:1",
+            "owner": 1,
+            "power": "root_wall"
+          },
+          {
+            "instance_id": "1:sowing:1",
+            "owner": 1,
+            "power": "sowing"
+          }
+        ],
+        "encounter": 0,
+        "encounter_rounds_resolved": 10,
+        "enemies": [
+          {
+            "art": "characters/spore",
+            "attack": 10,
+            "block": 0,
+            "can_act_round": 1,
+            "cards": [
+              {
+                "instance_id": "1001:thorn_lash:0",
+                "owner": 1001,
+                "power": "thorn_lash"
+              },
+              {
+                "instance_id": "1001:thorn_lash:1",
+                "owner": 1001,
+                "power": "thorn_lash"
+              },
+              {
+                "instance_id": "1001:root_wall:0",
+                "owner": 1001,
+                "power": "root_wall"
+              },
+              {
+                "instance_id": "1001:root_wall:1",
+                "owner": 1001,
+                "power": "root_wall"
+              },
+              {
+                "instance_id": "1001:sowing:0",
+                "owner": 1001,
+                "power": "sowing"
+              },
+              {
+                "instance_id": "1001:sowing:1",
+                "owner": 1001,
+                "power": "sowing"
+              }
+            ],
+            "defense": 0,
+            "form_id": "moss",
+            "hp": 0,
+            "known_powers": [
+              "thorn_lash",
+              "root_wall",
+              "sowing"
+            ],
+            "max_hp": 58,
+            "name": "Esporo errante",
+            "passive": "",
+            "pattern": [
+              {
+                "block": 0,
+                "category": "attack",
+                "conditions": {
+
+                },
+                "damage": 8,
+                "nature": "forest",
+                "scope": "single",
+                "wet": 0
+              },
+              {
+                "block": 7,
+                "category": "defend",
+                "conditions": {
+
+                },
+                "damage": 0,
+                "nature": "forest",
+                "priority": 1,
+                "scope": "single",
+                "wet": 0
+              },
+              {
+                "block": 0,
+                "category": "attack",
+                "conditions": {
+
+                },
+                "damage": 11,
+                "nature": "forest",
+                "scope": "single",
+                "target_policy": "weakest",
+                "wet": 0
+              }
+            ],
+            "slot": 1,
+            "species": "moss",
+            "speed": 8,
+            "status_sources": {
+
+            },
+            "statuses": {
+
+            },
+            "uid": 1001
+          }
+        ],
+        "enemy_plan": [
+          {
+            "actor_slot": 1,
+            "actor_uid": 1001,
+            "block": 0,
+            "category": "attack",
+            "conditions": {
+
+            },
+            "damage": 8,
+            "heal": 0,
+            "nature": "forest",
+            "power": "enemy_attack",
+            "priority": 0,
+            "scope": "single",
+            "target_slot": 1,
+            "wet": 0
+          }
+        ],
+        "hand": [],
+        "hand_size_modifier": 0,
+        "information_mode": "partial",
+        "inventory": {
+          "potion": 2,
+          "revive": 1
+        },
+        "last_result": {
+          "actions": 3,
+          "applied_damage": 7,
+          "block": 29,
+          "bonuses": [],
+          "burn_added": 0,
+          "burn_tick": 0,
+          "damage": 12,
+          "direct_damage": 12,
+          "encounter_index": 0,
+          "energy": 3,
+          "events": [
+            {
+              "actor_name": "Foli",
+              "actor_side": "ally",
+              "actor_slot": 1,
+              "actor_uid": 1,
+              "amount": 15,
+              "kind": "block",
+              "power": "root_wall",
+              "target_name": "Foli",
+              "target_side": "ally",
+              "target_slot": 1,
+              "target_state": {
+                "attack": 8,
+                "block": 15,
+                "can_act_round": 1,
+                "defense": 4,
+                "form_id": "moss",
+                "hp": 48,
+                "max_hp": 48,
+                "passive": "resilient",
+                "slot": 1,
+                "species": "moss",
+                "speed": 8,
+                "status_sources": {
+
+                },
+                "statuses": {
+
+                },
+                "uid": 1
+              },
+              "target_uid": 1
+            },
+            {
+              "actor_name": "Foli",
+              "actor_side": "ally",
+              "actor_slot": 1,
+              "actor_uid": 1,
+              "amount": 0,
+              "kind": "heal",
+              "power": "root_wall",
+              "target_name": "Foli",
+              "target_side": "ally",
+              "target_slot": 1,
+              "target_state": {
+                "attack": 8,
+                "block": 15,
+                "can_act_round": 1,
+                "defense": 4,
+                "form_id": "moss",
+                "hp": 48,
+                "max_hp": 48,
+                "passive": "resilient",
+                "slot": 1,
+                "species": "moss",
+                "speed": 8,
+                "status_sources": {
+
+                },
+                "statuses": {
+
+                },
+                "uid": 1
+              },
+              "target_uid": 1
+            },
+            {
+              "actor_name": "Foli",
+              "actor_side": "ally",
+              "actor_slot": 1,
+              "actor_uid": 1,
+              "amount": 1,
+              "condition": "taunt",
+              "kind": "condition",
+              "power": "root_wall",
+              "target_name": "Foli",
+              "target_side": "ally",
+              "target_slot": 1,
+              "target_state": {
+                "attack": 8,
+                "block": 15,
+                "can_act_round": 1,
+                "defense": 4,
+                "form_id": "moss",
+                "hp": 48,
+                "max_hp": 48,
+                "passive": "resilient",
+                "slot": 1,
+                "species": "moss",
+                "speed": 8,
+                "status_sources": {
+                  "taunt": {
+                    "side": "ally",
+                    "uid": 1
+                  }
+                },
+                "statuses": {
+                  "taunt": 1
+                },
+                "uid": 1
+              },
+              "target_uid": 1
+            },
+            {
+              "actor_name": "Foli",
+              "actor_side": "ally",
+              "actor_slot": 1,
+              "actor_uid": 1,
+              "amount": 4,
+              "amplified": false,
+              "blocked": 0,
+              "kind": "attack",
+              "nature": "forest",
+              "power": "thorn_lash",
+              "resistance": 25,
+              "target_name": "Esporo errante",
+              "target_side": "enemy",
+              "target_slot": 1,
+              "target_state": {
+                "art": "characters/spore",
+                "attack": 10,
+                "block": 0,
+                "can_act_round": 1,
+                "defense": 0,
+                "form_id": "moss",
+                "hp": 3,
+                "max_hp": 58,
+                "name": "Esporo errante",
+                "passive": "",
+                "slot": 1,
+                "species": "moss",
+                "speed": 8,
+                "status_sources": {
+
+                },
+                "statuses": {
+
+                },
+                "uid": 1001
+              },
+              "target_uid": 1001,
+              "weakened": false
+            },
+            {
+              "actor_name": "Foli",
+              "actor_side": "ally",
+              "actor_slot": 1,
+              "actor_uid": 1,
+              "amount": 7,
+              "kind": "block",
+              "power": "thorn_lash",
+              "target_name": "Foli",
+              "target_side": "ally",
+              "target_slot": 1,
+              "target_state": {
+                "attack": 8,
+                "block": 22,
+                "can_act_round": 1,
+                "defense": 4,
+                "form_id": "moss",
+                "hp": 48,
+                "max_hp": 48,
+                "passive": "resilient",
+                "slot": 1,
+                "species": "moss",
+                "speed": 8,
+                "status_sources": {
+                  "taunt": {
+                    "side": "ally",
+                    "uid": 1
+                  }
+                },
+                "statuses": {
+                  "taunt": 1
+                },
+                "uid": 1
+              },
+              "target_uid": 1
+            },
+            {
+              "actor_name": "Foli",
+              "actor_side": "ally",
+              "actor_slot": 1,
+              "actor_uid": 1,
+              "amount": 3,
+              "amplified": false,
+              "blocked": 0,
+              "kind": "attack",
+              "nature": "forest",
+              "power": "thorn_lash",
+              "resistance": 25,
+              "target_name": "Esporo errante",
+              "target_side": "enemy",
+              "target_slot": 1,
+              "target_state": {
+                "art": "characters/spore",
+                "attack": 10,
+                "block": 0,
+                "can_act_round": 1,
+                "defense": 0,
+                "form_id": "moss",
+                "hp": 0,
+                "max_hp": 58,
+                "name": "Esporo errante",
+                "passive": "",
+                "slot": 1,
+                "species": "moss",
+                "speed": 8,
+                "status_sources": {
+
+                },
+                "statuses": {
+
+                },
+                "uid": 1001
+              },
+              "target_uid": 1001,
+              "weakened": false
+            },
+            {
+              "actor_name": "Foli",
+              "actor_side": "ally",
+              "actor_slot": 1,
+              "actor_uid": 1,
+              "amount": 0,
+              "kind": "ko",
+              "power": "thorn_lash",
+              "target_name": "Esporo errante",
+              "target_side": "enemy",
+              "target_slot": 1,
+              "target_state": {
+                "art": "characters/spore",
+                "attack": 10,
+                "block": 0,
+                "can_act_round": 1,
+                "defense": 0,
+                "form_id": "moss",
+                "hp": 0,
+                "max_hp": 58,
+                "name": "Esporo errante",
+                "passive": "",
+                "slot": 1,
+                "species": "moss",
+                "speed": 8,
+                "status_sources": {
+
+                },
+                "statuses": {
+
+                },
+                "uid": 1001
+              },
+              "target_uid": 1001
+            },
+            {
+              "actor_name": "Foli",
+              "actor_side": "ally",
+              "actor_slot": 1,
+              "actor_uid": 1,
+              "amount": 7,
+              "kind": "block",
+              "power": "thorn_lash",
+              "target_name": "Foli",
+              "target_side": "ally",
+              "target_slot": 1,
+              "target_state": {
+                "attack": 8,
+                "block": 29,
+                "can_act_round": 1,
+                "defense": 4,
+                "form_id": "moss",
+                "hp": 48,
+                "max_hp": 48,
+                "passive": "resilient",
+                "slot": 1,
+                "species": "moss",
+                "speed": 8,
+                "status_sources": {
+                  "taunt": {
+                    "side": "ally",
+                    "uid": 1
+                  }
+                },
+                "statuses": {
+                  "taunt": 1
+                },
+                "uid": 1
+              },
+              "target_uid": 1
+            },
+            {
+              "actor_name": "Esporo errante",
+              "actor_side": "enemy",
+              "actor_slot": 1,
+              "actor_uid": 1001,
+              "amount": 0,
+              "kind": "canceled",
+              "power": "",
+              "reason": "incapacitado",
+              "target_name": "Umbral",
+              "target_side": "ally",
+              "target_slot": -1,
+              "target_state": {
+
+              },
+              "target_uid": -1
+            }
+          ],
+          "heal": 2,
+          "incoming": 0,
+          "name": "Poder de Foli",
+          "ok": true,
+          "passed": false,
+          "phase": "reward",
+          "reason": "",
+          "resolved_round": 10,
+          "valid": true
+        },
+        "next_uid": 2,
+        "party": [
+          {
+            "attack": 8,
+            "block": 29,
+            "can_act_round": 1,
+            "cards": [
+              {
+                "instance_id": "1:thorn_lash:0",
+                "owner": 1,
+                "power": "thorn_lash"
+              },
+              {
+                "instance_id": "1:thorn_lash:1",
+                "owner": 1,
+                "power": "thorn_lash"
+              },
+              {
+                "instance_id": "1:root_wall:0",
+                "owner": 1,
+                "power": "root_wall"
+              },
+              {
+                "instance_id": "1:root_wall:1",
+                "owner": 1,
+                "power": "root_wall"
+              },
+              {
+                "instance_id": "1:sowing:0",
+                "owner": 1,
+                "power": "sowing"
+              },
+              {
+                "instance_id": "1:sowing:1",
+                "owner": 1,
+                "power": "sowing"
+              }
+            ],
+            "defense": 4,
+            "form_id": "moss",
+            "hp": 48,
+            "known_powers": [
+              "thorn_lash",
+              "root_wall",
+              "sowing"
+            ],
+            "max_hp": 48,
+            "passive": "resilient",
+            "slot": 1,
+            "species": "moss",
+            "speed": 8,
+            "status_sources": {
+
+            },
+            "statuses": {
+
+            },
+            "uid": 1
+          }
+        ],
+        "pending_information_mode": "partial",
+        "phase": "reward",
+        "relics": [],
+        "reward_offers": [
+          {
+            "kind": "capture",
+            "umbral": {
+              "attack": 9,
+              "block": 0,
+              "can_act_round": 1,
+              "cards": [
+                {
+                  "instance_id": "2:tidal_splash:0",
+                  "owner": 2,
+                  "power": "tidal_splash"
+                },
+                {
+                  "instance_id": "2:tidal_splash:1",
+                  "owner": 2,
+                  "power": "tidal_splash"
+                },
+                {
+                  "instance_id": "2:rain_sweep:0",
+                  "owner": 2,
+                  "power": "rain_sweep"
+                },
+                {
+                  "instance_id": "2:rain_sweep:1",
+                  "owner": 2,
+                  "power": "rain_sweep"
+                },
+                {
+                  "instance_id": "2:dew_mend:0",
+                  "owner": 2,
+                  "power": "dew_mend"
+                },
+                {
+                  "instance_id": "2:dew_mend:1",
+                  "owner": 2,
+                  "power": "dew_mend"
+                }
+              ],
+              "defense": 2,
+              "form_id": "dew",
+              "hp": 42,
+              "known_powers": [
+                "tidal_splash",
+                "rain_sweep",
+                "dew_mend"
+              ],
+              "max_hp": 42,
+              "passive": "swift",
+              "slot": -1,
+              "species": "dew",
+              "speed": 23,
+              "status_sources": {
+
+              },
+              "statuses": {
+
+              },
+              "uid": 2
+            }
+          },
+          {
+            "kind": "evolve",
+            "source_form_id": "moss",
+            "target_form_id": "verdalio",
+            "transition_id": "moss_to_verdalio",
+            "uid": 1
+          }
+        ],
+        "rng_seed": "1",
+        "rng_state": "4262579450725261831",
+        "round_number": 11,
+        "seed_value": "1",
+        "starter_species": "moss",
+        "suspended_cards": {
+
+        },
+        "total_damage": 58
+      },
+      "completed": [],
+      "current_node_id": "clearing",
+      "event_revision": 1,
+      "identity": {
+        "content_sha256": "7df20eb40243b3b48a76c0ddee5eaa46321984f49612f36a59684e75cb673e80",
+        "ruleset": "expedition-rules-3"
+      },
+      "phase": "reward",
+      "schema": 2
+    },
+    "schema": "umbral.expedition.replay",
+    "version": 2
+  }
+}

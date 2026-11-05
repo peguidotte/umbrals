@@ -1,0 +1,25 @@
+{
+  "forms": {
+    "moss": {
+      "ko": "knockout",
+      "ko_seconds": 0.6,
+      "settle_mode": "cut",
+      "source_height_ratio": 0.9146730462519936,
+      "standing_height": 317,
+      "stride_pixels": 56,
+      "walk": "walk",
+      "walk_seconds": 0.8
+    },
+    "moss:back": {
+      "ko": "knockout-back",
+      "ko_seconds": 0.6,
+      "settle_mode": "cut",
+      "source_height_ratio": 0.9473684210526315,
+      "standing_height": 563,
+      "stride_pixels": 56,
+      "walk": "walk-back",
+      "walk_seconds": 0.8
+    }
+  },
+  "schema": 1
+}

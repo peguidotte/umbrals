@@ -53,6 +53,11 @@ func _run() -> void:
 	root.add_child(app)
 	await process_frame
 	app.preferences.set_value("reduced_motion", false)
+	await preload("res://tests/support/foli_motion_checks.gd").run(app, expect)
+	await preload("res://tests/support/foli_lifecycle_checks.gd").run(app, expect)
+	await preload("res://tests/support/folife_motion_checks.gd").run(app, expect)
+	await preload("res://tests/support/grass_final_motion_checks.gd").run(app, expect)
+	await preload("res://tests/support/grass_leaf_blade_checks.gd").run(app, expect)
 	app._start_game(42013, "ember")
 	await process_frame
 	var hud: Control = app.screen_host.battle_root.hud
@@ -162,6 +167,9 @@ func lifecycle_checks() -> void:
 	expect(app.game.queue_item("revive", 1), "Queue an owned revival through the existing item rules")
 	app.runtime.turn.cast()
 	await settle()
+	# Recovery is cosmetic and may outlast the item feedback; keep its own bound.
+	deadline = Time.get_ticks_msec() + 1500
+	while body.rig.lifecycle.active() and Time.get_ticks_msec() < deadline: await process_frame
 	expect(int(body.identity.hp) > 0 and not body.rig.lifecycle.incapacitated and not body.rig.lifecycle.active(), "A real revival releases KO and restores normal idle/casts")
 
 func lifecycle_deploy_checks() -> void:

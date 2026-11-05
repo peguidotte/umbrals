@@ -62,6 +62,9 @@ func play(events: Array, context: Dictionary, present: Callable) -> int:
 	var mean_ground: Vector2 = Vector2.ZERO
 	bodies = [source]
 	renderer.index = index
+	renderer.clock = 0.0
+	renderer.configure_presentation(source.rig.definition.get("attack_presentation", {}))
+	if renderer.presentation_profile == "leaf_blades": current_source = "fore"
 	renderer.target_points.clear()
 	renderer.target_families.clear()
 	for event in events:

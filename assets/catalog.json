@@ -81,6 +81,20 @@
         }
       }
     },
+    "attacks/grass-leaf-blades": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/attacks/grass-leaf-blades/versions/0.1.0/manifest.json",
+          "sha256": "297e6497f2ce530184887159fb22707905582fac3d4362492d7447ed54a18bca",
+          "status": "prototype"
+        },
+        "1.0.0": {
+          "manifest": "assets/attacks/grass-leaf-blades/versions/1.0.0/manifest.json",
+          "sha256": "729614b1665b0e8431f2876a1174181a40001116d81989ad5d16d55077f8dbe3",
+          "status": "production"
+        }
+      }
+    },
     "attacks/inferno": {
       "versions": {
         "1.0.0": {
@@ -403,6 +417,103 @@
           "manifest": "assets/characters/demo-caster/versions/1.0.0/manifest.json",
           "sha256": "c429a04d3f2a615023b87c6d392851662d643aedb017be520c926bbda2fd73aa",
           "status": "prototype"
+        }
+      }
+    },
+    "characters/foli-lifecycle": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/characters/foli-lifecycle/versions/0.1.0/manifest.json",
+          "sha256": "b7409970ab1bb4ddd438ec35ba1552559db36c395059edaf103e2c198989f91f",
+          "status": "prototype"
+        },
+        "1.0.0": {
+          "manifest": "assets/characters/foli-lifecycle/versions/1.0.0/manifest.json",
+          "sha256": "4f74479f17fe6396d7b4a71afbb59dbcf82f45d2f70a6fa303849ea1c66dd235",
+          "status": "production"
+        },
+        "1.1.0": {
+          "manifest": "assets/characters/foli-lifecycle/versions/1.1.0/manifest.json",
+          "sha256": "6cd51fe35a8ba80bbcc3439bb23b60967fcaefc7a18dfe9ab98fe8e928ce15f3",
+          "status": "production"
+        }
+      }
+    },
+    "characters/foli-pilot": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/foli-pilot/versions/1.0.0/manifest.json",
+          "sha256": "5c5a6db93eb4d23a2b821fb82319d992a662e43bee7ce329911e958b0added8c",
+          "status": "production"
+        },
+        "1.1.0": {
+          "manifest": "assets/characters/foli-pilot/versions/1.1.0/manifest.json",
+          "sha256": "7a7d519e0df325eaebf835fe8165f9cdb776291b1fe4158c3e62fdf08b8cd6ef",
+          "status": "production"
+        }
+      }
+    },
+    "characters/folife-lifecycle": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/folife-lifecycle/versions/1.0.0/manifest.json",
+          "sha256": "8b8d45f6835e92950f7b573e9f1e081fd851e86aea01c86ab89492b788509d08",
+          "status": "production"
+        },
+        "1.1.0": {
+          "manifest": "assets/characters/folife-lifecycle/versions/1.1.0/manifest.json",
+          "sha256": "5235e026ad08103f2fcde2d7e4e7f0b90416d5377dcc11bd17af7a16ff75dda8",
+          "status": "production"
+        }
+      }
+    },
+    "characters/folife-pilot": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/folife-pilot/versions/1.0.0/manifest.json",
+          "sha256": "4258d1b40a0c6d019df3740859f8c6f6284d38d1490250838216e0d1b0e8b3a2",
+          "status": "production"
+        },
+        "1.1.0": {
+          "manifest": "assets/characters/folife-pilot/versions/1.1.0/manifest.json",
+          "sha256": "4faa5d66278b5bd60771774b9b1bbe6bcd103580ca18da0992415c175ead63d5",
+          "status": "production"
+        }
+      }
+    },
+    "characters/folivel-lifecycle": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/folivel-lifecycle/versions/1.0.0/manifest.json",
+          "sha256": "f43113e36874f775d10b27f183c9a280b7d89e3fbe3ddbf12f51f04e79db6aa6",
+          "status": "production"
+        }
+      }
+    },
+    "characters/folivel-pilot": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/folivel-pilot/versions/1.0.0/manifest.json",
+          "sha256": "275056870fc549bd0def244abedce6b33643fbbd6391c7d31a847ae46de2e869",
+          "status": "production"
+        }
+      }
+    },
+    "characters/foslash-lifecycle": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/foslash-lifecycle/versions/1.0.0/manifest.json",
+          "sha256": "1ca3d763b23148ba2aff6e2056a2a039d00450ed8ba5f3b8c8f95022a66a3911",
+          "status": "production"
+        }
+      }
+    },
+    "characters/foslash-pilot": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/foslash-pilot/versions/1.0.0/manifest.json",
+          "sha256": "ca74402e84f2c371b0dc586e6fcc7f5b61ad05c082d1a2fb4cb0b830bb4f4ce0",
+          "status": "production"
         }
       }
     },

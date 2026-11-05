@@ -8,8 +8,25 @@ static var _loaded: bool = false
 static var _textures: Dictionary = {}
 static var _grounding: Dictionary = {}
 
-static func texture(art_id: String) -> Texture2D:
+static func view_name(art_id: String, rear: bool = false) -> String:
+	var profile: Dictionary = Assets.bound_manifest(art_id).get("metadata", {}).get("battle_profile", {})
+	var back: Dictionary = profile.get("views", {}).get("back", {})
+	return "back" if rear and back.has("portrait_role") and back.has("grounding") and back.has("motion_key") else "front"
+
+static func view_profile(art_id: String, view: String = "front") -> Dictionary:
+	var profile: Dictionary = Assets.bound_manifest(art_id).get("metadata", {}).get("battle_profile", {})
+	return profile if view == "front" else profile.get("views", {}).get(view, {})
+
+static func texture(art_id: String, view: String = "front") -> Texture2D:
 	var region_id: String = art_id.get_file()
+	# A deliberate portrait pin can supply its own battle art and floor profile.
+	var profile: Dictionary = view_profile(art_id, view)
+	if not profile.is_empty():
+		var key: String = art_id if view == "front" else art_id + ":" + view
+		if not _textures.has(key):
+			_textures[key] = Assets.texture(art_id) if view == "front" else load(Assets.bound_file(art_id, str(profile.portrait_role)))
+		_grounding[key] = profile.grounding
+		return _textures[key]
 	if _textures.has(region_id): return _textures[region_id]
 	if not _loaded:
 		_loaded = true
@@ -36,6 +53,7 @@ static func texture(art_id: String) -> Texture2D:
 	_textures[region_id] = result
 	return result
 
-static func ground_profile(art_id: String) -> Dictionary:
-	var art: Texture2D = texture(art_id)
-	return _grounding.get(art_id.get_file(), {"foot": [art.get_width() * 0.5, art.get_height() * 0.93], "width": art.get_width() * 0.6, "visible_top": art.get_height() * 0.10})
+static func ground_profile(art_id: String, view: String = "front") -> Dictionary:
+	var art: Texture2D = texture(art_id, view)
+	var key: String = art_id if view == "front" else art_id + ":" + view
+	return _grounding.get(key, _grounding.get(art_id.get_file(), {"foot": [art.get_width() * 0.5, art.get_height() * 0.93], "width": art.get_width() * 0.6, "visible_top": art.get_height() * 0.10}))

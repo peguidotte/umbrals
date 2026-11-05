@@ -1114,3 +1114,82 @@ Continuam os retratos anteriores como fallback explícito na documentação.
 Próxima fatia: materializar e revisar a arte aprovada e integrar as formas finais
 com compatibilidade auditada. Versão continua 0.3.0; as quatro famílias não estão
 declaradas concluídas por esta entrega.
+
+
+### V05-ART-02F — piloto visual da Foli
+
+Sobre a fatia de nomes do PR #14, a inicial recebe recorte transparente e
+rig próprios, mantendo IDs, mecânicas e saves. As duas referências aprovadas
+foram materializadas pelo fluxo oficial e inspecionadas; os PNGs originais
+estão versionados em `docs/references/creatures/foli/`. Apenas o pin
+`umbrals/moss` muda; arte antiga de Folife permanece explícita.
+
+[Escopo, contratos, evidências e lacunas](foli-pilot-v05-art-02f.md). Checks
+focados de movimento (68) passaram após corrigir o cache do atlas antigo;
+captura por cliques reais registrou três casts com áudio real, mas a baixa
+cadência do MP4 não comprova fluidez. Fechamento integral e revisão ficam
+registrados no PR. Caminhada/KO próprios, Folife/Foslash/Folivel, VFX de
+folhas e revisão estética permanecem pendentes. Produto 0.3.0; sem merge ou
+encerramento da família/marco por esta fatia.
+
+### V05-ART-02G — poses de caminhada e KO da Foli
+
+Continuação em draft sobre #18, sem merge. O pin aditivo por forma seleciona
+oito poses de caminhada e quatro de KO reversível, preservando retrato, IDs,
+regras e saves. Troca confirmada, KO por dano e reanimação do mesmo UID
+passaram 16 verificações na cena real; o alvo de movimento inclui esses
+contratos. A revisão independente permite integração técnica em draft após
+eliminar a dupla silhueta, mantendo aprovação estética pendente.
+
+[Escopo, contrato compartilhado e evidências](foli-lifecycle-v05-art-02g.md).
+O vídeo nativo documenta eventos e poses, mas a cena completa deste executor
+ficou em cerca de 8,4 fps; a fluidez segue aberta. A CI do #18 não aceita
+automaticamente esta nova fatia ou a combinação com a candidata. Lâminas
+próprias, verso, Folife e as duas finais continuam pendentes. Produto 0.3.0.
+
+### V05-ART-02H — piloto visual da Folife
+
+A intermediária recebe recorte da segunda forma v11, anatomia própria e
+oito poses de caminhada/quatro de KO reversível, em draft separado sobre
+#20. Preserva `verdalio`, evolução, UID, poderes, regras e saves. Revisões
+independentes de recorte, atlas e preview permitem experimento técnico em
+draft, sem aprovação estética. O ciclo real passou 16 checks, HP 60→0→21 no
+mesmo UID; o MP4 preserva timestamps e medição de cadência desta execução.
+
+[Escopo, fontes, tentativas e lacunas](folife-pilot-v05-art-02h.md). A origem
+de raízes detectada pelo teste inicial foi corrigida sem remover checks.
+Chevron/colar, cortes, verso e VFX próprios continuam abertos. Foslash e
+Folivel têm candidatas estáticas separadas, sem novas formas/regras jogáveis.
+Produto 0.3.0; sem merge ou promoção da família.
+
+### V05-CNT-02A — Foslash jogável e folhas-lâminas
+
+Foslash entra por aresta explícita de Folife, com anatomia frontal, oito
+poses de caminhada/quatro de KO e VFX próprios de folhas-lâminas para a
+linhagem. Ruleset 4 separa a revisão do catálogo da revisão de eventos;
+runs históricas mantêm o grafo antigo, UID/passiva/cartas e RNG. Atributos
+adultos repetem o incremento anterior como default provisório, sem nova
+regra definitiva de balanceamento.
+
+[Escopo, compatibilidade, tentativas e lacunas](foslash-playable-v05-cnt-02a.md).
+Gates focados passaram; mouse real validou evolução/boss/3 casts (25/0) e
+comandos de produção validaram HP 72→0→26 no mesmo UID (16/0). Draft técnico,
+sem aceitação integral desta candidata ainda. Verso de Foslash bloqueado na
+geração; pop de postura e lâmina pintada durante o projétil permanecem.
+Próxima fatia: Folivel jogável e versos próprios onde há arte válida;
+fechamento completo com vídeo após congelar a candidata. Produto 0.3.0.
+
+### V05-CNT-02B — Folivel jogável e dorsais próprios
+
+A alternativa Folivel da v13 entra por aresta explícita de Folife, com
+frente/verso e lifecycle próprios. Foli/Folife recebem dorsais em novas
+versões 1.1.0; as fontes frontais anteriores permanecem preservadas.
+Catálogo 2 mantém compatibilidade auditada com as revisões 0/1, sem
+acrescentar Folivel às ofertas de uma run histórica. Save252/0 e regras56/0
+passaram nos alvos puros; fechamento completo, input/vídeo e revisão do
+commit congelado ficam no PR.
+
+[Escopo, identidade, fontes e lacunas](folivel-playable-v05-cnt-02b.md).
+Marcha dorsal de Folivel tem alternância posterior limitada; verso de
+Foslash e casts de corpo em poses ainda faltam. Sem merge ou aprovação
+estética/performance por contagens de teste. Produto 0.3.0.

@@ -1,0 +1,215 @@
+{
+  "source_grid": [
+    2,
+    2
+  ],
+  "source_cell_size": [
+    627,
+    627
+  ],
+  "candidate_grid": [
+    4,
+    1
+  ],
+  "candidate_size": [
+    2508,
+    627
+  ],
+  "candidate_pivot": [
+    313,
+    620
+  ],
+  "candidate_floor_y": 620,
+  "method": "Exact627px grid slices plus per-frame integer Y translations to substantial-silhouette floor620. No scaling, alpha cleanup, repaint or creative pixel edits. Original caBX preserved.",
+  "floor_limit": "Not calibrated in runtime; maximum substantial silhouette alpha>=128 used for staging support plane.",
+  "frames": [
+    {
+      "frame": 0,
+      "source_rect": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "source_bounds_alpha_ge_128": [
+        107,
+        15,
+        512,
+        578
+      ],
+      "integer_translation": [
+        0,
+        42
+      ],
+      "candidate_bounds_alpha_ge_128": [
+        107,
+        57,
+        512,
+        620
+      ],
+      "candidate_pivot": [
+        313,
+        620
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          93034,
+          93034
+        ],
+        "64": [
+          92032,
+          92032
+        ],
+        "128": [
+          91099,
+          91099
+        ],
+        "240": [
+          88948,
+          88948
+        ]
+      }
+    },
+    {
+      "frame": 1,
+      "source_rect": [
+        627,
+        0,
+        1254,
+        627
+      ],
+      "source_bounds_alpha_ge_128": [
+        105,
+        11,
+        507,
+        578
+      ],
+      "integer_translation": [
+        0,
+        42
+      ],
+      "candidate_bounds_alpha_ge_128": [
+        105,
+        53,
+        507,
+        620
+      ],
+      "candidate_pivot": [
+        313,
+        620
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          86903,
+          86903
+        ],
+        "64": [
+          85910,
+          85910
+        ],
+        "128": [
+          84991,
+          84991
+        ],
+        "240": [
+          82936,
+          82936
+        ]
+      }
+    },
+    {
+      "frame": 2,
+      "source_rect": [
+        0,
+        627,
+        627,
+        1254
+      ],
+      "source_bounds_alpha_ge_128": [
+        106,
+        12,
+        511,
+        586
+      ],
+      "integer_translation": [
+        0,
+        34
+      ],
+      "candidate_bounds_alpha_ge_128": [
+        106,
+        46,
+        511,
+        620
+      ],
+      "candidate_pivot": [
+        313,
+        620
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          90138,
+          90138
+        ],
+        "64": [
+          89160,
+          89160
+        ],
+        "128": [
+          88212,
+          88212
+        ],
+        "240": [
+          86131,
+          86131
+        ]
+      }
+    },
+    {
+      "frame": 3,
+      "source_rect": [
+        627,
+        627,
+        1254,
+        1254
+      ],
+      "source_bounds_alpha_ge_128": [
+        108,
+        12,
+        507,
+        580
+      ],
+      "integer_translation": [
+        0,
+        40
+      ],
+      "candidate_bounds_alpha_ge_128": [
+        108,
+        52,
+        507,
+        620
+      ],
+      "candidate_pivot": [
+        313,
+        620
+      ],
+      "pixel_counts_preserved_by_alpha_threshold": {
+        "16": [
+          89434,
+          89434
+        ],
+        "64": [
+          88391,
+          88391
+        ],
+        "128": [
+          87465,
+          87465
+        ],
+        "240": [
+          85382,
+          85382
+        ]
+      }
+    }
+  ]
+}

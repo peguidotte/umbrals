@@ -1,0 +1,95 @@
+{
+  "dependencies": [],
+  "description": "Foli initial-form cutout with its own planted-foot mesh tracks; draft visual review, no authored walk.",
+  "files": {
+    "authoring": {
+      "bytes": 611,
+      "kind": "data",
+      "path": "authoring.json",
+      "provenance": {
+        "kind": "Original Foli anatomical tracks; no historical moss tracks copied",
+        "source": "tools/asset_authoring/build_foli_motion.py"
+      },
+      "sha256": "cfcd02cac9f935379ea2b408b19884a887493e0d78ef8bfbd498eed3861e9046"
+    },
+    "motion": {
+      "bytes": 1165323,
+      "kind": "data",
+      "path": "motion.json",
+      "provenance": {
+        "kind": "Original Foli anatomical tracks; no historical moss tracks copied",
+        "source": "tools/asset_authoring/build_foli_motion.py"
+      },
+      "sha256": "a37a5c225d7795632680cfb7003bc057b0a88f21bd8434967e43ef9b1723d412"
+    },
+    "portrait": {
+      "bytes": 764944,
+      "kind": "texture",
+      "path": "foli.png",
+      "provenance": {
+        "approval": "Pedro approved the reference lineage and delegated integration. This new cutout and mesh are a draft pilot awaiting visual review, not approval of all poses or the complete family.",
+        "generation_id": "exec-7dccbeb5-ce85-494c-997a-2ef723555560",
+        "kind": "Image Gen reference edit and original anatomical mesh tracks",
+        "original_png_preserved": true,
+        "prompt": "Create one clean production game character cutout of FOLI, strictly the first/smallest hare at far left of the approved lineup. Preserve warm olive-brown fur, cream muzzle/throat/paws, one upright leaf ear and one leaf ear swept left, amber eye, leaf tail, seated alert right-facing slightly elevated side view with forepaws near chest. Exactly three detached blade leaves in front of forepaws/face. Match hand-painted cel-shaded fantasy reference, dark outline, organic leaf texture, warm highlights and olive shadows. Fully visible with transparent alpha, no text, scenery, shadow ellipse, clothing, weapons or duplicate creatures.",
+        "references": [
+          {
+            "file_name": "lebre-linhagem-v11.png",
+            "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+            "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80"
+          }
+        ]
+      },
+      "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/foli-pilot",
+  "metadata": {
+    "battle_profile": {
+      "grounding": {
+        "foot": [
+          650,
+          1182
+        ],
+        "visible_top": 35,
+        "width": 480
+      },
+      "motion_role": "motion"
+    },
+    "gaps": [
+      "walk poses and walk runtime",
+      "persistent KO pose",
+      "Folife/Foslash/Folivel artwork and form graphs",
+      "dedicated detached-leaf VFX"
+    ],
+    "production_status_meaning": "Runtime-selectable in this draft. Does not certify aesthetic approval or complete animation requirements.",
+    "sides": "Right-facing source mirrored in runtime; no separately authored rear-facing sprite.",
+    "visual_review": "pending"
+  },
+  "provenance": {
+    "approval": "Pedro approved the reference lineage and delegated integration. This new cutout and mesh are a draft pilot awaiting visual review, not approval of all poses or the complete family.",
+    "generation_id": "exec-7dccbeb5-ce85-494c-997a-2ef723555560",
+    "kind": "Image Gen reference edit and original anatomical mesh tracks",
+    "original_png_preserved": true,
+    "prompt": "Create one clean production game character cutout of FOLI, strictly the first/smallest hare at far left of the approved lineup. Preserve warm olive-brown fur, cream muzzle/throat/paws, one upright leaf ear and one leaf ear swept left, amber eye, leaf tail, seated alert right-facing slightly elevated side view with forepaws near chest. Exactly three detached blade leaves in front of forepaws/face. Match hand-painted cel-shaded fantasy reference, dark outline, organic leaf texture, warm highlights and olive shadows. Fully visible with transparent alpha, no text, scenery, shadow ellipse, clothing, weapons or duplicate creatures.",
+    "references": [
+      {
+        "file_name": "lebre-linhagem-v11.png",
+        "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+        "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80"
+      }
+    ]
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}
