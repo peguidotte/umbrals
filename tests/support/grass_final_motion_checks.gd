@@ -20,7 +20,8 @@ static func run(app: Control, expect: Callable) -> void:
 		var binding: String = "umbrals/" + form_id
 		expect.call(Art.texture(binding) == Assets.texture(binding), "Final form uses its explicitly pinned portrait")
 		expect.call(str(Motion.form(form_id).anatomy.name).to_lower() == form_id, "Final form has its own anatomical definition")
-		var views: Array[String] = ["front", "back"] if form_id == "folivel" else ["front"]
+		var views: Array[String] = ["front"]
+		if form_id == "folivel": views.append("back")
 		if form_id == "foslash":
 			expect.call(Art.view_name(binding, true) == "front" and Motion.form(form_id, "back").is_empty(), "Missing Foslash rear does not inherit front anatomy")
 		else:
