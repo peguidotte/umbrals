@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "recorded_date_utc": "2026-11-04",
+  "creative_status": "family_creatively_closed_Sendral_and_fire_final_approved",
+  "latest_steering": "Pedro explicitly approved the full-mane fire final on the right of the comparison. The fire Umbral is creatively closed; Sendral remains approved. The image has not transferred.",
+  "runtime_status": "not_implemented_by_this_reference_record",
+  "family_direction": {
+    "initial_existing_form_id": "ember",
+    "common_intermediate_candidate_existing_form_id": "ignivar",
+    "finals": [
+      {
+        "direction": "fire",
+        "preferred_spoken_name": "Andarvor",
+        "form_id": null,
+        "creative_status": "approved_full_mane_right_of_v9"
+      },
+      {
+        "direction": "controlled_ashes_free_tail",
+        "preferred_spoken_name": "Sendral",
+        "form_id": null,
+        "creative_status": "approved"
+      }
+    ],
+    "mechanics_and_natures": "not_decided_by_visual_approval"
+  },
+  "references": [
+    {
+      "library_file_id": "libfile_299871807a048191ba2d69ae8bb42115",
+      "file_id": "file_000000002f4481fdadebae03e2385fd9",
+      "file_name": "brasa-arvore-quatro-formas-v2.png",
+      "library_version": 0,
+      "expected_bytes": 2669923,
+      "role": "historical_exploratory_tree_fire_final_reopened",
+      "transfer_attempt": "materialize-1",
+      "transfer_status": "failed_before_install",
+      "error": "library file transfer failed: download failed",
+      "repository_image_path": null,
+      "sha256": null
+    },
+    {
+      "library_file_id": "libfile_c3b38ea9bcd88191bc575a7414f977a0",
+      "file_id": "file_00000000b9fc81fdb4f24b6680cba654",
+      "file_name": "sendral-cinzas-livres-v6.png",
+      "library_version": 0,
+      "expected_bytes": 2634665,
+      "role": "final_approved_ash_direction_supersedes_tree_ash_design",
+      "transfer_attempt": "materialize-2",
+      "transfer_status": "failed_before_install",
+      "error": "library file transfer failed: download failed",
+      "repository_image_path": null,
+      "sha256": null
+    },
+    {
+      "library_file_id": "libfile_6ab7ff3bcbd88191a628e74f2b8e9421",
+      "file_id": "file_0000000086ac81fd90a26aaa3b980940",
+      "file_name": "final-fogo-juba-completa-comparativo-v9.png",
+      "library_version": 0,
+      "expected_bytes": 2367963,
+      "role": "approved_principal_fire_final",
+      "selected_region": "right_full_mane",
+      "transfer_status": "failed_before_install",
+      "error": "library file transfer failed: download failed",
+      "repository_image_path": null,
+      "sha256": null
+    }
+  ],
+  "official_retry": {
+    "date_utc": "2026-11-04",
+    "flow": "prepare_materialize plus current official transfer helper",
+    "result": "All requested files failed before installation: library file transfer failed: download failed",
+    "attempt_count": 2
+  },
+  "latest_fire_direction": {
+    "status": "approved_concept",
+    "direction": "Preserve the original quadruped with three tails and the full mane shown on the right of comparison v9.",
+    "library_file_id": "libfile_6ab7ff3bcbd88191a628e74f2b8e9421",
+    "selected_region": "right_full_mane",
+    "implementation_status": "not_started_in_this_base_pilot",
+    "supersedes": "Earlier reopening and smaller-mane proposal"
+  },
+  "latest_approval_recorded_date_utc": "2026-11-05"
+}

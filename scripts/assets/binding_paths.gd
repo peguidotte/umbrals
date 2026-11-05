@@ -31,6 +31,7 @@ const AUDIO_SELECT: String = "res://assets/audio/select/versions/1.0.0/sound.wav
 const AUDIO_STORM: String = "res://assets/audio/storm/versions/1.0.0/sound.wav"
 const CHARACTERS_BATTLE_CREATURES: String = "res://assets/characters/battle-creatures/versions/1.0.0/texture.png"
 const CHARACTERS_BATTLE_EVOLVED: String = "res://assets/characters/battle-evolved/versions/1.0.0/texture.png"
+const CHARACTERS_CREATURE_LIFECYCLE: String = "res://assets/characters/brasa-lifecycle/versions/1.0.0/walk.png"
 const CHARACTERS_OWL: String = "res://assets/characters/owl/versions/1.0.0/portrait.svg"
 const CHARACTERS_PIETRO_HOME: String = "res://assets/characters/pietro-home/versions/1.0.0/atlas.png"
 const CHARACTERS_REFUGE_TRAVELER: String = "res://assets/characters/refuge-traveler/versions/1.0.0/atlas.png"
@@ -97,6 +98,7 @@ const PATHS: Dictionary = {
 	"audio/storm": AUDIO_STORM,
 	"characters/battle-creatures": CHARACTERS_BATTLE_CREATURES,
 	"characters/battle-evolved": CHARACTERS_BATTLE_EVOLVED,
+	"characters/creature-lifecycle": CHARACTERS_CREATURE_LIFECYCLE,
 	"characters/owl": CHARACTERS_OWL,
 	"characters/pietro-home": CHARACTERS_PIETRO_HOME,
 	"characters/refuge-traveler": CHARACTERS_REFUGE_TRAVELER,

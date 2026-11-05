@@ -1,0 +1,60 @@
+{
+  "dependencies": [
+    {
+      "id": "characters/battle-motion",
+      "version": "1.0.0"
+    }
+  ],
+  "description": "Brasa locomotion blocking for an isolated native Godot review. Not production gait.",
+  "files": {
+    "walk": {
+      "bytes": 14307,
+      "kind": "data",
+      "path": "walk.json",
+      "sha256": "bfcdfa43e1a75760fe12ff357f65f42f8513acbbc39c54191dc98a592f383250"
+    }
+  },
+  "id": "characters/brasa-pilot",
+  "metadata": {
+    "adapter": "battle-motion-v1",
+    "form_id": "ember",
+    "ground": [
+      0.5660377358490566,
+      0.9615384615384616
+    ],
+    "production_ready": false,
+    "required_gaps": [
+      "Alternating planted feet and translation speed need authored locomotion",
+      "Defeat/KO pose not authored; existing celebration is not defeat",
+      "Current runtime has no creature walk playback contract",
+      "Family reference PNG transfer is blocked; no comparison to approved sheet"
+    ],
+    "texture_region": [
+      40,
+      54,
+      371,
+      364
+    ],
+    "walk_loop_endpoint_included": true,
+    "walk_period_seconds": 1.0,
+    "walk_track": {
+      "clip": "6",
+      "group": "states"
+    }
+  },
+  "provenance": {
+    "approval": "Unapproved locomotion blocking; family concept approval does not approve this gait",
+    "artwork": "Reuses characters/battle-creatures@1.0.0; no new pixels or spritesheets",
+    "authoring_sha256": "072496a56e3678b9e2f449bba76ac601681a32b34ec4032e51cd5224367b0328",
+    "authoring_tool": "tools/brasa_pilot/build.py",
+    "kind": "Original deterministic channel animation study over existing Brasa artwork",
+    "license": "Original project animation data; original artwork provenance remains in its pinned module",
+    "source_files": {
+      "assets/characters/battle-creatures/versions/1.0.0/atlas.json": "c1243fba5c348dbd53e7593b4f965202dbb8b6ba1fa88b8e2424c2fe1b388247",
+      "assets/characters/battle-motion/versions/1.0.0/motion.json": "2dfd3acad3f9ea62b4936376b9894d38b213fbc97380cb9a38eceac557c9fe83"
+    }
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.1.0"
+}

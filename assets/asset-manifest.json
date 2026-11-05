@@ -3560,6 +3560,378 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 451894,
+      "id": "characters/brasa-lifecycle@0.2.0:knockout",
+      "kind": "texture",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/0.2.0/knockout.png",
+      "role": "knockout",
+      "sha256": "65d34bd436cc90d389d4647d970300cb42084fa66c7a6b69d6c3c5a118836020",
+      "source": {
+        "brief": "Exact Brasa identity, eight biped walk poses with alternating hind feet and four reversible KO poses, right facing, 4x3 transparent grid; preserve charcoal body, orange forepaws, amber eye and one spiral tail.",
+        "edit_history": "Original retained in review/original.png. Runtime cells sliced and integer translated; no resampling, repainting or alpha cleanup.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral using project-owned reference; no third-party game art.",
+        "model_version": "not exposed",
+        "original_output_basename": "exec-90926448-5f64-4ca6-8e15-070e807370c9.png",
+        "original_sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+        "recorded_date_utc": "2026-11-04",
+        "reference": {
+          "module": "characters/battle-creatures",
+          "region": "ember",
+          "texture_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+          "version": "1.0.0"
+        },
+        "review_status": "Candidate; native-size movement and independent review pending.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          362
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 2410,
+      "id": "characters/brasa-lifecycle@0.2.0:normalization",
+      "kind": "data",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/0.2.0/normalization.json",
+      "role": "normalization",
+      "sha256": "4161b5bc89a3990a17aa905522b458bec6111f545e2d3d667b6fbdd78f2352aa",
+      "source": {
+        "brief": "Exact Brasa identity, eight biped walk poses with alternating hind feet and four reversible KO poses, right facing, 4x3 transparent grid; preserve charcoal body, orange forepaws, amber eye and one spiral tail.",
+        "edit_history": "Original retained in review/original.png. Runtime cells sliced and integer translated; no resampling, repainting or alpha cleanup.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral using project-owned reference; no third-party game art.",
+        "model_version": "not exposed",
+        "original_output_basename": "exec-90926448-5f64-4ca6-8e15-070e807370c9.png",
+        "original_sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+        "recorded_date_utc": "2026-11-04",
+        "reference": {
+          "module": "characters/battle-creatures",
+          "region": "ember",
+          "texture_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+          "version": "1.0.0"
+        },
+        "review_status": "Candidate; native-size movement and independent review pending.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 1410889,
+      "id": "characters/brasa-lifecycle@0.2.0:original",
+      "kind": "review",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/0.2.0/review/original.png",
+      "role": "original",
+      "sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+      "source": {
+        "brief": "Exact Brasa identity, eight biped walk poses with alternating hind feet and four reversible KO poses, right facing, 4x3 transparent grid; preserve charcoal body, orange forepaws, amber eye and one spiral tail.",
+        "edit_history": "Original retained in review/original.png. Runtime cells sliced and integer translated; no resampling, repainting or alpha cleanup.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral using project-owned reference; no third-party game art.",
+        "model_version": "not exposed",
+        "original_output_basename": "exec-90926448-5f64-4ca6-8e15-070e807370c9.png",
+        "original_sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+        "recorded_date_utc": "2026-11-04",
+        "reference": {
+          "module": "characters/battle-creatures",
+          "region": "ember",
+          "texture_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+          "version": "1.0.0"
+        },
+        "review_status": "Candidate; native-size movement and independent review pending.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 269,
+      "id": "characters/brasa-lifecycle@0.2.0:profile",
+      "kind": "data",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/0.2.0/profile.json",
+      "role": "profile",
+      "sha256": "d77de33e24e73619f7e87db1bcfe70340f38a2fcab2f1ae04c347bc2c7d5104e",
+      "source": {
+        "brief": "Exact Brasa identity, eight biped walk poses with alternating hind feet and four reversible KO poses, right facing, 4x3 transparent grid; preserve charcoal body, orange forepaws, amber eye and one spiral tail.",
+        "edit_history": "Original retained in review/original.png. Runtime cells sliced and integer translated; no resampling, repainting or alpha cleanup.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral using project-owned reference; no third-party game art.",
+        "model_version": "not exposed",
+        "original_output_basename": "exec-90926448-5f64-4ca6-8e15-070e807370c9.png",
+        "original_sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+        "recorded_date_utc": "2026-11-04",
+        "reference": {
+          "module": "characters/battle-creatures",
+          "region": "ember",
+          "texture_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+          "version": "1.0.0"
+        },
+        "review_status": "Candidate; native-size movement and independent review pending.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 956529,
+      "id": "characters/brasa-lifecycle@0.2.0:walk",
+      "kind": "texture",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/0.2.0/walk.png",
+      "role": "walk",
+      "sha256": "28881ba82925da5e5baaa8b3676fd31d99cbed88db6377f0ed48fc1ee709d928",
+      "source": {
+        "brief": "Exact Brasa identity, eight biped walk poses with alternating hind feet and four reversible KO poses, right facing, 4x3 transparent grid; preserve charcoal body, orange forepaws, amber eye and one spiral tail.",
+        "edit_history": "Original retained in review/original.png. Runtime cells sliced and integer translated; no resampling, repainting or alpha cleanup.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral using project-owned reference; no third-party game art.",
+        "model_version": "not exposed",
+        "original_output_basename": "exec-90926448-5f64-4ca6-8e15-070e807370c9.png",
+        "original_sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+        "recorded_date_utc": "2026-11-04",
+        "reference": {
+          "module": "characters/battle-creatures",
+          "region": "ember",
+          "texture_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+          "version": "1.0.0"
+        },
+        "review_status": "Candidate; native-size movement and independent review pending.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 451894,
+      "id": "characters/brasa-lifecycle@1.0.0:knockout",
+      "kind": "texture",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/1.0.0/knockout.png",
+      "role": "knockout",
+      "sha256": "65d34bd436cc90d389d4647d970300cb42084fa66c7a6b69d6c3c5a118836020",
+      "source": {
+        "brief": "Exact Brasa identity, eight biped walk poses with alternating hind feet and four reversible KO poses, right facing, 4x3 transparent grid; preserve charcoal body, orange forepaws, amber eye and one spiral tail.",
+        "edit_history": "Original retained in review/original.png. Runtime cells sliced and integer translated; no resampling, repainting or alpha cleanup.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral using project-owned reference; no third-party game art.",
+        "model_version": "not exposed",
+        "original_output_basename": "exec-90926448-5f64-4ca6-8e15-070e807370c9.png",
+        "original_sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+        "recorded_date_utc": "2026-11-04",
+        "reference": {
+          "module": "characters/battle-creatures",
+          "region": "ember",
+          "texture_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+          "version": "1.0.0"
+        },
+        "review_status": "Native-size motion reviewed for integration; independent PR review still pending.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          362
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2410,
+      "id": "characters/brasa-lifecycle@1.0.0:normalization",
+      "kind": "data",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/1.0.0/normalization.json",
+      "role": "normalization",
+      "sha256": "4161b5bc89a3990a17aa905522b458bec6111f545e2d3d667b6fbdd78f2352aa",
+      "source": {
+        "brief": "Exact Brasa identity, eight biped walk poses with alternating hind feet and four reversible KO poses, right facing, 4x3 transparent grid; preserve charcoal body, orange forepaws, amber eye and one spiral tail.",
+        "edit_history": "Original retained in review/original.png. Runtime cells sliced and integer translated; no resampling, repainting or alpha cleanup.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral using project-owned reference; no third-party game art.",
+        "model_version": "not exposed",
+        "original_output_basename": "exec-90926448-5f64-4ca6-8e15-070e807370c9.png",
+        "original_sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+        "recorded_date_utc": "2026-11-04",
+        "reference": {
+          "module": "characters/battle-creatures",
+          "region": "ember",
+          "texture_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+          "version": "1.0.0"
+        },
+        "review_status": "Native-size motion reviewed for integration; independent PR review still pending.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1410889,
+      "id": "characters/brasa-lifecycle@1.0.0:original",
+      "kind": "review",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/1.0.0/review/original.png",
+      "role": "original",
+      "sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+      "source": {
+        "brief": "Exact Brasa identity, eight biped walk poses with alternating hind feet and four reversible KO poses, right facing, 4x3 transparent grid; preserve charcoal body, orange forepaws, amber eye and one spiral tail.",
+        "edit_history": "Original retained in review/original.png. Runtime cells sliced and integer translated; no resampling, repainting or alpha cleanup.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral using project-owned reference; no third-party game art.",
+        "model_version": "not exposed",
+        "original_output_basename": "exec-90926448-5f64-4ca6-8e15-070e807370c9.png",
+        "original_sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+        "recorded_date_utc": "2026-11-04",
+        "reference": {
+          "module": "characters/battle-creatures",
+          "region": "ember",
+          "texture_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+          "version": "1.0.0"
+        },
+        "review_status": "Native-size motion reviewed for integration; independent PR review still pending.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 269,
+      "id": "characters/brasa-lifecycle@1.0.0:profile",
+      "kind": "data",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/1.0.0/profile.json",
+      "role": "profile",
+      "sha256": "d77de33e24e73619f7e87db1bcfe70340f38a2fcab2f1ae04c347bc2c7d5104e",
+      "source": {
+        "brief": "Exact Brasa identity, eight biped walk poses with alternating hind feet and four reversible KO poses, right facing, 4x3 transparent grid; preserve charcoal body, orange forepaws, amber eye and one spiral tail.",
+        "edit_history": "Original retained in review/original.png. Runtime cells sliced and integer translated; no resampling, repainting or alpha cleanup.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral using project-owned reference; no third-party game art.",
+        "model_version": "not exposed",
+        "original_output_basename": "exec-90926448-5f64-4ca6-8e15-070e807370c9.png",
+        "original_sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+        "recorded_date_utc": "2026-11-04",
+        "reference": {
+          "module": "characters/battle-creatures",
+          "region": "ember",
+          "texture_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+          "version": "1.0.0"
+        },
+        "review_status": "Native-size motion reviewed for integration; independent PR review still pending.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 956529,
+      "id": "characters/brasa-lifecycle@1.0.0:walk",
+      "kind": "texture",
+      "module": "characters/brasa-lifecycle",
+      "path": "assets/characters/brasa-lifecycle/versions/1.0.0/walk.png",
+      "role": "walk",
+      "sha256": "28881ba82925da5e5baaa8b3676fd31d99cbed88db6377f0ed48fc1ee709d928",
+      "source": {
+        "brief": "Exact Brasa identity, eight biped walk poses with alternating hind feet and four reversible KO poses, right facing, 4x3 transparent grid; preserve charcoal body, orange forepaws, amber eye and one spiral tail.",
+        "edit_history": "Original retained in review/original.png. Runtime cells sliced and integer translated; no resampling, repainting or alpha cleanup.",
+        "kind": "generated original animation poses",
+        "license_record": "Original generated artwork for Umbral using project-owned reference; no third-party game art.",
+        "model_version": "not exposed",
+        "original_output_basename": "exec-90926448-5f64-4ca6-8e15-070e807370c9.png",
+        "original_sha256": "20a9f707e8773405494234b581814dd640ec010d3074e4a21d0106c9cf580dcb",
+        "recorded_date_utc": "2026-11-04",
+        "reference": {
+          "module": "characters/battle-creatures",
+          "region": "ember",
+          "texture_sha256": "a5aff2e7da5892a52ec3d94dbefe04b80d7a8d6a94213b342cfce3fd6d3fcfbb",
+          "version": "1.0.0"
+        },
+        "review_status": "Native-size motion reviewed for integration; independent PR review still pending.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 14307,
+      "id": "characters/brasa-pilot@0.1.0:walk",
+      "kind": "data",
+      "module": "characters/brasa-pilot",
+      "path": "assets/characters/brasa-pilot/versions/0.1.0/walk.json",
+      "role": "walk",
+      "sha256": "bfcdfa43e1a75760fe12ff357f65f42f8513acbbc39c54191dc98a592f383250",
+      "source": {
+        "approval": "Unapproved locomotion blocking; family concept approval does not approve this gait",
+        "artwork": "Reuses characters/battle-creatures@1.0.0; no new pixels or spritesheets",
+        "authoring_sha256": "072496a56e3678b9e2f449bba76ac601681a32b34ec4032e51cd5224367b0328",
+        "authoring_tool": "tools/brasa_pilot/build.py",
+        "kind": "Original deterministic channel animation study over existing Brasa artwork",
+        "license": "Original project animation data; original artwork provenance remains in its pinned module",
+        "source_files": {
+          "assets/characters/battle-creatures/versions/1.0.0/atlas.json": "c1243fba5c348dbd53e7593b4f965202dbb8b6ba1fa88b8e2424c2fe1b388247",
+          "assets/characters/battle-motion/versions/1.0.0/motion.json": "2dfd3acad3f9ea62b4936376b9894d38b213fbc97380cb9a38eceac557c9fe83"
+        }
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
       "bytes": 1241875,
       "id": "characters/demo-acrobat@1.0.0:pike-somersault",
       "kind": "texture",
