@@ -27,6 +27,12 @@ static func texture(id: String, enemy: bool) -> Texture2D:
 	region.filter_clip = true
 	return region
 
+static func ko_texture(id: String, enemy: bool) -> Texture2D:
+	var definition: Dictionary = form(id)
+	if definition.is_empty(): return null
+	var role: String = str(definition["enemy" if enemy else "ally"].get("ko_texture", ""))
+	return load(Assets.bound_file("umbrals/" + id, role)) as Texture2D if not role.is_empty() else null
+
 static func _data(binding: String, role: String) -> Dictionary:
 	if not Assets.bound_manifest(binding).get("files", {}).has(role): return {}
 	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(Assets.bound_file(binding, role)))

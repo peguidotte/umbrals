@@ -263,7 +263,7 @@
     "umbrals/tempestral": {
       "file": "niscor-ally",
       "id": "characters/electric-family",
-      "version": "1.0.0"
+      "version": "2.0.0"
     },
     "umbrals/verdalio": {
       "file": "portrait",
@@ -273,7 +273,7 @@
     "umbrals/volt": {
       "file": "nisca-ally",
       "id": "characters/electric-family",
-      "version": "1.0.0"
+      "version": "2.0.0"
     },
     "world/battle-clearing": {
       "file": "background",

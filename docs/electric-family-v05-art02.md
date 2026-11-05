@@ -29,8 +29,8 @@ não são declaradas simétricas pixel a pixel.
 
 | Binding estável | Release proposto | Papel |
 |---|---|---|
-| `umbrals/volt` | `characters/electric-family@1.0.0` | `nisca-ally` |
-| `umbrals/tempestral` | `characters/electric-family@1.0.0` | `niscor-ally` |
+| `umbrals/volt` | `characters/electric-family@2.0.0` | `nisca-ally` |
+| `umbrals/tempestral` | `characters/electric-family@2.0.0` | `niscor-ally` |
 
 Somente esses dois pins mudam. O integrador deve combinar os índices gerados
 e os dois pins com as demais frentes, sem sobrescrever bindings concorrentes.
@@ -87,3 +87,39 @@ Não renomear Niscor como um dos adultos.
 Revisão humana da arte/movimento e desempenho em hardware permanecem abertos.
 Animações de malha não são poses redesenhadas; gates automáticos não comprovam
 diversão ou aprovação estética. Produto permanece 0.3.0; a família não foi encerrada.
+
+## Revisão independente e correção de movimento
+
+O delta `2483729` impede que a coruja resolva recursivamente o novo rig de
+Nisca pelo antigo proxy `volt`: coruja, esporo e cervo usam os tracks da
+release legada fixada. A regressão tem checks de igualdade de idle/dano e de
+separação entre coruja e ouriço. Não muda conteúdo, regras ou identidade de save.
+
+A release 2.0.0 preserva a 1.0.0 e acrescenta poses de KO desenhadas com olhos
+fechados, pernas dobradas e volume natural. O tint é legível; a recuperação
+faz uma transição de 0,8s da pose de repouso para a pose ativa. Isso continua
+sendo uma candidata de apresentação por malhas e transição de poses, sem
+alegação de animação final redesenhada quadro a quadro.
+
+A passada agora declara quatro contatos de pata: 60% de apoio imóvel e 40%
+de balanço com elevação. A projeção compensa as deformações durante o apoio;
+testes verificam os pontos fixos e o slot interativo. Pesos de skinning são
+pré-calculados; a equivalência com a deformação anterior é verificada nos
+225 vértices. A tentativa de atualizar buffers dinamicamente piorou a cadência
+neste renderer e foi descartada, preservando as evidências da tentativa.
+
+Os vídeos antigos de 4,4/1,58 FPS **não comprovam cadência**. A revisão nova
+separa capturas reais em tempo de execução: nativo X11/Mesa em 1600×900 mediu
+32,8 FPS médios com gravação, p95 de frame 33,3ms e 23,1–42,5 FPS por estado;
+Web Chromium/ANGLE OpenGL em 1280×720 mediu 26,7–38,5 FPS por estado. Os MP4
+capturam a tela a 30 FPS sem interpolar movimento; relatórios guardam a
+cadência real do engine e o probe dos vídeos. Não são movie-maker com passo
+fixo e não representam garantia de desempenho em outro hardware. SwiftShader
+neste ambiente continua lento; seus runs são mantidos como evidência insuficiente.
+
+A revisão nativa/Web e os próximos resultados do CI ficam no PR atualizado.
+Runs cancelados/substituídos não são aceitação integral: o run 41963534405
+teve quatro jobs Web cancelados e o agregador falhou por falta do resultado
+completo. O workflow usa concurrency por branch/ref com cancel-in-progress;
+o novo HEAD recebeu nova execução. A aceitação final precisa fechar o HEAD
+atual com cobertura completa, sem aproveitar esse cancelamento como aprovação.

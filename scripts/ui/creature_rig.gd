@@ -1,6 +1,7 @@
 extends Node2D
 ## One textured mesh per creature. The same deformation projects visible sockets.
 const Motion = preload("res://scripts/ui/battle_motion.gd")
+const Presentation = preload("res://scripts/ui/creature_presentation.gd")
 const GRID: int = 14
 const ANGLES: Dictionary = {"head": 8, "tail": 9, "fore": 10, "hind": 11, "crest": 12, "ear": 13, "jaw": 14, "wing": 15, "feeler": 16, "bough": 17, "fin": 18}
 var form_id: String = ""
@@ -28,16 +29,23 @@ var reaction_weight: float = 1.0
 var jump_scale: float = 1.0
 var incapacitated: bool = false
 var ko_elapsed: float = 0.0
+var recovery_elapsed: float = -1.0
+var ko_texture: Texture2D
+var ko_mix: float = 0.0
+var skin_bindings: Array = []
+var pose_rotations: Dictionary = {}
+var walk_offsets: Array = []
 
 func set_incapacitated(value: bool) -> void:
 	if incapacitated == value: return
 	incapacitated = value
 	ko_elapsed = 0.0
+	recovery_elapsed = 0.0 if not value and ko_texture != null and not reduced_motion else -1.0
 	reset()
 	_refresh()
 
 func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2, mirror: bool) -> void:
-	var changed: bool = image != source or id != form_id
+	var changed: bool = image != source or id != form_id or mirror != flipped
 	source = image
 	form_id = id
 	definition = Motion.form(id)
@@ -46,6 +54,7 @@ func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2
 	flipped = mirror
 	texture = image.atlas if image is AtlasTexture else image
 	if changed:
+		ko_texture = Presentation.ko_texture(id, mirror)
 		reset()
 		_build_topology()
 	_refresh()
@@ -91,6 +100,15 @@ func play_state(state: int) -> void:
 
 func _process(delta: float) -> void:
 	if source == null or paused: return
+	if ko_texture != null and (incapacitated or recovery_elapsed >= 0.0):
+		if incapacitated:
+			if ko_elapsed >= .75: return
+			ko_elapsed = minf(ko_elapsed + delta, .75)
+		else:
+			recovery_elapsed += delta
+			if recovery_elapsed >= .8: recovery_elapsed = -1.0
+		_refresh()
+		return
 	if incapacitated and definition.get("states", {}).has("7"):
 		ko_elapsed = minf(ko_elapsed + delta, 3.2)
 		_refresh()
@@ -112,16 +130,70 @@ func _process(delta: float) -> void:
 	_refresh()
 
 func _build_topology() -> void:
+	mesh.clear_surfaces()
 	uvs.clear()
 	indices.clear()
+	skin_bindings.clear()
 	var region: Rect2 = source.region if source is AtlasTexture else Rect2(Vector2.ZERO, source.get_size())
 	for row in range(GRID + 1):
 		for column in range(GRID + 1):
-			uvs.append((region.position + Vector2(float(column) / GRID, float(row) / GRID) * region.size) / texture.get_size())
+			var uv: Vector2 = Vector2(float(column) / GRID, float(row) / GRID)
+			uvs.append((region.position + uv * region.size) / texture.get_size())
+			skin_bindings.append(_bind_skin(uv))
 	for row in range(GRID):
 		for column in range(GRID):
 			var a: int = row * (GRID + 1) + column
 			indices.append_array(PackedInt32Array([a, a + 1, a + GRID + 1, a + 1, a + GRID + 2, a + GRID + 1]))
+
+func _bind_skin(uv: Vector2) -> Dictionary:
+	var bones: Array = []
+	for joint in definition.get("joints", {}):
+		var bone: Array = definition.joints[joint]
+		var center: Vector2 = Vector2(float(bone[2]), float(bone[3]))
+		var radius: Vector2 = Vector2(float(bone[4]), float(bone[5]))
+		var weight: float = exp(-((uv - center) / radius).length_squared() * 1.35)
+		if weight >= .005: bones.append([int(ANGLES.get(joint, 8)), uv - Vector2(float(bone[0]), float(bone[1])), weight])
+	var family: String = str(definition.get("anatomy", {}).get("family", ""))
+	var center: Vector2 = Vector2(.40, .37) if family == "dew" else Vector2(.44, .46) if family == "volt" else Vector2(.62, .61)
+	var inflate: Vector2 = (uv - center) * exp(-((uv - center) / Vector2(.35, .38)).length_squared())
+	var blink: float = 0.0
+	if definition.has("anatomy"):
+		var eye: Array = definition.anatomy.get("eye", [.7, .5])
+		var eye_uv: Vector2 = Vector2(float(eye[0]), float(eye[1]))
+		blink = (eye_uv.y - uv.y) * .9 * exp(-((uv - eye_uv) / Vector2(.065, .055)).length_squared() * 1.7)
+	return {"uv": uv, "bones": bones, "inflate": inflate, "blink": blink, "plant": _plant_weights(uv)}
+
+func _plant_weights(uv: Vector2) -> Array:
+	var weights: Array = []
+	for point in definition.get("walk_contacts", []):
+		var at: Vector2 = Vector2(float(point[0]), float(point[1]))
+		weights.append(exp(-((uv - at) / Vector2(.10, .08)).length_squared() * 4.0))
+	return weights
+
+func _walk_offsets() -> void:
+	walk_offsets.clear()
+	if reduced_motion or mode != "states" or clip != 6: return
+	var unit: float = maxf(display_size.x, display_size.y) / 166.0
+	for point in definition.get("walk_contacts", []):
+		var at: Vector2 = Vector2(float(point[0]), float(point[1]))
+		var phase: float = fposmod(elapsed / .8 + float(point[2]), 1.0)
+		var swing: float = clampf((phase - .6) / .4, 0, 1)
+		var desired: Vector2 = at * display_size
+		desired += Vector2(.035 * sin(swing * TAU) * sin(swing * PI), -.055 * pow(sin(swing * PI), 2)) * display_size
+		var actual: Vector2 = _skin(at) * display_size
+		actual.y += float(pose[5]) * unit * pow(clampf((foot.y - at.y) / maxf(.01, foot.y), 0, 1), .7)
+		walk_offsets.append(desired - actual)
+
+func _cached_skin(binding: Dictionary) -> Vector2:
+	var result: Vector2 = binding.uv
+	for bone in binding.bones:
+		var channel: int = int(bone[0])
+		if not pose_rotations.has(channel): continue
+		var offset: Vector2 = bone[1]
+		result += (pose_rotations[channel] * offset - offset) * float(bone[2])
+	result += binding.inflate * float(pose[6])
+	result.y += float(binding.blink) * float(pose[7])
+	return result
 
 func _skin(uv: Vector2) -> Vector2:
 	var displacement: Vector2 = Vector2.ZERO
@@ -146,12 +218,18 @@ func _skin(uv: Vector2) -> Vector2:
 		displacement.y += (center.y - uv.y) * float(pose[7]) * 0.90 * exp(-((uv - center) / Vector2(0.065, 0.055)).length_squared() * 1.7)
 	return uv + displacement
 
-func project(uv: Vector2) -> Vector2:
+func project(uv: Vector2, skinned: Variant = null, plant: Variant = null) -> Vector2:
 	if pose.is_empty(): pose = Motion.neutral()
-	var local: Vector2 = (_skin(uv) - foot) * display_size
+	var local: Vector2 = ((_skin(uv) if skinned == null else skinned) - foot) * display_size
 	var unit: float = maxf(display_size.x, display_size.y) / 166.0
-	local.y += float(pose[5]) * unit * pow(clampf((foot.y - uv.y) / maxf(0.01, foot.y), 0, 1), 0.7)
-	local = local.rotated(float(pose[2])) * Vector2(float(pose[3]), float(pose[4]))
+	if not is_zero_approx(float(pose[5])):
+		local.y += float(pose[5]) * unit * pow(clampf((foot.y - uv.y) / maxf(0.01, foot.y), 0, 1), 0.7)
+	if not walk_offsets.is_empty():
+		var weights: Array = _plant_weights(uv) if plant == null else plant
+		for index in range(walk_offsets.size()): local += walk_offsets[index] * float(weights[index])
+	if not is_zero_approx(float(pose[2])): local = local.rotated(float(pose[2]))
+	if not is_equal_approx(float(pose[3]), 1.0) or not is_equal_approx(float(pose[4]), 1.0):
+		local *= Vector2(float(pose[3]), float(pose[4]))
 	var root: Vector2 = Vector2(float(pose[0]), float(pose[1]))
 	if mode == "attacks" and clip >= 12:
 		root.x -= 300 * float(pose[19])
@@ -183,12 +261,23 @@ func _refresh() -> void:
 	var ko_pose: bool = incapacitated and definition.get("states", {}).has("7")
 	if ko_pose:
 		pose = Motion.sample(form_id, "states", 7, 3.2 if reduced_motion else ko_elapsed)
+	ko_mix = 0.0
+	if ko_texture != null and (incapacitated or recovery_elapsed >= 0.0):
+		if incapacitated:
+			pose = Motion.sample(form_id, "states", 3, ko_elapsed) if not reduced_motion else Motion.neutral()
+			ko_mix = 1.0 if reduced_motion else smoothstep(.12, .6, ko_elapsed)
+		else:
+			pose = Motion.neutral()
+			ko_mix = 0.0 if reduced_motion else 1.0 - smoothstep(0.0, .8, recovery_elapsed)
 	if not ko_pose and mode == "reactions" and not is_equal_approx(reaction_weight, 1.0):
 		var rest: Array = Motion.neutral()
 		for channel in range(pose.size()): pose[channel] = lerpf(float(rest[channel]), float(pose[channel]), reaction_weight)
 	var vertices: PackedVector2Array = PackedVector2Array()
-	for row in range(GRID + 1):
-		for column in range(GRID + 1): vertices.append(project(Vector2(float(column) / GRID, float(row) / GRID)))
+	_walk_offsets()
+	pose_rotations.clear()
+	for channel in range(8, 19):
+		if not is_zero_approx(float(pose[channel])): pose_rotations[channel] = Transform2D(float(pose[channel]), Vector2.ZERO)
+	for binding in skin_bindings: vertices.append(project(binding.uv, _cached_skin(binding), binding.plant))
 	var arrays: Array = []
 	arrays.resize(Mesh.ARRAY_MAX)
 	arrays[Mesh.ARRAY_VERTEX] = vertices
@@ -199,7 +288,10 @@ func _refresh() -> void:
 	queue_redraw()
 
 func _draw() -> void:
-	if mesh.get_surface_count() > 0: draw_mesh(mesh, texture)
+	if mesh.get_surface_count() > 0:
+		if ko_mix < 1.0: draw_mesh(mesh, texture, Transform2D.IDENTITY, Color(1, 1, 1, 1.0 - ko_mix))
+		if ko_texture != null and ko_mix > 0.0: draw_mesh(mesh, ko_texture, Transform2D.IDENTITY, Color(1, 1, 1, ko_mix))
+	if ko_mix > .2: return
 	if reduced_motion or pose.is_empty() or not definition.has("anatomy"): return
 	var anatomy: Dictionary = definition.anatomy
 	var unit: float = maxf(display_size.x, display_size.y) / 166.0

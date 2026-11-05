@@ -51,6 +51,9 @@ func electric_art() -> void:
 	var rng: int = app.game.rng.state
 	var bounds: Rect2 = source.get_global_rect()
 	source.rig.seek_cast(9, .84, Vector2.ZERO)
+	source.rig._refresh()
+	for binding in source.rig.skin_bindings:
+		expect(source.rig._cached_skin(binding).distance_to(source.rig._skin(binding.uv)) < .00001, "Cached skinning preserves the original deformation")
 	var uv: Array = Motion.form("volt").anatomy.quills
 	expect(source.emission_point(9).is_equal_approx(source.rig.to_global(source.rig.project(Vector2(float(uv[0]), float(uv[1]))))), "Emission follows the actual quill mesh deformation")
 	source.stop_motion()
@@ -58,23 +61,33 @@ func electric_art() -> void:
 	source.rig.elapsed = .2
 	source.rig._refresh()
 	expect(source.rig.pose != Motion.neutral() and source.get_global_rect() == bounds, "Gait animates the rig without moving the interactive slot")
+	for time in [.05, .2, .4, .6]:
+		source.rig.elapsed = time
+		source.rig._refresh()
+		for point in source.rig.definition.walk_contacts:
+			if fposmod(time / .8 + float(point[2]), 1.0) >= .6: continue
+			var at: Vector2 = Vector2(float(point[0]), float(point[1]))
+			expect(source.rig.project(at).distance_to(at * source.rig.display_size) < .05, "A stance paw remains on its authored support point")
 	var fallen: Dictionary = original.duplicate(true)
 	fallen.hp = 0
 	source.set_identity(fallen)
 	source.rig.ko_elapsed = .7
 	source.rig._refresh()
-	expect(source.rig.incapacitated and float(source.rig.pose[4]) < .7, "KO settles into an authored low pose")
+	expect(source.rig.incapacitated and source.rig.ko_texture != null and source.rig.ko_mix > .99, "KO settles into the authored closed-eye pose")
 	source.rig.reaction_weight = .3
 	source.rig.seek_reaction(9, .4)
-	expect(float(source.rig.pose[4]) < .7, "Resistance softens a hurt reaction without lifting an already incapacitated body")
+	expect(source.rig.ko_mix > .99, "Resistance cannot lift an already incapacitated body")
 	source.stop_motion()
-	expect(float(source.rig.pose[4]) < .7, "Presentation cancellation retains the incapacitated pose")
+	expect(source.rig.ko_mix > .99, "Presentation cancellation retains the incapacitated pose")
 	source.reduced_motion = true
-	expect(float(source.rig.pose[4]) < .7, "Reduced motion shows the final KO pose without collapse animation")
-	source.set_identity(original)
+	expect(source.rig.ko_mix > .99, "Reduced motion shows the final KO pose without collapse animation")
 	source.reduced_motion = false
+	source.set_identity(original)
+	source.rig._process(.35)
+	expect(source.rig.ko_mix > .1 and source.rig.ko_mix < .9, "Revival transitions continuously from the authored resting pose")
+	source.rig._process(.5)
 	source.stop_motion()
-	expect(not source.rig.incapacitated and is_equal_approx(float(source.rig.pose[4]), 1), "Revival clears the KO pose")
+	expect(not source.rig.incapacitated and is_equal_approx(source.rig.ko_mix, 0), "Revival clears the KO pose")
 	expect(app.game.rng.state == rng and app.game.party[0].hp == original.hp, "Presentation tests consume no gameplay RNG and never mutate the live individual")
 	app._return_menu()
 	await process_frame

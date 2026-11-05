@@ -1090,3 +1090,10 @@ ataques e evolução jogável ainda não existem. Próxima fatia: articular asas
 apoio bípede, revisar técnicas e criar arestas com compatibilidade explícita.
 Revisão humana e hardware continuam abertos; produto 0.3.0.
 [Escopo e handoff](electric-family-v05-art02.md).
+
+Revisão de V05-ART-02: proxy legado da coruja corrigido em `2483729`; a
+release 2.0.0 propõe KO com olhos fechados, transição de recuperação e contatos
+de apoio da passada. A cadência agora é medida em captura nativa e Web real;
+vídeos anteriores muito lentos não contam como prova de movimento. Arte e
+movimento continuam candidatos à revisão humana, e CI cancelado não fecha
+aceitação. Detalhes e medições no documento da família elétrica.

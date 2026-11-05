@@ -7,7 +7,7 @@ nomes e histórias com arte anterior. V05-ART-02 materializou e inspecionou a
 referência neste executor e criou sprites novos de Nisca e Niscor.
 
 Bindings estáveis `umbrals/volt` e `umbrals/tempestral` propõem
-`characters/electric-family@1.0.0`, papéis `nisca-ally` e `niscor-ally`.
+`characters/electric-family@2.0.0`, papéis `nisca-ally` e `niscor-ally`.
 O módulo contém a vista oposta, apoio no chão, curvas corporais próprias,
 idle, passada, dano, KO e pontos de ataque nos espinhos/crista/patas.
 Niscor conserva alguns pelos azuis, sem agulhas suspensas. Animações usam

@@ -110,6 +110,9 @@ func set_identity(data: Dictionary, scale_text: float = 1.0) -> void:
 		var alive: bool = int(data.get("hp", 1)) > 0
 		rig.set_incapacitated(not alive)
 		portrait.modulate = (Color(0.94, 0.97, 1.0) if slot == 0 else Color.WHITE) if alive else Color(0.4, 0.48, 0.56, 0.6)
+		if not alive and ground_profile.has("ko_tint"):
+			var tint: Array = ground_profile.ko_tint
+			portrait.modulate = Color(float(tint[0]), float(tint[1]), float(tint[2]), float(tint[3]))
 		accent = Color(species.get("color", "dec88d"))
 		caption.text = str(data.name) if data.has("name") else Content.display_name(data)
 		if not enemy: caption.text += " · %d" % int(data.uid)

@@ -4,12 +4,12 @@
   "form_id": "tempestral",
   "motion_source": {
     "id": "characters/electric-family",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "role": "motion"
   },
   "performances_source": {
     "id": "characters/electric-family",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "role": "performances"
   },
   "states": {

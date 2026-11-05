@@ -4152,6 +4152,416 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 597164,
+      "id": "characters/electric-family@2.0.0:motion",
+      "kind": "data",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/motion.json",
+      "role": "motion",
+      "sha256": "073d4735f66b8198e6d79d51b6c6f4650d36b9882d406037ac71891df32f70bd",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {},
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 161226,
+      "id": "characters/electric-family@2.0.0:nisca-ally",
+      "kind": "texture",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/nisca-ally.png",
+      "role": "nisca-ally",
+      "sha256": "8e46bf76e95b92ea30b192b8f5dcd5442719b59619317bee155d60c9ccf71932",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 161222,
+      "id": "characters/electric-family@2.0.0:nisca-enemy",
+      "kind": "texture",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/nisca-enemy.png",
+      "role": "nisca-enemy",
+      "sha256": "6ca85144c7a672fe5c5843a8943edbc37fc030d3b1acde3f7a1276a925c7bcc1",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 137236,
+      "id": "characters/electric-family@2.0.0:nisca-ko-ally",
+      "kind": "texture",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/nisca-ko-ally.png",
+      "role": "nisca-ko-ally",
+      "sha256": "409f902659f83b68f860d7ce16e4cd52de542099a9ce805450a1f75127eb19e0",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 138219,
+      "id": "characters/electric-family@2.0.0:nisca-ko-enemy",
+      "kind": "texture",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/nisca-ko-enemy.png",
+      "role": "nisca-ko-enemy",
+      "sha256": "deb8a0a17dbe3a9b3be81ddaa99cbc2ffaae49b07f8b3ff95d4475a7d32132b2",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 140636,
+      "id": "characters/electric-family@2.0.0:niscor-ally",
+      "kind": "texture",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/niscor-ally.png",
+      "role": "niscor-ally",
+      "sha256": "ea3ccb965d3aa89d14e5eea0633eee5ad9514a105721a70a10aad1260a8481db",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 140103,
+      "id": "characters/electric-family@2.0.0:niscor-enemy",
+      "kind": "texture",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/niscor-enemy.png",
+      "role": "niscor-enemy",
+      "sha256": "d01ddc8e005c430367a750340125728c83c8fb71d0be4669c66de2ced40c2b37",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 134419,
+      "id": "characters/electric-family@2.0.0:niscor-ko-ally",
+      "kind": "texture",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/niscor-ko-ally.png",
+      "role": "niscor-ko-ally",
+      "sha256": "652674d0d8adbb8c7194f2ed06631672169842e44ef8fd8ccb276265f5ddd69e",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 133101,
+      "id": "characters/electric-family@2.0.0:niscor-ko-enemy",
+      "kind": "texture",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/niscor-ko-enemy.png",
+      "role": "niscor-ko-enemy",
+      "sha256": "d34b7586703302e151e0a5be180da44b95c269cf75b6d9f64b0e0c307db21bc3",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          384,
+          320
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 3067,
+      "id": "characters/electric-family@2.0.0:performances",
+      "kind": "data",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/performances.json",
+      "role": "performances",
+      "sha256": "2fee49f9b3284c976df497b0bfb9a0d8ea38b63228fd319e1e69294b4990bdae",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {},
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 681,
+      "id": "characters/electric-family@2.0.0:presentation",
+      "kind": "data",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/presentation.json",
+      "role": "presentation",
+      "sha256": "e634ba847c6f56815cf4301fd22e4ff5cf8aa106a5e95ca3de906f84e8cd417a",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {},
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 2235483,
+      "id": "characters/electric-family@2.0.0:source-approved-reference",
+      "kind": "review",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/review/approved-reference.png",
+      "role": "source-approved-reference",
+      "sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 2014283,
+      "id": "characters/electric-family@2.0.0:source-generated-source",
+      "kind": "review",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/review/generated-source.png",
+      "role": "source-generated-source",
+      "sha256": "b670bfe41c203509a5f90bed4975ff3449b931a47edb7a75a40c871ae18dae87",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 2020109,
+      "id": "characters/electric-family@2.0.0:source-ko-source",
+      "kind": "review",
+      "module": "characters/electric-family",
+      "path": "assets/characters/electric-family/versions/2.0.0/review/ko-source.png",
+      "role": "source-ko-source",
+      "sha256": "913aecf648903980ed09ddbef515438dea6699cc8ffad89ec072da1f34a59ddc",
+      "source": {
+        "kind": "Image Gen production candidate, referenced to user-approved electric family; original PNGs retained.",
+        "ko_source": "Image Gen exec-3c223150-ef0d-45bd-a3f7-520b20e28809; original preserved.",
+        "license": "Original project generated artwork and authored motion; no external game assets.",
+        "motion": "Original hedgehog anatomical curves; shared event clocks only. Not the prior beetle tracks.",
+        "normalization": "Fixed alpha >=192, component crop, nearest fit, 384x320 canvas, baseline y=299; opposite-view pixels canonicalized before mesh mirror.",
+        "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+        "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03",
+        "review": "No claim of final animation quality; verify actual cadence, stance and recovery in native/Web captures.",
+        "walk": "Four explicit support points; 60% planted stance, 40% swing; normalized coordinates from visible gold paws."
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
       "bytes": 1416,
       "id": "characters/owl@1.0.0:portrait",
       "kind": "texture",

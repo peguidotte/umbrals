@@ -2,7 +2,7 @@
 
 ## Electric family — V05-ART-02
 
-`characters/electric-family@1.0.0` contains new Nisca/Niscor sprites, separately
+`characters/electric-family@2.0.0` contains new Nisca/Niscor sprites, separately
 generated views for each side, original anatomical mesh tracks, in-place gait,
 hurt/KO and attached attack origins. It is the proposed production target of
 the existing `umbrals/volt` and `umbrals/tempestral` bindings in the draft branch.
