@@ -1,6 +1,7 @@
 extends Node2D
 ## One textured mesh per creature. The same deformation projects visible sockets.
 const Motion = preload("res://scripts/ui/battle_motion.gd")
+const Aquatic = preload("res://scripts/ui/aquatic_art.gd")
 const Skinning = preload("res://scripts/ui/creature_skin.gd")
 const Presentation = preload("res://scripts/ui/creature_presentation.gd")
 const Assets = preload("res://scripts/assets/catalog.gd")
@@ -60,7 +61,7 @@ func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2
 	source = image
 	form_id = id
 	art_view = view
-	definition = Motion.form(id, view)
+	definition = Aquatic.definition(id) if Aquatic.supports(id) else Motion.form(id, view)
 	display_size = dimensions
 	foot = pivot / dimensions
 	flipped = mirror
@@ -293,6 +294,8 @@ func project(uv: Vector2, skinned: Variant = null, plant: Variant = null) -> Vec
 	return pivot + local
 
 func socket(index: int, secondary: bool = false) -> Vector2:
+	if Aquatic.supports(form_id) and index >= 6 and index <= 8:
+		return to_global(Aquatic.orb_center(self))
 	var uv: Vector2 = Motion.socket(form_id, index, art_view)
 	var leaf_blades: bool = str(definition.get("attack_presentation", {}).get("profile", "")) == "leaf_blades" and index in [3, 4, 5]
 	if leaf_blades:
@@ -308,6 +311,8 @@ func _refresh() -> void:
 	pose = Motion.neutral() if reduced_motion else Motion.sample(form_id, mode, clip, fposmod(idle_time, 3.2) if mode == "states" and clip == 0 else elapsed, art_view)
 	if not reduced_motion and mode == "states" and clip == 6:
 		pose = Motion.sample(form_id, mode, clip, fposmod(elapsed, 3.2), art_view)
+	if not reduced_motion and Aquatic.supports(form_id):
+		pose = Aquatic.pose(mode, clip, fposmod(idle_time, 3.2) if mode == "states" and clip == 0 else elapsed)
 	var ko_pose: bool = incapacitated and definition.get("states", {}).has("7")
 	if ko_pose:
 		pose = Motion.sample(form_id, "states", 7, 3.2 if reduced_motion else ko_elapsed, art_view)
@@ -344,6 +349,7 @@ func _draw() -> void:
 	if mesh.get_surface_count() > 0:
 		if ko_mix < 1.0: draw_mesh(mesh, texture, Transform2D.IDENTITY, Color(1, 1, 1, weight * (1.0 - ko_mix)))
 		if ko_texture != null and ko_mix > 0.0: draw_mesh(mesh, ko_texture, Transform2D.IDENTITY, Color(1, 1, 1, weight * ko_mix))
+	if Aquatic.supports(form_id): Aquatic.draw_orb(self)
 	if ko_mix > .2 or (is_instance_valid(lifecycle) and lifecycle.active()): return
 	if reduced_motion or pose.is_empty() or not definition.has("anatomy"): return
 	var anatomy: Dictionary = definition.anatomy

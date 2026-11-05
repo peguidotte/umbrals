@@ -17,7 +17,7 @@ A [proposta detalhada de batalha v0.4](battle-design-v0.4.md) desenvolve HP indi
 O repositório já entrega:
 
 - Godot 4.6.3 / GDScript, menu, batalha, opções, inspeção, recompensas e conclusão.
-- Quatro espécies iniciais: Brasa → Ignivar, Musgo → Verdálio, Faísca → Tempestral e Orvalho → Marevéu; oito formas e cinco passivas individuais.
+- Quatro espécies iniciais: Brasa → Ignivar, Musgo → Verdálio, Faísca → Tempestral e Lonlon → Lonaro; oito formas e cinco passivas individuais.
 - Expedição com bifurcação fixa, chefe e save/continuar exato; treino conserva os três encontros em sequência. Cartas com dono, captura, evolução e formação explícitas.
 - HUD em quatro zonas, sprites/arena originais, comandos visíveis, histórico da rodada, feedback audiovisual e opções de acessibilidade.
 - Harness de regras, mutações, cena real, navegador, matriz de telas e CI com pacotes Web, Windows e Linux.
@@ -1042,6 +1042,57 @@ A atualização de base para `1198404` incorpora também o PR #9. A aceitação
 contra `030ee7d` permanece histórica; a integração atual recebe gates próprios,
 incluindo autoria de atores, e o resultado do merge exato é registrado no PR.
 
+### V04-ART-09A — nomenclatura aquática, primeira integração
+
+Pedro aprovou **Lonlon → Lonaro → Londraval / Lonelo** e pediu integração no jogo.
+Esta fatia sobre main `1523d0e` integra Lonlon e Lonaro nas duas formas aquáticas
+já jogáveis, preservando `dew`, `mareveu`, a aresta existente, atributos, poderes,
+cartas, UID/passiva e a identidade dos saves. As finais estão aprovadas como
+direção, ainda sem formas/arestas, arte ou balanceamento implementados.
+
+A transferência oficial da referência pela Library falhou; seus pixels não
+foram inspecionados. A arte aquática antiga permanece como fallback e não
+representa a lontra aprovada. Nenhum pin/release ou registro compartilhado mudou.
+Não há esfera independente ou ataques extras novos. [Escopo e pendências](aquatic-lineage-v04-09a.md).
+
+Três checkpoints reais anteriores à edição (combate, recompensa e evolução)
+restauraram exatamente após a troca dos nomes: nove verificações, sem mudar RNG,
+cartas, ofertas ou identidade. Catálogo, autoria e saves passaram no run focado
+`artifacts/harness/aquatic-focused-20261105T011851799497Z-e28226/`.
+O grafo oficial completo passou com fontes congeladas em
+`artifacts/aquatic-names-final/`: 14.419 checks de regras, oito mutações, 1.520
+checks nativos de UI/domínio e 2.607 checks Web, dez cenários e cinco resoluções.
+A revisão das capturas confirmou os nomes, histórias e o fallback; vídeo real de
+quatro turnos até Lonaro tem 105 s e foi decodificado sem erros.
+
+O roteiro complementar encontrou perda de foco ao trocar a forma no grimório.
+A mesma falha aparece no build anterior da main: 70 checks passam antes dela em
+ambos, com os scripts do grimório idênticos. É um achado existente, ainda aberto
+para o integrador; os relatórios de falha foram preservados.
+
+Checkpoint publicado em `e570902`, [PR draft #16](https://github.com/peguidotte/umbrals/pull/16),
+sem merge. Esta atualização posterior ao gate altera somente documentação; os
+inputs do jogo permanecem iguais. Nenhum marco ou versão foi encerrado. A próxima
+fatia depende de pixels aprovados legíveis e produção dos corpos/esfera, estados
+e finais com decisão explícita de compatibilidade.
+
+### V04-ART-09B — retomada do piloto aquático
+
+Novo ambiente sobre main `1523d0e`, incorporando o PR #16. A referência aprovada
+foi materializada e inspecionada; Lonlon/Lonaro agora usam corpos de lontra azul
+e esfera separada que parte, chega à altura do alvo e retorna no relógio real
+dos ataques. IDs, regras, atributos, cópias, UID/passiva, RNG e saves permanecem
+iguais. Testes focados passaram; vídeos registram seis conjurações reais com
+áudio. O grafo completo isolado foi interrompido ao conciliar o fluxo aprovado
+de regressão única da candidata integrada; não há aceitação completa ou CI remoto
+atribuído a esta fatia. [Evidências e limites](aquatic-pilot-v04-09b.md).
+
+Londraval/Lonelo têm somente estudos de corpo e esfera, sem formas jogáveis,
+arestas, companheiro vivo ou migração integrada. Versos e quadros próprios também
+faltam. A próxima fatia deve combinar a política de compatibilidade com o
+integrador das outras famílias, validar as finais e revisar o conjunto visual.
+Nenhum marco ou versão do produto foi encerrado.
+
 
 ### V05-UX-05 — casa contínua de Pietro
 
@@ -1347,3 +1398,24 @@ limitada. Cadência e hardware ainda abertos; Brasa revisado e água não entram
 neste conjunto. Pietro45d56a1 segue fora por origem indisponível. Próxima fatia:
 revisão visual comparativa e acabamento separado, preservando os contratos de
 save já revisados. [Escopo técnico](lineage-union-candidate.md).
+
+### V05-ART-09C — piloto aquático na composição revisada
+
+Lonlon/Lonaro e esfera separada da fonte revisada #28 são conciliados sobre
+`1da3ad1`, preservando as vistas, folhas, lifecycle/KO e pins elétricos/grama.
+O foco passou 925 verificações de movimento, com ambas as formas via save/Continue,
+conjuração própria multi-alvo, snapshots, pausa, cancelamento, hit area e RNG.
+A regressão integral do conjunto congelado e vídeo têm relatório dedicado
+em `artifacts/aquatic-union-full-proof.json`; nenhum foco é atribuído como
+aceitação completa. Actions permanece desativado, testes locais obrigatórios.
+
+Família parcial: finais, companheiro vivo, versos, estados desenhados e aceite
+visual/hardware seguem abertos. Pietro/casa continuam visualmente rejeitados;
+Brasa revisado e Pietro45d56a1 permanecem fora. Versão continua 0.3.0.
+[Escopo e evidências](aquatic-pilot-v04-09b.md).
+
+Na validação conjunta, uma falha intermitente de rewards expôs publicação de
+coordenadas antes do layout final da Nascente. O diagnóstico Web agora aguarda
+o frame desenhado, com regressão de reconstrução do rascunho por inputs reais.
+A tentativa completa anterior foi preservada e não é aceite; a fonte final
+recebe uma nova execução integral. Regras, saves, timeouts e baseline não mudam.

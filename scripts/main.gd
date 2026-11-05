@@ -388,8 +388,10 @@ func _queue_debug() -> void:
 		call_deferred("_publish_test_state")
 
 func _publish_test_state() -> void:
+	# Only _queue_debug schedules this callback, after checking browser_test.
+	# Keep the pending flag until containers have sorted and the frame is drawn.
+	await RenderingServer.frame_post_draw
 	debug_queued = false
-	if not browser_test: return
 	published_revision += 1
 	var presentation: Dictionary = {"revision": published_revision, "busy": turn.busy, "session_active": session_active, "targeting_index": turn.targeting_index, "logical_size": [size.x, size.y], "device": input_router.last_device, "feedback": screen_host.battle_root.feedback_metrics() if is_instance_valid(screen_host.battle_root) else {"hits": 0, "flights": 0, "bursts": 0, "trauma": 0, "particles": 0}, "rejected_busy_casts": turn.rejected_busy_casts, "overlay_z": screen_host.modal_root.z_index if is_instance_valid(screen_host.modal_root) else 0, "audio": BrowserBridge.audio_snapshot(audio.voices.size()), "node_count": get_tree().get_node_count(), "title_effect": screen_host.menu_root.effect_state(), "title_audio": BrowserBridge.title_audio_snapshot(audio.title_active, audio.navigation_count, audio.awakening_count), "input_serial": input_router.input_serial, "interaction_serial": interaction_serial, "last_interaction": last_interaction}
 	if is_instance_valid(screen_host.modal_root) and screen_host.modal_root is JourneyMenu:

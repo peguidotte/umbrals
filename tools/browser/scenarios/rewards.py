@@ -22,6 +22,9 @@ def run(s):
     target = next(p for p in option['receivers'] if p != source)
     def draft():
         s.click('event.practice')
+        state = s.state()
+        owner = state['controls']['event.uid.' + str(uid)]
+        s.check(0 <= owner['cx'] <= state['logical_size'][0] and 0 <= owner['cy'] <= state['logical_size'][1], 'A rebuilt practice draft publishes on-screen owner coordinates before real input')
         s.click('event.uid.' + str(uid))
         s.click('event.from_power.' + source)
         s.click('event.to_power.' + target)
@@ -43,6 +46,12 @@ def run(s):
         s.geometry(f'Contextual practice {width}x{height}', scrollable=True)
         s.shot(f'room-practice-{width}x{height}')
         s.click('event.cancel')
+    # Rebuild the same scrolling draft without any input retry or checkpoint edit.
+    for _ in range(3):
+        draft()
+        s.check(s.state()['expedition'] == before, 'Repeated practice rebuilds preserve the real pending run')
+        s.click('event.cancel')
+        s.check(s.state()['controls']['event.confirm']['disabled'], 'Each rebuilt draft cancels without retaining a hidden commitment')
     draft()
     for _ in range(24):
         if s.state()['focused'] == 'event.confirm': break

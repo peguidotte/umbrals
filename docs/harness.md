@@ -204,3 +204,23 @@ browser. Local runs retain host Chromium unless an override is supplied. Actual
 `--version` remains in the strict preparation/shard comparison; mismatch diagnostics
 now print both version dictionaries. This addresses mixed runner images without
 relaxing source, tool, output, run-id or run-attempt checks.
+
+## Geometria publicada depois do frame
+
+O canal Web de diagnóstico publica controles após
+`RenderingServer.frame_post_draw`, mantendo a atualização pendente coalescida
+até esse ponto. Reconstruir o rascunho da Nascente pode enfileirar sorts de
+containers depois do callback de input; publicar apenas por call_deferred podia
+expor coordenadas anteriores ao layout, mesmo com a imagem já correta.
+O bootstrap de fixtures aguarda o publicador herdado antes de anexar seus
+campos. Isso corrige o estado somente de leitura usado pela automação; não
+altera regras, UI de produção ou o envio dos inputs.
+
+A regressão de recompensas exige coordenadas visíveis antes do clique real e
+reconstrói/cancela o rascunho três vezes, preservando o checkpoint. Não há
+retentativa de clique ou aumento de timeout. Uma execução completa anterior
+com a fonte 92825d8 registrou o UID fora da altura lógica, divergindo da captura;
+a tentativa interrompida permanece em artifacts/harness/aquatic-union-full-*.
+A falha é intermitente: o primeiro foco com o código antigo passou. A evidência
+negativa da execução completa e a verificação após a correção são mantidas
+separadamente; foco não é aceite integral.

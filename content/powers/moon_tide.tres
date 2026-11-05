@@ -18,4 +18,4 @@ target = "enemy"
 scope = "all"
 priority = 0
 order = 160
-description = "A água de Marevéu atravessa a formação oponente, deixando os alvos atingidos Encharcados."
+description = "A água de Lonaro atravessa a formação oponente, deixando os alvos atingidos Encharcados."
