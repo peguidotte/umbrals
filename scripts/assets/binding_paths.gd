@@ -61,6 +61,8 @@ const UMBRALS_EMBER: String = "res://assets/umbrals/ember/versions/1.0.0/portrai
 const UMBRALS_FOLIVEL: String = "res://assets/characters/folivel-pilot/versions/1.0.0/folivel.png"
 const UMBRALS_FOSLASH: String = "res://assets/characters/foslash-pilot/versions/1.0.0/foslash.png"
 const UMBRALS_IGNIVAR: String = "res://assets/umbrals/ignivar/versions/1.0.0/portrait.svg"
+const UMBRALS_LONDRAVAL: String = "res://assets/umbrals/londraval/versions/1.0.0/portrait.tres"
+const UMBRALS_LONELO: String = "res://assets/umbrals/lonelo/versions/1.0.0/portrait.tres"
 const UMBRALS_MAREVEU: String = "res://assets/umbrals/mareveu/versions/1.0.0/portrait.svg"
 const UMBRALS_MOSS: String = "res://assets/characters/foli-pilot/versions/1.1.0/foli.png"
 const UMBRALS_TEMPESTRAL: String = "res://assets/characters/electric-family/versions/2.1.0/niscor-ally.png"
@@ -138,6 +140,8 @@ const PATHS: Dictionary = {
 	"umbrals/folivel": UMBRALS_FOLIVEL,
 	"umbrals/foslash": UMBRALS_FOSLASH,
 	"umbrals/ignivar": UMBRALS_IGNIVAR,
+	"umbrals/londraval": UMBRALS_LONDRAVAL,
+	"umbrals/lonelo": UMBRALS_LONELO,
 	"umbrals/mareveu": UMBRALS_MAREVEU,
 	"umbrals/moss": UMBRALS_MOSS,
 	"umbrals/tempestral": UMBRALS_TEMPESTRAL,

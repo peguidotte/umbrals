@@ -2,7 +2,7 @@ extends RefCounted
 const Expedition = preload("res://scripts/expedition/expedition.gd")
 const Rules = preload("res://scripts/rules.gd")
 const Replay = preload("res://scripts/expedition/replay.gd")
-const NAMES = ["spring_room", "spring_approach", "battle", "wounded", "enemy_shield", "rewards", "rewards_many", "replacement", "inventory_full", "motion_ember", "motion_ignivar", "motion_moss", "motion_verdalio", "motion_dew", "motion_mareveu", "motion_volt", "motion_tempestral", "motion_auravel", "motion_zuldar", "electric_branches"]
+const NAMES = ["spring_room", "spring_approach", "battle", "wounded", "enemy_shield", "rewards", "rewards_many", "replacement", "inventory_full", "motion_ember", "motion_ignivar", "motion_moss", "motion_verdalio", "motion_dew", "motion_mareveu", "motion_londraval", "motion_lonelo", "motion_volt", "motion_tempestral", "motion_auravel", "motion_zuldar", "electric_branches"]
 
 static func make(name: String) -> Dictionary:
 	if name not in NAMES: return {}
@@ -40,7 +40,7 @@ static func make(name: String) -> Dictionary:
 static func _motion(name: String) -> Dictionary:
 	# Test-only, validated checkpoints. Receivers have endurance so all three
 	# presentations can be observed through real owned cards and normal commits.
-	var cases: Dictionary = {"ember": ["ember", "ember", 1], "ignivar": ["ember", "ignivar", 1], "moss": ["moss", "moss", 2], "verdalio": ["moss", "verdalio", 0], "dew": ["dew", "dew", 1], "mareveu": ["dew", "mareveu", 2], "volt": ["volt", "volt", 0], "tempestral": ["volt", "tempestral", 1], "auravel": ["volt", "auravel", 0], "zuldar": ["volt", "zuldar", 2]}
+	var cases: Dictionary = {"ember": ["ember", "ember", 1], "ignivar": ["ember", "ignivar", 1], "moss": ["moss", "moss", 2], "verdalio": ["moss", "verdalio", 0], "dew": ["dew", "dew", 1], "mareveu": ["dew", "mareveu", 2], "londraval": ["dew", "londraval", 1], "lonelo": ["dew", "lonelo", 2], "volt": ["volt", "volt", 0], "tempestral": ["volt", "tempestral", 1], "auravel": ["volt", "auravel", 0], "zuldar": ["volt", "zuldar", 2]}
 	var definition: Array = cases[name.trim_prefix("motion_")]
 	var run = Expedition.new()
 	run.new_run(42013, "full", str(definition[0]))

@@ -9267,6 +9267,48 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 258,
+      "id": "umbrals/londraval@1.0.0:portrait",
+      "kind": "texture",
+      "module": "umbrals/londraval",
+      "path": "assets/umbrals/londraval/versions/1.0.0/portrait.tres",
+      "role": "portrait",
+      "sha256": "dad12832a5cd40e7ffd47cf43266e746213c119470e028a4262449e2bccc940b",
+      "source": {
+        "kind": "Render-time region of existing original study",
+        "limitations": "Provisional source pose, not user-approved final art or an authored animation sheet.",
+        "reference_library_file_id": "libfile_2c296e23cd5c819189c30eaa74c3da82",
+        "tool": "Godot AtlasTexture"
+      },
+      "status": "production",
+      "technical": {
+        "format": "Godot AtlasTexture",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 260,
+      "id": "umbrals/lonelo@1.0.0:portrait",
+      "kind": "texture",
+      "module": "umbrals/lonelo",
+      "path": "assets/umbrals/lonelo/versions/1.0.0/portrait.tres",
+      "role": "portrait",
+      "sha256": "caa01f563cf8c72d7d5b41bf44c67050c3c78bf7a4813382859bb8abd7ae8757",
+      "source": {
+        "kind": "Render-time region of existing original study",
+        "limitations": "Provisional source pose, not user-approved final art or an authored animation sheet.",
+        "reference_library_file_id": "libfile_2c296e23cd5c819189c30eaa74c3da82",
+        "tool": "Godot AtlasTexture"
+      },
+      "status": "production",
+      "technical": {
+        "format": "Godot AtlasTexture",
+        "frames": 1
+      },
+      "version": "1.0.0"
+    },
+    {
       "bytes": 2409,
       "id": "umbrals/mareveu@1.0.0:portrait",
       "kind": "texture",

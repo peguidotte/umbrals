@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "umbrals/londraval",
+  "version": "1.0.0",
+  "status": "production",
+  "description": "Runtime binding for provisional aquatic final study; production denotes loadability, not art approval.",
+  "provenance": {
+    "kind": "Render-time region of existing original study",
+    "tool": "Godot AtlasTexture",
+    "reference_library_file_id": "libfile_2c296e23cd5c819189c30eaa74c3da82",
+    "limitations": "Provisional source pose, not user-approved final art or an authored animation sheet."
+  },
+  "dependencies": [
+    {
+      "id": "characters/aquatic-family",
+      "version": "1.0.0"
+    }
+  ],
+  "files": {
+    "portrait": {
+      "path": "portrait.tres",
+      "kind": "texture",
+      "bytes": 258,
+      "sha256": "dad12832a5cd40e7ffd47cf43266e746213c119470e028a4262449e2bccc940b",
+      "technical": {
+        "format": "Godot AtlasTexture",
+        "frames": 1
+      }
+    }
+  }
+}

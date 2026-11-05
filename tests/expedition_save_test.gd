@@ -193,6 +193,7 @@ func _initialize() -> void:
 	GrassCatalog.run(expect)
 	FolivelCatalog.run(expect)
 	preload("res://tests/support/catalog_union_checks.gd").run(expect)
+	preload("res://tests/support/aquatic_catalog_checks.gd").run(expect)
 	print("Expedition save: %d assertions, %d failures" % [assertions, failures])
 	quit(1 if failures else 0)
 
