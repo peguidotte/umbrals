@@ -1041,3 +1041,30 @@ sem merge. Não há nova mecânica ou mudança de compatibilidade por este ajust
 A atualização de base para `1198404` incorpora também o PR #9. A aceitação
 contra `030ee7d` permanece histórica; a integração atual recebe gates próprios,
 incluindo autoria de atores, e o resultado do merge exato é registrado no PR.
+
+### V04-CONT-01E — nomes aprovados da família elétrica
+
+Primeira fatia de consolidação sobre a main `1523d0e`: Nisca e Niscor aparecem
+nas formas existentes `volt` e `tempestral`, com histórias atualizadas e o nome
+correto em Juízo da tempestade. IDs, aresta de evolução, atributos, naturezas,
+poderes, passivas, cartas e pins de assets permanecem. O checkpoint inicial e
+a identidade de gameplay antes/depois são idênticos; não há migração nova.
+
+Catálogo (24 verificações), autoria, saves e histórias do grimório passaram nos
+alvos focados. A primeira tentativa preservada tinha uma expectativa incorreta
+no teste novo sobre estágio numérico; a correção usa o adaptador explícito de
+migração, sem alterar o runtime. Evidências em
+`artifacts/harness/electric-focused-20261105T011550466576Z-3b6958/` e
+`artifacts/harness/electric-catalog-fixed-20261105T011643734212Z-162200/`.
+O fechamento completo e a revisão dos renders desta revisão são registrados no PR;
+resultado focado não equivale a aceitação completa.
+
+Auravel (alado) e Zuldar (bípede, espinhos azuis carregados) são os nomes finais
+aprovados, ainda sem integração jogável. A referência aprovada da Library não
+pôde ser baixada pelo helper suportado; seus pixels não foram inspecionados.
+Os assets anteriores permanecem provisórios para a nova identidade, sem alegação
+de sprites novos ou de arte aprovada no motor. Niscor não ganha agulhas destacadas
+controladas à distância. [Limites e próximo passo](../content/species/volt/README.md).
+Próxima fatia: obter a referência e produzir Nisca com estados corporais e origens
+de ataque verificadas, antes de avançar pins ou habilitar as formas finais.
+Versão do produto permanece 0.3.0; esta entrega não encerra o marco de arte.

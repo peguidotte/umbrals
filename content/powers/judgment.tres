@@ -18,4 +18,4 @@ target = "enemy"
 scope = "all"
 priority = 0
 order = 150
-description = "Tempestral espalha uma descarga pela formação adversária e prepara proteção para si."
+description = "Niscor espalha uma descarga pela formação adversária e prepara proteção para si."
