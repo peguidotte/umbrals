@@ -21,7 +21,7 @@ def main():
         raise SystemExit('A real or Xvfb X11 display is required; no fixed-fps movie substitution')
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
-    for name in ['ready.flag', 'begin.flag']:
+    for name in ['ready.flag', 'begin.flag', 'cycle.flag', 'recorder-progress.log']:
         (output / name).unlink(missing_ok=True)
     command = ['godot', '--path', str(ROOT), '--rendering-method', 'gl_compatibility',
         '--audio-driver', 'Dummy', '--max-fps', '60', '--resolution', args.resolution, '--position', '0,0',
@@ -32,7 +32,8 @@ def main():
     record = ['ffmpeg', '-v', 'error', '-y', '-f', 'x11grab', '-framerate', '30',
         '-video_size', args.resolution, '-i', display, '-filter_threads', '1', '-filter_complex_threads', '1',
         '-c:v', 'libx264', '-threads', '1', '-preset', 'ultrafast', '-crf', '20',
-        '-pix_fmt', 'yuv420p', str(output / 'native-states.mp4')]
+        '-pix_fmt', 'yuv420p', '-fps_mode', 'passthrough', '-stats_period', '0.1',
+        '-progress', str(output / 'recorder-progress.log'), str(output / 'native-states.mp4')]
     recorder = None
     with (output / 'godot.log').open('w') as game_log, (output / 'capture.log').open('w') as log:
         game = subprocess.Popen(command, stdout=game_log, stderr=game_log)
@@ -43,8 +44,20 @@ def main():
                 if time.monotonic() >= deadline: raise TimeoutError('No first visible frame')
                 time.sleep(.1)
             recorder = subprocess.Popen(record, stdin=subprocess.PIPE, stdout=log, stderr=log)
-            time.sleep(.6)
-            (output / 'begin.flag').write_text('Begin the full real-time cycle after recording is armed')
+            deadline = time.monotonic() + 60
+            progress = output / 'recorder-progress.log'
+            while not progress.exists() or not re.search(r'frame=[1-9]\d*', progress.read_text()):
+                if recorder.poll() is not None: raise RuntimeError('Recorder exited before its first frame')
+                if time.monotonic() >= deadline: raise TimeoutError('Recorder did not encode its first frame')
+                time.sleep(.03)
+            (output / 'begin.flag').write_text('Begin the full cycle after the recorder encoded its first frame')
+            deadline = time.monotonic() + 15
+            while not (output / 'cycle.flag').exists():
+                if game.poll() is not None: raise RuntimeError('Game exited before acknowledging cycle start')
+                if time.monotonic() >= deadline: raise TimeoutError('Game did not acknowledge cycle start')
+                time.sleep(.03)
+            times = re.findall(r'out_time_us=(\d+)', progress.read_text())
+            lead_in = int(times[-1]) / 1000000.0 if times else 0.0
             game.wait(timeout=55)
             recorder.communicate(b'q\n', timeout=30)
             if game.returncode: raise RuntimeError('Godot failed; see retained godot.log')
@@ -61,13 +74,14 @@ def main():
         re.findall(r'black_start:([\d.]+) black_end:([\d.]+) black_duration:([\d.]+)', black)]
     report = dict(head=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
         command=command, record=record, probe=probe, black_intervals=intervals, full_cycle_seconds=22.4,
-        readiness='First rendered frame, then screen recorder, then explicit cycle start',
+        readiness='First rendered frame, first encoded recorder frame, then acknowledged cycle start',
+        cycle_start_video_seconds=lead_in,
         snapshots='Extracted from the actual MP4 after recording; PNG readbacks disabled during motion')
     (output / 'capture-provenance.json').write_text(json.dumps(report, indent=2))
     if float(probe['format']['duration']) < 22.4: raise RuntimeError('Native video cuts the complete cycle')
     if any(i['start'] < .1 and i['duration'] > .5 for i in intervals): raise RuntimeError('Native video begins with black frames')
     for phase in range(7):
-        stamp = .7 + phase * 3.2 + (.15 if phase == 2 else .9)
+        stamp = lead_in + .1 + phase * 3.2 + (.15 if phase == 2 else .9)
         subprocess.run(['ffmpeg', '-v', 'error', '-y', '-ss', str(stamp), '-i', str(video),
             '-frames:v', '1', '-threads', '1', str(output / ('state-%d.png' % phase))], check=True)
     print(video)

@@ -111,3 +111,12 @@ e verifica apoio, além da equivalência de projeção. Essa correção é de ap
 e não muda a identidade de gameplay. A captura pode usar `--resolution 1280x720`;
 FFmpeg limita encoder/filtros a uma thread e Mesa pode usar quatro, conforme a
 cota de CPU. Relatórios anteriores lentos permanecem preservados.
+
+A captura nativa corrigida espera o primeiro frame visível e o primeiro frame
+codificado pelo gravador antes de armar o relógio do ciclo. O jogo confirma esse
+início; a gravação segue até depois do ciclo inteiro, sem corte fixo em 26s.
+Readbacks de PNG durante movimento ficam desligados; as imagens são extraídas
+do próprio MP4. Proveniência registra duração, início do ciclo e intervalos
+pretos. O vídeo nativo antigo, com início preto e ciclo cortado, foi excluído
+como prova. A dissolução de recuperação ainda sobrepõe silhuetas; uma alternativa
+isolada pode ser comparada antes de mudar os consumidores preservados neste PR.

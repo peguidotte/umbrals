@@ -71,6 +71,7 @@ func _arm_capture() -> void:
 	phase_frames.clear()
 	started_us = Time.get_ticks_usec()
 	automatic = true
+	FileAccess.open(output.path_join("cycle.flag"), FileAccess.WRITE).store_string(str(started_us))
 
 func _process(_delta: float) -> void:
 	if not automatic:
