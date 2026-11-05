@@ -155,6 +155,11 @@
       "id": "audio/storm",
       "version": "1.0.0"
     },
+    "characters/aquatic-family": {
+      "file": "texture",
+      "id": "characters/aquatic-family",
+      "version": "1.0.0"
+    },
     "characters/battle-creatures": {
       "file": "texture",
       "id": "characters/battle-creatures",

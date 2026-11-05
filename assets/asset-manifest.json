@@ -3522,6 +3522,110 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 1882,
+      "id": "characters/aquatic-family@1.0.0:atlas",
+      "kind": "data",
+      "module": "characters/aquatic-family",
+      "path": "assets/characters/aquatic-family/versions/1.0.0/atlas.json",
+      "role": "atlas",
+      "sha256": "d6663d1a93d96d8222206439d5a771d5e5fd2955b740e1293eefc5eef76eb215",
+      "source": {
+        "edit_history": "Byte-identical original PNGs; render-time regions only. No pixel edits.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral.",
+        "limitations": "One static pose per side; procedural motion is not a hand-drawn animation sheet. Final forms are review sources, not playable forms.",
+        "recorded_date_utc": "2026-11-05",
+        "reference_library_file_id": "libfile_2c296e23cd5c819189c30eaa74c3da82",
+        "reference_selection": "Approved upper family and lower-right living companion; natural blue fur; no chest core.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2514,
+      "id": "characters/aquatic-family@1.0.0:source",
+      "kind": "data",
+      "module": "characters/aquatic-family",
+      "path": "assets/characters/aquatic-family/versions/1.0.0/source.json",
+      "role": "source",
+      "sha256": "b19fbfb10edfd8d8258481b134400f73bd542ec9446df903546c8fe5180fe84e",
+      "source": {
+        "edit_history": "Byte-identical original PNGs; render-time regions only. No pixel edits.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral.",
+        "limitations": "One static pose per side; procedural motion is not a hand-drawn animation sheet. Final forms are review sources, not playable forms.",
+        "recorded_date_utc": "2026-11-05",
+        "reference_library_file_id": "libfile_2c296e23cd5c819189c30eaa74c3da82",
+        "reference_selection": "Approved upper family and lower-right living companion; natural blue fur; no chest core.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1013264,
+      "id": "characters/aquatic-family@1.0.0:spheres",
+      "kind": "texture",
+      "module": "characters/aquatic-family",
+      "path": "assets/characters/aquatic-family/versions/1.0.0/spheres.png",
+      "role": "spheres",
+      "sha256": "fa8c855063deb66d20494386caa66919a44e455dfe14b85429dc400b053c866d",
+      "source": {
+        "edit_history": "Byte-identical original PNGs; render-time regions only. No pixel edits.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral.",
+        "limitations": "One static pose per side; procedural motion is not a hand-drawn animation sheet. Final forms are review sources, not playable forms.",
+        "recorded_date_utc": "2026-11-05",
+        "reference_library_file_id": "libfile_2c296e23cd5c819189c30eaa74c3da82",
+        "reference_selection": "Approved upper family and lower-right living companion; natural blue fur; no chest core.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1185926,
+      "id": "characters/aquatic-family@1.0.0:texture",
+      "kind": "texture",
+      "module": "characters/aquatic-family",
+      "path": "assets/characters/aquatic-family/versions/1.0.0/bodies.png",
+      "role": "texture",
+      "sha256": "b32e9706a5a4f5adfc3bf37621638e0c1684b6181b169867fa7f041f7ee3530b",
+      "source": {
+        "edit_history": "Byte-identical original PNGs; render-time regions only. No pixel edits.",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral.",
+        "limitations": "One static pose per side; procedural motion is not a hand-drawn animation sheet. Final forms are review sources, not playable forms.",
+        "recorded_date_utc": "2026-11-05",
+        "reference_library_file_id": "libfile_2c296e23cd5c819189c30eaa74c3da82",
+        "reference_selection": "Approved upper family and lower-right living companion; natural blue fur; no chest core.",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
       "bytes": 1585,
       "id": "characters/battle-creatures@1.0.0:atlas",
       "kind": "data",

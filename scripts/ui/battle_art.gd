@@ -3,6 +3,7 @@ extends RefCounted
 ## Atlas regions are applied at render time. Generated source PNGs stay untouched.
 const Presentation = preload("res://scripts/ui/creature_presentation.gd")
 const Assets = preload("res://scripts/assets/catalog.gd")
+const Aquatic = preload("res://scripts/ui/aquatic_art.gd")
 const ATLAS_MODULES = ["characters/battle-creatures", "characters/battle-evolved"]
 const ATLAS_VERSION = "1.0.0"
 static var _loaded: bool = false
@@ -22,6 +23,7 @@ static func view_profile(art_id: String, view: String = "front") -> Dictionary:
 static func texture(art_id: String, requested_view: Variant = "front") -> Texture2D:
 	var view: String = view_name(art_id, requested_view) if requested_view is bool else str(requested_view)
 	var region_id: String = art_id.get_file()
+	if Aquatic.supports(region_id): return Aquatic.region(region_id)
 	if not Presentation.form(region_id).is_empty():
 		var electric_key: String = region_id + ":" + view
 		if not _textures.has(electric_key): _textures[electric_key] = Presentation.texture(region_id, view == "enemy")
@@ -61,6 +63,7 @@ static func texture(art_id: String, requested_view: Variant = "front") -> Textur
 	return result
 
 static func ground_profile(art_id: String, requested_view: Variant = "front") -> Dictionary:
+	if Aquatic.supports(art_id.get_file()): return Aquatic.ground(art_id.get_file())
 	var view: String = view_name(art_id, requested_view) if requested_view is bool else str(requested_view)
 	var authored: Dictionary = Presentation.form(art_id.get_file())
 	if not authored.is_empty(): return authored["enemy" if view == "enemy" else "ally"]
