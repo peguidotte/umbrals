@@ -3768,6 +3768,314 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 401660,
+      "id": "characters/foli-lifecycle@0.1.0:knockout",
+      "kind": "texture",
+      "module": "characters/foli-lifecycle",
+      "path": "assets/characters/foli-lifecycle/versions/0.1.0/knockout.png",
+      "role": "knockout",
+      "sha256": "19bffac7b9582c0115720709901f3db4b82533247b368adafc1e2bfde1b12247",
+      "source": {
+        "approval": "Staging prototype; independent visual review pending.",
+        "brief": "Exact Foli, 4x3 transparent sheet: 8 alternating hind-foot walk poses, 4 reversible KO poses, same scale, right facing; preserve leaf ears, brown fur, cream paws, amber eye and three hovering leaves. No shadows/text/scenery/injuries.",
+        "edit_history": "Crop into 362x362 cells; integer vertical translations align opaque floor at y340. No image resampling or creative pixel changes.",
+        "kind": "Image Gen edit of the project-owned Foli pilot",
+        "original_output_basename": "exec-b049a45e-7b25-4c18-9fb8-cce5c90991fe.png",
+        "original_preserved": true,
+        "reference": {
+          "id": "characters/foli-pilot",
+          "role": "portrait",
+          "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+          "version": "1.0.0"
+        }
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          362
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 3881,
+      "id": "characters/foli-lifecycle@0.1.0:normalization",
+      "kind": "data",
+      "module": "characters/foli-lifecycle",
+      "path": "assets/characters/foli-lifecycle/versions/0.1.0/normalization.json",
+      "role": "normalization",
+      "sha256": "c623a8231458cefca16b792ad6d3b95a2df26e7b96d9ffdffd540c12193d71de",
+      "source": {
+        "approval": "Staging prototype; independent visual review pending.",
+        "brief": "Exact Foli, 4x3 transparent sheet: 8 alternating hind-foot walk poses, 4 reversible KO poses, same scale, right facing; preserve leaf ears, brown fur, cream paws, amber eye and three hovering leaves. No shadows/text/scenery/injuries.",
+        "edit_history": "Crop into 362x362 cells; integer vertical translations align opaque floor at y340. No image resampling or creative pixel changes.",
+        "kind": "Image Gen edit of the project-owned Foli pilot",
+        "original_output_basename": "exec-b049a45e-7b25-4c18-9fb8-cce5c90991fe.png",
+        "original_preserved": true,
+        "reference": {
+          "id": "characters/foli-pilot",
+          "role": "portrait",
+          "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+          "version": "1.0.0"
+        }
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 1339032,
+      "id": "characters/foli-lifecycle@0.1.0:original",
+      "kind": "review",
+      "module": "characters/foli-lifecycle",
+      "path": "assets/characters/foli-lifecycle/versions/0.1.0/review/original.png",
+      "role": "original",
+      "sha256": "68e2cb82686989626f441867b58d6be931b3f665233bb3a63821c3845de2e104",
+      "source": {
+        "approval": "Staging prototype; independent visual review pending.",
+        "brief": "Exact Foli, 4x3 transparent sheet: 8 alternating hind-foot walk poses, 4 reversible KO poses, same scale, right facing; preserve leaf ears, brown fur, cream paws, amber eye and three hovering leaves. No shadows/text/scenery/injuries.",
+        "edit_history": "Crop into 362x362 cells; integer vertical translations align opaque floor at y340. No image resampling or creative pixel changes.",
+        "kind": "Image Gen edit of the project-owned Foli pilot",
+        "original_output_basename": "exec-b049a45e-7b25-4c18-9fb8-cce5c90991fe.png",
+        "original_preserved": true,
+        "reference": {
+          "id": "characters/foli-pilot",
+          "role": "portrait",
+          "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+          "version": "1.0.0"
+        }
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 287,
+      "id": "characters/foli-lifecycle@0.1.0:profile",
+      "kind": "data",
+      "module": "characters/foli-lifecycle",
+      "path": "assets/characters/foli-lifecycle/versions/0.1.0/profile.json",
+      "role": "profile",
+      "sha256": "8a0d964aef21919f0056744d16b75bc4f8c0c868895d4b5304adedea6af9d50f",
+      "source": {
+        "approval": "Staging prototype; independent visual review pending.",
+        "brief": "Exact Foli, 4x3 transparent sheet: 8 alternating hind-foot walk poses, 4 reversible KO poses, same scale, right facing; preserve leaf ears, brown fur, cream paws, amber eye and three hovering leaves. No shadows/text/scenery/injuries.",
+        "edit_history": "Crop into 362x362 cells; integer vertical translations align opaque floor at y340. No image resampling or creative pixel changes.",
+        "kind": "Image Gen edit of the project-owned Foli pilot",
+        "original_output_basename": "exec-b049a45e-7b25-4c18-9fb8-cce5c90991fe.png",
+        "original_preserved": true,
+        "reference": {
+          "id": "characters/foli-pilot",
+          "role": "portrait",
+          "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+          "version": "1.0.0"
+        }
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 835923,
+      "id": "characters/foli-lifecycle@0.1.0:walk",
+      "kind": "texture",
+      "module": "characters/foli-lifecycle",
+      "path": "assets/characters/foli-lifecycle/versions/0.1.0/walk.png",
+      "role": "walk",
+      "sha256": "ce9b7f5ad7069993b2e3facbf0e831c8553d8e12c2bb3ba3b6b5e47184bfcea2",
+      "source": {
+        "approval": "Staging prototype; independent visual review pending.",
+        "brief": "Exact Foli, 4x3 transparent sheet: 8 alternating hind-foot walk poses, 4 reversible KO poses, same scale, right facing; preserve leaf ears, brown fur, cream paws, amber eye and three hovering leaves. No shadows/text/scenery/injuries.",
+        "edit_history": "Crop into 362x362 cells; integer vertical translations align opaque floor at y340. No image resampling or creative pixel changes.",
+        "kind": "Image Gen edit of the project-owned Foli pilot",
+        "original_output_basename": "exec-b049a45e-7b25-4c18-9fb8-cce5c90991fe.png",
+        "original_preserved": true,
+        "reference": {
+          "id": "characters/foli-pilot",
+          "role": "portrait",
+          "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+          "version": "1.0.0"
+        }
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 401660,
+      "id": "characters/foli-lifecycle@1.0.0:knockout",
+      "kind": "texture",
+      "module": "characters/foli-lifecycle",
+      "path": "assets/characters/foli-lifecycle/versions/1.0.0/knockout.png",
+      "role": "knockout",
+      "sha256": "19bffac7b9582c0115720709901f3db4b82533247b368adafc1e2bfde1b12247",
+      "source": {
+        "approval": "Independent technical review permits draft integration only. No main promotion or complete family claim.",
+        "brief": "Exact Foli, 4x3 transparent sheet: 8 alternating hind-foot walk poses, 4 reversible KO poses, same scale, right facing; preserve leaf ears, brown fur, cream paws, amber eye and three hovering leaves. No shadows/text/scenery/injuries.",
+        "edit_history": "Crop into 362x362 cells; integer vertical translations align opaque floor at y340. No image resampling or creative pixel changes.",
+        "kind": "Image Gen edit of the project-owned Foli pilot",
+        "original_output_basename": "exec-b049a45e-7b25-4c18-9fb8-cce5c90991fe.png",
+        "original_preserved": true,
+        "reference": {
+          "id": "characters/foli-pilot",
+          "role": "portrait",
+          "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+          "version": "1.0.0"
+        }
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          362
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 3881,
+      "id": "characters/foli-lifecycle@1.0.0:normalization",
+      "kind": "data",
+      "module": "characters/foli-lifecycle",
+      "path": "assets/characters/foli-lifecycle/versions/1.0.0/normalization.json",
+      "role": "normalization",
+      "sha256": "c623a8231458cefca16b792ad6d3b95a2df26e7b96d9ffdffd540c12193d71de",
+      "source": {
+        "approval": "Independent technical review permits draft integration only. No main promotion or complete family claim.",
+        "brief": "Exact Foli, 4x3 transparent sheet: 8 alternating hind-foot walk poses, 4 reversible KO poses, same scale, right facing; preserve leaf ears, brown fur, cream paws, amber eye and three hovering leaves. No shadows/text/scenery/injuries.",
+        "edit_history": "Crop into 362x362 cells; integer vertical translations align opaque floor at y340. No image resampling or creative pixel changes.",
+        "kind": "Image Gen edit of the project-owned Foli pilot",
+        "original_output_basename": "exec-b049a45e-7b25-4c18-9fb8-cce5c90991fe.png",
+        "original_preserved": true,
+        "reference": {
+          "id": "characters/foli-pilot",
+          "role": "portrait",
+          "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+          "version": "1.0.0"
+        }
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1339032,
+      "id": "characters/foli-lifecycle@1.0.0:original",
+      "kind": "review",
+      "module": "characters/foli-lifecycle",
+      "path": "assets/characters/foli-lifecycle/versions/1.0.0/review/original.png",
+      "role": "original",
+      "sha256": "68e2cb82686989626f441867b58d6be931b3f665233bb3a63821c3845de2e104",
+      "source": {
+        "approval": "Independent technical review permits draft integration only. No main promotion or complete family claim.",
+        "brief": "Exact Foli, 4x3 transparent sheet: 8 alternating hind-foot walk poses, 4 reversible KO poses, same scale, right facing; preserve leaf ears, brown fur, cream paws, amber eye and three hovering leaves. No shadows/text/scenery/injuries.",
+        "edit_history": "Crop into 362x362 cells; integer vertical translations align opaque floor at y340. No image resampling or creative pixel changes.",
+        "kind": "Image Gen edit of the project-owned Foli pilot",
+        "original_output_basename": "exec-b049a45e-7b25-4c18-9fb8-cce5c90991fe.png",
+        "original_preserved": true,
+        "reference": {
+          "id": "characters/foli-pilot",
+          "role": "portrait",
+          "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+          "version": "1.0.0"
+        }
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 287,
+      "id": "characters/foli-lifecycle@1.0.0:profile",
+      "kind": "data",
+      "module": "characters/foli-lifecycle",
+      "path": "assets/characters/foli-lifecycle/versions/1.0.0/profile.json",
+      "role": "profile",
+      "sha256": "8a0d964aef21919f0056744d16b75bc4f8c0c868895d4b5304adedea6af9d50f",
+      "source": {
+        "approval": "Independent technical review permits draft integration only. No main promotion or complete family claim.",
+        "brief": "Exact Foli, 4x3 transparent sheet: 8 alternating hind-foot walk poses, 4 reversible KO poses, same scale, right facing; preserve leaf ears, brown fur, cream paws, amber eye and three hovering leaves. No shadows/text/scenery/injuries.",
+        "edit_history": "Crop into 362x362 cells; integer vertical translations align opaque floor at y340. No image resampling or creative pixel changes.",
+        "kind": "Image Gen edit of the project-owned Foli pilot",
+        "original_output_basename": "exec-b049a45e-7b25-4c18-9fb8-cce5c90991fe.png",
+        "original_preserved": true,
+        "reference": {
+          "id": "characters/foli-pilot",
+          "role": "portrait",
+          "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+          "version": "1.0.0"
+        }
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 835923,
+      "id": "characters/foli-lifecycle@1.0.0:walk",
+      "kind": "texture",
+      "module": "characters/foli-lifecycle",
+      "path": "assets/characters/foli-lifecycle/versions/1.0.0/walk.png",
+      "role": "walk",
+      "sha256": "ce9b7f5ad7069993b2e3facbf0e831c8553d8e12c2bb3ba3b6b5e47184bfcea2",
+      "source": {
+        "approval": "Independent technical review permits draft integration only. No main promotion or complete family claim.",
+        "brief": "Exact Foli, 4x3 transparent sheet: 8 alternating hind-foot walk poses, 4 reversible KO poses, same scale, right facing; preserve leaf ears, brown fur, cream paws, amber eye and three hovering leaves. No shadows/text/scenery/injuries.",
+        "edit_history": "Crop into 362x362 cells; integer vertical translations align opaque floor at y340. No image resampling or creative pixel changes.",
+        "kind": "Image Gen edit of the project-owned Foli pilot",
+        "original_output_basename": "exec-b049a45e-7b25-4c18-9fb8-cce5c90991fe.png",
+        "original_preserved": true,
+        "reference": {
+          "id": "characters/foli-pilot",
+          "role": "portrait",
+          "sha256": "3160b9b7e536a86d18349206a0090f72b1f563c0219f5a03f45e003ae5a0dd16",
+          "version": "1.0.0"
+        }
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
       "bytes": 611,
       "id": "characters/foli-pilot@1.0.0:authoring",
       "kind": "data",

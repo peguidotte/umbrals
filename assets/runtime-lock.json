@@ -155,6 +155,11 @@
       "id": "characters/battle-evolved",
       "version": "1.0.0"
     },
+    "characters/lifecycle-moss": {
+      "file": "walk",
+      "id": "characters/foli-lifecycle",
+      "version": "1.0.0"
+    },
     "characters/owl": {
       "file": "portrait",
       "id": "characters/owl",

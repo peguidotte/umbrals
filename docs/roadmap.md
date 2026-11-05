@@ -1075,3 +1075,18 @@ cadência do MP4 não comprova fluidez. Fechamento integral e revisão ficam
 registrados no PR. Caminhada/KO próprios, Folife/Foslash/Folivel, VFX de
 folhas e revisão estética permanecem pendentes. Produto 0.3.0; sem merge ou
 encerramento da família/marco por esta fatia.
+
+### V05-ART-02G — poses de caminhada e KO da Foli
+
+Continuação em draft sobre #18, sem merge. O pin aditivo por forma seleciona
+oito poses de caminhada e quatro de KO reversível, preservando retrato, IDs,
+regras e saves. Troca confirmada, KO por dano e reanimação do mesmo UID
+passaram 16 verificações na cena real; o alvo de movimento inclui esses
+contratos. A revisão independente permite integração técnica em draft após
+eliminar a dupla silhueta, mantendo aprovação estética pendente.
+
+[Escopo, contrato compartilhado e evidências](foli-lifecycle-v05-art-02g.md).
+O vídeo nativo documenta eventos e poses, mas a cena completa deste executor
+ficou em cerca de 8,4 fps; a fluidez segue aberta. A CI do #18 não aceita
+automaticamente esta nova fatia ou a combinação com a candidata. Lâminas
+próprias, verso, Folife e as duas finais continuam pendentes. Produto 0.3.0.

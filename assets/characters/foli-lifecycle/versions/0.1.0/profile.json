@@ -1,0 +1,15 @@
+{
+  "forms": {
+    "moss": {
+      "ko": "knockout",
+      "ko_seconds": 0.6,
+      "source_height_ratio": 0.9146730462519936,
+      "standing_height": 317,
+      "stride_pixels": 56,
+      "walk": "walk",
+      "walk_seconds": 0.8,
+      "settle_mode": "cut"
+    }
+  },
+  "schema": 1
+}
