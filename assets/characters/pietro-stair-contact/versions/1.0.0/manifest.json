@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "characters/pietro-stair-contact",
+  "version": "1.0.0",
+  "status": "production",
+  "description": "Runtime-review candidate: continuous two-leg tread contacts using original Pietro home pixels",
+  "dependencies": [
+    {
+      "id": "characters/pietro-home",
+      "version": "2.0.0"
+    },
+    {
+      "id": "characters/pietro-home-transitions",
+      "version": "1.0.0"
+    }
+  ],
+  "files": {
+    "rig": {
+      "path": "rig.json",
+      "kind": "data",
+      "sha256": "33e503a384065e39650abcfcac7a0e0f8a06434b21319478d5bf46659108863f",
+      "bytes": 3481
+    },
+    "texture": {
+      "path": "idle-source.tres",
+      "kind": "texture",
+      "bytes": 254,
+      "sha256": "7de980ca35cd2c2a3b80c57593495f4c4a49424494dffed789d9c385c3461cf8",
+      "provenance": {
+        "kind": "Godot AtlasTexture reference",
+        "source": "Declared dependency characters/pietro-home@2.0.0, idle region only; no copied or modified PNG"
+      }
+    }
+  },
+  "provenance": {
+    "kind": "original authored choreography",
+    "source": "characters/pietro-home@2.0.0 texture, unchanged generated PNG",
+    "edit_history": "No raster edits or new media generation. Authored source landmarks and continuous runtime mesh skinning only. Prior transition textures remain as reduced-motion fallbacks.",
+    "review_status": "Candidate under real-scene review; production is binding eligibility, not aesthetic approval."
+  }
+}

@@ -415,6 +415,15 @@
         }
       }
     },
+    "characters/pietro-stair-contact": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/pietro-stair-contact/versions/1.0.0/manifest.json",
+          "sha256": "47b7847246fd06409d9d4337124fb925f61e5548e7c889dbaf78aae96524d622",
+          "status": "production"
+        }
+      }
+    },
     "characters/refuge-traveler": {
       "versions": {
         "1.0.0": {

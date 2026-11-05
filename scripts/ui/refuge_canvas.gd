@@ -27,13 +27,20 @@ func _draw() -> void:
 		draw_circle(Vector2.ZERO, 39, Color(0.01, 0.025, 0.035, 0.12))
 		draw_circle(Vector2.ZERO, 26, Color(0.01, 0.025, 0.035, 0.3))
 	var sample: Dictionary = current_sample()
+	if sample.has("rig"):
+		draw_set_transform(Vector2.ZERO)
+		draw_mesh(sample.rig.mesh, sample.rig.texture)
+	else:
+		_draw_sprite(sample)
+	draw_set_transform(Vector2.ZERO)
+	if on_stairs: Stairs.draw_layer(self, true)
+
+func _draw_sprite(sample: Dictionary) -> void:
 	draw_set_transform(sample.anchor, 0, Vector2(-1 if sample.flip else 1, 1) * float(sample.scale))
 	var pose: Dictionary = sample.pose
 	var region: Array = pose.region
 	var rect = Rect2(float(region[0]), float(region[1]), float(region[2]), float(region[3]))
 	draw_texture_rect_region(sample.texture, Rect2(-Vector2(pose.pivot[0], pose.pivot[1]), rect.size), rect)
-	draw_set_transform(Vector2.ZERO)
-	if on_stairs: Stairs.draw_layer(self, true)
 
 func current_pose() -> Dictionary:
 	return current_sample().pose
@@ -46,10 +53,18 @@ func wake_duration() -> float:
 
 func pose_state() -> Dictionary:
 	var sample: Dictionary = current_sample()
-	return {"animation": sample.clip, "frame": sample.index, "pose": sample.pose_name}
+	var value: Dictionary = {"animation": sample.clip, "frame": sample.index, "pose": sample.pose_name}
+	if sample.has("rig"):
+		var gait: Dictionary = sample.rig.state
+		value["feet"] = [[gait.feet[0].x, gait.feet[0].y], [gait.feet[1].x, gait.feet[1].y]]
+		value["planted"] = gait.planted
+		value["treads"] = gait.contacts
+		value["swing"] = gait.swing
+	return value
 
 func actor_bounds() -> Rect2:
 	var sample: Dictionary = current_sample()
+	if sample.has("rig"): return sample.rig.bounds
 	var pose: Dictionary = sample.pose
 	var region: Array = pose.region
 	var actor_transform = Transform2D(0, sample.anchor)

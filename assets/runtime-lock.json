@@ -170,6 +170,11 @@
       "id": "characters/pietro-home-transitions",
       "version": "1.0.0"
     },
+    "characters/pietro-stair-contact": {
+      "file": "texture",
+      "id": "characters/pietro-stair-contact",
+      "version": "1.0.0"
+    },
     "characters/refuge-traveler": {
       "file": "texture",
       "id": "characters/refuge-traveler",

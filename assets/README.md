@@ -127,3 +127,13 @@ frame de descida tem margem opaca de um pixel. A escada ainda precisa de melhor
 alternância e continuidade de apoio; não tem aceite estético. O status técnico
 production permite o preview nesta branch draft e não declara arte final.
 [Integração, evidências e limites](../docs/pietro-v05-art02.md).
+
+### Apoios alternados na escada — V05-ART-03 (candidato)
+
+`characters/pietro-stair-contact@1.0.0` acrescenta coreografia, marcos e uma
+referência AtlasTexture ao repouso original 2.0.0, sem copiar ou modificar PNGs.
+Pernas independentes usam os degraus reais como apoios. Os módulos anteriores
+continuam imutáveis; suas poses de escada servem ao movimento reduzido. O status
+production permite o preview da branch e não constitui aceite visual. A textura
+de repouso limita a junção de quadril/coxa e o esforço corporal. Continua
+candidato. [Contrato e revisão](../docs/pietro-v05-art03.md).

@@ -4352,6 +4352,40 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 3481,
+      "id": "characters/pietro-stair-contact@1.0.0:rig",
+      "kind": "data",
+      "module": "characters/pietro-stair-contact",
+      "path": "assets/characters/pietro-stair-contact/versions/1.0.0/rig.json",
+      "role": "rig",
+      "sha256": "33e503a384065e39650abcfcac7a0e0f8a06434b21319478d5bf46659108863f",
+      "source": {
+        "edit_history": "No raster edits or new media generation. Authored source landmarks and continuous runtime mesh skinning only. Prior transition textures remain as reduced-motion fallbacks.",
+        "kind": "original authored choreography",
+        "review_status": "Candidate under real-scene review; production is binding eligibility, not aesthetic approval.",
+        "source": "characters/pietro-home@2.0.0 texture, unchanged generated PNG"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 254,
+      "id": "characters/pietro-stair-contact@1.0.0:texture",
+      "kind": "texture",
+      "module": "characters/pietro-stair-contact",
+      "path": "assets/characters/pietro-stair-contact/versions/1.0.0/idle-source.tres",
+      "role": "texture",
+      "sha256": "7de980ca35cd2c2a3b80c57593495f4c4a49424494dffed789d9c385c3461cf8",
+      "source": {
+        "kind": "Godot AtlasTexture reference",
+        "source": "Declared dependency characters/pietro-home@2.0.0, idle region only; no copied or modified PNG"
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
       "bytes": 1246,
       "id": "characters/refuge-traveler@1.0.0:poses",
       "kind": "data",

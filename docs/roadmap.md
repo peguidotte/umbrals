@@ -1084,3 +1084,14 @@ a revisão final dos pivôs e os testes correspondentes. A escada continua
 visualmente parcial: a perna dianteira domina e faltam alternância e continuidade
 fina dos apoios. Não promover nem declarar pronto com base na automação.
 [Escopo, proveniência e limitações](pietro-v05-art02.md).
+
+### V05-ART-03 — alternância e contato na escada, candidato
+
+Nova branch sobre a fatia anterior, cuja CI terminou com sete jobs aprovados.
+As pernas passam a usar articulações e trajetórias alternadas sobre os pixels
+originais, com apoio fixo nos degraus e chegada aos pivôs do repouso. O despertar
+de seis desenhos permanece para revisão no novo vídeo. Testes e captura focados
+acompanham o handoff; não se repete a aceitação integral anterior. A junção de
+quadril/coxa, o esforço do tronco e a inversão de orientação ainda limitam o
+resultado visual. Continua candidato, sem merge ou aceite estético.
+[Contrato, falhas preservadas e limites](pietro-v05-art03.md).

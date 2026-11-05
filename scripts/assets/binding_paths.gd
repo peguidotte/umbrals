@@ -34,6 +34,7 @@ const CHARACTERS_BATTLE_EVOLVED: String = "res://assets/characters/battle-evolve
 const CHARACTERS_OWL: String = "res://assets/characters/owl/versions/1.0.0/portrait.svg"
 const CHARACTERS_PIETRO_HOME: String = "res://assets/characters/pietro-home/versions/2.0.0/atlas.png"
 const CHARACTERS_PIETRO_HOME_TRANSITIONS: String = "res://assets/characters/pietro-home-transitions/versions/1.0.0/wake.png"
+const CHARACTERS_PIETRO_STAIR_CONTACT: String = "res://assets/characters/pietro-stair-contact/versions/1.0.0/idle-source.tres"
 const CHARACTERS_REFUGE_TRAVELER: String = "res://assets/characters/refuge-traveler/versions/1.0.0/atlas.png"
 const CHARACTERS_SPORE: String = "res://assets/characters/spore/versions/1.0.0/portrait.svg"
 const CHARACTERS_STAG: String = "res://assets/characters/stag/versions/1.0.0/portrait.svg"
@@ -101,6 +102,7 @@ const PATHS: Dictionary = {
 	"characters/owl": CHARACTERS_OWL,
 	"characters/pietro-home": CHARACTERS_PIETRO_HOME,
 	"characters/pietro-home-transitions": CHARACTERS_PIETRO_HOME_TRANSITIONS,
+	"characters/pietro-stair-contact": CHARACTERS_PIETRO_STAIR_CONTACT,
 	"characters/refuge-traveler": CHARACTERS_REFUGE_TRAVELER,
 	"characters/spore": CHARACTERS_SPORE,
 	"characters/stag": CHARACTERS_STAG,

@@ -3,8 +3,10 @@ const Space = preload("res://scripts/ui/house_space.gd")
 const Motion = preload("res://scripts/ui/house_motion.gd")
 const Canvas = preload("res://scripts/ui/refuge_canvas.gd")
 const Camera = preload("res://scripts/ui/house_camera.gd")
+const Contacts = preload("res://tests/support/pietro_contact_cases.gd")
 
 static func run(expect: Callable) -> void:
+	Contacts.run(expect)
 	var actor: Node2D = Canvas.new()
 	var motion: RefCounted = Motion.new()
 	motion.wake(actor, false)

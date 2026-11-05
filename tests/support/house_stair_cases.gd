@@ -53,13 +53,13 @@ static func clearance_cases(room: Control, expect: Callable) -> void:
 		var safe: Rect2 = Rect2(Vector2.ZERO, viewport).grow(-32 * camera.zoom)
 		var contained: bool = true
 		for progress in [0.0, 0.25, 0.739, 0.95, 1.0]:
-			actor.point = Space.stair_point(progress)
-			camera.follow(actor.point, 0, true)
 			for direction in [-1, 1]:
 				actor.facing = Vector2(direction, 0)
 				actor.stair_direction = direction
 				for frame in range(8):
-					actor.stair_progress = float(frame) / 8 * 2 / Space.STEPS
+					actor.stair_progress = clampf(progress + float(frame) / 8 * 2 / Space.STEPS, 0, 1)
+					actor.point = Space.stair_point(actor.stair_progress)
+					camera.follow(actor.point, 0, true)
 					contained = contained and safe.encloses(camera.projection() * actor.actor_bounds())
 			expect.call((camera.projection().affine_inverse() * (camera.projection() * actor.point)).distance_to(actor.point) < 0.01, "Pointer projection round-trips on stairs at %dx%d" % [viewport.x, viewport.y])
 		expect.call(contained, "Full atlas frames retain camera margin across stairs at %dx%d" % [viewport.x, viewport.y])

@@ -3,6 +3,8 @@ extends RefCounted
 const Assets = preload("res://scripts/assets/catalog.gd")
 const Space = preload("res://scripts/ui/house_space.gd")
 const BINDING = "characters/pietro-home-transitions"
+const StairRig = preload("res://scripts/ui/pietro_stair_rig.gd")
+var stair_rig: RefCounted = StairRig.new()
 var base_texture: Texture2D = Assets.texture("characters/pietro-home")
 var base: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(Assets.bound_file("characters/pietro-home", "poses")))
 var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(Assets.bound_file(BINDING, "poses")))
@@ -16,6 +18,9 @@ func sample(point: Vector2, facing: Vector2, stride: float, wake_phase: float, s
 	if wake_phase >= 0: return _wake(wake_phase)
 	if stairs:
 		var clip: String = "ascent" if stair_direction > 0 else "descent"
+		if not reduced:
+			stair_rig.seek(stair_progress, stair_direction)
+			return {"rig": stair_rig, "pose": base.frames[int(base.idle)], "clip": clip, "index": int(fposmod(stair_progress * Space.STEPS, 2) * 4), "pose_name": "alternating_contacts"}
 		var steps: float = stair_progress * Space.STEPS if stair_direction > 0 else (1.0 - stair_progress) * Space.STEPS
 		var cycle: float = fposmod(steps, float(data.stair_steps_per_cycle)) / float(data.stair_steps_per_cycle)
 		var index: int = 0 if reduced else mini(int(cycle * data.clips[clip].frames.size()), data.clips[clip].frames.size() - 1)

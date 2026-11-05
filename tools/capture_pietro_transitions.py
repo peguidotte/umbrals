@@ -56,7 +56,7 @@ try:
             function observePietro(){const s=window.umbralState;
               if(s&&s.screen==='refuge'&&s.refuge.actor_pose){
                 const h=s.refuge,p=h.actor_pose,last=window.pietroPoseReview.at(-1);
-                const signature=JSON.stringify([p.animation,p.frame,h.waking,h.on_stairs,h.stair_direction]);
+                const signature=JSON.stringify([p,h.waking,h.on_stairs,h.stair_direction]);
                 if(!last||last.signature!==signature)window.pietroPoseReview.push({
                   signature,t_ms:performance.now(),pose:p,waking:h.waking,
                   progress:h.stair_progress,position:h.position});}
@@ -102,7 +102,8 @@ try:
         wait("window.umbralState.refuge.on_stairs&&window.umbralState.refuge.stair_progress>.3")
         pause_stairs(page, wait)
         paused = state()['refuge']
-        check(paused['actor_pose']['animation'] == 'ascent', 'Ascent uses its own texture/pose family')
+        check(paused['actor_pose']['animation'] == 'ascent' and paused['actor_pose']['pose'] == 'alternating_contacts',
+              'Ascent uses continuous articulated legs and tread contacts')
         page.wait_for_timeout(400)
         check(state()['refuge']['position'] == paused['position'] and state()['refuge']['actor_pose'] == paused['actor_pose'],
               'Pausing stairs holds both the world position and exact ascent drawing')
@@ -115,7 +116,8 @@ try:
         wait("window.umbralState.refuge.on_stairs&&window.umbralState.refuge.stair_progress<.75")
         pause_stairs(page, wait)
         paused = state()['refuge']
-        check(paused['actor_pose']['animation'] == 'descent', 'Descent uses its own drawing rather than mirrored ascent/walking')
+        check(paused['actor_pose']['animation'] == 'descent' and paused['actor_pose']['pose'] == 'alternating_contacts',
+              'Descent changes facing and joint bend over the same tread contact tracks')
         shot('descent-paused')
         page.keyboard.down('ArrowUp')
         try:
@@ -149,6 +151,27 @@ try:
         check(all(before[k] == state()[k] for k in fields), 'Wake, stairs, reversal and preferences preserve game/checkpoint fields')
         check(not errors, 'Browser page and console have no runtime errors')
         observations = page.evaluate('window.pietroPoseReview')
+        climbing = [x for x in observations if x['pose'].get('feet')]
+        pairs, drift = 0, 0.0
+        swings = []
+        for current in climbing:
+            if current['pose']['animation'] == 'ascent' and .1 < current['progress'] < .9:
+                leg = current['pose']['swing']
+                if not swings or swings[-1] != leg:
+                    swings.append(leg)
+        for a, b in zip(climbing, climbing[1:]):
+            if a['pose']['animation'] != b['pose']['animation']:
+                continue
+            for leg in range(2):
+                p, q = a['pose'], b['pose']
+                if p['planted'][leg] and q['planted'][leg] and p['treads'][leg] == q['treads'][leg]:
+                    pairs += 1
+                    drift = max(drift, sum((p['feet'][leg][i] - q['feet'][leg][i]) ** 2 for i in range(2)) ** .5)
+        contact_metrics = {'stance_pairs': pairs, 'maximum_stance_drift_world_px': drift,
+                           'observed_ascent_swing_order': swings}
+        check(len(swings) >= 10 and all(a != b for a, b in zip(swings, swings[1:])),
+              'Real ascent alternates the two swing legs across at least ten treads')
+        check(pairs >= 20 and drift < .01, 'Observed planted feet stay fixed on their tread while the body moves')
         context.close()
         video_path = video.path()
         browser.close()
@@ -164,9 +187,14 @@ except Exception:
         pass
 finally:
     server.shutdown()
+    if video_path is None:
+        recorded = list((OUT / 'video').glob('*.webm'))
+        if len(recorded) == 1:
+            video_path = recorded[0]
     report = {'scope': 'focused real Web inputs; no full acceptance or hardware claim', 'checks': len(checks),
               'passed': checks, 'failed': int(failure is not None), 'failure': failure, 'errors': errors,
               'captures': captures, 'observations': observations, 'video': str(video_path) if video_path else None,
+              'contact_metrics': locals().get('contact_metrics'),
               'seconds': round(time.monotonic() - started, 2)}
     (OUT / 'report.json').write_text(json.dumps(report, indent=2))
     print(json.dumps({'checks': len(checks), 'failed': report['failed'], 'output': str(OUT), 'video': report['video']}))
