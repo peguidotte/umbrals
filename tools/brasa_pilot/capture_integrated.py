@@ -41,7 +41,7 @@ def main():
             audio.__recordOutput.stream.getAudioTracks().forEach(t=>stream.addTrack(t));
             const recorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp8,opus',videoBitsPerSecond:5000000});
             const chunks=[];recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};
-            window.__lifecycleRecording={recorder,chunks};recorder.start(100);
+            window.__lifecycleRecording={recorder,chunks,started:performance.now()};recorder.start(100);
         }""")
         session.click("reserve.0")
         session.click("swap.slot.1")
@@ -49,8 +49,9 @@ def main():
                       "Planning keeps Brasa in reserve")
         session.page.keyboard.press("Space")
         session.wait("window.umbralState.busy")
-        session.page.wait_for_timeout(140)
-        shot("02-entry-walk")
+        # Reading pixels here stalls the compositor and distorts visible cadence.
+        # Extract the entry still from the completed video instead.
+        entry_time = session.page.evaluate("() => (performance.now()-window.__lifecycleRecording.started)/1000 + 0.14")
         session.settled()
         session.page.wait_for_timeout(700)
         state = session.state()
@@ -64,7 +65,7 @@ def main():
         session.page.keyboard.press("Space")
         session.wait("window.umbralState.busy")
         session.settled()
-        session.page.wait_for_timeout(450)
+        session.page.wait_for_timeout(1000)
         session.check(next(u for u in session.state()["party"] if u["uid"] == 1)["hp"] > 0,
                       "Owned item actually revives the same Brasa")
         shot("04-revived")
@@ -78,9 +79,14 @@ def main():
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-c:v", "libx264",
                         "-crf", "19", "-pix_fmt", "yuv420p", "-c:a", "aac", "-movflags", "+faststart",
                         str(args.output / "brasa-lifecycle.mp4")], check=True)
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(entry_time), "-i",
+                        str(args.output / "brasa-lifecycle.mp4"), "-frames:v", "1",
+                        str(args.output / "02-entry-from-video.png")], check=True)
         session.check(not session.errors, "No browser script errors during real lifecycle input")
         (args.output / "capture-report.json").write_text(json.dumps({"checks": session.checks,
-            "captures": evidence, "errors": session.errors, "audio_source": "Actual game WebAudio output"}, ensure_ascii=False, indent=2))
+            "captures": evidence, "errors": session.errors, "audio_source": "Actual game WebAudio output",
+            "entry_still": {"file": "02-entry-from-video.png", "video_seconds": entry_time,
+                            "method": "Extracted after recording; no screenshot during entry"}}, ensure_ascii=False, indent=2))
         print(json.dumps({"video": str(args.output / "brasa-lifecycle.mp4"), "captures": evidence}))
     finally:
         session.browser.close()

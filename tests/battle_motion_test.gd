@@ -102,6 +102,7 @@ func _run() -> void:
 		expect(not body.rig.managed, "Accessibility cancellation releases every managed actor")
 	await lifecycle_checks()
 	await lifecycle_deploy_checks()
+	await lifecycle_alignment_checks()
 	app.feedback.cancel()
 	app.audio.shutdown()
 	await create_timer(0.12).timeout
@@ -161,7 +162,11 @@ func lifecycle_checks() -> void:
 	if app.screens.top() == "ko_replacement": app.commands.finish_ko()
 	expect(app.game.queue_item("revive", 1), "Queue an owned revival through the existing item rules")
 	app.runtime.turn.cast()
+	deadline = Time.get_ticks_msec() + 2000
+	while int(body.identity.hp) == 0 and Time.get_ticks_msec() < deadline: await process_frame
+	expect(int(body.identity.hp) > 0 and body.rig.lifecycle.state == "revive", "A committed revival traverses recovery poses before returning to standing")
 	await settle()
+	await create_timer(0.8).timeout
 	expect(int(body.identity.hp) > 0 and not body.rig.lifecycle.incapacitated and not body.rig.lifecycle.active(), "A real revival releases KO and restores normal idle/casts")
 
 func lifecycle_deploy_checks() -> void:
@@ -187,3 +192,54 @@ func lifecycle_deploy_checks() -> void:
 	app.preferences.set_value("reduced_motion", true)
 	expect(not body.rig.lifecycle.active(), "Reduced motion immediately cancels an in-flight entry walk")
 	await settle(2.0)
+
+func lifecycle_foot(body: Control) -> Vector2:
+	var life: Node2D = body.rig.lifecycle
+	var pivot: Array = life.manifest.animations[life.sprite.animation].pivot
+	return life.sprite.to_global(Vector2(float(pivot[0]), float(pivot[1])))
+
+func lifecycle_alignment_checks() -> void:
+	for enemy in [false, true]:
+		for slot in range(3):
+			var body: Control = preload("res://scripts/ui/actor.gd").new()
+			body.enemy = enemy
+			body.slot = slot
+			body.position = Vector2(200, 120)
+			body.size = Vector2(230, 230)
+			root.add_child(body)
+			body.rig.paused = true
+			body.rig.still = true
+			body.set_identity(preload("res://scripts/rules.gd").make_umbral("ember", "vital", 1))
+			var bounds: Rect2 = body.get_global_rect()
+			var floor: Vector2 = body.visual_ground()
+			var label: String = "%s slot %d" % ["enemy" if enemy else "ally", slot]
+			body.rig.set_incapacitated(true, false)
+			var error: float = lifecycle_foot(body).distance_to(floor)
+			expect(error < 0.05, "KO shares the target slot floor: %s (%.3f px)" % [label, error])
+			body.rig.set_incapacitated(false, false)
+			expect(not body.rig.lifecycle.active() and body.rig.to_global(body.rig.project(body.rig.foot)).distance_to(floor) < 0.05, "Restored mesh returns to the same floor: " + label)
+			body.rig.enter_field()
+			body.rig.lifecycle.advance(0.799, false, false)
+			error = lifecycle_foot(body).distance_to(floor)
+			expect(error < 0.2, "Last entry pose approaches the mesh floor: %s (%.3f px)" % [label, error])
+			body.rig.lifecycle.advance(0.02, false, false)
+			expect(body.rig.lifecycle.mesh_weight() > 0 and body.rig.lifecycle.mesh_weight() < 1, "Entry blends its last pose into the existing mesh: " + label)
+			body.rig.lifecycle.advance(0.12, false, false)
+			expect(not body.rig.lifecycle.active() and body.get_global_rect() == bounds, "Entry returns to idle without moving target geometry: " + label)
+			body.rig.set_incapacitated(true, false)
+			body.rig.set_incapacitated(false, true)
+			expect(body.rig.lifecycle.state == "revive" and body.rig.lifecycle.sprite.frame == 3, "Event revival starts from the held lying pose: " + label)
+			body.rig.lifecycle.advance(0.31, false, false)
+			var clock: float = body.rig.lifecycle.elapsed
+			body.rig.lifecycle.advance(0.3, true, false)
+			expect(body.rig.lifecycle.sprite.frame == 1 and is_equal_approx(body.rig.lifecycle.elapsed, clock), "Recovery reverses the existing KO poses and respects pause: " + label)
+			body.rig.lifecycle.advance(0.30, false, false)
+			expect(body.rig.lifecycle.state == "settle" and lifecycle_foot(body).distance_to(floor) < 0.05, "Recovery blends back at the same floor: " + label)
+			body.rig.lifecycle.advance(0, false, true)
+			expect(not body.rig.lifecycle.active() and body.rig.to_global(body.rig.project(body.rig.foot)).distance_to(floor) < 0.05, "Reduced motion settles recovery immediately at the mesh floor: " + label)
+			body.rig.set_incapacitated(true, false)
+			body.rig.set_incapacitated(false, true)
+			body.rig.seek_cast(0, 0.1, Vector2.ZERO)
+			expect(not body.rig.lifecycle.active(), "A new cast can preempt cosmetic recovery without waiting: " + label)
+			body.queue_free()
+	await process_frame

@@ -133,7 +133,8 @@ func set_identity(data: Dictionary, scale_text: float = 1.0, animate_lifecycle: 
 	set_intent(public_intent)
 	_pivot()
 	if not data.is_empty():
-		rig.set_incapacitated(int(data.get("hp", 0)) <= 0, animate_lifecycle and same_individual and was_alive)
+		var alive_changed: bool = was_alive != (int(data.get("hp", 0)) > 0)
+		rig.set_incapacitated(int(data.get("hp", 0)) <= 0, animate_lifecycle and same_individual and alive_changed)
 	queue_redraw()
 
 func set_intent(data: Dictionary) -> void:
