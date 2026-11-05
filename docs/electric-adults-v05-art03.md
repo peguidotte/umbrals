@@ -77,6 +77,16 @@ Ele testa uma equipe Niscor/Brasa/Musgo, recompensas antigas, escolha por índic
 próximo encontro e snapshot completo normalizado, incluindo RNG e planos.
 Testes também escolhem ambas as novas arestas e retomam cada save adulto.
 
+Revisão adicional de HP corrigiu uma expectativa de teste que usava `roundi`,
+enquanto a regra histórica usa `ceili` para preservar a proporção positiva e
+mantém zero no KO. O checkpoint cheio ocultava a diferença. Ambas as adultas
+agora passam pela API real com HP 48, 1, 19, 47 e 0, preservando cartas e
+identidade e retomando o snapshot de cada resultado. A suíte passou com 167
+assertions em `artifacts/harness/electric-adults-injured-ko-20261105T070722171872Z-79769d/`.
+Uma mutação temporária de `ceili` para `roundi` falhou nos quatro casos feridos
+que distinguem os arredondamentos; a regra foi restaurada sem alteração.
+Essa correção amplia a cobertura e não muda atributos ou balanceamento.
+
 ## Evidência e limites
 
 Depois da recuperação, fixtures e saves passaram em

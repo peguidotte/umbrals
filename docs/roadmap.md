@@ -1113,3 +1113,8 @@ no PR. Balanceamento numérico é default de protótipo delegado, e revisão de 
 animação e hardware continua aberta. Próxima fatia: revisar a família jogando,
 refinar transições e asas de repouso, então coordenar integração. Produto 0.3.0.
 [Escopo, compatibilidade e evidências](electric-adults-v05-art03.md).
+
+Revisão posterior ampliou saves para 167 assertions: ambas as adultas evoluem
+com HP cheio, ferido e zero, com retomada exata de cada snapshot. A expectativa
+agora verifica o `ceili` histórico; trocar a regra por `roundi` é detectado nos
+quatro casos feridos. Nenhum número de balanceamento foi alterado.

@@ -222,19 +222,25 @@ func electric_extension() -> void:
 	expected.identity = Identity.current()
 	expect(JSON.parse_string(JSON.stringify(run.snapshot())) == expected, "Historical replay preserves exact RNG, cards, party, plans and map after its reward choice")
 	for index in [3, 4]:
-		expect(run.restore(reward), "Adult branch starts from the same validated checkpoint")
-		var before: Dictionary = run.battle.party[0].duplicate(true)
-		expect(run.choose_reward(index), "Adult branch can be selected through the expedition API")
-		var after: Dictionary = run.battle.party[0]
-		var before_cards: Array = before.cards.duplicate(true)
-		var after_cards: Array = after.cards.duplicate(true)
-		before_cards.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return str(a.instance_id) < str(b.instance_id))
-		after_cards.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return str(a.instance_id) < str(b.instance_id))
-		expect(after.form_id == ["auravel", "zuldar"][index - 3], "Explicit edge selects the requested adult")
-		expect(after.uid == before.uid and after.passive == before.passive and after.slot == before.slot and after.known_powers == before.known_powers and after_cards == before_cards, "Adult evolution preserves the individual and every owned physical card")
-		expect(after.hp == roundi(float(before.hp) / before.max_hp * after.max_hp), "Adult evolution preserves the HP ratio")
-		var resumed = Expedition.new()
-		expect(resumed.restore(run.snapshot()) and resumed.snapshot() == run.snapshot(), "Adult snapshot roundtrips without rebuilding cards")
+		for hp in [int(reward.battle.party[0].max_hp), 1, 19, int(reward.battle.party[0].max_hp) - 1, 0]:
+			var checkpoint: Dictionary = reward.duplicate(true)
+			checkpoint.battle.party[0].hp = hp
+			expect(run.restore(checkpoint), "Adult branch starts from a validated full, injured or KO checkpoint")
+			var before: Dictionary = run.battle.party[0].duplicate(true)
+			expect(run.choose_reward(index), "Adult branch can be selected through the expedition API at HP " + str(hp))
+			var after: Dictionary = run.battle.party[0]
+			var before_cards: Array = before.cards.duplicate(true)
+			var after_cards: Array = after.cards.duplicate(true)
+			before_cards.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return str(a.instance_id) < str(b.instance_id))
+			after_cards.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return str(a.instance_id) < str(b.instance_id))
+			expect(after.form_id == ["auravel", "zuldar"][index - 3], "Explicit edge selects the requested adult")
+			expect(after.uid == before.uid and after.passive == before.passive and after.slot == before.slot and after.known_powers == before.known_powers and after_cards == before_cards, "Adult evolution preserves the individual and every owned physical card")
+			var scaled_hp: float = float(before.hp) / before.max_hp * after.max_hp
+			expect(after.hp == ceili(scaled_hp), "Adult evolution rounds positive proportional HP upward and preserves KO: " + str(hp))
+			if hp in [1, 19]: expect(ceili(scaled_hp) != roundi(scaled_hp), "Injured fixture distinguishes ceiling from nearest rounding")
+			if hp == 0: expect(after.hp == 0, "Evolution never revives an incapacitated individual")
+			var resumed = Expedition.new()
+			expect(resumed.restore(run.snapshot()) and resumed.snapshot() == run.snapshot(), "Adult full, injured and KO snapshots roundtrip without rebuilding cards")
 	var forged: Dictionary = old.initial_state.duplicate(true)
 	forged.battle.party[0].form_id = "auravel"
 	expect(Migration.checkpoint(forged).is_empty(), "A historical identity cannot forge a future adult")
