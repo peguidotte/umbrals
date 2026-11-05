@@ -9,6 +9,7 @@ var nearby: String = ""
 # A derived semantic zone, never an asset selection or position reset.
 var room: String = "bedroom"
 var rest_angle: float = 0
+var on_stairs: bool = false
 var background: Texture2D = Assets.texture("world/pietro-house-continuous")
 var actor: Texture2D = Assets.texture("characters/pietro-home")
 var poses: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(Assets.bound_file("characters/pietro-home", "poses")))
@@ -16,6 +17,7 @@ var poses: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(Assets.b
 func _draw() -> void:
 	draw_texture_rect(background, Rect2(Vector2.ZERO, Space.SIZE), false)
 	Stairs.draw_layer(self, false)
+	if not on_stairs: Stairs.draw_layer(self, true)
 	if is_zero_approx(rest_angle):
 		draw_set_transform(point + Vector2(0, 2), 0, Vector2(1, 0.2))
 		draw_circle(Vector2.ZERO, 39, Color(0.01, 0.025, 0.035, 0.12))
@@ -26,7 +28,7 @@ func _draw() -> void:
 	var rect = Rect2(float(region[0]), float(region[1]), float(region[2]), float(region[3]))
 	draw_texture_rect_region(actor, Rect2(-Vector2(pose.pivot[0], pose.pivot[1]), rect.size), rect)
 	draw_set_transform(Vector2.ZERO)
-	Stairs.draw_layer(self, true)
+	if on_stairs: Stairs.draw_layer(self, true)
 
 func current_pose() -> Dictionary:
 	var index: int = int(poses.walk[int(stride) % poses.walk.size()]) if stride > 0 else int(poses.idle)

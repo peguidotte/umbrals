@@ -21,7 +21,9 @@ esquerda do vão da escada; após subir, caminhar à esquerda alcança o quarto 
 A borda do piso superior bloqueia a caminhada para o vão.
 
 A escada possui degraus, apoio e corrimão distante antes do ator; postes, viga e
-corrimão próximo depois do ator. Os pés seguem patamares com uma curta elevação
+corrimão próximo depois do ator durante a subida/descida. No térreo, a faixa de
+caminhada passa à frente da escada inteira, evitando que a viga corte o corpo
+de quem apenas atravessa a cozinha. Os pés seguem patamares com uma curta elevação
 entre eles. E/clique aproxima até a extremidade exata e faz o percurso físico;
 cima/baixo permite controlar e inverter o movimento. Entrada lateral aproxima
 antes de subir, sem reposicionar o ator por salto. Pausar conserva a última

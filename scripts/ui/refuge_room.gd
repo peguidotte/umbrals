@@ -180,6 +180,7 @@ func _publish_motion(previous: Vector2, delta: float, old_room: String, arrived:
 	camera.follow(canvas.point, delta, reduced)
 	_project()
 	canvas.nearby = Space.nearest(canvas.point, motion.upper, motion.on_stairs)
+	canvas.on_stairs = motion.on_stairs
 	canvas.queue_redraw()
 	if canvas.room != old_room: _room_changed()
 	elapsed += delta
