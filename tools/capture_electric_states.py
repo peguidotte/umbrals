@@ -84,7 +84,7 @@ def main():
                 region = page.evaluate('''() => {const r=document.querySelector('canvas').getBoundingClientRect();return {x:Math.round(window.screenX+r.left),y:Math.round(window.screenY+window.outerHeight-window.innerHeight+r.top)}}''')
                 capture_log=(output/'x11-capture.log').open('w')
                 display=os.environ['DISPLAY'].split('.')[0]+'.0+'+str(region['x'])+','+str(region['y'])
-                recorder=subprocess.Popen(['ffmpeg','-v','error','-y','-f','x11grab','-framerate','30','-video_size','1280x720','-i',display,'-c:v','libx264','-preset','ultrafast','-crf','20','-pix_fmt','yuv420p',str(output/'states.mp4')],stdin=subprocess.PIPE,stdout=capture_log,stderr=capture_log)
+                recorder=subprocess.Popen(['ffmpeg','-v','error','-y','-f','x11grab','-framerate','30','-video_size','1280x720','-i',display,'-filter_threads','1','-filter_complex_threads','1','-c:v','libx264','-threads','1','-preset','ultrafast','-crf','20','-pix_fmt','yuv420p',str(output/'states.mp4')],stdin=subprocess.PIPE,stdout=capture_log,stderr=capture_log)
             else:
                 page.evaluate('''() => {
                 const stream=document.querySelector('canvas').captureStream(30);

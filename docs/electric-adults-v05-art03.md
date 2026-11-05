@@ -36,7 +36,7 @@ fora do corpo. Novos pins exatos: Nisca/Niscor em 2.1.0; Auravel/Zuldar em 2.0.0
 
 A transformação comum da pose é calculada uma vez e aplicada aos vértices.
 A projeção direta dos sockets permanece como referência; o teste compara os
-225 vértices em quatro formas, dois lados, idle/passada/dano e três casts,
+225 vértices da grade mais os contatos de apoio em quatro formas, dois lados, idle/passada/dano e três casts,
 incluindo salto e rotação. Não se usa o experimento rejeitado de buffers dinâmicos.
 
 ## Conteúdo e compatibilidade explícita
@@ -103,3 +103,11 @@ rodadas; isso não certifica balanceamento. Não há setter no bridge de produç
 Fechamento integral, CI do HEAD e capturas finais ficam no PR separado desta
 fatia. Revisão humana de arte/animação, desempenho em hardware e balanceamento
 continuam abertos. Não houve merge; versão do produto permanece 0.3.0.
+
+Revisão adicional de apoio: interpolar a grade original deixava o pé visível
+variar até 3,3px, embora `project(uv)` passasse no teste de ponto fixo. Os contatos
+agora são vértices reais da malha triangulada. O gate lê os vértices renderizados
+e verifica apoio, além da equivalência de projeção. Essa correção é de apresentação
+e não muda a identidade de gameplay. A captura pode usar `--resolution 1280x720`;
+FFmpeg limita encoder/filtros a uma thread e Mesa pode usar quatro, conforme a
+cota de CPU. Relatórios anteriores lentos permanecem preservados.

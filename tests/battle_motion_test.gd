@@ -87,6 +87,19 @@ func electric_art() -> void:
 					for binding in source.rig.skin_bindings:
 						error = maxf(error, source.rig._project_cached(binding).distance_to(source.rig.project(binding.uv)))
 					expect(error < .0001, "Cached projection matches direct sockets on all 225 vertices: " + form_id + "/" + str(mirror) + "/" + group + "/" + str(index))
+					if group == "states" and index == 6:
+						var mesh_vertices = source.rig.mesh.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]
+						for point in source.rig.definition.walk_contacts:
+							var at: Vector2 = Vector2(float(point[0]), float(point[1]))
+							var found: int = -1
+							for vertex in range(source.rig.skin_bindings.size()):
+								if source.rig.skin_bindings[vertex].uv.is_equal_approx(at): found = vertex
+							expect(found >= 0, "A support point exists on the rendered mesh: " + form_id)
+							if found < 0 or fposmod(source.rig.elapsed / .8 + float(point[2]), 1.0) >= .6: continue
+							var target: Vector2 = Vector2(1.0 - at.x if mirror else at.x, at.y) * source.rig.display_size
+							var actual: Vector2 = Vector2(mesh_vertices[found].x, mesh_vertices[found].y)
+							expect(actual.distance_to(target) < .05, "The rendered paw vertex stays planted during stance: " + form_id)
+
 	source.enemy = false
 	source.set_identity(original)
 	var fallen: Dictionary = original.duplicate(true)

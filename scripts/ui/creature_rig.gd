@@ -146,6 +146,18 @@ func _build_topology() -> void:
 		for column in range(GRID):
 			var a: int = row * (GRID + 1) + column
 			indices.append_array(PackedInt32Array([a, a + 1, a + GRID + 1, a + 1, a + GRID + 2, a + GRID + 1]))
+	if not definition.get("walk_contacts", []).is_empty():
+		var points: PackedVector2Array = PackedVector2Array()
+		for binding in skin_bindings: points.append(binding.uv)
+		for point in definition.walk_contacts:
+			var uv: Vector2 = Vector2(float(point[0]), float(point[1]))
+			if points.has(uv): continue
+			points.append(uv)
+			uvs.append((region.position + uv * region.size) / texture.get_size())
+			skin_bindings.append(_bind_skin(uv))
+		# A continuous socket calculation alone cannot lock a rendered paw inside
+		# a coarse triangle. Put each support point on the actual textured mesh.
+		indices = Geometry2D.triangulate_delaunay(points)
 
 func _bind_skin(uv: Vector2) -> Dictionary:
 	var bones: Array = []

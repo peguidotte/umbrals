@@ -12,6 +12,7 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--adults', action='store_true')
     parser.add_argument('--form', choices=['auravel', 'zuldar'])
+    parser.add_argument('--resolution', choices=['1600x900', '1280x720'], default='1600x900')
     args = parser.parse_args()
     if not os.environ.get('DISPLAY'):
         raise SystemExit('A real or Xvfb X11 display is required; no fixed-fps movie substitution')
@@ -20,12 +21,13 @@ def main():
     with (output / 'capture.log').open('w') as log:
         display = os.environ['DISPLAY'].split('.')[0] + '.0+0,0'
         recorder = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'x11grab',
-            '-framerate', '30', '-video_size', '1600x900', '-i', display, '-t', '26',
+            '-framerate', '30', '-video_size', args.resolution, '-i', display, '-t', '26',
+            '-filter_threads', '1', '-filter_complex_threads', '1',
             '-c:v', 'libx264', '-threads', '1', '-preset', 'ultrafast', '-crf', '20',
             '-pix_fmt', 'yuv420p', str(output / 'native-states.mp4')], stdout=log, stderr=log)
         try:
             game = subprocess.run(['godot', '--path', str(ROOT), '--rendering-method', 'gl_compatibility',
-                '--audio-driver', 'Dummy', '--max-fps', '60', '--resolution', '1600x900', '--position', '0,0',
+                '--audio-driver', 'Dummy', '--max-fps', '60', '--resolution', args.resolution, '--position', '0,0',
                 'res://tests/electric_states_preview.tscn', '--', '--native-review', str(output)] + (['--adults'] if args.adults else []) + (['--form', args.form] if args.form else []),
                 capture_output=True, text=True, timeout=60)
             (output / 'godot.log').write_text(game.stdout + game.stderr)

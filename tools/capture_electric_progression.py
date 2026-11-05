@@ -14,7 +14,7 @@ def start_recording(session, path):
     display = os.environ['DISPLAY'].split('.')[0] + '.0+' + str(region['x']) + ',' + str(region['y'])
     log = path.with_suffix('.capture.log').open('w')
     recorder = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'x11grab', '-framerate', '30',
-        '-video_size', '1280x720', '-i', display, '-c:v', 'libx264', '-threads', '1', '-preset',
+        '-video_size', '1280x720', '-i', display, '-filter_threads', '1', '-filter_complex_threads', '1', '-c:v', 'libx264', '-threads', '1', '-preset',
         'ultrafast', '-crf', '20', '-pix_fmt', 'yuv420p', str(path)], stdin=subprocess.PIPE, stdout=log, stderr=log)
     return recorder, log
 
