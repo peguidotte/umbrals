@@ -4514,6 +4514,249 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 593646,
+      "id": "characters/folife-lifecycle@1.0.0:knockout",
+      "kind": "texture",
+      "module": "characters/folife-lifecycle",
+      "path": "assets/characters/folife-lifecycle/versions/1.0.0/knockout.png",
+      "role": "knockout",
+      "sha256": "e8dee07fa35f9ea8d00453729d435e8f270be6c4a04f9bfa11c6eaaa9e9d9f5e",
+      "source": {
+        "approval": "Independent technical static review permits draft experiment only; native cadence and human aesthetic pending.",
+        "edit_history": "Exact rectangular copies and integer translations, no painting or alpha changes. See normalization.json.",
+        "generation_id": "exec-0c05ab3d-7de4-48af-9e64-1ade8605ea16",
+        "kind": "Image Gen edit of the Folife cutout",
+        "original_preserved": true,
+        "prompt": "Create a clean transparent production sprite sheet of the EXACT hare character in the attached cutout: Folife, intermediate leaf hare, NOT a baby and NOT a final evolution. Keep its exact adult-intermediate proportions, low quadrupedal body, broad muscular hindquarters, long ears (one green serrated leaf covering the backward ear; one upright brown ear with leaf bud), leafy neck/shoulder collar, little leaf tail, brown/olive fur, cream muzzle and paws, amber eye, yellow-green chevron on thigh, single short green leaf dagger held by one forepaw. Same painterly cel shading, bold dark contour and upper-left light as the cutout.\nOUTPUT: 12 full-body poses in one precise regular 4-column by 3-row grid. 1448 by 1086 pixel sheet, 362 by 362 equal cells. Every character stays facing RIGHT. All twelve figures have the same body proportions, zoom, camera, palette and root x position within their cells. Keep each figure fully inside its own cell with clear transparent margins. No labels or drawn grid.\nRows 1 and 2: eight successive genuinely different walking poses forming a small low bunny-step loop in place. Change limb joint positions, not just the entire image. Start neutral crouch, push back one large hind foot, reach the free forepaw, recover/tuck hind feet, alternate the next hind-foot push, return to neutral. One forepaw continuously holds the short leaf dagger off the ground, the other free forepaw can step. Keep the low hare anatomy; no biped or humanoid stance. Tiny vertical bounce only, avoid a dramatic jump. Ear leaves and collar react a little to the gait. Frame 8 closely approaches frame 1. Grounded foot contact has a consistent baseline near the bottom of every cell.\nRow 3: four successive distinct reversible knockout poses. First stagger with closed eye and drooping ears; second lowers/folds foreleg; third settles onto side with folded hindlegs; fourth rests fully on its side with closed eye, drooped ears, limbs tucked, leaf collar and short dagger visible. No blood, wounds or damage. Keep the exact same character identity and scale.\nALPHA REQUIREMENT: The empty area around and BETWEEN characters must be fully transparent alpha=0. ALL character interiors fully opaque. Clean antialiased silhouette boundaries only. No partially transparent clouds, fog, smoke, dither, colored fringe, aura, particles, cast shadow, ground, background texture, gradient, paper, lighting backdrop or raster checkerboard. No red or bright outline accents. The only edges are the source character's dark contour. Use native transparent background output, not a drawn background. No text, numbers, watermark, scenery, borders or extra subjects.\n",
+        "reference": {
+          "file": "portrait",
+          "id": "characters/folife-pilot",
+          "sha256": "3096668c4de905c44e5f1d6793b9fe5683e15d96f438e0dd1ad615bc0262ef1a",
+          "version": "1.0.0"
+        }
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          362
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 8634,
+      "id": "characters/folife-lifecycle@1.0.0:normalization",
+      "kind": "data",
+      "module": "characters/folife-lifecycle",
+      "path": "assets/characters/folife-lifecycle/versions/1.0.0/normalization.json",
+      "role": "normalization",
+      "sha256": "a0e8c9ca9f6205346fb53f5c22ad25c966653bdfbe576af13fe4004e1e66c8a0",
+      "source": {
+        "approval": "Independent technical static review permits draft experiment only; native cadence and human aesthetic pending.",
+        "edit_history": "Exact rectangular copies and integer translations, no painting or alpha changes. See normalization.json.",
+        "generation_id": "exec-0c05ab3d-7de4-48af-9e64-1ade8605ea16",
+        "kind": "Image Gen edit of the Folife cutout",
+        "original_preserved": true,
+        "prompt": "Create a clean transparent production sprite sheet of the EXACT hare character in the attached cutout: Folife, intermediate leaf hare, NOT a baby and NOT a final evolution. Keep its exact adult-intermediate proportions, low quadrupedal body, broad muscular hindquarters, long ears (one green serrated leaf covering the backward ear; one upright brown ear with leaf bud), leafy neck/shoulder collar, little leaf tail, brown/olive fur, cream muzzle and paws, amber eye, yellow-green chevron on thigh, single short green leaf dagger held by one forepaw. Same painterly cel shading, bold dark contour and upper-left light as the cutout.\nOUTPUT: 12 full-body poses in one precise regular 4-column by 3-row grid. 1448 by 1086 pixel sheet, 362 by 362 equal cells. Every character stays facing RIGHT. All twelve figures have the same body proportions, zoom, camera, palette and root x position within their cells. Keep each figure fully inside its own cell with clear transparent margins. No labels or drawn grid.\nRows 1 and 2: eight successive genuinely different walking poses forming a small low bunny-step loop in place. Change limb joint positions, not just the entire image. Start neutral crouch, push back one large hind foot, reach the free forepaw, recover/tuck hind feet, alternate the next hind-foot push, return to neutral. One forepaw continuously holds the short leaf dagger off the ground, the other free forepaw can step. Keep the low hare anatomy; no biped or humanoid stance. Tiny vertical bounce only, avoid a dramatic jump. Ear leaves and collar react a little to the gait. Frame 8 closely approaches frame 1. Grounded foot contact has a consistent baseline near the bottom of every cell.\nRow 3: four successive distinct reversible knockout poses. First stagger with closed eye and drooping ears; second lowers/folds foreleg; third settles onto side with folded hindlegs; fourth rests fully on its side with closed eye, drooped ears, limbs tucked, leaf collar and short dagger visible. No blood, wounds or damage. Keep the exact same character identity and scale.\nALPHA REQUIREMENT: The empty area around and BETWEEN characters must be fully transparent alpha=0. ALL character interiors fully opaque. Clean antialiased silhouette boundaries only. No partially transparent clouds, fog, smoke, dither, colored fringe, aura, particles, cast shadow, ground, background texture, gradient, paper, lighting backdrop or raster checkerboard. No red or bright outline accents. The only edges are the source character's dark contour. Use native transparent background output, not a drawn background. No text, numbers, watermark, scenery, borders or extra subjects.\n",
+        "reference": {
+          "file": "portrait",
+          "id": "characters/folife-pilot",
+          "sha256": "3096668c4de905c44e5f1d6793b9fe5683e15d96f438e0dd1ad615bc0262ef1a",
+          "version": "1.0.0"
+        }
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1987621,
+      "id": "characters/folife-lifecycle@1.0.0:original",
+      "kind": "review",
+      "module": "characters/folife-lifecycle",
+      "path": "assets/characters/folife-lifecycle/versions/1.0.0/review/original.png",
+      "role": "original",
+      "sha256": "ba8dbd1372b12d76be6e4e7bf314cd411566029ac1e718be072a2f5d8b425e66",
+      "source": {
+        "approval": "Independent technical static review permits draft experiment only; native cadence and human aesthetic pending.",
+        "edit_history": "Exact rectangular copies and integer translations, no painting or alpha changes. See normalization.json.",
+        "generation_id": "exec-0c05ab3d-7de4-48af-9e64-1ade8605ea16",
+        "kind": "Image Gen edit of the Folife cutout",
+        "original_preserved": true,
+        "prompt": "Create a clean transparent production sprite sheet of the EXACT hare character in the attached cutout: Folife, intermediate leaf hare, NOT a baby and NOT a final evolution. Keep its exact adult-intermediate proportions, low quadrupedal body, broad muscular hindquarters, long ears (one green serrated leaf covering the backward ear; one upright brown ear with leaf bud), leafy neck/shoulder collar, little leaf tail, brown/olive fur, cream muzzle and paws, amber eye, yellow-green chevron on thigh, single short green leaf dagger held by one forepaw. Same painterly cel shading, bold dark contour and upper-left light as the cutout.\nOUTPUT: 12 full-body poses in one precise regular 4-column by 3-row grid. 1448 by 1086 pixel sheet, 362 by 362 equal cells. Every character stays facing RIGHT. All twelve figures have the same body proportions, zoom, camera, palette and root x position within their cells. Keep each figure fully inside its own cell with clear transparent margins. No labels or drawn grid.\nRows 1 and 2: eight successive genuinely different walking poses forming a small low bunny-step loop in place. Change limb joint positions, not just the entire image. Start neutral crouch, push back one large hind foot, reach the free forepaw, recover/tuck hind feet, alternate the next hind-foot push, return to neutral. One forepaw continuously holds the short leaf dagger off the ground, the other free forepaw can step. Keep the low hare anatomy; no biped or humanoid stance. Tiny vertical bounce only, avoid a dramatic jump. Ear leaves and collar react a little to the gait. Frame 8 closely approaches frame 1. Grounded foot contact has a consistent baseline near the bottom of every cell.\nRow 3: four successive distinct reversible knockout poses. First stagger with closed eye and drooping ears; second lowers/folds foreleg; third settles onto side with folded hindlegs; fourth rests fully on its side with closed eye, drooped ears, limbs tucked, leaf collar and short dagger visible. No blood, wounds or damage. Keep the exact same character identity and scale.\nALPHA REQUIREMENT: The empty area around and BETWEEN characters must be fully transparent alpha=0. ALL character interiors fully opaque. Clean antialiased silhouette boundaries only. No partially transparent clouds, fog, smoke, dither, colored fringe, aura, particles, cast shadow, ground, background texture, gradient, paper, lighting backdrop or raster checkerboard. No red or bright outline accents. The only edges are the source character's dark contour. Use native transparent background output, not a drawn background. No text, numbers, watermark, scenery, borders or extra subjects.\n",
+        "reference": {
+          "file": "portrait",
+          "id": "characters/folife-pilot",
+          "sha256": "3096668c4de905c44e5f1d6793b9fe5683e15d96f438e0dd1ad615bc0262ef1a",
+          "version": "1.0.0"
+        }
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 291,
+      "id": "characters/folife-lifecycle@1.0.0:profile",
+      "kind": "data",
+      "module": "characters/folife-lifecycle",
+      "path": "assets/characters/folife-lifecycle/versions/1.0.0/profile.json",
+      "role": "profile",
+      "sha256": "e216d44159c9c17d5db5c12678402d4bac6b8801f77fdd43f6a5c0ca31b3625a",
+      "source": {
+        "approval": "Independent technical static review permits draft experiment only; native cadence and human aesthetic pending.",
+        "edit_history": "Exact rectangular copies and integer translations, no painting or alpha changes. See normalization.json.",
+        "generation_id": "exec-0c05ab3d-7de4-48af-9e64-1ade8605ea16",
+        "kind": "Image Gen edit of the Folife cutout",
+        "original_preserved": true,
+        "prompt": "Create a clean transparent production sprite sheet of the EXACT hare character in the attached cutout: Folife, intermediate leaf hare, NOT a baby and NOT a final evolution. Keep its exact adult-intermediate proportions, low quadrupedal body, broad muscular hindquarters, long ears (one green serrated leaf covering the backward ear; one upright brown ear with leaf bud), leafy neck/shoulder collar, little leaf tail, brown/olive fur, cream muzzle and paws, amber eye, yellow-green chevron on thigh, single short green leaf dagger held by one forepaw. Same painterly cel shading, bold dark contour and upper-left light as the cutout.\nOUTPUT: 12 full-body poses in one precise regular 4-column by 3-row grid. 1448 by 1086 pixel sheet, 362 by 362 equal cells. Every character stays facing RIGHT. All twelve figures have the same body proportions, zoom, camera, palette and root x position within their cells. Keep each figure fully inside its own cell with clear transparent margins. No labels or drawn grid.\nRows 1 and 2: eight successive genuinely different walking poses forming a small low bunny-step loop in place. Change limb joint positions, not just the entire image. Start neutral crouch, push back one large hind foot, reach the free forepaw, recover/tuck hind feet, alternate the next hind-foot push, return to neutral. One forepaw continuously holds the short leaf dagger off the ground, the other free forepaw can step. Keep the low hare anatomy; no biped or humanoid stance. Tiny vertical bounce only, avoid a dramatic jump. Ear leaves and collar react a little to the gait. Frame 8 closely approaches frame 1. Grounded foot contact has a consistent baseline near the bottom of every cell.\nRow 3: four successive distinct reversible knockout poses. First stagger with closed eye and drooping ears; second lowers/folds foreleg; third settles onto side with folded hindlegs; fourth rests fully on its side with closed eye, drooped ears, limbs tucked, leaf collar and short dagger visible. No blood, wounds or damage. Keep the exact same character identity and scale.\nALPHA REQUIREMENT: The empty area around and BETWEEN characters must be fully transparent alpha=0. ALL character interiors fully opaque. Clean antialiased silhouette boundaries only. No partially transparent clouds, fog, smoke, dither, colored fringe, aura, particles, cast shadow, ground, background texture, gradient, paper, lighting backdrop or raster checkerboard. No red or bright outline accents. The only edges are the source character's dark contour. Use native transparent background output, not a drawn background. No text, numbers, watermark, scenery, borders or extra subjects.\n",
+        "reference": {
+          "file": "portrait",
+          "id": "characters/folife-pilot",
+          "sha256": "3096668c4de905c44e5f1d6793b9fe5683e15d96f438e0dd1ad615bc0262ef1a",
+          "version": "1.0.0"
+        }
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1297652,
+      "id": "characters/folife-lifecycle@1.0.0:walk",
+      "kind": "texture",
+      "module": "characters/folife-lifecycle",
+      "path": "assets/characters/folife-lifecycle/versions/1.0.0/walk.png",
+      "role": "walk",
+      "sha256": "aca590029d49459d1ed2fe52afd9e167492b8df6874e7e45ea0c43c20a9b70c1",
+      "source": {
+        "approval": "Independent technical static review permits draft experiment only; native cadence and human aesthetic pending.",
+        "edit_history": "Exact rectangular copies and integer translations, no painting or alpha changes. See normalization.json.",
+        "generation_id": "exec-0c05ab3d-7de4-48af-9e64-1ade8605ea16",
+        "kind": "Image Gen edit of the Folife cutout",
+        "original_preserved": true,
+        "prompt": "Create a clean transparent production sprite sheet of the EXACT hare character in the attached cutout: Folife, intermediate leaf hare, NOT a baby and NOT a final evolution. Keep its exact adult-intermediate proportions, low quadrupedal body, broad muscular hindquarters, long ears (one green serrated leaf covering the backward ear; one upright brown ear with leaf bud), leafy neck/shoulder collar, little leaf tail, brown/olive fur, cream muzzle and paws, amber eye, yellow-green chevron on thigh, single short green leaf dagger held by one forepaw. Same painterly cel shading, bold dark contour and upper-left light as the cutout.\nOUTPUT: 12 full-body poses in one precise regular 4-column by 3-row grid. 1448 by 1086 pixel sheet, 362 by 362 equal cells. Every character stays facing RIGHT. All twelve figures have the same body proportions, zoom, camera, palette and root x position within their cells. Keep each figure fully inside its own cell with clear transparent margins. No labels or drawn grid.\nRows 1 and 2: eight successive genuinely different walking poses forming a small low bunny-step loop in place. Change limb joint positions, not just the entire image. Start neutral crouch, push back one large hind foot, reach the free forepaw, recover/tuck hind feet, alternate the next hind-foot push, return to neutral. One forepaw continuously holds the short leaf dagger off the ground, the other free forepaw can step. Keep the low hare anatomy; no biped or humanoid stance. Tiny vertical bounce only, avoid a dramatic jump. Ear leaves and collar react a little to the gait. Frame 8 closely approaches frame 1. Grounded foot contact has a consistent baseline near the bottom of every cell.\nRow 3: four successive distinct reversible knockout poses. First stagger with closed eye and drooping ears; second lowers/folds foreleg; third settles onto side with folded hindlegs; fourth rests fully on its side with closed eye, drooped ears, limbs tucked, leaf collar and short dagger visible. No blood, wounds or damage. Keep the exact same character identity and scale.\nALPHA REQUIREMENT: The empty area around and BETWEEN characters must be fully transparent alpha=0. ALL character interiors fully opaque. Clean antialiased silhouette boundaries only. No partially transparent clouds, fog, smoke, dither, colored fringe, aura, particles, cast shadow, ground, background texture, gradient, paper, lighting backdrop or raster checkerboard. No red or bright outline accents. The only edges are the source character's dark contour. Use native transparent background output, not a drawn background. No text, numbers, watermark, scenery, borders or extra subjects.\n",
+        "reference": {
+          "file": "portrait",
+          "id": "characters/folife-pilot",
+          "sha256": "3096668c4de905c44e5f1d6793b9fe5683e15d96f438e0dd1ad615bc0262ef1a",
+          "version": "1.0.0"
+        }
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1448,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 649,
+      "id": "characters/folife-pilot@1.0.0:authoring",
+      "kind": "data",
+      "module": "characters/folife-pilot",
+      "path": "assets/characters/folife-pilot/versions/1.0.0/authoring.json",
+      "role": "authoring",
+      "sha256": "8507d2cee2394665fc157f7a243f4ff6ea1c36ee7a1fa479cd52cdeead2d0351",
+      "source": {
+        "approval": "Reference approved by Pedro. Independent technical cutout review permits draft pilot; human aesthetic and runtime review remain pending.",
+        "generation_id": "exec-2d8f7e88-8e07-4901-85e8-552da7c1a7fb",
+        "kind": "Image Gen reference edit with own intermediate-hare anatomical tracks",
+        "original_png_preserved": true,
+        "prompt": "ROLE/PURPOSE: Extract a faithful single-character production-art candidate for the game Umbral from the attached approved four-form creature concept sheet. Use ONLY THE SECOND CREATURE FROM THE LEFT, the one labeled \"Intermediária\". This is Folife, the intermediate hare. Reproduce that exact character and exact crouched pose as a clean isolated transparent full-body cutout, enlarged with crisp faithful cel-painted detail. Do not redesign it.\nSUBJECT/LOCKS: Facing RIGHT. Compact brown/olive hare body in a low four-limbed forward crouch, large powerful folded hind legs, small cream toes/paws, cream muzzle and cheek slash, golden amber visible eye with black outline, alert determined expression. Very long actual hare ears: the rearward ear extends upper-left and carries a broad serrated green leaf blade; the other ear rises upward and ends in a small folded pointed green leaf bud. A large layered sharp green leaf collar/mantle surrounds the neck and shoulders. Small pointed green leaf tail at the back. A single pale yellow-green angular chevron marking on the outer visible haunch. The nearer forepaw, held at chest height, grips the thin brown/green stem handle of one short leaf-blade dagger: grip extends upper-right, green blade points diagonally down-left toward the planted forepaw. Keep the reference's paws and grip, not a humanoid hand. Keep ALL four limbs, leaf collar, short dagger, long ears, fur colors, outline style and proportions faithful to this second source creature.\nVIEW/ART DIRECTION: Same side-three-quarter view and camera as that second creature, warm olive-brown fur, cream muzzle and toes, layered saturated fern/olive leaves with yellow-green midribs, confident dark contour, stylized hand-painted cel shading, upper-left soft lighting, clear small-scale silhouette. It is the intermediate animal hare, with grounded quadruped anatomy. Preserve its exact reference design.\nTECHNICAL OUTPUT: One isolated full-body Folife only, large square canvas, native TRUE transparent alpha background; generous clear transparent margins around ears, tail, toes and dagger. No ground, floor, contact shadow, background color, parchment, scenery, props other than the held reference leaf dagger, text, labels, signature, border or UI. Do not include any of the other three creatures. Do not turn this into the small upright initial creature, a biped swordsman, or the long-bodied final form. No extra floating leaves.\n",
+        "references": [
+          {
+            "file_name": "lebre-linhagem-v11.png",
+            "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+            "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80",
+            "target": "Second form only"
+          }
+        ]
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1154781,
+      "id": "characters/folife-pilot@1.0.0:motion",
+      "kind": "data",
+      "module": "characters/folife-pilot",
+      "path": "assets/characters/folife-pilot/versions/1.0.0/motion.json",
+      "role": "motion",
+      "sha256": "0b5f12cb8f210a2e32e49d4a9b404d528ecc328378220459940d9404b46a162b",
+      "source": {
+        "approval": "Reference approved by Pedro. Independent technical cutout review permits draft pilot; human aesthetic and runtime review remain pending.",
+        "generation_id": "exec-2d8f7e88-8e07-4901-85e8-552da7c1a7fb",
+        "kind": "Image Gen reference edit with own intermediate-hare anatomical tracks",
+        "original_png_preserved": true,
+        "prompt": "ROLE/PURPOSE: Extract a faithful single-character production-art candidate for the game Umbral from the attached approved four-form creature concept sheet. Use ONLY THE SECOND CREATURE FROM THE LEFT, the one labeled \"Intermediária\". This is Folife, the intermediate hare. Reproduce that exact character and exact crouched pose as a clean isolated transparent full-body cutout, enlarged with crisp faithful cel-painted detail. Do not redesign it.\nSUBJECT/LOCKS: Facing RIGHT. Compact brown/olive hare body in a low four-limbed forward crouch, large powerful folded hind legs, small cream toes/paws, cream muzzle and cheek slash, golden amber visible eye with black outline, alert determined expression. Very long actual hare ears: the rearward ear extends upper-left and carries a broad serrated green leaf blade; the other ear rises upward and ends in a small folded pointed green leaf bud. A large layered sharp green leaf collar/mantle surrounds the neck and shoulders. Small pointed green leaf tail at the back. A single pale yellow-green angular chevron marking on the outer visible haunch. The nearer forepaw, held at chest height, grips the thin brown/green stem handle of one short leaf-blade dagger: grip extends upper-right, green blade points diagonally down-left toward the planted forepaw. Keep the reference's paws and grip, not a humanoid hand. Keep ALL four limbs, leaf collar, short dagger, long ears, fur colors, outline style and proportions faithful to this second source creature.\nVIEW/ART DIRECTION: Same side-three-quarter view and camera as that second creature, warm olive-brown fur, cream muzzle and toes, layered saturated fern/olive leaves with yellow-green midribs, confident dark contour, stylized hand-painted cel shading, upper-left soft lighting, clear small-scale silhouette. It is the intermediate animal hare, with grounded quadruped anatomy. Preserve its exact reference design.\nTECHNICAL OUTPUT: One isolated full-body Folife only, large square canvas, native TRUE transparent alpha background; generous clear transparent margins around ears, tail, toes and dagger. No ground, floor, contact shadow, background color, parchment, scenery, props other than the held reference leaf dagger, text, labels, signature, border or UI. Do not include any of the other three creatures. Do not turn this into the small upright initial creature, a biped swordsman, or the long-bodied final form. No extra floating leaves.\n",
+        "references": [
+          {
+            "file_name": "lebre-linhagem-v11.png",
+            "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+            "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80",
+            "target": "Second form only"
+          }
+        ]
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1303516,
+      "id": "characters/folife-pilot@1.0.0:portrait",
+      "kind": "texture",
+      "module": "characters/folife-pilot",
+      "path": "assets/characters/folife-pilot/versions/1.0.0/folife.png",
+      "role": "portrait",
+      "sha256": "3096668c4de905c44e5f1d6793b9fe5683e15d96f438e0dd1ad615bc0262ef1a",
+      "source": {
+        "approval": "Reference approved by Pedro. Independent technical cutout review permits draft pilot; human aesthetic and runtime review remain pending.",
+        "generation_id": "exec-2d8f7e88-8e07-4901-85e8-552da7c1a7fb",
+        "kind": "Image Gen reference edit with own intermediate-hare anatomical tracks",
+        "original_png_preserved": true,
+        "prompt": "ROLE/PURPOSE: Extract a faithful single-character production-art candidate for the game Umbral from the attached approved four-form creature concept sheet. Use ONLY THE SECOND CREATURE FROM THE LEFT, the one labeled \"Intermediária\". This is Folife, the intermediate hare. Reproduce that exact character and exact crouched pose as a clean isolated transparent full-body cutout, enlarged with crisp faithful cel-painted detail. Do not redesign it.\nSUBJECT/LOCKS: Facing RIGHT. Compact brown/olive hare body in a low four-limbed forward crouch, large powerful folded hind legs, small cream toes/paws, cream muzzle and cheek slash, golden amber visible eye with black outline, alert determined expression. Very long actual hare ears: the rearward ear extends upper-left and carries a broad serrated green leaf blade; the other ear rises upward and ends in a small folded pointed green leaf bud. A large layered sharp green leaf collar/mantle surrounds the neck and shoulders. Small pointed green leaf tail at the back. A single pale yellow-green angular chevron marking on the outer visible haunch. The nearer forepaw, held at chest height, grips the thin brown/green stem handle of one short leaf-blade dagger: grip extends upper-right, green blade points diagonally down-left toward the planted forepaw. Keep the reference's paws and grip, not a humanoid hand. Keep ALL four limbs, leaf collar, short dagger, long ears, fur colors, outline style and proportions faithful to this second source creature.\nVIEW/ART DIRECTION: Same side-three-quarter view and camera as that second creature, warm olive-brown fur, cream muzzle and toes, layered saturated fern/olive leaves with yellow-green midribs, confident dark contour, stylized hand-painted cel shading, upper-left soft lighting, clear small-scale silhouette. It is the intermediate animal hare, with grounded quadruped anatomy. Preserve its exact reference design.\nTECHNICAL OUTPUT: One isolated full-body Folife only, large square canvas, native TRUE transparent alpha background; generous clear transparent margins around ears, tail, toes and dagger. No ground, floor, contact shadow, background color, parchment, scenery, props other than the held reference leaf dagger, text, labels, signature, border or UI. Do not include any of the other three creatures. Do not turn this into the small upright initial creature, a biped swordsman, or the long-bodied final form. No extra floating leaves.\n",
+        "references": [
+          {
+            "file_name": "lebre-linhagem-v11.png",
+            "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+            "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80",
+            "target": "Second form only"
+          }
+        ]
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
       "bytes": 1416,
       "id": "characters/owl@1.0.0:portrait",
       "kind": "texture",

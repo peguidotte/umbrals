@@ -1,0 +1,423 @@
+{
+  "method": "Own-body rectangular crops (major alpha>=128 component bounding box plus 3px); then uniform +5px X and per-frame integer floor alignment at y340. No alpha edits or resampling. Original caBX preserved in original.png. Derivative PNGs are technical copies without new provenance metadata.",
+  "cell_size": [
+    362,
+    362
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "source_major_component_bbox": [
+        25,
+        13,
+        340,
+        336
+      ],
+      "source_crop_rect": [
+        22,
+        10,
+        343,
+        339
+      ],
+      "translation_relative_to_original_grid": [
+        5,
+        4
+      ],
+      "destination_local": [
+        27,
+        14
+      ],
+      "alpha_ge_128_pixels_before_after": [
+        61919,
+        61919
+      ],
+      "normalized_alpha_ge_128_bbox": [
+        30,
+        17,
+        345,
+        340
+      ],
+      "creative_edit": "None. Exact rectangular source pixels copied; no alpha changes, resizing, masking or painting."
+    },
+    {
+      "frame": 1,
+      "source_major_component_bbox": [
+        362,
+        13,
+        708,
+        336
+      ],
+      "source_crop_rect": [
+        359,
+        10,
+        711,
+        339
+      ],
+      "translation_relative_to_original_grid": [
+        5,
+        4
+      ],
+      "destination_local": [
+        2,
+        14
+      ],
+      "alpha_ge_128_pixels_before_after": [
+        60600,
+        60600
+      ],
+      "normalized_alpha_ge_128_bbox": [
+        5,
+        17,
+        351,
+        340
+      ],
+      "creative_edit": "None. Exact rectangular source pixels copied; no alpha changes, resizing, masking or painting."
+    },
+    {
+      "frame": 2,
+      "source_major_component_bbox": [
+        728,
+        12,
+        1073,
+        333
+      ],
+      "source_crop_rect": [
+        725,
+        9,
+        1076,
+        336
+      ],
+      "translation_relative_to_original_grid": [
+        5,
+        7
+      ],
+      "destination_local": [
+        6,
+        16
+      ],
+      "alpha_ge_128_pixels_before_after": [
+        58807,
+        58807
+      ],
+      "normalized_alpha_ge_128_bbox": [
+        9,
+        19,
+        354,
+        340
+      ],
+      "creative_edit": "None. Exact rectangular source pixels copied; no alpha changes, resizing, masking or painting."
+    },
+    {
+      "frame": 3,
+      "source_major_component_bbox": [
+        1084,
+        13,
+        1439,
+        336
+      ],
+      "source_crop_rect": [
+        1081,
+        10,
+        1442,
+        339
+      ],
+      "translation_relative_to_original_grid": [
+        5,
+        4
+      ],
+      "destination_local": [
+        0,
+        14
+      ],
+      "alpha_ge_128_pixels_before_after": [
+        59612,
+        59612
+      ],
+      "normalized_alpha_ge_128_bbox": [
+        3,
+        17,
+        358,
+        340
+      ],
+      "creative_edit": "None. Exact rectangular source pixels copied; no alpha changes, resizing, masking or painting."
+    },
+    {
+      "frame": 4,
+      "source_major_component_bbox": [
+        28,
+        375,
+        351,
+        698
+      ],
+      "source_crop_rect": [
+        25,
+        372,
+        354,
+        701
+      ],
+      "translation_relative_to_original_grid": [
+        5,
+        4
+      ],
+      "destination_local": [
+        30,
+        14
+      ],
+      "alpha_ge_128_pixels_before_after": [
+        58702,
+        58702
+      ],
+      "normalized_alpha_ge_128_bbox": [
+        33,
+        17,
+        356,
+        340
+      ],
+      "creative_edit": "None. Exact rectangular source pixels copied; no alpha changes, resizing, masking or painting."
+    },
+    {
+      "frame": 5,
+      "source_major_component_bbox": [
+        398,
+        375,
+        709,
+        698
+      ],
+      "source_crop_rect": [
+        395,
+        372,
+        712,
+        701
+      ],
+      "translation_relative_to_original_grid": [
+        5,
+        4
+      ],
+      "destination_local": [
+        38,
+        14
+      ],
+      "alpha_ge_128_pixels_before_after": [
+        57818,
+        57818
+      ],
+      "normalized_alpha_ge_128_bbox": [
+        41,
+        17,
+        352,
+        340
+      ],
+      "creative_edit": "None. Exact rectangular source pixels copied; no alpha changes, resizing, masking or painting."
+    },
+    {
+      "frame": 6,
+      "source_major_component_bbox": [
+        756,
+        376,
+        1069,
+        698
+      ],
+      "source_crop_rect": [
+        753,
+        373,
+        1072,
+        701
+      ],
+      "translation_relative_to_original_grid": [
+        5,
+        4
+      ],
+      "destination_local": [
+        34,
+        15
+      ],
+      "alpha_ge_128_pixels_before_after": [
+        59055,
+        59055
+      ],
+      "normalized_alpha_ge_128_bbox": [
+        37,
+        18,
+        350,
+        340
+      ],
+      "creative_edit": "None. Exact rectangular source pixels copied; no alpha changes, resizing, masking or painting."
+    },
+    {
+      "frame": 7,
+      "source_major_component_bbox": [
+        1115,
+        375,
+        1428,
+        698
+      ],
+      "source_crop_rect": [
+        1112,
+        372,
+        1431,
+        701
+      ],
+      "translation_relative_to_original_grid": [
+        5,
+        4
+      ],
+      "destination_local": [
+        31,
+        14
+      ],
+      "alpha_ge_128_pixels_before_after": [
+        61522,
+        61522
+      ],
+      "normalized_alpha_ge_128_bbox": [
+        34,
+        17,
+        347,
+        340
+      ],
+      "creative_edit": "None. Exact rectangular source pixels copied; no alpha changes, resizing, masking or painting."
+    },
+    {
+      "frame": 8,
+      "source_major_component_bbox": [
+        18,
+        761,
+        338,
+        1060
+      ],
+      "source_crop_rect": [
+        15,
+        758,
+        341,
+        1063
+      ],
+      "translation_relative_to_original_grid": [
+        5,
+        4
+      ],
+      "destination_local": [
+        20,
+        38
+      ],
+      "alpha_ge_128_pixels_before_after": [
+        62232,
+        62232
+      ],
+      "normalized_alpha_ge_128_bbox": [
+        23,
+        41,
+        343,
+        340
+      ],
+      "creative_edit": "None. Exact rectangular source pixels copied; no alpha changes, resizing, masking or painting."
+    },
+    {
+      "frame": 9,
+      "source_major_component_bbox": [
+        377,
+        781,
+        703,
+        1060
+      ],
+      "source_crop_rect": [
+        374,
+        778,
+        706,
+        1063
+      ],
+      "translation_relative_to_original_grid": [
+        5,
+        4
+      ],
+      "destination_local": [
+        17,
+        58
+      ],
+      "alpha_ge_128_pixels_before_after": [
+        61314,
+        61314
+      ],
+      "normalized_alpha_ge_128_bbox": [
+        20,
+        61,
+        346,
+        340
+      ],
+      "creative_edit": "None. Exact rectangular source pixels copied; no alpha changes, resizing, masking or painting."
+    },
+    {
+      "frame": 10,
+      "source_major_component_bbox": [
+        731,
+        813,
+        1065,
+        1054
+      ],
+      "source_crop_rect": [
+        728,
+        810,
+        1068,
+        1057
+      ],
+      "translation_relative_to_original_grid": [
+        5,
+        10
+      ],
+      "destination_local": [
+        9,
+        96
+      ],
+      "alpha_ge_128_pixels_before_after": [
+        58222,
+        58222
+      ],
+      "normalized_alpha_ge_128_bbox": [
+        12,
+        99,
+        346,
+        340
+      ],
+      "creative_edit": "None. Exact rectangular source pixels copied; no alpha changes, resizing, masking or painting."
+    },
+    {
+      "frame": 11,
+      "source_major_component_bbox": [
+        1084,
+        859,
+        1433,
+        1054
+      ],
+      "source_crop_rect": [
+        1081,
+        856,
+        1436,
+        1057
+      ],
+      "translation_relative_to_original_grid": [
+        5,
+        10
+      ],
+      "destination_local": [
+        0,
+        142
+      ],
+      "alpha_ge_128_pixels_before_after": [
+        50660,
+        50660
+      ],
+      "normalized_alpha_ge_128_bbox": [
+        3,
+        145,
+        352,
+        340
+      ],
+      "creative_edit": "None. Exact rectangular source pixels copied; no alpha changes, resizing, masking or painting."
+    }
+  ],
+  "scope": "STAGING ONLY; no asset manifest, shared pin, profile or source edited",
+  "warnings": [
+    "Candidate requires independent visual review and actual motion review",
+    "Opacity<=1 RGB residue can appear bright in some raw-image viewers; correct RGBA composites show no bright red fringe",
+    "No engine proof of stride, cadence, contacts or volume"
+  ]
+}

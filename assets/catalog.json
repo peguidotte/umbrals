@@ -429,6 +429,24 @@
         }
       }
     },
+    "characters/folife-lifecycle": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/folife-lifecycle/versions/1.0.0/manifest.json",
+          "sha256": "8b8d45f6835e92950f7b573e9f1e081fd851e86aea01c86ab89492b788509d08",
+          "status": "production"
+        }
+      }
+    },
+    "characters/folife-pilot": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/folife-pilot/versions/1.0.0/manifest.json",
+          "sha256": "4258d1b40a0c6d019df3740859f8c6f6284d38d1490250838216e0d1b0e8b3a2",
+          "status": "production"
+        }
+      }
+    },
     "characters/owl": {
       "versions": {
         "1.0.0": {

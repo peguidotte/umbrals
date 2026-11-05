@@ -86,7 +86,9 @@ assert ou clique foi relaxado.
 
 Faltam revisão estética e transições mais próximas do idle, verso desenhado,
 ataques de folhas-lâminas próprios e desempenho comprovado em hardware alvo.
-Folife tem recorte e estudo de poses em staging; um tratamento de alpha gerou
-franja vermelha e foi rejeitado. Ela ainda usa a arte antiga no jogo. Foslash
+Folife tinha recorte e estudo de poses em staging. O diagnóstico inicial de
+franja vermelha foi corrigido na [fatia seguinte](folife-pilot-v05-art-02h.md):
+o filtro contava marrom legítimo. Na entrega desta fatia ela ainda usa a arte
+antiga no jogo. Foslash
 e Folivel continuam referências/conceitos aprovados, sem forma final jogável
 ou regra definitiva inventada por esta entrega.

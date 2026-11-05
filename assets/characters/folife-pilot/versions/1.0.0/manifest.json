@@ -1,0 +1,75 @@
+{
+  "dependencies": [],
+  "description": "Folife intermediate hare with own anatomy; selected only in draft for runtime review.",
+  "files": {
+    "authoring": {
+      "bytes": 649,
+      "kind": "data",
+      "path": "authoring.json",
+      "sha256": "8507d2cee2394665fc157f7a243f4ff6ea1c36ee7a1fa479cd52cdeead2d0351"
+    },
+    "motion": {
+      "bytes": 1154781,
+      "kind": "data",
+      "path": "motion.json",
+      "sha256": "0b5f12cb8f210a2e32e49d4a9b404d528ecc328378220459940d9404b46a162b"
+    },
+    "portrait": {
+      "bytes": 1303516,
+      "kind": "texture",
+      "path": "folife.png",
+      "sha256": "3096668c4de905c44e5f1d6793b9fe5683e15d96f438e0dd1ad615bc0262ef1a",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/folife-pilot",
+  "metadata": {
+    "battle_profile": {
+      "grounding": {
+        "foot": [
+          500,
+          1174
+        ],
+        "visible_top": 55,
+        "width": 850
+      },
+      "motion_role": "motion"
+    },
+    "limits": [
+      "No dedicated leaf-blade attack effects",
+      "Existing mechanical identity and powers unchanged",
+      "Chevron/volume/expression awaiting human aesthetic review"
+    ],
+    "production_ready": false,
+    "review_record": "docs/folife-independent-review.md",
+    "review_sha256": "76fbda7fde7008a801a72ed1448dccdacf1ee031c06e359c28954d47b43beb00",
+    "sides": "Right-facing source mirrored; no drawn opposite view",
+    "visual_review": "Independent static and native technical GO for draft; human aesthetic and hardware approval pending"
+  },
+  "provenance": {
+    "approval": "Reference approved by Pedro. Independent technical cutout review permits draft pilot; human aesthetic and runtime review remain pending.",
+    "generation_id": "exec-2d8f7e88-8e07-4901-85e8-552da7c1a7fb",
+    "kind": "Image Gen reference edit with own intermediate-hare anatomical tracks",
+    "original_png_preserved": true,
+    "prompt": "ROLE/PURPOSE: Extract a faithful single-character production-art candidate for the game Umbral from the attached approved four-form creature concept sheet. Use ONLY THE SECOND CREATURE FROM THE LEFT, the one labeled \"Intermediária\". This is Folife, the intermediate hare. Reproduce that exact character and exact crouched pose as a clean isolated transparent full-body cutout, enlarged with crisp faithful cel-painted detail. Do not redesign it.\nSUBJECT/LOCKS: Facing RIGHT. Compact brown/olive hare body in a low four-limbed forward crouch, large powerful folded hind legs, small cream toes/paws, cream muzzle and cheek slash, golden amber visible eye with black outline, alert determined expression. Very long actual hare ears: the rearward ear extends upper-left and carries a broad serrated green leaf blade; the other ear rises upward and ends in a small folded pointed green leaf bud. A large layered sharp green leaf collar/mantle surrounds the neck and shoulders. Small pointed green leaf tail at the back. A single pale yellow-green angular chevron marking on the outer visible haunch. The nearer forepaw, held at chest height, grips the thin brown/green stem handle of one short leaf-blade dagger: grip extends upper-right, green blade points diagonally down-left toward the planted forepaw. Keep the reference's paws and grip, not a humanoid hand. Keep ALL four limbs, leaf collar, short dagger, long ears, fur colors, outline style and proportions faithful to this second source creature.\nVIEW/ART DIRECTION: Same side-three-quarter view and camera as that second creature, warm olive-brown fur, cream muzzle and toes, layered saturated fern/olive leaves with yellow-green midribs, confident dark contour, stylized hand-painted cel shading, upper-left soft lighting, clear small-scale silhouette. It is the intermediate animal hare, with grounded quadruped anatomy. Preserve its exact reference design.\nTECHNICAL OUTPUT: One isolated full-body Folife only, large square canvas, native TRUE transparent alpha background; generous clear transparent margins around ears, tail, toes and dagger. No ground, floor, contact shadow, background color, parchment, scenery, props other than the held reference leaf dagger, text, labels, signature, border or UI. Do not include any of the other three creatures. Do not turn this into the small upright initial creature, a biped swordsman, or the long-bodied final form. No extra floating leaves.\n",
+    "references": [
+      {
+        "file_name": "lebre-linhagem-v11.png",
+        "library_file_id": "libfile_a9b538efea20819186288121735d1a5c",
+        "sha256": "be6b64e6e523d44612f4c34d0d853c2edc0cd8ebad3f037a17863156c52e9d80",
+        "target": "Second form only"
+      }
+    ]
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

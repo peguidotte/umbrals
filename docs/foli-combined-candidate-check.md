@@ -37,3 +37,19 @@ Relatório em `artifacts/foli-combined-candidate-review/`. Esses resultados
 não substituem a aceitação integral da combinação nem revisão visual conjunta.
 Os bloqueios estéticos de Brasa e da candidata documentados no #15 continuam
 abertos; os assets antigos não receberam aprovação nova por este teste.
+
+## Acréscimo de Folife
+
+A mesma branch combinou também `b708c91` (#21), sem conflitos adicionais.
+Os índices foram regenerados preservando os pins de Foli, Folife, Brasa e
+casa. O alvo combinado de movimento passou 144 checks, zero falhas, em
+45,082 s, incluindo os dois ciclos das lebres e os casos de Brasa. Assets,
+catálogo de assets e save também passaram. Fontes antes/depois iguais;
+cobertura explicitamente focada. Evidência:
+`artifacts/harness/folife-combined-candidate-20261105T044927072747Z-3a2bbb/`.
+
+Não houve nova aceitação integral ou captura visual conjunta. A revisão
+individual de Folife não encerra os bloqueios estéticos antigos da candidata.
+O patch proposto para selecionar o mesmo Chromium provisionado na coleta e
+nos launches do CI passou `git apply --check` nesta combinação, mas não foi
+aplicado. O erro Mixed tool versions permanece bloqueio separado.
