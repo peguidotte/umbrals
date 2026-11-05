@@ -347,6 +347,29 @@
         }
       }
     },
+    "characters/brasa-lifecycle": {
+      "versions": {
+        "0.2.0": {
+          "manifest": "assets/characters/brasa-lifecycle/versions/0.2.0/manifest.json",
+          "sha256": "fd09d3093f1a2b6d30f7c4f5601884e7fcba459f190bb0422ed865ffeca17232",
+          "status": "prototype"
+        },
+        "1.0.0": {
+          "manifest": "assets/characters/brasa-lifecycle/versions/1.0.0/manifest.json",
+          "sha256": "3d4c51893696b81b988cb2ca0304dde735ae2d629e964befc966a3d7f6744b23",
+          "status": "production"
+        }
+      }
+    },
+    "characters/brasa-pilot": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/characters/brasa-pilot/versions/0.1.0/manifest.json",
+          "sha256": "f43789c35ddc49e2ed489570a322ec859de2139ac22b135635480387526afe13",
+          "status": "prototype"
+        }
+      }
+    },
     "characters/demo-acrobat": {
       "versions": {
         "1.0.0": {

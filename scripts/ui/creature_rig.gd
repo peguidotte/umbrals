@@ -1,6 +1,7 @@
 extends Node2D
 ## One textured mesh per creature. The same deformation projects visible sockets.
 const Motion = preload("res://scripts/ui/battle_motion.gd")
+const Lifecycle = preload("res://scripts/ui/creature_lifecycle.gd")
 const GRID: int = 14
 const ANGLES: Dictionary = {"head": 8, "tail": 9, "fore": 10, "hind": 11, "crest": 12, "ear": 13, "jaw": 14, "wing": 15, "feeler": 16, "bough": 17, "fin": 18}
 var form_id: String = ""
@@ -26,6 +27,7 @@ var indices: PackedInt32Array
 var accumulator: float = 0.0
 var reaction_weight: float = 1.0
 var jump_scale: float = 1.0
+var lifecycle: Node2D
 
 func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2, mirror: bool) -> void:
 	var changed: bool = image != source or id != form_id
@@ -35,6 +37,10 @@ func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2
 	display_size = dimensions
 	foot = pivot / dimensions
 	flipped = mirror
+	if not is_instance_valid(lifecycle):
+		lifecycle = Lifecycle.new()
+		add_child(lifecycle)
+	lifecycle.configure(id, dimensions, pivot, mirror)
 	texture = image.atlas if image is AtlasTexture else image
 	if changed:
 		reset()
@@ -42,6 +48,9 @@ func configure(image: Texture2D, id: String, dimensions: Vector2, pivot: Vector2
 	_refresh()
 
 func reset() -> void:
+	if is_instance_valid(lifecycle):
+		lifecycle.cancel_transient()
+		lifecycle.advance(0, paused, reduced_motion)
 	mode = "states"
 	clip = 0
 	elapsed = 0
@@ -52,6 +61,7 @@ func reset() -> void:
 	pose = Motion.neutral()
 
 func seek_cast(index: int, time: float, world_dash: Vector2) -> void:
+	if is_instance_valid(lifecycle): lifecycle.cancel_transient()
 	managed = true
 	mode = "attacks"
 	clip = index
@@ -61,6 +71,7 @@ func seek_cast(index: int, time: float, world_dash: Vector2) -> void:
 	_refresh()
 
 func seek_reaction(index: int, time: float) -> void:
+	if is_instance_valid(lifecycle): lifecycle.cancel_transient()
 	managed = true
 	mode = "reactions"
 	clip = index
@@ -69,6 +80,7 @@ func seek_reaction(index: int, time: float) -> void:
 	_refresh()
 
 func play_state(state: int) -> void:
+	if is_instance_valid(lifecycle): lifecycle.cancel_entry()
 	if reduced_motion:
 		reset()
 		_refresh()
@@ -80,7 +92,21 @@ func play_state(state: int) -> void:
 	dash = Vector2.ZERO
 	_refresh()
 
+func enter_field() -> void:
+	if not reduced_motion and is_instance_valid(lifecycle): lifecycle.enter()
+	queue_redraw()
+
+func set_incapacitated(value: bool, animate: bool = true) -> void:
+	if is_instance_valid(lifecycle):
+		lifecycle.set_incapacitated(value, animate and not reduced_motion)
+		lifecycle.advance(0, paused, reduced_motion)
+	queue_redraw()
+
 func _process(delta: float) -> void:
+	if is_instance_valid(lifecycle):
+		var was_active: bool = lifecycle.active()
+		lifecycle.advance(delta, paused, reduced_motion)
+		if was_active or lifecycle.active(): queue_redraw()
 	if source == null or paused or managed: return
 	if reduced_motion:
 		if mode != "states" or clip != 0: reset()
@@ -180,7 +206,10 @@ func _refresh() -> void:
 	queue_redraw()
 
 func _draw() -> void:
-	if mesh.get_surface_count() > 0: draw_mesh(mesh, texture)
+	var weight: float = lifecycle.mesh_weight() if is_instance_valid(lifecycle) else 1.0
+	if weight <= 0: return
+	if mesh.get_surface_count() > 0: draw_mesh(mesh, texture, Transform2D.IDENTITY, Color(1, 1, 1, weight))
+	if is_instance_valid(lifecycle) and lifecycle.active(): return
 	if reduced_motion or pose.is_empty() or not definition.has("anatomy"): return
 	var anatomy: Dictionary = definition.anatomy
 	var unit: float = maxf(display_size.x, display_size.y) / 166.0
