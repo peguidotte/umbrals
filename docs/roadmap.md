@@ -1419,3 +1419,19 @@ coordenadas antes do layout final da Nascente. O diagnóstico Web agora aguarda
 o frame desenhado, com regressão de reconstrução do rascunho por inputs reais.
 A tentativa completa anterior foi preservada e não é aceite; a fonte final
 recebe uma nova execução integral. Regras, saves, timeouts e baseline não mudam.
+
+### V05-ART-08B — comparação experimental de Pietro na casa real
+
+Branch separada sobre `60b4e30`: boot opcional instancia o jogo e a casa atuais,
+compara o ator de produção e Pietro pixelado 0.2.2 na mesma posição/câmera e usa
+Brasa vivo do runtime no mesmo piso. Sem substituir a casa, promover assets ou
+alterar scripts/contratos de produção. Velocidade normal preservada; opção lenta
+explícita permite examinar a passada curta. Cadência alta em velocidade normal,
+botas rígidas e poses ausentes de escada/despertar continuam limites abertos.
+[Escopo, reprodução e validação](pietro-house-experiment-v05.md). Candidato para
+revisão visual; sem aprovação artística ou mudança da versão do produto.
+
+Evidência local do experimento: 12 verificações próprias, 13 do rig, 79 da casa,
+556 de catálogo, integridade de 99 releases/354 arquivos e arquitetura passaram;
+14 Web com inputs reais e vídeo A/B. A velocidade normal evidencia a cadência
+alta; a opção lenta permanece identificada. Revisão de Pedro continua aberta.

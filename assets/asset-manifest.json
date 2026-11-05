@@ -8779,6 +8779,198 @@
       "version": "2.0.0"
     },
     {
+      "bytes": 2567,
+      "id": "characters/pietro-pixel-pilot@0.1.0:rig",
+      "kind": "data",
+      "module": "characters/pietro-pixel-pilot",
+      "path": "assets/characters/pietro-pixel-pilot/versions/0.1.0/rig.json",
+      "role": "rig",
+      "sha256": "a1df80ef8651dbdc1f2df85eec0f80270f41e248cc3e9938715181c670803b89",
+      "source": {
+        "approval_scope": "Pedro approved the isolated identity. Runtime composition and gait remain candidates.",
+        "edit_history": "Original approved RGBA PNG byte-identical. Source polygons and bone landmarks are separate JSON; no regenerated sprite frames.",
+        "kind": "project-approved generated reference",
+        "recorded_date_utc": "2026-11-05",
+        "source_name": "Pietro-autosprite-source.png",
+        "source_sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 546680,
+      "id": "characters/pietro-pixel-pilot@0.1.0:texture",
+      "kind": "texture",
+      "module": "characters/pietro-pixel-pilot",
+      "path": "assets/characters/pietro-pixel-pilot/versions/0.1.0/source.png",
+      "role": "texture",
+      "sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa",
+      "source": {
+        "approval_scope": "Pedro approved the isolated identity. Runtime composition and gait remain candidates.",
+        "edit_history": "Original approved RGBA PNG byte-identical. Source polygons and bone landmarks are separate JSON; no regenerated sprite frames.",
+        "kind": "project-approved generated reference",
+        "recorded_date_utc": "2026-11-05",
+        "source_name": "Pietro-autosprite-source.png",
+        "source_sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 4440,
+      "id": "characters/pietro-pixel-pilot@0.2.0:rig",
+      "kind": "data",
+      "module": "characters/pietro-pixel-pilot",
+      "path": "assets/characters/pietro-pixel-pilot/versions/0.2.0/rig.json",
+      "role": "rig",
+      "sha256": "6db91e8f4e75e03d8399a3ba365b6b850329a59cd17608594a86f199edeb279c",
+      "source": {
+        "approval_scope": "Pedro approved the isolated identity. Runtime composition and gait remain candidates.",
+        "edit_history": "Approved original RGBA source copied byte-identically from 0.1.0. New JSON and source-space rig controls; no regenerated image or new sprite sheet.",
+        "kind": "project-approved generated reference",
+        "recorded_date_utc": "2026-11-05",
+        "source_name": "Pietro-autosprite-source.png",
+        "source_sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 546680,
+      "id": "characters/pietro-pixel-pilot@0.2.0:texture",
+      "kind": "texture",
+      "module": "characters/pietro-pixel-pilot",
+      "path": "assets/characters/pietro-pixel-pilot/versions/0.2.0/source.png",
+      "role": "texture",
+      "sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa",
+      "source": {
+        "approval_scope": "Pedro approved the isolated identity. Runtime composition and gait remain candidates.",
+        "edit_history": "Approved original RGBA source copied byte-identically from 0.1.0. New JSON and source-space rig controls; no regenerated image or new sprite sheet.",
+        "kind": "project-approved generated reference",
+        "recorded_date_utc": "2026-11-05",
+        "source_name": "Pietro-autosprite-source.png",
+        "source_sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 4718,
+      "id": "characters/pietro-pixel-pilot@0.2.1:rig",
+      "kind": "data",
+      "module": "characters/pietro-pixel-pilot",
+      "path": "assets/characters/pietro-pixel-pilot/versions/0.2.1/rig.json",
+      "role": "rig",
+      "sha256": "5af67e3d179d751654337755d3080a12cd6a362418dedd04be4eff0042d00631",
+      "source": {
+        "approval_scope": "Pedro approved the isolated identity. Runtime composition and gait remain candidates.",
+        "edit_history": "Approved original RGBA copied byte-identically. New JSON waist attachment controls; no image generation.",
+        "kind": "project-approved generated reference",
+        "recorded_date_utc": "2026-11-05",
+        "source_name": "Pietro-autosprite-source.png",
+        "source_sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.2.1"
+    },
+    {
+      "bytes": 546680,
+      "id": "characters/pietro-pixel-pilot@0.2.1:texture",
+      "kind": "texture",
+      "module": "characters/pietro-pixel-pilot",
+      "path": "assets/characters/pietro-pixel-pilot/versions/0.2.1/source.png",
+      "role": "texture",
+      "sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa",
+      "source": {
+        "approval_scope": "Pedro approved the isolated identity. Runtime composition and gait remain candidates.",
+        "edit_history": "Approved original RGBA copied byte-identically. New JSON waist attachment controls; no image generation.",
+        "kind": "project-approved generated reference",
+        "recorded_date_utc": "2026-11-05",
+        "source_name": "Pietro-autosprite-source.png",
+        "source_sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.1"
+    },
+    {
+      "bytes": 4824,
+      "id": "characters/pietro-pixel-pilot@0.2.2:rig",
+      "kind": "data",
+      "module": "characters/pietro-pixel-pilot",
+      "path": "assets/characters/pietro-pixel-pilot/versions/0.2.2/rig.json",
+      "role": "rig",
+      "sha256": "f7994e1cfddabb34171244d964d928e3ea5b959644c8de81a8765dd04c604089",
+      "source": {
+        "approval_scope": "Pedro approved the isolated identity. Runtime composition and gait remain candidates.",
+        "edit_history": "Approved original RGBA copied byte-identically. Broader JSON deformation bands and orientation regression; no regenerated image.",
+        "kind": "project-approved generated reference",
+        "recorded_date_utc": "2026-11-05",
+        "source_name": "Pietro-autosprite-source.png",
+        "source_sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.2.2"
+    },
+    {
+      "bytes": 546680,
+      "id": "characters/pietro-pixel-pilot@0.2.2:texture",
+      "kind": "texture",
+      "module": "characters/pietro-pixel-pilot",
+      "path": "assets/characters/pietro-pixel-pilot/versions/0.2.2/source.png",
+      "role": "texture",
+      "sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa",
+      "source": {
+        "approval_scope": "Pedro approved the isolated identity. Runtime composition and gait remain candidates.",
+        "edit_history": "Approved original RGBA copied byte-identically. Broader JSON deformation bands and orientation regression; no regenerated image.",
+        "kind": "project-approved generated reference",
+        "recorded_date_utc": "2026-11-05",
+        "source_name": "Pietro-autosprite-source.png",
+        "source_sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.2"
+    },
+    {
       "bytes": 1246,
       "id": "characters/refuge-traveler@1.0.0:poses",
       "kind": "data",
@@ -9602,6 +9794,66 @@
         "mode": "RGB"
       },
       "version": "1.0.0"
+    },
+    {
+      "bytes": 1757500,
+      "id": "world/pietro-pixel-study@0.1.0:approved-scene",
+      "kind": "review",
+      "module": "world/pietro-pixel-study",
+      "path": "assets/world/pietro-pixel-study/versions/0.1.0/review/approved-scene.png",
+      "role": "approved-scene",
+      "sha256": "b75d14efdc9e49d3f6949a1c9020315976ebfe649e66260762c859d651ca74ce",
+      "source": {
+        "approval_scope": "Original concept direction approved by Pedro. Derived clean plate and runtime composition remain candidates.",
+        "edit_history": "Generated original retained unchanged. Runtime crops the concept footer through a texture region. Output is 1585x992 versus the 1586x992 approved reference; no claim of pixel-identical scenery or Brasa.",
+        "generation_brief": "Remove only the baked human and his shadow; reconstruct sofa, rug and floor; retain the pixel direction, camera and stationary Brasa. One bounded edit, no style variants.",
+        "kind": "controlled edit of project-approved concept",
+        "original_output_basename": "exec-66d4c3da-fcb2-4d04-97a0-31996239d6e4.png",
+        "recorded_date_utc": "2026-11-05",
+        "source_sha256": "b75d14efdc9e49d3f6949a1c9020315976ebfe649e66260762c859d651ca74ce",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1586,
+          992
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 1739769,
+      "id": "world/pietro-pixel-study@0.1.0:texture",
+      "kind": "texture",
+      "module": "world/pietro-pixel-study",
+      "path": "assets/world/pietro-pixel-study/versions/0.1.0/plate.png",
+      "role": "texture",
+      "sha256": "3b6ff22afa647a0c4efa4a882fce857e9c609c0af03e100573f2042c64f03772",
+      "source": {
+        "approval_scope": "Original concept direction approved by Pedro. Derived clean plate and runtime composition remain candidates.",
+        "edit_history": "Generated original retained unchanged. Runtime crops the concept footer through a texture region. Output is 1585x992 versus the 1586x992 approved reference; no claim of pixel-identical scenery or Brasa.",
+        "generation_brief": "Remove only the baked human and his shadow; reconstruct sofa, rug and floor; retain the pixel direction, camera and stationary Brasa. One bounded edit, no style variants.",
+        "kind": "controlled edit of project-approved concept",
+        "original_output_basename": "exec-66d4c3da-fcb2-4d04-97a0-31996239d6e4.png",
+        "recorded_date_utc": "2026-11-05",
+        "source_sha256": "b75d14efdc9e49d3f6949a1c9020315976ebfe649e66260762c859d651ca74ce",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1585,
+          992
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
     },
     {
       "bytes": 2841832,

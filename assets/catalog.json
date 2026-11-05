@@ -559,6 +559,30 @@
         }
       }
     },
+    "characters/pietro-pixel-pilot": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/characters/pietro-pixel-pilot/versions/0.1.0/manifest.json",
+          "sha256": "345032a40b72eb2971245cd1ee5741f7b82772f15b88658cd1ff01f8de7eaeaf",
+          "status": "prototype"
+        },
+        "0.2.0": {
+          "manifest": "assets/characters/pietro-pixel-pilot/versions/0.2.0/manifest.json",
+          "sha256": "2b44a55b4a1fcf8f5a76313f75a7adc99e500569dbe488bf0ed1756a02ba52e8",
+          "status": "prototype"
+        },
+        "0.2.1": {
+          "manifest": "assets/characters/pietro-pixel-pilot/versions/0.2.1/manifest.json",
+          "sha256": "bc90e560b0869f88d97acc4a56c5aaedd26667c4fc29bb622710a1b4a3ab4480",
+          "status": "prototype"
+        },
+        "0.2.2": {
+          "manifest": "assets/characters/pietro-pixel-pilot/versions/0.2.2/manifest.json",
+          "sha256": "3480da9c4c08a830ca6dfe0257eaaac56615fdef5931de05d602ad6deae61fc9",
+          "status": "prototype"
+        }
+      }
+    },
     "characters/refuge-traveler": {
       "versions": {
         "1.0.0": {
@@ -772,6 +796,15 @@
           "manifest": "assets/world/pietro-house-continuous/versions/1.0.0/manifest.json",
           "sha256": "6a86970944028e8796049fcb41a44caae72a0b2a3837447a6de95e62a9d02702",
           "status": "production"
+        }
+      }
+    },
+    "world/pietro-pixel-study": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/world/pietro-pixel-study/versions/0.1.0/manifest.json",
+          "sha256": "37491e977b74808a56e86f03007faa0d5bf210af3e3d80248cd72cbf5b524ee9",
+          "status": "prototype"
         }
       }
     },
