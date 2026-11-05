@@ -1071,3 +1071,31 @@ ao PR #11 e não recebem alterações nesta branch. O gate focado passou com 79
 verificações da casa; fechamento, comparação em jogo e vídeo ficam registrados
 no PR/entrega. Draft sem merge, aguardando revisão independente e estética de
 Pedro. [Proveniência, contrato e limites](pietro-v05-art01.md).
+
+### V05-UX-06 — foco ao consultar formas e poderes no grimório
+
+Abrir outro registro removia o botão de origem sem focar o destino; Tab então
+alcançava o menu ao fundo. A ficha agora recebe foco síncrono na aba de leitura
+depois da reconstrução da cadeia. Voltar conserva forma, página, seção, rolagem
+e link de origem. O integrador é dono de `ui/codex.gd`, da regressão nativa de
+navegação e do cenário Web; não há mudança em arte, famílias, mecânicas ou saves.
+
+A nova regressão falhou quatro vezes antes da correção; o Web anterior também
+falhou com foco vazio. Depois passaram 645 verificações nativas (87 do grimório)
+e arquitetura, além de 92 verificações Web iniciais em 1600×900. O cenário final
+passou 156 verificações em 1024×768, nos textos normal e ampliado, por entradas
+reais: evolução por mouse/Enter, Tab/Shift+Tab, poder relacionado e retorno.
+Eventos nativos de A, direcional e B cobrem o controle; não é certificação de
+hardware físico. Perfil/checkpoints e estado/RNG permanecem idênticos.
+
+Evidências: `artifacts/harness/codex-record-focus-fixed-20261105T023545143346Z-1e7319/`
+e `artifacts/harness/codex-record-focus-revealed-20261105T024630756955Z-2722f5/`.
+A tentativa anterior em 4:3 foi preservada: o botão de poder estava recortado
+no painel. O teste agora revela o alvo por roda/Tab antes do clique real, sem
+retentar cliques nem remover verificações. A fixture usa apenas o perfil salvo
+isolado de descobertas, carregado pelo caminho normal de produção, sem setters.
+
+A correção foi publicada em `fix/codex-record-focus-20261105`; esta integração funcional
+reúne a casa #11, Pietro #17 e o foco sobre a main atual. Próximo passo: unir com as demais origens revisadas e validar o conjunto
+exato. O gate integral anterior não é atribuído a esta mudança. Ator/despertar e
+famílias continuam com os mesmos limites visuais; versão permanece 0.3.0.

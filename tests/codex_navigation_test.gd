@@ -11,15 +11,37 @@ func expect(value: bool, message: String) -> bool:
 		failed += 1
 		printerr("FAIL: ", message)
 	return value
-func key(code: int) -> void:
+func key(code: int, shift: bool = false) -> void:
 	for down in [true,false]:
 		var event = InputEventKey.new()
 		event.keycode = code
 		event.physical_keycode = code
+		event.shift_pressed = shift
 		event.pressed = down
 		Input.parse_input_event(event)
 		await process_frame
 	for frame in range(4): await process_frame
+func pad(button: int) -> void:
+	for down in [true,false]:
+		var event = InputEventJoypadButton.new()
+		event.button_index = button
+		event.pressed = down
+		Input.parse_input_event(event)
+		await process_frame
+	for frame in range(4): await process_frame
+func expect_codex_focus(message: String) -> bool:
+	var focused: Control = root.gui_get_focus_owner()
+	return expect(is_instance_valid(focused) and app.screen_host.modal_root.is_ancestor_of(focused) and focused.is_visible_in_tree(), message)
+func check_forward_focus(context: String) -> void:
+	if not expect_codex_focus(context+": destination receives focus without another input"): return
+	expect(root.gui_get_focus_owner() == app.registry["codex.section.story"], context+": reading tab is the destination focus")
+	# Walk past one complete cycle: a single Tab must not start at the title
+	# behind the modal, and wrapping must remain inside the rebuilt record.
+	for step in range(app.focus_registry.groups["codex"].size()+1):
+		await key(KEY_TAB)
+		if not expect_codex_focus(context+": Tab stays in the codex at step %d" % step): return
+	await key(KEY_TAB,true)
+	expect_codex_focus(context+": Shift+Tab stays in the codex")
 func press(id: String) -> void:
 	if not expect(app.registry.has(id) and is_instance_valid(app.registry[id]),"Reachable control: "+id): return
 	app.registry[id].grab_focus()
@@ -70,6 +92,7 @@ func run() -> void:
 	await press("menu.codex")
 	await press("codex.section.details")
 	await press("codex.related.fireball")
+	await check_forward_focus("Related power")
 	await key(KEY_ESCAPE)
 	if not expect(app.screens.top() == "codex", "Back from a related power keeps the codex open"):
 		await finish()
@@ -82,6 +105,7 @@ func run() -> void:
 	await press("codex.entry.dew")
 	await press("codex.evolution")
 	expect(app.screen_host.modal_root.selected == "mareveu", "Evolution opens the evolved record")
+	await check_forward_focus("Evolution")
 	await press("codex.section.details")
 	app.registry["codex.related.moon_tide"].grab_focus()
 	for frame in range(4): await process_frame
@@ -94,6 +118,7 @@ func run() -> void:
 	var model: String = JSON.stringify([app.game.party,app.game.hand,app.game.rng.state,app.codex_progress.records,app.session.run_save.load_snapshot()])
 	await key(KEY_ENTER)
 	expect(app.screen_host.modal_root.category == "powers" and app.screen_host.modal_root.selected == "moon_tide", "Lineage technique opens from evolved record")
+	await check_forward_focus("Lineage power")
 	await capture("02-power")
 	await key(KEY_ESCAPE)
 	expect(app.screens.top() == "codex" and app.screen_host.modal_root.selected == "mareveu" and app.screen_host.modal_root.page == 1, "Back restores evolution and gallery page")
@@ -103,12 +128,17 @@ func run() -> void:
 	await press("codex.back")
 	expect(app.screens.top() == "codex" and app.screen_host.modal_root.selected == "dew" and app.screen_host.modal_root.page == 1, "Visible Back button restores base lineage on its page")
 	expect(root.gui_get_focus_owner() == app.registry["codex.evolution"], "Evolution link focus restored")
-	for down in [true,false]:
-		var event = InputEventJoypadButton.new()
-		event.button_index = JOY_BUTTON_B
-		event.pressed = down
-		Input.parse_input_event(event)
-		await process_frame
+	await pad(JOY_BUTTON_A)
+	expect(app.screen_host.modal_root.selected == "mareveu", "Controller A opens the evolved record")
+	if expect_codex_focus("Controller evolution receives focus"):
+		expect(root.gui_get_focus_owner() == app.registry["codex.section.story"], "Controller evolution starts at the reading tab")
+		await pad(JOY_BUTTON_DPAD_DOWN)
+		expect(root.gui_get_focus_owner() == app.registry["codex.section.details"], "Controller down reaches the destination details tab")
+		await pad(JOY_BUTTON_A)
+		expect(app.screen_host.modal_root.record_section == "details" and root.gui_get_focus_owner() == app.registry["codex.section.details"], "Controller A activates details and keeps focus on the rebuilt tab")
+	await pad(JOY_BUTTON_B)
+	expect(app.screen_host.modal_root.selected == "dew" and root.gui_get_focus_owner() == app.registry["codex.evolution"], "Controller B restores the originating form and link focus")
+	await pad(JOY_BUTTON_B)
 	expect(app.screens.top() == "menu", "Controller Back closes at the history root")
 	expect(root.gui_get_focus_owner() == app.registry["menu.codex"], "Closing restores menu focus")
 	expect(model == JSON.stringify([app.game.party,app.game.hand,app.game.rng.state,app.codex_progress.records,app.session.run_save.load_snapshot()]), "Navigation leaves game, knowledge, checkpoint and RNG unchanged")
