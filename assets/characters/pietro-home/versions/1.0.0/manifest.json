@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "characters/pietro-home",
+  "version": "1.0.0",
+  "status": "production",
+  "description": "Provisional Pietro home outfit; fair warm skin, blue and gold, seven locomotion poses",
+  "dependencies": [],
+  "files": {
+    "texture": {
+      "path": "atlas.png",
+      "kind": "texture",
+      "bytes": 780187,
+      "sha256": "70766b69dc8181769db2a049e06c13bdde91f4ab1ef34843e3ac84e00d2516ce",
+      "technical": {
+        "dimensions": [
+          1774,
+          887
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    },
+    "poses": {
+      "path": "poses.json",
+      "kind": "data",
+      "bytes": 1245,
+      "sha256": "08eabc7e8214f627f3a74b9ec0aab2e5fed77807fed5ffa2665a761b8c823938"
+    }
+  },
+  "provenance": {
+    "kind": "generated original",
+    "tool": "OpenAI Image Gen",
+    "recorded_date_utc": "2026-11-05",
+    "license_record": "Original artwork generated for Umbral, from project-owned references.",
+    "edit_history": "Original generated PNG preserved byte-for-byte including metadata; no pixel edits.",
+    "review_status": "Inspected source; provisional implementation pending Pedro review. Production denotes runtime eligibility, not approved likeness.",
+    "generation_brief": "Edit project traveler atlas to less caricatured young male, fair warm skin, curly hair, ivory shirt, blue/gold jacket, trousers and boots. Approved Library reference unavailable via official transfer; this is a provisional interpretation."
+  }
+}

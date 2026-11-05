@@ -392,6 +392,20 @@
         }
       }
     },
+    "characters/pietro-home": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/pietro-home/versions/1.0.0/manifest.json",
+          "sha256": "79bfcd3b045b5ef68e5d64a87f9a8632cfecc2b862cb21b52c05d09c0a1c6c5a",
+          "status": "production"
+        },
+        "2.0.0": {
+          "manifest": "assets/characters/pietro-home/versions/2.0.0/manifest.json",
+          "sha256": "082c35f79302cdc05133acb475bd37008deeed3ec22bff3e41cde8a0a4a74d6a",
+          "status": "production"
+        }
+      }
+    },
     "characters/refuge-traveler": {
       "versions": {
         "1.0.0": {
@@ -590,11 +604,34 @@
         }
       }
     },
+    "world/pietro-house": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/world/pietro-house/versions/1.0.0/manifest.json",
+          "sha256": "f1579afbab754568bcfd74dbe2de1a23a6a0781646939b8ce98309b9fcd5dcbb",
+          "status": "production"
+        }
+      }
+    },
+    "world/pietro-house-continuous": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/world/pietro-house-continuous/versions/1.0.0/manifest.json",
+          "sha256": "6a86970944028e8796049fcb41a44caae72a0b2a3837447a6de95e62a9d02702",
+          "status": "production"
+        }
+      }
+    },
     "world/refuge-lateral": {
       "versions": {
         "1.0.0": {
           "manifest": "assets/world/refuge-lateral/versions/1.0.0/manifest.json",
           "sha256": "d4c985940b2f330c426664c152a9fda1a9a13b94ae2b98a8be7093a6f716a9bf",
+          "status": "production"
+        },
+        "1.1.0": {
+          "manifest": "assets/world/refuge-lateral/versions/1.1.0/manifest.json",
+          "sha256": "e3865e792d4881a2c7f562def5ac4cbdeaef55ead4e6cd37db6a3eda400718de",
           "status": "production"
         }
       }

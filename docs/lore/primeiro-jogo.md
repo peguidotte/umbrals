@@ -6,6 +6,10 @@ estabelece a região ou a cosmologia do mundo.
 
 ## Confirmado
 
+- A abertura solicitada ocorre na casa inicial de Pietro: quarto, sala, cozinha e
+  quarto da mãe no andar superior, acessível por escada. A casa é distinta do
+  abrigo dentro de um Umbral que a mãe dará depois; a entrega é sequência futura,
+  não um evento já implementado. Ver [primeira fatia](../house-v05-ux05.md).
 - O jogo é contemporâneo e ocorre em uma única região, ainda não escolhida.
 - O protagonista sobrevive aos fracassos no mesmo mundo. A equipe se recompõe;
   reencontros com antigos indivíduos são eventos especiais.

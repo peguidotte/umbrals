@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "id": "characters/pietro-home",
+  "version": "2.0.0",
+  "status": "production",
+  "description": "Pietro from the officially inspected approved identity reference; restrained face, navy/ochre home outfit, six walk poses and grounded idle",
+  "changes": "Replace provisional interpretation with reference-led art and recalibrated regions, foot pivots and source scale. New major release preserves the old atlas/contract.",
+  "dependencies": [],
+  "files": {
+    "texture": {
+      "path": "atlas.png",
+      "kind": "texture",
+      "sha256": "b682c7d9d6492062df4e0120b8cc20ee229ed081c18f1836c8c89b7493edb4bc",
+      "bytes": 797521,
+      "technical": {
+        "dimensions": [
+          1774,
+          887
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "alpha": true
+      }
+    },
+    "poses": {
+      "path": "poses.json",
+      "kind": "data",
+      "sha256": "f1c2f9666fed31404c33b54e50568870038a7715d3d61c000a6c17a0cc946b89",
+      "bytes": 1448
+    },
+    "approved-concept": {
+      "path": "review/approved-concept.png",
+      "kind": "review",
+      "sha256": "341e3bacc0faff403b09c2698c7af0b0473842de36db264f49f9d2472ce39858",
+      "bytes": 2777227,
+      "technical": {
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGB",
+        "frames": 1,
+        "alpha": false
+      },
+      "provenance": {
+        "kind": "approved project concept",
+        "library_file_id": "libfile_7a1f2d2e78ac8191a4109773df9dce86",
+        "version": 0,
+        "edit_history": "Officially materialized and retained byte-identical; no edits."
+      }
+    },
+    "source-check": {
+      "path": "review/check_source.py",
+      "kind": "review",
+      "sha256": "f3fb7e8176e02874a6c925aede0a345bbd61e16c2a30b7e13e3f63d0f4a72c1a",
+      "bytes": 2607
+    }
+  },
+  "provenance": {
+    "kind": "generated original",
+    "tool": "OpenAI Image Gen",
+    "recorded_date_utc": "2026-11-05",
+    "model_version": "Not exposed by tool; none inferred.",
+    "license_record": "Original artwork generated for Umbral from project-owned reference images.",
+    "original_output_basename": "exec-2fa1ab46-e786-475f-a1c5-8cc84767fbaa.png",
+    "original_sha256": "b682c7d9d6492062df4e0120b8cc20ee229ed081c18f1836c8c89b7493edb4bc",
+    "edit_history": "Byte-identical generated PNG with no pixel edits. Engine regions select frames; poses.json records foot pivots and world scale. No embedded metadata was present in the returned PNG.",
+    "approved_identity_reference": {
+      "library_file_id": "libfile_7a1f2d2e78ac8191a4109773df9dce86",
+      "file_id": "file_00000000706881fdbb9522eb790f66ac",
+      "version": 0,
+      "original_file_name": "exec-b7298ec7-edce-4c34-a9c7-02f7584b7de9.png",
+      "sha256": "341e3bacc0faff403b09c2698c7af0b0473842de36db264f49f9d2472ce39858",
+      "bytes": 2777227,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "access": "Official Library prepare_materialize and current bundled library_file_transfer.py; byte count, SHA-256, Library xattrs and decoded pixels inspected in this executor before generation.",
+      "retained_copy": "review/approved-concept.png"
+    },
+    "style_references": [
+      {
+        "id": "characters/battle-creatures",
+        "version": "1.0.0",
+        "file": "texture"
+      },
+      {
+        "id": "world/pietro-house-continuous",
+        "version": "1.0.0",
+        "file": "texture"
+      }
+    ],
+    "generation_brief": "Reference-led Pietro identity: fair light skin, dark wavy hair, quiet expression with smaller eyes/head. Navy home overshirt, ivory sleeves, ochre scarf, slate trousers and boots, no backpack. Textured sprite shading informed by actual Umbral atlas; house provided palette only. Transparent 4 by 2 isolated full-body atlas facing right: idle, six walk poses, reserve standing pose. No scenery, text, effects, furniture or creature.",
+    "review_status": "Source inspected; runtime review and independent approval pending. Production status is runtime eligibility for this draft, not aesthetic approval by Pedro."
+  },
+  "metadata": {
+    "view": "Three-quarter side, facing right; mirrored by the existing renderer for left",
+    "runtime": "Existing refuge_canvas.gd consumes poses; no changes to house geometry, movement, camera, save, Rules or RNG",
+    "frames": 8,
+    "used_walk_frames": 6,
+    "idle_frame": 0,
+    "reserved_pose": 7,
+    "filtering": "Inherited house canvas filtering; no importer or renderer change",
+    "approval": "Draft PR; independent review required before merge"
+  }
+}
