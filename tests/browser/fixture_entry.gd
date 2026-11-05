@@ -40,6 +40,6 @@ func _boot_fixture() -> void:
 	_queue_debug()
 
 func _publish_test_state() -> void:
-	super._publish_test_state()
+	await super._publish_test_state()
 	if browser_test:
 		JavaScriptBridge.eval("if(window.umbralState) Object.assign(window.umbralState, %s)" % JSON.stringify({"fixture": fixture_name, "fixture_ready": fixture_ready}), true)

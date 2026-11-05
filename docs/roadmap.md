@@ -1413,3 +1413,9 @@ Família parcial: finais, companheiro vivo, versos, estados desenhados e aceite
 visual/hardware seguem abertos. Pietro/casa continuam visualmente rejeitados;
 Brasa revisado e Pietro45d56a1 permanecem fora. Versão continua 0.3.0.
 [Escopo e evidências](aquatic-pilot-v04-09b.md).
+
+Na validação conjunta, uma falha intermitente de rewards expôs publicação de
+coordenadas antes do layout final da Nascente. O diagnóstico Web agora aguarda
+o frame desenhado, com regressão de reconstrução do rascunho por inputs reais.
+A tentativa completa anterior foi preservada e não é aceite; a fonte final
+recebe uma nova execução integral. Regras, saves, timeouts e baseline não mudam.

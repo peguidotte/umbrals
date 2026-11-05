@@ -133,3 +133,17 @@ Actions permanece pausado por pedido de Pedro. Produto 0.3.0 e família parcial:
 Londraval/Lonelo jogáveis, companheiro vivo, versos, estados desenhados, cadência
 e aceite visual continuam pendentes. Pietro/casa atuais foram visualmente
 rejeitados; a integração funcional não os promove como arte aprovada.
+
+### Regressão do canal Web durante a composição
+
+A primeira aceitação integral da fonte 92825d8 foi interrompida após falhar
+rewards: o estado publicado colocava event.uid.1 em y919, além da altura
+lógica900, enquanto a captura mostrava o botão próximo de y440. A publicação
+de diagnóstico podia ocorrer antes do sort dos containers. A falha já havia
+sido observada na consolidação anterior; não foi atribuída à arte aquática.
+O canal agora aguarda o frame desenhado e o bootstrap de fixtures aguarda o
+publicador herdado. Coordenadas são verificadas antes do clique único e há
+três reconstruções/cancelamentos reais extras, sem retentativas nem maior prazo.
+O foco Web passou 268 verificações; o guard foi mantido no limite existente,
+sem mudar baseline. A execução completa da fonte final tem prova própria no
+mesmo caminho estável indicado acima; a tentativa anterior permanece preservada.
