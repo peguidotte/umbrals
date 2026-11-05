@@ -1136,3 +1136,8 @@ uma única vez para retirar o Pietro fundido ao fundo; Brasa é estático nessa 
 Módulos prototype sem pins e cena de estudo separada do fluxo principal. QA,
 testes proporcionais e vídeo acompanham o candidato. A aprovação artística da
 implementação continua pendente com Pedro. [Contrato e limites](pietro-pixel-pilot-v05.md).
+
+Revisão 0.2.0: apoios separados na projeção de três quartos, menor flexão dos
+joelhos e balanço de tronco, braços e mochila. A imagem aprovada e a versão 0.1.0
+ficam preservadas. Onze verificações nativas e dez Web passaram; a marcha continua
+candidata. É uma cena de estudo sobre base estática, sem casa jogável ou promoção.

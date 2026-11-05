@@ -72,11 +72,14 @@ func _update_pose() -> void:
 	if OS.has_feature("web"):
 		var feet: Array = []
 		for foot in rig.feet: feet.append([anchor.x+(foot.x-620)*float(rig.data.scale),anchor.y+(foot.y-1130)*float(rig.data.scale)])
+		var progress: Array = []
+		for leg in range(2): progress.append((rig.feet[leg].x-float(rig.data.legs[leg].sole[0]))*float(rig.data.scale))
+		var gap: float = (rig.data.legs[1].boot_bounds[0]+rig.feet[1].x-rig.data.legs[1].sole[0])-(rig.data.legs[0].boot_bounds[2]+rig.feet[0].x-rig.data.legs[0].sole[0])
 		var controls: Dictionary = {}
 		for key in buttons:
 			var rect: Rect2 = buttons[key].get_global_rect()
 			controls[key] = [rect.get_center().x,rect.get_center().y]
-		JavaScriptBridge.eval("window.pietroStudy="+JSON.stringify({"mode":mode,"stage":stage,"time":elapsed,"cycle":cycle,"gather":gather,"anchor":[anchor.x,anchor.y],"feet":feet,"reach_error":rig.reach_error,"controls":controls})+";",true)
+		JavaScriptBridge.eval("window.pietroStudy="+JSON.stringify({"scope":"isolated_static_scene","mode":mode,"stage":stage,"time":elapsed,"cycle":cycle,"gather":gather,"anchor":[anchor.x,anchor.y],"feet":feet,"foot_progress":progress,"boot_gap":gap*float(rig.data.scale),"upper_angles":rig.upper.angles,"body_drop":rig.drop,"reach_error":rig.reach_error,"controls":controls})+";",true)
 
 func _draw() -> void:
 	draw_rect(Rect2(0,0,1600,1000),Color("121c2b"))
@@ -87,6 +90,6 @@ func _draw() -> void:
 		for point in [Vector2(-145,-3),Vector2(-110,-7),Vector2(100,-7),Vector2(100,-3),Vector2(145,-3),Vector2(145,4),Vector2(95,4),Vector2(95,8),Vector2(-125,8),Vector2(-125,3),Vector2(-145,3)]: shadow.append(anchor+Vector2(7,8)+point)
 		draw_colored_polygon(shadow,Color(0.07,0.08,0.12,0.7))
 		rig.draw(self,anchor+Vector2(7,8),gather<=0)
-	draw_string(ThemeDB.fallback_font,Vector2(26,930),"Pietro + Brasa · piloto visual",HORIZONTAL_ALIGNMENT_LEFT,-1,25,Color("ffe4ad"))
-	var caption: String = "Referência aprovada" if mode == "reference" else "Implementação candidata · aguarda avaliação do Pedro"
+	draw_string(ThemeDB.fallback_font,Vector2(26,930),"Pietro + Brasa · estudo de movimento",HORIZONTAL_ALIGNMENT_LEFT,-1,25,Color("ffe4ad"))
+	var caption: String = "Referência aprovada" if mode == "reference" else "Candidato · base estática, sem casa jogável"
 	draw_string(ThemeDB.fallback_font,Vector2(26,964),caption,HORIZONTAL_ALIGNMENT_LEFT,-1,20,Color("d8d4c8"))

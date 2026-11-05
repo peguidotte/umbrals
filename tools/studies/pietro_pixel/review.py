@@ -29,9 +29,12 @@ try:
   click('walk');page.wait_for_function("window.pietroStudy.stage==='walking'")
   page.wait_for_function("window.pietroStudy.stage==='finished'",timeout=20000);page.wait_for_timeout(300);shot('finished');page.wait_for_timeout(1500)
   observations=page.evaluate('window.studyFrames');walk=[x['state'] for x in observations if x['state']['stage']=='walking']
-  orders=[1 if x['feet'][0][0]>x['feet'][1][0] else -1 for x in walk]
+  orders=[1 if x['foot_progress'][0]>x['foot_progress'][1] else -1 for x in walk]
   alternations=sum(x!=y for x,y in zip(orders,orders[1:]))
-  check(alternations>=5 and walk[-1]['cycle']-walk[0]['cycle']>2.5,'Real playback observes both opposing leg-contact orders across all three cycles')
+  check(alternations>=5 and walk[-1]['cycle']-walk[0]['cycle']>2.5,'Real playback alternates forward progress on the separate three-quarter support lanes across all cycles')
+  check(min(x['boot_gap'] for x in walk)>10,'The two rendered boot silhouettes keep separate horizontal bounds')
+  check(max(x['body_drop'] for x in walk)<12,'Observed pelvis compensation stays below twelve source pixels')
+  check(max(x['upper_angles'][0] for x in walk)-min(x['upper_angles'][0] for x in walk)>.08 and max(x['upper_angles'][2] for x in walk)-min(x['upper_angles'][2] for x in walk)>.03,'Observed arms and backpack have independent phased motion')
   check(max(x['reach_error'] for x in walk)<.01,'Observed walk remains within original bone lengths')
   check(state()['anchor']==[620,812] and state()['gather']==0,'The short walk ends at the static anchor and original pose')
   initial=Image.open(out/'static.png').crop((7,8,1593,888));final=Image.open(out/'finished.png').crop((7,8,1593,888));check(initial.tobytes()==final.tobytes(),'The rendered scene returns pixel-identically to the initial static comparison')
