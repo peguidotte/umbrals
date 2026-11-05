@@ -92,3 +92,18 @@ Isso continua um ponto de acabamento, não uma aprovação estética por contage
 
 O piloto é entregue em branch/PR de rascunho, sem merge ou alteração de main.
 O handoff privado inclui bundle Git verificável e evidências para o integrador.
+
+## Handoff sobre a main atual
+
+Durante a execução, a main avançou para `8d514bf`. Ela foi incorporada à branch
+em `0a3815e`, preservando casa, Pietro, foco do grimório e referências. Os únicos
+conflitos eram acréscimos documentais em assets/README e roadmap; ambos os lados
+foram mantidos. Índices de assets foram regenerados, sem mudar pins alheios.
+
+Após esse merge, catálogo, saves, catálogo de assets e os 58 checks de movimento
+passaram em `artifacts/harness/aquatic-main-handoff-20261105T112823257884Z-e725cb/`.
+Os 74 releases foram validados contra origin/main sem violar imutabilidade.
+A evidência visual aquática pertence ao código `63e881a`, anterior ao merge;
+os scripts de batalha, rig aquático e corpos/esferas não mudaram no merge.
+O conjunto com as outras famílias continua exigindo a regressão da candidata
+integradora. Não há merge automático na main por esta entrega parcial.
