@@ -92,6 +92,11 @@ func _run() -> void:
 	unrelated.append(opponent)
 	expect(int(Events.collect(unrelated, 0).next) == 2, "Interleaved enemy initiative ends the current presentation group")
 	Motion.ensure_loaded()
+	for proxy in {"owl": "volt", "spore": "moss", "stag": "ignivar"}:
+		var donor: String = {"owl": "volt", "spore": "moss", "stag": "ignivar"}[proxy]
+		for state in [0, 3]:
+			expect(Motion.sample(proxy, "states", state, .4) == Motion.data.forms[donor].states[str(state)][12], "Legacy illustration keeps its pinned proxy tracks: " + proxy + "/" + str(state))
+	expect(Motion.sample("owl", "states", 0, .4) != Motion.sample("volt", "states", 0, .4), "Owl never inherits the new hedgehog presentation")
 	expect(Motion.data.forms.size() == 8 and Motion.choreography.specs.size() == 15, "The approved eight forms and fifteen clocks load through exact pinned dependencies")
 	for id in Motion.data.forms:
 		var rest: Array = Motion.sample(id, "attacks", 1, 0)
