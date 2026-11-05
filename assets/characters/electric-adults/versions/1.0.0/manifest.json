@@ -1,0 +1,97 @@
+{
+  "dependencies": [
+    {
+      "id": "characters/electric-family",
+      "version": "1.0.0"
+    }
+  ],
+  "description": "Auravel winged quadruped and Zuldar biped directional body art candidates; unpinned, no gameplay or animation claims.",
+  "files": {
+    "auravel-ally": {
+      "bytes": 206210,
+      "kind": "texture",
+      "path": "auravel-ally.png",
+      "sha256": "9e3428ebeb484f11493adfcfa230dabf0446e9af2acfeb622fbcf05fe216a976",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          384
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "auravel-enemy": {
+      "bytes": 204152,
+      "kind": "texture",
+      "path": "auravel-enemy.png",
+      "sha256": "aa75a0937748406347cec2ef7472323e86164fdba79e14bf2e5e8acb0caefcae",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          384
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "generated-source": {
+      "bytes": 2196036,
+      "kind": "review",
+      "path": "review/generated-source.png",
+      "sha256": "07d88b414d072102d08b3f7bae51ff8dac5b308ddde43b07c2cce94d96fc4bac",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "zuldar-ally": {
+      "bytes": 176878,
+      "kind": "texture",
+      "path": "zuldar-ally.png",
+      "sha256": "cae1ed80b5f04eecdab0fedd66c95b16b2328e53f4c449eca357e525f27a7ec4",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          384
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "zuldar-enemy": {
+      "bytes": 175737,
+      "kind": "texture",
+      "path": "zuldar-enemy.png",
+      "sha256": "1439dd95d0dd82cbf829f911787a377424308ada693323a9e14e7f82be217402",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          384
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "characters/electric-adults",
+  "provenance": {
+    "kind": "Image Gen referenced to the approved electric family and new Nisca/Niscor source. Original PNG and generation metadata preserved.",
+    "limits": "No runtime pin, rig, gait, attack origins or evolution edges. Bodies need independent animation and scale review before promotion.",
+    "normalization": "alpha >=192; separate cells cropped, nearest fit to 512x384, opposite view canonicalized before runtime mirror.",
+    "reference_library_file_id": "libfile_2b00aa3086e48191af8247acac969990",
+    "reference_sha256": "8e9df8fa01d62574ea714cbddc7d912cd5b7b04b646ccdf4670762cd1d222f03"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "1.0.0"
+}

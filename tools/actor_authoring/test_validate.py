@@ -214,6 +214,14 @@ class ActorAuthoringTests(unittest.TestCase):
 
 
 class PublishedCompatibilityTests(unittest.TestCase):
+    def test_new_electric_profiles_have_states_and_attached_origins(self):
+        for form_id in ['volt', 'tempestral']:
+            with self.subTest(form=form_id):
+                report = validate_profile(Path(__file__).parent / f'examples/{form_id}-v1.json')
+                self.assertTrue(report['complete'])
+                self.assertEqual(report['gaps'], [])
+                self.assertEqual([a['socket'] for a in report['attacks']], ['quills', 'crest', 'fore', 'shoulder', 'quills', 'flank'])
+
     def test_brasa_profile_reads_real_releases(self):
         report = validate_profile(Path(__file__).parent / "examples/brasa-v1.json")
         self.assertTrue(report["valid"])

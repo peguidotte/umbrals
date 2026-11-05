@@ -383,6 +383,29 @@
         }
       }
     },
+    "characters/electric-adults": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/electric-adults/versions/1.0.0/manifest.json",
+          "sha256": "d5f0595ee974fa43dbbe0dbb3145fb70507e0ed4706c00101edc95e3a8fe7cb9",
+          "status": "prototype"
+        }
+      }
+    },
+    "characters/electric-family": {
+      "versions": {
+        "1.0.0": {
+          "manifest": "assets/characters/electric-family/versions/1.0.0/manifest.json",
+          "sha256": "1b6dcecf7aaabfbac8d8fb9c3a8fcfb349db368ad023e978a01e23190e8c17ea",
+          "status": "production"
+        },
+        "2.0.0": {
+          "manifest": "assets/characters/electric-family/versions/2.0.0/manifest.json",
+          "sha256": "06fc7da55549dab3e7ba645144967d19b8b686cbc13046a043f9e75c20873584",
+          "status": "production"
+        }
+      }
+    },
     "characters/owl": {
       "versions": {
         "1.0.0": {

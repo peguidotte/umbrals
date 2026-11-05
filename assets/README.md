@@ -1,5 +1,22 @@
 # Assets
 
+## Electric family — V05-ART-02
+
+`characters/electric-family@2.0.0` contains new Nisca/Niscor sprites, separately
+generated views for each side, original anatomical mesh tracks, in-place gait,
+hurt/KO and attached attack origins. It is the proposed production target of
+the existing `umbrals/volt` and `umbrals/tempestral` bindings in the draft branch.
+It replaces their old beetle representation without changing content IDs or stats.
+The official Library reference and both original generated PNGs retain their
+bytes/metadata under the releases' `review/` folders. The reference hash and
+normalization are recorded in the manifests. Runtime PNGs use explicit alpha,
+nearest filtering and grounded pivots. These are mesh animations, not redrawn
+frame sequences. Final human art approval remains open.
+
+`characters/electric-adults@1.0.0` is an **unpinned prototype**: Auravel with wings
+and Zuldar as a biped with attached blue quills. No evolution, stats, rig, attack
+origin or playable adult is claimed. See [scope and handoff](../docs/electric-family-v05-art02.md).
+
 Asset modules live at `<domain>/<slug>/versions/<semver>/`. Each release owns a manifest with file roles, provenance, hashes, animation contracts and exact dependencies. Demo actors and earlier attack studies remain prototypes; the approved battle performances have explicit production pins.
 
 Read [the architecture and workflow](../docs/assets/README.md) before adding or evolving art. `runtime-lock.json` pins production art; `catalog.json`, `asset-manifest.json` and the Godot binding paths are generated with `python tools/assets.py build`. Validate with `python tools/assets.py validate --base-ref origin/main`.

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "format": "battle-motion-v1",
+  "form_id": "volt",
+  "motion_source": {
+    "id": "characters/electric-family",
+    "version": "2.0.0",
+    "role": "motion"
+  },
+  "performances_source": {
+    "id": "characters/electric-family",
+    "version": "2.0.0",
+    "role": "performances"
+  },
+  "states": {
+    "idle": {
+      "group": "states",
+      "clip": "0"
+    },
+    "walk": {
+      "group": "states",
+      "clip": "6"
+    },
+    "hurt": {
+      "group": "states",
+      "clip": "3"
+    }
+  },
+  "attacks": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ]
+}
