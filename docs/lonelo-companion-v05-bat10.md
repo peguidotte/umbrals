@@ -94,3 +94,19 @@ Arte, potência 6 e restrições continuam provisórias; produto 0.3.0 e Actions
 pausado. `AGENTS.md` registra a autorização persistente do dono para operações
 do Umbral. A autorização não dispensa validação, proteção de branch ou
 respeito a recusas.
+
+## Regressão do retorno no grimório
+
+O gate integral da candidata `28aeebe` encontrou foco vazio ao voltar de um
+poder para seu link de origem. `Codex._restore_context` aguardava dois frames
+antes de restaurar tanto rolagem quanto foco. Isso deixava o teclado sem dono
+nesse intervalo e podia roubar um Tab posterior quando o callback concluía.
+
+O Back agora restaura o foco sincronamente após reconstruir o registro. Apenas
+a rolagem aguarda o layout, cancelando a restauração se uma navegação ou foco
+mais recente tiver ocorrido. O teste nativo acrescenta Back imediato e Tab
+rápido; passou 91 verificações de grimório e 437 de fluxo de UI. O cenário Web
+original foi mantido e passou suas 156 verificações, sem novas esperas,
+timeouts, retries ou remoção de asserções. Saves, conhecimento e RNG permanecem
+inalterados. A tentativa integral com a falha foi preservada, interrompida em
+2495,597 s e não é aceite; a revisão final recebe seu próprio gate congelado.

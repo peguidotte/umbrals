@@ -1456,4 +1456,8 @@ saves passaram no foco; o gate integral congelado é registrado em
 `artifacts/lonelo-companion-integration/full-proof.json`. Actions desligado;
 arte e balanceamento provisórios. Autorização persistente para operações do
 Umbral registrada em `AGENTS.md`, mantendo gates e respeito a recusas.
+O gate também revelou perda transitória de foco ao voltar de um poder no
+grimório. O foco agora retorna imediatamente e a rolagem adiada respeita um
+Tab posterior; 91 verificações nativas do grimório e 156 Web passaram no foco,
+com o cenário Web original preservado.
 [Regra, migração, evidência e limites](lonelo-companion-v05-bat10.md).

@@ -225,24 +225,26 @@ func go_back() -> bool:
 	page = int(origin.page)
 	_sync_tabs()
 	_refresh()
-	_restore_context.call_deferred(origin,context_revision)
+	_restore_context(origin,context_revision)
 	return true
 
 func _restore_context(origin: Dictionary, revision: int) -> void:
-	# Containers finish layout on the next frame. New navigation cancels this restore.
-	await get_tree().process_frame
-	await get_tree().process_frame
-	if not is_inside_tree() or revision != context_revision: return
-	detail_scroll.scroll_vertical = int(origin.scroll)
-	var fallback: Control = tabs[category]
+	# The new controls already exist: return keyboard ownership before another input.
+	var preferred: Control = tabs[category]
 	for control in find_children("*","Control",true,false):
 		var id: String = str(control.get_meta("ui_id",""))
-		if id == "codex.entry."+selected: fallback = control
+		if id == "codex.entry."+selected: preferred = control
 		if id == str(origin.focus) and control.is_visible_in_tree() and control.focus_mode != Control.FOCUS_NONE:
 			if control is BaseButton and control.disabled: continue
-			control.grab_focus()
-			return
-	fallback.grab_focus()
+			preferred = control
+			break
+	preferred.grab_focus()
+	# Only scroll waits for layout. A quick Tab/click must keep its newer focus.
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if not is_inside_tree() or revision != context_revision or not is_instance_valid(preferred) or not preferred.has_focus(): return
+	detail_scroll.scroll_vertical = int(origin.scroll)
+	detail_scroll.ensure_control_visible(preferred)
 
 func _update_back_hint() -> void:
 	if not is_instance_valid(close): return
