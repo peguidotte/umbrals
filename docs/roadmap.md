@@ -1449,8 +1449,9 @@ da main 8d1a3ae. Foco local: 14.321 checks de regras, 531 de saves, 1.012 de
 movimento, migração, arquitetura e export Web passaram; vídeo real confirma
 o segundo golpe. Arte não finalizada, sem alterações de outras famílias.
 Na integração, a prévia de duas cópias foi corrigida para consumir Carga e
-Eletrificado uma única vez em dados destacados, com ordem canônica e sem
-simular planos inimigos. Regras, movimento, migração e 555 verificações de
+Eletrificado uma única vez em dados destacados no grafo 6, com ordem canônica
+e sem simular planos inimigos. Grafos 0–5 mantêm inclusive os campos legados
+do relatório. Regras, movimento, migração e 559 verificações de
 saves passaram no foco; o gate integral congelado é registrado em
 `artifacts/lonelo-companion-integration/full-proof.json`. Actions desligado;
 arte e balanceamento provisórios. Autorização persistente para operações do

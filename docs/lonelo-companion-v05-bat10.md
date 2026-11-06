@@ -55,7 +55,7 @@ com Carga 8, a prévia indicava 74 e a resolução sem defesas aplicava 66;
 com Eletrificado, indicava 42 em vez de 50; com ambos, 54 em vez de 56.
 O teste de regressão foi executado antes da correção e registrou três falhas.
 
-`PowerEvaluation.evaluate` agora ordena somente as próprias técnicas com o
+No grafo 6, `PowerEvaluation.evaluate` ordena somente as próprias técnicas com o
 comparador canônico de iniciativa e avalia cópias destacadas dos donos. Carga
 e Eletrificado são consumidos nessa cópia no primeiro ataque, como na resolução.
 A potência da companheira e a do golpe original são somadas no mesmo passe,
@@ -64,22 +64,33 @@ informação oculta e não altera estado ou RNG. O valor continua sendo potênci
 condicional antes de defesas/resistência, não previsão exata de HP: a companheira
 depende da sobrevivência do alvo e do dono durante a resolução real.
 
-| Duas cópias, sem defesas | Grafo 5 | Grafo 6 |
+| Prévia de duas cópias | Grafo 5, histórico | Grafo 6, corrigido |
 | --- | ---: | ---: |
 | Sem modificadores | 46 | 58 |
-| Carga 8 | 54 | 66 |
-| Eletrificado | 40 | 50 |
+| Carga 8 | 62 | 66 |
+| Eletrificado | 34 | 50 |
 | Carga 8 e Eletrificado | 46 | 56 |
 
 O foco da integração passou: regras 14.321, movimento 1.012, migração 5,
-fixtures 66 e arquitetura; a extensão de saves passou 555 verificações,
+fixtures 66 e arquitetura; a extensão de saves passou 559 verificações,
 incluindo os dois grafos, ordem inversa dos cliques e imutabilidade da origem.
-O comportamento aplicado dos saves históricos não muda; sua prévia recebe a
-mesma correção de modificadores de uso único.
+O comportamento aplicado e os campos históricos de `last_result` dos saves
+0–5 são preservados. Como a potência prevista também é persistida nesse
+relatório, a correção sequencial fica na revisão 6. A coluna histórica acima
+replica o erro antigo deliberadamente; a resolução sem defesas daquele grafo
+continua aplicando 46/54/40/46 nos quatro casos. A fixture
+`tests/fixtures/lonelo_preview_graph5_8d1a3ae.json` foi produzida executando o
+módulo `PowerEvaluation` exato da main, verificado por SHA e contra o mesmo
+manifesto mecânico. O teste compara todos os seus campos, sem reescrevê-los.
+
+A primeira execução integral da integração foi interrompida em 261,916 s ao
+identificar esse vínculo entre preview e relatório persistido. Seus relatórios
+e vídeos foram preservados; ela não é aceite do conjunto.
 
 O gate integral da revisão congelada é registrado em
 `artifacts/lonelo-companion-integration/full-proof.json`; status, SHA e hashes
 identificam o aceite efetivo. O foco acima não substitui a regressão integral.
 Arte, potência 6 e restrições continuam provisórias; produto 0.3.0 e Actions
 pausado. `AGENTS.md` registra a autorização persistente do dono para operações
-do Umbral, sem dispensar gates, proteções ou respeitar menos uma recusa.
+do Umbral. A autorização não dispensa validação, proteção de branch ou
+respeito a recusas.

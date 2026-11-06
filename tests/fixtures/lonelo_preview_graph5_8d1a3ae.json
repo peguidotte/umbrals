@@ -1,0 +1,85 @@
+{
+	"cases": [
+		{
+			"preview": {
+				"actions": 2,
+				"block": 0,
+				"bonuses": [],
+				"burn_added": 0,
+				"burn_tick": 0,
+				"damage": 46,
+				"direct_damage": 46,
+				"energy": 2,
+				"heal": 0,
+				"name": "Poder de Lonelo",
+				"reason": "",
+				"valid": true
+			},
+			"status": {
+
+			}
+		},
+		{
+			"preview": {
+				"actions": 2,
+				"block": 0,
+				"bonuses": [],
+				"burn_added": 0,
+				"burn_tick": 0,
+				"damage": 62,
+				"direct_damage": 62,
+				"energy": 2,
+				"heal": 0,
+				"name": "Poder de Lonelo",
+				"reason": "",
+				"valid": true
+			},
+			"status": {
+				"charge": 8
+			}
+		},
+		{
+			"preview": {
+				"actions": 2,
+				"block": 0,
+				"bonuses": [],
+				"burn_added": 0,
+				"burn_tick": 0,
+				"damage": 34,
+				"direct_damage": 34,
+				"energy": 2,
+				"heal": 0,
+				"name": "Poder de Lonelo",
+				"reason": "",
+				"valid": true
+			},
+			"status": {
+				"electrified": 2
+			}
+		},
+		{
+			"preview": {
+				"actions": 2,
+				"block": 0,
+				"bonuses": [],
+				"burn_added": 0,
+				"burn_tick": 0,
+				"damage": 46,
+				"direct_damage": 46,
+				"energy": 2,
+				"heal": 0,
+				"name": "Poder de Lonelo",
+				"reason": "",
+				"valid": true
+			},
+			"status": {
+				"charge": 8,
+				"electrified": 2
+			}
+		}
+	],
+	"content_sha256": "cdefbb7c0dfe65b32aecb1ba32f08a60c941a6287638959381b8e5ae8c516d50",
+	"provenance": "Executed exact main PowerEvaluation source retrieved via git show; current mechanical content is identical to frozen main manifest; no authored expected scores.",
+	"source_commit": "8d1a3aeb98792873940966044eb5845891256712",
+	"source_module_sha256": "74e8548133980a35585b0b812642809530cca2dad00b7f2437b2c70d02387ced"
+}

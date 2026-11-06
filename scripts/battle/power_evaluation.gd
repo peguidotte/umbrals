@@ -6,6 +6,7 @@ const Traits = preload("res://scripts/battle/traits.gd")
 const Conditions = preload("res://scripts/battle/conditions.gd")
 const Companion = preload("res://scripts/battle/aquatic_companion.gd")
 const Initiative = preload("res://scripts/battle/initiative.gd")
+const CatalogRevision = preload("res://scripts/battle/catalog_revision.gd")
 
 static func power_effect(card: Dictionary, individual: Dictionary, companion_count: int, trait_available: bool = true) -> Dictionary:
 	var stats: Dictionary = Content.power_stats(str(card.power), individual)
@@ -34,9 +35,10 @@ static func power_effect(card: Dictionary, individual: Dictionary, companion_cou
 static func evaluate(cards: Array, companions: Array, existing_burn: int = 0, revision: int = 0) -> Dictionary:
 	var result: Dictionary = {"valid": false, "reason": "Selecione poderes, uma troca ou um item", "name": "Prepare sua conjuração", "actions": 0, "energy": 0, "damage": 0, "direct_damage": 0, "burn_added": 0, "burn_tick": existing_burn, "block": 0, "heal": 0, "bonuses": []}
 	if cards.is_empty(): return result
+	var sequential_preview: bool = CatalogRevision.includes(revision, Companion.REVISION)
 	var owners: Dictionary = {}
 	# Consume one-shot modifiers only in detached public owner data.
-	for individual in companions: owners[int(individual.uid)] = individual.duplicate(true)
+	for individual in companions: owners[int(individual.uid)] = individual.duplicate(true) if sequential_preview else individual
 	var seen: Dictionary = {}
 	var participating: Dictionary = {}
 	var moss_used: Dictionary = {}
@@ -62,10 +64,13 @@ static func evaluate(cards: Array, companions: Array, existing_burn: int = 0, re
 	var able_count: int = 0
 	for individual in companions:
 		if int(individual.get("slot", 0)) >= 0 and int(individual.get("hp", 1)) > 0: able_count += 1
-	var ordered: Array = Initiative.player_entries(cards, owners.values(), [], [])
-	ordered.sort_custom(Initiative.precedes)
-	for entry: Dictionary in ordered:
-		var card: Dictionary = entry.card
+	# Old graphs preserve even the forecast fields persisted in last_result.
+	var preview_cards: Array = cards
+	if sequential_preview:
+		var ordered: Array = Initiative.player_entries(cards, owners.values(), [], [])
+		ordered.sort_custom(Initiative.precedes)
+		preview_cards = ordered.map(func(entry: Dictionary) -> Dictionary: return entry.card)
+	for card: Dictionary in preview_cards:
 		var individual: Dictionary = owners[int(card.owner)]
 		var stats: Dictionary = power_effect(card, individual, able_count, not moss_used.has(int(individual.uid)))
 		if Traits.once_per_round(individual) and int(stats.block) > 0: moss_used[int(individual.uid)] = true
@@ -77,7 +82,7 @@ static func evaluate(cards: Array, companions: Array, existing_burn: int = 0, re
 		result.block += int(stats.block)
 		result.heal += int(stats.heal)
 		result.burn_added += int(stats.burn)
-		if int(stats.damage) > 0:
+		if sequential_preview and int(stats.damage) > 0:
 			for id: String in ["charge", "electrified"]: Conditions.consume(individual, id)
 	result.energy = result.actions
 	result.damage = result.direct_damage
