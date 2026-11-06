@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "version": "0.1.0",
+  "status": "prototype",
+  "dependencies": [],
+  "id": "world/pietro-pixel-study",
+  "description": "Derived pixel room clean plate with stationary Brasa for a same-plane art-direction study.",
+  "changes": "One reference edit removes the baked Pietro. Brasa is a stationary composited reference, not a new animated creature asset.",
+  "files": {
+    "texture": {
+      "path": "plate.png",
+      "kind": "texture",
+      "sha256": "3b6ff22afa647a0c4efa4a882fce857e9c609c0af03e100573f2042c64f03772",
+      "bytes": 1739769,
+      "technical": {
+        "dimensions": [
+          1585,
+          992
+        ],
+        "mode": "RGB",
+        "frames": 1,
+        "alpha": false
+      }
+    },
+    "approved-scene": {
+      "path": "review/approved-scene.png",
+      "kind": "review",
+      "sha256": "b75d14efdc9e49d3f6949a1c9020315976ebfe649e66260762c859d651ca74ce",
+      "bytes": 1757500,
+      "technical": {
+        "dimensions": [
+          1586,
+          992
+        ],
+        "mode": "RGB",
+        "frames": 1,
+        "alpha": false
+      }
+    }
+  },
+  "provenance": {
+    "kind": "controlled edit of project-approved concept",
+    "tool": "OpenAI Image Gen",
+    "recorded_date_utc": "2026-11-05",
+    "original_output_basename": "exec-66d4c3da-fcb2-4d04-97a0-31996239d6e4.png",
+    "source_sha256": "b75d14efdc9e49d3f6949a1c9020315976ebfe649e66260762c859d651ca74ce",
+    "generation_brief": "Remove only the baked human and his shadow; reconstruct sofa, rug and floor; retain the pixel direction, camera and stationary Brasa. One bounded edit, no style variants.",
+    "edit_history": "Generated original retained unchanged. Runtime crops the concept footer through a texture region. Output is 1585x992 versus the 1586x992 approved reference; no claim of pixel-identical scenery or Brasa.",
+    "approval_scope": "Original concept direction approved by Pedro. Derived clean plate and runtime composition remain candidates."
+  },
+  "metadata": {
+    "source_image": "review/approved-scene.png",
+    "crop": [
+      0,
+      0,
+      1585,
+      880
+    ],
+    "stationary_brasa": true,
+    "runtime_pin": "none",
+    "study_only": true
+  }
+}

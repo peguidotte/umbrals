@@ -1373,6 +1373,35 @@ provisórios; o acabamento visual segue em revisão separada. A suíte integral 
 HEAD funcional `1994376` passou no push 41964934938. Novos jobs do Actions estão
 bloqueados por cobrança; nenhum job novo é registrado como aprovado por isso.
 
+### V05-ART-08 — piloto da direção pixelada de Pietro, candidato
+
+Pedro aprovou a cena unificada e o novo Pietro isolado. Uma prova pequena usa
+o PNG aprovado sem alteração na comparação parada, ao lado de Brasa e cenário,
+e um rig controlado para três ciclos de caminhada. A base da sala foi reconstruída
+uma única vez para retirar o Pietro fundido ao fundo; Brasa é estático nessa base.
+Módulos prototype sem pins e cena de estudo separada do fluxo principal. QA,
+testes proporcionais e vídeo acompanham o candidato. A aprovação artística da
+implementação continua pendente com Pedro. [Contrato e limites](pietro-pixel-pilot-v05.md).
+
+Revisão 0.2.0: apoios separados na projeção de três quartos, menor flexão dos
+joelhos e balanço de tronco, braços e mochila. A imagem aprovada e a versão 0.1.0
+ficam preservadas. Onze verificações nativas e dez Web passaram; a marcha continua
+candidata. É uma cena de estudo sobre base estática, sem casa jogável ou promoção.
+
+Correção 0.2.1: a cintura e a costura interna das duas pernas compartilham o
+movimento da pelve para fechar a abertura vista pela revisão de `41e51da`.
+O teste de cobertura usa triângulos deformados, UVs e alfa do PNG: zero amostras
+descobertas em 460.080, contra 62.277 na versão anterior. Doze casos nativos
+passam preservando os resultados de botas, joelhos e parte superior. A revisão
+visual da implementação continua aberta; módulos anteriores e pins preservados.
+
+Correção 0.2.2: transições mais largas da deformação de joelhos, tornozelos e
+costura evitam o dobramento dos triângulos. A nova regressão cobre 4.985 poses
+e 7.896.240 triângulos, incluindo ciclo 0,22 e acomodações intermediárias:
+28.048 inversões na versão anterior, zero na candidata, razão mínima de área
+0,20365. Treze casos nativos passam, mantendo cobertura da cintura, pés e IK.
+Segue necessária a revisão visual do tecido; sem aprovação artística ou promoção.
+
 ### V05-CNT-02 — consolidação técnica das linhagens sobre a main
 
 A candidata funcional `15dfe1b` passou aceitação integral local: 14.346 regras,
