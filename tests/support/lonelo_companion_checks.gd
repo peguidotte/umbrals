@@ -30,6 +30,7 @@ static func attacks(result: Dictionary) -> Array:
 	return result.events.filter(func(event: Dictionary) -> bool: return event.kind == "attack")
 
 static func run(expect: Callable) -> void:
+	preload("res://tests/support/lonelo_preview_checks.gd").run(expect)
 	var normal: Dictionary = example()
 	var hits: Array = attacks(normal.result)
 	expect.call(hits.size() == 2 and hits[0].amount == 21 and hits[1].amount == 4 and normal.target.hp == 75, "Lonelo's water technique resolves 21 + 4 after defense on each hit")

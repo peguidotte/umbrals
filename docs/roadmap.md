@@ -1448,5 +1448,11 @@ Saves 0–5 conservam o comportamento antigo por revisão, com replay congelado
 da main 8d1a3ae. Foco local: 14.321 checks de regras, 531 de saves, 1.012 de
 movimento, migração, arquitetura e export Web passaram; vídeo real confirma
 o segundo golpe. Arte não finalizada, sem alterações de outras famílias.
-Aguarda revisão independente e regressão de integração; Actions desligado.
+Na integração, a prévia de duas cópias foi corrigida para consumir Carga e
+Eletrificado uma única vez em dados destacados, com ordem canônica e sem
+simular planos inimigos. Regras, movimento, migração e 555 verificações de
+saves passaram no foco; o gate integral congelado é registrado em
+`artifacts/lonelo-companion-integration/full-proof.json`. Actions desligado;
+arte e balanceamento provisórios. Autorização persistente para operações do
+Umbral registrada em `AGENTS.md`, mantendo gates e respeito a recusas.
 [Regra, migração, evidência e limites](lonelo-companion-v05-bat10.md).
