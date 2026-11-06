@@ -3,6 +3,7 @@ extends RefCounted
 const BattleCommand = preload("res://scripts/domain/models/battle_command.gd")
 const ItemEffects = preload("res://scripts/battle/item_effects/registry.gd")
 const BattleEvent = preload("res://scripts/domain/models/battle_event.gd")
+const Companion = preload("res://scripts/battle/aquatic_companion.gd")
 const Content = preload("res://scripts/content.gd")
 const Traits = preload("res://scripts/battle/traits.gd")
 const Targeting = preload("res://scripts/battle/targeting.gd")
@@ -15,13 +16,15 @@ var enemies: Array
 var inventory: Dictionary
 var declined_replacements: Dictionary
 var round_number: int
+var catalog_revision: int
 
-func _init(allies: Array, opponents: Array, items: Dictionary, declined: Dictionary, current_round: int) -> void:
+func _init(allies: Array, opponents: Array, items: Dictionary, declined: Dictionary, current_round: int, revision: int = 0) -> void:
 	party = allies
 	enemies = opponents
 	inventory = items
 	declined_replacements = declined
 	round_number = current_round
+	catalog_revision = revision
 
 func _by_uid(roster: Array, uid: int) -> Dictionary:
 	for individual in roster:
@@ -189,6 +192,13 @@ func _resolve_power(entry: Dictionary, owner: Dictionary, events: Array, moss_us
 			var applied: Dictionary = _event("wet" if id == "wet" else "condition", entry, owner, target_side, target, power, int(stats.conditions[id]))
 			applied.condition = id
 			events.append(applied)
+		if Companion.available(owner, stats, catalog_revision):
+			var followup: Dictionary = Companion.strike(target, float(stats.get("attack_multiplier", 1.0)))
+			var companion_event: Dictionary = _event("attack", entry, owner, target_side, target, power, int(followup.amount))
+			companion_event.merge(followup, true)
+			events.append(companion_event)
+			if target_side == "enemy": applied_damage += int(followup.amount)
+			if int(target.hp) <= 0: events.append(_event("ko", entry, owner, target_side, target, power, 0))
 		if not hostile: _apply_support(stats, entry, owner, target_side, target, power, events)
 	if hostile and (int(stats.get("block", 0)) > 0 or int(stats.get("heal", 0)) > 0 or int(stats.get("taunt", 0)) > 0):
 		_apply_support(stats, entry, owner, str(entry.side), owner, power, events)

@@ -286,6 +286,7 @@ func _run() -> void:
 		await create_timer(0.15).timeout
 		expect(aquatic.orb_center(source.rig).is_equal_approx(fixed), "Reduced-motion sphere remains still")
 	await preload("res://tests/support/aquatic_union_checks.gd").run(app, expect)
+	await preload("res://tests/support/lonelo_companion_motion.gd").run(app, expect)
 	app.feedback.cancel()
 	app.audio.shutdown()
 	await create_timer(0.12).timeout

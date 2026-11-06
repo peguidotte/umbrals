@@ -1437,3 +1437,27 @@ e save/reload; foco de saves passou com 498 asserções. O gate integral do
 conjunto congelado é registrado em `artifacts/aquatic-finals-integration-full-proof.json`.
 A esfera é apresentação visual, sem entidade autônoma ou ataque duplo.
 [Escopo, evidência e limites](aquatic-finals-v05-09d.md).
+
+### V05-BAT-10 — segundo golpe da companheira de Lonelo
+
+Ruleset 5/catálogo 6: ataques individuais de água de Lonelo recebem um segundo
+golpe de potência 6, limitado ao mesmo alvo sobrevivente, sem outra carta/ação.
+Defesa/resistência/escudo valem por golpe; não duplica condições ou reações.
+KO/reserva/revive da lontra impedem a técnica. Números e restrições provisórios.
+Saves 0–5 conservam o comportamento antigo por revisão, com replay congelado
+da main 8d1a3ae. Foco local: 14.321 checks de regras, 531 de saves, 1.012 de
+movimento, migração, arquitetura e export Web passaram; vídeo real confirma
+o segundo golpe. Arte não finalizada, sem alterações de outras famílias.
+Na integração, a prévia de duas cópias foi corrigida para consumir Carga e
+Eletrificado uma única vez em dados destacados no grafo 6, com ordem canônica
+e sem simular planos inimigos. Grafos 0–5 mantêm inclusive os campos legados
+do relatório. Regras, movimento, migração e 559 verificações de
+saves passaram no foco; o gate integral congelado é registrado em
+`artifacts/lonelo-companion-integration/full-proof.json`. Actions desligado;
+arte e balanceamento provisórios. Autorização persistente para operações do
+Umbral registrada em `AGENTS.md`, mantendo gates e respeito a recusas.
+O gate também revelou perda transitória de foco ao voltar de um poder no
+grimório. O foco agora retorna imediatamente e a rolagem adiada respeita um
+Tab posterior; 91 verificações nativas do grimório e 156 Web passaram no foco,
+com o cenário Web original preservado.
+[Regra, migração, evidência e limites](lonelo-companion-v05-bat10.md).

@@ -5,6 +5,8 @@ const Baseline = preload("res://scripts/expedition/baseline_manifest.gd")
 const Previous = preload("res://scripts/expedition/rules2_manifest.gd")
 const CatalogRevision = preload("res://scripts/battle/catalog_revision.gd")
 const Electric3 = preload("res://scripts/expedition/electric3_manifest.gd")
+const Aquatic5 = preload("res://scripts/expedition/aquatic5_manifest.gd")
+const AQUATIC5_IDENTITY = {"ruleset": "expedition-rules-4", "content_sha256": "cdefbb7c0dfe65b32aecb1ba32f08a60c941a6287638959381b8e5ae8c516d50"}
 const Combined4 = preload("res://scripts/expedition/combined4_manifest.gd")
 const COMBINED4_IDENTITY = {"ruleset": "expedition-rules-4", "content_sha256": "28b326e20a544fd37abc3958a6efabdf5714cfca1b59d8cfe6b1898e71b09221"}
 const AQUATIC_EXTENSIONS = [{"species": "dew", "form": "londraval", "edge": "mareveu_to_londraval", "from": "mareveu", "revision": 5}, {"species": "dew", "form": "lonelo", "edge": "mareveu_to_lonelo", "from": "mareveu", "revision": 5}]
@@ -74,7 +76,9 @@ static func lineage_extension(old: Dictionary, target: Dictionary) -> bool:
 
 static func supports(source: Variant) -> bool:
 	if source == Identity.current(): return true
-	if Identity.RULESET != "expedition-rules-4": return false
+	if Identity.RULESET != "expedition-rules-5": return false
+	if source == AQUATIC5_IDENTITY:
+		return JSON.stringify(Aquatic5.DATA).sha256_text() == source.content_sha256 and additive(Aquatic5.DATA, Identity.manifest())
 	if source == COMBINED4_IDENTITY:
 		return JSON.stringify(Combined4.DATA).sha256_text() == source.content_sha256 and catalog_transition(Combined4.DATA, Identity.manifest(), 4)
 	if source == ELECTRIC3_IDENTITY:
@@ -141,10 +145,13 @@ static func source_state_valid(snapshot: Dictionary) -> bool:
 	if snapshot.get("identity") == Identity.current():
 		var current_revision: Variant = snapshot.get("catalog_revision")
 		return (current_revision is int or current_revision is float) and is_finite(float(current_revision)) and current_revision == floor(float(current_revision)) and CatalogRevision.supported(int(current_revision))
-	if not snapshot.get("identity") in [BASE_IDENTITY, PREVIOUS_IDENTITY, RULES3_IDENTITY, CATALOG1_IDENTITY, GRASS2_IDENTITY, ELECTRIC3_IDENTITY, COMBINED4_IDENTITY] or not snapshot.get("battle") is Dictionary: return false
+	if not snapshot.get("identity") in [BASE_IDENTITY, PREVIOUS_IDENTITY, RULES3_IDENTITY, CATALOG1_IDENTITY, GRASS2_IDENTITY, ELECTRIC3_IDENTITY, COMBINED4_IDENTITY, AQUATIC5_IDENTITY] or not snapshot.get("battle") is Dictionary: return false
 	var source: Dictionary = Baseline.DATA
 	var allowed: Array = [0]
-	if snapshot.identity == COMBINED4_IDENTITY:
+	if snapshot.identity == AQUATIC5_IDENTITY:
+		source = Aquatic5.DATA
+		allowed = [0, 1, 2, 3, 4, 5]
+	elif snapshot.identity == COMBINED4_IDENTITY:
 		source = Combined4.DATA
 		allowed = [0, 1, 2, 3, 4]
 	elif snapshot.identity == ELECTRIC3_IDENTITY:
@@ -157,7 +164,7 @@ static func source_state_valid(snapshot: Dictionary) -> bool:
 		source = Catalog1.DATA
 		allowed = [0, 1]
 	elif snapshot.identity in [RULES3_IDENTITY, PREVIOUS_IDENTITY]: source = Previous.DATA
-	if snapshot.identity in [CATALOG1_IDENTITY, GRASS2_IDENTITY, COMBINED4_IDENTITY] and not snapshot.has("catalog_revision"): return false
+	if snapshot.identity in [CATALOG1_IDENTITY, GRASS2_IDENTITY, COMBINED4_IDENTITY, AQUATIC5_IDENTITY] and not snapshot.has("catalog_revision"): return false
 	var catalog_revision: Variant = snapshot.get("catalog_revision", 3 if snapshot.identity == ELECTRIC3_IDENTITY else 0)
 	if not (catalog_revision is int or catalog_revision is float) or not is_finite(float(catalog_revision)) or catalog_revision != floor(float(catalog_revision)) or not int(catalog_revision) in allowed: return false
 	if snapshot.identity.ruleset in ["expedition-rules-3", "expedition-rules-4"]:

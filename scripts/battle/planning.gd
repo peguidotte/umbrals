@@ -26,11 +26,11 @@ static func target_options(index: int, hand: Array, party: Array, enemies: Array
 	if owner.is_empty() or not Content.POWERS.has(card.power): return []
 	return Targeting.options(Content.power_stats(str(card.power), owner), owner, party, enemies)
 
-static func preview_selection(indices: Array[int], hand: Array, party: Array, enemies: Array, phase: String, round_number: int, queued_swaps: Array, queued_items: Array, budget: int) -> Dictionary:
+static func preview_selection(indices: Array[int], hand: Array, party: Array, enemies: Array, phase: String, round_number: int, queued_swaps: Array, queued_items: Array, budget: int, revision: int = 0) -> Dictionary:
 	var cards: Array = []
 	for index in indices:
 		if index >= 0 and index < hand.size(): cards.append(hand[index])
-	var result: Dictionary = PowerEvaluation.evaluate(cards, party)
+	var result: Dictionary = PowerEvaluation.evaluate(cards, party, 0, revision)
 	if not cards.is_empty() and not result.valid and result.reason != "Ações insuficientes": return result
 	if cards.size() != indices.size():
 		result.valid = false

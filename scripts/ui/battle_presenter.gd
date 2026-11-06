@@ -128,7 +128,7 @@ Escolha uma vaga para trocar (1 ação)." % [Content.display_name(individual), i
 		hand_fingerprint = fingerprint
 		_rebuild_hand()
 	else:
-		for i in range(cards.size()): cards[i].configure(game.hand[i], game.umbral_by_uid(int(game.hand[i].owner)), game.party, preferences.text_scale(), preferences.values.reduced_motion)
+		for i in range(cards.size()): cards[i].configure(game.hand[i], game.umbral_by_uid(int(game.hand[i].owner)), game.party, preferences.text_scale(), preferences.values.reduced_motion, game.catalog_revision)
 	sync_selection()
 	focus_group_changed.emit()
 	changed.emit()
@@ -141,7 +141,7 @@ func _rebuild_hand() -> void:
 	for i in range(game.hand.size()):
 		var card = PowerCard.new()
 		hand_view.add_child(card)
-		card.configure(game.hand[i], game.umbral_by_uid(int(game.hand[i].owner)), game.party, preferences.text_scale(), preferences.values.reduced_motion)
+		card.configure(game.hand[i], game.umbral_by_uid(int(game.hand[i].owner)), game.party, preferences.text_scale(), preferences.values.reduced_motion, game.catalog_revision)
 		control_created.emit(card, "hand.%d" % i)
 		card.pressed.connect(_on_card_selected.bind(i))
 		cards.append(card)

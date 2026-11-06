@@ -78,6 +78,26 @@ func check_form_links() -> void:
 	record.queue_free()
 	await process_frame
 
+func check_immediate_back() -> void:
+	expect(app.screen_host.modal_root.go_back(), "Related power Back has an origin")
+	var origin: Control = app.registry["codex.related.fireball"]
+	if expect(root.gui_get_focus_owner() == origin, "Back restores keyboard focus synchronously before the next input"):
+		var event = InputEventKey.new()
+		event.keycode = KEY_TAB
+		event.physical_keycode = KEY_TAB
+		event.pressed = true
+		Input.parse_input_event(event)
+		await process_frame
+		var moved: Control = root.gui_get_focus_owner()
+		expect(is_instance_valid(moved) and moved != origin and app.screen_host.modal_root.is_ancestor_of(moved), "Immediate Tab advances inside the restored codex")
+		event.pressed = false
+		Input.parse_input_event(event)
+		for frame in range(4): await process_frame
+		expect(root.gui_get_focus_owner() == moved, "Deferred scroll never steals the focus chosen by a quick Tab")
+	else:
+		for frame in range(4): await process_frame
+	origin.grab_focus()
+
 func run() -> void:
 	await check_form_links()
 	app = load("res://scenes/main.tscn").instantiate()
@@ -93,7 +113,7 @@ func run() -> void:
 	await press("codex.section.details")
 	await press("codex.related.fireball")
 	await check_forward_focus("Related power")
-	await key(KEY_ESCAPE)
+	await check_immediate_back()
 	if not expect(app.screens.top() == "codex", "Back from a related power keeps the codex open"):
 		await finish()
 		return

@@ -236,7 +236,7 @@ func preview() -> Dictionary:
 	return preview_selection(selected)
 
 func preview_selection(indices: Array[int]) -> Dictionary:
-	return Planning.preview_selection(indices, hand, party, enemies, phase, round_number, queued_swaps, queued_items, action_budget())
+	return Planning.preview_selection(indices, hand, party, enemies, phase, round_number, queued_swaps, queued_items, action_budget(), catalog_revision)
 
 func queue_swap(out_uid: int, in_uid: int) -> bool:
 	var outgoing: Dictionary = umbral_by_uid(out_uid)
@@ -329,7 +329,7 @@ func redraw() -> bool:
 func _resolve_round(score: Dictionary, passing: bool) -> Dictionary:
 	var player_entries: Array = [] if passing else Initiative.player_entries(selected_cards(), party, queued_swaps, queued_items)
 	var queue: Array = Initiative.commit(player_entries, enemy_plan, enemies, rng)
-	var resolver = RoundResolution.new(party, enemies, inventory, declined_replacements, round_number)
+	var resolver = RoundResolution.new(party, enemies, inventory, declined_replacements, round_number, catalog_revision)
 	var resolution: Dictionary = resolver.resolve(queue)
 	var events: Array = resolution.events
 	var applied_damage: int = int(resolution.applied_damage)

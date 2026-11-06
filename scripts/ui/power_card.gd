@@ -1,5 +1,6 @@
 class_name UmbralPowerCard
 extends Button
+const Companion = preload("res://scripts/battle/aquatic_companion.gd")
 const Assets = preload("res://scripts/assets/catalog.gd")
 const Content = preload("res://scripts/content.gd")
 const UI = preload("res://scripts/ui/kit.gd")
@@ -33,7 +34,7 @@ func _ready() -> void:
 	focus_exited.connect(_react)
 	custom_minimum_size = Vector2.ZERO
 
-func configure(data: Dictionary, umbral: Dictionary, team: Array, large: float, reduce: bool) -> void:
+func configure(data: Dictionary, umbral: Dictionary, team: Array, large: float, reduce: bool, revision: int = 0) -> void:
 	card = data
 	individual = umbral
 	power = Content.power_stats(str(card.power), individual)
@@ -46,6 +47,7 @@ func configure(data: Dictionary, umbral: Dictionary, team: Array, large: float, 
 	tooltip_text = "%s — %s\n%d ação(ões) · %d potência · %d escudo · %d cura\n%s\nSelecione e clique em uma vaga para mudar o alvo. Q/E: alvo. P: plano. C: detalhes." % [str(power.name).replace("\n", " "), Content.display_name(individual), int(power.cost), int(effect.get("damage", 0)), int(effect.get("block", 0)), int(effect.get("heal", 0)), _scope_label()]
 	tooltip_text += "\n" + Content.NATURES[power.nature].name + "\n" + effect_text(effect)
 	tooltip_text += "\nExecução: %s · Velocidade %d" % ["prioritária" if int(power.get("priority", 0)) > 0 else "normal", int(individual.get("speed", 0))]
+	if Companion.available(individual, effect, revision): tooltip_text += "\n" + Companion.description()
 	queue_redraw()
 
 static func effect_text(stats: Dictionary) -> String:

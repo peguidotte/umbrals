@@ -1,7 +1,7 @@
 extends RefCounted
 ## Bump RULESET whenever deterministic mechanics change. JSON.stringify sorts keys.
 const Content = preload("res://scripts/content.gd")
-const RULESET = "expedition-rules-4"
+const RULESET = "expedition-rules-5"
 const DISPLAY_FIELDS = ["name", "names", "art", "color", "element", "title", "text", "lore", "description", "trait", "trait_description"]
 
 static func gameplay_projection(value: Variant) -> Variant:

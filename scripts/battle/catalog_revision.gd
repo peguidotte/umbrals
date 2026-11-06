@@ -1,9 +1,9 @@
 extends RefCounted
 ## A run retains its authored evolution graph across catalog additions.
 const Content = preload("res://scripts/content.gd")
-const CURRENT: int = 5
+const CURRENT: int = 6
 # Revisions 1/2 are grass histories; 3 is independent electric history.
-const GRAPHS: Dictionary = {0: [0], 1: [0, 1], 2: [0, 1, 2], 3: [0, 3], 4: [0, 1, 2, 3], 5: [0, 1, 2, 3, 5]}
+const GRAPHS: Dictionary = {0: [0], 1: [0, 1], 2: [0, 1, 2], 3: [0, 3], 4: [0, 1, 2, 3], 5: [0, 1, 2, 3, 5], 6: [0, 1, 2, 3, 5, 6]}
 
 static func supported(revision: int) -> bool:
 	return GRAPHS.has(revision)
