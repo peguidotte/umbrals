@@ -1481,3 +1481,9 @@ indisponibilidade dos bytes originais. Windows/DPI, hardware, áudio e controle
 físicos e aprovação estética continuam abertos. Próxima fatia: revisão dessas
 evidências e validação na plataforma alvo; produto permanece 0.3.0. Sem push,
 merge, deploy, publicação ou reativação de Actions nesta candidata.
+
+A revisão visual intermediária encontrou Opções cortado/borrado no celular,
+apesar de a entrada funcionar. A candidata corrige rasterização local, margens,
+quebra de rótulos e foco dos sliders, e acrescenta regressões de largura/margem
+com texto ampliado em cinco tamanhos. A tentativa anterior e suas capturas
+ficam preservadas; o escopo corrigido usa `test-results/live-title-final-proof`.

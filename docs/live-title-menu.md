@@ -25,6 +25,11 @@ reference and the complete `menu-umbral-spec.md` (Library identity
 - Layout uses measured native text and physical target minima, with a centered
   ultrawide stage, grid/column reflow, scroll-following focus and independent
   portrait/ultrawide environments. Back remains outside the Options scroll region.
+- Options uses local font resources so a locally enlarged panel does not enlarge
+  glyphs rasterized for the smaller root canvas. Captions wrap independently of
+  switch icons; the volume field's label follows its slider into view. Compact
+  margins and mode heights adapt to content rather than clipping it. Native
+  enlarged-text checks cover 320, 390, 800, 1024 and 1280 px widths.
 - Independent actors use sixteen normalized frames each: eight idle and eight
   reaction poses. Decorative clocks do not use gameplay RNG. Reactions have a
   cooldown and cannot queue indefinitely. Modals suspend input/processing; hidden
@@ -91,6 +96,11 @@ house-layout coverage. All its native tasks and eight mutations had passed,
 but it is **not a passing full gate**. Subsequent polish uses the focused native
 and title/navigation browser reports in `test-results/live-title-final-*`.
 The 220 ms fade and local effects passed the focused native regression first.
+The first final-scope attempt then passed every native task, but visual review
+found narrow Options clipping/blur that input checks had missed. It was
+interrupted and preserved; the corrected final scope is
+`test-results/live-title-final-proof`. Interim mobile probe images show sharp
+text and a contained panel; final captures must still be inspected directly.
 Final screenshots/videos need direct inspection; neither counts nor export
 success constitutes visual approval.
 

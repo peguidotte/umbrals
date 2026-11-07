@@ -29,10 +29,19 @@ omits Sair, while the native title has all four actions.
 - Initial portrait crops placed village/ruin behind navigation. A separate
   portrait clean scene now provides continuous sky. Browser-06 320×568 and
   390×844 captures show the revised composition.
-- [P2, fixed in code, final capture pending] In browser-06 800×600, Opções crossed
+- [P2, fixed] In browser-06 800×600, Opções crossed
   the top of the ruin. The title shader now extends the sky only for the middle
   layout, below the complete actions/notice band. The new source passes focused
-  UI/regression checks; the final iteration must supply post-fix images.
+  UI/regression checks. The later 800×600 capture in the interrupted
+  `live-title-final-browser` attempt was opened and shows clear sky behind it.
+- [P1, fixed, final matrix pending] Direct inspection of that attempt found
+  clipped Options at 320 px and blurred locally enlarged text. The view now
+  uses local font copies with appropriate raster density, wrapped toggle
+  captions, compact margins, field-aware slider reveal and content-sized mode
+  buttons. The mobile probe's 390 px, 320 px enlarged-text and secondary-link
+  images were opened; text is sharp and the panel fits. Native regression adds
+  width/clearance assertions at 320, 390, 800, 1024 and 1280 px. The failed
+  images and the interrupted attempt remain preserved.
 - The initial orb floated below the raised paw and sank below the rock at
   contact. High/contact positions and paw-frame selection were corrected.
   Browser-06's live wide capture shows the ball meeting the paw. Final playback
@@ -75,7 +84,7 @@ was interrupted during house-layout coverage. Its native passes are not a full
 gate. The stable 1280×720 layout capture was opened and has the logo, primary
 actions/focus and four actors. The very first integration capture omitted UI
 while graphics were warming up; it must not be used as final proof. Final
-post-polish menu captures/videos are recorded in `test-results/live-title-final-browser`.
+post-polish menu captures/videos are recorded in `test-results/live-title-final-proof`.
 The final polish adds a 220 ms nonblocking exit fade and bounded local reaction
 effects, with reduced-motion/flash suppression. It requires final playback
 inspection along with the dribble.
