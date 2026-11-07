@@ -84,10 +84,16 @@ was interrupted during house-layout coverage. Its native passes are not a full
 gate. The stable 1280×720 layout capture was opened and has the logo, primary
 actions/focus and four actors. The very first integration capture omitted UI
 while graphics were warming up; it must not be used as final proof. Final
-post-polish menu captures/videos are recorded in `test-results/live-title-final-proof`.
+post-polish menu captures/videos are recorded in `test-results/live-title-review-proof`.
 The final polish adds a 220 ms nonblocking exit fade and bounded local reaction
 effects, with reduced-motion/flash suppression. It requires final playback
 inspection along with the dribble.
+
+The subsequent `live-title-final-proof` attempt exposed an intermittent folded
+battle-VFX ribbon triangle rejected by the renderer despite its area guard.
+The ribbon now checks actual triangulability before drawing that sliver. Motion,
+settings, title, UI flow and architecture passed in `live-title-geometry-fix`.
+That interrupted attempt is preserved; it is not represented as full acceptance.
 
 A convenience copy of selected final proof may be placed in
 ignored `test-results/live-title-delivery`; this does not replace original evidence.

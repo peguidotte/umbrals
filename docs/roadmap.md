@@ -1474,7 +1474,7 @@ alcançáveis por Opções. [Implementação, proveniência e limites](live-titl
 O foco nativo passou; o ensaio completo `live-title-05` teve todos os alvos
 nativos e oito mutações aprovados, mas atingiu 1800 s no cenário amplo de
 combate Web e foi interrompido em layout. Não constitui gate integral aprovado.
-Os relatórios finais por escopo ficam em `test-results/live-title-final-*`;
+Os relatórios finais por escopo ficam em `test-results/live-title-review-*`;
 capturas/vídeo e pacote Windows são evidência para revisão, não aceite humano.
 Arte derivada difere da imagem aprovada; comparação por overlay bloqueada pela
 indisponibilidade dos bytes originais. Windows/DPI, hardware, áudio e controle
@@ -1486,4 +1486,8 @@ A revisão visual intermediária encontrou Opções cortado/borrado no celular,
 apesar de a entrada funcionar. A candidata corrige rasterização local, margens,
 quebra de rótulos e foco dos sliders, e acrescenta regressões de largura/margem
 com texto ampliado em cinco tamanhos. A tentativa anterior e suas capturas
-ficam preservadas; o escopo corrigido usa `test-results/live-title-final-proof`.
+ficam preservadas; o escopo corrigido usa `test-results/live-title-review-proof`.
+Uma tentativa subsequente expôs um triângulo degenerado intermitente nas faixas
+de VFX de batalha. A validação de triangulação corrige o desenho, e movimento,
+Opções, título, fluxo e arquitetura passaram no foco; a tentativa com erro é
+preservada e não conta como aceite integral.

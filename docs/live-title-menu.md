@@ -94,12 +94,15 @@ The `live-title-05` full attempt preserved a 1800-second timeout in the broad
 four-route browser combat scenario. It was then interrupted during unrelated
 house-layout coverage. All its native tasks and eight mutations had passed,
 but it is **not a passing full gate**. Subsequent polish uses the focused native
-and title/navigation browser reports in `test-results/live-title-final-*`.
+and title/navigation/expedition browser reports in `test-results/live-title-review-*`.
 The 220 ms fade and local effects passed the focused native regression first.
 The first final-scope attempt then passed every native task, but visual review
 found narrow Options clipping/blur that input checks had missed. It was
-interrupted and preserved; the corrected final scope is
-`test-results/live-title-final-proof`. Interim mobile probe images show sharp
+interrupted and preserved. A subsequent run found an intermittent degenerate
+battle ribbon triangle despite the existing area guard. An actual triangulation
+check now skips those undrawable slivers; the focused motion/UI regression passed.
+The corrected final scope is `test-results/live-title-review-proof`.
+Interim mobile probe images show sharp
 text and a contained panel; final captures must still be inspected directly.
 Final screenshots/videos need direct inspection; neither counts nor export
 success constitutes visual approval.
