@@ -74,7 +74,8 @@ func _ready() -> void:
 	expedition_screen.formation_requested.connect(commands.open_formation)
 	menu_screens.control_created.connect(_register)
 	menu_screens.requested.connect(_menu_intent)
-	menu_screens.starter_requested.connect(func(species: String): run_flow.start_selected(run_flow.seed_number, species, str(preferences.values.information_mode)))
+	menu_screens.starter_requested.connect(func(species: String):
+		if screens.top() == "starter": run_flow.start_selected(run_flow.seed_number, species, str(preferences.values.information_mode)))
 	menu_screens.navigation_changed.connect(_set_group.bind("codex"))
 	menu_screens.title_navigation.connect(func(): audio.navigate())
 	menu_screens.title_awakened.connect(_title_awakened)
@@ -159,7 +160,7 @@ func _register(node: Control, key: String, screen: String) -> Control:
 	return control_registry.register(node, key, screen)
 
 func _build_menu() -> void:
-	screen_host.menu_root = menu_screens.title(size, preferences, visual_capture)
+	screen_host.menu_root = menu_screens.title(size, preferences, visual_capture, {"available":not session.saved_checkpoint.is_empty(), "status":session.run_save.last_status, "notice":session.save_notice})
 	_full(screen_host.menu_root, self)
 	_set_group("menu")
 
@@ -293,7 +294,8 @@ func _menu_intent(intent: String) -> void:
 		"return_menu": _return_menu()
 		"quit": _quit()
 		"continue": _continue_expedition()
-		"new": run_flow.choose_starter(42013)
+		"new":
+			if screens.top() in ["menu", "journey"]: run_flow.choose_starter(42013)
 		"practice": run_flow.choose_starter(42013, true)
 		"history": runtime.interactions.open_history()
 		"new_seed": _new_seed()
@@ -338,7 +340,7 @@ func _on_preferences_changed() -> void:
 	audio.apply(preferences.values)
 	screen_host.refuge_root.apply_preferences(preferences.values.reduced_motion, preferences.text_scale())
 	world.still = visual_capture or preferences.values.reduced_motion
-	screen_host.menu_root.apply_preferences(preferences.values.reduced_motion, visual_capture, preferences.text_scale())
+	screen_host.menu_root.apply_preferences(preferences.values.reduced_motion, visual_capture, preferences.text_scale(), preferences.values.flashes)
 	for control in registry.values():
 		if is_instance_valid(control) and control is TitleButton:
 			control.reduced_motion = bool(preferences.values.reduced_motion) or visual_capture
@@ -416,10 +418,7 @@ func _refresh_checkpoint() -> void:
 	expedition_flow.refresh_checkpoint()
 
 func _update_continue_button() -> void:
-	if is_instance_valid(continue_button): continue_button.disabled = session.saved_checkpoint.is_empty()
-	if is_instance_valid(menu_notice):
-		menu_notice.text = session.save_notice
-		menu_notice.visible = not session.save_notice.is_empty()
+	menu_screens.update_checkpoint(screen_host.menu_root, continue_button if is_instance_valid(continue_button) else null, menu_notice if is_instance_valid(menu_notice) else null, not session.saved_checkpoint.is_empty(), session.run_save.last_status, session.save_notice)
 
 func _checkpoint_expedition() -> void:
 	expedition_flow.checkpoint()
@@ -446,7 +445,8 @@ func _prepare_expedition_battle() -> void:
 	else: _sync_battle()
 
 func _continue_expedition() -> void:
-	expedition_flow.resume()
+	if screens.top() not in ["menu", "journey"]: return
+	if not expedition_flow.resume(): _on_screen_changed()
 
 func _build_map() -> void:
 	var snapshot: Dictionary = session.expedition.public_state()

@@ -45,7 +45,8 @@ func run() -> void:
 	app.codex_progress.mark("powers","fireball")
 	app.codex_progress.mark("items","potion")
 	await process_frame
-	await press("menu.codex")
+	if app.screens.top() == "menu": await press("menu.settings")
+	await press("settings.codex")
 	expect(app.screen_host.modal_root.record_section == "story","History is the default record tab")
 	expect(Content.UMBRAL_LORE.ember.text in text_of(app.screen_host.modal_root.details),"Brasa's actual lore is rendered")
 	expect(not "Evolução" in text_of(app.screen_host.modal_root.details),"No dedicated evolution panel")
@@ -84,7 +85,8 @@ func run() -> void:
 	app._pop()
 	for frame in range(4): await process_frame
 	for id in ["volt", "tempestral"]: app.codex_progress.mark("umbrals",id)
-	await press("menu.codex")
+	if app.screens.top() == "menu": await press("menu.settings")
+	await press("settings.codex")
 	await press("codex.entry.volt")
 	expect("NISCA" in text_of(app.screen_host.modal_root.details) and Content.UMBRAL_LORE.volt.text in text_of(app.screen_host.modal_root.details),"Existing discovery IDs render Nisca and its authored story")
 	expect(app.registry["codex.evolution"].text == "Ver Niscor","Known electric evolution links to its approved name")

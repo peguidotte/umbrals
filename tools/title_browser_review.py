@@ -77,6 +77,14 @@ def coords(x, y, logical):
 def click(identity, touch=False):
     s = state()
     control = s['controls'][identity]
+    if not control.get('center_visible', True):
+        for _ in range(len(s['controls'])+1):
+            key('Tab'); s = state(); control = s['controls'][identity]
+            if s['focused'] == identity:
+                wait("window.umbralState.controls["+json.dumps(identity)+"].center_visible === true")
+                s=state(); control=s['controls'][identity]
+                break
+        check(control.get('center_visible', True), 'Keyboard reveals scrolled control: '+identity)
     check(control['visible'] and control['active'] and not control['disabled'],
           'Reachable control: ' + identity)
     x, y = coords(control['cx'], control['cy'], s['logical_size'])
@@ -98,162 +106,109 @@ def attach_errors(p):
 
 
 try:
-    with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(executable_path=chromium_executable(), headless=True,
-            args=['--no-sandbox', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'])
-        expected = {'menu.play', 'menu.codex', 'menu.settings', 'menu.help', 'menu.credits'}
-        room_options = {'viewport': {'width': 1672, 'height': 941}, 'device_scale_factor': 1}
-        if args.video:
-            room_options.update(record_video_dir=str(OUT / 'video'), record_video_size={'width': 1672, 'height': 941})
-        context = browser.new_context(**room_options)
-        page = context.new_page()
-        room_video = page.video
-        attach_errors(page)
-        load(base + '&visual=1')
-        check(active_home() == expected, 'Gold Web home exposes five active choices')
-        shot('menu-default.png')
-        check(state()['focused'] == 'menu.play', 'Play receives initial focus')
-        for focus, name in [('menu.codex', 'menu-focus-codex.png'),
-                            ('menu.settings', 'menu-focus-settings.png'),
-                            ('menu.help', 'menu-focus-help.png')]:
-            key('ArrowDown')
-            check(state()['focused'] == focus, 'Keyboard focuses ' + focus)
-            shot(name)
-        key('ArrowUp'); key('ArrowUp'); key('ArrowUp')
-        check(state()['focused'] == 'menu.play', 'Keyboard returns to Play')
-        key('Enter')
-        wait("window.umbralState.screen === 'refuge'")
-        from refuge_browser_review import review_room
-        review_room(page, state, wait, key, click, shot, check)
-        click('refuge.exit')
-        wait("window.umbralState.screen === 'journey'", 20000)
-        check(state()['screen'] == 'journey', 'Explicit mouse door activation works again after returning at its threshold')
-        wait("window.umbralState.screen === 'journey'")
-        shot('journey.png')
-        key('Escape')
-        wait("window.umbralState.screen === 'refuge'")
-        key('Escape')
-        wait("window.umbralState.screen === 'menu'")
-        check(state()['focused'] == 'menu.play', 'Cancel journey restores Play focus')
-        click('menu.play')
-        depart(page, wait)
-        click('journey.new')
-        wait("window.umbralState.screen === 'starter'")
-        shot('starter.png')
-        key('Escape')
-        wait("window.umbralState.screen === 'journey'")
-        check(state()['focused'] == 'journey.new', 'Cancel starter restores New focus')
-        click('journey.new')
-        click('starter.ember')
-        wait("window.umbralState.screen === 'map'")
-        saved_expedition = state()['expedition']
-        click('map.pause'); click('pause.menu'); click('confirm.yes')
-        click('menu.play')
-        depart(page, wait)
-        wait("window.umbralState.screen === 'journey'")
-        check(not state()['controls']['journey.continue']['disabled'], 'Lobby offers the saved expedition')
-        shot('lobby-saved.png')
-        click('journey.new')
-        wait("window.umbralState.screen === 'confirm_new'")
-        click('new.cancel')
-        click('journey.continue')
-        wait("window.umbralState.screen === 'map'")
-        check(state()['expedition'] == saved_expedition, 'Lobby cancel and Continue preserve the public expedition exactly')
-        click('map.pause'); click('pause.menu'); click('confirm.yes')
-        click('menu.settings'); click('settings.large_text'); key('Escape')
-        wait("window.umbralState.screen === 'menu'")
-        click('menu.play')
-        depart(page, wait)
-        wait("window.umbralState.screen === 'journey'")
-        shot('lobby-saved-large-text.png')
-        check(state()['focused'] == 'journey.new', 'Lobby restores the previous New focus after returning from settings')
-        key('ArrowUp')
-        check(state()['focused'] == 'journey.continue', 'Keyboard reaches Continue from restored New focus')
-        key('ArrowDown')
-        check(state()['focused'] == 'journey.new', 'Keyboard moves from Continue to New in lobby')
-        key('ArrowDown')
-        check(state()['focused'] == 'journey.practice', 'Keyboard reaches practice in lobby')
-        key('Enter')
-        wait("window.umbralState.screen === 'starter'")
-        key('Escape')
-        wait("window.umbralState.screen === 'journey'")
-        click('journey.continue')
-        wait("window.umbralState.screen === 'map'")
-        check(state()['expedition'] == saved_expedition, 'Canceling practice from lobby preserves saved expedition')
-
-        context.close()
-        if room_video: videos.append(room_video.path())
-
-        context = browser.new_context(viewport={'width': 844, 'height': 390}, device_scale_factor=1,
-                                      has_touch=True, is_mobile=True)
-        page = context.new_page()
-        attach_errors(page)
-        load(base + '&visual=1')
-        check(active_home() == expected, 'Touch viewport exposes five gold-home choices')
-        shot('touch-menu.png')
-        click('menu.play', touch=True)
-        wait("window.umbralState.refuge.armed && !window.umbralState.refuge.waking")
-        point_walk(page, state, wait, 920, "window.umbralState.refuge.position[0] > 910", touch=True)
-        check(state()['screen'] == 'refuge', 'Touch on floor walks without opening a panel')
-        click('refuge.codex', touch=True)
-        check(state()['screen'] == 'refuge', 'Touch on distant book cannot open it remotely')
-        wait("window.umbralState.screen === 'codex'", 20000)
-        check(state()['refuge']['nearby'] == 'codex', 'Real touch reaches and opens the codex without keyboard')
-        click('codex.back', touch=True)
-        wait("window.umbralState.screen === 'refuge'")
-        touch_depart(page, state, wait, click)
-        check(all(state()['controls'][k]['visible'] and state()['controls'][k]['active']
-                  for k in ('journey.new', 'journey.continue', 'journey.practice', 'journey.back')),
-              'Touch viewport displays all journey choices')
-        shot('touch-journey.png')
-        click('journey.back', touch=True)
-        click('refuge.title', touch=True)
-        wait("window.umbralState.screen === 'menu'")
-        context.close()
-
-        options = {'viewport': {'width': 1672, 'height': 941}, 'device_scale_factor': 1}
-        if args.video:
-            options.update(record_video_dir=str(OUT / 'video'), record_video_size={'width': 1672, 'height': 941})
+    with sync_playwright() as engine:
+        browser = engine.chromium.launch(executable_path=chromium_executable(), headless=True,
+            args=['--no-sandbox','--enable-unsafe-swiftshader','--use-angle=swiftshader'])
+        options = {'viewport': {'width':1600,'height':900}, 'device_scale_factor':1, 'has_touch':True}
+        if args.video: options.update(record_video_dir=str(OUT/'wide-video'),record_video_size={'width':1600,'height':900})
         context = browser.new_context(**options)
-        page = context.new_page()
-        video = page.video
-        attach_errors(page)
+        page = context.new_page(); attach_errors(page); video = page.video
         load(base)
-        page.wait_for_timeout(2000)
-        before = state()
-        # The bridge deliberately exposes public game state, not RNG or raw save data.
-        fields = ('screen', 'phase', 'hand', 'deck', 'discard', 'party', 'enemies', 'selected',
-                  'actions', 'round_number', 'stats', 'expedition', 'checkpoint_status')
-        x, y = coords(1150, 500, (1672, 941))
-        page.mouse.click(x, y)
-        wait(f"window.umbralState.input_serial > {before['input_serial']}")
-        after = state()
-        check(all(before[k] == after[k] for k in fields), 'Gold artwork background click keeps public game and checkpoint state intact')
-        check(after['screen'] == 'menu', 'Gold artwork background click stays on menu')
-        check(after['title_effect']['background'] == 'ui/gold-menu-scene' and after['title_effect']['card_poses'] == [], 'Gold title exposes its approved static composition')
-        shot('gold-background-click.png')
-        page.wait_for_timeout(2000)
+        check(state()['focused']=='menu.play','Missing save focuses New')
+        check(state()['controls']['menu.continue']['disabled'],'Continue is visible and disabled without save')
+        check('menu.quit' not in state()['controls'],'Web omits Quit')
+        check(len(state()['title_effect']['card_poses'])==4,'Four independent actors are present')
+        check(active_home()-{k for k in active_home() if k.startswith('menu.actor.')}=={'menu.play','menu.settings'},'Only New and Options are enabled primary actions without save')
+        def storage(): return page.evaluate('JSON.stringify(Object.fromEntries(Object.entries(localStorage).sort()))')
+        unchanged=storage()
+        shot('wide-live.png')
+        for species in ('ember','moss','dew','volt'):
+            click('menu.actor.'+species)
+            page.wait_for_timeout(350)
+            check(state()['screen']=='menu','Actor reaction stays on title: '+species)
+        check(storage()==unchanged,'Decorative interactions preserve every storage byte')
+        click('menu.play'); wait("window.umbralState.screen === 'starter'")
+        check(storage()==unchanged,'Opening New does not create a run')
+        key('Escape'); wait("window.umbralState.screen === 'menu'")
+        check(storage()==unchanged,'Cancel starter preserves every storage byte')
+        click('menu.play'); click('starter.ember'); wait("window.umbralState.screen === 'map'")
+        original=state()['expedition']
+        key('Escape'); click('pause.menu'); click('confirm.yes'); wait("window.umbralState.screen === 'menu'")
+        check(not state()['controls']['menu.continue']['disabled'],'Committed expedition enables Continue')
+        saved=storage()
+        click('menu.play'); wait("window.umbralState.screen === 'confirm_new'")
+        check(state()['focused']=='new.cancel','Replacement confirmation focuses safe cancellation')
+        click('new.cancel'); check(storage()==saved,'Cancel replacement preserves every checkpoint byte')
+        click('menu.play'); click('new.confirm'); wait("window.umbralState.screen === 'starter'")
+        key('Escape'); wait("window.umbralState.screen === 'menu'")
+        check(storage()==saved,'Back from confirmed starter selection preserves every checkpoint byte')
+        click('menu.continue'); wait("window.umbralState.screen === 'map'")
+        check(state()['expedition']==original,'Continue restores the exact public expedition')
+        key('Escape'); click('pause.menu'); click('confirm.yes'); wait("window.umbralState.screen === 'menu'")
         click('menu.settings')
-        click('settings.reduced_motion')
-        check(state()['preferences']['reduced_motion'], 'Reduced motion enabled through real control')
-        key('Escape')
-        wait("window.umbralState.screen === 'menu'")
-        # Moving outside the canvas avoids hover changes between captures.
-        page.mouse.move(0, 0)
-        page.wait_for_timeout(300)
-        effect = state()['title_effect']
-        check(effect['reduced_motion'] and effect['clock'] == 0 and effect['card_poses'] == [],
-              'Reduced motion preserves the static gold title')
-        shot('reduced-motion-1.png')
-        page.wait_for_timeout(300)
-        shot('reduced-motion-2.png')
-        check((OUT / 'reduced-motion-1.png').read_bytes() == (OUT / 'reduced-motion-2.png').read_bytes(),
-              'Reduced-motion screenshots remain identical after 300 ms')
-        page.wait_for_timeout(3500)
+        for screen in ('codex','help','credits'):
+            click('settings.'+screen); wait("window.umbralState.screen === '"+screen+"'")
+            key('Escape'); wait("window.umbralState.screen === 'settings'")
+            check(state()['focused']=='settings.'+screen,'Secondary Back restores '+screen+' opener')
+        key('Escape'); wait("window.umbralState.screen === 'menu'")
+        check(state()['focused']=='menu.settings','Options returns focus to title opener')
+        page.wait_for_timeout(2000)
+        if args.video:
+            # Keep genuine live playback long enough to review complete idle/reaction cycles.
+            page.wait_for_timeout(max(0,22000-int((time.monotonic()-started)*1000)))
+        load(base+'&visual=1')
+        check(state()['focused']=='menu.continue','Reload with valid checkpoint focuses Continue')
+        profiles=[(1280,720),(1440,900),(1600,900),(1920,1080),(1024,768),(2560,1080),(800,600),(800,1280),(390,844),(320,568),(3840,2160),(5120,1440)]
+        for width,height in profiles:
+            page.set_viewport_size({'width':width,'height':height});page.wait_for_timeout(250)
+            observed=state(); logical=observed['logical_size']; canvas=page.locator('#canvas').bounding_box()
+            for identity in ('menu.continue','menu.play','menu.settings'):
+                c=observed['controls'][identity]
+                check(0<=c['x'] and c['x']+c['w']<=logical[0]+1 and 0<=c['y'] and c['y']+c['h']<=logical[1]+1,'Primary bounds '+identity+' '+str((width,height)))
+                check(c['h']/logical[1]*canvas['height']>=43.5,'Primary touch height '+identity+' '+str((width,height)))
+            check(len(observed['title_effect']['card_poses'])==4,'All actors retained '+str((width,height)))
+            shot(f'menu-{width}x{height}.png')
+            # The representative profiles also cover live Options and reduced motion.
+            if (width,height) in ((1600,900),(1024,768),(390,844),(320,568)):
+                click('menu.settings');shot(f'options-{width}x{height}.png')
+                click('settings.reduced_motion');key('Escape');wait("window.umbralState.screen === 'menu'")
+                shot(f'reduced-{width}x{height}.png')
+                check(state()['title_effect']['reduced_motion'],'Reduced motion applies '+str((width,height)))
+                click('menu.settings');click('settings.reduced_motion');key('Escape');wait("window.umbralState.screen === 'menu'")
+        click('menu.settings')
+        focused_before_resize=state()['focused']
+        page.set_viewport_size({'width':390,'height':844});page.wait_for_timeout(300)
+        check(state()['focused']==focused_before_resize,'Resize keeps the current setting focused')
+        click('settings.codex');key('Escape');wait("window.umbralState.screen === 'settings'")
+        check(state()['focused']=='settings.codex','Resized scroll region restores the focused secondary link')
+        key('Escape');wait("window.umbralState.screen === 'menu'")
         context.close()
-        if video:
-            videos.append(video.path())
-        check(not errors, 'Browser console and page have no errors')
+        if video: videos.append(video.path())
+        # Independent clean storage covers the empty-save composition at every size.
+        empty=browser.new_context(viewport={'width':1600,'height':900},device_scale_factor=1)
+        page=empty.new_page();attach_errors(page);load(base+'&visual=1')
+        for width,height in profiles:
+            page.set_viewport_size({'width':width,'height':height});page.wait_for_timeout(250)
+            check(state()['controls']['menu.continue']['disabled'],'Clean storage disables Continue '+str((width,height)))
+            shot(f'menu-empty-{width}x{height}.png')
+        empty.close()
+        options={'viewport':{'width':800,'height':1280},'has_touch':True,'device_scale_factor':1}
+        if args.video: options.update(record_video_dir=str(OUT/'portrait-video'),record_video_size={'width':800,'height':1280})
+        context=browser.new_context(**options);page=context.new_page();attach_errors(page);video=page.video
+        portrait_start=time.monotonic();load(base)
+        for species in ('ember','moss','dew','volt'):
+            click('menu.actor.'+species,touch=True);page.wait_for_timeout(450)
+        click('menu.settings',touch=True);click('settings.large_text',touch=True)
+        shot('portrait-options-large.png');key('Escape');wait("window.umbralState.screen === 'menu'")
+        shot('portrait-large-live.png')
+        check(state()['preferences']['large_text'],'Portrait large text applies through real touch input')
+        if args.video: page.wait_for_timeout(max(0,22000-int((time.monotonic()-portrait_start)*1000)))
+        click('menu.settings');click('settings.reduced_motion');key('Escape');wait("window.umbralState.screen === 'menu'")
+        page.mouse.move(0,0);page.wait_for_timeout(200);shot('reduced-motion-1.png');page.wait_for_timeout(350);shot('reduced-motion-2.png')
+        check((OUT/'reduced-motion-1.png').read_bytes()==(OUT/'reduced-motion-2.png').read_bytes(),'Reduced-motion frames stay identical')
+        context.close()
+        if video: videos.append(video.path())
+        check(not errors,'Browser console and pages have no errors')
         browser.close()
 except Exception:
     failure = traceback.format_exc()

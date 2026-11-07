@@ -34,18 +34,19 @@ func build_modal(screen: String, ui: RefCounted, viewport_size: Vector2, prefere
 			return journey(ui, viewport_size, checkpoint, session.save_notice, reduced)
 		"starter": return starter(ui, viewport_size, menu, reduced)
 		"confirm_new", "pause", "credits", "confirm_menu": return navigation(screen, ui, viewport_size, menu, reduced, session.expedition_active)
-		"settings": return settings(viewport_size, preferences)
+		"settings": return settings(viewport_size, preferences, screen_root == "menu")
 		"help": return help(ui, viewport_size, menu, reduced)
 		"codex": return codex(viewport_size, progress, preferences.text_scale())
 		"victory", "defeat": return ending(ui, viewport_size, game.phase == "victory", game.party, game.total_damage, game.seed_value)
 	return null
 
-func title(viewport_size: Vector2, preferences: RefCounted, capture: bool) -> Control:
+func title(viewport_size: Vector2, preferences: RefCounted, capture: bool, checkpoint: Dictionary = {}) -> Control:
 	var view = TitleMenu.new()
 	view.size = viewport_size
-	var callbacks: Array[Callable] = [_request.bind("refuge"), _request.bind("codex"), _request.bind("settings"), _request.bind("help"), _request.bind("credits"), _request.bind("quit")]
+	var callbacks: Array[Callable] = [_request.bind("continue"), _request.bind("new"), _request.bind("settings"), _request.bind("quit")]
 	view.build(callbacks, _register)
-	view.apply_preferences(preferences.values.reduced_motion, capture, preferences.text_scale())
+	view.apply_preferences(preferences.values.reduced_motion, capture, preferences.text_scale(), preferences.values.flashes)
+	view.set_checkpoint(bool(checkpoint.get("available", false)), str(checkpoint.get("status", "checking")), str(checkpoint.get("notice", "")))
 	view.navigation_requested.connect(title_navigation.emit)
 	view.card_awakened.connect(title_awakened.emit)
 	return view
@@ -79,11 +80,11 @@ func navigation(screen: String, ui: RefCounted, viewport_size: Vector2, menu: bo
 	overlay.tree_exiting.connect(_release_view.bind(view))
 	return overlay
 
-func settings(viewport_size: Vector2, preferences: RefCounted) -> Control:
+func settings(viewport_size: Vector2, preferences: RefCounted, title_scene: bool = false) -> Control:
 	var view = SettingsMenu.new()
 	view.size = viewport_size
 	view.z_index = 100
-	view.build(preferences, _register, _request.bind("back"))
+	view.build(preferences, _register, _request.bind("back"), _request if title_scene else Callable(), title_scene)
 	return view
 
 func codex(viewport_size: Vector2, progress: RefCounted, text_scale: float) -> Control:
@@ -130,3 +131,10 @@ func _register(control: Control, key: String, screen: String) -> Control:
 
 func _release_view(view: RefCounted) -> void:
 	if active_view == view: active_view = null
+
+func update_checkpoint(title_view: Control, continue_button: Button, notice: Label, available: bool, status: String, message: String) -> void:
+	if is_instance_valid(title_view): title_view.set_checkpoint(available, status, message)
+	if is_instance_valid(continue_button): continue_button.disabled = not available
+	if is_instance_valid(notice):
+		notice.text = message
+		notice.visible = not message.is_empty()

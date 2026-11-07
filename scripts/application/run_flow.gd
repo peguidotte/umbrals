@@ -26,6 +26,7 @@ func choose_starter(value: int = 42013, practice: bool = false) -> void:
 	starter_practice = practice
 	if not practice:
 		expedition.refresh_checkpoint()
+		if session.run_save.last_status == "incompatible": return
 		if not session.saved_checkpoint.is_empty() or session.run_save.last_status in ["corrupt", "io_error"]:
 			screen_push_requested.emit("confirm_new")
 			return

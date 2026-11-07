@@ -57,13 +57,14 @@ func run() -> void:
 	await process_frame
 	await capture("01-menu")
 	expect(root.gui_get_focus_owner() == app.registry["menu.play"], "Menu starts focused")
-	await activate("menu.codex")
+	await activate("menu.settings")
+	await activate("settings.codex")
 	expect(app.screens.top() == "codex", "Menu opens codex")
 	expect(not "Combustão" in texts(app.screen_host.modal_root), "Empty codex hides trait")
 	await capture("02-undiscovered")
 	await key(KEY_ESCAPE)
-	expect(app.screens.top() == "menu" and root.gui_get_focus_owner() == app.registry["menu.codex"], "Back restores menu focus")
-	await activate("menu.play")
+	expect(app.screens.top() == "settings" and root.gui_get_focus_owner() == app.registry["settings.codex"], "Back restores menu focus")
+	await activate("settings.refuge")
 	app._menu_intent("journey")
 	await process_frame
 	expect(app.screens.top() == "journey", "Play still opens expedition choices")

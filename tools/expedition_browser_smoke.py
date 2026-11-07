@@ -89,7 +89,7 @@ try:
                 c = state()['controls']['map.node.' + n['id']]
                 check(c['disabled'] == (not n['available']), n['id'] + ' availability matches visible button')
         def start_run():
-            click('menu.play')
+            click('menu.settings'); click('settings.refuge')
             depart(page, wait)
             click('journey.new')
             if state()['screen'] == 'confirm_new': click('new.confirm')
@@ -138,7 +138,7 @@ try:
                         pending_room = state()['expedition']
                         page.reload()
                         wait("window.umbralState.screen === 'menu'", 90000)
-                        click('menu.play')
+                        click('menu.settings'); click('settings.refuge')
                         depart(page, wait)
                         check('Descansar ou praticar' in state()['journey_summary'], 'Continue describes the pending room')
                         click('journey.continue')
@@ -183,7 +183,7 @@ try:
                         saved = {k:before[k] for k in ['hand','party','enemies','round_number','phase']}
                         page.reload()
                         wait("window.umbralState.screen === 'menu'", 90000)
-                        click('menu.play')
+                        click('menu.settings'); click('settings.refuge')
                         depart(page, wait)
                         click('journey.continue')
                         wait("window.umbralState.screen === 'battle'")
@@ -234,7 +234,7 @@ try:
             wait("window.umbralState.screen === 'menu'")
             page.reload()
             wait("window.umbralState.screen === 'menu'", 90000)
-            click('menu.play')
+            click('menu.settings'); click('settings.refuge')
             depart(page, wait)
             check(state()['controls']['journey.continue']['disabled'], 'Completed expedition cannot be resumed after reload')
             check(state()['stats'] == stats_before, 'Reload does not duplicate the terminal result')

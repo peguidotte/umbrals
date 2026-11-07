@@ -11,7 +11,7 @@ def record_focus(s, description):
 
 
 def record_links(s, suffix):
-    s.click('menu.codex')
+    s.click('menu.settings'); s.click('settings.codex')
     s.wait("window.umbralState.screen === 'codex'"); s.shot('codex' + suffix)
     stored = s.page.evaluate('JSON.stringify(Object.fromEntries(Object.entries(localStorage).sort()))')
     original_link = s.state()['controls']['codex.evolution']['text']
@@ -49,7 +49,7 @@ def record_links(s, suffix):
     s.check(s.state()['focused'] == 'codex.related.fireball', 'Back from power restores its originating link')
     s.check(stored == s.page.evaluate('JSON.stringify(Object.fromEntries(Object.entries(localStorage).sort()))'),
             'Record navigation preserves the saved profile and checkpoints byte for byte')
-    s.back('menu'); s.check(s.state()['focused'] == 'menu.codex', 'Codex restores opener')
+    s.back('settings'); s.check(s.state()['focused'] == 'settings.codex', 'Codex restores Options opener'); s.back('menu')
 
 
 def run(s):

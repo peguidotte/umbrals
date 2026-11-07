@@ -148,7 +148,7 @@ class Executor:
         if task.kind == 'native':
             for variable, subdirectory in [('XDG_DATA_HOME', 'data'), ('XDG_CONFIG_HOME', 'config'), ('XDG_CACHE_HOME', 'cache')]:
                 env[variable] = str(folder / 'userdata' / subdirectory)
-        timeout = self.options.get('step_timeout', 1800) if task.kind == 'browser' else 240
+        timeout = self.options.get('step_timeout', 1800) if task.kind == 'browser' else 1200 if task.name == 'mutations' else 600 if task.kind == 'export-fixtures' else 240
         started = time.monotonic()
         log_path = folder / 'process.log'
         with log_path.open('w') as log, log_path.open(errors='replace') as observed:

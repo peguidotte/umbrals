@@ -1461,3 +1461,23 @@ grimório. O foco agora retorna imediatamente e a rolagem adiada respeita um
 Tab posterior; 91 verificações nativas do grimório e 156 Web passaram no foco,
 com o cenário Web original preservado.
 [Regra, migração, evidência e limites](lonelo-companion-v05-bat10.md).
+
+### V04-UX-05J — menu de entardecer em camadas, candidata local
+
+A imagem anexada pelo usuário e a spec detalhada orientam quatro ações nativas,
+atores independentes com idle/reação, drible sincronizado, fade de saída de
+220 ms e recomposição de 320×568 a 5120×1440. Web omite Sair. Continuar/Novo
+reutilizam os donos de sessão; cancelamento preserva o save e ativação repetida
+do starter não cria duas runs. Grimório, ajuda, créditos, treino e Abrigo seguem
+alcançáveis por Opções. [Implementação, proveniência e limites](live-title-menu.md).
+
+O foco nativo passou; o ensaio completo `live-title-05` teve todos os alvos
+nativos e oito mutações aprovados, mas atingiu 1800 s no cenário amplo de
+combate Web e foi interrompido em layout. Não constitui gate integral aprovado.
+Os relatórios finais por escopo ficam em `test-results/live-title-final-*`;
+capturas/vídeo e pacote Windows são evidência para revisão, não aceite humano.
+Arte derivada difere da imagem aprovada; comparação por overlay bloqueada pela
+indisponibilidade dos bytes originais. Windows/DPI, hardware, áudio e controle
+físicos e aprovação estética continuam abertos. Próxima fatia: revisão dessas
+evidências e validação na plataforma alvo; produto permanece 0.3.0. Sem push,
+merge, deploy, publicação ou reativação de Actions nesta candidata.

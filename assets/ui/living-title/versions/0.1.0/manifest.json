@@ -1,0 +1,190 @@
+{
+  "dependencies": [],
+  "description": "Original generated layered-title sources retained for provenance and review.",
+  "files": {
+    "source-dew": {
+      "bytes": 2183509,
+      "kind": "review",
+      "path": "review/exec-f95adb5c-5b7a-4b9d-add1-28d4d1ff6cf1.png",
+      "sha256": "ad26c1a51184153663084ba8bad6a71888093d3e68b6e166903d1f7d7ded21db",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1245,
+          1263
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "source-ember": {
+      "bytes": 2065428,
+      "kind": "review",
+      "path": "review/exec-39069fdd-da65-49b8-b588-0e448b4956de.png",
+      "sha256": "8ce71277cf3c71b379a4730d07ddc3434f47c39f75e39875aaef824ff8db5f62",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "source-logo": {
+      "bytes": 925040,
+      "kind": "review",
+      "path": "review/exec-5c6527a2-157a-464f-a6b1-28f1f0905b38.png",
+      "sha256": "3c0af2647a72741b61a4f1a0868038bab161063e2fa8c317aa7b29612644ece0",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "source-logo-corrected": {
+      "bytes": 592536,
+      "kind": "review",
+      "path": "review/exec-a51a9dba-f9b9-4f14-95e4-8a11fb83a7ae.png",
+      "sha256": "2e32ce0e8020dd82151911f502ae549e485f94910e844e8daabc9aaff163708f",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "source-moss": {
+      "bytes": 1925553,
+      "kind": "review",
+      "path": "review/exec-0a2cbbbd-b2e7-41e0-9197-cf959bda8edd.png",
+      "sha256": "2b7c77e36b20f011c60a3edee4f711f3cb6d6f937286de34288dcf8ad0ee456e",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1247,
+          1261
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "source-orb": {
+      "bytes": 1005654,
+      "kind": "review",
+      "path": "review/exec-7bfb9a6f-c84d-41bd-a047-f0070b116145.png",
+      "sha256": "d0c9c0eb49a3927436ab6b048e98663048fc2fa04f7293c7d317167838f1ead5",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "source-portrait": {
+      "bytes": 2255775,
+      "kind": "review",
+      "path": "review/exec-248cd283-413a-40b5-9cc0-8826f6241cee.png",
+      "sha256": "8fb2243ab934e1cbde0e4f94b8f38a9d6697d30e8e62c930a5b3524aded300f7",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          910,
+          1727
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "source-scene": {
+      "bytes": 2582994,
+      "kind": "review",
+      "path": "review/exec-89a5b95b-48ec-49b7-9e50-22d312b862f0.png",
+      "sha256": "7a8228bf4a2d0d8f24a57cc54ec60db5c920ed445b33438482406fa336701d09",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "source-supports": {
+      "bytes": 2101131,
+      "kind": "review",
+      "path": "review/exec-f9ef5810-e5c4-49c6-aa02-a642117f0f7f.png",
+      "sha256": "2ccf63c6ed8faec857b79fe23b59a3e9cf76b52f84733ff66061eb74d1f5e1e2",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "source-ultrawide": {
+      "bytes": 2805520,
+      "kind": "review",
+      "path": "review/exec-e2499b3f-0853-4018-9649-64121d35fd6d.png",
+      "sha256": "3a4bb29f624f60512e4d9d0b1bcdf170459e65b35ab638c9657f0013d1ef7789",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          2191,
+          718
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "source-volt": {
+      "bytes": 2207296,
+      "kind": "review",
+      "path": "review/exec-52db0c11-33d6-4648-b441-ed753e6a640f.png",
+      "sha256": "1ded82c9b235c062695fa9537d83cce26b1ab6b8cb65c8776877f975c3a8c6e9",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1263,
+          1245
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "ui/living-title",
+  "metadata": {
+    "consumer": "scripts/ui/title_menu.gd",
+    "native_4k_art": false,
+    "reference_size": [
+      1672,
+      941
+    ]
+  },
+  "provenance": {
+    "kind": "Image Gen derivatives",
+    "license": "Original artwork generated for this game.",
+    "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+    "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+    "review": "Candidate pending in-engine review; generated derivatives are not the original reference."
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.1.0"
+}

@@ -11,7 +11,7 @@ def run(session):
         load()
         meta=geometry(f'Menu {width}×{height}')
         shot(f'matrix-menu-{width}x{height}')
-        click('menu.play')
+        click('menu.settings'); click('settings.refuge')
         geometry(f'Refuge {width}×{height}')
         shot(f'matrix-refuge-{width}x{height}')
         responsive_home(session, width, height)

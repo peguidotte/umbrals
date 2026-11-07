@@ -57,14 +57,17 @@ func pop() -> void:
 
 func set_group(screen: String) -> void:
 	focus_registry.set_group(screen)
+	if screen == "menu" and is_instance_valid(menu_root): menu_root.refresh_focus()
 
 func focus(key: String, screen: String) -> void:
 	focus_registry.restore(key, screen, cards)
 	debug_requested.emit()
 
 func refresh() -> void:
+	var departing_title: bool = menu_root.visible and screens.root() != "menu" and not preferences.values.reduced_motion and not visual_capture
 	if is_instance_valid(title_entrance): title_entrance.kill()
 	menu_root.modulate = Color.WHITE
+	menu_root.z_index = 0
 	var battle: bool = screens.root() == "battle"
 	world.visible = screens.root() != "refuge"
 	world.title_mode = not battle
@@ -96,10 +99,22 @@ func refresh() -> void:
 			if not preferences.values.reduced_motion and not visual_capture:
 				title_entrance = ModalFrame.fade_in(arriving)
 	else: audio.set_title(false)
+	if departing_title:
+		# Commit navigation immediately; the outgoing art cannot accept input.
+		menu_root.show()
+		menu_root.z_index = 90
+		title_entrance = menu_root.create_tween()
+		title_entrance.tween_property(menu_root,"modulate:a",0.0,0.22).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		title_entrance.tween_callback(_hide_departed_title)
 	debug_requested.emit()
 	phase_requested.emit()
 
+func _hide_departed_title() -> void:
+	if screens.root() != "menu": menu_root.hide()
+	menu_root.z_index = 0
+	menu_root.modulate = Color.WHITE
+
 func suppress_motion() -> void:
 	if is_instance_valid(title_entrance): title_entrance.kill()
-	if is_instance_valid(menu_root): menu_root.modulate = Color.WHITE
+	if is_instance_valid(menu_root): _hide_departed_title()
 	if is_instance_valid(modal_root): modal_root.modulate = Color.WHITE

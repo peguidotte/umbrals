@@ -19,14 +19,25 @@ var scroll: ScrollContainer
 var text_scale: float = 1.0
 var mode_buttons: Dictionary = {}
 var mode_marks: Dictionary = {}
+var more: Callable
+var use_title_scene: bool = false
+var heading_label: Label
+var more_links: HFlowContainer
+var registered_controls: Array[Control] = []
+var footer_body: VBoxContainer
+var crest_art: TextureRect
 
-func build(store: RefCounted, registry: Callable, back: Callable) -> void:
+func build(store: RefCounted, registry: Callable, back: Callable, secondary: Callable = Callable(), title_scene: bool = false) -> void:
+	use_title_scene = title_scene
+	more = secondary
 	name = "Overlay_settings"
 	preferences = store
-	register = registry
+	register = func(control: Control, key: String, screen: String) -> Control:
+		registered_controls.append(control)
+		return registry.call(control,key,screen)
 	text_scale = preferences.text_scale()
 	theme = ControlsTheme.make(text_scale)
-	var forest: TextureRect = RefArt.image(self,Assets.texture("ui/gold-menu-scene"),Rect2(Vector2.ZERO,size))
+	var forest: TextureRect = RefArt.image(self,Assets.texture("ui/living-title-scene" if use_title_scene else "ui/gold-menu-scene"),Rect2(Vector2.ZERO,size))
 	forest.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	forest.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	var shade = ColorRect.new()
@@ -76,9 +87,11 @@ func _build_header(body: VBoxContainer) -> void:
 	var title: VBoxContainer = UI.column(0)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	heading.add_child(title)
-	title.add_child(Gold.label("Opções",int(66*text_scale),Gold.PAPER,true))
+	heading_label = Gold.label("Opções",int(66*text_scale),Gold.PAPER,true)
+	title.add_child(heading_label)
 	title.add_child(Gold.paragraph("Seu jeito de explorar o bosque.",int(20*text_scale)))
 	var crest: TextureRect = RefArt.image(heading,RefArt.region("ui/gold-codex-art",Rect2(45,235,52,50)),Rect2())
+	crest_art = crest
 	crest.custom_minimum_size = Vector2(64,64)
 	crest.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	crest.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -106,7 +119,23 @@ func _build_content() -> void:
 	_sync_modes()
 
 func _build_footer(body: VBoxContainer, back: Callable) -> void:
-	var footer: HBoxContainer = UI.row(24)
+	if more.is_valid():
+		footer_body = body
+		var links = HFlowContainer.new()
+		more_links = links
+		links.add_theme_constant_override("h_separation",10)
+		links.add_theme_constant_override("v_separation",6)
+		body.add_child(links)
+		links.add_child(Gold.label("Mais",int(22*text_scale),Gold.GOLD,true))
+		for entry: Array in [["Grimório","codex"],["Como jogar","help"],["Créditos","credits"],["Treino de batalha","practice"],["Abrigo","refuge"]]:
+			var link: Button = Gold.button(entry[0])
+			link.add_theme_font_size_override("font_size",int(21*text_scale))
+			link.custom_minimum_size.y = 44
+			links.add_child(link)
+			register.call(link,"settings."+str(entry[1]),"settings")
+			link.pressed.connect(more.bind(str(entry[1])))
+	var footer = HFlowContainer.new()
+	footer.add_theme_constant_override("h_separation",24)
 	body.add_child(footer)
 	var hint: Label = Gold.paragraph("Preferências deste dispositivo",int(18*text_scale))
 	hint.size_flags_vertical = Control.SIZE_SHRINK_CENTER
@@ -202,10 +231,25 @@ func _sync_modes() -> void:
 		mode_marks[mode].text = "✓ Em uso" if active else ""
 
 func _layout(frame: Control) -> void:
-	var width: float = minf(1320,size.x-80)
-	var height: float = minf(828,size.y-72)
-	panel.position = Vector2((size.x-width)*0.5,(size.y-height)*0.5)
+	var pixel_scale: float = maxf(0.05,get_viewport().get_stretch_transform().get_scale().x) if is_inside_tree() else 1.0
+	var zoom: float = maxf(1.0,1.0/pixel_scale) if size.x*pixel_scale < 700 else 1.0
+	var width: float = minf(1320,size.x/zoom-24)
+	var height: float = minf(852,size.y/zoom-24)
+	panel.scale = Vector2.ONE*zoom
+	panel.position = (size-Vector2(width,height)*zoom)*0.5
 	panel.size = Vector2(width,height)
+	frame.scale = panel.scale
 	frame.position = panel.position
 	frame.size = panel.size
 	columns.columns = 2 if width >= 1040 else 1
+	if is_instance_valid(more_links):
+		var holder: Control = columns.get_child(1) if width < 1040 else footer_body
+		if more_links.get_parent() != holder:
+			more_links.reparent(holder)
+			if holder == footer_body: footer_body.move_child(more_links,footer_body.get_child_count()-2)
+			if is_inside_tree():
+				UI.focus_chain(registered_controls)
+				var focused: Control = get_viewport().gui_get_focus_owner()
+				if is_instance_valid(focused) and scroll.is_ancestor_of(focused): scroll.ensure_control_visible.call_deferred(focused)
+	if is_instance_valid(heading_label): heading_label.add_theme_font_size_override("font_size",roundi(minf(66.0,maxf(36.0,width*0.15))*text_scale))
+	if is_instance_valid(crest_art): crest_art.visible = width >= 600

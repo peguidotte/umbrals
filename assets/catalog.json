@@ -631,6 +631,20 @@
         }
       }
     },
+    "ui/living-title": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/ui/living-title/versions/0.1.0/manifest.json",
+          "sha256": "418fee665d8b762034048ac1502f0d9c39b8ff57d88283f917e1792051ffbdcf",
+          "status": "prototype"
+        },
+        "1.0.0": {
+          "manifest": "assets/ui/living-title/versions/1.0.0/manifest.json",
+          "sha256": "5476400ccb70237e41d3850580ff215f60571b949be129efd6677d1eff12f5a6",
+          "status": "production"
+        }
+      }
+    },
     "ui/title-logo": {
       "versions": {
         "1.0.0": {

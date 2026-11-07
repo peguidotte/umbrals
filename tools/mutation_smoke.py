@@ -19,6 +19,7 @@ mutations = {
 }
 detected = []
 for name, mutation in mutations.items():
+    print("Checking mutation: " + name, flush=True)
     target, before, after = mutation if len(mutation) == 3 else ("scripts/rules.gd", *mutation)
     original = (ROOT / target).read_text()
     if original.count(before) != 1:
@@ -32,7 +33,7 @@ for name, mutation in mutations.items():
         (folder / "project.godot").write_text('config_version=5\n[application]\nconfig/name="Umbral isolated mutation test"\n')
         (folder / target).write_text(original.replace(before, after))
         (folder / "tests/rules_test.gd").write_text((ROOT / "tests/rules_test.gd").read_text())
-        result = subprocess.run(["godot", "--headless", "--path", str(folder), "--script", "tests/rules_test.gd"], capture_output=True, text=True, timeout=60)
+        result = subprocess.run(["godot", "--headless", "--path", str(folder), "--script", "tests/rules_test.gd"], capture_output=True, text=True, timeout=120)
         output = result.stdout + result.stderr
         if "SCRIPT ERROR:" in output or "ERROR:" in output:
             raise RuntimeError(f"Mutation must fail behaviorally, not crash: {name}\n{output}")

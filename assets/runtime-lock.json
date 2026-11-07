@@ -265,6 +265,56 @@
       "id": "ui/gold-approved",
       "version": "1.0.0"
     },
+    "ui/living-title-dew": {
+      "file": "dew",
+      "id": "ui/living-title",
+      "version": "1.0.0"
+    },
+    "ui/living-title-ember": {
+      "file": "ember",
+      "id": "ui/living-title",
+      "version": "1.0.0"
+    },
+    "ui/living-title-logo": {
+      "file": "logo",
+      "id": "ui/living-title",
+      "version": "1.0.0"
+    },
+    "ui/living-title-moss": {
+      "file": "moss",
+      "id": "ui/living-title",
+      "version": "1.0.0"
+    },
+    "ui/living-title-orb": {
+      "file": "orb",
+      "id": "ui/living-title",
+      "version": "1.0.0"
+    },
+    "ui/living-title-portrait": {
+      "file": "portrait",
+      "id": "ui/living-title",
+      "version": "1.0.0"
+    },
+    "ui/living-title-scene": {
+      "file": "scene",
+      "id": "ui/living-title",
+      "version": "1.0.0"
+    },
+    "ui/living-title-supports": {
+      "file": "supports",
+      "id": "ui/living-title",
+      "version": "1.0.0"
+    },
+    "ui/living-title-ultrawide": {
+      "file": "ultrawide",
+      "id": "ui/living-title",
+      "version": "1.0.0"
+    },
+    "ui/living-title-volt": {
+      "file": "volt",
+      "id": "ui/living-title",
+      "version": "1.0.0"
+    },
     "ui/title-logo": {
       "file": "texture",
       "id": "ui/title-logo",

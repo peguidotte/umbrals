@@ -53,6 +53,16 @@ const UI_GOLD_CODEX_TEMPLATE: String = "res://assets/ui/gold-approved/versions/1
 const UI_GOLD_FRAME: String = "res://assets/ui/gold-frame/versions/1.0.0/texture.png"
 const UI_GOLD_MENU_ART: String = "res://assets/ui/gold-approved/versions/1.0.0/menu-art.png"
 const UI_GOLD_MENU_SCENE: String = "res://assets/ui/gold-approved/versions/1.0.0/menu-scene.png"
+const UI_LIVING_TITLE_DEW: String = "res://assets/ui/living-title/versions/1.0.0/dew.png"
+const UI_LIVING_TITLE_EMBER: String = "res://assets/ui/living-title/versions/1.0.0/ember.png"
+const UI_LIVING_TITLE_LOGO: String = "res://assets/ui/living-title/versions/1.0.0/logo.png"
+const UI_LIVING_TITLE_MOSS: String = "res://assets/ui/living-title/versions/1.0.0/moss.png"
+const UI_LIVING_TITLE_ORB: String = "res://assets/ui/living-title/versions/1.0.0/orb.png"
+const UI_LIVING_TITLE_PORTRAIT: String = "res://assets/ui/living-title/versions/1.0.0/portrait.png"
+const UI_LIVING_TITLE_SCENE: String = "res://assets/ui/living-title/versions/1.0.0/scene.png"
+const UI_LIVING_TITLE_SUPPORTS: String = "res://assets/ui/living-title/versions/1.0.0/supports.png"
+const UI_LIVING_TITLE_ULTRAWIDE: String = "res://assets/ui/living-title/versions/1.0.0/ultrawide.png"
+const UI_LIVING_TITLE_VOLT: String = "res://assets/ui/living-title/versions/1.0.0/volt.png"
 const UI_TITLE_LOGO: String = "res://assets/ui/title-logo/versions/1.0.0/texture.png"
 const UI_TITLE_MENU: String = "res://assets/ui/title-menu/versions/1.0.0/texture.png"
 const UMBRALS_AURAVEL: String = "res://assets/characters/electric-adults/versions/2.0.0/auravel-ally.png"
@@ -132,6 +142,16 @@ const PATHS: Dictionary = {
 	"ui/gold-frame": UI_GOLD_FRAME,
 	"ui/gold-menu-art": UI_GOLD_MENU_ART,
 	"ui/gold-menu-scene": UI_GOLD_MENU_SCENE,
+	"ui/living-title-dew": UI_LIVING_TITLE_DEW,
+	"ui/living-title-ember": UI_LIVING_TITLE_EMBER,
+	"ui/living-title-logo": UI_LIVING_TITLE_LOGO,
+	"ui/living-title-moss": UI_LIVING_TITLE_MOSS,
+	"ui/living-title-orb": UI_LIVING_TITLE_ORB,
+	"ui/living-title-portrait": UI_LIVING_TITLE_PORTRAIT,
+	"ui/living-title-scene": UI_LIVING_TITLE_SCENE,
+	"ui/living-title-supports": UI_LIVING_TITLE_SUPPORTS,
+	"ui/living-title-ultrawide": UI_LIVING_TITLE_ULTRAWIDE,
+	"ui/living-title-volt": UI_LIVING_TITLE_VOLT,
 	"ui/title-logo": UI_TITLE_LOGO,
 	"ui/title-menu": UI_TITLE_MENU,
 	"umbrals/auravel": UMBRALS_AURAVEL,

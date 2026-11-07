@@ -15,6 +15,7 @@ func press(id: String) -> void:
 	if not is_instance_valid(button) or button.disabled:
 		expect(false, "Reachable control " + id)
 		return
+	button.grab_focus()
 	button.pressed.emit()
 	await process_frame
 
@@ -29,22 +30,24 @@ func run() -> void:
 	var home_ids: Array = []
 	for id in app.registry:
 		var control = app.registry[id]
-		if is_instance_valid(control) and control is BaseButton and control.is_visible_in_tree() and control.get_meta("ui_screen", "") == "menu": home_ids.append(id)
+		if is_instance_valid(control) and control is BaseButton and control.is_visible_in_tree() and control.get_meta("ui_screen", "") == "menu" and not str(id).begins_with("menu.actor."): home_ids.append(id)
 	home_ids.sort()
-	var expected_home: Array = ["menu.codex", "menu.credits", "menu.help", "menu.play", "menu.settings"]
+	var expected_home: Array = ["menu.continue", "menu.play", "menu.settings"]
 	if not OS.has_feature("web"): expected_home.append("menu.quit")
 	expected_home.sort()
 	expect(home_ids == expected_home, "Gold home exposes the exact current platform choices")
-	expect(not app.registry.has("menu.practice") and not app.registry.has("menu.continue") , "Practice and Continue remain in the Journey screen")
+	expect(not app.registry.has("menu.practice") and app.registry.has("menu.continue") , "Continue is on title and practice remains secondary")
 	var before_journey: String = JSON.stringify(app.session.run_save.load_snapshot())
-	await press("menu.play")
+	await press("menu.settings")
+	await press("settings.refuge")
 	app._menu_intent("journey")
 	await process_frame
 	expect(app.screens.top() == "journey" and app.registry["journey.continue"].disabled, "Play opens expedition choices with Continue disabled without a save")
 	await press("journey.back")
 	await press("refuge.title")
-	expect(app.screens.top() == "menu" and root.gui_get_focus_owner().get_meta("ui_id", "") == "menu.play" and JSON.stringify(app.session.run_save.load_snapshot()) == before_journey, "Canceling expedition choices restores focus and preserves save")
-	await press("menu.play")
+	expect(app.screens.top() == "menu" and root.gui_get_focus_owner().get_meta("ui_id", "") == "menu.settings" and JSON.stringify(app.session.run_save.load_snapshot()) == before_journey, "Canceling expedition choices restores focus and preserves save")
+	await press("menu.settings")
+	await press("settings.refuge")
 	app._menu_intent("journey")
 	await process_frame
 	await press("journey.new")
@@ -72,7 +75,8 @@ func run() -> void:
 	app = load("res://scenes/main.tscn").instantiate()
 	root.add_child(app)
 	await process_frame
-	await press("menu.play")
+	await press("menu.settings")
+	await press("settings.refuge")
 	app._menu_intent("journey")
 	await process_frame
 	expect(not app.registry["journey.continue"].disabled, "Reconstructed app offers Continue")
@@ -86,7 +90,8 @@ func run() -> void:
 	expect(JSON.stringify(app.session.run_save.load_snapshot()) == save_before, "Practice leaves expedition checkpoint intact")
 	app._return_menu()
 	await process_frame
-	await press("menu.play")
+	await press("menu.settings")
+	await press("settings.refuge")
 	app._menu_intent("journey")
 	await process_frame
 	await press("journey.continue")
@@ -134,7 +139,8 @@ func run() -> void:
 	expect(int(app.session.stats.runs) == runs_before + 1, "Recording the same terminal checkpoint twice counts one run")
 	app._return_menu()
 	await process_frame
-	await press("menu.play")
+	await press("menu.settings")
+	await press("settings.refuge")
 	app._menu_intent("journey")
 	await process_frame
 	await press("journey.new")
@@ -160,7 +166,8 @@ func run() -> void:
 	app._record_result()
 	app._return_menu()
 	await process_frame
-	await press("menu.play")
+	await press("menu.settings")
+	await press("settings.refuge")
 	app._menu_intent("journey")
 	await process_frame
 	expect(app.registry["journey.continue"].disabled and app.session.saved_checkpoint.is_empty(), "A completed checkpoint ID cannot Continue from an old nonterminal checkpoint")
