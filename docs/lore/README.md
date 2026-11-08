@@ -2,8 +2,9 @@
 
 Esta documentação orienta conteúdo e implementações futuras. Ela separa o mundo
 compartilhado do primeiro jogo e não altera as mecânicas da main atual (produto ainda 0.3.0).
-A integração inicial usa o contexto consolidado da conversa com Pedro; a leitura
-do pacote primário ainda está bloqueada, conforme [fontes](fontes.md).
+A integração inicial usou o contexto consolidado da conversa com Pedro. A revisão
+de 2026-11-08 conferiu integralmente o texto dos dois PDFs e as decisões posteriores.
+O ZIP primário e as imagens continuam não inspecionados; veja [fontes](fontes.md).
 
 ## Ordem de leitura
 
@@ -17,7 +18,7 @@ do pacote primário ainda está bloqueada, conforme [fontes](fontes.md).
 
 | Status | Significado para implementação |
 |---|---|
-| Confirmado | Decisão de Pedro registrada no contexto consolidado; respeitar em conteúdo novo. |
+| Confirmado | Decisão de Pedro registrada no contexto consolidado ou como base estabelecida nas fontes, conciliada com decisões posteriores; respeitar em conteúdo novo. |
 | Direção preferida | Preferência ou ideia apreciada, ainda sem especificação fechada. |
 | Proposta | Possibilidade exploratória; não tratar como fato do mundo. |
 | Em aberto | Decisão ainda necessária; não preencher automaticamente. |
