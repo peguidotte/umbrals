@@ -65,6 +65,14 @@ try:
         def click(identity, touch=False):
             s = state()
             c = s['controls'][identity]
+            if not c.get('center_visible',True):
+                for _ in range(len(s['controls'])+1):
+                    key('Tab');s=state();c=s['controls'][identity]
+                    if s['focused']==identity:
+                        wait('window.umbralState.controls['+json.dumps(identity)+'].center_visible === true')
+                        s=state();c=s['controls'][identity]
+                        break
+                check(c.get('center_visible',True),'Keyboard reveals clipped control: '+identity)
             check(c['visible'] and c['active'] and not c['disabled'], f'{identity} is reachable on {s["screen"]}')
             canvas = page.locator('#canvas').bounding_box()
             x = canvas['x'] + c['cx'] / s['logical_size'][0] * canvas['width']
