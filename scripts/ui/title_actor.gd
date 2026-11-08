@@ -151,7 +151,12 @@ func _draw() -> void:
 		var index: int = {"ember":0,"moss":2,"dew":1,"volt":3}[species]
 		var tile: Vector2 = Vector2(support.get_width()/2.0,support.get_height()/2.0)
 		var surface: float = {"ember":0.35,"moss":0.40,"dew":0.45,"volt":0.35}[species]
-		draw_texture_rect_region(support,Rect2(Vector2(-size.x*0.12,size.y*(0.9625-0.45*surface)),Vector2(size.x*1.24,size.y*0.45)),Rect2(Vector2(index%2,index/2)*tile,tile))
+		var support_rect: Rect2 = Rect2(Vector2(-size.x*0.12,size.y*(0.9625-0.45*surface)),Vector2(size.x*1.24,size.y*0.45))
+		if species == "ember":
+			var width: float = position.x+size.x*1.18
+			var height: float = width*tile.y/tile.x
+			support_rect = Rect2(Vector2(-position.x,size.y*0.9625-height*surface),Vector2(width,height))
+		draw_texture_rect_region(support,support_rect,Rect2(Vector2(index%2,index/2)*tile,tile))
 	_draw_local_effects()
 	if active and (has_focus() or is_hovered()):
 		draw_line(Vector2(size.x*0.35,size.y*0.96),Vector2(size.x*0.65,size.y*0.96),Gold.GOLD,maxf(2.0,size.y*0.009),true)

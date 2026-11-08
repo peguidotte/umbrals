@@ -1,6 +1,18 @@
-# Design QA — V04-UX-05K
+# Design QA — V04-UX-05L
 
 final result: blocked
+
+## Current 05L review
+
+Pedro’s latest audit rejects the pixelated Brasa finish, seated/awake Foli and excessive portrait sky. Canonical runtime identity does not establish the illustrated quality required by spec section 3. The independent correction recomposes portrait scenery and actor distribution with existing pixels, adds grounded supports, and reflows fitting actions into two columns with the third Web action centered. Wide/ultrawide forest composition is preserved. See docs/live-title-polish.md.
+
+The exact revised Brasa initial reference and approval are unconfirmed. The four-form tree is a proposal. Personal context is unavailable; the exact official menu identity was prepared for download but the official helper failed, leaving no local PNG. No bypass was attempted. New character art remains pending under the request’s reference condition; no filter or upscale is claimed as a finish correction. Foli sleeping, authored wake/stretch, Lonlon extended-paw dribble poses and complete specific clips are not implemented in 05L. Windows/DPI execution remains unverified.
+
+Initial portrait captures exposed clipped Nisca spike tips and insufficient scene area at 320×568. The actor was moved inward/scaled uniformly and fitting navigation reflowed; final captures and frozen-run results must be reviewed separately. The 05K results below are historical evidence, not acceptance of this revision.
+
+The final focused native/export run passed. Real keyboard reflow checks preserve visible Options focus at 390×844, 1600×900, 320×568 and 800×900. Portrait captures were opened after the inward spike adjustment and branch grounding. Four wide/ultrawide PNGs are byte-identical to 05K. These are layout evidence; the source comparison and authored-art gates remain blocked.
+
+## Historical 05K evidence
 
 ## Latest visual truth and scope
 

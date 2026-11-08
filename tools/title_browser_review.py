@@ -158,6 +158,15 @@ try:
             page.wait_for_timeout(max(0,22000-int((time.monotonic()-started)*1000)))
         load(base+'&visual=1')
         check(state()['focused']=='menu.continue','Reload with valid checkpoint focuses Continue')
+        click('menu.settings'); key('Escape')
+        for width,height in [(390,844),(1600,900),(320,568),(1600,900)]:
+            page.set_viewport_size({'width':width,'height':height})
+            profile = 'wide' if width/height >= 1.55 else 'portrait'
+            wait("window.umbralState.title_effect.profile === '"+profile+"'")
+            wait("window.umbralState.focused === 'menu.settings'")
+            check(state()['controls']['menu.settings']['center_visible'],
+                  'Options retains visible keyboard focus across reflow '+str((width,height)))
+        load(base+'&visual=1')
         profiles=[(1280,720),(1440,900),(1600,900),(1920,1080),(1024,768),(2560,1080),(800,600),(800,1280),(390,844),(320,568),(3840,2160),(5120,1440)]
         for width,height in profiles:
             page.set_viewport_size({'width':width,'height':height});page.wait_for_timeout(250)

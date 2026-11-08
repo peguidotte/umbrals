@@ -1,6 +1,8 @@
 # Layered dusk title menu — implementation candidate
 
-Current review: **V04-UX-05K** replaces the rejected creature bodies with canonical runtime pixels and extends the ultrawide forest with dense trees. See [identity correction and evidence](live-title-identity.md). The 05K full automated run passed with verified inputs, unchanged sources and complete coverage (ten Web scenarios, 3,113 checks; title 174, expedition 417). Human art/reference and Windows/DPI gates remain open. The 05J implementation and test history below remain historical; they do not certify the latest revision.
+Current review: **V04-UX-05L** corrects portrait framing/reflow with existing layers. New illustrated art and specific poses remain blocked pending the exact revised Brasa initial reference and approval; see [scope and dependencies](live-title-polish.md). The exact official source PNG could not be materialized for a new overlay.
+
+Previous review: **V04-UX-05K** replaces the rejected creature bodies with canonical runtime pixels and extends the ultrawide forest with dense trees. See [identity correction and evidence](live-title-identity.md). The 05K full automated run passed with verified inputs, unchanged sources and complete coverage (ten Web scenarios, 3,113 checks; title 174, expedition 417). Human art/reference and Windows/DPI gates remain open. The 05J implementation and test history below remain historical; they do not certify the latest revision.
 
 
 The user supplied the approved image directly in the implementation conversation

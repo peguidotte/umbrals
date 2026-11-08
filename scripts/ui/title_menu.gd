@@ -26,6 +26,7 @@ var logo: TextureRect
 var scroller: ScrollContainer
 var body: VBoxContainer
 var actions: GridContainer
+var trailing_action_row: HBoxContainer
 var notice: Label
 var profile: String = "wide"
 var save_status: String = "checking"
@@ -75,6 +76,9 @@ func build(callbacks: Array[Callable], register: Callable) -> void:
 		register.call(button,KEYS[i],"menu")
 		buttons.append(button)
 	for actor: Control in actors: register.call(actor,"menu.actor."+actor.species,"menu")
+	trailing_action_row = HBoxContainer.new()
+	trailing_action_row.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	body.add_child(trailing_action_row)
 	notice = Label.new()
 	notice.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	notice.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -140,7 +144,8 @@ func _layout() -> void:
 	var aspect: float = size.x/size.y
 	profile = "wide" if aspect >= 1.55 and total <= available else "middle" if aspect >= 1.15 else "portrait"
 	_columns = buttons.size() if profile == "wide" else 2
-	if widths.max()*2.0+gap > available or (profile == "portrait" and OS.has_feature("web")): _columns = 1
+	if widths.max()*2.0+gap > available: _columns = 1
+	_arrange_actions()
 	actions.columns = _columns
 	actions.add_theme_constant_override("h_separation",roundi(gap))
 	actions.add_theme_constant_override("v_separation",roundi(8.0*unit))
@@ -169,13 +174,14 @@ func _layout() -> void:
 	if profile != "wide":
 		feet = [Vector2(0.24,0.36),Vector2(0.25,0.93),Vector2(0.63,0.60),Vector2(0.80,0.91)]
 	if profile == "portrait":
-		feet = [Vector2(0.24,0.67),Vector2(0.25,0.90),Vector2(0.63,0.76),Vector2(0.80,0.90)]
+		feet = [Vector2(0.25,0.36),Vector2(0.22,0.96),Vector2(0.62,0.61),Vector2(0.72,0.95)]
 	var ultrawide: bool = aspect>2.05
 	background.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 	background.position = Vector2.ZERO
 	background.size = size
 	background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	background.texture = Assets.texture("ui/living-title-portrait" if profile == "portrait" else "ui/living-title-scene")
+	if profile == "portrait": _frame_portrait(scene_top,unit,aspect)
 	if ultrawide:
 		background.texture = Assets.texture("ui/living-title-ultrawide")
 		background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
@@ -187,10 +193,35 @@ func _layout() -> void:
 	water_material.set_shader_parameter("water_start",0.72 if profile == "portrait" else 0.59)
 	for i in range(actors.size()):
 		var height: float = size.y*heights[i] if profile == "wide" else minf(stage_width*0.36,scene_height*(0.33 if i != 1 else 0.40))
+		if profile == "portrait":
+			height = minf(stage_width*0.36,scene_height*0.28)*([1.0,1.12,1.0,0.90][i])
 		var point: Vector2 = Vector2(feet[i].x*stage_width,feet[i].y*size.y) if profile == "wide" else Vector2(feet[i].x*stage_width,scene_top+feet[i].y*scene_height)
-		if profile == "portrait": point.y = maxf(feet[i].y*size.y,scene_top+height*1.08)
-		actors[i].place(point,height,profile == "middle" or (profile == "portrait" and point.y>feet[i].y*size.y+1.0))
+		actors[i].place(point,height,profile != "wide")
 	refresh_focus()
+
+func _arrange_actions() -> void:
+	# The Web build has three actions: center the last one below a two-column row.
+	var centered_tail: bool = buttons.size() == 3 and _columns == 2
+	var focused: bool = buttons.size() == 3 and buttons[2].has_focus()
+	trailing_action_row.visible = centered_tail
+	if buttons.size() != 3: return
+	var parent: Control = trailing_action_row if centered_tail else actions
+	if buttons[2].get_parent() != parent:
+		buttons[2].reparent(parent)
+		if focused: buttons[2].grab_focus()
+
+func _frame_portrait(scene_top: float, unit: float, aspect: float) -> void:
+	# Reframe existing layers uniformly; the scenic area starts below the live UI.
+	# Wider portrait windows use the landscape valley instead of magnifying tall sky.
+	if aspect > 0.72:
+		background.texture = Assets.texture("ui/living-title-scene")
+		return
+	var texture_size: Vector2 = background.texture.get_size()
+	var horizon: float = maxf(scene_top+12.0*unit,size.y*0.36)
+	var cover: float = maxf(size.x/texture_size.x,size.y/texture_size.y)
+	var scale_value: float = maxf(cover,(size.y-horizon)/(texture_size.y*0.46))
+	background.size = texture_size*scale_value
+	background.position = Vector2((size.x-background.size.x)*0.5,size.y-background.size.y)
 
 func refresh_focus() -> void:
 	if not is_inside_tree(): return

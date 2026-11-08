@@ -1545,3 +1545,22 @@ Windows/DPI. A primeira tentativa continua interrompida; sua falha não foi apag
 Os gates de referência, poses e aceite humano acima permanecem abertos.
 Próxima fatia depende das referências legíveis e da revisão humana/plataforma;
 este fechamento não avança a versão 0.3.0. Sem push, merge ou deploy.
+
+
+### V04-UX-05L — recomposição portrait; acabamento dependente de referência
+
+Pedido de Pedro preserva a extensão de floresta ultrawide e rejeita Brasa
+pixelado, Foli desperto e céu vazio no portrait. A correção independente
+reenquadra o vale uniformemente e distribui os atores abaixo da interface,
+com apoios e reflow de duas colunas quando cabe. O Web centraliza sua terceira
+ação; o nativo conserva quatro. Capturas intermediárias detectaram recorte
+de espinhos, corrigido por recuo e escala uniforme.
+
+A spec foi relida, mas referência revisada/aprovação de Brasa inicial continuam
+não confirmadas; a prancha de quatro formas é proposta. A transferência oficial
+do PNG exato do menu falhou, sem bytes locais e sem contorno. Nenhuma nova arte
+foi produzida antes da confirmação pedida. Brasa ilustrado, Foli dormindo, pata
+e poses autoradas de Lonlon e clips específicos permanecem pendentes, assim
+como comparação exata com o PNG e Windows/DPI/hardware. Foco técnico e ensaio
+integral devem identificar a fonte da própria revisão; 05K não é sua aceitação.
+[Escopo e evidências](live-title-polish.md). Sem push, merge ou deploy; 0.3.0.
