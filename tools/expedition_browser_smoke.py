@@ -47,9 +47,16 @@ try:
         page.on('console', lambda m: logs.append({'type':m.type, 'text':m.text}))
         def state(): return page.evaluate('window.umbralState')
         def wait(expression, timeout=30000):
-            page.wait_for_function('window.umbralState && (' + expression + ')', timeout=timeout)
+            try:
+                page.wait_for_function('window.umbralState && (' + expression + ')', timeout=timeout)
+            except Exception:
+                snapshot = state()
+                (OUT / 'failure-state.json').write_text(json.dumps(snapshot,indent=2,ensure_ascii=False))
+                print(json.dumps({'event':'expedition_wait_failed','condition':expression,'timeout_ms':timeout,'state':{key:snapshot.get(key) for key in ['screen','stack','busy','round_number','phase','focused','feedback']}},ensure_ascii=False),flush=True)
+                page.screenshot(path=str(OUT / 'failure.png'))
+                raise
         def settled():
-            wait('!window.umbralState.busy')
+            wait('!window.umbralState.busy',60000)
             page.wait_for_timeout(150)
         def load():
             page.goto(url)

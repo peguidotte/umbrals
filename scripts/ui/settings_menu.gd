@@ -27,8 +27,8 @@ var registered_controls: Array[Control] = []
 var footer_body: VBoxContainer
 var crest_art: TextureRect
 var footer_hint: Label
-var font_copies: Dictionary = {}
-var local_font_files: Array[FontFile] = []
+static var font_copies: Dictionary = {}
+static var local_font_files: Array[FontFile] = []
 
 func build(store: RefCounted, registry: Callable, back: Callable, secondary: Callable = Callable(), title_scene: bool = false) -> void:
 	use_title_scene = title_scene
@@ -255,9 +255,10 @@ func _layout(frame: Control) -> void:
 	var compact: bool = width < 1040
 	# Font auto-oversampling follows the root canvas, not this local zoom. Keep
 	# local font rasters at native density instead of enlarging a 5px glyph.
-	for file: FontFile in local_font_files:
-		var density: float = 1.0 if zoom > 1.0 else 0.0
-		if not is_equal_approx(file.oversampling,density): file.oversampling = density
+	if is_inside_tree():
+		for file: FontFile in local_font_files:
+			var density: float = 1.0 if zoom > 1.0 else 0.0
+			if not is_equal_approx(file.oversampling,density): file.oversampling = density
 	var surface: StyleBoxFlat = panel.get_theme_stylebox("panel") as StyleBoxFlat
 	var safe_edge: float = maxf(12.0,44.0/zoom)
 	surface.content_margin_left = safe_edge if compact else 42
@@ -300,11 +301,20 @@ func _prepare_fonts(node: Node) -> void:
 	if node is Label or node is BaseButton:
 		var source: Font = node.get_theme_font("font")
 		if not font_copies.has(source):
-			var local: Font = source.duplicate() as Font
+			var local: Font = _uncached_font_file(source) if source is FontFile else source.duplicate() as Font
 			if local is FontVariation and local.base_font is FontFile:
-				local.base_font = local.base_font.duplicate() as FontFile
+				local.base_font = _uncached_font_file(local.base_font)
 				local_font_files.append(local.base_font)
 			elif local is FontFile: local_font_files.append(local)
 			font_copies[source] = local
 		node.add_theme_font_override("font",font_copies[source])
 	for child: Node in node.get_children(): _prepare_fonts(child)
+
+func _uncached_font_file(source: FontFile) -> FontFile:
+	# FontFile.duplicate also copies every cache/* texture and glyph metric.
+	# Keep the definition, not the potentially large cache populated by the codex.
+	var local = FontFile.new()
+	local.data = source.data
+	for property: String in ["fallbacks","generate_mipmaps","disable_embedded_bitmaps","antialiasing","font_name","style_name","font_style","font_weight","font_stretch","subpixel_positioning","keep_rounding_remainders","multichannel_signed_distance_field","msdf_pixel_range","msdf_size","allow_system_fallback","force_autohinter","modulate_color_glyphs","hinting","fixed_size","fixed_size_scale_mode","opentype_feature_overrides"]:
+		local.set(property,source.get(property))
+	return local

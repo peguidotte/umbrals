@@ -1491,3 +1491,9 @@ Uma tentativa subsequente expôs um triângulo degenerado intermitente nas faixa
 de VFX de batalha. A validação de triangulação corrige o desenho, e movimento,
 Opções, título, fluxo e arquitetura passaram no foco; a tentativa com erro é
 preservada e não conta como aceite integral.
+
+O título passou 174 verificações Web e a revisão móvel. O retorno do grimório
+expôs cópia desnecessária do cache de glifos; Opções agora reaproveita definições
+limpas de fontes, e a navegação normal/ampliada passou sem relaxar suas asserções.
+O complemento final título/expedição fica em `test-results/live-title-candidate-proof`;
+o gate integral e o aceite humano/plataforma continuam separados.

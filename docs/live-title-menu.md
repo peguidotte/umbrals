@@ -104,6 +104,21 @@ check now skips those undrawable slivers; the focused motion/UI regression passe
 The corrected final scope is `test-results/live-title-review-proof`.
 Interim mobile probe images show sharp
 text and a contained panel; final captures must still be inspected directly.
+
+That review scope passed every native task and the 174-check title scenario.
+Navigation then reached the correct Options state too late for its deadline:
+`FontFile.duplicate()` was copying the codex's cached glyph images and metrics.
+Options now retains a bounded shared set of clean font definitions and avoids
+copying `cache/*` data. Native affected checks and the unchanged normal/large
+navigation scenario passed in `live-title-font-cache-fix` and
+`live-title-font-navigation`. The latest title/expedition proof is
+`test-results/live-title-candidate-proof`; prior broader native results retain
+their own source hashes and are not a passing full gate.
+
+Expedition's completion wait now uses 60 seconds, matching the other combat
+scenario, after a 30-second software-rendered queue timeout. It still waits for
+the real completion flag and compares the complete native results. Failures
+capture state/geometry while the page is alive, before browser teardown.
 Final screenshots/videos need direct inspection; neither counts nor export
 success constitutes visual approval.
 

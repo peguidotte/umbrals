@@ -95,6 +95,13 @@ The ribbon now checks actual triangulability before drawing that sliver. Motion,
 settings, title, UI flow and architecture passed in `live-title-geometry-fix`.
 That interrupted attempt is preserved; it is not represented as full acceptance.
 
+The later title scenario passed 174 checks and supplied the inspected 320/390 px
+Options captures, with sharp text and contained geometry. A navigation timeout
+exposed unnecessary copying of the codex's cached font bitmaps. Clean definitions
+are now shared only within Options; its normal/large navigation scenario passed
+unchanged in `live-title-font-navigation`. Latest title/expedition captures use
+`test-results/live-title-candidate-proof`; all prior attempts remain separate.
+
 A convenience copy of selected final proof may be placed in
 ignored `test-results/live-title-delivery`; this does not replace original evidence.
 No claim of final visual acceptance is made while this report is blocked.
