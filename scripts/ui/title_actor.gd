@@ -2,6 +2,9 @@ extends Button
 ## Decorative actor: bounded local timeline, no rules/session/storage dependency.
 const Assets = preload("res://scripts/assets/catalog.gd")
 const Content = preload("res://scripts/content.gd")
+const BattleArt = preload("res://scripts/ui/battle_art.gd")
+const CreatureRig = preload("res://scripts/ui/creature_rig.gd")
+const Motion = preload("res://scripts/ui/battle_motion.gd")
 const Gold = preload("res://scripts/ui/gold_theme.gd")
 var choreography: Dictionary
 signal activated
@@ -9,7 +12,11 @@ var species: String
 var atlas: Texture2D
 var support: Texture2D
 var orb: Texture2D
-var cell: Vector2
+var orb_layer: Control
+var rig: Node2D
+var grounding: Dictionary
+var art_binding: String
+var art_view: String
 var clock: float = 0.0
 var reaction: float = -1.0
 var cooldown: float = 0.0
@@ -23,12 +30,22 @@ var reactions_started: int = 0
 
 func build(identity: String) -> void:
 	species = identity
-	choreography = Assets.manifest("ui/living-title","1.0.0").metadata.actors[species]
+	choreography = Assets.bound_manifest("ui/living-title-scene").metadata.actors[species]
 	name = identity.capitalize()
-	atlas = Assets.texture("ui/living-title-"+identity)
+	art_binding = str(choreography.art_binding)
+	art_view = BattleArt.view_name(art_binding,species == "volt")
+	atlas = BattleArt.texture(art_binding,art_view)
+	grounding = BattleArt.ground_profile(art_binding,art_view)
+	rig = CreatureRig.new()
+	add_child(rig)
+	rig.set_process(false)
 	support = Assets.texture("ui/living-title-supports")
-	if species == "dew": orb = Assets.texture("ui/living-title-orb")
-	cell = Vector2(atlas.get_width()/4.0,atlas.get_height()/4.0)
+	if species == "dew":
+		orb = Assets.texture("ui/living-title-orb")
+		orb_layer = Control.new()
+		orb_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		add_child(orb_layer)
+		orb_layer.draw.connect(_draw_orb.bind(orb_layer))
 	clock = {"ember":0.7,"moss":1.7,"dew":0.0,"volt":2.0}[species]
 	accessibility_name = "Interagir com "+Content.display_name({"species":species,"stage":1})
 	accessibility_description = "Uma reação decorativa; não inicia uma expedição."
@@ -45,6 +62,19 @@ func place(feet: Vector2, height: float, needs_support: bool) -> void:
 	height *= 1.12
 	size = Vector2(height,height)
 	position = feet-Vector2(height*0.5,height*0.9625)
+	var source_foot: Vector2 = Vector2(float(grounding.foot[0]),float(grounding.foot[1]))
+	var factor: float = height*0.86/maxf(1.0,source_foot.y-float(grounding.visible_top))
+	var dimensions: Vector2 = atlas.get_size()*factor
+	var pivot: Vector2 = source_foot*factor
+	var mirrored: bool = species == "volt"
+	rig.configure(atlas,species,dimensions,pivot,mirrored,art_view)
+	if species == "dew":
+		rig.definition = rig.definition.duplicate(true)
+		rig.definition.joints.fore = [0.58,0.59,0.69,0.62,0.20,0.17]
+		rig._build_topology()
+	if mirrored: pivot.x = dimensions.x-pivot.x
+	rig.position = size*Vector2(0.5,0.9625)-pivot
+	_sync_pose()
 	queue_redraw()
 
 func set_active(value: bool) -> void:
@@ -62,6 +92,7 @@ func apply_preferences(reduced_value: bool, freeze: bool, allow_flashes: bool) -
 	if reduced or frozen:
 		reaction = -1.0
 		frame = 0
+	_sync_pose()
 	queue_redraw()
 
 func _react() -> void:
@@ -78,7 +109,7 @@ func _process(delta: float) -> void:
 	if reaction >= 0:
 		reaction += elapsed
 		var duration: float = 0.5 if reduced else float(choreography.reaction.duration)
-		frame = (8 if species=="dew" else 10) if reduced else int(choreography.reaction.frames[mini(7,floori((fmod(reaction,0.60)/0.60 if species=="dew" else reaction/duration)*8.0))])
+		frame = 8 if reduced else 8+mini(7,floori(reaction/duration*8.0))
 		if reaction >= duration:
 			reaction = -1.0
 			cooldown = float(choreography.cooldown)
@@ -87,8 +118,27 @@ func _process(delta: float) -> void:
 	elif reduced or frozen: frame = 0
 	else:
 		clock += elapsed
-		frame = int(choreography.idle.frames[floori(fmod(clock,float(choreography.idle.duration))/float(choreography.idle.duration)*8.0)])
-	queue_redraw()
+		frame = floori(fmod(clock,float(choreography.idle.duration))/float(choreography.idle.duration)*8.0)
+	if not reduced and not frozen:
+		_sync_pose()
+		queue_redraw()
+
+func _sync_pose() -> void:
+	if not is_instance_valid(rig) or rig.source == null: return
+	rig.reduced_motion = reduced or frozen
+	var pose: Array = Motion.neutral()
+	if not reduced and not frozen:
+		var wave: float = sin(clock*TAU/float(choreography.idle.duration))
+		pose[5] = wave*0.45
+		pose[9] = wave*0.025
+		pose[13] = wave*0.018
+		if species == "dew": pose[10] = -0.18+0.16*sin(_orb_phase()*TAU)
+		if reaction >= 0:
+			var weight: float = sin(clampf(reaction/float(choreography.reaction.duration),0,1)*PI)
+			pose[8] = -weight*0.045
+			pose[12] = weight*0.035
+	rig.present_decorative_pose(pose)
+	if is_instance_valid(orb_layer): orb_layer.queue_redraw()
 
 func _has_point(point: Vector2) -> bool:
 	if size.x <= 0: return false
@@ -102,16 +152,17 @@ func _draw() -> void:
 		var tile: Vector2 = Vector2(support.get_width()/2.0,support.get_height()/2.0)
 		var surface: float = {"ember":0.35,"moss":0.40,"dew":0.45,"volt":0.35}[species]
 		draw_texture_rect_region(support,Rect2(Vector2(-size.x*0.12,size.y*(0.9625-0.45*surface)),Vector2(size.x*1.24,size.y*0.45)),Rect2(Vector2(index%2,index/2)*tile,tile))
-	var region: Rect2 = Rect2(Vector2(frame%4,floori(frame/4.0))*cell,cell)
-	draw_texture_rect_region(atlas,Rect2(Vector2.ZERO,size),region)
-	if species == "dew": _draw_orb()
 	_draw_local_effects()
 	if active and (has_focus() or is_hovered()):
 		draw_line(Vector2(size.x*0.35,size.y*0.96),Vector2(size.x*0.65,size.y*0.96),Gold.GOLD,maxf(2.0,size.y*0.009),true)
 
-func _draw_orb() -> void:
+func _orb_phase() -> float:
 	var phase: float = 0.0 if reduced or frozen else fmod(clock,1.05)/1.05
 	if reaction >= 0 and not reduced: phase = fmod(reaction,0.60)/0.60
+	return phase
+
+func _draw_orb(target: CanvasItem) -> void:
+	var phase: float = _orb_phase()
 	var down: float = 0.0
 	var squash: float = 1.0
 	if phase < 0.36: down = pow(phase/0.36,2.0)
@@ -121,18 +172,18 @@ func _draw_orb() -> void:
 	else: down = pow((1.0-phase)/0.56,2.0)
 	if reaction >= 1.2 and not reduced: down = down*1.20-0.20
 	var diameter: float = size.y*0.24
-	var center: Vector2 = Vector2(size.x*0.88,size.y*(0.59+0.2525*down))
+	var center: Vector2 = Vector2(size.x*0.80,size.y*(0.59+0.2525*down))
 	var dimensions: Vector2 = Vector2(diameter/sqrt(squash),diameter*squash)
-	draw_set_transform(Vector2(size.x*0.88,size.y*0.9625),0,Vector2(1,0.22))
-	draw_circle(Vector2.ZERO,diameter*(0.60-0.20*down),Color(0.01,0.05,0.10,0.10+0.25*down))
-	draw_set_transform(Vector2.ZERO)
-	draw_texture_rect(orb,Rect2(center-dimensions*0.5,dimensions),false)
+	target.draw_set_transform(Vector2(size.x*0.80,size.y*0.9625),0,Vector2(1,0.22))
+	target.draw_circle(Vector2.ZERO,diameter*(0.60-0.20*down),Color(0.01,0.05,0.10,0.10+0.25*down))
+	target.draw_set_transform(Vector2.ZERO)
+	target.draw_texture_rect(orb,Rect2(center-dimensions*0.5,dimensions),false)
 	# A bounded local ripple; contact and the paw share this actor's timeline.
 	if not reduced and not frozen and phase >= 0.36 and phase < 0.74:
 		var progress: float = (phase-0.36)/0.38
-		draw_set_transform(Vector2(size.x*0.88,size.y*0.9625),0,Vector2(1,0.20))
-		draw_arc(Vector2.ZERO,size.y*(0.11+progress*0.12),0,TAU,32,Color(0.5,0.9,1.0,(1-progress)*0.6),maxf(1.0,size.y*0.008),true)
-		draw_set_transform(Vector2.ZERO)
+		target.draw_set_transform(Vector2(size.x*0.80,size.y*0.9625),0,Vector2(1,0.20))
+		target.draw_arc(Vector2.ZERO,size.y*(0.11+progress*0.12),0,TAU,32,Color(0.5,0.9,1.0,(1-progress)*0.6),maxf(1.0,size.y*0.008),true)
+		target.draw_set_transform(Vector2.ZERO)
 
 func _draw_local_effects() -> void:
 	if reduced or frozen or not active: return
@@ -156,4 +207,4 @@ func _draw_local_effects() -> void:
 			draw_polyline(arc,Color(0.95,0.91,0.49,alpha),maxf(1.0,size.y*0.006),true)
 
 func public_state() -> Dictionary:
-	return {"species":species,"frame":frame,"reacting":reaction>=0,"reactions":reactions_started,"reduced":reduced,"active":active,"rect":[position.x,position.y,size.x,size.y]}
+	return {"species":species,"frame":frame,"reacting":reaction>=0,"reactions":reactions_started,"reduced":reduced,"active":active,"rect":[position.x,position.y,size.x,size.y],"art_binding":art_binding,"source_path":atlas.resource_path if not atlas is AtlasTexture else atlas.atlas.resource_path,"body_size":[rig.display_size.x,rig.display_size.y]}

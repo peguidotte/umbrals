@@ -1,5 +1,8 @@
 # Layered dusk title menu — implementation candidate
 
+Current review: **V04-UX-05K** replaces the rejected creature bodies with canonical runtime pixels and extends the ultrawide forest with dense trees. See [identity correction and evidence](live-title-identity.md). The 05J implementation and test history below remain historical; they do not certify the latest revision.
+
+
 The user supplied the approved image directly in the implementation conversation
 on 2026-11-07, after Library byte transfer was blocked by network policy. Its
 pixels were viewed in that conversation. The implementation uses that visual

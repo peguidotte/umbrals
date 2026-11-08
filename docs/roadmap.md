@@ -1506,3 +1506,21 @@ Sair nativo Linux encerrou 0 sem avisos no smoke corrigido. Export Windows e
 pacote de revisão disponíveis; não houve execução Windows/DPI nem aceite
 estético. Folhagem frontal ainda estática. Gate integral segue aberto após o
 timeout anterior; versão 0.3.0 e restrição de publicação mantidas.
+
+
+### V04-UX-05K — correção de identidade e floresta ultrawide
+
+Pedro rejeitou a diferença dos quatro iniciais e o canto aberto do ultrawide.
+A candidata passa a reutilizar os pixels canônicos de Brasa, Foli, Lonlon e Nisca,
+com poses cosméticas limitadas e escala uniforme. Árvores, troncos, raízes e
+samambaias prolongam a floresta nas laterais. A cena 16:9 anterior permanece;
+a cobertura ultrawide é uniforme, sem esticar atores, com ajuste da âncora
+na pedra em 32:9.
+
+O foco intermediário passou título 48/Web 174 e a matriz de sete formatos
+confirmou 28 contratos de origem/proporção dos corpos. O ensaio integral da
+revisão final tem relatório próprio em `test-results/title-identity-full`;
+focos intermediários não representam aceite integral. Referência revisada
+legível de Brasa inicial, poses desenhadas próprias, revisão humana e
+Windows/DPI/hardware continuam abertos. Sem push, merge ou deploy; produto
+0.3.0. [Fontes, comparação e validação](live-title-identity.md).

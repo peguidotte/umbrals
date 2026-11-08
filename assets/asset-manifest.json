@@ -9744,6 +9744,232 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 472035,
+      "id": "ui/living-title@2.0.0:logo",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/logo.png",
+      "role": "logo",
+      "sha256": "5a7f0ee0ea811c3dfd0a56fdab89a35c2812d835f47236ca3fe2519be165a3b8",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised standalone Brasa initial concept absent from repository. Uses current canonical battle sprite. New relaxed/sleeping/dribble pose sheets have not been supplied; motion uses source pixels with bounded mesh poses.",
+        "normalization": "Scene, portrait, logo, support, orb and shader bytes retained from 1.0.0; canonical creature textures resolved from their original runtime bindings without copies or RGB edits; new ultrawide original retained unchanged.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1889,
+          361
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 362891,
+      "id": "ui/living-title@2.0.0:orb",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/orb.png",
+      "role": "orb",
+      "sha256": "7c2f8e8dac57e8b365026875b3907466c0279b3d8d5377b0e42775b0c7702abe",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised standalone Brasa initial concept absent from repository. Uses current canonical battle sprite. New relaxed/sleeping/dribble pose sheets have not been supplied; motion uses source pixels with bounded mesh poses.",
+        "normalization": "Scene, portrait, logo, support, orb and shader bytes retained from 1.0.0; canonical creature textures resolved from their original runtime bindings without copies or RGB edits; new ultrawide original retained unchanged.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          523,
+          523
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 2255775,
+      "id": "ui/living-title@2.0.0:portrait",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/portrait.png",
+      "role": "portrait",
+      "sha256": "8fb2243ab934e1cbde0e4f94b8f38a9d6697d30e8e62c930a5b3524aded300f7",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised standalone Brasa initial concept absent from repository. Uses current canonical battle sprite. New relaxed/sleeping/dribble pose sheets have not been supplied; motion uses source pixels with bounded mesh poses.",
+        "normalization": "Scene, portrait, logo, support, orb and shader bytes retained from 1.0.0; canonical creature textures resolved from their original runtime bindings without copies or RGB edits; new ultrawide original retained unchanged.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          910,
+          1727
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 2515346,
+      "id": "ui/living-title@2.0.0:scene",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/scene.png",
+      "role": "scene",
+      "sha256": "60fcf9a478059736551435c95c2f68d29e2dafc0b2a5675a5403d17a23d8bf5a",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised standalone Brasa initial concept absent from repository. Uses current canonical battle sprite. New relaxed/sleeping/dribble pose sheets have not been supplied; motion uses source pixels with bounded mesh poses.",
+        "normalization": "Scene, portrait, logo, support, orb and shader bytes retained from 1.0.0; canonical creature textures resolved from their original runtime bindings without copies or RGB edits; new ultrawide original retained unchanged.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 3138455,
+      "id": "ui/living-title@2.0.0:source-ultrawide",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/review/ultrawide-original.png",
+      "role": "source-ultrawide",
+      "sha256": "e59d3d2a1f60695f7daa0c0a8475f308fcd77dbec261a72fcad6458a90b01a0c",
+      "source": {
+        "edit_history": "Horizontal dense-tree extension of supplied clean scene; original output retained unchanged in review/ultrawide-original.png",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral.",
+        "recorded_date_utc": "2026-11-08",
+        "reference": "ui/living-title@1.0.0 scene.png",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          2160,
+          728
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 809358,
+      "id": "ui/living-title@2.0.0:supports",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/supports.png",
+      "role": "supports",
+      "sha256": "dcaf329cb683f6001a4c7e5a7c177dcf4d88e61eb3eb372e3676d02ba8eeb163",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised standalone Brasa initial concept absent from repository. Uses current canonical battle sprite. New relaxed/sleeping/dribble pose sheets have not been supplied; motion uses source pixels with bounded mesh poses.",
+        "normalization": "Scene, portrait, logo, support, orb and shader bytes retained from 1.0.0; canonical creature textures resolved from their original runtime bindings without copies or RGB edits; new ultrawide original retained unchanged.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          512
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 3138455,
+      "id": "ui/living-title@2.0.0:ultrawide",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/ultrawide.png",
+      "role": "ultrawide",
+      "sha256": "e59d3d2a1f60695f7daa0c0a8475f308fcd77dbec261a72fcad6458a90b01a0c",
+      "source": {
+        "edit_history": "Horizontal dense-tree extension of supplied clean scene; original output retained unchanged in review/ultrawide-original.png",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral.",
+        "recorded_date_utc": "2026-11-08",
+        "reference": "ui/living-title@1.0.0 scene.png",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          2160,
+          728
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 799,
+      "id": "ui/living-title@2.0.0:water",
+      "kind": "data",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/water.gdshader",
+      "role": "water",
+      "sha256": "812e420001d991d45a62a382ea27c698be1d765b9061282692389806662ea09f",
+      "source": {
+        "kind": "Original Godot canvas shader authored for the title water",
+        "license": "Original project code."
+      },
+      "status": "production",
+      "technical": {},
+      "version": "2.0.0"
+    },
+    {
       "bytes": 778874,
       "id": "ui/title-logo@1.0.0:texture",
       "kind": "texture",

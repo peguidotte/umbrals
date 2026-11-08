@@ -39,7 +39,7 @@ func build(callbacks: Array[Callable], register: Callable) -> void:
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	water_material = ShaderMaterial.new()
-	water_material.shader = load(Assets.file_path("ui/living-title","1.0.0","water")) as Shader
+	water_material.shader = load(Assets.bound_file("ui/living-title-scene","water")) as Shader
 	background.material = water_material
 	canvas = Control.new()
 	canvas.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -165,7 +165,7 @@ func _layout() -> void:
 	var scene_top: float = scroller.position.y+scroller.size.y+18.0*unit
 	var scene_height: float = maxf(1.0,size.y-scene_top)
 	var feet: Array[Vector2] = [Vector2(0.20,0.50),Vector2(0.30,0.895),Vector2(0.625,0.735),Vector2(0.855,0.845)]
-	var heights: Array[float] = [0.255,0.34,0.22,0.30]
+	var heights: Array[float] = [0.245,0.30,0.22,0.255]
 	if profile != "wide":
 		feet = [Vector2(0.24,0.36),Vector2(0.25,0.93),Vector2(0.63,0.60),Vector2(0.80,0.91)]
 	if profile == "portrait":
@@ -178,11 +178,12 @@ func _layout() -> void:
 	background.texture = Assets.texture("ui/living-title-portrait" if profile == "portrait" else "ui/living-title-scene")
 	if ultrawide:
 		background.texture = Assets.texture("ui/living-title-ultrawide")
-		background.stretch_mode = TextureRect.STRETCH_SCALE
-		background.size = Vector2(size.y*32.0/9.0,size.y)
-		background.position.x = (size.x-background.size.x)*0.5
+		background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		feet[2].y = 0.705
 		feet[3].y = 0.83
+		# Uniform cover crops the panorama vertically only beyond its native ratio.
+		var cover_crop: float = clampf((aspect-3.0)/(32.0/9.0-3.0),0.0,1.0)
+		feet[2].y += cover_crop*0.035
 	water_material.set_shader_parameter("water_start",0.72 if profile == "portrait" else 0.59)
 	for i in range(actors.size()):
 		var height: float = size.y*heights[i] if profile == "wide" else minf(stage_width*0.36,scene_height*(0.33 if i != 1 else 0.40))

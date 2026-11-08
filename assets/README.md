@@ -174,3 +174,13 @@ Auravel/Zuldar: `characters/electric-adults@2.0.0` contém originais referenciad
 continuam candidatos à revisão; [escopo e limites](../docs/electric-adults-v05-art03.md).
 `characters/electric-family@2.1.0` move a origem secundária do Niscor para pixels
 opacos de um espinho preso; releases anteriores permanecem íntegros.
+
+
+`ui/living-title@2.0.0` corrige a candidata do menu: fontes canônicas de
+personagens são consultadas nos bindings reais do jogo; os atlas inventados de
+05J deixam os bindings ativos. A nova paisagem ultrawide deriva do clean plate
+anterior e acrescenta árvores densas nas laterais; original e metadados gerados
+ficam preservados em review. Cena 16:9, retrato, logo, apoios e esfera mantêm seus
+bytes anteriores. A integração é candidata de revisão, sem aprovação artística
+atribuída ao usuário; falta confirmar/materializar a prancha revisada de Brasa
+inicial. [Escopo e evidências](../docs/live-title-identity.md).

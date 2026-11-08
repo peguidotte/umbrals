@@ -1,117 +1,27 @@
-# Menu visual QA — implementation candidate
+# Design QA — V04-UX-05K
 
 final result: blocked
 
-Source visual truth: the approved menu image supplied directly by the user in
-this implementation conversation (displayed at 1280×721). The corresponding
-Library identity supplied in the spec is
-`libfile_f55fcf044ed081919dbe9c40c82e07ea`. The user attachment was viewed; the
-original file bytes could not be materialized because its storage host was
-blocked. No network-policy bypass or substitute reference was used.
+## Latest visual truth and scope
 
-Implementation evidence already opened:
-`test-results/live-title-browser-06/tasks/browser.title/wide-live.png` (1600×900),
-`menu-320x568.png`, `menu-390x844.png`, and `menu-800x600.png` in the same folder.
-Chromium, deviceScaleFactor=1; game canvas captures, without browser chrome.
-The wide source is approximately 16:9; the implementation is 1600×900.
-Source density is not assumed to be 1×. The saved-state screenshots enable
-Continue; the initial attachment depicts Continue selected. Web intentionally
-omits Sair, while the native title has all four actions.
+Pedro rejected the four generated starter designs and the open ultrawide corners. The approved menu attachment remains the composition guide. Canonical current game textures and the approved family sheets are the creature identity guides, subject to the exact approval limits in docs/references/identidades/README.md. Source 16:9 clean plate, portrait plate, logo, orb and supports are preserved byte-for-byte from 05J. Ultrawide is a new generated dense-tree continuation; it is not claimed as an exact pixel copy of the attached source.
 
-## Findings and iteration history
+## Captures inspected
 
-- The first generated logo put its ornament below the word and was too heavy.
-  It was regenerated with the upper crest and lighter letters. The opened
-  browser-06 wide capture shows this correction.
-- Initial derivative actors were too small due to atlas padding. Cells were
-  normalized to 320×320 with aligned baselines and the display size corrected.
-  Browser-06 captures show four readable actors without duplicated bodies.
-- Initial portrait crops placed village/ruin behind navigation. A separate
-  portrait clean scene now provides continuous sky. Browser-06 320×568 and
-  390×844 captures show the revised composition.
-- [P2, fixed] In browser-06 800×600, Opções crossed
-  the top of the ruin. The title shader now extends the sky only for the middle
-  layout, below the complete actions/notice band. The new source passes focused
-  UI/regression checks. The later 800×600 capture in the interrupted
-  `live-title-final-browser` attempt was opened and shows clear sky behind it.
-- [P1, fixed, final matrix pending] Direct inspection of that attempt found
-  clipped Options at 320 px and blurred locally enlarged text. The view now
-  uses local font copies with appropriate raster density, wrapped toggle
-  captions, compact margins, field-aware slider reveal and content-sized mode
-  buttons. The mobile probe's 390 px, 320 px enlarged-text and secondary-link
-  images were opened; text is sharp and the panel fits. Native regression adds
-  width/clearance assertions at 320, 390, 800, 1024 and 1280 px. The failed
-  images and the interrupted attempt remain preserved.
-- The initial orb floated below the raised paw and sank below the rock at
-  contact. High/contact positions and paw-frame selection were corrected.
-  Browser-06's live wide capture shows the ball meeting the paw. Final playback
-  must still be reviewed for dribble timing and generated-frame consistency.
-- Portrait, 4:3 and ultrawide have explicit compositions. The ultrawide derivative
-  extends scenery instead of cropping away foreground supports. Very narrow
-  layouts prioritize native controls and can add a local support when the actor
-  must move below a longer notice.
+Real production Web screenshots in test-results/title-identity-layouts were inspected at 1600×900, 1440×900, 2560×1080, 5120×1440, 800×600 and 390×844. The 32:9 water actor was too high relative to the rock; its anchor was corrected. The final 5120×1440 capture in test-results/title-identity-final-layouts was reopened and reviewed after that correction. Other final screenshots were compared byte-for-byte against the earlier inspected captures; results are retained in visual-equivalence.json. The smallest profile is also available at 320×568. These are actual rendered frames, not generated mockups.
 
-## Required fidelity surfaces
+The comparison board in test-results/title-identity-delivery/identidades-antes-referencia-agora.png was opened and inspected: canonical source, rejected candidate and actual Web crop are visibly distinct. Foli retains the tall leaf ears and narrow body; Lonlon the compact striped otter body and whiskers; Nisca the blue/violet base, small muzzle and four golden paws; Brasa the real current atlas silhouette. The original source textures are not modified. Seven runtime snapshots confirm all 28 canonical-source and uniform-aspect contracts, independently of subjective art judgment.
 
-- Typography: native licensed Cormorant labels, warm ivory, dark outline/shadow;
-  measured layout and physical minimum sizes. Generated logo is a derivative,
-  with visibly different engraving/letter proportions from the attachment.
-- Spacing/layout: action center is y=0.225 on the wide composition, implementing
-  the requested upward move. Logo and actions are independently positioned.
-  Portrait Web uses three centered rows; native portrait supports 2×2.
-- Colors: blue dusk, pink horizon, green/gold foliage and warm gold logo preserve
-  the direction. No opaque green rectangle covers the logo or actions. This
-  review does not certify every rendered contrast pair or screen-reader use.
-- Image quality: independent alpha atlases over a genuine clean plate; originals
-  retained for provenance. Fire tail curl, upright Lonlon pose, electric stance,
-  and generated facial/frame variations differ from the source. These are
-  explicit art-review items, not claimed exact reproductions or approved art.
-- Copy/content: Continuar, Novo jogo, Opções, Sair; the Web exception is documented.
-  Empty/corrupt/incompatible/I/O notices are native text. Secondary functionality
-  remains reachable in Options; no marketing/implementation copy was added.
+The 21:9 and 32:9 forest sides now contain overlapping foreground trunks, roots and ferns from top to bottom. Background cover uses one uniform scale; actors occupy a separate central stage. Native navigation, disabled Continue and independent focus targets remain visible. Portrait uses the existing reflow and keeps all four actors. The final 32:9 correction places Lonlon on its stone rather than above it.
 
-## Remaining blockers to visual acceptance
+## Open gates
 
-A normalized combined source/implementation comparison and numerical overlay
-could not be produced without the source attachment bytes. Separate views are
-not represented as a side-by-side comparison. Human review of the regenerated
-characters/logo and final dribble is still required. Windows execution/display
-scaling and native aesthetic approval are also outstanding. Browser/headless
-passes do not constitute aesthetic approval.
+P1/reference: the readable repository fire sheet contains only the final form. A revised standalone Brasa initial has not been confirmed or materialized. Space searches found tree v2 (libfile_299871807a048191ba2d69ae8bb42115), extinguished alternatives v3 (libfile_c12edef408ac819198304f1c1462a57b) and exploration (libfile_079012570d088191bfe98941f6f5f0ef). The official download helper failed before preparation with tools/list network; personal-context retrieval was unavailable. Their titles do not prove approval. The menu therefore uses the exact readable current game sprite and does not invent a new design.
 
-The `live-title-05` broad attempt hit its 1800-second combat-browser limit and
-was interrupted during house-layout coverage. Its native passes are not a full
-gate. The stable 1280×720 layout capture was opened and has the logo, primary
-actions/focus and four actors. The very first integration capture omitted UI
-while graphics were warming up; it must not be used as final proof. Final
-post-polish menu captures/videos are recorded in `test-results/live-title-review-proof`.
-The final polish adds a 220 ms nonblocking exit fade and bounded local reaction
-effects, with reduced-motion/flash suppression. It requires final playback
-inspection along with the dribble.
+P1/source comparison: original approved-menu bytes remain unavailable for normalized overlay. The direct attachment was viewed in the conversation. No claim of pixel-exact source fidelity or final human approval is made.
 
-The subsequent `live-title-final-proof` attempt exposed an intermittent folded
-battle-VFX ribbon triangle rejected by the renderer despite its area guard.
-The ribbon now checks actual triangulability before drawing that sliver. Motion,
-settings, title, UI flow and architecture passed in `live-title-geometry-fix`.
-That interrupted attempt is preserved; it is not represented as full acceptance.
+P2/motion: canonical textures currently supply static source poses, deformed gently through the mesh. Foli is seated rather than a newly authored sleeping pose; Lonlon's tucked forepaws limit a convincing full dribble gesture. No approved menu-specific pose sheets were supplied. This preserves identity while keeping that motion gate explicit. Foreground environment foliage is still static.
 
-The later title scenario passed 174 checks and supplied the inspected 320/390 px
-Options captures, with sharp text and contained geometry. A navigation timeout
-exposed unnecessary copying of the codex's cached font bitmaps. Clean definitions
-are now shared only within Options; its normal/large navigation scenario passed
-unchanged in `live-title-font-navigation`. Latest title/expedition captures use
-`test-results/live-title-candidate-proof`; all prior attempts remain separate.
+Windows/DPI and hardware execution, physical controller/accessibility, and human cadence/audio judgment remain unverified. Linux headless and software WebGL evidence do not replace them. The complete repository test run has its own report; focused passes are not full acceptance.
 
-A convenience copy of selected final proof may be placed in
-ignored `test-results/live-title-delivery`; this does not replace original evidence.
-No claim of final visual acceptance is made while this report is blocked.
-
-Final scoped evidence: title 174, navigation 160, expedition 417 passed. The last
-expedition change fixed its clipped-control click helper; both complete routes
-and all final enlarged-text assertions ran again. Idle after 30 modal cycles
-preserved 44 nodes/10 audio children and save/RNG for 605.6 s. Native Linux Quit
-exited 0 without warnings using an owned test watchdog. Selected evidence is in
-`test-results/live-title-delivery`; per-report hashes/runtime equivalence are
-recorded there. Source overlay and human art review remain blocked/pending.
-Foreground foliage is static. Windows/DPI and physical-device checks were not
-executed; full repository acceptance is still open.
+No push, merge, deploy or Actions reactivation. Product remains 0.3.0.
