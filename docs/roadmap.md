@@ -1519,8 +1519,17 @@ na pedra em 32:9.
 
 O foco intermediário passou título 48/Web 174 e a matriz de sete formatos
 confirmou 28 contratos de origem/proporção dos corpos. O ensaio integral da
-revisão final tem relatório próprio em `test-results/title-identity-full`;
+revisão final tem relatórios próprios em `test-results/title-identity-full` e
+`test-results/title-identity-full-02`;
 focos intermediários não representam aceite integral. Referência revisada
 legível de Brasa inicial, poses desenhadas próprias, revisão humana e
 Windows/DPI/hardware continuam abertos. Sem push, merge ou deploy; produto
 0.3.0. [Fontes, comparação e validação](live-title-identity.md).
+
+
+A primeira tentativa integral de 05K preservou todas as aprovações nativas e
+as oito mutações, mas interrompeu-se após timeout de integração Web: a fila
+continuava avançando no efeito 18/21 aos 60 s. O harness passou a aguardar até
+120 s e registrar o tempo real da fila, mantendo todas as asserções/ações.
+A segunda tentativa conserva seus próprios hashes e relatório; não é atribuída
+aprovação à primeira. Nenhuma mecânica ou velocidade de animação foi alterada.

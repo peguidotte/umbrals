@@ -25,3 +25,8 @@ P2/motion: canonical textures currently supply static source poses, deformed gen
 Windows/DPI and hardware execution, physical controller/accessibility, and human cadence/audio judgment remain unverified. Linux headless and software WebGL evidence do not replace them. The complete repository test run has its own report; focused passes are not full acceptance.
 
 No push, merge, deploy or Actions reactivation. Product remains 0.3.0.
+
+
+## Integral attempt timing evidence
+
+The first full attempt kept sources unchanged and passed every native task and all eight mutations. Browser integration failed after 307 checks while waiting 60 s for `!busy`. The failure screenshot shows effect 18/21. Raw video frames 12 s apart show progress from effect 6/21 to 18/21, so the retained evidence shows motion rather than a frozen queue. The owned attempt was interrupted during layout; its report says interrupted, with the integration failure preserved. Session.settled now measures each queue and allows 120 s with the same completion condition, actions and assertions. The game and its animation speed are unchanged. The final full attempt is test-results/title-identity-full-02; its actual report is authoritative.

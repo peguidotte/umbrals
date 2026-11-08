@@ -39,7 +39,9 @@ Busca complementar no Space: localizados estudos de Brasa (árvore v2 libfile_29
 - `test-results/title-identity-layouts`: sete capturas reais; 28 verificações suplementares confirmaram fonte canônica e proporção uniforme dos corpos. A inspeção detectou a âncora aquática alta em 32:9, corrigida em seguida.
 - `test-results/title-identity-final-web`: export Web e catálogo empacotado aprovados da implementação final; exportação não é aprovação visual.
 - `test-results/title-identity-final-layouts`: capturas complementares da revisão final, em 1600×900, 1440×900, 2560×1080, 5120×1440, 800×600, 390×844 e 320×568; estado público somente leitura preservado junto a cada PNG.
-- `test-results/title-identity-full`: ensaio integral solicitado pelo protocolo do repositório; usar seu relatório real para o resultado, sem atribuir aceite integral aos focos acima.
+- `test-results/title-identity-full`: primeira tentativa integral, fontes inalteradas. Toda a parte nativa e as oito mutações passaram. A integração Web falhou após 307 verificações ao aguardar a fila animada por 60 s; captura mostra efeito 18 de 21, e os últimos 12 s de vídeo avançam do efeito 6 ao 18. A tentativa foi interrompida em layout para ajustar somente a sincronização do harness. Não é aceitação integral.
+- `tools/browser/session.py`: espera por `!busy` ampliada de 60 para 120 s, com duração medida por fila. Nenhuma ação, asserção, rota, resultado esperado ou velocidade do jogo foi removida/alterada. A falha e os frames do diagnóstico permanecem preservados.
+- `test-results/title-identity-full-02`: nova tentativa integral com fontes congeladas após o ajuste de sincronização; usar seu relatório real para o resultado.
 
 Pranchas comparativas e vídeo MP4 para celular ficam em `test-results/title-identity-delivery/`. A comparação de identidade mostra fonte real do jogo, candidata anterior e recorte da execução Web. A comparação de floresta usa capturas reais em 5120×1440, na mesma proporção e estado sem save. Não transforma diferença de pixels em nota de beleza.
 

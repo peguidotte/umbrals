@@ -103,8 +103,11 @@ class Session:
             raise
 
     def settled(self):
-        self.wait('!window.umbralState.busy', timeout=60000)
-        self.page.wait_for_timeout(200)
+        # Software WebGL can exceed one minute for a 21-effect animated queue.
+        # Keep the same completion condition and input path; record its real cost.
+        with self.timing('settled', 'complete animated queue'):
+            self.wait('!window.umbralState.busy', timeout=120000)
+            self.page.wait_for_timeout(200)
 
     def load(self):
         with self.timing('load', 'production menu'):
