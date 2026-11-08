@@ -1547,20 +1547,25 @@ Próxima fatia depende das referências legíveis e da revisão humana/plataform
 este fechamento não avança a versão 0.3.0. Sem push, merge ou deploy.
 
 
-### V04-UX-05L — recomposição portrait; acabamento dependente de referência
+### V04-UX-05L — portrait e repouso canônico; acabamento parcial
 
-Pedido de Pedro preserva a extensão de floresta ultrawide e rejeita Brasa
-pixelado, Foli desperto e céu vazio no portrait. A correção independente
-reenquadra o vale uniformemente e distribui os atores abaixo da interface,
-com apoios e reflow de duas colunas quando cabe. O Web centraliza sua terceira
-ação; o nativo conserva quatro. Capturas intermediárias detectaram recorte
-de espinhos, corrigido por recuo e escala uniforme.
+A floresta ultrawide é preservada. Portrait reenquadra o vale uniformemente,
+distribui os atores abaixo da interface e mantém apoios e espinhos visíveis.
+Ações usam duas colunas quando cabe; Web centraliza a terceira e nativo conserva
+quatro. A perda real de foco no retorno ao wide foi corrigida e quatro transições
+entraram no cenário oficial.
 
-A spec foi relida, mas referência revisada/aprovação de Brasa inicial continuam
-não confirmadas; a prancha de quatro formas é proposta. A transferência oficial
-do PNG exato do menu falhou, sem bytes locais e sem contorno. Nenhuma nova arte
-foi produzida antes da confirmação pedida. Brasa ilustrado, Foli dormindo, pata
-e poses autoradas de Lonlon e clips específicos permanecem pendentes, assim
-como comparação exata com o PNG e Windows/DPI/hardware. Foco técnico e ensaio
-integral devem identificar a fonte da própria revisão; 05K não é sua aceitação.
-[Escopo e evidências](live-title-polish.md). Sem push, merge ou deploy; 0.3.0.
+Foli repousa, desperta e volta a deitar usando os frames canônicos já existentes
+de `characters/foli-lifecycle@1.1.0`, sem nova geração/repintura. `ui/living-title@2.1.0`
+fixa a dependência e conserva todos os pixels do cenário e apoios de 2.0.0.
+A nova pose foi inspecionada em execução. `production_ready: false` mantém o limite
+humano. Não é uma prancha nova aprovada nem um espreguiçar dedicado.
+
+Referência revisada/aprovação de Brasa inicial não confirmadas; a árvore de quatro
+formas é proposta. A transferência oficial do PNG do menu falhou, sem contorno.
+Brasa ilustrado, pata autorada de Lonlon, espreguiçar dedicado, acabamento/clips,
+overlay exato e Windows/DPI/hardware continuam abertos. O primeiro integral foi
+interrompido antes da edição para incorporar o repouso existente de Foli; nativas
+e mutações preservadas não são aceite da revisão nova. Foco e integral final têm
+hashes próprios. [Escopo e evidências](live-title-polish.md).
+Sem push, merge, deploy ou Actions; 0.3.0.

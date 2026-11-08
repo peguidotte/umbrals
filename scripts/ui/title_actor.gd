@@ -4,6 +4,7 @@ const Assets = preload("res://scripts/assets/catalog.gd")
 const Content = preload("res://scripts/content.gd")
 const BattleArt = preload("res://scripts/ui/battle_art.gd")
 const CreatureRig = preload("res://scripts/ui/creature_rig.gd")
+const Repose = preload("res://scripts/ui/title_repose.gd")
 const Motion = preload("res://scripts/ui/battle_motion.gd")
 const Gold = preload("res://scripts/ui/gold_theme.gd")
 var choreography: Dictionary
@@ -14,6 +15,7 @@ var support: Texture2D
 var orb: Texture2D
 var orb_layer: Control
 var rig: Node2D
+var repose: Node2D
 var grounding: Dictionary
 var art_binding: String
 var art_view: String
@@ -36,9 +38,14 @@ func build(identity: String) -> void:
 	art_view = BattleArt.view_name(art_binding,species == "volt")
 	atlas = BattleArt.texture(art_binding,art_view)
 	grounding = BattleArt.ground_profile(art_binding,art_view)
-	rig = CreatureRig.new()
-	add_child(rig)
-	rig.set_process(false)
+	if choreography.has("rest_pose"):
+		repose = Repose.new()
+		add_child(repose)
+		repose.build(choreography.rest_pose)
+	else:
+		rig = CreatureRig.new()
+		add_child(rig)
+		rig.set_process(false)
 	support = Assets.texture("ui/living-title-supports")
 	if species == "dew":
 		orb = Assets.texture("ui/living-title-orb")
@@ -60,8 +67,13 @@ func build(identity: String) -> void:
 func place(feet: Vector2, height: float, needs_support: bool) -> void:
 	compact = needs_support
 	height *= 1.12
-	size = Vector2(height,height)
-	position = feet-Vector2(height*0.5,height*0.9625)
+	size = Vector2(height*(1.2 if is_instance_valid(repose) else 1.0),height)
+	position = feet-size*Vector2(0.5,0.9625)
+	if is_instance_valid(repose):
+		repose.place(size*Vector2(0.5,0.9625),height)
+		_sync_pose()
+		queue_redraw()
+		return
 	var source_foot: Vector2 = Vector2(float(grounding.foot[0]),float(grounding.foot[1]))
 	var factor: float = height*0.86/maxf(1.0,source_foot.y-float(grounding.visible_top))
 	var dimensions: Vector2 = atlas.get_size()*factor
@@ -124,6 +136,9 @@ func _process(delta: float) -> void:
 		queue_redraw()
 
 func _sync_pose() -> void:
+	if is_instance_valid(repose):
+		repose.sample(clock,reaction,float(choreography.reaction.duration),reduced or frozen)
+		return
 	if not is_instance_valid(rig) or rig.source == null: return
 	rig.reduced_motion = reduced or frozen
 	var pose: Array = Motion.neutral()
@@ -142,6 +157,9 @@ func _sync_pose() -> void:
 
 func _has_point(point: Vector2) -> bool:
 	if size.x <= 0: return false
+	if is_instance_valid(repose):
+		var resting: Vector2 = (point-size*Vector2(0.5,0.80))/(size*Vector2(0.5,0.22))
+		if resting.length_squared() <= 1.0: return true
 	var local: Vector2 = (point-size*Vector2(0.5,0.52))/(size*Vector2(0.47,0.47))
 	return local.length_squared() <= 1.0
 
@@ -151,7 +169,8 @@ func _draw() -> void:
 		var index: int = {"ember":0,"moss":2,"dew":1,"volt":3}[species]
 		var tile: Vector2 = Vector2(support.get_width()/2.0,support.get_height()/2.0)
 		var surface: float = {"ember":0.35,"moss":0.40,"dew":0.45,"volt":0.35}[species]
-		var support_rect: Rect2 = Rect2(Vector2(-size.x*0.12,size.y*(0.9625-0.45*surface)),Vector2(size.x*1.24,size.y*0.45))
+		var span: float = size.y if is_instance_valid(repose) else size.x
+		var support_rect: Rect2 = Rect2(Vector2((size.x-span*1.24)*0.5,size.y*(0.9625-0.45*surface)),Vector2(span*1.24,size.y*0.45))
 		if species == "ember":
 			var width: float = position.x+size.x*1.18
 			var height: float = width*tile.y/tile.x
@@ -197,7 +216,7 @@ func _draw_local_effects() -> void:
 			var progress: float = clampf((reaction-float(i)*0.14)/0.9,0.0,1.0)
 			var point: Vector2 = size*Vector2(0.18+0.04*i+sin(progress*PI)*0.025,0.38-progress*0.20)
 			draw_circle(point,maxf(1.0,size.y*0.007),Color(1.0,0.63,0.13,sin(progress*PI)*0.7))
-	elif species == "moss" and reaction >= 0:
+	elif species == "moss" and reaction >= 0 and not is_instance_valid(repose):
 		var progress: float = clampf(reaction/1.7,0.0,1.0)
 		var point: Vector2 = size*Vector2(0.29+progress*0.16,0.31-sin(progress*PI)*0.06)
 		var radius: float = size.y*0.018
@@ -212,4 +231,6 @@ func _draw_local_effects() -> void:
 			draw_polyline(arc,Color(0.95,0.91,0.49,alpha),maxf(1.0,size.y*0.006),true)
 
 func public_state() -> Dictionary:
-	return {"species":species,"frame":frame,"reacting":reaction>=0,"reactions":reactions_started,"reduced":reduced,"active":active,"rect":[position.x,position.y,size.x,size.y],"art_binding":art_binding,"source_path":atlas.resource_path if not atlas is AtlasTexture else atlas.atlas.resource_path,"body_size":[rig.display_size.x,rig.display_size.y]}
+	var path: String = repose.source_path if is_instance_valid(repose) else atlas.resource_path if not atlas is AtlasTexture else atlas.atlas.resource_path
+	var dimensions: Vector2 = repose.display_size if is_instance_valid(repose) else rig.display_size
+	return {"species":species,"frame":frame,"reacting":reaction>=0,"reactions":reactions_started,"reduced":reduced,"active":active,"rect":[position.x,position.y,size.x,size.y],"art_binding":art_binding,"source_path":path,"body_size":[dimensions.x,dimensions.y],"pose_frame":repose.frame if is_instance_valid(repose) else -1}

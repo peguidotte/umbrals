@@ -1,36 +1,44 @@
-# V04-UX-05L — recomposição portrait; acabamento bloqueado por referência
+# V04-UX-05L — portrait e repouso canônico; acabamento ainda parcial
 
-A revisão de Pedro preserva a floresta ultrawide de 05K e rejeita três pontos: Brasa pixelado sobre pintura, Foli sentado/desperto e excesso de céu no portrait. Sprites correspondentes ao runtime não satisfazem o acabamento ilustrado da seção 3 da spec.
+A revisão de Pedro preserva a floresta ultrawide de 05K e rejeita Brasa pixelado sobre pintura, Foli sentado/desperto e céu vazio no portrait. Correspondência com sprites do runtime não satisfaz o acabamento ilustrado da seção 3 da spec.
 
-## Escopo permitido e dependências
+## Base, referência e limite de acesso
 
-Preflight com fetch: main `f29752cac7d6525865091896a1466eb65a490c9c`, base local `b856b143234590db3613880521fd4dea9c1c109a`, sem atraso e árvore inicialmente limpa. A spec `libfile_680ef2a885208191806d7111558f4ff4` foi lida integralmente nesta revisão.
+Preflight com fetch: main `f29752cac7d6525865091896a1466eb65a490c9c`, base local `b856b143234590db3613880521fd4dea9c1c109a`, sem atraso e árvore inicialmente limpa. A spec `libfile_680ef2a885208191806d7111558f4ff4` foi lida integralmente.
 
-A identidade do menu oficial permanece `libfile_f55fcf044ed081919dbe9c40c82e07ea`, conteúdo `file_000000000b688212925d7e178f878504`, nome `menu-umbral-logo-integrada-lonlon-v2.png`. A leitura retornou metadados/texto e ponteiro de imagem; não bytes locais. A preparação oficial selecionou exatamente essa identidade, mas o helper oficial de transferência retornou `download failed`. Nenhum PNG foi instalado. Não houve tentativa de contornar restrição ou buscar outra rota após essa falha. O anexo direto anterior continua referência visível na conversa; não é um arquivo local disponível para overlay ou prancha exata.
+Menu oficial: `libfile_f55fcf044ed081919dbe9c40c82e07ea`, conteúdo `file_000000000b688212925d7e178f878504`, `menu-umbral-logo-integrada-lonlon-v2.png`. A leitura retornou metadados/texto e ponteiro de imagem, sem bytes locais. A preparação oficial selecionou exatamente essa identidade, mas o helper de transferência retornou `download failed`. Nenhum PNG foi instalado; não houve contorno nem nova rota após a falha. O anexo anterior continua visível na conversa, mas não é um arquivo local para overlay/prancha exata. Comparações antes/depois são rotuladas como tal.
 
-A referência revisada do **Brasa inicial** e sua aprovação não foram confirmadas. O acervo do repositório tem somente o final com três caudas. `brasa-arvore-quatro-formas-v2.png` (`libfile_299871807a048191ba2d69ae8bb42115`) contém evoluções propostas, não aprovação recente. Busca de contexto pessoal está indisponível; buscas na Library não forneceram uma nova aprovação verificável. Foi solicitada a identidade exata e a evidência de aprovação. Conforme a condição do pedido, **nenhuma nova arte foi produzida antes dessa confirmação**. O sprite pixelado não recebeu filtro ou upscale para simular detalhe.
+A referência revisada e a aprovação do **Brasa inicial** não foram confirmadas. O repositório tem somente o final com três caudas. A árvore `libfile_299871807a048191ba2d69ae8bb42115` contém evoluções propostas. Contexto pessoal está indisponível; Library, o relatório histórico de comparação Pietro/Brasa/casa e a busca de PRs não forneceram uma nova aprovação verificável. Foi solicitada a identidade exata e a confirmação. Nenhuma arte nova foi gerada antes dessa confirmação; Brasa não recebeu filtro ou upscale para simular detalhe.
 
-## Correção independente implementada
+## Correções independentes implementadas
 
-O portrait usa a região abaixo da interface para distribuir fogo na parte superior, Lonlon no meio e Foli/Nisca na base. Pivôs e texturas canônicas permanecem; personagens recebem escala uniforme. Os suportes acompanham cada ator. A imagem existente é reenquadrada uniformemente a partir do horizonte/área disponível; retratos mais largos usam o vale paisagem existente. Não há estiramento, nova arte de cenário ou recomposição pintada inventada.
+O portrait distribui fogo na parte superior da região cênica, Lonlon no meio e Foli/Nisca na base. Atores e apoios têm transformações independentes e escala uniforme. A imagem existente é reenquadrada pelo horizonte/área disponível; retratos mais largos usam o vale paisagem existente. Nisca foi recuado e escalado para manter os espinhos na tela. O galho de Brasa chega à lateral, sem parecer um apoio solto.
 
-Quando os rótulos cabem, a navegação usa duas colunas. No Web, a terceira ação fica centralizada na segunda linha; o nativo mantém quatro ações. Texto ampliado recorre à coluna quando necessário. A redistribuição não altera saves, catálogo, regras, overlays ou escolhas de inicial. Desktop e ultrawide conservam o enquadramento e a floresta de 05K.
+Rótulos que cabem usam duas colunas. No Web, a terceira ação fica centralizada na segunda linha; o nativo mantém quatro ações. Texto ampliado recorre à coluna quando necessário. Uma falha real de foco no retorno portrait → wide foi corrigida: o foco de Opções é capturado antes de esconder a linha. Quatro transições foram acrescentadas à suíte oficial, mantendo as verificações anteriores. A checagem real de teclado passou em 390×844 → 1600×900 → 320×568 → 800×900.
 
-## Trabalho de arte ainda pendente
+Foli agora **repousa deitada, desperta ao interagir e volta ao repouso** usando os quatro frames existentes de `characters/foli-lifecycle@1.1.0`, clip `knockout`. A última pose relaxada não tem ferimentos, lágrimas ou marcas de incapacitação. Ela é reutilizada cosmeticamente como repouso; a sequência reversível fornece a subida/abertura dos olhos e a volta. Não há alteração de HP, estado, RNG, save ou semântica de combate. Não é uma nova prancha desenhada/aprovada para o menu nem um espreguiçar dedicado.
 
-- Brasa inicial ilustrado, com referência revisada e aprovação verificáveis.
-- Foli descansando/dormindo, com despertar, espreguiçar e retorno desenhados.
-- Lonlon com pata estendida e poses autoradas de empurrar, recuperar e reagir ao drible.
-- Acabamento e clips específicos dos quatro atores; as deformações de sprites atuais continuam provisórias.
+`title_repose.gd` consome frames, pivô e altura de referência do módulo fixado, com um único relógio pertencente ao ator. A respiração é mínima e uniforme, ancorada nos pés; movimento reduzido mantém a pose de repouso. A hit shape inclui o corpo deitado e a postura desperta. As capturas reais de desktop e portrait foram abertas: olhos fechados, orelhas de folha, cauda, rosto e patas canônicas permanecem legíveis e apoiados.
 
-Esta revisão não afirma que corrigiu essas poses ou que obteve aceite artístico. O clipe da candidata deve mostrar o estado real dos quatro atores, identificando a limitação.
+`ui/living-title@2.1.0` declara a dependência de Foli e os tempos de repouso/despertar. Cena, portrait, logo, esfera, apoios, ultrawide e shader são byte a byte iguais aos de 2.0.0 (`scene-pixel-preservation.json`). Nenhum PNG foi repintado/reprocessado. As seis seleções de UI são fixadas em 2.1.0; os demais pins ficam intactos. `production` habilita a candidata técnica e `production_ready: false` conserva o limite de aprovação humana. A floresta ultrawide é preservada; os PNGs completos mudam onde Foli assume a nova pose.
 
-## Evidências e validação
+## Arte e plataforma ainda pendentes
 
-As primeiras capturas em `test-results/title-portrait-05l-layouts` revelaram Nisca cortando pontas de espinhos à direita e pouco espaço cênico em 320×568; motivaram o recuo/escala de Nisca e o reflow de navegação. Também foi identificado um galho solto em retratos mais largos: o suporte de Brasa passou a chegar à borda esquerda com escala uniforme, sem transformar o corpo. São evidências intermediárias, não finais. O foco nativo/build tem relatórios próprios, sem herdar o resultado integral de 05K. As capturas finais e o novo ensaio integral serão identificados por seus manifests reais.
+- Brasa inicial com acabamento ilustrado e referência revisada/aprovação verificáveis.
+- Pata estendida e poses desenhadas específicas de empurrar/recuperar o drible de Lonlon.
+- Espreguiçar dedicado de Foli e acabamento/clips finais do conjunto. Repouso e despertar por reaproveitamento já estão implementados.
+- Aceite humano de identidade, composição, cadência e som; Windows/DPI/hardware, acessibilidade e controle físico.
 
-Windows/DPI/hardware não foram executados nesta revisão. A exportação anterior em Linux não prova execução da candidata nova em Windows. Comparação exata referência oficial versus candidata permanece dependente dos bytes autorizados da referência; comparações antes/depois devem ser rotuladas assim. Sem push, merge, deploy ou reativação de Actions. Produto 0.3.0.
+A pose desenhada existente de Foli tem procedência e revisão técnica de integração, não aprovação artística nova. Os outros três atores conservam suas deformações procedurais atuais. A folhagem ambiental continua estática. O clipe de revisão deve mostrar essas diferenças reais, sem declarar todas as animações finalizadas.
 
-A verificação real de foco detectou perda de Opções no retorno portrait → wide: a linha era escondida antes de capturar o foco. A ordem foi corrigida e quatro transições foram acrescentadas ao cenário oficial do título, sem remover asserções existentes. O primeiro relatório parcial foi preservado.
+## Evidências e ensaios
 
-O foco final `title-portrait-05l-final` passou arquitetura, título nativo (48), export Web e catálogo empacotado (5), com fontes inalteradas. A verificação real de teclado manteve Opções focada e visível em 390×844 → 1600×900 → 320×568 → 800×900; `focus-resize-final.json` registra as quatro transições. Os PNGs de 1600×900, 1440×900, 2560×1080 e 5120×1440 são byte a byte iguais aos anteriores de 05K (`wide-preservation.json`). As capturas do novo apoio de Brasa e o portrait foram abertos e inspecionados. Esses resultados não aprovam a arte pendente.
+Capturas intermediárias de layout detectaram Nisca recortado e galho solto; foram corrigidos e reinspecionados. Durante a etapa apenas de layout, quatro PNGs largos eram idênticos aos de 05K (`wide-preservation.json`); essa prova histórica não é atribuída aos frames com Foli repousando. A prova atual de preservação é dos arquivos de cenário, sem mascarar a mudança intencional de pose.
+
+O foco `title-portrait-05l-repose-focus` passou arquitetura, assets, asset-unit, título nativo (48), export Web e catálogo empacotado (5). A captura do repouso foi inspecionada em 1600×900 e 390×844. O vídeo e os ensaios posteriores identificam seus próprios hashes.
+
+O primeiro integral `title-portrait-05l-full`, fonte `7633faee6a29caf7558a20c905e8816670951239b90a5f0f513197879015f8d4`, preservou fontes e passou a parte nativa/oito mutações. Foi interrompido durante integração Web após descobrir a sequência canônica de repouso que permitia atender Foli sem gerar arte. Não é aprovação integral nem falha de integração concluída; o relatório original foi preservado antes de editar fontes. A nova revisão deve executar seu integral próprio.
+
+Gravações intermediárias e a falha de foco também permanecem preservadas. O primeiro gravador aguardava um snapshot que só muda por eventos; a amostragem foi corrigida com input real inofensivo, sem setters. Um erro posterior de conversão de caminho ocorreu após fechar um vídeo válido; seu arquivo foi recuperado sem repetir a captura. O clipe final deve ser da revisão com Foli repousando.
+
+Não houve execução desta revisão em Windows/DPI. A exportação anterior de 05K em Linux não valida a nova candidata. Sem push, merge, deploy ou reativação de Actions. Produto 0.3.0.

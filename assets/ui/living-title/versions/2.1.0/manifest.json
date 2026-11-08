@@ -1,0 +1,288 @@
+{
+  "changes": "Reuse canonical Foli lifecycle repose and wake poses; preserve existing scene pixels and other actors",
+  "dependencies": [
+    {
+      "id": "characters/battle-creatures",
+      "version": "1.0.0"
+    },
+    {
+      "id": "characters/foli-pilot",
+      "version": "1.1.0"
+    },
+    {
+      "id": "characters/electric-family",
+      "version": "2.1.0"
+    },
+    {
+      "id": "characters/aquatic-family",
+      "version": "1.0.0"
+    },
+    {
+      "id": "characters/foli-lifecycle",
+      "version": "1.1.0"
+    }
+  ],
+  "description": "Layered dusk title candidate derived from the user supplied approved reference, with native navigation and independent decorative actors.",
+  "files": {
+    "logo": {
+      "bytes": 472035,
+      "kind": "texture",
+      "path": "logo.png",
+      "sha256": "5a7f0ee0ea811c3dfd0a56fdab89a35c2812d835f47236ca3fe2519be165a3b8",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1889,
+          361
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "orb": {
+      "bytes": 362891,
+      "kind": "texture",
+      "path": "orb.png",
+      "sha256": "7c2f8e8dac57e8b365026875b3907466c0279b3d8d5377b0e42775b0c7702abe",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          523,
+          523
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "portrait": {
+      "bytes": 2255775,
+      "kind": "texture",
+      "path": "portrait.png",
+      "sha256": "8fb2243ab934e1cbde0e4f94b8f38a9d6697d30e8e62c930a5b3524aded300f7",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          910,
+          1727
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "scene": {
+      "bytes": 2515346,
+      "kind": "texture",
+      "path": "scene.png",
+      "sha256": "60fcf9a478059736551435c95c2f68d29e2dafc0b2a5675a5403d17a23d8bf5a",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "source-ultrawide": {
+      "bytes": 3138455,
+      "kind": "review",
+      "path": "review/ultrawide-original.png",
+      "provenance": {
+        "edit_history": "Horizontal dense-tree extension of supplied clean scene; original output retained unchanged in review/ultrawide-original.png",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral.",
+        "recorded_date_utc": "2026-11-08",
+        "reference": "ui/living-title@1.0.0 scene.png",
+        "tool": "OpenAI Image Gen"
+      },
+      "sha256": "e59d3d2a1f60695f7daa0c0a8475f308fcd77dbec261a72fcad6458a90b01a0c",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          2160,
+          728
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "supports": {
+      "bytes": 809358,
+      "kind": "texture",
+      "path": "supports.png",
+      "sha256": "dcaf329cb683f6001a4c7e5a7c177dcf4d88e61eb3eb372e3676d02ba8eeb163",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          512
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "ultrawide": {
+      "bytes": 3138455,
+      "kind": "texture",
+      "path": "ultrawide.png",
+      "provenance": {
+        "edit_history": "Horizontal dense-tree extension of supplied clean scene; original output retained unchanged in review/ultrawide-original.png",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral.",
+        "recorded_date_utc": "2026-11-08",
+        "reference": "ui/living-title@1.0.0 scene.png",
+        "tool": "OpenAI Image Gen"
+      },
+      "sha256": "e59d3d2a1f60695f7daa0c0a8475f308fcd77dbec261a72fcad6458a90b01a0c",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          2160,
+          728
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "water": {
+      "bytes": 799,
+      "kind": "data",
+      "path": "water.gdshader",
+      "provenance": {
+        "kind": "Original Godot canvas shader authored for the title water",
+        "license": "Original project code."
+      },
+      "sha256": "812e420001d991d45a62a382ea27c698be1d765b9061282692389806662ea09f"
+    }
+  },
+  "id": "ui/living-title",
+  "metadata": {
+    "actor_rendering": "Canonical BattleArt for Brasa/Lonlon/Nisca; Foli reuses unchanged canonical lifecycle repose/wake frames",
+    "actors": {
+      "dew": {
+        "art_binding": "umbrals/dew",
+        "cooldown": 0.8,
+        "dribble": {
+          "contact_phase": 0.36,
+          "duration": 1.05,
+          "radius_fraction": 0.12,
+          "reaction_duration": 0.6,
+          "release_phase": 0.44,
+          "squash": 0.85
+        },
+        "idle": {
+          "duration": 1.05,
+          "loop": true
+        },
+        "reaction": {
+          "duration": 1.8,
+          "loop": false
+        },
+        "source_pixels": "Existing canonical runtime texture, unchanged; procedural mesh animation only"
+      },
+      "ember": {
+        "art_binding": "umbrals/ember",
+        "cooldown": 0.8,
+        "idle": {
+          "duration": 3.5,
+          "loop": true
+        },
+        "reaction": {
+          "duration": 1.4,
+          "loop": false
+        },
+        "source_pixels": "Existing canonical runtime texture, unchanged; procedural mesh animation only"
+      },
+      "moss": {
+        "art_binding": "umbrals/moss",
+        "cooldown": 0.8,
+        "idle": {
+          "duration": 4.2,
+          "loop": true
+        },
+        "reaction": {
+          "duration": 1.7,
+          "loop": false
+        },
+        "rest_pose": {
+          "binding": "characters/lifecycle-moss",
+          "breathing_duration": 4.2,
+          "breathing_scale": 0.004,
+          "clip": "knockout",
+          "form": "moss",
+          "rest_frame": 3,
+          "wake": [
+            [
+              0,
+              3
+            ],
+            [
+              0.1,
+              2
+            ],
+            [
+              0.24,
+              1
+            ],
+            [
+              0.36,
+              0
+            ],
+            [
+              0.64,
+              1
+            ],
+            [
+              0.78,
+              2
+            ],
+            [
+              0.9,
+              3
+            ]
+          ]
+        },
+        "source_pixels": "Existing characters/foli-lifecycle@1.1.0 knockout frames, unchanged; last relaxed pose reused as rest, reverse sequence wakes and settles"
+      },
+      "volt": {
+        "art_binding": "umbrals/volt",
+        "cooldown": 0.8,
+        "idle": {
+          "duration": 3.2,
+          "loop": true
+        },
+        "reaction": {
+          "duration": 1.1,
+          "loop": false
+        },
+        "source_pixels": "Existing canonical runtime texture, unchanged; procedural mesh animation only"
+      }
+    },
+    "consumer": "scripts/ui/title_menu.gd",
+    "native_4k_art": false,
+    "production_ready": false,
+    "reference_size": [
+      1672,
+      941
+    ],
+    "ultrawide": "Dense forest extensions; uniform background cover; actor stage independent of aspect ratio"
+  },
+  "provenance": {
+    "kind": "Image Gen derivatives",
+    "license": "Original artwork generated for this game.",
+    "limitations": "Revised Brasa initial illustration unconfirmed; no new art generated. Lonlon extended-paw art and a dedicated Foli stretch remain pending. Foli rest/wake reuses canonical reversible lifecycle poses; it is not a newly approved menu sheet.",
+    "normalization": "All scene/logo/portrait/orb/support/ultrawide/shader bytes retained unchanged from2.0.0. Existing Foli lifecycle pixels are resolved through the pinned binding; no image processing.",
+    "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+    "review": "Existing source pose pixels and pivots inspected before technical integration. Production status permits this local runtime candidate; no human approval of a finished menu or new art is implied.",
+    "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+    "source_release": "ui/living-title@2.0.0"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "2.1.0"
+}

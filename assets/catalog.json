@@ -647,6 +647,11 @@
           "manifest": "assets/ui/living-title/versions/2.0.0/manifest.json",
           "sha256": "01bc0edfe2014b9ec5d1826202d46716a13252f4cc70f3ff52e8f10a304f4f6a",
           "status": "production"
+        },
+        "2.1.0": {
+          "manifest": "assets/ui/living-title/versions/2.1.0/manifest.json",
+          "sha256": "7265932c38a0f592e66c4d9869940df4a93e00f7cf8d16b234648e46376b7ac0",
+          "status": "production"
         }
       }
     },

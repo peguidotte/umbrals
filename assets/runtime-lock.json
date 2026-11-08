@@ -268,32 +268,32 @@
     "ui/living-title-logo": {
       "file": "logo",
       "id": "ui/living-title",
-      "version": "2.0.0"
+      "version": "2.1.0"
     },
     "ui/living-title-orb": {
       "file": "orb",
       "id": "ui/living-title",
-      "version": "2.0.0"
+      "version": "2.1.0"
     },
     "ui/living-title-portrait": {
       "file": "portrait",
       "id": "ui/living-title",
-      "version": "2.0.0"
+      "version": "2.1.0"
     },
     "ui/living-title-scene": {
       "file": "scene",
       "id": "ui/living-title",
-      "version": "2.0.0"
+      "version": "2.1.0"
     },
     "ui/living-title-supports": {
       "file": "supports",
       "id": "ui/living-title",
-      "version": "2.0.0"
+      "version": "2.1.0"
     },
     "ui/living-title-ultrawide": {
       "file": "ultrawide",
       "id": "ui/living-title",
-      "version": "2.0.0"
+      "version": "2.1.0"
     },
     "ui/title-logo": {
       "file": "texture",
