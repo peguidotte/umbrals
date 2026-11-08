@@ -30,3 +30,12 @@ No push, merge, deploy or Actions reactivation. Product remains 0.3.0.
 ## Integral attempt timing evidence
 
 The first full attempt kept sources unchanged and passed every native task and all eight mutations. Browser integration failed after 307 checks while waiting 60 s for `!busy`. The failure screenshot shows effect 18/21. Raw video frames 12 s apart show progress from effect 6/21 to 18/21, so the retained evidence shows motion rather than a frozen queue. The owned attempt was interrupted during layout; its report says interrupted, with the integration failure preserved. Session.settled now measures each queue and allows 120 s with the same completion condition, actions and assertions. The game and its animation speed are unchanged. The final full attempt is test-results/title-identity-full-02; its actual report is authoritative.
+
+
+## Final automated regression
+
+`test-results/title-identity-full-02` passed the full scope with complete coverage, verified inputs and unchanged source hash `2e7b44ee662f8b0f8f92642197487b48de501ae3ade439e5fc737117bfc2b72e`. All ten browser scenarios passed (3,113 checks), including title 174 and expedition 417 with both routes ending in victory. Native title 48, battle motion 1,012, rules 14,321 and save 559 checks passed; all eight mutations were detected. Behavior was rerun fresh; only verified imports/builds were cached. The successful integration measured 189 queue waits with a maximum of 43.0002 s, so it is not claimed to have required more than the former 60 s limit.
+
+The final 12-profile empty-save matrix was opened and inspected, retaining full source screenshots. The mobile montage preserves the former 24.28 s duration using actual desktop, ultrawide and portrait clips, uniformly scaled/padded, with no audio. H.264/yuv420p, frame count and faststart were verified. Final PDF pages and video segment frames were inspected. Only documentation was changed after the frozen run.
+
+`final result: blocked` remains intentional: automated regression passed, but the reference, authored-pose, human and target-platform gates above remain open. Windows export passed on Linux; Windows/DPI execution did not occur.

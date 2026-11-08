@@ -1533,3 +1533,15 @@ continuava avançando no efeito 18/21 aos 60 s. O harness passou a aguardar até
 120 s e registrar o tempo real da fila, mantendo todas as asserções/ações.
 A segunda tentativa conserva seus próprios hashes e relatório; não é atribuída
 aprovação à primeira. Nenhuma mecânica ou velocidade de animação foi alterada.
+
+
+Fechamento técnico de 05K: `title-identity-full-02` **aprovado integralmente**,
+cobertura completa, inputs verificados e fontes inalteradas. Dez cenários Web,
+3.113 verificações, incluindo título 174 e expedição 417 com duas vitórias;
+regras 14.321, movimento 1.012, saves 559 e oito mutações na parte nativa.
+A matriz final cobre 12 formatos com/sem save. MP4 real de 24,28 s, matriz e PDF
+de revisão atualizados na Library. Export Windows aprovado em Linux, sem execução
+Windows/DPI. A primeira tentativa continua interrompida; sua falha não foi apagada.
+Os gates de referência, poses e aceite humano acima permanecem abertos.
+Próxima fatia depende das referências legíveis e da revisão humana/plataforma;
+este fechamento não avança a versão 0.3.0. Sem push, merge ou deploy.
