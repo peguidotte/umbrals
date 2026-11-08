@@ -105,3 +105,13 @@ unchanged in `live-title-font-navigation`. Latest title/expedition captures use
 A convenience copy of selected final proof may be placed in
 ignored `test-results/live-title-delivery`; this does not replace original evidence.
 No claim of final visual acceptance is made while this report is blocked.
+
+Final scoped evidence: title 174, navigation 160, expedition 417 passed. The last
+expedition change fixed its clipped-control click helper; both complete routes
+and all final enlarged-text assertions ran again. Idle after 30 modal cycles
+preserved 44 nodes/10 audio children and save/RNG for 605.6 s. Native Linux Quit
+exited 0 without warnings using an owned test watchdog. Selected evidence is in
+`test-results/live-title-delivery`; per-report hashes/runtime equivalence are
+recorded there. Source overlay and human art review remain blocked/pending.
+Foreground foliage is static. Windows/DPI and physical-device checks were not
+executed; full repository acceptance is still open.

@@ -150,3 +150,29 @@ scaled bounds and nudge the offset. A changed viewport still reveals the focused
 control. The existing exact-scroll assertion is retained. Vertical grid navigation
 also searches the intended row when Continue is disabled, rather than jumping
 sideways to the lower row.
+
+## Final local review evidence
+
+Scoped results: title 174, normal/enlarged navigation 160 and expedition 417
+passed. The corrected expedition helper reveals clipped controls with real Tab
+input before clicking; both victories, exact battle/event continuation, terminal
+retirement and both large-text map cases ran again. Reports live under
+`test-results/live-title-candidate-proof` (affected native/title),
+`live-title-font-navigation`, and `live-title-expedition-final`. Runtime files
+match across these reports and the Windows export; their full source hashes
+also include changing documentation/test helpers.
+
+After 30 Options cycles, final-runtime Linux headless idle ran 605.6 seconds
+with 44 nodes/10 audio children and unchanged save/gameplay RNG. Native Linux
+synthetic Enter on Sair exited 0 without warnings with an owned test watchdog.
+The first smoke retained a pending test coroutine and emitted an exit warning;
+it remains separate. These are not Windows execution or hardware measurements.
+Selected captures, raw videos, a Windows ZIP and review report are in ignored
+`test-results/live-title-delivery`.
+
+Art remains a generated derivative requiring human review. Foreground environment
+foliage is static; dedicated approved layers are needed for that finishing step.
+Source overlay, Windows/DPI, physical input/accessibility, audio listening and
+complete repository acceptance remain open. The earlier 1800-second full-attempt
+timeout is not converted into a full pass by these scoped results. No push,
+merge, deploy or workflow reactivation occurred.

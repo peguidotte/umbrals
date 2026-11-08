@@ -1497,3 +1497,12 @@ expôs cópia desnecessária do cache de glifos; Opções agora reaproveita defi
 limpas de fontes, e a navegação normal/ampliada passou sem relaxar suas asserções.
 O complemento final título/expedição fica em `test-results/live-title-candidate-proof`;
 o gate integral e o aceite humano/plataforma continuam separados.
+
+Fechamento local da candidata: título 174, navegação 160 e expedição 417 passaram,
+com as duas vitórias e mapas ampliados. A última correção foi no helper de clique:
+revelar o controle rolado com Tab antes da ação, preservando todas as asserções.
+O idle após 30 ciclos durou 605,6 s, com 44 nós/10 vozes e save/RNG intactos.
+Sair nativo Linux encerrou 0 sem avisos no smoke corrigido. Export Windows e
+pacote de revisão disponíveis; não houve execução Windows/DPI nem aceite
+estético. Folhagem frontal ainda estática. Gate integral segue aberto após o
+timeout anterior; versão 0.3.0 e restrição de publicação mantidas.
