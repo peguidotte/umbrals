@@ -37,8 +37,61 @@ Capturas intermediárias de layout detectaram Nisca recortado e galho solto; for
 
 O foco `title-portrait-05l-repose-focus` passou arquitetura, assets, asset-unit, título nativo (48), export Web e catálogo empacotado (5). A captura do repouso foi inspecionada em 1600×900 e 390×844. O vídeo e os ensaios posteriores identificam seus próprios hashes.
 
-O primeiro integral `title-portrait-05l-full`, fonte `7633faee6a29caf7558a20c905e8816670951239b90a5f0f513197879015f8d4`, preservou fontes e passou a parte nativa/oito mutações. Foi interrompido durante integração Web após descobrir a sequência canônica de repouso que permitia atender Foli sem gerar arte. Não é aprovação integral nem falha de integração concluída; o relatório original foi preservado antes de editar fontes. A nova revisão deve executar seu integral próprio.
+O primeiro integral `title-portrait-05l-full`, fonte `7633faee6a29caf7558a20c905e8816670951239b90a5f0f513197879015f8d4`, preservou fontes e passou a parte nativa/oito mutações. Foi interrompido durante integração Web após descobrir a sequência canônica de repouso que permitia atender Foli sem gerar arte. Não é aprovação integral nem falha de integração concluída; o relatório original foi preservado antes de editar fontes. A revisão com Foli possui o integral final descrito abaixo.
 
 Gravações intermediárias e a falha de foco também permanecem preservadas. O primeiro gravador aguardava um snapshot que só muda por eventos; a amostragem foi corrigida com input real inofensivo, sem setters. Um erro posterior de conversão de caminho ocorreu após fechar um vídeo válido; seu arquivo foi recuperado sem repetir a captura. O clipe final deve ser da revisão com Foli repousando.
 
 Não houve execução desta revisão em Windows/DPI. A exportação anterior de 05K em Linux não valida a nova candidata. Sem push, merge, deploy ou reativação de Actions. Produto 0.3.0.
+
+
+## Fechamento técnico da revisão com repouso
+
+`test-results/title-portrait-05l-full-03` passou integralmente: cobertura completa,
+inputs verificados e fontes inalteradas. Fonte congelada
+`a73fc228ed445a982c5ec46b46fba546fc272cee044408618c9a1049fe67a7cc`,
+implementação `7949f66`. Os dez cenários Web somam 3.118 verificações:
+integração 869, layout 1.121, navegação 160, inventário 17, combate 51,
+recompensas 268, reposição 11, persistência 25, expedição 417 e título 179.
+As duas rotas da expedição chegaram à vitória. A parte nativa inclui título 48,
+movimento 1.012, regras 14.321, saves 559 e oito mutações detectadas.
+Comportamentos foram executados novamente; somente preparação/builds com
+entradas e saídas verificadas foram reaproveitados.
+
+`title-portrait-05l-full-02` terminou com status failed e cobertura incompleta:
+o coordenador encerrou após a integração passar 869 verificações, antes dos
+cenários restantes. Todas as tarefas concluídas passaram e as fontes ficaram
+inalteradas. Não há traceback de origem nem run.json preservado dessa saída;
+a perda do pipe após retomada do ambiente é hipótese, não diagnóstico confirmado.
+A rodada 03 redirecionou stdout/stderr para um arquivo persistido, sem alterar
+código, orçamento de espera, ações, rotas ou asserções, e concluiu o grafo completo.
+As tentativas incompletas não foram renomeadas como aprovadas.
+
+Capturas finais reais em `title-portrait-05l-full-03/tasks/browser.title` cobrem
+12 formatos, com e sem save, incluindo 16:9, 16:10, 4:3, 21:9, 32:9 e portrait.
+A prancha `portrait-antes-agora.png` compara 05K/05L em 390×844, ambas sem save
+com foco em Novo jogo. É antes/depois, não substituto da comparação exata com o
+PNG oficial inacessível. A matriz final e as páginas do PDF foram inspecionadas;
+o primeiro render do PDF revelou colisão de nomes de miniaturas, corrigida antes
+da publicação. Cenário/apoios originais continuam byte a byte preservados; os
+PNGs completos mudam onde Foli repousa.
+
+O MP4 `menu-quatro-reacoes-atual.mp4` tem 34,84 s, 871 frames, H.264/yuv420p,
+faststart e nenhuma faixa de áudio. Grava uma reação por ator, armazenamento
+inalterado e zero erros de execução. Frames e sequência de Foli foram abertos:
+repouso, levantamento, olhos abertos e volta ao repouso. O build capturado e o
+integral têm todos os arquivos de runtime idênticos; diferem somente em seis
+documentos, registrados em `review-dependencies.json`.
+
+Não houve nova exportação nem execução Windows nesta revisão. A exportação
+anterior de 05K não valida 05L. O resultado artístico continua **bloqueado** pelas
+referências, novas poses/acabamento e gates humanos/plataforma já descritos.
+Depois do ensaio congelado, somente documentação foi alterada. Sem push, merge,
+deploy ou reativação de Actions; produto 0.3.0.
+
+
+Entrega confirmada na Library: comparação portrait `libfile_6bbbc7065bac8191918f2d60818132b3`
+(versão 0); matriz `libfile_e0d7c5a3171c8191aba2d245c97e9794`,
+clipe `libfile_b60317fc56708191b611084e3f78d8d3` e relatório
+`libfile_f929e579cfb08191b952377414888d2f` (versão 2 em cada um),
+preservando suas identidades e histórico. Metadados locais foram persistidos;
+as respostas e proveniência ficam junto às evidências ignoradas do repositório.

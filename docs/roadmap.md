@@ -1569,3 +1569,17 @@ interrompido antes da edição para incorporar o repouso existente de Foli; nati
 e mutações preservadas não são aceite da revisão nova. Foco e integral final têm
 hashes próprios. [Escopo e evidências](live-title-polish.md).
 Sem push, merge, deploy ou Actions; 0.3.0.
+
+
+Fechamento técnico de 05L: `title-portrait-05l-full-03` **aprovado integralmente**,
+fonte `a73fc228ed445a982c5ec46b46fba546fc272cee044408618c9a1049fe67a7cc`
+inalterada, cobertura completa e inputs verificados. Dez cenários Web somam
+3.118 verificações, título 179 e expedição 417 com duas vitórias; nativas e oito
+mutações também passaram. A tentativa 02 encerrou após integração aprovada,
+sem cobertura completa, e continua failed; a origem da saída não foi recuperada.
+A rodada 03 preservou stdout/stderr em arquivo sem mudar fontes/asserções/tempos.
+Comparação portrait antes/depois, matriz de 12 formatos, capturas reais e MP4 de
+34,84 s foram inspecionados. Não há PNG local oficial para comparação exata.
+Sem export/execução Windows de 05L; não herdar a validação de 05K. Próxima etapa:
+confirmar Brasa inicial e aprovação, produzir acabamento/poses pendentes e revisar
+arte/plataforma. Gates humanos abertos, produto 0.3.0. Sem push, merge ou deploy.

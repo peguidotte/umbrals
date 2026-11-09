@@ -12,6 +12,16 @@ Brasa remains pixelated and Lonlon lacks an authored extended-paw dribble pose. 
 
 The initial 05L full run was deliberately interrupted, with sources unchanged, when canonical Foli rest poses were discovered. Its native passes are preserved and are not full acceptance of this revision. The final full run must identify the source with the repose integration. Earlier four-PNG identity to05K concerned the layout-only stage; it is not attributed to the intentional Foli pose change. See docs/live-title-polish.md.
 
+## Final 05L technical evidence
+
+`test-results/title-portrait-05l-full-03` passed the full graph with complete coverage, verified inputs and unchanged source `a73fc228ed445a982c5ec46b46fba546fc272cee044408618c9a1049fe67a7cc`. Ten Web scenarios passed 3,118 checks, including title 179 and expedition 417 (two victories). Native title 48, motion 1,012, rules 14,321 and saves 559 passed; eight mutations were detected. Behavior was fresh; only verified preparation/builds were reused.
+
+The second attempt's coordinator exited after integration passed 869, before the remaining tasks. Its report stays failed/incomplete, with unchanged sources and no failed completed task. No originating traceback survived; loss of the progress pipe after environment resume is only a hypothesis. The third run used persistent stdout/stderr, unchanged code/actions/assertions/timeouts, and completed. The first interrupted attempt also remains preserved.
+
+The final before/after portrait board, 12-format matrix and actual desktop/ultrawide/portrait captures were opened. Canonical sleeping/waking Foli frames and the real 34.84 s four-reaction MP4 were inspected; storage stayed unchanged and no runtime errors were logged. The PDF thumbnail collision was corrected before saving; its final pages were inspected. Full PNG identity is not claimed because Foli intentionally changes pose. Exact official-reference comparison remains blocked by the failed PNG transfer.
+
+No new Windows export or Windows/DPI/hardware execution occurred. `final result: blocked` still applies to art/reference, authored motion, human and platform gates; the full automated regression passed. Only documentation changed after testing.
+
 ## Historical 05K evidence
 
 ## Latest visual truth and scope
