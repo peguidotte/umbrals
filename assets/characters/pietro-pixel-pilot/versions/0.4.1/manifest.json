@@ -1,0 +1,68 @@
+{
+  "changes": "Dense UV-bound cross-section review replaces the sparse four-row claim. Settle displacement and tangent together at the rigid cuff; subdivide wide strips to avoid diagonal-dependent tangents. Preserve source PNG, hair, cadence and accessibility.",
+  "dependencies": [],
+  "description": "Experimental cuff transition with locally compensated trouser width and subdivided strips; no production pin.",
+  "files": {
+    "rig": {
+      "bytes": 5293,
+      "kind": "data",
+      "path": "rig.json",
+      "sha256": "5e8e184d817ff7641c9d470b16cc8cf54ab3031c8262e3fb7f5f21d778a9d1d0"
+    },
+    "texture": {
+      "bytes": 546680,
+      "kind": "texture",
+      "path": "source.png",
+      "sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "hair-light": {
+      "path": "hair_light.gdshader",
+      "kind": "data",
+      "bytes": 755,
+      "sha256": "345270d64e6bfaeb8a22a718e2fce6408a43090ab81077d7b53cc14d4190a1c1"
+    }
+  },
+  "id": "characters/pietro-pixel-pilot",
+  "metadata": {
+    "approval": "Candidate for new review; not promoted",
+    "consumer": "tools/studies/pietro_house; opt-in house experiment only",
+    "filtering": "nearest",
+    "runtime_pin": "none",
+    "states": [
+      "static",
+      "short controlled walk"
+    ],
+    "view": "Three-quarter right only; no new directions or additional animations",
+    "cadence": {
+      "world_speed": 330,
+      "world_scale": 0.5,
+      "world_distance_per_cycle": 220,
+      "steps_per_second": 3,
+      "support_step_distances_world": [
+        105,
+        115
+      ]
+    },
+    "hair_light": "UV/color-selective material softens only the golden hair rim; original source PNG, face, clothing, alpha and geometry remain unchanged."
+  },
+  "provenance": {
+    "approval_scope": "Pedro approved the isolated identity. Runtime composition and gait remain candidates.",
+    "edit_history": "Approved original RGBA and accepted softened hair copied unchanged. Controlled continuous row settling and finer strip topology; no generated texture changes.",
+    "kind": "project-approved generated reference",
+    "recorded_date_utc": "2026-11-05",
+    "source_name": "Pietro-autosprite-source.png",
+    "source_sha256": "cc20c83377533cc93c79e141f6490bcc8e056f36a05013f28b66111956c0bbfa"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.4.1"
+}

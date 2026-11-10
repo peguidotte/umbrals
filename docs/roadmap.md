@@ -1490,3 +1490,59 @@ grimório. O foco agora retorna imediatamente e a rolagem adiada respeita um
 Tab posterior; 91 verificações nativas do grimório e 156 Web passaram no foco,
 com o cenário Web original preservado.
 [Regra, migração, evidência e limites](lonelo-companion-v05-bat10.md).
+
+### V05-ART-08B — comparação experimental de Pietro na casa real
+
+Branch separada sobre `60b4e30`: boot opcional instancia o jogo e a casa atuais,
+compara o ator de produção e Pietro pixelado 0.2.2 na mesma posição/câmera e usa
+Brasa vivo do runtime no mesmo piso. Sem substituir a casa, promover assets ou
+alterar scripts/contratos de produção. Velocidade normal preservada; opção lenta
+explícita permite examinar a passada curta. Cadência alta em velocidade normal,
+botas rígidas e poses ausentes de escada/despertar continuam limites abertos.
+[Escopo, reprodução e validação](pietro-house-experiment-v05.md). Candidato para
+revisão visual; sem aprovação artística ou mudança da versão do produto.
+
+Evidência local do experimento: 12 verificações próprias, 13 do rig, 79 da casa,
+556 de catálogo, integridade de 99 releases/354 arquivos e arquitetura passaram;
+14 Web com inputs reais e vídeo A/B. A velocidade normal evidencia a cadência
+alta; a opção lenta permanece identificada. Revisão de Pedro continua aberta.
+
+Correção experimental 0.3.0: passada de 220 pixels de mundo por ciclo mede
+3 passos/s a 330 pixels/s, com apoio plantado. Faixas horizontais da malha
+preservam a cintura e evitam inversões na amplitude maior. A física e a câmera
+voltam a ser executadas somente pela casa original; o modo lento foi removido.
+Movimento reduzido chega a Pietro e ao Brasa vivo. Passaram 20 verificações da
+integração, sete da passada maior e os 13 casos anteriores do rig. O cenário
+atual continua rejeitado, ainda sem adaptação à direção pixel aprovada.
+
+O brilho excessivo indicado por Pedro é no cabelo. O material experimental
+seleciona somente essa borda luminosa, preservando o PNG aprovado e isolando
+rosto, roupa, cenário e Brasa. A edição tonal de referência não substitui o asset.
+
+Correção experimental 0.4.0 após revisão: a passada de 0.3.0 preservava a
+orientação dos triângulos, mas estreitava a calça até 6,78% da largura de origem,
+formando uma faixa em X. Faixas com deslocamento uniforme, compensação de
+largura e cobertura compartilhada da pelve removem esse pinçamento nos oito
+quadros comparados. Medição independente nas malhas: largura mínima 61,33%,
+altura 84,91%, 665 poses/5.320 seções; zero inversões/colapsos em 6.206.325
+triângulos. Passaram 11 verificações da passada e 20 da integração, mantendo
+330 pixels/s, 3 passos/s, movimento reduzido de Pietro/Brasa e cabelo suavizado.
+Também passaram 19 verificações Web, catálogo, integridade e arquitetura focados.
+Botas rígidas e distorção residual de tecido continuam limites visuais; próxima
+etapa é revisão independente e de Pedro. Sem promoção, merge ou aprovação da casa.
+
+
+Correção do gate em 0.4.1: os 61,33% de 0.4.0 eram o mínimo de quatro alturas,
+não global. Reproduzidos 54,85% em y=964/fase 0 e 52,72% em y=963. Acomodação
+da tangente na barra, colunas menores nas faixas e linhas nos pontos de mudança
+da deformação elevam o mínimo amostrado para 91,33%. Regressão ampliada para
+187 alturas por perna, 2.465 poses e 921.910 seções; altura mínima 82,62%,
+zero inversões/colapsos em 9.202.310 triângulos. Inclui o falso positivo do gate
+anterior e o caso exato da revisão. É uma grade finita, sem alegação de mínimo
+global contínuo. Máscaras, PNG, cabelo, apoios e contratos da casa preservados.
+A candidata continua sujeita a inspeção visual e revisão de Pedro, sem promoção.
+Passaram 14 verificações da passada, 20 da casa, 13 do rig anterior e 19 Web;
+um timeout de captura antes do A/B foi preservado, e a repetição no mesmo build
+passou. Catálogo, integridade de 102 releases/363 arquivos e arquitetura focados
+passaram. A silhueta abre mais nas poses extremas; revisão visual e adaptação
+da casa à direção aprovada continuam abertas. Sem merge ou promoção.

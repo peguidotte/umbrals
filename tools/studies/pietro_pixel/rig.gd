@@ -2,10 +2,13 @@ extends RefCounted
 ## Study-only 3/4 gait. Approved pixels are sampled without redrawing the PNG.
 const Geometry = preload("res://tools/studies/pietro_pixel/texture_mesh.gd")
 const Upper = preload("res://tools/studies/pietro_pixel/upper_rig.gd")
+const VolumeRows = preload("res://tools/studies/pietro_pixel/volume_rows.gd")
 const ROOT: String = "res://assets/characters/pietro-pixel-pilot/versions/0.2.2/"
-var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(ROOT+"rig.json"))
-var texture: Texture2D = load(ROOT+"source.png") as Texture2D
+var data: Dictionary
+var texture: Texture2D
 var upper: RefCounted
+var pelvis: ArrayMesh
+var pelvis_source: Dictionary = {}
 var legs: Array[ArrayMesh] = []
 var sources: Array[PackedVector2Array] = []
 var triangles: Array[PackedInt32Array] = []
@@ -19,10 +22,20 @@ var hips: Array[Vector2] = []
 var reach_error: float = 0
 var drop: float = 0
 
-func _init() -> void:
+func _init(root: String = ROOT) -> void:
+	data = JSON.parse_string(FileAccess.get_file_as_string(root+"rig.json"))
+	texture = load(root+"source.png") as Texture2D
 	upper = Upper.new(data.upper,data.body_mask)
+	if data.has("pelvis_mask"):
+		pelvis_source = Geometry.grid(Geometry.points(data.pelvis_mask),Rect2i(530,768,256,160),16)
+		pelvis = Geometry.create(pelvis_source.vertices,pelvis_source.indices,pelvis_source.uv)
 	for source in data.legs:
 		var grid: Dictionary = Geometry.grid(Geometry.points(source.mask),Rect2i(380,760,500,400),20)
+		if data.deformation.get("topology","")=="horizontal_strips":
+			grid = Geometry.strips(Geometry.points(source.mask),Rect2i(380,760,500,400),int(data.deformation.grid_step))
+		elif data.deformation.get("topology","")=="subdivided_strips":
+			var knots: PackedFloat32Array = PackedFloat32Array([data.deformation.volume_span_y[0],data.deformation.settle_y,data.deformation.volume_span_y[1]])
+			grid = Geometry.subdivided_strips(Geometry.points(source.mask),Rect2i(380,760,500,400),int(data.deformation.grid_step),float(data.deformation.column_step),knots)
 		sources.append(grid.vertices)
 		triangles.append(grid.indices)
 		leg_uvs.append(grid.uv)
@@ -32,7 +45,10 @@ func _init() -> void:
 		for point in grid.vertices:
 			# Broad transitions keep the inner knee from folding over itself.
 			knees_weight.append(smoothstep(source.knee[1]-data.deformation.knee_half_width,source.knee[1]+data.deformation.knee_half_width,point.y))
-			boots_weight.append(smoothstep(source.ankle[1]-data.deformation.boot_blend_above,source.ankle[1]+data.deformation.boot_blend_below,point.y))
+			if data.deformation.has("boot_blend_y"):
+				boots_weight.append(smoothstep(data.deformation.boot_blend_y[0],data.deformation.boot_blend_y[1],point.y))
+			else:
+				boots_weight.append(smoothstep(source.ankle[1]-data.deformation.boot_blend_above,source.ankle[1]+data.deformation.boot_blend_below,point.y))
 			# Both panels share the same attachment at the belt and inner seam.
 			# Let the thighs take over gradually without pulling those edges apart.
 			var seam_distance: float = INF
@@ -60,6 +76,10 @@ func pose(cycle: float, gather: float = 1.0) -> void:
 		var weight: float = smoothstep(0,0.5,gather) if leg == 0 else smoothstep(0.5,1,gather)
 		# The approved three-quarter pose has two distinct support lanes.
 		var sole: Vector2 = _point(source.sole)+Vector2(x,-lift)*weight
+		if data.walk.has("support_centers"):
+			# A walking stance has balanced contact spacing; preserve the wider
+			# approved stance at gather=0 instead of biasing one step backwards.
+			sole.x += (float(data.walk.support_centers[leg])-float(source.sole[0]))*weight
 		if gather > 0 and gather < 1: sole.y -= sin(weight*PI)*8
 		feet.append(sole)
 		var hip: Vector2 = upper.transform*_point(source.hip)+Vector2(x*weight*float(data.walk.hip_follow),0)
@@ -69,6 +89,10 @@ func pose(cycle: float, gather: float = 1.0) -> void:
 		var height: float = sqrt(maxf(0,length*length-pow(ankle.x-hip.x,2)))
 		drop = maxf(drop,ankle.y-height-hip.y)
 	upper.pose(drop)
+	if pelvis!=null:
+		var vertices: PackedVector2Array = []
+		for point in pelvis_source.vertices: vertices.append(upper.transform*point+Vector2(0,drop))
+		pelvis = Geometry.create(vertices,pelvis_source.indices,pelvis_source.uv)
 	for leg in range(2): _leg(leg)
 
 func _leg(leg: int) -> void:
@@ -92,21 +116,39 @@ func _leg(leg: int) -> void:
 	var lower_transform: Transform2D = Transform2D(b,knee-_point(source.knee).rotated(b))
 	var boot_offset: Vector2 = sole-_point(source.sole)
 	var vertices: PackedVector2Array = []
+	var ribbon: bool = data.deformation.get("mode","")=="position_ribbon"
+	var volume: bool = data.deformation.get("mode","") in ["volume_rows","volume_rows_settled"]
+	var top_point: Vector2 = Vector2(620,float(data.deformation.get("volume_span_y",[780,970])[0]))
+	var top_offset: Vector2 = upper.transform*top_point-top_point+Vector2(0,drop)
 	for i in range(sources[leg].size()):
 		var point: Vector2 = sources[leg][i]
+		if volume:
+			vertices.append(VolumeRows.project(point,source,data.deformation,top_offset,boot_offset))
+			continue
 		var skinned: Vector2 = (upper_transform*point).lerp(lower_transform*point,knee_weights[leg][i])
+		if ribbon:
+			# Long strides use monotone row displacements between joint anchors.
+			# Rotational blends across the wide trouser panel can fold its edges.
+			var displacement: Vector2
+			if point.y<float(source.knee[1]):
+				displacement = (hip-_point(source.hip)).lerp(knee-_point(source.knee),smoothstep(source.hip[1],source.knee[1],point.y))
+			else:
+				displacement = (knee-_point(source.knee)).lerp(ankle-_point(source.ankle),smoothstep(source.knee[1],source.ankle[1],point.y))
+			skinned = point+displacement
 		var pelvis: Vector2 = upper.transform*point+Vector2(0,drop)
 		var attached: Vector2 = pelvis.lerp(skinned,waist_weights[leg][i])
 		vertices.append(attached.lerp(point+boot_offset,boot_weights[leg][i]))
 	legs[leg] = Geometry.create(vertices,triangles[leg],leg_uvs[leg])
 
-func draw(canvas: CanvasItem, anchor: Vector2, original: bool = false) -> void:
+func draw(canvas: CanvasItem, anchor: Vector2, original: bool = false, facing: float = 1.0) -> void:
 	var scale_value: float = float(data.scale)
-	canvas.draw_set_transform(anchor-_point(data.pivot)*scale_value,0,Vector2.ONE*scale_value)
+	var scale_vector: Vector2 = Vector2(-1 if facing<0 else 1,1)*scale_value
+	canvas.draw_set_transform(anchor-_point(data.pivot)*scale_vector,0,scale_vector)
 	if original: canvas.draw_texture(texture,Vector2.ZERO)
 	else:
 		canvas.draw_mesh(legs[1],texture)
 		canvas.draw_mesh(legs[0],texture)
+		if pelvis!=null: canvas.draw_mesh(pelvis,texture)
 		canvas.draw_mesh(upper.mesh,texture)
 	canvas.draw_set_transform(Vector2.ZERO)
 
