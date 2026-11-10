@@ -105,6 +105,16 @@ func run() -> void:
 	expect(app.screens.top() == "menu" and focus_id() == "menu.settings","Controller Back restores the originating title button")
 	await press("menu.settings")
 	expect(app.registry["settings.info.full"].button_pressed and app.registry["settings.large_text"].button_pressed,"Reopening reflects persisted selections")
+	for resolution in [Vector2i(320,568),Vector2i(390,844),Vector2i(800,600),Vector2i(1024,768),Vector2i(1280,720)]:
+		root.size = resolution
+		await create_timer(0.15).timeout
+		await settle()
+		var compact: Control = app.screen_host.modal_root
+		expect(Rect2(Vector2.ZERO,app.size).encloses(compact.panel.get_global_rect()),"Large-text settings fit the narrow viewport "+str(resolution))
+		expect(compact.columns.size.x<=compact.scroll.size.x+1,"Narrow settings keep every column within the horizontal clip "+str(resolution))
+		expect_footer_clearance()
+	root.size = Vector2i(1600,900)
+	await settle()
 	if DisplayServer.get_name() != "headless":
 		for resolution in [Vector2i(1280,720),Vector2i(1024,768)]:
 			root.size = resolution

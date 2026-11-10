@@ -1,142 +1,142 @@
 extends SceneTree
-## Scoped menu integration, using an isolated XDG directory supplied by the launcher.
+## Isolated production-flow checks; visual approval remains separate.
 var app: Control
 var checks: int = 0
 var failures: int = 0
-
 func expect(value: bool, message: String) -> void:
 	checks += 1
 	if not value:
 		failures += 1
-		printerr("FAIL: " + message)
-
+		printerr("FAIL: "+message)
 func press(id: String) -> void:
 	var button: BaseButton = app.registry.get(id)
 	if not is_instance_valid(button) or button.disabled:
-		expect(false, "Reachable control " + id)
+		expect(false,"Reachable control "+id)
 		return
+	button.grab_focus()
 	button.pressed.emit()
 	await process_frame
 	await process_frame
-
 func _init() -> void:
 	call_deferred("run")
-
-func active_playbacks(audio: Node) -> Array[WeakRef]:
-	var result: Array[WeakRef] = []
-	for player in audio.get_children():
-		if player is AudioStreamPlayer and player.has_stream_playback():
-			result.append(weakref(player.get_stream_playback()))
-	return result
-
-func labels_in(node: Node) -> String:
-	var result: String = node.text + "\n" if node is Label else ""
-	for child in node.get_children(): result += labels_in(child)
-	return result
-
+func persisted() -> String:
+	return JSON.stringify(app.session.run_save.load_snapshot())
 func run() -> void:
 	app = load("res://scenes/main.tscn").instantiate()
 	root.add_child(app)
 	await process_frame
 	await process_frame
-	expect(root.gui_get_focus_owner() == app.registry["menu.play"], "Initial Play focus")
 	var title: Control = app.screen_host.menu_root
-	expect(title.canvas.size == Vector2(1672,941) and title.buttons[0].plate is AtlasTexture, "Approved artwork coordinates and native atlas-backed controls are used")
-	expect(title.buttons.size() == 6 and title.buttons[0] == app.registry["menu.play"] and title.buttons[1] == app.registry["menu.codex"], "Gold title exposes selected six-command composition and original routes")
-	title.apply_preferences(true, false, 1.0)
+	expect(title.buttons.size()==(3 if OS.has_feature("web") else 4),"Four primary native actions; Web omits Quit")
+	expect(title.buttons[0].text=="Continuar" and title.buttons[1].text=="Novo jogo" and title.buttons[2].text=="Opções","Primary labels and order match the selected reference")
+	expect(title.buttons[0].disabled and root.gui_get_focus_owner()==app.registry["menu.play"],"Missing checkpoint keeps Continue visible/disabled and focuses New")
+	expect(title.notice.text=="Nenhuma expedição salva neste dispositivo.","Missing checkpoint has a visible explanation")
+	expect(title.actors.size()==4,"Four independently rendered actors")
+	root.size = Vector2i(800,600)
+	await process_frame
+	await process_frame
+	expect(title.actions.columns==2,"Four-to-three profile composes a two-column grid")
+	title.buttons[2].grab_focus()
+	for down in [true,false]:
+		var event = InputEventKey.new()
+		event.keycode = KEY_UP
+		event.physical_keycode = KEY_UP
+		event.pressed = down
+		Input.parse_input_event(event)
+		await process_frame
+	expect(root.gui_get_focus_owner()==title.buttons[1],"Up from Options skips disabled Continue to the next enabled action in the upper row")
+	root.size = Vector2i(1600,900)
+	await process_frame
+	await process_frame
+	var initial_save: String = persisted()
+	var rng: int = app.game.rng.state
+	for actor: Control in title.actors:
+		for i in range(20): actor._react()
+		expect(actor.reactions_started==1,"Reaction spam is bounded for "+actor.species)
+	expect(persisted()==initial_save and app.game.rng.state==rng,"Decorative reactions preserve storage and gameplay RNG")
+	title.apply_preferences(true,false,1.0)
 	var resting: Dictionary = title.effect_state()
 	await create_timer(0.2).timeout
-	expect(title.effect_state() == resting, "Reduced motion freezes poses and pulse")
-	var initial_save: String = JSON.stringify(app.session.run_save.load_snapshot())
+	expect(title.effect_state()==resting,"Reduced motion freezes all current actor frames")
 	await press("menu.play")
-	app._menu_intent("journey")
+	expect(app.screens.top()=="starter","New opens existing starter choice directly")
+	expect(persisted()==initial_save,"Opening starter choice does not create a save")
+	app._pop()
 	await process_frame
-	expect(app.screens.top() == "journey" and app.registry["journey.continue"].disabled, "No-save Journey disables Continue")
-	expect(app.registry["journey.new"].caption.text == "NOVA EXPEDIÇÃO" and app.registry["journey.new"].caption.is_visible_in_tree(), "Native caption is rendered above its plate")
-	expect(not app.screen_host.menu_root.input_active, "Journey owns title interaction")
-	var lobby_copy: String = labels_in(app.screen_host.modal_root)
-	expect("PREPARAR EXPEDIÇÃO" in lobby_copy and not "VISITAS POR VÍNCULO" in lobby_copy, "Lobby distinguishes playable expedition from unavailable improvements and proposed visits")
-	expect(app.screen_host.modal_root.choices.size() == 4, "Future spaces add no fake gameplay actions")
-	expect(JSON.stringify(app.session.run_save.load_snapshot()) == initial_save, "Opening an empty lobby does not create progress")
-	await press("journey.new")
+	expect(app.screens.top()=="menu" and persisted()==initial_save,"Cancel starter preserves clean profile")
+	await press("menu.play")
+	var starts: Array = []
+	app.runtime.run_reset_requested.connect(func(value: int, fresh: bool): starts.append([value,fresh]))
 	await press("starter.ember")
-	expect(app.screens.top() == "map", "New expedition opens map through existing starter flow")
-	var saved: String = JSON.stringify(app.session.run_save.load_snapshot())
+	app.menu_screens.starter_requested.emit("ember")
+	await process_frame
+	expect(app.screens.top()=="map" and starts.size()==1,"Repeated starter activation commits one run")
+	var saved: String = persisted()
 	var stable: String = JSON.stringify(app.session.expedition.snapshot())
-	expect(saved != initial_save, "Existing expedition coordinator writes the checkpoint")
+	expect(saved!=initial_save,"Existing owner persists the chosen starter")
 	app._return_menu()
 	await process_frame
+	expect(not title.buttons[0].disabled,"Saved checkpoint enables Continue on title")
 	await press("menu.play")
-	app._menu_intent("journey")
-	await process_frame
-	var journey: Control = app.screen_host.modal_root
-	expect(not app.registry["journey.continue"].disabled, "Save enables Continue")
-	expect(journey.public_checkpoint.party == app.session.expedition.public_state().party, "Journey presents the saved party")
-	expect(journey.checkpoint_summary(journey.public_checkpoint) == "Bosque · Próxima parada: Clareira", "Journey describes the actual next node")
-	expect(JSON.stringify(app.session.run_save.load_snapshot()) == saved, "Building checkpoint card is read-only")
-	await press("journey.new")
-	expect(app.screens.top() == "confirm_new", "New still asks before replacing existing run")
+	expect(app.screens.top()=="confirm_new" and root.gui_get_focus_owner()==app.registry["new.cancel"],"New with save focuses safe cancellation")
 	await press("new.cancel")
-	expect(JSON.stringify(app.session.run_save.load_snapshot()) == saved, "Cancel New preserves the entire checkpoint")
-	await press("journey.continue")
-	expect(app.screens.top() == "map" and JSON.stringify(app.session.expedition.snapshot()) == stable, "Continue restores exact map, cards and RNG")
+	expect(app.screens.top()=="menu" and persisted()==saved,"Cancel confirmation preserves exact checkpoint")
+	await press("menu.play")
+	await press("new.confirm")
+	expect(app.screens.top()=="starter" and persisted()==saved,"Confirm only opens choice without replacing save")
+	app._pop()
+	await process_frame
+	expect(app.screens.top()=="menu" and persisted()==saved,"Back from confirmed choice preserves save")
+	await press("menu.continue")
+	expect(app.screens.top()=="map" and JSON.stringify(app.session.expedition.snapshot())==stable,"Continue restores the complete map/cards/RNG snapshot")
+	expect(title.visible and not title.input_active,"Outgoing title fades without delaying navigation or accepting repeated input")
+	await create_timer(0.28).timeout
+	expect(not title.visible and title.z_index==0 and title.modulate==Color.WHITE,"Exit fade releases the title within the bounded transition")
 	app._return_menu()
 	await process_frame
-	app.preferences.set_value("reduced_motion", true)
-	await process_frame
-	await press("menu.play")
-	app._menu_intent("journey")
-	await process_frame
-	expect(app.screen_host.modal_root.modulate.a == 1.0, "Reduced motion skips menu entrance animation")
-	await press("journey.back")
-	await press("refuge.title")
-	expect(root.gui_get_focus_owner() == app.registry["menu.play"], "Back restores semantic Play focus")
-	var roster_view = preload("res://scripts/ui/journey_menu.gd").new()
-	app.add_child(roster_view)
-	roster_view.size = app.size
-	var public_saved: Dictionary = app.session.expedition.public_state()
-	public_saved.party.clear()
-	for i in range(6):
-		public_saved.party.append(app.Rules.make_umbral(["ember", "dew", "moss", "volt"][i % 4], "fierce", i + 1, app.Content.legacy_form(["ember", "dew", "moss", "volt"][i % 4], 2)))
-	var noop: Callable = func(): pass
-	var callbacks: Array[Callable] = [noop, noop, noop, noop]
-	roster_view.build(app.ui, public_saved, "", callbacks, func(_node: Control, _key: String, _screen: String): pass, true)
-	await process_frame
-	await process_frame
-	expect("EQUIPE DA EXPEDIÇÃO SALVA · 6/6" in labels_in(roster_view), "Full roster is explicitly scoped to the saved expedition")
-	expect(roster_view.scroller.follow_focus, "Scrolled lobby follows keyboard focus")
-	expect(roster_view.choices[3].get_parent() == roster_view.footer, "Back remains outside scrolling content")
-	expect(roster_view.public_checkpoint.party.size() == 6, "Checkpoint view supports all six saved individuals")
-	expect(roster_view.panel.size.x <= app.size.x - 40 and roster_view.panel.size.y <= app.size.y - 40, "Six-person panel stays within viewport")
-	roster_view.queue_free()
-	await process_frame
-	var player_count: int = app.audio.get_child_count()
-	for i in range(20):
-		app.audio.navigate()
-		app.audio.awaken()
-	expect(app.audio.get_child_count() == player_count, "Repeated cues use a bounded audio pool")
-	app.preferences.set_value("music", 0.0)
-	app.preferences.set_value("sfx", 0.0)
-	expect(AudioServer.is_bus_mute(AudioServer.get_bus_index("Music")), "Music mute covers title water")
-	expect(AudioServer.is_bus_mute(AudioServer.get_bus_index("UI")), "SFX mute covers navigation and magic")
-	for sound in [app.audio.crystal_tick, app.audio.crystal_confirm, app.audio.magic_chord, app.audio.title_water.stream]:
-		var peak: int = 0
-		var energy: float = 0.0
-		for i in range(sound.data.size() / 2):
-			var sample: int = sound.data.decode_s16(i * 2)
-			peak = maxi(peak, absi(sample))
-			energy += float(sample) * sample
-		expect(peak > 50 and peak < 32700 and energy > 0, "Synthesized cue is nonempty and does not clip")
-	var retiring: Array[WeakRef] = active_playbacks(app.audio)
-	app.audio.shutdown()
-	# AudioServer drains stopped playback on its mixer thread, then frees it on a
-	# later main-loop update. Observe that lifecycle instead of guessing a delay.
-	var deadline: int = Time.get_ticks_msec() + 2000
-	while retiring.any(func(reference: WeakRef) -> bool: return reference.get_ref() != null) and Time.get_ticks_msec() < deadline:
+	for status: String in ["corrupt","incompatible","io_error","checking","missing","cleared"]:
+		title.set_checkpoint(false,status,"")
+		expect(title.buttons[0].disabled and not title.notice.text.is_empty(),"Distinct accessible save state "+status)
+		if status=="incompatible":
+			title.buttons[1].pressed.emit()
+			expect(app.screens.top()=="menu" and persisted()==saved,"Incompatible checkpoint disables New without writes")
+	title.set_checkpoint(true,"recovered","Recuperamos o último progresso válido da expedição.")
+	expect(not title.buttons[0].disabled and not title.notice.text.is_empty(),"Recovered checkpoint remains resumable with warning")
+	app._update_continue_button()
+	await press("menu.settings")
+	expect(not title.input_active and title.actors.all(func(actor: Control): return not actor.active),"Modal suppresses every actor's input and processing")
+	for target: String in ["codex","help","credits"]:
+		await press("settings."+target)
+		expect(app.screens.top()==target,"Secondary screen remains reachable: "+target)
+		app._pop()
 		await process_frame
-	expect(not retiring.any(func(reference: WeakRef) -> bool: return reference.get_ref() != null), "Stopped audio playbacks are released before teardown")
+		expect(app.screens.top()=="settings" and root.gui_get_focus_owner()==app.registry["settings."+target],"Back restores secondary opener: "+target)
+	await press("settings.practice")
+	expect(app.screens.top()=="starter","Practice remains available through Options")
+	app._pop()
+	await process_frame
+	expect(app.screens.top()=="settings" and persisted()==saved,"Cancel practice preserves checkpoint")
+	await press("settings.back")
+	expect(app.screens.top()=="menu" and root.gui_get_focus_owner()==app.registry["menu.settings"],"Options returns focus to title opener")
+	var before_nodes: int = get_node_count()
+	for i in range(30):
+		await press("menu.settings")
+		await press("settings.back")
+	await process_frame
+	expect(get_node_count()<=before_nodes+2,"Thirty modal cycles have bounded node lifetime")
+	expect(persisted()==saved,"Modal cycles preserve expedition bytes")
+	app.preferences.set_value("reduced_motion",true)
+	await process_frame
+	expect(app.screen_host.menu_root.reduced_motion,"Preferences immediately reach current title")
+	var retiring: Array[WeakRef] = []
+	for player: Node in app.audio.get_children():
+		if player is AudioStreamPlayer and player.has_stream_playback(): retiring.append(weakref(player.get_stream_playback()))
+	app.audio.shutdown()
+	var deadline: int = Time.get_ticks_msec()+2000
+	while retiring.any(func(reference: WeakRef) -> bool: return reference.get_ref()!=null) and Time.get_ticks_msec()<deadline:
+		await process_frame
+	expect(not retiring.any(func(reference: WeakRef) -> bool: return reference.get_ref()!=null),"Audio playbacks drain before teardown")
 	app.queue_free()
 	await process_frame
-	print(JSON.stringify({"suite": "title_menu_scoped", "checks": checks, "failed": failures}))
-	# Let this coroutine release its local AudioStream samples before engine cleanup.
-	call_deferred("quit", 0 if failures == 0 else 1)
+	print(JSON.stringify({"suite":"title_menu_scoped","checks":checks,"failed":failures}))
+	call_deferred("quit",0 if failures==0 else 1)

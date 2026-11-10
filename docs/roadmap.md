@@ -1565,3 +1565,125 @@ browser, exports e revisão visual não executados nesta fatia; não há altera�
 de runtime, catálogo, saves, assets, versão ou escopo dos marcos. Correção local,
 sem publicação ou merge. Próxima etapa: revisão desta conciliação e conferência
 do ZIP quando disponível; não declarar a bíblia final ou as propostas aprovadas.
+
+### V04-UX-05J — menu de entardecer em camadas, candidata local
+
+A imagem anexada pelo usuário e a spec detalhada orientam quatro ações nativas,
+atores independentes com idle/reação, drible sincronizado, fade de saída de
+220 ms e recomposição de 320×568 a 5120×1440. Web omite Sair. Continuar/Novo
+reutilizam os donos de sessão; cancelamento preserva o save e ativação repetida
+do starter não cria duas runs. Grimório, ajuda, créditos, treino e Abrigo seguem
+alcançáveis por Opções. [Implementação, proveniência e limites](live-title-menu.md).
+
+O foco nativo passou; o ensaio completo `live-title-05` teve todos os alvos
+nativos e oito mutações aprovados, mas atingiu 1800 s no cenário amplo de
+combate Web e foi interrompido em layout. Não constitui gate integral aprovado.
+Os relatórios finais por escopo ficam em `test-results/live-title-review-*`;
+capturas/vídeo e pacote Windows são evidência para revisão, não aceite humano.
+Arte derivada difere da imagem aprovada; comparação por overlay bloqueada pela
+indisponibilidade dos bytes originais. Windows/DPI, hardware, áudio e controle
+físicos e aprovação estética continuam abertos. Próxima fatia: revisão dessas
+evidências e validação na plataforma alvo; produto permanece 0.3.0. Sem push,
+merge, deploy, publicação ou reativação de Actions nesta candidata.
+
+A revisão visual intermediária encontrou Opções cortado/borrado no celular,
+apesar de a entrada funcionar. A candidata corrige rasterização local, margens,
+quebra de rótulos e foco dos sliders, e acrescenta regressões de largura/margem
+com texto ampliado em cinco tamanhos. A tentativa anterior e suas capturas
+ficam preservadas; o escopo corrigido usa `test-results/live-title-review-proof`.
+Uma tentativa subsequente expôs um triângulo degenerado intermitente nas faixas
+de VFX de batalha. A validação de triangulação corrige o desenho, e movimento,
+Opções, título, fluxo e arquitetura passaram no foco; a tentativa com erro é
+preservada e não conta como aceite integral.
+
+O título passou 174 verificações Web e a revisão móvel. O retorno do grimório
+expôs cópia desnecessária do cache de glifos; Opções agora reaproveita definições
+limpas de fontes, e a navegação normal/ampliada passou sem relaxar suas asserções.
+O complemento final título/expedição fica em `test-results/live-title-candidate-proof`;
+o gate integral e o aceite humano/plataforma continuam separados.
+
+Fechamento local da candidata: título 174, navegação 160 e expedição 417 passaram,
+com as duas vitórias e mapas ampliados. A última correção foi no helper de clique:
+revelar o controle rolado com Tab antes da ação, preservando todas as asserções.
+O idle após 30 ciclos durou 605,6 s, com 44 nós/10 vozes e save/RNG intactos.
+Sair nativo Linux encerrou 0 sem avisos no smoke corrigido. Export Windows e
+pacote de revisão disponíveis; não houve execução Windows/DPI nem aceite
+estético. Folhagem frontal ainda estática. Gate integral segue aberto após o
+timeout anterior; versão 0.3.0 e restrição de publicação mantidas.
+
+
+### V04-UX-05K — correção de identidade e floresta ultrawide
+
+Pedro rejeitou a diferença dos quatro iniciais e o canto aberto do ultrawide.
+A candidata passa a reutilizar os pixels canônicos de Brasa, Foli, Lonlon e Nisca,
+com poses cosméticas limitadas e escala uniforme. Árvores, troncos, raízes e
+samambaias prolongam a floresta nas laterais. A cena 16:9 anterior permanece;
+a cobertura ultrawide é uniforme, sem esticar atores, com ajuste da âncora
+na pedra em 32:9.
+
+O foco intermediário passou título 48/Web 174 e a matriz de sete formatos
+confirmou 28 contratos de origem/proporção dos corpos. O ensaio integral da
+revisão final tem relatórios próprios em `test-results/title-identity-full` e
+`test-results/title-identity-full-02`;
+focos intermediários não representam aceite integral. Referência revisada
+legível de Brasa inicial, poses desenhadas próprias, revisão humana e
+Windows/DPI/hardware continuam abertos. Sem push, merge ou deploy; produto
+0.3.0. [Fontes, comparação e validação](live-title-identity.md).
+
+
+A primeira tentativa integral de 05K preservou todas as aprovações nativas e
+as oito mutações, mas interrompeu-se após timeout de integração Web: a fila
+continuava avançando no efeito 18/21 aos 60 s. O harness passou a aguardar até
+120 s e registrar o tempo real da fila, mantendo todas as asserções/ações.
+A segunda tentativa conserva seus próprios hashes e relatório; não é atribuída
+aprovação à primeira. Nenhuma mecânica ou velocidade de animação foi alterada.
+
+
+Fechamento técnico de 05K: `title-identity-full-02` **aprovado integralmente**,
+cobertura completa, inputs verificados e fontes inalteradas. Dez cenários Web,
+3.113 verificações, incluindo título 174 e expedição 417 com duas vitórias;
+regras 14.321, movimento 1.012, saves 559 e oito mutações na parte nativa.
+A matriz final cobre 12 formatos com/sem save. MP4 real de 24,28 s, matriz e PDF
+de revisão atualizados na Library. Export Windows aprovado em Linux, sem execução
+Windows/DPI. A primeira tentativa continua interrompida; sua falha não foi apagada.
+Os gates de referência, poses e aceite humano acima permanecem abertos.
+Próxima fatia depende das referências legíveis e da revisão humana/plataforma;
+este fechamento não avança a versão 0.3.0. Sem push, merge ou deploy.
+
+
+### V04-UX-05L — portrait e repouso canônico; acabamento parcial
+
+A floresta ultrawide é preservada. Portrait reenquadra o vale uniformemente,
+distribui os atores abaixo da interface e mantém apoios e espinhos visíveis.
+Ações usam duas colunas quando cabe; Web centraliza a terceira e nativo conserva
+quatro. A perda real de foco no retorno ao wide foi corrigida e quatro transições
+entraram no cenário oficial.
+
+Foli repousa, desperta e volta a deitar usando os frames canônicos já existentes
+de `characters/foli-lifecycle@1.1.0`, sem nova geração/repintura. `ui/living-title@2.1.0`
+fixa a dependência e conserva todos os pixels do cenário e apoios de 2.0.0.
+A nova pose foi inspecionada em execução. `production_ready: false` mantém o limite
+humano. Não é uma prancha nova aprovada nem um espreguiçar dedicado.
+
+Referência revisada/aprovação de Brasa inicial não confirmadas; a árvore de quatro
+formas é proposta. A transferência oficial do PNG do menu falhou, sem contorno.
+Brasa ilustrado, pata autorada de Lonlon, espreguiçar dedicado, acabamento/clips,
+overlay exato e Windows/DPI/hardware continuam abertos. O primeiro integral foi
+interrompido antes da edição para incorporar o repouso existente de Foli; nativas
+e mutações preservadas não são aceite da revisão nova. Foco e integral final têm
+hashes próprios. [Escopo e evidências](live-title-polish.md).
+Sem push, merge, deploy ou Actions; 0.3.0.
+
+
+Fechamento técnico de 05L: `title-portrait-05l-full-03` **aprovado integralmente**,
+fonte `a73fc228ed445a982c5ec46b46fba546fc272cee044408618c9a1049fe67a7cc`
+inalterada, cobertura completa e inputs verificados. Dez cenários Web somam
+3.118 verificações, título 179 e expedição 417 com duas vitórias; nativas e oito
+mutações também passaram. A tentativa 02 encerrou após integração aprovada,
+sem cobertura completa, e continua failed; a origem da saída não foi recuperada.
+A rodada 03 preservou stdout/stderr em arquivo sem mudar fontes/asserções/tempos.
+Comparação portrait antes/depois, matriz de 12 formatos, capturas reais e MP4 de
+34,84 s foram inspecionados. Não há PNG local oficial para comparação exata.
+Sem export/execução Windows de 05L; não herdar a validação de 05K. Próxima etapa:
+confirmar Brasa inicial e aprovação, produzir acabamento/poses pendentes e revisar
+arte/plataforma. Gates humanos abertos, produto 0.3.0. Sem push, merge ou deploy.

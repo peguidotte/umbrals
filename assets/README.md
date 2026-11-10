@@ -174,3 +174,16 @@ Auravel/Zuldar: `characters/electric-adults@2.0.0` contém originais referenciad
 continuam candidatos à revisão; [escopo e limites](../docs/electric-adults-v05-art03.md).
 `characters/electric-family@2.1.0` move a origem secundária do Niscor para pixels
 opacos de um espinho preso; releases anteriores permanecem íntegros.
+
+
+`ui/living-title@2.0.0` corrige a candidata do menu: fontes canônicas de
+personagens são consultadas nos bindings reais do jogo; os atlas inventados de
+05J deixam os bindings ativos. A nova paisagem ultrawide deriva do clean plate
+anterior e acrescenta árvores densas nas laterais; original e metadados gerados
+ficam preservados em review. Cena 16:9, retrato, logo, apoios e esfera mantêm seus
+bytes anteriores. A integração é candidata de revisão, sem aprovação artística
+atribuída ao usuário; falta confirmar/materializar a prancha revisada de Brasa
+inicial. [Escopo e evidências](../docs/live-title-identity.md).
+
+
+V04-UX-05L: `ui/living-title@2.1.0` reuses unchanged `characters/foli-lifecycle@1.1.0` repose/wake frames through an explicit dependency. Scene, portrait, logo, orb, supports, ultrawide and shader bytes are identical to2.0.0. No new image generation or pixel processing; no revised Brasa initial was inferred from a proposed evolution sheet. Technical production permits the local candidate with `production_ready: false`; human art, Brasa illustration, Lonlon extended-paw art and dedicated Foli stretch remain open. See docs/live-title-polish.md.

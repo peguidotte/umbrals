@@ -213,7 +213,7 @@ func _remember_record() -> void:
 	var record_name: String = "registro anterior"
 	var entry: Dictionary = Catalog.find_entry(catalog,category,selected)
 	if not entry.is_empty() and progress.knows(category,selected): record_name = str(entry.name)
-	record_history.append({"category":category,"selected":selected,"page":page,"scroll":detail_scroll.scroll_vertical,"focus":focus_id,"name":record_name,"section":record_section})
+	record_history.append({"category":category,"selected":selected,"page":page,"scroll":detail_scroll.scroll_vertical,"focus":focus_id,"name":record_name,"section":record_section,"viewport":size})
 
 func go_back() -> bool:
 	if record_history.is_empty(): return false
@@ -244,7 +244,10 @@ func _restore_context(origin: Dictionary, revision: int) -> void:
 	await get_tree().process_frame
 	if not is_inside_tree() or revision != context_revision or not is_instance_valid(preferred) or not preferred.has_focus(): return
 	detail_scroll.scroll_vertical = int(origin.scroll)
-	detail_scroll.ensure_control_visible(preferred)
+	# The source control was already visible at this exact offset. Revealing it
+	# a second time can round the scaled canvas bounds and nudge the scroll.
+	# A resized viewport instead prioritizes making the restored focus visible.
+	if origin.get("viewport",size) != size: detail_scroll.ensure_control_visible(preferred)
 
 func _update_back_hint() -> void:
 	if not is_instance_valid(close): return

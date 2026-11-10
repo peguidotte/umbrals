@@ -47,9 +47,16 @@ try:
         page.on('console', lambda m: logs.append({'type':m.type, 'text':m.text}))
         def state(): return page.evaluate('window.umbralState')
         def wait(expression, timeout=30000):
-            page.wait_for_function('window.umbralState && (' + expression + ')', timeout=timeout)
+            try:
+                page.wait_for_function('window.umbralState && (' + expression + ')', timeout=timeout)
+            except Exception:
+                snapshot = state()
+                (OUT / 'failure-state.json').write_text(json.dumps(snapshot,indent=2,ensure_ascii=False))
+                print(json.dumps({'event':'expedition_wait_failed','condition':expression,'timeout_ms':timeout,'state':{key:snapshot.get(key) for key in ['screen','stack','busy','round_number','phase','focused','feedback']}},ensure_ascii=False),flush=True)
+                page.screenshot(path=str(OUT / 'failure.png'))
+                raise
         def settled():
-            wait('!window.umbralState.busy')
+            wait('!window.umbralState.busy',60000)
             page.wait_for_timeout(150)
         def load():
             page.goto(url)
@@ -58,6 +65,14 @@ try:
         def click(identity, touch=False):
             s = state()
             c = s['controls'][identity]
+            if not c.get('center_visible',True):
+                for _ in range(len(s['controls'])+1):
+                    key('Tab');s=state();c=s['controls'][identity]
+                    if s['focused']==identity:
+                        wait('window.umbralState.controls['+json.dumps(identity)+'].center_visible === true')
+                        s=state();c=s['controls'][identity]
+                        break
+                check(c.get('center_visible',True),'Keyboard reveals clipped control: '+identity)
             check(c['visible'] and c['active'] and not c['disabled'], f'{identity} is reachable on {s["screen"]}')
             canvas = page.locator('#canvas').bounding_box()
             x = canvas['x'] + c['cx'] / s['logical_size'][0] * canvas['width']
@@ -89,7 +104,7 @@ try:
                 c = state()['controls']['map.node.' + n['id']]
                 check(c['disabled'] == (not n['available']), n['id'] + ' availability matches visible button')
         def start_run():
-            click('menu.play')
+            click('menu.settings'); click('settings.refuge')
             depart(page, wait)
             click('journey.new')
             if state()['screen'] == 'confirm_new': click('new.confirm')
@@ -138,7 +153,7 @@ try:
                         pending_room = state()['expedition']
                         page.reload()
                         wait("window.umbralState.screen === 'menu'", 90000)
-                        click('menu.play')
+                        click('menu.settings'); click('settings.refuge')
                         depart(page, wait)
                         check('Descansar ou praticar' in state()['journey_summary'], 'Continue describes the pending room')
                         click('journey.continue')
@@ -183,7 +198,7 @@ try:
                         saved = {k:before[k] for k in ['hand','party','enemies','round_number','phase']}
                         page.reload()
                         wait("window.umbralState.screen === 'menu'", 90000)
-                        click('menu.play')
+                        click('menu.settings'); click('settings.refuge')
                         depart(page, wait)
                         click('journey.continue')
                         wait("window.umbralState.screen === 'battle'")
@@ -234,7 +249,7 @@ try:
             wait("window.umbralState.screen === 'menu'")
             page.reload()
             wait("window.umbralState.screen === 'menu'", 90000)
-            click('menu.play')
+            click('menu.settings'); click('settings.refuge')
             depart(page, wait)
             check(state()['controls']['journey.continue']['disabled'], 'Completed expedition cannot be resumed after reload')
             check(state()['stats'] == stats_before, 'Reload does not duplicate the terminal result')

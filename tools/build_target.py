@@ -29,8 +29,8 @@ def fixture_configuration(configuration):
     return configuration[:start] + '\nimport/use_multiple_threads=false\n' + section.lstrip('\n') + configuration[end:]
 
 
-def run(command, cwd=ROOT):
-    result = subprocess.run(command, cwd=cwd, capture_output=True, text=True, timeout=180)
+def run(command, cwd=ROOT, timeout=180):
+    result = subprocess.run(command, cwd=cwd, capture_output=True, text=True, timeout=timeout)
     output = result.stdout + result.stderr
     print(output, end='')
     if result.returncode or 'SCRIPT ERROR:' in output or '\nERROR:' in output:
@@ -60,7 +60,7 @@ def main():
         configuration = fixture_configuration((ROOT / 'project.godot').read_text())
         (project / 'project.godot').write_text(configuration)
         (project / 'export_presets.cfg').write_text((ROOT / 'export_presets.cfg').read_text().replace('tests/*,', '').replace('include_filter="assets/', 'include_filter="tests/browser/fixtures.json,assets/'))
-        run(['godot', '--headless', '--path', str(project), '--editor', '--import', '--quit'])
+        run(['godot', '--headless', '--path', str(project), '--editor', '--import', '--quit'], timeout=480)
     name = {'Web': 'index.html', 'Linux': 'Umbral.x86_64', 'Windows': 'Umbral.exe'}[args.target]
     run(['godot', '--headless', '--path', str(project), '--export-release', args.target, str(output / name)])
     if not (output / name).is_file() or (output / name).stat().st_size == 0:

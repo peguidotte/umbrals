@@ -63,6 +63,9 @@ func _ribbon(art: int, points: PackedVector2Array, width: float, opacity: float 
 		for triangle in [[0, 1, 3], [1, 2, 3]]:
 			var vertices: PackedVector2Array = PackedVector2Array([corners[triangle[0]], corners[triangle[1]], corners[triangle[2]]])
 			if absf((vertices[1] - vertices[0]).cross(vertices[2] - vertices[0])) < 0.001: continue
+			# A nearly folded ribbon may pass the area test yet fail the renderer's
+			# ear clipping at float precision. Skip only those undrawable slivers.
+			if Geometry2D.triangulate_polygon(vertices).is_empty(): continue
 			draw_polygon(vertices, PackedColorArray([Color(1, 1, 1, opacity)]), PackedVector2Array([uv[triangle[0]], uv[triangle[1]], uv[triangle[2]]]), atlas)
 
 func _path(from: Vector2, to: Vector2, bend: float, wave: float = 0.0) -> PackedVector2Array:

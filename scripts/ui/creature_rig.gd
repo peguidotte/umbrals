@@ -43,6 +43,12 @@ var pose_rotations: Dictionary = {}
 var walk_offsets: Array = []
 var projection_transform: Transform2D = Transform2D.IDENTITY
 var projection_bob: float = 0.0
+var decorative_pose: Array = []
+
+func present_decorative_pose(value: Array) -> void:
+	# Decorative callers own their companion effect; reset restores battle rendering.
+	decorative_pose = value
+	_refresh()
 
 func set_incapacitated(value: bool, animate: bool = true) -> void:
 	if incapacitated != value:
@@ -90,6 +96,7 @@ func reset() -> void:
 	reaction_weight = 1.0
 	jump_scale = 1.0
 	pose = Motion.neutral()
+	decorative_pose = []
 
 func seek_cast(index: int, time: float, world_dash: Vector2) -> void:
 	if is_instance_valid(lifecycle): lifecycle.cancel_transient()
@@ -313,6 +320,7 @@ func _refresh() -> void:
 		pose = Motion.sample(form_id, mode, clip, fposmod(elapsed, 3.2), art_view)
 	if not reduced_motion and Aquatic.supports(form_id):
 		pose = Aquatic.pose(mode, clip, fposmod(idle_time, 3.2) if mode == "states" and clip == 0 else elapsed)
+	if not reduced_motion and not decorative_pose.is_empty(): pose = decorative_pose
 	var ko_pose: bool = incapacitated and definition.get("states", {}).has("7")
 	if ko_pose:
 		pose = Motion.sample(form_id, "states", 7, 3.2 if reduced_motion else ko_elapsed, art_view)
@@ -349,7 +357,7 @@ func _draw() -> void:
 	if mesh.get_surface_count() > 0:
 		if ko_mix < 1.0: draw_mesh(mesh, texture, Transform2D.IDENTITY, Color(1, 1, 1, weight * (1.0 - ko_mix)))
 		if ko_texture != null and ko_mix > 0.0: draw_mesh(mesh, ko_texture, Transform2D.IDENTITY, Color(1, 1, 1, weight * ko_mix))
-	if Aquatic.supports(form_id): Aquatic.draw_orb(self)
+	if decorative_pose.is_empty() and Aquatic.supports(form_id): Aquatic.draw_orb(self)
 	if ko_mix > .2 or (is_instance_valid(lifecycle) and lifecycle.active()): return
 	if reduced_motion or pose.is_empty() or not definition.has("anatomy"): return
 	var anatomy: Dictionary = definition.anatomy

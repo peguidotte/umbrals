@@ -1,0 +1,364 @@
+{
+  "dependencies": [],
+  "description": "Layered dusk title candidate derived from the user supplied approved reference, with native navigation and independent decorative actors.",
+  "files": {
+    "dew": {
+      "bytes": 1559111,
+      "kind": "texture",
+      "path": "dew.png",
+      "sha256": "302152841f7a48080c4ede1339a6bcd1df2ba5fb9b3463b11b0479c894ed4f68",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1280,
+          1280
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "ember": {
+      "bytes": 1782283,
+      "kind": "texture",
+      "path": "ember.png",
+      "sha256": "653badcd9048007b2946e34b3bdd78feb36d1b5ff4dd18048ee2c232e9872cdf",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1280,
+          1280
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "logo": {
+      "bytes": 472035,
+      "kind": "texture",
+      "path": "logo.png",
+      "sha256": "5a7f0ee0ea811c3dfd0a56fdab89a35c2812d835f47236ca3fe2519be165a3b8",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1889,
+          361
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "moss": {
+      "bytes": 1654028,
+      "kind": "texture",
+      "path": "moss.png",
+      "sha256": "b8d6323b263592569c17a15c1194e35264c32bf9cd9c50aabd0fa2bd5ed47cde",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1280,
+          1280
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "orb": {
+      "bytes": 362891,
+      "kind": "texture",
+      "path": "orb.png",
+      "sha256": "7c2f8e8dac57e8b365026875b3907466c0279b3d8d5377b0e42775b0c7702abe",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          523,
+          523
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "portrait": {
+      "bytes": 2255775,
+      "kind": "texture",
+      "path": "portrait.png",
+      "sha256": "8fb2243ab934e1cbde0e4f94b8f38a9d6697d30e8e62c930a5b3524aded300f7",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          910,
+          1727
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "scene": {
+      "bytes": 2515346,
+      "kind": "texture",
+      "path": "scene.png",
+      "sha256": "60fcf9a478059736551435c95c2f68d29e2dafc0b2a5675a5403d17a23d8bf5a",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "supports": {
+      "bytes": 809358,
+      "kind": "texture",
+      "path": "supports.png",
+      "sha256": "dcaf329cb683f6001a4c7e5a7c177dcf4d88e61eb3eb372e3676d02ba8eeb163",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          512
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "ultrawide": {
+      "bytes": 2805520,
+      "kind": "texture",
+      "path": "ultrawide.png",
+      "sha256": "3a4bb29f624f60512e4d9d0b1bcdf170459e65b35ab638c9657f0013d1ef7789",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          2191,
+          718
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "volt": {
+      "bytes": 1654095,
+      "kind": "texture",
+      "path": "volt.png",
+      "sha256": "ff9183630818401130344c0bf4681dc94b93324a98fbec7b3fd7275841b35889",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1280,
+          1280
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "water": {
+      "bytes": 799,
+      "kind": "data",
+      "path": "water.gdshader",
+      "provenance": {
+        "kind": "Original Godot canvas shader authored for the title water",
+        "license": "Original project code."
+      },
+      "sha256": "812e420001d991d45a62a382ea27c698be1d765b9061282692389806662ea09f"
+    }
+  },
+  "id": "ui/living-title",
+  "metadata": {
+    "actors": {
+      "dew": {
+        "columns": 4,
+        "cooldown": 0.8,
+        "dribble": {
+          "contact_phase": 0.36,
+          "duration": 1.05,
+          "radius_fraction": 0.12,
+          "reaction_duration": 0.6,
+          "release_phase": 0.44,
+          "squash": 0.85
+        },
+        "frame_size": [
+          320,
+          320
+        ],
+        "idle": {
+          "duration": 1.05,
+          "frames": [
+            0,
+            1,
+            2,
+            2,
+            4,
+            5,
+            6,
+            7
+          ],
+          "loop": true
+        },
+        "pivot": [
+          160,
+          308
+        ],
+        "reaction": {
+          "duration": 1.8,
+          "frames": [
+            8,
+            9,
+            10,
+            10,
+            12,
+            13,
+            14,
+            15
+          ],
+          "loop": false
+        }
+      },
+      "ember": {
+        "columns": 4,
+        "cooldown": 0.8,
+        "frame_size": [
+          320,
+          320
+        ],
+        "idle": {
+          "duration": 3.5,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "loop": true
+        },
+        "pivot": [
+          160,
+          308
+        ],
+        "reaction": {
+          "duration": 1.4,
+          "frames": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "loop": false
+        }
+      },
+      "moss": {
+        "columns": 4,
+        "cooldown": 0.8,
+        "frame_size": [
+          320,
+          320
+        ],
+        "idle": {
+          "duration": 4.2,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "loop": true
+        },
+        "pivot": [
+          160,
+          308
+        ],
+        "reaction": {
+          "duration": 1.7,
+          "frames": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "loop": false
+        }
+      },
+      "volt": {
+        "columns": 4,
+        "cooldown": 0.8,
+        "frame_size": [
+          320,
+          320
+        ],
+        "idle": {
+          "duration": 3.2,
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "loop": true
+        },
+        "pivot": [
+          160,
+          308
+        ],
+        "reaction": {
+          "duration": 1.1,
+          "frames": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "loop": false
+        }
+      }
+    },
+    "consumer": "scripts/ui/title_menu.gd",
+    "native_4k_art": false,
+    "reference_size": [
+      1672,
+      941
+    ]
+  },
+  "provenance": {
+    "kind": "Image Gen derivatives",
+    "license": "Original artwork generated for this game.",
+    "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+    "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+    "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+    "source_release": "ui/living-title@0.1.0"
+  },
+  "schema_version": 1,
+  "status": "production",
+  "version": "1.0.0"
+}

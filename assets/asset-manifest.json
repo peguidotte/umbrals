@@ -9539,6 +9539,1059 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 2183509,
+      "id": "ui/living-title@0.1.0:source-dew",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/0.1.0/review/exec-f95adb5c-5b7a-4b9d-add1-28d4d1ff6cf1.png",
+      "role": "source-dew",
+      "sha256": "ad26c1a51184153663084ba8bad6a71888093d3e68b6e166903d1f7d7ded21db",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Candidate pending in-engine review; generated derivatives are not the original reference."
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1245,
+          1263
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 2065428,
+      "id": "ui/living-title@0.1.0:source-ember",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/0.1.0/review/exec-39069fdd-da65-49b8-b588-0e448b4956de.png",
+      "role": "source-ember",
+      "sha256": "8ce71277cf3c71b379a4730d07ddc3434f47c39f75e39875aaef824ff8db5f62",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Candidate pending in-engine review; generated derivatives are not the original reference."
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 925040,
+      "id": "ui/living-title@0.1.0:source-logo",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/0.1.0/review/exec-5c6527a2-157a-464f-a6b1-28f1f0905b38.png",
+      "role": "source-logo",
+      "sha256": "3c0af2647a72741b61a4f1a0868038bab161063e2fa8c317aa7b29612644ece0",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Candidate pending in-engine review; generated derivatives are not the original reference."
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 592536,
+      "id": "ui/living-title@0.1.0:source-logo-corrected",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/0.1.0/review/exec-a51a9dba-f9b9-4f14-95e4-8a11fb83a7ae.png",
+      "role": "source-logo-corrected",
+      "sha256": "2e32ce0e8020dd82151911f502ae549e485f94910e844e8daabc9aaff163708f",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Candidate pending in-engine review; generated derivatives are not the original reference."
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 1925553,
+      "id": "ui/living-title@0.1.0:source-moss",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/0.1.0/review/exec-0a2cbbbd-b2e7-41e0-9197-cf959bda8edd.png",
+      "role": "source-moss",
+      "sha256": "2b7c77e36b20f011c60a3edee4f711f3cb6d6f937286de34288dcf8ad0ee456e",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Candidate pending in-engine review; generated derivatives are not the original reference."
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1247,
+          1261
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 1005654,
+      "id": "ui/living-title@0.1.0:source-orb",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/0.1.0/review/exec-7bfb9a6f-c84d-41bd-a047-f0070b116145.png",
+      "role": "source-orb",
+      "sha256": "d0c9c0eb49a3927436ab6b048e98663048fc2fa04f7293c7d317167838f1ead5",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Candidate pending in-engine review; generated derivatives are not the original reference."
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 2255775,
+      "id": "ui/living-title@0.1.0:source-portrait",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/0.1.0/review/exec-248cd283-413a-40b5-9cc0-8826f6241cee.png",
+      "role": "source-portrait",
+      "sha256": "8fb2243ab934e1cbde0e4f94b8f38a9d6697d30e8e62c930a5b3524aded300f7",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Candidate pending in-engine review; generated derivatives are not the original reference."
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          910,
+          1727
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 2582994,
+      "id": "ui/living-title@0.1.0:source-scene",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/0.1.0/review/exec-89a5b95b-48ec-49b7-9e50-22d312b862f0.png",
+      "role": "source-scene",
+      "sha256": "7a8228bf4a2d0d8f24a57cc54ec60db5c920ed445b33438482406fa336701d09",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Candidate pending in-engine review; generated derivatives are not the original reference."
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 2101131,
+      "id": "ui/living-title@0.1.0:source-supports",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/0.1.0/review/exec-f9ef5810-e5c4-49c6-aa02-a642117f0f7f.png",
+      "role": "source-supports",
+      "sha256": "2ccf63c6ed8faec857b79fe23b59a3e9cf76b52f84733ff66061eb74d1f5e1e2",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Candidate pending in-engine review; generated derivatives are not the original reference."
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 2805520,
+      "id": "ui/living-title@0.1.0:source-ultrawide",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/0.1.0/review/exec-e2499b3f-0853-4018-9649-64121d35fd6d.png",
+      "role": "source-ultrawide",
+      "sha256": "3a4bb29f624f60512e4d9d0b1bcdf170459e65b35ab638c9657f0013d1ef7789",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Candidate pending in-engine review; generated derivatives are not the original reference."
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          2191,
+          718
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 2207296,
+      "id": "ui/living-title@0.1.0:source-volt",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/0.1.0/review/exec-52db0c11-33d6-4648-b441-ed753e6a640f.png",
+      "role": "source-volt",
+      "sha256": "1ded82c9b235c062695fa9537d83cce26b1ab6b8cb65c8776877f975c3a8c6e9",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Candidate pending in-engine review; generated derivatives are not the original reference."
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1263,
+          1245
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 1559111,
+      "id": "ui/living-title@1.0.0:dew",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/1.0.0/dew.png",
+      "role": "dew",
+      "sha256": "302152841f7a48080c4ede1339a6bcd1df2ba5fb9b3463b11b0479c894ed4f68",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1280,
+          1280
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1782283,
+      "id": "ui/living-title@1.0.0:ember",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/1.0.0/ember.png",
+      "role": "ember",
+      "sha256": "653badcd9048007b2946e34b3bdd78feb36d1b5ff4dd18048ee2c232e9872cdf",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1280,
+          1280
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 472035,
+      "id": "ui/living-title@1.0.0:logo",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/1.0.0/logo.png",
+      "role": "logo",
+      "sha256": "5a7f0ee0ea811c3dfd0a56fdab89a35c2812d835f47236ca3fe2519be165a3b8",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1889,
+          361
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1654028,
+      "id": "ui/living-title@1.0.0:moss",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/1.0.0/moss.png",
+      "role": "moss",
+      "sha256": "b8d6323b263592569c17a15c1194e35264c32bf9cd9c50aabd0fa2bd5ed47cde",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1280,
+          1280
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 362891,
+      "id": "ui/living-title@1.0.0:orb",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/1.0.0/orb.png",
+      "role": "orb",
+      "sha256": "7c2f8e8dac57e8b365026875b3907466c0279b3d8d5377b0e42775b0c7702abe",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          523,
+          523
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2255775,
+      "id": "ui/living-title@1.0.0:portrait",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/1.0.0/portrait.png",
+      "role": "portrait",
+      "sha256": "8fb2243ab934e1cbde0e4f94b8f38a9d6697d30e8e62c930a5b3524aded300f7",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          910,
+          1727
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2515346,
+      "id": "ui/living-title@1.0.0:scene",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/1.0.0/scene.png",
+      "role": "scene",
+      "sha256": "60fcf9a478059736551435c95c2f68d29e2dafc0b2a5675a5403d17a23d8bf5a",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 809358,
+      "id": "ui/living-title@1.0.0:supports",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/1.0.0/supports.png",
+      "role": "supports",
+      "sha256": "dcaf329cb683f6001a4c7e5a7c177dcf4d88e61eb3eb372e3676d02ba8eeb163",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          512
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 2805520,
+      "id": "ui/living-title@1.0.0:ultrawide",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/1.0.0/ultrawide.png",
+      "role": "ultrawide",
+      "sha256": "3a4bb29f624f60512e4d9d0b1bcdf170459e65b35ab638c9657f0013d1ef7789",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          2191,
+          718
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 1654095,
+      "id": "ui/living-title@1.0.0:volt",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/1.0.0/volt.png",
+      "role": "volt",
+      "sha256": "ff9183630818401130344c0bf4681dc94b93324a98fbec7b3fd7275841b35889",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "normalization": "Even-grid slicing, remove alpha below 8/255, align cell baselines without repainting RGB; original PNG bytes retained under review.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1280,
+          1280
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 799,
+      "id": "ui/living-title@1.0.0:water",
+      "kind": "data",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/1.0.0/water.gdshader",
+      "role": "water",
+      "sha256": "812e420001d991d45a62a382ea27c698be1d765b9061282692389806662ea09f",
+      "source": {
+        "kind": "Original Godot canvas shader authored for the title water",
+        "license": "Original project code."
+      },
+      "status": "production",
+      "technical": {},
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 472035,
+      "id": "ui/living-title@2.0.0:logo",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/logo.png",
+      "role": "logo",
+      "sha256": "5a7f0ee0ea811c3dfd0a56fdab89a35c2812d835f47236ca3fe2519be165a3b8",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised standalone Brasa initial concept absent from repository. Uses current canonical battle sprite. New relaxed/sleeping/dribble pose sheets have not been supplied; motion uses source pixels with bounded mesh poses.",
+        "normalization": "Scene, portrait, logo, support, orb and shader bytes retained from 1.0.0; canonical creature textures resolved from their original runtime bindings without copies or RGB edits; new ultrawide original retained unchanged.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1889,
+          361
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 362891,
+      "id": "ui/living-title@2.0.0:orb",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/orb.png",
+      "role": "orb",
+      "sha256": "7c2f8e8dac57e8b365026875b3907466c0279b3d8d5377b0e42775b0c7702abe",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised standalone Brasa initial concept absent from repository. Uses current canonical battle sprite. New relaxed/sleeping/dribble pose sheets have not been supplied; motion uses source pixels with bounded mesh poses.",
+        "normalization": "Scene, portrait, logo, support, orb and shader bytes retained from 1.0.0; canonical creature textures resolved from their original runtime bindings without copies or RGB edits; new ultrawide original retained unchanged.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          523,
+          523
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 2255775,
+      "id": "ui/living-title@2.0.0:portrait",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/portrait.png",
+      "role": "portrait",
+      "sha256": "8fb2243ab934e1cbde0e4f94b8f38a9d6697d30e8e62c930a5b3524aded300f7",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised standalone Brasa initial concept absent from repository. Uses current canonical battle sprite. New relaxed/sleeping/dribble pose sheets have not been supplied; motion uses source pixels with bounded mesh poses.",
+        "normalization": "Scene, portrait, logo, support, orb and shader bytes retained from 1.0.0; canonical creature textures resolved from their original runtime bindings without copies or RGB edits; new ultrawide original retained unchanged.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          910,
+          1727
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 2515346,
+      "id": "ui/living-title@2.0.0:scene",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/scene.png",
+      "role": "scene",
+      "sha256": "60fcf9a478059736551435c95c2f68d29e2dafc0b2a5675a5403d17a23d8bf5a",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised standalone Brasa initial concept absent from repository. Uses current canonical battle sprite. New relaxed/sleeping/dribble pose sheets have not been supplied; motion uses source pixels with bounded mesh poses.",
+        "normalization": "Scene, portrait, logo, support, orb and shader bytes retained from 1.0.0; canonical creature textures resolved from their original runtime bindings without copies or RGB edits; new ultrawide original retained unchanged.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 3138455,
+      "id": "ui/living-title@2.0.0:source-ultrawide",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/review/ultrawide-original.png",
+      "role": "source-ultrawide",
+      "sha256": "e59d3d2a1f60695f7daa0c0a8475f308fcd77dbec261a72fcad6458a90b01a0c",
+      "source": {
+        "edit_history": "Horizontal dense-tree extension of supplied clean scene; original output retained unchanged in review/ultrawide-original.png",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral.",
+        "recorded_date_utc": "2026-11-08",
+        "reference": "ui/living-title@1.0.0 scene.png",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          2160,
+          728
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 809358,
+      "id": "ui/living-title@2.0.0:supports",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/supports.png",
+      "role": "supports",
+      "sha256": "dcaf329cb683f6001a4c7e5a7c177dcf4d88e61eb3eb372e3676d02ba8eeb163",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised standalone Brasa initial concept absent from repository. Uses current canonical battle sprite. New relaxed/sleeping/dribble pose sheets have not been supplied; motion uses source pixels with bounded mesh poses.",
+        "normalization": "Scene, portrait, logo, support, orb and shader bytes retained from 1.0.0; canonical creature textures resolved from their original runtime bindings without copies or RGB edits; new ultrawide original retained unchanged.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Source silhouettes, clean plate and alpha inspected during implementation; runtime QA and human aesthetic acceptance tracked separately in docs/live-title-menu.md.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@0.1.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          512
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 3138455,
+      "id": "ui/living-title@2.0.0:ultrawide",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/ultrawide.png",
+      "role": "ultrawide",
+      "sha256": "e59d3d2a1f60695f7daa0c0a8475f308fcd77dbec261a72fcad6458a90b01a0c",
+      "source": {
+        "edit_history": "Horizontal dense-tree extension of supplied clean scene; original output retained unchanged in review/ultrawide-original.png",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral.",
+        "recorded_date_utc": "2026-11-08",
+        "reference": "ui/living-title@1.0.0 scene.png",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          2160,
+          728
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 799,
+      "id": "ui/living-title@2.0.0:water",
+      "kind": "data",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.0.0/water.gdshader",
+      "role": "water",
+      "sha256": "812e420001d991d45a62a382ea27c698be1d765b9061282692389806662ea09f",
+      "source": {
+        "kind": "Original Godot canvas shader authored for the title water",
+        "license": "Original project code."
+      },
+      "status": "production",
+      "technical": {},
+      "version": "2.0.0"
+    },
+    {
+      "bytes": 472035,
+      "id": "ui/living-title@2.1.0:logo",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.1.0/logo.png",
+      "role": "logo",
+      "sha256": "5a7f0ee0ea811c3dfd0a56fdab89a35c2812d835f47236ca3fe2519be165a3b8",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised Brasa initial illustration unconfirmed; no new art generated. Lonlon extended-paw art and a dedicated Foli stretch remain pending. Foli rest/wake reuses canonical reversible lifecycle poses; it is not a newly approved menu sheet.",
+        "normalization": "All scene/logo/portrait/orb/support/ultrawide/shader bytes retained unchanged from2.0.0. Existing Foli lifecycle pixels are resolved through the pinned binding; no image processing.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Existing source pose pixels and pivots inspected before technical integration. Production status permits this local runtime candidate; no human approval of a finished menu or new art is implied.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@2.0.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1889,
+          361
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.1.0"
+    },
+    {
+      "bytes": 362891,
+      "id": "ui/living-title@2.1.0:orb",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.1.0/orb.png",
+      "role": "orb",
+      "sha256": "7c2f8e8dac57e8b365026875b3907466c0279b3d8d5377b0e42775b0c7702abe",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised Brasa initial illustration unconfirmed; no new art generated. Lonlon extended-paw art and a dedicated Foli stretch remain pending. Foli rest/wake reuses canonical reversible lifecycle poses; it is not a newly approved menu sheet.",
+        "normalization": "All scene/logo/portrait/orb/support/ultrawide/shader bytes retained unchanged from2.0.0. Existing Foli lifecycle pixels are resolved through the pinned binding; no image processing.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Existing source pose pixels and pivots inspected before technical integration. Production status permits this local runtime candidate; no human approval of a finished menu or new art is implied.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@2.0.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          523,
+          523
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.1.0"
+    },
+    {
+      "bytes": 2255775,
+      "id": "ui/living-title@2.1.0:portrait",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.1.0/portrait.png",
+      "role": "portrait",
+      "sha256": "8fb2243ab934e1cbde0e4f94b8f38a9d6697d30e8e62c930a5b3524aded300f7",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised Brasa initial illustration unconfirmed; no new art generated. Lonlon extended-paw art and a dedicated Foli stretch remain pending. Foli rest/wake reuses canonical reversible lifecycle poses; it is not a newly approved menu sheet.",
+        "normalization": "All scene/logo/portrait/orb/support/ultrawide/shader bytes retained unchanged from2.0.0. Existing Foli lifecycle pixels are resolved through the pinned binding; no image processing.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Existing source pose pixels and pivots inspected before technical integration. Production status permits this local runtime candidate; no human approval of a finished menu or new art is implied.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@2.0.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          910,
+          1727
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.1.0"
+    },
+    {
+      "bytes": 2515346,
+      "id": "ui/living-title@2.1.0:scene",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.1.0/scene.png",
+      "role": "scene",
+      "sha256": "60fcf9a478059736551435c95c2f68d29e2dafc0b2a5675a5403d17a23d8bf5a",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised Brasa initial illustration unconfirmed; no new art generated. Lonlon extended-paw art and a dedicated Foli stretch remain pending. Foli rest/wake reuses canonical reversible lifecycle poses; it is not a newly approved menu sheet.",
+        "normalization": "All scene/logo/portrait/orb/support/ultrawide/shader bytes retained unchanged from2.0.0. Existing Foli lifecycle pixels are resolved through the pinned binding; no image processing.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Existing source pose pixels and pivots inspected before technical integration. Production status permits this local runtime candidate; no human approval of a finished menu or new art is implied.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@2.0.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.1.0"
+    },
+    {
+      "bytes": 3138455,
+      "id": "ui/living-title@2.1.0:source-ultrawide",
+      "kind": "review",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.1.0/review/ultrawide-original.png",
+      "role": "source-ultrawide",
+      "sha256": "e59d3d2a1f60695f7daa0c0a8475f308fcd77dbec261a72fcad6458a90b01a0c",
+      "source": {
+        "edit_history": "Horizontal dense-tree extension of supplied clean scene; original output retained unchanged in review/ultrawide-original.png",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral.",
+        "recorded_date_utc": "2026-11-08",
+        "reference": "ui/living-title@1.0.0 scene.png",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          2160,
+          728
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.1.0"
+    },
+    {
+      "bytes": 809358,
+      "id": "ui/living-title@2.1.0:supports",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.1.0/supports.png",
+      "role": "supports",
+      "sha256": "dcaf329cb683f6001a4c7e5a7c177dcf4d88e61eb3eb372e3676d02ba8eeb163",
+      "source": {
+        "kind": "Image Gen derivatives",
+        "license": "Original artwork generated for this game.",
+        "limitations": "Revised Brasa initial illustration unconfirmed; no new art generated. Lonlon extended-paw art and a dedicated Foli stretch remain pending. Foli rest/wake reuses canonical reversible lifecycle poses; it is not a newly approved menu sheet.",
+        "normalization": "All scene/logo/portrait/orb/support/ultrawide/shader bytes retained unchanged from2.0.0. Existing Foli lifecycle pixels are resolved through the pinned binding; no image processing.",
+        "reference": "User attachment in this implementation conversation; approved composition also identified as libfile_f55fcf044ed081919dbe9c40c82e07ea.",
+        "review": "Existing source pose pixels and pivots inspected before technical integration. Production status permits this local runtime candidate; no human approval of a finished menu or new art is implied.",
+        "revision": "User rejected creature identity drift and empty ultrawide side regions; 2026-11-08 correction",
+        "source_release": "ui/living-title@2.0.0"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1536,
+          512
+        ],
+        "filtering": "linear",
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "2.1.0"
+    },
+    {
+      "bytes": 3138455,
+      "id": "ui/living-title@2.1.0:ultrawide",
+      "kind": "texture",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.1.0/ultrawide.png",
+      "role": "ultrawide",
+      "sha256": "e59d3d2a1f60695f7daa0c0a8475f308fcd77dbec261a72fcad6458a90b01a0c",
+      "source": {
+        "edit_history": "Horizontal dense-tree extension of supplied clean scene; original output retained unchanged in review/ultrawide-original.png",
+        "kind": "generated original",
+        "license_record": "Original artwork generated for Umbral.",
+        "recorded_date_utc": "2026-11-08",
+        "reference": "ui/living-title@1.0.0 scene.png",
+        "tool": "OpenAI Image Gen"
+      },
+      "status": "production",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          2160,
+          728
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "2.1.0"
+    },
+    {
+      "bytes": 799,
+      "id": "ui/living-title@2.1.0:water",
+      "kind": "data",
+      "module": "ui/living-title",
+      "path": "assets/ui/living-title/versions/2.1.0/water.gdshader",
+      "role": "water",
+      "sha256": "812e420001d991d45a62a382ea27c698be1d765b9061282692389806662ea09f",
+      "source": {
+        "kind": "Original Godot canvas shader authored for the title water",
+        "license": "Original project code."
+      },
+      "status": "production",
+      "technical": {},
+      "version": "2.1.0"
+    },
+    {
       "bytes": 778874,
       "id": "ui/title-logo@1.0.0:texture",
       "kind": "texture",

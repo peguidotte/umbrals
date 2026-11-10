@@ -72,7 +72,9 @@ func run() -> void:
 	app = load("res://scenes/main.tscn").instantiate()
 	root.add_child(app)
 	await process_frame
-	app.registry["menu.play"].pressed.emit()
+	app.registry["menu.settings"].pressed.emit()
+	await settle()
+	app.registry["settings.refuge"].pressed.emit()
 	await process_frame
 	room = app.screen_host.refuge_root
 	StairCases.clearance_cases(room, expect)
@@ -146,7 +148,9 @@ func run() -> void:
 	expect(not room.notice_label.visible and not app.registry.has("refuge.move_left"), "No permanent instruction bar or movement controls")
 	await button(JOY_BUTTON_B)
 	expect(app.screens.top() == "menu", "Controller back reaches title")
-	app.registry["menu.play"].pressed.emit()
+	app.registry["menu.settings"].pressed.emit()
+	await settle()
+	app.registry["settings.refuge"].pressed.emit()
 	await settle()
 	expect(room.canvas.room == "living" and not room.motion.waking, "Returning to home preserves session position without replaying wake")
 	await hold(KEY_D, 300)

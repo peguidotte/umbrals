@@ -19,6 +19,7 @@ func configure(session_service: RefCounted, progress: RefCounted) -> void:
 
 func refresh_checkpoint() -> void:
 	session.refresh_checkpoint(codex_progress)
+	continue_changed.emit()
 
 func checkpoint() -> void:
 	if session.checkpoint(codex_progress):

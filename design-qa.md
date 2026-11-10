@@ -1,91 +1,63 @@
-# Design QA — V04-UX-05C
+# Design QA — V04-UX-05L
 
-As seis melhorias foram aprovadas pelo usuário. Referência: terceira composição
-em `ui/title-menu@1.0.0`; novas camadas de bosque/logo com proveniência no catálogo.
-A imagem de referência é conceito aprovado; os caminhos abaixo são capturas do
-executável, não imagens geradas.
+final result: blocked
 
-- Pacote entregue: `7307bbbccb4e27dcbe588fc759818b78fb47dea5f7cf28ff34bee3a88f29576e`.
-- Abertura final/vertical/reação: `test-results/V04-UX-05C-hosted-adapter/`.
-- Jogar com save/texto mobile: `test-results/V04-UX-05C-typography-verified/`.
-- Foco, hover, pressionado, ultrawide, tablet, texto ampliado, movimento reduzido:
-  `test-results/V04-UX-05C-final/`. Os hashes e complementos estão na
-  [nota da fatia](docs/title-menu-v04-05c.md).
+## Current 05L review
 
-Revisão: arte dos três poderes/cartas preservada; logo limpa; botão focado com
-contorno chanfrado e losango; bosque uniforme nas margens; comandos sem colisões
-nos formatos capturados. Vertical mantém cartas e comandos em grupos próprios.
-Jogar usa o retrato e HP do checkpoint real, exibindo a próxima parada. Corrigidos
-caption sob a moldura, chanfro em largura inicial estreita, fonte pequena no
-celular e efeitos desenhados atrás do fundo. Frames do vídeo final foram abertos
-para conferir flutuação e reação, com a camada de fitas/faíscas visível.
+Portrait framing, actor distribution and fitting two-column navigation were corrected using existing scene pixels. Nisca stays inside the frame; Brasa's compact support reaches the left edge. Options focus is preserved across portrait/wide reparenting; four transitions were added to the official browser title scenario and verified with real keyboard input.
 
-Verificado: 245 checagens nativas, 135 de fluxo/apresentação, complemento de 18
-após o texto de Jogar, validação de 58 releases/126 arquivos e abertura/entrada
-no adaptador Site. Não foi repetida a suíte completa, por instrução do usuário.
-Esses números cobrem etapas distintas; não são uma única execução integral no
-último pacote. Capturas de movimento reduzido da passagem funcional são idênticas.
-A nova ordem de camadas tem captura própria no adaptador final.
+A subsequent source inspection found canonical `characters/foli-lifecycle@1.1.0` repose poses. Foli now sleeps, wakes and settles using these exact existing frames. No new art was generated; the calm closed-eye final reversible pose has no injuries or distress marks. The real desktop and portrait captures were opened and inspected. The pose retains leaf ears, tail, face and paws; feet stay grounded. `ui/living-title@2.1.0` declares the dependency/timing and preserves every scene/logo/orb/support/portrait/ultrawide/shader byte from2.0.0. A dedicated stretch is still not drawn. Technical production status is not human approval.
 
-Limites: toque emulado, Chromium com WebGL por software, sem telefone/controle
-físicos, escuta subjetiva, leitor de tela ou regressão completa de batalha nesta
-fatia. Aprovação estética final continua humana. Não há nova promessa de
-identidade pixel a pixel para estados animados/adaptativos.
+Brasa remains pixelated and Lonlon lacks an authored extended-paw dribble pose. The exact revised Brasa initial reference/approval is unconfirmed; the four-form tree is a proposal. Personal context is unavailable. The official menu identity was prepared, but its official transfer failed and left no local PNG. No bypass or subsequent alternate route was attempted. New illustration remains pending under the request’s condition. Exact reference-vs-candidate overlay remains blocked. Windows/DPI/hardware and final human composition/cadence/audio/accessibility review remain open.
 
----
+The initial 05L full run was deliberately interrupted, with sources unchanged, when canonical Foli rest poses were discovered. Its native passes are preserved and are not full acceptance of this revision. The final full run must identify the source with the repose integration. Earlier four-PNG identity to05K concerned the layout-only stage; it is not attributed to the intentional Foli pose change. See docs/live-title-polish.md.
 
-Registro histórico preservado:
+## Final 05L technical evidence
 
-# Design QA — V04-UX-05B, tela inicial
+`test-results/title-portrait-05l-full-03` passed the full graph with complete coverage, verified inputs and unchanged source `a73fc228ed445a982c5ec46b46fba546fc272cee044408618c9a1049fe67a7cc`. Ten Web scenarios passed 3,118 checks, including title 179 and expedition 417 (two victories). Native title 48, motion 1,012, rules 14,321 and saves 559 passed; eight mutations were detected. Behavior was fresh; only verified preparation/builds were reused.
 
-- Source visual truth: `assets/ui/title-menu/versions/1.0.0/texture.png`, geração `exec-c4063f14-d989-4041-b562-a3b96fe10f92`, terceira revisão explicitamente escolhida pelo usuário.
-- Implementation screenshot: `test-results/V04-UX-05B-menu-final/menu-default.png`.
-- Viewport / CSS: 1672×941, deviceScaleFactor 1. Fonte e captura: 1672×941 pixels. Sem redimensionar as imagens para a comparação.
-- Estado: abertura, foco em Jogar, efeito congelado pelo modo oficial de captura. A animação é avaliada separadamente; modifica intencionalmente os pixels.
-- Full-view comparison: `test-results/V04-UX-05B-menu-final/full-comparison.png`, fonte à esquerda e jogo à direita no mesmo arquivo. Comparação aberta e inspecionada.
-- Focused comparisons: `menu-comparison.png` e `cards-comparison.png`, no mesmo diretório; foco tipográfico e nos materiais dos botões, e escala/arte das cartas. O render inteiro e o recorte de menu foram inspecionados em conjunto com a referência.
+The second attempt's coordinator exited after integration passed 869, before the remaining tasks. Its report stays failed/incomplete, with unchanged sources and no failed completed task. No originating traceback survived; loss of the progress pipe after environment resume is only a hypothesis. The third run used persistent stdout/stderr, unchanged code/actions/assertions/timeouts, and completed. The first interrupted attempt also remains preserved.
 
-## Findings e histórico da comparação
+The final before/after portrait board, 12-format matrix and actual desktop/ultrawide/portrait captures were opened. Canonical sleeping/waking Foli frames and the real 34.84 s four-reaction MP4 were inspected; storage stayed unchanged and no runtime errors were logged. The PDF thumbnail collision was corrected before saving; its final pages were inspected. Full PNG identity is not claimed because Foli intentionally changes pose. Exact official-reference comparison remains blocked by the failed PNG transfer.
 
-1. **P2, corrigido — amostragem horizontal do cenário.** O primeiro ajuste pela proporção literal do PNG criou posicionamento fracionário dentro da referência lógica 1600×900. A metade direita amostrava algumas colunas vizinhas; 634231 pixels diferiam. Evidência anterior preservada em `test-results/V04-UX-05B-title-first/comparison.png`. A composição agora usa a referência lógica do jogo; controles usam regiões normalizadas da arte. O estado congelado usa o material padrão, sem o shader de movimento.
-2. **Verificação posterior:** `test-results/V04-UX-05B-menu-final/reference-comparison.json` registra **zero pixels diferentes** no enquadramento especificado. O adaptador da hospedagem também foi aberto no navegador e registrou zero diferenças em `test-results/V04-UX-05B-hosted-adapter/comparison.json`. Essa medição certifica identidade do raster nesse estado; não é nota de beleza ou compreensão humana.
-3. Não restam diferenças P0/P1/P2 observadas na abertura comparada. Estados de foco e ampliação têm alterações intencionais de apresentação.
+No new Windows export or Windows/DPI/hardware execution occurred. `final result: blocked` still applies to art/reference, authored motion, human and platform gates; the full automated regression passed. Only documentation changed after testing.
 
-## Superfícies de fidelidade
+## Historical 05K evidence
 
-- **Tipografia:** logo e rótulos são os pixels da arte aprovada, com família, peso, espaçamento, contornos e quebras preservados. Não foi escolhida uma fonte aproximada para redesenhá-los. Os Controls têm nomes e texto semântico próprios; a opção de texto ampliado aumenta o recorte original em 12%.
-- **Espaçamento/layout:** quatro áreas interativas acompanham os botões da composição. O jogo preserva o enquadramento de referência; formatos mais largos/altos mostram margens. Capturas de foco, toque 844×390 e texto ampliado foram abertas e inspecionadas, sem cortes ou sobreposição dos quatro comandos.
-- **Cores/tokens:** branco/marfim, lilás e índigo da logo e dos controles são preservados. O brilho laranja das cartas e o cenário noturno não foram reinterpretados. O foco adicional tem contorno, além de cor.
-- **Imagens:** o PNG original está intacto, com SHA-256 no manifesto. Nenhum logo, retrato ou ícone foi substituído por SVG, emoji, fonte ou desenho aproximado. A imagem é a fonte visual do menu real do Godot, com botões reais sobre suas regiões.
-- **Conteúdo:** somente UMBRAL e Jogar, Grimório, Opções, Como jogar na abertura. Nova/Continuar/Treino ficam no submenu de Jogar; créditos continuam disponíveis pelo guia. O Grimório existente continua com seu conteúdo anterior, sem atribuir a esta fatia uma reformulação do códex inteiro.
+## Latest visual truth and scope
 
-## Interações e movimento efetivamente verificados
+Pedro rejected the four generated starter designs and the open ultrawide corners. The approved menu attachment remains the composition guide. Canonical current game textures and the approved family sheets are the creature identity guides, subject to the exact approval limits in docs/references/identidades/README.md. Source 16:9 clean plate, portrait plate, logo, orb and supports are preserved byte-for-byte from 05J. Ultrawide is a new generated dense-tree continuation; it is not claimed as an exact pixel copy of the attached source.
 
-`tools/title_browser_review.py --video` concluiu 22 verificações, sem erros de console/página: quatro comandos, foco/volta, submenu, cancelamento de vínculo, toque emulado e efeito ao clicar na carta. Dois PNGs de movimento reduzido permaneceram idênticos após 300 ms. O teste nativo cobre RNG/save ao alternar a preferência.
+## Captures inspected
 
-`test-results/V04-UX-05B-touch-effect/report.json` confirma um toque emulado na carta, efeito disparado uma vez, permanência no menu e conteúdo do localStorage inalterado. Capturas em tempos distintos mostram mudança visual. `test-results/V04-UX-05B-press-review/` verifica Jogar pressionado, sem render de fonte/botão genérico sobre a arte.
+Real production Web screenshots in test-results/title-identity-layouts were inspected at 1600×900, 1440×900, 2560×1080, 5120×1440, 800×600 and 390×844. The 32:9 water actor was too high relative to the rock; its anchor was corrected. The final 5120×1440 capture in test-results/title-identity-final-layouts was reopened and reviewed after that correction. Other final screenshots were compared byte-for-byte against the earlier inspected captures; results are retained in visual-equivalence.json. The smallest profile is also available at 320×568. These are actual rendered frames, not generated mockups.
 
-O efeito consiste em refração suave, reflexos, sete faíscas limitadas e um pulso curto de energia ao tocar. Não é uma animação de poses independentes das criaturas/cartas. A preferência de movimento reduzido remove imediatamente o shader e zera seus tempos. Os efeitos não usam o RNG da partida.
+The comparison board in test-results/title-identity-delivery/identidades-antes-referencia-agora.png was opened and inspected: canonical source, rejected candidate and actual Web crop are visibly distinct. Foli retains the tall leaf ears and narrow body; Lonlon the compact striped otter body and whiskers; Nisca the blue/violet base, small muzzle and four golden paws; Brasa the real current atlas silhouette. The original source textures are not modified. Seven runtime snapshots confirm all 28 canonical-source and uniform-aspect contracts, independently of subjective art judgment.
 
-Vídeo real: `test-results/V04-UX-05B-menu-final/video/`; amostras de quadros inspecionadas. `card-effect-demo.webm` é um trecho de 20 segundos reencodificado do vídeo original. A galeria `index.html` foi aberta por HTTP local; cinco imagens carregaram, o vídeo reproduziu e não houve erro de página (`gallery-check.json`).
+The 21:9 and 32:9 forest sides now contain overlapping foreground trunks, roots and ferns from top to bottom. Background cover uses one uniform scale; actors occupy a separate central stage. Native navigation, disabled Continue and independent focus targets remain visible. Portrait uses the existing reflow and keeps all four actors. The final 32:9 correction places Lonlon on its stone rather than above it.
 
-## Open questions / limites
+## Open gates
 
-Não há decisão pendente para implementar a abertura escolhida. Não foram testados telefone físico, controle físico, leitor de tela ou GPU real. A identidade de pixels refere-se ao estado/viewport acima; outras proporções usam o enquadramento adaptativo e o movimento produz mudanças intencionais. Localização para outros idiomas e reformulação dos submenus não fazem parte desta fatia.
+P1/reference: the readable repository fire sheet contains only the final form. A revised standalone Brasa initial has not been confirmed or materialized. Space searches found tree v2 (libfile_299871807a048191ba2d69ae8bb42115), extinguished alternatives v3 (libfile_c12edef408ac819198304f1c1462a57b) and exploration (libfile_079012570d088191bfe98941f6f5f0ef). The official download helper failed before preparation with tools/list network; personal-context retrieval was unavailable. Their titles do not prove approval. The menu therefore uses the exact readable current game sprite and does not invent a new design.
 
-## Implementation checklist
+P1/source comparison: original approved-menu bytes remain unavailable for normalized overlay. The direct attachment was viewed in the conversation. No claim of pixel-exact source fidelity or final human approval is made.
 
-- [x] Usar a terceira revisão exata e preservar o original/manifesto.
-- [x] Quatro botões reais, nomes acessíveis, teclado/toque e volta.
-- [x] Reunir escolhas de expedição dentro de Jogar, preservando confirmação/save.
-- [x] Efeito nas cartas com movimento reduzido aplicado aos nós atuais.
-- [x] Captura e comparação conjunta da referência e do jogo.
-- [x] Corrigir a divergência de amostragem e conferir o novo render.
+P2/motion: canonical textures currently supply static source poses, deformed gently through the mesh. Foli is seated rather than a newly authored sleeping pose; Lonlon's tucked forepaws limit a convincing full dribble gesture. No approved menu-specific pose sheets were supplied. This preserves identity while keeping that motion gate explicit. Foreground environment foliage is still static.
 
-## Follow-up polish
+Windows/DPI and hardware execution, physical controller/accessibility, and human cadence/audio judgment remain unverified. Linux headless and software WebGL evidence do not replace them. The complete repository test run has its own report; focused passes are not full acceptance.
 
-P3: fora de 16:9, as margens mostram o bosque existente; o foco usa um contorno funcional simples. Nenhum P3 impede esta abertura. A legibilidade e o desempenho em aparelho físico ainda dependem de verificação nessa plataforma; testes automáticos não certificam esses resultados.
+No push, merge, deploy or Actions reactivation. Product remains 0.3.0.
 
-Validação funcional consolidada por suítes: `artifacts/V04-UX-05B-closure-20261101T005614768531Z/closure-report.json`. As duas tentativas integrais permanecem failed; não se afirma um passe integral do orquestrador.
 
-final result: passed
+## Integral attempt timing evidence
+
+The first full attempt kept sources unchanged and passed every native task and all eight mutations. Browser integration failed after 307 checks while waiting 60 s for `!busy`. The failure screenshot shows effect 18/21. Raw video frames 12 s apart show progress from effect 6/21 to 18/21, so the retained evidence shows motion rather than a frozen queue. The owned attempt was interrupted during layout; its report says interrupted, with the integration failure preserved. Session.settled now measures each queue and allows 120 s with the same completion condition, actions and assertions. The game and its animation speed are unchanged. The final full attempt is test-results/title-identity-full-02; its actual report is authoritative.
+
+
+## Final automated regression
+
+`test-results/title-identity-full-02` passed the full scope with complete coverage, verified inputs and unchanged source hash `2e7b44ee662f8b0f8f92642197487b48de501ae3ade439e5fc737117bfc2b72e`. All ten browser scenarios passed (3,113 checks), including title 174 and expedition 417 with both routes ending in victory. Native title 48, battle motion 1,012, rules 14,321 and save 559 checks passed; all eight mutations were detected. Behavior was rerun fresh; only verified imports/builds were cached. The successful integration measured 189 queue waits with a maximum of 43.0002 s, so it is not claimed to have required more than the former 60 s limit.
+
+The final 12-profile empty-save matrix was opened and inspected, retaining full source screenshots. The mobile montage preserves the former 24.28 s duration using actual desktop, ultrawide and portrait clips, uniformly scaled/padded, with no audio. H.264/yuv420p, frame count and faststart were verified. Final PDF pages and video segment frames were inspected. Only documentation was changed after the frozen run.
+
+`final result: blocked` remains intentional: automated regression passed, but the reference, authored-pose, human and target-platform gates above remain open. Windows export passed on Linux; Windows/DPI execution did not occur.

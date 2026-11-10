@@ -103,8 +103,11 @@ class Session:
             raise
 
     def settled(self):
-        self.wait('!window.umbralState.busy', timeout=60000)
-        self.page.wait_for_timeout(200)
+        # Software WebGL can exceed one minute for a 21-effect animated queue.
+        # Keep the same completion condition and input path; record its real cost.
+        with self.timing('settled', 'complete animated queue'):
+            self.wait('!window.umbralState.busy', timeout=120000)
+            self.page.wait_for_timeout(200)
 
     def load(self):
         with self.timing('load', 'production menu'):
@@ -132,6 +135,15 @@ class Session:
         with self.timing('click', identity):
             state = self.state()
             control = state['controls'][identity]
+            if not control.get('center_visible', True):
+                for _ in range(len(state['controls'])+1):
+                    self.key('Tab')
+                    state = self.state(); control = state['controls'][identity]
+                    if state['focused'] == identity:
+                        self.wait("window.umbralState.controls["+json.dumps(identity)+"].center_visible === true")
+                        state=self.state(); control=state['controls'][identity]
+                        break
+                self.check(control.get('center_visible', True), 'Keyboard reveals scrolled control: '+identity)
             self.check(control['visible'] and control['active'] and not control['disabled'], 'Reachable control: ' + identity + ' (screen: ' + state['screen'] + ')')
             canvas = self.page.locator('#canvas').bounding_box()
             logical = state['logical_size']
@@ -157,6 +169,9 @@ class Session:
         active = {k:c for k,c in s['controls'].items() if c['visible'] and c['active'] and (not scrollable or 0 <= c['cy'] <= height)}
         check(bool(active), description + ': actionable controls exist')
         for identity, c in active.items():
+            if not c.get('center_visible', True):
+                check(c.get('scrollable',False), description+': clipped target belongs to a scroll region — '+identity)
+                continue
             check(0 <= c['cx'] <= width and 0 <= c['cy'] <= height and c['w'] > 0 and c['h'] > 0,
                   description + ': target remains on screen — ' + identity)
             if identity.startswith('hand.'):
@@ -179,10 +194,8 @@ class Session:
 
     def start(self, species='ember'):
         click, wait, geometry, shot, settled = self.click, self.wait, self.geometry, self.shot, self.settled
-        click('menu.play')
-        depart(self.page, wait)
-        wait("window.umbralState.screen === 'journey'")
-        click('journey.practice')
+        click('menu.settings')
+        click('settings.practice')
         wait("window.umbralState.screen === 'starter'")
         geometry('Starter choice')
         if not self.starter_choice_seen:
