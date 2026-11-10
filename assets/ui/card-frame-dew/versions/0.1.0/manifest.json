@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "Unreviewed modular card preview; not production artwork",
+  "files": {
+    "frame": {
+      "bytes": 1606956,
+      "kind": "texture",
+      "path": "frame.png",
+      "sha256": "2f596ecba5b1dbb353abca5303d2f68b65c3733f7ad35ee0b7f4702e3f9de24c",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "ui/card-frame-dew",
+  "provenance": {
+    "kind": "Image Gen prototype based on directly attached approved card concept",
+    "license": "Generated for this project; retains original PNG metadata",
+    "reference": "Pedro direct attachment, 1280x720, visually inspected in chat",
+    "source_file": "exec-f184359c-8072-465b-9029-c0fdf1774921.png",
+    "source_sha256": "2f596ecba5b1dbb353abca5303d2f68b65c3733f7ad35ee0b7f4702e3f9de24c"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.1.0"
+}

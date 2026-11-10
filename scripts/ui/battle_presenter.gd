@@ -8,6 +8,7 @@ const PowerCard = preload("res://scripts/ui/power_card.gd")
 const Targeting = preload("res://scripts/battle/targeting.gd")
 const BattleArt = preload("res://scripts/ui/battle_art.gd")
 const BattleReadout = preload("res://scripts/ui/battle_readout.gd")
+const CardTarget = preload("res://scripts/ui/card_target_view.gd")
 signal control_created(control: Control, key: String)
 signal card_selected(index: int)
 signal focus_group_changed
@@ -20,6 +21,7 @@ var battle_root: Control
 var cards: Array
 var targeting_index: int = -1
 var hand_fingerprint: String = ""
+var selection_fingerprint: String = ""
 var busy: bool = false
 var visual_capture: bool = false
 var last_device: String = "keyboard"
@@ -140,6 +142,7 @@ func _rebuild_hand() -> void:
 	cards.clear()
 	for i in range(game.hand.size()):
 		var card = PowerCard.new()
+		card.hand_order = i
 		hand_view.add_child(card)
 		card.configure(game.hand[i], game.umbral_by_uid(int(game.hand[i].owner)), game.party, preferences.text_scale(), preferences.values.reduced_motion, game.catalog_revision)
 		control_created.emit(card, "hand.%d" % i)
@@ -160,7 +163,11 @@ func sync_selection() -> void:
 	# cards and targets visible until their event sequence finishes playing.
 	if busy:
 		command_strip.visible = false
-		for card in cards: card.disabled = true
+		for card in cards:
+			card.disabled = true
+			if card.fan_prominent:
+				card.fan_prominent = false
+				card._react()
 		for button in reserve_buttons: button.disabled = true
 		cast_button.disabled = true
 		cast_button.text = "CONJURANDO…"
@@ -200,8 +207,13 @@ func sync_selection() -> void:
 		hypothetical.append(game.hand[i])
 		cards[i].insufficient_actions = not i in game.selected and not cards[i].blocked and planned_cost + int(Rules.evaluate(hypothetical, game.party).actions) - own_cost > game.action_budget()
 		cards[i].aiming = i == targeting_index
+		cards[i].set_public_target(CardTarget.project(game.hand[i], Content.POWERS[game.hand[i].power], cards[i].individual, game.party, game.enemies, i in game.selected))
 		cards[i].set_chosen(i in game.selected)
 		if cards[i].blocked: cards[i].tooltip_text = reason
+	var selected_key: String = JSON.stringify(game.selected)
+	if selected_key != selection_fingerprint or not cards.any(func(card: Button) -> bool: return card.fan_prominent and card.chosen):
+		selection_fingerprint = selected_key
+		hand_view.present(targeting_index)
 	cast_button.disabled = busy or not score.valid or game.phase != "battle"
 	redraw_button.disabled = busy or game.phase != "battle"
 	cast_button.text = "CONJURANDO…" if busy else "CONJURAR"
@@ -226,7 +238,9 @@ func sync_selection() -> void:
 		if power.get("scope", "single") == "single" and power.get("target", "enemy") != "self":
 			var target: Dictionary = _at_slot("enemy" if power.get("target", "enemy") == "enemy" else "ally", int(aimed.target_slot))
 			var target_name: String = str(target.get("name", "")) if target.has("name") else Content.display_name(target) if not target.is_empty() else "Vaga vazia"
-			notice_label.text = "Alvo: %s · Q/E: mudar · P: plano" % target_name
+			var same_owner: bool = int(target.get("uid", -1)) == int(aimed.owner)
+			var target_action: String = "Cura em" if int(power.get("heal", 0)) > 0 else "Alvo:"
+			notice_label.text = "%s %s%s · Q/E: mudar · P: plano" % [target_action, target_name, " (si próprio)" if same_owner else ""]
 	_sync_targets()
 	focus_group_changed.emit()
 	changed.emit()

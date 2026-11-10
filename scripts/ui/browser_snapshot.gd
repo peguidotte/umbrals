@@ -32,7 +32,7 @@ static func build(game: RefCounted, session: RefCounted, screens: RefCounted, pr
 		"expedition": session.expedition.public_state() if session.expedition_active else {},
 		"checkpoint_status": session.run_save.last_status,
 		"resolved_reactions": [] if busy else game.last_result.get("events", []).filter(func(event: Dictionary) -> bool: return event.kind == "reaction"),
-		"overlay_z": presentation.overlay_z, "card_max_z": 6, "audio": presentation.audio,
+		"overlay_z": presentation.overlay_z, "card_max_z": preload("res://scripts/ui/power_card.gd").RAISED_Z, "audio": presentation.audio,
 		"node_count": presentation.node_count, "title_effect": presentation.title_effect,
 		"title_audio": presentation.title_audio, "input_serial": presentation.input_serial,
 		"interaction_serial": presentation.interaction_serial, "last_interaction": presentation.last_interaction,

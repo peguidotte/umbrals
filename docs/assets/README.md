@@ -1,5 +1,10 @@
 # Modular asset pipeline
 
+Card presentation has a separate data contract and coverage gate on this
+pipeline. See [implementation/status](card-assets-implementation.md) and the
+[received specification](card-assets-spec.md). The current card release is
+metadata-only draft; new artwork is not runtime-enabled or approved.
+
 Assets have identities independent of their paths, the game version and gameplay definitions. `attacks/fireball-umbral-cast@1.0.0` is one immutable release; its mouth, hand and kick performances reuse effect clips and depend on separately versioned demo characters. The new VFX are prototypes, available for review and integration, and do not silently replace the current game art.
 
 ## Layout and ownership

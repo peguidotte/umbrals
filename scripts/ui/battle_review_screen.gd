@@ -18,7 +18,7 @@ func inspection(ui: RefCounted, viewport_size: Vector2, selected: Dictionary, pa
 	var view = InspectionView.new()
 	current_view = view
 	view.back_requested.connect(back_requested.emit)
-	view.build(selected, party, enemies, public_intents, power, viewport_size, frame.body, _register)
+	view.build(selected, party, enemies, public_intents, power, viewport_size, frame.body, _register, ui.text_scale)
 	return frame.overlay
 
 func pile(ui: RefCounted, viewport_size: Vector2, zone: String, source: Array, party: Array) -> Control:

@@ -63,6 +63,12 @@ static func controls_snapshot(registry: Dictionary, screen: String) -> Dictionar
 		if control is Label: data["text"] = control.text
 		data["instance_id"] = control.get_instance_id()
 		if control is PowerCard:
+			if control.fanned:
+				# The owner plaque is the stable exposed activation area under a
+				# raised neighbour. This is a real canvas point, not a test setter.
+				var activation: Vector2 = control.get_global_transform() * (control.size * Vector2(.5, .9))
+				data["activation_point"] = [activation.x, activation.y]
+				data["moving"] = control.pose_in_motion
 			data["nature"] = control.power.nature
 			data["effect_text"] = control.tooltip_text
 			data["title_fits"] = control.title_fits()

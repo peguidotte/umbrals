@@ -34,7 +34,11 @@ func focus_key() -> String:
 func _init() -> void:
 	call_deferred("_run")
 
+func _before_run() -> void:
+	pass
+
 func _run() -> void:
+	_before_run()
 	app = load("res://scenes/main.tscn").instantiate()
 	root.add_child(app)
 	await process_frame

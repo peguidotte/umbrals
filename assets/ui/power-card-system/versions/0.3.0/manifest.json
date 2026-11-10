@@ -1,0 +1,102 @@
+{
+  "dependencies": [
+    {
+      "id": "characters/aquatic-family",
+      "version": "1.0.0"
+    },
+    {
+      "id": "characters/battle-creatures",
+      "version": "1.0.0"
+    },
+    {
+      "id": "characters/battle-evolved",
+      "version": "1.0.0"
+    },
+    {
+      "id": "characters/electric-adults",
+      "version": "2.0.0"
+    },
+    {
+      "id": "characters/electric-family",
+      "version": "2.1.0"
+    },
+    {
+      "id": "characters/folife-pilot",
+      "version": "1.1.0"
+    },
+    {
+      "id": "characters/folivel-pilot",
+      "version": "1.0.0"
+    },
+    {
+      "id": "characters/foslash-pilot",
+      "version": "1.0.0"
+    },
+    {
+      "id": "ui/card-frame-dew",
+      "version": "0.2.0"
+    },
+    {
+      "id": "ui/card-frame-moss",
+      "version": "0.2.0"
+    },
+    {
+      "id": "ui/card-nature-fire",
+      "version": "0.2.0"
+    },
+    {
+      "id": "ui/card-nature-forest",
+      "version": "0.2.0"
+    },
+    {
+      "id": "ui/card-nature-lightning",
+      "version": "0.2.0"
+    },
+    {
+      "id": "ui/card-nature-water",
+      "version": "0.2.0"
+    },
+    {
+      "id": "umbrals/card-art-dew",
+      "version": "0.1.0"
+    },
+    {
+      "id": "umbrals/card-art-dew",
+      "version": "0.2.0"
+    },
+    {
+      "id": "umbrals/card-art-moss",
+      "version": "0.1.0"
+    },
+    {
+      "id": "umbrals/card-art-verdalio",
+      "version": "0.1.0"
+    },
+    {
+      "id": "umbrals/card-target-dew",
+      "version": "0.1.0"
+    },
+    {
+      "id": "umbrals/card-target-moss",
+      "version": "0.1.0"
+    }
+  ],
+  "description": "Card reference correction candidate; human visual approval pending",
+  "files": {
+    "presentation": {
+      "bytes": 29944,
+      "kind": "data",
+      "path": "presentation.json",
+      "sha256": "2b25b8392d4eff066b808fc715305044e58d2fe793432efe522f0c8506f15e86"
+    }
+  },
+  "id": "ui/power-card-system",
+  "provenance": {
+    "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+    "license": "Generated for this project; originals preserved with metadata",
+    "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.3.0"
+}

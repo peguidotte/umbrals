@@ -1687,3 +1687,137 @@ Comparação portrait antes/depois, matriz de 12 formatos, capturas reais e MP4 
 Sem export/execução Windows de 05L; não herdar a validação de 05K. Próxima etapa:
 confirmar Brasa inicial e aprovação, produzir acabamento/poses pendentes e revisar
 arte/plataforma. Gates humanos abertos, produto 0.3.0. Sem push, merge ou deploy.
+
+### V05-CARD-01 — contrato, matriz e resolução de assets das cartas
+
+Direção fechada pelo usuário: moldura por família (override explícito por forma),
+arte por Umbral/poder, entorno da arte e ambas as placas pela natureza do golpe,
+miniatura independente de alvo. [Spec](assets/card-assets-spec.md) e
+[implementação, interfaces e limites](assets/card-assets-implementation.md).
+
+Base atual `f29752c` confirmada por preflight/fetch. Implementados schema próprio,
+exportador Godot de demanda com retenção evolutiva e saves, release draft
+estruturado, resolvedor/cache LRU, view model puro e gates/testes registrados.
+Confirmadas 73 combinações: 42 iniciais, 70 aprendíveis e três de Água retidas
+em Zuldar; 43 checkpoints de compatibilidade restaurados. Cobertura artística
+nova 0/73, explicitamente pendente. O gate negativo recusa promoção incompleta.
+
+Transferências das duas referências visuais falharam. Não houve tentativa de
+contornar acesso ou inventar aparência. Renderer, galeria/piloto e ativação em
+power_card aguardam pixels e revisão; runtime-lock/regras/saves permanecem.
+Focos, falhas preservadas e baseline estão documentados; o fechamento congelado
+está em `artifacts/card-assets-architecture-acceptance/`: 20 casos Python e 25
+verificações Godot novos, regras/saves, PCK e dez cenários Web passaram. O gate
+integral reprovou em uma verificação de rolagem do grimório (91/91 passaram na
+repetição isolada, sem alteração de código). Falha preservada, sem aceite integral.
+Este registro não fecha arte ou marco; próximo passo é piloto visual
+revisado antes da integração e expansão. Versão 0.3.0; Actions pausado.
+
+### V05-CARD-02 — piloto visual modular optativo
+
+O anexo direto aprovado chegou e seus pixels foram inspecionados. Implementados
+renderer, projeção pública do alvo e reutilização do componente em mão,
+inspeção e pilhas. O release prototype 0.2.0 combina duas molduras de família,
+12 peças de tipo, seis artes candidatas por forma/poder e 17 miniaturas
+reaproveitadas. Ilustração ausente/review é explícito; promoção de produção é
+recusada. Lonlon/Bosque permanece demonstração não aprendível. Regras, saves,
+movimento da mão e runtime-lock preservados; sem merge/deploy.
+
+Aspecto/âncoras e limites de texto vêm do presentation; a moldura mantém a
+proporção dentro dos Buttons existentes. Galeria e mão real têm matrizes de
+cinco formatos com texto normal/ampliado. O retorno do grimório conserva o
+scroll original, sem segunda rolagem automática, com prova negativa preservada.
+
+Foco de composição/input/exports passou; revisão visual e fechamento integral
+atual estão em [escopo, evidência e limites](assets/card-assets-visual-v05-card02.md).
+Faltam 67 ilustrações, duas molduras e aprovação artística/miniaturas; piloto
+exige flag de desenvolvimento. Versão 0.3.0, Actions pausado, sem aceite final
+do catálogo ou do marco. Próxima fatia: revisão do piloto e autoria por matriz.
+
+### V05-CARD-03 — correção de nitidez; molduras rejeitadas
+
+Pedro rejeitou a prévia por nitidez e divergência das molduras. A investigação
+confirmou originais/imports lossless de 1254 × 1254, porém filtragem NEAREST
+herdada da batalha e ilustrações de aproximadamente 78 × 83 pixels CSS na mão
+em 720p. O resolvedor/cache prepara mipmaps sem alterar os PNGs, e cartas usam
+filtragem própria. O detalhe da carta em mira mostra arte com aproximadamente
+o dobro de largura/altura, sem capturar input ou modificar combate. A leitura
+real da GPU confirma canvas nativo em DPR 1; o indicador escalado de
+ViewportTexture não deve ser confundido com framebuffer.
+
+45 verificações de pixels e 675 Web passaram no foco, com cinco formatos e
+texto normal/ampliado. [Diagnóstico, comparação, evidências e bloqueio](assets/card-assets-sharpness-v05-card03.md).
+O gate integral é registrado em `artifacts/card-sharpness-acceptance/`, sem
+antecipar resultado. Molduras/placas ainda divergem: falta o PNG aprovado como
+entrada acessível para edição fiel; nenhuma nova aparência foi inventada.
+Próxima fatia: corrigir as peças com a referência e obter revisão visual real,
+depois ampliar o catálogo. Produto 0.3.0; sem promoção/merge/deploy.
+
+### V05-CARD-04 — molduras e composição a partir do novo anexo
+
+O anexo reenviado por Pedro foi usado diretamente como entrada visual. Novas
+molduras orgânicas de madeira/folhas e água/dourado, placas de golpe com
+contornos próprios, janela ampla de ilustração, texto serifado nativo e retrato
+circular superior direito. A seleção segue a silhueta da moldura; valores não
+cobrem mais a pintura. Gota serena tem nova cena de cura com Foli, e o exemplo
+de Lonlon/Bosque tem arte própria sem conceder aprendizado.
+
+Release de prévia explícito `ui/power-card-system@0.3.0`; versões anteriores e
+PNGs originais preservados. Galeria estática das seis cartas facilita comparar
+o anexo, junto à batalha real. Primeira rodada Web passou 688 verificações;
+assets/UI/input passaram depois do ajuste de títulos e rodapé. Evidência final
+e gate integral em `artifacts/card-reference-acceptance/`, sem antecipar resultado.
+[Peças, proveniência, revisão e limites](assets/card-assets-reference-v05-card04.md).
+
+Aprovação artística não inferida dos testes; catálogo ainda parcial (6/73
+pares jogáveis com candidatos, 67 sem imagem e duas famílias sem moldura).
+Próxima fatia: revisão visual com Pedro e expansão por matriz após o exemplar.
+Regras/saves/runtime-lock preservados; produto 0.3.0, sem merge ou deploy.
+
+### V05-CARD-05 — leque na mão real, alvo e custo legíveis
+
+O piloto optativo Foli/Lonlon usa os próprios botões em leque; a carta
+selecionada avança e cresce dentro da mão. A cópia central foi retirada da
+árvore. Ordem visual e de clique acompanham os mesmos índices canônicos;
+hover conserva a mira sem deslocar outra carta sob o mouse. Mãos modificadas
+conservam rolagem e confirmação continua em Conjurar.
+
+Retrato/nome/UID identificam o destinatário atual da cura, com indicação de
+si próprio. Custo é pintado sobre a borda do retrato/área; sinal de cura fica
+livre. Campo mantém fundo completo, grupos/textos ajustados e avisos limitados
+ao corredor, inclusive ampliados. Nenhum asset, catálogo, regra ou save mudou.
+
+750 verificações Web passaram no foco funcional, incluindo cartas sobrepostas,
+toque, alvo inferior e conjuração real. Revisão manual posterior corrigiu custo
+encoberto, aviso sobre HP e rótulo sobre o sinal. Evidência em
+`artifacts/card-fan-pilot-readable/` e `artifacts/card-fan-pilot-marker/`.
+
+O vídeo identificou a carta ampliada sobre efeitos durante Conjurar. A primeira
+tentativa integral foi interrompida para recolher o destaque durante a execução,
+preservando seleção/alvos bloqueados na mão. O foco posterior passou 759 checks
+Web e conferiu o campo livre durante duas conjurações reais. O fechamento
+integral atualizado fica em `artifacts/card-fan-final-acceptance/`, cujo relatório
+deve ser consultado para o resultado efetivo.
+[Implementação, evidências e limites](assets/card-assets-hand-v05-card05.md).
+
+Fidelidade artística continua bloqueada em `design-qa.md`: o anexo está visível
+na conversa, mas seus bytes originais não estão neste executor para comparação
+conjunta. Molduras/poses continuam candidatas divergentes; não foi inventada
+outra aparência. Catálogo permanece 6/73, com 67 imagens e duas molduras
+faltantes. Próxima fatia: revisão conjunta com o original e aceite do exemplar,
+antes de ampliar catálogo. Produto 0.3.0; sem promoção, merge, push ou deploy.
+
+
+### V05-CARD-06 — nome do golpe centrado e tipografia do piloto
+
+Correção da reserva assimétrica de alvo/custo que deslocava o título; centro
+da placa preservado em seleção. Nomes usam a Cormorant Garamond Bold existente,
+com eixo OpenType efetivamente aplicado. Indicadores pequenos mantêm a fonte
+anterior. Primeiro ciclo fino foi rejeitado por inspeção, apesar dos testes.
+51 checks nativos e matriz manual de 12 PNGs Foli/Lonlon passaram; títulos
+completos no destaque em 720p/1080p, normal/ampliado. A fonte exata do anexo
+não foi identificada; original raster indisponível neste executor, mantendo
+QA artística bloqueada. Fechamento integral: artifacts/card-type-final-acceptance/;
+consultar o resultado real. Sem mudança de arte, catálogo, regras, saves ou
+versão (0.3.0), sem push/merge/deploy. Detalhes e limites em
+[card-assets-type-v05-card06.md](assets/card-assets-type-v05-card06.md).

@@ -1,0 +1,47 @@
+{
+  "dependencies": [],
+  "description": "Card reference correction candidate; human visual approval pending",
+  "files": {
+    "frame": {
+      "bytes": 1772199,
+      "kind": "texture",
+      "path": "frame.png",
+      "sha256": "0de8f6cb1da894a8a3097efd5e1e1bda4c0c02a1034fcf9580912514a9b37221",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "generation-master": {
+      "bytes": 1772199,
+      "kind": "review",
+      "path": "review/exec-815c4f5c-157a-4adb-82b5-75d519649bcd.png",
+      "sha256": "0de8f6cb1da894a8a3097efd5e1e1bda4c0c02a1034fcf9580912514a9b37221",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "ui/card-frame-moss",
+  "provenance": {
+    "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+    "license": "Generated for this project; originals preserved with metadata",
+    "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+    "source_file": "exec-815c4f5c-157a-4adb-82b5-75d519649bcd.png",
+    "source_sha256": "0de8f6cb1da894a8a3097efd5e1e1bda4c0c02a1034fcf9580912514a9b37221"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.2.0"
+}

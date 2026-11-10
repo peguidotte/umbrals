@@ -12,7 +12,7 @@ from harness_lib.manifest import ROOT
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--scenario', choices=['integration', 'layout', 'navigation', 'inventory', 'combat', 'rewards', 'replacement', 'persistence', 'expedition', 'title'])
+    parser.add_argument('--scenario', choices=['integration', 'layout', 'navigation', 'inventory', 'combat', 'rewards', 'replacement', 'persistence', 'expedition', 'title', 'cards'])
     parser.add_argument('--build-dir', type=Path, default=ROOT / 'builds/web')
     parser.add_argument('--output', type=Path, default=ROOT / 'test-results/browser')
     parser.add_argument('--video', action='store_true')

@@ -1,0 +1,66 @@
+{
+  "dependencies": [],
+  "description": "Card reference correction candidate; human visual approval pending",
+  "files": {
+    "art-border": {
+      "bytes": 8700,
+      "kind": "texture",
+      "path": "art-border.png",
+      "sha256": "d78948a0df238c9f3a9a180213192d18967a5ed6184fd7c3975d62f7c2fedf67",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "owner-plate": {
+      "bytes": 4307,
+      "kind": "texture",
+      "path": "owner-plate.png",
+      "sha256": "271759406af4af97cf54847ef1bd05956ca5f8fdbda2a39796e389398363ea8e",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          104
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "source-art-border": {
+      "bytes": 391,
+      "kind": "review",
+      "path": "review/art-border.svg",
+      "sha256": "fa24382cc6313dc6b35613a30d086c455d7fde1e3b5287de9ab439e716f71e70"
+    },
+    "title-plate": {
+      "bytes": 5566,
+      "kind": "texture",
+      "path": "title-plate.png",
+      "sha256": "57cdbd8fe7988217c0c5b0ffb366ed0320bdf01dccfe53a8e51f07929213b44b",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          128
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "ui/card-nature-fire",
+  "provenance": {
+    "kind": "Original native UI contour; existing prototype plates retained",
+    "license": "Generated for this project; originals preserved with metadata",
+    "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.2.0"
+}

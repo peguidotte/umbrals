@@ -7,6 +7,10 @@ static var _catalog: Dictionary = {}
 static var _manifests: Dictionary = {}
 static var _bindings: Dictionary = {}
 
+static func has_release(asset_id: String, version: String) -> bool:
+	if _catalog.is_empty(): _catalog = _read_json("res://assets/catalog.json")
+	return _catalog.get("modules", {}).get(asset_id, {}).get("versions", {}).has(version)
+
 static func bound_manifest(binding: String) -> Dictionary:
 	if _bindings.is_empty(): _bindings = _read_json("res://assets/runtime-lock.json").get("bindings", {})
 	var reference: Dictionary = _bindings.get(binding, {})

@@ -1,5 +1,12 @@
 # Autoria de espécies e formas
 
+Assets das cartas seguem o [contrato de apresentação](assets/card-assets-implementation.md).
+Nova forma/poder deve entrar na matriz exportada das APIs reais, incluindo
+poderes ancestrais retidos. Moldura pertence à família, ilustração à combinação
+forma/poder e estilo à natureza do golpe. Miniatura de alvo é explícita por
+forma/identidade inimiga. A cobertura de produção é bloqueante quando o sistema
+novo estiver pinado; não mudar aprendizado/regras para suprir arte ausente.
+
 Antes de escrever histórias ou descrições, leia [lore e status das decisões](lore/README.md)
 e a [conciliação com o conteúdo atual](lore/implementacao.md). Texto exploratório
 não confirma cosmologia, região ou origem das cartas; preservar regras e saves.

@@ -5,6 +5,7 @@ const UI = preload("res://scripts/ui/kit.gd")
 const BattleArt = preload("res://scripts/ui/battle_art.gd")
 const PowerCard = preload("res://scripts/ui/power_card.gd")
 const Conditions = preload("res://scripts/battle/conditions.gd")
+const CardPreview = preload("res://scripts/ui/card_preview.gd")
 signal back_requested
 var ui = UI.new()
 var register: Callable
@@ -15,7 +16,7 @@ func _button(parent: Node, text: String, action: Callable, key: String) -> Butto
 	register.call(button, key, "inspect")
 	return button
 
-func build(inspection: Dictionary, party: Array, enemies: Array, public_intents: Array, power_effect: Dictionary, viewport_size: Vector2, frame: VBoxContainer, registry: Callable) -> void:
+func build(inspection: Dictionary, party: Array, enemies: Array, public_intents: Array, power_effect: Dictionary, viewport_size: Vector2, frame: VBoxContainer, registry: Callable, large: float = 1.0) -> void:
 	register = registry
 	var individual: Dictionary = inspection.umbral
 	var species: Dictionary = Content.SPECIES.get(individual.get("species", ""), {})
@@ -31,8 +32,10 @@ func build(inspection: Dictionary, party: Array, enemies: Array, public_intents:
 	var row: HBoxContainer = UI.row(28)
 	body.add_child(row)
 	var art_id: String = str(individual.get("art", "umbrals/ember")) if enemy or species.is_empty() else Content.art_binding(individual)
-	var portrait: TextureRect = UI.art(str(Content.POWERS[inspection.card.power].art) if inspection.has("card") else art_id, Vector2(210, 200))
-	if not inspection.has("card"): portrait.texture = BattleArt.texture(art_id)
+	var portrait: Control = CardPreview.create(inspection.card, individual, party, Vector2(280, 420), large) if inspection.has("card") else null
+	if portrait == null:
+		portrait = UI.art(str(Content.POWERS[inspection.card.power].art) if inspection.has("card") else art_id, Vector2(210, 200))
+		if not inspection.has("card"): portrait.texture = BattleArt.texture(art_id)
 	row.add_child(portrait)
 	var details: VBoxContainer = UI.column(12)
 	details.size_flags_horizontal = Control.SIZE_EXPAND_FILL

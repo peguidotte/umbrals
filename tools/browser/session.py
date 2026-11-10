@@ -147,7 +147,18 @@ class Session:
             self.check(control['visible'] and control['active'] and not control['disabled'], 'Reachable control: ' + identity + ' (screen: ' + state['screen'] + ')')
             canvas = self.page.locator('#canvas').bounding_box()
             logical = state['logical_size']
-            self.page.mouse.click(canvas['x'] + control['cx'] / logical[0] * canvas['width'], canvas['y'] + control['cy'] / logical[1] * canvas['height'])
+            if 'activation_point' in control:
+                # Card transforms animate after focus/selection. Use the real
+                # exposed plaque after it settles, including pointer hover.
+                self.wait('!window.umbralState.controls[' + json.dumps(identity) + '].moving')
+                control = self.state()['controls'][identity]
+                point = control['activation_point']
+                self.page.mouse.move(canvas['x'] + point[0] / logical[0] * canvas['width'], canvas['y'] + point[1] / logical[1] * canvas['height'])
+                self.page.evaluate('() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
+                self.wait('!window.umbralState.controls[' + json.dumps(identity) + '].moving')
+                control = self.state()['controls'][identity]
+            point = control.get('activation_point', [control['cx'], control['cy']])
+            self.page.mouse.click(canvas['x'] + point[0] / logical[0] * canvas['width'], canvas['y'] + point[1] / logical[1] * canvas['height'])
             self.wait(f"window.umbralState.interaction_serial > {state['interaction_serial']} && window.umbralState.last_interaction === '{identity}'")
 
     def shot(self, name):

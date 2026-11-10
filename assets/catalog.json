@@ -652,6 +652,90 @@
         }
       }
     },
+    "ui/card-frame-dew": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/ui/card-frame-dew/versions/0.1.0/manifest.json",
+          "sha256": "36fd7144d5755c02bcd7580e9615d2835156b63b99362a8c4715991e180080d1",
+          "status": "prototype"
+        },
+        "0.2.0": {
+          "manifest": "assets/ui/card-frame-dew/versions/0.2.0/manifest.json",
+          "sha256": "5feed8a7c1974cc880b07a2198b367006c7cfdec10e1e5a7f99f241e4ba1df09",
+          "status": "prototype"
+        }
+      }
+    },
+    "ui/card-frame-moss": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/ui/card-frame-moss/versions/0.1.0/manifest.json",
+          "sha256": "c2f87c54d27d08f8fc010710566fedfc80a420768d8feeea6d51be06f03a6dec",
+          "status": "prototype"
+        },
+        "0.2.0": {
+          "manifest": "assets/ui/card-frame-moss/versions/0.2.0/manifest.json",
+          "sha256": "1b5821247c5ffd8315d7010ce00d2056cc73bb1284588971379204fa8496e9e0",
+          "status": "prototype"
+        }
+      }
+    },
+    "ui/card-nature-fire": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/ui/card-nature-fire/versions/0.1.0/manifest.json",
+          "sha256": "da20c598287ee9ae1e50510ccedc8e91d8c29bc0b4272f0e3c2dd19f17c51cd0",
+          "status": "prototype"
+        },
+        "0.2.0": {
+          "manifest": "assets/ui/card-nature-fire/versions/0.2.0/manifest.json",
+          "sha256": "73c41316b5ae616a3d6acd9b119437fc9cf98798f6f837465c2dec7afe99d9da",
+          "status": "prototype"
+        }
+      }
+    },
+    "ui/card-nature-forest": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/ui/card-nature-forest/versions/0.1.0/manifest.json",
+          "sha256": "48db5c8fb93759665b18fa8364fc6d20fea1919e669a012ce3299b70b827aec6",
+          "status": "prototype"
+        },
+        "0.2.0": {
+          "manifest": "assets/ui/card-nature-forest/versions/0.2.0/manifest.json",
+          "sha256": "6b3cbf0c326ddc3b5fcd8187b790bb058e942e53dbc0c96d39c756ac363a9835",
+          "status": "prototype"
+        }
+      }
+    },
+    "ui/card-nature-lightning": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/ui/card-nature-lightning/versions/0.1.0/manifest.json",
+          "sha256": "b4c176eb7a28d19d716c2666ce912701b54b2adf15bf91b8679af2b03475766c",
+          "status": "prototype"
+        },
+        "0.2.0": {
+          "manifest": "assets/ui/card-nature-lightning/versions/0.2.0/manifest.json",
+          "sha256": "b67ddf7450dd65779dae019f8e88229bf1c0b47cb66f248e8386022fea76e7f0",
+          "status": "prototype"
+        }
+      }
+    },
+    "ui/card-nature-water": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/ui/card-nature-water/versions/0.1.0/manifest.json",
+          "sha256": "8d765ec0fd2f443c5fd0b547dc2beff553cc78f1975368f80b7cc105dcb0a295",
+          "status": "prototype"
+        },
+        "0.2.0": {
+          "manifest": "assets/ui/card-nature-water/versions/0.2.0/manifest.json",
+          "sha256": "d037b99138fbba66c334c244a79b629fd6f1a12ac5d11aba44af11faf4ae96a7",
+          "status": "prototype"
+        }
+      }
+    },
     "ui/gold-approved": {
       "versions": {
         "1.0.0": {
@@ -694,6 +778,25 @@
         }
       }
     },
+    "ui/power-card-system": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/ui/power-card-system/versions/0.1.0/manifest.json",
+          "sha256": "d0ec1704c4cf195ff4065073aded285e4b64cf9b65e09286d1af55bcb01c2600",
+          "status": "draft"
+        },
+        "0.2.0": {
+          "manifest": "assets/ui/power-card-system/versions/0.2.0/manifest.json",
+          "sha256": "4bb86941c869786b8337d928086a4fe74a64014113f645ffe3c269d79a0257ee",
+          "status": "prototype"
+        },
+        "0.3.0": {
+          "manifest": "assets/ui/power-card-system/versions/0.3.0/manifest.json",
+          "sha256": "952c64427da4da7c2368c5368a10cc6f700bb08e7bc3f4505fe55ac003fcc2ed",
+          "status": "prototype"
+        }
+      }
+    },
     "ui/title-logo": {
       "versions": {
         "1.0.0": {
@@ -709,6 +812,56 @@
           "manifest": "assets/ui/title-menu/versions/1.0.0/manifest.json",
           "sha256": "c365e5ecff86f15a69de1943074202ef7a7ea95a205aa7720ad09d28aed63a05",
           "status": "production"
+        }
+      }
+    },
+    "umbrals/card-art-dew": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/umbrals/card-art-dew/versions/0.1.0/manifest.json",
+          "sha256": "6e5c7d9044937d1466a88e1b252266a0f5cb24c3a7a1e397ed4b9d17cdd6907c",
+          "status": "prototype"
+        },
+        "0.2.0": {
+          "manifest": "assets/umbrals/card-art-dew/versions/0.2.0/manifest.json",
+          "sha256": "735e0bb1dbfb2db57ad0c3408dd8160c899aa6ad4233051d46144f4ddd317b71",
+          "status": "prototype"
+        }
+      }
+    },
+    "umbrals/card-art-moss": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/umbrals/card-art-moss/versions/0.1.0/manifest.json",
+          "sha256": "3efdcd0f5ceda27d17fc4ff41f431bc01a8d5cc853424b0e4cd2f2554873d617",
+          "status": "prototype"
+        }
+      }
+    },
+    "umbrals/card-art-verdalio": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/umbrals/card-art-verdalio/versions/0.1.0/manifest.json",
+          "sha256": "4543aa1b210f8691c14bb5d2e6e3691830ff3da7bb0a628b154bccc86e29cbaa",
+          "status": "prototype"
+        }
+      }
+    },
+    "umbrals/card-target-dew": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/umbrals/card-target-dew/versions/0.1.0/manifest.json",
+          "sha256": "99f30f8ef2f5e36c078a6d3fe0b237eca66d0c5551c88785b1e6a7e1a0097334",
+          "status": "prototype"
+        }
+      }
+    },
+    "umbrals/card-target-moss": {
+      "versions": {
+        "0.1.0": {
+          "manifest": "assets/umbrals/card-target-moss/versions/0.1.0/manifest.json",
+          "sha256": "8d3e3865cff82325f981238ad37b46ef2490cc960c023e4f7bfd10a910a95582",
+          "status": "prototype"
         }
       }
     },

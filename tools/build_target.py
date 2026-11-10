@@ -43,6 +43,10 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--fixture-data', type=Path)
     args = parser.parse_args()
+    from card_asset_pipeline import export_gate
+    # Only a deliberately pinned new presentation enables its strict catalog gate.
+    # The legacy build remains available while artwork is pending review.
+    export_gate(ROOT)
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
     project = ROOT
@@ -52,7 +56,7 @@ def main():
         for name in ('scripts', 'content', 'assets', 'scenes'):
             if not (ROOT / name).is_dir(): continue
             shutil.copytree(ROOT / name, project / name, ignore=shutil.ignore_patterns('*.import', '*.uid'))
-        for relative in ('tests/browser/fixture_entry.gd', 'tests/browser/fixture_entry.tscn'):
+        for relative in ('tests/browser/fixture_entry.gd', 'tests/browser/fixture_entry.tscn', 'tests/browser/card_gallery.gd'):
             destination = project / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / relative, destination)

@@ -1,0 +1,93 @@
+{
+  "dependencies": [
+    {
+      "id": "characters/aquatic-family",
+      "version": "1.0.0"
+    },
+    {
+      "id": "characters/battle-creatures",
+      "version": "1.0.0"
+    },
+    {
+      "id": "characters/battle-evolved",
+      "version": "1.0.0"
+    },
+    {
+      "id": "characters/electric-adults",
+      "version": "2.0.0"
+    },
+    {
+      "id": "characters/electric-family",
+      "version": "2.1.0"
+    },
+    {
+      "id": "characters/foli-pilot",
+      "version": "1.1.0"
+    },
+    {
+      "id": "characters/folife-pilot",
+      "version": "1.1.0"
+    },
+    {
+      "id": "characters/folivel-pilot",
+      "version": "1.0.0"
+    },
+    {
+      "id": "characters/foslash-pilot",
+      "version": "1.0.0"
+    },
+    {
+      "id": "ui/card-frame-dew",
+      "version": "0.1.0"
+    },
+    {
+      "id": "ui/card-frame-moss",
+      "version": "0.1.0"
+    },
+    {
+      "id": "ui/card-nature-fire",
+      "version": "0.1.0"
+    },
+    {
+      "id": "ui/card-nature-forest",
+      "version": "0.1.0"
+    },
+    {
+      "id": "ui/card-nature-lightning",
+      "version": "0.1.0"
+    },
+    {
+      "id": "ui/card-nature-water",
+      "version": "0.1.0"
+    },
+    {
+      "id": "umbrals/card-art-dew",
+      "version": "0.1.0"
+    },
+    {
+      "id": "umbrals/card-art-moss",
+      "version": "0.1.0"
+    },
+    {
+      "id": "umbrals/card-art-verdalio",
+      "version": "0.1.0"
+    }
+  ],
+  "description": "Explicit development preview; two family frames, four type styles, six attack candidates and reused portraits; incomplete, not production approved",
+  "files": {
+    "presentation": {
+      "bytes": 29289,
+      "kind": "data",
+      "path": "presentation.json",
+      "sha256": "d2b30c9fc80da0d78d9047424be35e628e760e9c931f75246276e1acdc9cf30b"
+    }
+  },
+  "id": "ui/power-card-system",
+  "provenance": {
+    "kind": "Approved concept directly attached by Pedro; original generated frames and original vector components",
+    "reference_pixels": "Direct chat image 1280x720 inspected, no blocked transfer retry"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.2.0"
+}
