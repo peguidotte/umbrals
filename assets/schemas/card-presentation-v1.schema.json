@@ -1,0 +1,977 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "layout_version": {
+      "const": 1
+    },
+    "visual_references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "library_file_id": {
+            "type": "string",
+            "pattern": "^libfile_[a-z0-9]+$"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "availability": {
+            "enum": [
+              "blocked",
+              "inspected"
+            ]
+          }
+        },
+        "required": [
+          "library_file_id",
+          "purpose",
+          "availability"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "families": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "default_frame": {
+            "type": "object",
+            "properties": {
+              "asset": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9-]*/[a-z][a-z0-9-]*$"
+                      },
+                      "version": {
+                        "type": "string",
+                        "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+                      },
+                      "role": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9-]*$"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "version",
+                      "role"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "status": {
+                "enum": [
+                  "pending",
+                  "prototype",
+                  "approved"
+                ]
+              },
+              "review": {
+                "type": "string"
+              },
+              "reuse": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "review": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "reason",
+                  "review"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "asset",
+              "status",
+              "review"
+            ],
+            "additionalProperties": false
+          },
+          "reuse_default_for_forms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "uniqueItems": true
+          },
+          "form_overrides": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "asset": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "pattern": "^[a-z][a-z0-9-]*/[a-z][a-z0-9-]*$"
+                        },
+                        "version": {
+                          "type": "string",
+                          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+                        },
+                        "role": {
+                          "type": "string",
+                          "pattern": "^[a-z][a-z0-9-]*$"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "version",
+                        "role"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "pending",
+                    "prototype",
+                    "approved"
+                  ]
+                },
+                "review": {
+                  "type": "string"
+                },
+                "reuse": {
+                  "type": "object",
+                  "properties": {
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "review": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "reason",
+                    "review"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "asset",
+                "status",
+                "review"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "default_frame",
+          "reuse_default_for_forms",
+          "form_overrides"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "power_styles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "art_border": {
+            "type": "object",
+            "properties": {
+              "asset": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9-]*/[a-z][a-z0-9-]*$"
+                      },
+                      "version": {
+                        "type": "string",
+                        "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+                      },
+                      "role": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9-]*$"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "version",
+                      "role"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "status": {
+                "enum": [
+                  "pending",
+                  "prototype",
+                  "approved"
+                ]
+              },
+              "review": {
+                "type": "string"
+              },
+              "reuse": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "review": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "reason",
+                  "review"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "asset",
+              "status",
+              "review"
+            ],
+            "additionalProperties": false
+          },
+          "title_plate": {
+            "type": "object",
+            "properties": {
+              "asset": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9-]*/[a-z][a-z0-9-]*$"
+                      },
+                      "version": {
+                        "type": "string",
+                        "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+                      },
+                      "role": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9-]*$"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "version",
+                      "role"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "status": {
+                "enum": [
+                  "pending",
+                  "prototype",
+                  "approved"
+                ]
+              },
+              "review": {
+                "type": "string"
+              },
+              "reuse": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "review": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "reason",
+                  "review"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "asset",
+              "status",
+              "review"
+            ],
+            "additionalProperties": false
+          },
+          "owner_plate": {
+            "type": "object",
+            "properties": {
+              "asset": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9-]*/[a-z][a-z0-9-]*$"
+                      },
+                      "version": {
+                        "type": "string",
+                        "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+                      },
+                      "role": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9-]*$"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "version",
+                      "role"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "status": {
+                "enum": [
+                  "pending",
+                  "prototype",
+                  "approved"
+                ]
+              },
+              "review": {
+                "type": "string"
+              },
+              "reuse": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "review": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "reason",
+                  "review"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "asset",
+              "status",
+              "review"
+            ],
+            "additionalProperties": false
+          },
+          "tokens": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "background": {
+                    "type": "string",
+                    "pattern": "^#[a-fA-F0-9]{6}$"
+                  },
+                  "foreground": {
+                    "type": "string",
+                    "pattern": "^#[a-fA-F0-9]{6}$"
+                  }
+                },
+                "required": [
+                  "background",
+                  "foreground"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "art_border",
+          "title_plate",
+          "owner_plate",
+          "tokens"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "illustrations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "asset": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9-]*/[a-z][a-z0-9-]*$"
+                      },
+                      "version": {
+                        "type": "string",
+                        "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+                      },
+                      "role": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9-]*$"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "version",
+                      "role"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "status": {
+                "enum": [
+                  "pending",
+                  "prototype",
+                  "approved"
+                ]
+              },
+              "review": {
+                "type": "string"
+              },
+              "reuse": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "review": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "reason",
+                  "review"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "asset",
+              "status",
+              "review"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "target_portraits": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "asset": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9-]*/[a-z][a-z0-9-]*$"
+                  },
+                  "version": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+                  },
+                  "role": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9-]*$"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version",
+                  "role"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "prototype",
+              "approved"
+            ]
+          },
+          "review": {
+            "type": "string"
+          },
+          "reuse": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              },
+              "review": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "reason",
+              "review"
+            ],
+            "additionalProperties": false
+          },
+          "crop": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1
+              }
+            ],
+            "items": false,
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "focal_point": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "required": [
+          "asset",
+          "status",
+          "review",
+          "crop",
+          "focal_point"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "enemy_portraits": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "asset": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9-]*/[a-z][a-z0-9-]*$"
+                  },
+                  "version": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+                  },
+                  "role": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9-]*$"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version",
+                  "role"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "prototype",
+              "approved"
+            ]
+          },
+          "review": {
+            "type": "string"
+          },
+          "reuse": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              },
+              "review": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "reason",
+              "review"
+            ],
+            "additionalProperties": false
+          },
+          "crop": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1
+              }
+            ],
+            "items": false,
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "focal_point": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "required": [
+          "asset",
+          "status",
+          "review",
+          "crop",
+          "focal_point"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "layout": {
+      "type": "object",
+      "properties": {
+        "aspect": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "art_region": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "safe_region": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "anchors": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "owner": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "cost": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "target": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "required": [
+            "title",
+            "owner",
+            "cost",
+            "target"
+          ],
+          "additionalProperties": false
+        },
+        "text": {
+          "type": "object",
+          "properties": {
+            "native": {
+              "const": true
+            },
+            "title_max_lines": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "owner_max_lines": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          "required": [
+            "native",
+            "title_max_lines",
+            "owner_max_lines"
+          ],
+          "additionalProperties": false
+        },
+        "review": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "aspect",
+        "art_region",
+        "safe_region",
+        "anchors",
+        "text",
+        "review"
+      ],
+      "additionalProperties": false
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "enum": [
+            "development",
+            "catalog"
+          ]
+        },
+        "demonstrations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "species_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "form_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "power_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "species_id",
+              "form_id",
+              "power_id",
+              "reason"
+            ],
+            "additionalProperties": false
+          },
+          "uniqueItems": true
+        },
+        "pending": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "scope",
+        "demonstrations",
+        "pending"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "layout_version",
+    "visual_references",
+    "families",
+    "power_styles",
+    "illustrations",
+    "target_portraits",
+    "enemy_portraits",
+    "layout",
+    "coverage"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:umbral:card-presentation:v1",
+  "title": "Umbral card presentation v1"
+}

@@ -243,8 +243,9 @@ func _restore_context(origin: Dictionary, revision: int) -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	if not is_inside_tree() or revision != context_revision or not is_instance_valid(preferred) or not preferred.has_focus(): return
+	# History owns the user's viewport. Revealing focus again here can replace
+	# that exact position with another scroll after the record has been rebuilt.
 	detail_scroll.scroll_vertical = int(origin.scroll)
-	detail_scroll.ensure_control_visible(preferred)
 
 func _update_back_hint() -> void:
 	if not is_instance_valid(close): return

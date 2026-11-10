@@ -1,0 +1,78 @@
+{
+  "dependencies": [],
+  "description": "Card reference correction candidate; human visual approval pending",
+  "files": {
+    "demo-master": {
+      "bytes": 2244754,
+      "kind": "review",
+      "path": "review/exec-2e7c9e17-dbae-4585-82c9-13f26020c674.png",
+      "sha256": "ec91075eb460c0c30893335c5401060dfa15027fb5746c5c308910fb0871b06f",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1173,
+          1341
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "generation-master": {
+      "bytes": 2234459,
+      "kind": "review",
+      "path": "review/exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+      "sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1173,
+          1341
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "power-dew-mend": {
+      "bytes": 2234459,
+      "kind": "texture",
+      "path": "power-dew-mend.png",
+      "sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1173,
+          1341
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "power-thorn-lash-demo": {
+      "bytes": 2244754,
+      "kind": "texture",
+      "path": "power-thorn-lash-demo.png",
+      "sha256": "ec91075eb460c0c30893335c5401060dfa15027fb5746c5c308910fb0871b06f",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1173,
+          1341
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    }
+  },
+  "id": "umbrals/card-art-dew",
+  "provenance": {
+    "demo": "Isolated nonplayable Lonlon/Forest example; never grants learning",
+    "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+    "license": "Generated for this project; originals preserved with metadata",
+    "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+    "source_file": "exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+    "source_sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.2.0"
+}

@@ -307,6 +307,13 @@ folder=Path(os.environ['UMBRAL_RESULTS_DIR'])
         self.assertIn('natures_and_reactions', tasks['rules'].cases)
         self.assertEqual(tasks['expedition-save'].minimum, 24)
 
+    def test_inherited_card_input_tracks_its_actual_test_source(self):
+        from unittest.mock import patch
+        with patch('harness_lib.planning.changed_paths', return_value=['tests/ui_flow_test.gd']):
+            result = plan(changed=True)
+        self.assertIn('ui-flow', result['requested'])
+        self.assertIn('card-input', result['requested'])
+
     def test_preflight_detects_a_diverged_main(self):
         from harness_lib.preflight import inspect
         def git(*args):

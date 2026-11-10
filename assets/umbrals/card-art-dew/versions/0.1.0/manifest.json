@@ -1,0 +1,63 @@
+{
+  "dependencies": [],
+  "description": "Two explicit initial-form power illustration candidates; not final artwork",
+  "files": {
+    "power-dew-mend": {
+      "bytes": 2187998,
+      "kind": "texture",
+      "path": "power-dew-mend.png",
+      "provenance": {
+        "identity": "dew",
+        "kind": "Image Gen prototype from the directly attached approved full-card concept",
+        "original_metadata": "PNG bytes copied unchanged",
+        "power": "dew_mend",
+        "review_status": "Candidate pixels inspected; generated poses/details vary; not approved final artwork",
+        "source_file": "exec-c98bd034-33bb-474f-b56f-97b330d79d7c.png",
+        "source_sha256": "3243b35c9da2c603839deeaafd0641626698dad865e8ca7f89c8def2221779c5"
+      },
+      "sha256": "3243b35c9da2c603839deeaafd0641626698dad865e8ca7f89c8def2221779c5",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "power-tidal-splash": {
+      "bytes": 2382778,
+      "kind": "texture",
+      "path": "power-tidal-splash.png",
+      "provenance": {
+        "identity": "dew",
+        "kind": "Image Gen prototype from the directly attached approved full-card concept",
+        "original_metadata": "PNG bytes copied unchanged",
+        "power": "tidal_splash",
+        "review_status": "Candidate pixels inspected; generated poses/details vary; not approved final artwork",
+        "source_file": "exec-4b1d624d-c8c4-4477-9c34-8f64f59a796f.png",
+        "source_sha256": "9e49a20e0fa726cd227280252f95606160ee42aef7febf1c8acd099fc6a8753c"
+      },
+      "sha256": "9e49a20e0fa726cd227280252f95606160ee42aef7febf1c8acd099fc6a8753c",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    }
+  },
+  "id": "umbrals/card-art-dew",
+  "provenance": {
+    "kind": "Image Gen from direct approved reference, original metadata retained",
+    "license": "Generated for this project; human identity/fidelity review pending",
+    "reference": "Pedro direct card concept attachment 1280x720, visible in chat"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.1.0"
+}

@@ -9,6 +9,7 @@ const Actor = preload("res://scripts/ui/actor.gd")
 const Effects = preload("res://scripts/ui/effects.gd")
 const ActionMeter = preload("res://scripts/ui/action_meter.gd")
 const Hand = preload("res://scripts/ui/hand.gd")
+const CardCatalog = preload("res://scripts/assets/card_visual_catalog.gd")
 var ui: RefCounted
 var visual_layer: Control
 var effects: Control
@@ -34,6 +35,7 @@ var command_buttons: Array = []
 
 func build(user_interface: RefCounted, safe_margin: Callable) -> void:
 	ui = user_interface
+	var painted: bool = CardCatalog.active() != null
 	name = "BattleScreen"
 	visual_layer = Control.new()
 	visual_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -46,7 +48,14 @@ func build(user_interface: RefCounted, safe_margin: Callable) -> void:
 			actor.enemy = side == "enemy"
 			actor.slot = slot
 			var x: float = (0.255 if slot == 1 else 0.235) if side == "ally" else (0.745 if slot == 1 else 0.765)
-			_at(actor, visual_layer, Vector2(x, [0.18, 0.51, 0.84][slot]), Vector2(260, 210))
+			var y: float = [.18, .51, .84][slot] * (.84 if painted else 1.0)
+			_at(actor, visual_layer, Vector2(x, y), Vector2(260, 210))
+			if painted:
+				actor.pivot_offset = Vector2(130, 105)
+				actor.scale = Vector2.ONE * .8
+				actor.label_zoom = 1.25
+				actor.caption.offset_top = -62
+				actor.caption.offset_bottom = -32
 			control_created.emit(actor, ("party." if side == "ally" else "enemy.") + str(slot))
 			actor.pressed.connect(func(): slot_requested.emit(side, slot))
 			if side == "ally": actors.append(actor)
@@ -90,12 +99,24 @@ func build(user_interface: RefCounted, safe_margin: Callable) -> void:
 	_at(hints, self, Vector2(0.5, 1), Vector2(600, 48))
 	hints.offset_top = -296
 	hints.offset_bottom = -248
+	if painted:
+		hints.anchor_top = 0
+		hints.anchor_bottom = 0
+		hints.offset_top = 162
+		hints.offset_bottom = 214
 	preview_label = ui.label("", 18, UI.PAPER, false, true)
 	preview_label.clip_text = true
 	preview_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	hints.add_child(preview_label)
 	notice_label = ui.label("", 15, UI.MUTED, false, true)
 	hints.add_child(notice_label)
+	if painted:
+		notice_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		notice_label.max_lines_visible = 2
+		notice_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+		for label: Label in [preview_label, notice_label]:
+			label.add_theme_color_override("font_outline_color", UI.INK)
+			label.add_theme_constant_override("outline_size", 3)
 	hud_panel = PanelContainer.new()
 	self.add_child(hud_panel)
 	hud_panel.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
@@ -131,6 +152,7 @@ func build(user_interface: RefCounted, safe_margin: Callable) -> void:
 	hand_scroll.follow_focus = true
 	hud.add_child(hand_scroll)
 	hand_view = Hand.new()
+	hand_view.painted = painted
 	hand_view.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hand_view.custom_minimum_size = Vector2(540, 208)
 	hand_scroll.add_child(hand_view)

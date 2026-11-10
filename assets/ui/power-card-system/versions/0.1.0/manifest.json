@@ -1,0 +1,22 @@
+{
+  "dependencies": [],
+  "description": "Card presentation contract only; all artwork and layout review pending. Not runtime-pinned.",
+  "files": {
+    "presentation": {
+      "bytes": 20979,
+      "kind": "data",
+      "path": "presentation.json",
+      "sha256": "074ff44d181ddb946e664a1c5e4090b13af7e7648254816acbe3ef90de3e3345"
+    }
+  },
+  "id": "ui/power-card-system",
+  "provenance": {
+    "kind": "technical presentation metadata; no artwork produced",
+    "source_commit": "f29752cac7d6525865091896a1466eb65a490c9c",
+    "spec": "libfile_153984667b90819186825c23feba554b",
+    "visual_access": "Both Library image transfers failed; no pixel reproduction attempted"
+  },
+  "schema_version": 1,
+  "status": "draft",
+  "version": "0.1.0"
+}

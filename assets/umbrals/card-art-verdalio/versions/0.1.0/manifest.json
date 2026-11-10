@@ -1,0 +1,63 @@
+{
+  "dependencies": [],
+  "description": "Two adult Folife power illustration candidates; distinct from initial Foli, not final artwork",
+  "files": {
+    "power-root-wall": {
+      "bytes": 2695939,
+      "kind": "texture",
+      "path": "power-root-wall.png",
+      "provenance": {
+        "identity": "verdalio",
+        "kind": "Image Gen prototype from approved composition and current Folife identity reference",
+        "original_metadata": "PNG bytes copied unchanged",
+        "power": "root_wall",
+        "review_status": "Candidate pixels inspected; generated details vary; not approved final artwork",
+        "source_file": "exec-523ff925-fdcf-48ea-862f-cefb3ddd89de.png",
+        "source_sha256": "7228499452401cff239e27f7a8472789b2c5239637afde3ad2bf0cbbfb4f0c7e"
+      },
+      "sha256": "7228499452401cff239e27f7a8472789b2c5239637afde3ad2bf0cbbfb4f0c7e",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "power-thorn-lash": {
+      "bytes": 2501007,
+      "kind": "texture",
+      "path": "power-thorn-lash.png",
+      "provenance": {
+        "identity": "verdalio",
+        "kind": "Image Gen prototype from approved composition and current Folife identity reference",
+        "original_metadata": "PNG bytes copied unchanged",
+        "power": "thorn_lash",
+        "review_status": "Candidate pixels inspected; generated details vary; not approved final artwork",
+        "source_file": "exec-91c8a5a5-da41-42fd-99e7-efcde0cd9c15.png",
+        "source_sha256": "bd09e1e175df59ec03afca008e33dfb18d00cc16dd2079fb278db1c5c32aaed8"
+      },
+      "sha256": "bd09e1e175df59ec03afca008e33dfb18d00cc16dd2079fb278db1c5c32aaed8",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    }
+  },
+  "id": "umbrals/card-art-verdalio",
+  "provenance": {
+    "kind": "Image Gen from direct approved reference, original metadata retained",
+    "license": "Generated for this project; human identity/fidelity review pending",
+    "reference": "Pedro direct card concept attachment 1280x720, visible in chat"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.1.0"
+}

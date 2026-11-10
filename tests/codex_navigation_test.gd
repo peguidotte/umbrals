@@ -133,6 +133,10 @@ func run() -> void:
 	# depends on the record layout, and the source must be genuinely visible.
 	await process_frame
 	var saved_scroll: int = app.screen_host.modal_root.detail_scroll.scroll_vertical
+	# A user may move the viewport after focusing a link. Back must preserve
+	# that origin rather than run another automatic focus-reveal scroll.
+	app.screen_host.modal_root.detail_scroll.scroll_vertical = maxi(1, saved_scroll - 11)
+	saved_scroll = app.screen_host.modal_root.detail_scroll.scroll_vertical
 	expect(saved_scroll > 0, "Origin record is genuinely scrolled")
 	await capture("01-origin")
 	var model: String = JSON.stringify([app.game.party,app.game.hand,app.game.rng.state,app.codex_progress.records,app.session.run_save.load_snapshot()])
@@ -142,6 +146,8 @@ func run() -> void:
 	await capture("02-power")
 	await key(KEY_ESCAPE)
 	expect(app.screens.top() == "codex" and app.screen_host.modal_root.selected == "mareveu" and app.screen_host.modal_root.page == 1, "Back restores evolution and gallery page")
+	if app.screen_host.modal_root.detail_scroll.scroll_vertical != saved_scroll:
+		print(JSON.stringify({"event":"codex_scroll_mismatch","saved":saved_scroll,"actual":app.screen_host.modal_root.detail_scroll.scroll_vertical,"maximum":app.screen_host.modal_root.detail_scroll.get_v_scroll_bar().max_value,"page":app.screen_host.modal_root.detail_scroll.get_v_scroll_bar().page,"record_minimum":app.screen_host.modal_root.details.custom_minimum_size.y,"focus_rect":app.registry["codex.related.moon_tide"].get_global_rect()}))
 	expect(app.screen_host.modal_root.detail_scroll.scroll_vertical == saved_scroll, "Back restores exact scroll position")
 	expect(root.gui_get_focus_owner() == app.registry["codex.related.moon_tide"], "Back restores technique focus")
 	await capture("03-returned")

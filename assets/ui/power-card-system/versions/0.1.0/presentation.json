@@ -1,0 +1,980 @@
+{
+  "coverage": {
+    "demonstrations": [
+      {
+        "form_id": "dew",
+        "power_id": "thorn_lash",
+        "reason": "Nonplayable approved-concept combination only; never grants learning",
+        "species_id": "dew"
+      }
+    ],
+    "pending": [
+      "art_border:fire",
+      "art_border:forest",
+      "art_border:lightning",
+      "art_border:water",
+      "enemy_portraits:characters/owl",
+      "enemy_portraits:characters/spore",
+      "enemy_portraits:characters/stag",
+      "frame:dew/dew",
+      "frame:dew/londraval",
+      "frame:dew/lonelo",
+      "frame:dew/mareveu",
+      "frame:ember/ember",
+      "frame:ember/ignivar",
+      "frame:moss/folivel",
+      "frame:moss/foslash",
+      "frame:moss/moss",
+      "frame:moss/verdalio",
+      "frame:volt/auravel",
+      "frame:volt/tempestral",
+      "frame:volt/volt",
+      "frame:volt/zuldar",
+      "illustration:dew/dew/dew_mend",
+      "illustration:dew/dew/moon_tide",
+      "illustration:dew/dew/rain_sweep",
+      "illustration:dew/dew/tidal_splash",
+      "illustration:dew/londraval/dew_mend",
+      "illustration:dew/londraval/moon_tide",
+      "illustration:dew/londraval/rain_sweep",
+      "illustration:dew/londraval/tidal_splash",
+      "illustration:dew/lonelo/dew_mend",
+      "illustration:dew/lonelo/moon_tide",
+      "illustration:dew/lonelo/rain_sweep",
+      "illustration:dew/lonelo/tidal_splash",
+      "illustration:dew/mareveu/dew_mend",
+      "illustration:dew/mareveu/moon_tide",
+      "illustration:dew/mareveu/rain_sweep",
+      "illustration:dew/mareveu/tidal_splash",
+      "illustration:ember/ember/cinder_claw",
+      "illustration:ember/ember/fireball",
+      "illustration:ember/ember/flame_guard",
+      "illustration:ember/ember/inferno",
+      "illustration:ember/ignivar/cinder_claw",
+      "illustration:ember/ignivar/fireball",
+      "illustration:ember/ignivar/flame_guard",
+      "illustration:ember/ignivar/inferno",
+      "illustration:moss/folivel/life_seed",
+      "illustration:moss/folivel/root_wall",
+      "illustration:moss/folivel/sanctuary",
+      "illustration:moss/folivel/sowing",
+      "illustration:moss/folivel/thorn_lash",
+      "illustration:moss/foslash/life_seed",
+      "illustration:moss/foslash/root_wall",
+      "illustration:moss/foslash/sanctuary",
+      "illustration:moss/foslash/sowing",
+      "illustration:moss/foslash/thorn_lash",
+      "illustration:moss/moss/life_seed",
+      "illustration:moss/moss/root_wall",
+      "illustration:moss/moss/sanctuary",
+      "illustration:moss/moss/sowing",
+      "illustration:moss/moss/thorn_lash",
+      "illustration:moss/verdalio/life_seed",
+      "illustration:moss/verdalio/root_wall",
+      "illustration:moss/verdalio/sanctuary",
+      "illustration:moss/verdalio/sowing",
+      "illustration:moss/verdalio/thorn_lash",
+      "illustration:volt/auravel/dew_mend",
+      "illustration:volt/auravel/interference",
+      "illustration:volt/auravel/judgment",
+      "illustration:volt/auravel/lightning",
+      "illustration:volt/auravel/rain_sweep",
+      "illustration:volt/auravel/static_veil",
+      "illustration:volt/auravel/storm_dive",
+      "illustration:volt/auravel/tidal_splash",
+      "illustration:volt/tempestral/dew_mend",
+      "illustration:volt/tempestral/interference",
+      "illustration:volt/tempestral/judgment",
+      "illustration:volt/tempestral/lightning",
+      "illustration:volt/tempestral/rain_sweep",
+      "illustration:volt/tempestral/static_veil",
+      "illustration:volt/tempestral/storm_dive",
+      "illustration:volt/tempestral/tidal_splash",
+      "illustration:volt/volt/interference",
+      "illustration:volt/volt/judgment",
+      "illustration:volt/volt/lightning",
+      "illustration:volt/volt/static_veil",
+      "illustration:volt/volt/storm_dive",
+      "illustration:volt/zuldar/dew_mend",
+      "illustration:volt/zuldar/interference",
+      "illustration:volt/zuldar/judgment",
+      "illustration:volt/zuldar/lightning",
+      "illustration:volt/zuldar/rain_sweep",
+      "illustration:volt/zuldar/static_veil",
+      "illustration:volt/zuldar/storm_dive",
+      "illustration:volt/zuldar/tidal_splash",
+      "owner_plate:fire",
+      "owner_plate:forest",
+      "owner_plate:lightning",
+      "owner_plate:water",
+      "target_portraits:auravel",
+      "target_portraits:dew",
+      "target_portraits:ember",
+      "target_portraits:folivel",
+      "target_portraits:foslash",
+      "target_portraits:ignivar",
+      "target_portraits:londraval",
+      "target_portraits:lonelo",
+      "target_portraits:mareveu",
+      "target_portraits:moss",
+      "target_portraits:tempestral",
+      "target_portraits:verdalio",
+      "target_portraits:volt",
+      "target_portraits:zuldar",
+      "title_plate:fire",
+      "title_plate:forest",
+      "title_plate:lightning",
+      "title_plate:water",
+      "tokens:fire",
+      "tokens:forest",
+      "tokens:lightning",
+      "tokens:water"
+    ],
+    "scope": "development"
+  },
+  "enemy_portraits": {
+    "characters/owl": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "characters/spore": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "characters/stag": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    }
+  },
+  "families": {
+    "dew": {
+      "default_frame": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "form_overrides": {},
+      "reuse_default_for_forms": [
+        "dew",
+        "londraval",
+        "lonelo",
+        "mareveu"
+      ]
+    },
+    "ember": {
+      "default_frame": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "form_overrides": {},
+      "reuse_default_for_forms": [
+        "ember",
+        "ignivar"
+      ]
+    },
+    "moss": {
+      "default_frame": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "form_overrides": {},
+      "reuse_default_for_forms": [
+        "folivel",
+        "foslash",
+        "moss",
+        "verdalio"
+      ]
+    },
+    "volt": {
+      "default_frame": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "form_overrides": {},
+      "reuse_default_for_forms": [
+        "auravel",
+        "tempestral",
+        "volt",
+        "zuldar"
+      ]
+    }
+  },
+  "illustrations": {
+    "dew": {
+      "dew": {
+        "dew_mend": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "moon_tide": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "tidal_splash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "londraval": {
+        "dew_mend": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "moon_tide": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "tidal_splash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "lonelo": {
+        "dew_mend": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "moon_tide": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "tidal_splash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "mareveu": {
+        "dew_mend": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "moon_tide": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "tidal_splash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      }
+    },
+    "ember": {
+      "ember": {
+        "cinder_claw": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "fireball": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "flame_guard": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "inferno": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "ignivar": {
+        "cinder_claw": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "fireball": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "flame_guard": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "inferno": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      }
+    },
+    "moss": {
+      "folivel": {
+        "life_seed": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "root_wall": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sanctuary": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sowing": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "thorn_lash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "foslash": {
+        "life_seed": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "root_wall": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sanctuary": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sowing": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "thorn_lash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "moss": {
+        "life_seed": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "root_wall": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sanctuary": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sowing": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "thorn_lash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "verdalio": {
+        "life_seed": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "root_wall": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sanctuary": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sowing": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "thorn_lash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      }
+    },
+    "volt": {
+      "auravel": {
+        "dew_mend": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "interference": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "judgment": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "lightning": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "static_veil": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "storm_dive": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "tidal_splash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "tempestral": {
+        "dew_mend": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "interference": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "judgment": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "lightning": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "static_veil": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "storm_dive": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "tidal_splash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "volt": {
+        "interference": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "judgment": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "lightning": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "static_veil": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "storm_dive": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "zuldar": {
+        "dew_mend": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "interference": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "judgment": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "lightning": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "static_veil": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "storm_dive": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "tidal_splash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      }
+    }
+  },
+  "layout": {
+    "anchors": {
+      "cost": [
+        0.1,
+        0.08
+      ],
+      "owner": [
+        0.5,
+        0.94
+      ],
+      "target": [
+        0.88,
+        0.08
+      ],
+      "title": [
+        0.5,
+        0.7
+      ]
+    },
+    "art_region": [
+      0.08,
+      0.15,
+      0.84,
+      0.48
+    ],
+    "aspect": 0.65,
+    "review": "",
+    "safe_region": [
+      0.05,
+      0.05,
+      0.9,
+      0.9
+    ],
+    "text": {
+      "native": true,
+      "owner_max_lines": 1,
+      "title_max_lines": 2
+    }
+  },
+  "layout_version": 1,
+  "power_styles": {
+    "fire": {
+      "art_border": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "owner_plate": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "title_plate": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "tokens": null
+    },
+    "forest": {
+      "art_border": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "owner_plate": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "title_plate": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "tokens": null
+    },
+    "lightning": {
+      "art_border": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "owner_plate": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "title_plate": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "tokens": null
+    },
+    "water": {
+      "art_border": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "owner_plate": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "title_plate": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "tokens": null
+    }
+  },
+  "schema_version": 1,
+  "target_portraits": {
+    "auravel": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "dew": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "ember": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "folivel": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "foslash": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "ignivar": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "londraval": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "lonelo": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "mareveu": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "moss": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "tempestral": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "verdalio": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "volt": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    },
+    "zuldar": {
+      "asset": null,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "",
+      "status": "pending"
+    }
+  },
+  "visual_references": [
+    {
+      "availability": "blocked",
+      "library_file_id": "libfile_5c99f7cc1ff481919a251afd30d5d28d",
+      "purpose": "Original official reference"
+    },
+    {
+      "availability": "blocked",
+      "library_file_id": "libfile_d3ebb3c8c5888191a652713b6cc5b870",
+      "purpose": "Approved final refinement; pixel download failed in this environment"
+    }
+  ]
+}

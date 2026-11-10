@@ -22,6 +22,7 @@ func register(node: Control, key: String, screen: String) -> Control:
 	node.focus_entered.connect(_reveal.bind(node))
 	node.item_rect_changed.connect(debug_requested.emit)
 	if key.begins_with("hand."):
+		node.pose_settled.connect(debug_requested.emit)
 		var index: int = int(key.get_slice(".", 1))
 		node.focus_entered.connect(func(): card_pointed.emit(index))
 		node.mouse_entered.connect(func(): card_pointed.emit(index))

@@ -1,0 +1,83 @@
+{
+  "dependencies": [],
+  "description": "Card reference correction candidate; human visual approval pending",
+  "files": {
+    "art-border": {
+      "bytes": 9159,
+      "kind": "texture",
+      "path": "art-border.png",
+      "sha256": "937fd48aebd88da2270696f8391004468482e6fa8039ececf27be878fef4b112",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "generation-master": {
+      "bytes": 697179,
+      "kind": "review",
+      "path": "review/exec-bf42bbe2-e1de-43dd-b2fd-cf3cde305e5c.png",
+      "sha256": "fd481095185ef22dea7375f26c9c4b06847606b9b30e2bea0835ea0a90c4df21",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "owner-plate": {
+      "bytes": 322908,
+      "kind": "texture",
+      "path": "owner-plate.png",
+      "sha256": "1799bdf7a9bac9d4b2bae57c2876f9bdf684ebdfe3c232c42bb61d350cb28fdb",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1117,
+          205
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "source-art-border": {
+      "bytes": 391,
+      "kind": "review",
+      "path": "review/art-border.svg",
+      "sha256": "d84bee37fd3f175c890d1a774df8660cf1939fc9b3ea4638e7d342c7d34df273"
+    },
+    "title-plate": {
+      "bytes": 297462,
+      "kind": "texture",
+      "path": "title-plate.png",
+      "sha256": "a7f88ee06c35e412be6f2b89fdead4b5ea06c8224387be5209063385a50b56f6",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          978,
+          215
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "ui/card-nature-forest",
+  "provenance": {
+    "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+    "license": "Generated for this project; originals preserved with metadata",
+    "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+    "source_file": "exec-bf42bbe2-e1de-43dd-b2fd-cf3cde305e5c.png",
+    "source_sha256": "fd481095185ef22dea7375f26c9c4b06847606b9b30e2bea0835ea0a90c4df21"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.2.0"
+}

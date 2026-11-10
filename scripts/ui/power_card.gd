@@ -1,11 +1,16 @@
 class_name UmbralPowerCard
 extends Button
+signal pose_settled
 const Companion = preload("res://scripts/battle/aquatic_companion.gd")
 const Assets = preload("res://scripts/assets/catalog.gd")
 const Content = preload("res://scripts/content.gd")
 const UI = preload("res://scripts/ui/kit.gd")
 const Conditions = preload("res://scripts/battle/conditions.gd")
 const Rules = preload("res://scripts/rules.gd")
+const CardCatalog = preload("res://scripts/assets/card_visual_catalog.gd")
+const Presentation = preload("res://scripts/ui/card_presentation.gd")
+const Renderer = preload("res://scripts/ui/card_renderer.gd")
+const RAISED_Z: int = 20
 var card: Dictionary = {}
 var individual: Dictionary = {}
 var effect: Dictionary = {}
@@ -24,15 +29,32 @@ var insufficient_actions: bool = false
 var blocked: bool = false
 var blocked_caption: String = "INDISPONÍVEL"
 var target_caption: String = ""
+var presentation_catalog: RefCounted
+var presentation: Dictionary = {}
+var _owner_visual: Dictionary = {}
+var _owner_visual_key: String = ""
+var _public_target: Dictionary = {"kind": "none"}
+var _base_tooltip: String = ""
+var display_only: bool = false
+var fanned: bool = false:
+	set(value):
+		if fanned == value: return
+		fanned = value
+		# A selected card moves immediately. Commit this UI gesture on press,
+		# before the animation can move its release hit area under the pointer.
+		action_mode = BaseButton.ACTION_MODE_BUTTON_PRESS if value else BaseButton.ACTION_MODE_BUTTON_RELEASE
+var hand_order: int = 0
+var pose_in_motion: bool = false
+var fan_prominent: bool = false
 
 func _ready() -> void:
 	for state in ["normal", "hover", "pressed", "focus", "disabled"]: add_theme_stylebox_override(state, StyleBoxEmpty.new())
 	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	mouse_entered.connect(_react)
 	mouse_exited.connect(_react)
-	focus_entered.connect(_react)
+	focus_entered.connect(_focus_card)
 	focus_exited.connect(_react)
-	custom_minimum_size = Vector2.ZERO
+	if not display_only: custom_minimum_size = Vector2.ZERO
 
 func configure(data: Dictionary, umbral: Dictionary, team: Array, large: float, reduce: bool, revision: int = 0) -> void:
 	card = data
@@ -48,7 +70,30 @@ func configure(data: Dictionary, umbral: Dictionary, team: Array, large: float, 
 	tooltip_text += "\n" + Content.NATURES[power.nature].name + "\n" + effect_text(effect)
 	tooltip_text += "\nExecução: %s · Velocidade %d" % ["prioritária" if int(power.get("priority", 0)) > 0 else "normal", int(individual.get("speed", 0))]
 	if Companion.available(individual, effect, revision): tooltip_text += "\n" + Companion.description()
+	_base_tooltip = tooltip_text
+	if presentation_catalog == null: presentation_catalog = CardCatalog.active()
+	if presentation_catalog != null:
+		texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+		var key: String = "/".join([presentation_catalog.release_key, str(individual.species), Content.form_id(individual), str(card.power), str(power.nature)])
+		if key != _owner_visual_key:
+			_owner_visual_key = key
+			_owner_visual = presentation_catalog.resolve_owner_visual(str(individual.species), Content.form_id(individual), str(card.power), str(power.nature))
+		_refresh_presentation()
 	queue_redraw()
+
+func set_public_target(target: Dictionary) -> void:
+	if _public_target == target: return
+	_public_target = target.duplicate(true)
+	if presentation_catalog != null and not card.is_empty(): _refresh_presentation()
+	queue_redraw()
+
+func _refresh_presentation() -> void:
+	var owner_view: Dictionary = {"uid": individual.uid, "species": individual.species, "form_id": Content.form_id(individual), "name": Content.display_name(individual)}
+	presentation = Presentation.build(card, owner_view, power, effect, _owner_visual, presentation_catalog.resolve_target_visual(_public_target))
+	tooltip_text = _base_tooltip
+	if not str(_public_target.get("label", "")).is_empty(): tooltip_text += "\nAlvo: " + str(_public_target.label)
+	if not presentation.placeholder_caption.is_empty(): tooltip_text += "\n" + presentation.placeholder_caption
+	accessibility_name = "%s · %s · %d · %s" % [str(power.name).replace("\n", " "), Content.display_name(individual), int(individual.uid), tooltip_text]
 
 static func effect_text(stats: Dictionary) -> String:
 	var lines: Array[String] = []
@@ -80,19 +125,46 @@ func place(base: Vector2, angle: float) -> void:
 func _react() -> void:
 	if not is_inside_tree(): return
 	if is_instance_valid(movement): movement.kill()
+	pose_in_motion = false
+	if display_only:
+		position = home
+		rotation = home_rotation
+		scale = Vector2.ONE
+		queue_redraw()
+		return
 	var raised: bool = has_focus() or is_hovered()
-	var target: Vector2 = home - Vector2(0, (10 if chosen else 0) + (5 if raised else 0))
-	z_index = 6 if raised else 4 if chosen else 0
+	var lifted: bool = fanned and fan_prominent and chosen
+	var zoom: float = 1.4 if lifted else 1.0
+	var target: Vector2 = home - Vector2(0, (145 if lifted else 18 if chosen else 0) if fanned else (10 if chosen else 0) + (5 if raised else 0))
+	if lifted:
+		# Bring this same button forward within the fan's middle corridor so it
+		# cannot cover either team's lower body/target. Other cards stay in hand.
+		var extent: float = (get_parent() as Control).size.x
+		target.x = clampf(target.x, extent * .3, extent * .7 - size.x)
+	var angle: float = 0 if lifted or not fanned else home_rotation
+	z_index = RAISED_Z if lifted else 10 if chosen else hand_order if fanned else 0
+	if fanned: get_parent().sync_layers()
 	if reduced_motion:
 		position = target
-		scale = Vector2.ONE
-		rotation = 0
+		scale = Vector2.ONE * zoom
+		rotation = angle
+		pose_settled.emit()
 	else:
+		pose_in_motion = true
 		movement = create_tween().set_parallel(true)
 		movement.tween_property(self, "position", target, 0.14).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-		movement.tween_property(self, "scale", Vector2.ONE, 0.14)
-		movement.tween_property(self, "rotation", 0.0, 0.14)
+		movement.tween_property(self, "scale", Vector2.ONE * zoom, 0.14)
+		movement.tween_property(self, "rotation", angle, 0.14)
+		movement.finished.connect(_pose_finished)
 	queue_redraw()
+
+func _pose_finished() -> void:
+	pose_in_motion = false
+	pose_settled.emit()
+
+func _focus_card() -> void:
+	if fanned and chosen: get_parent().present(hand_order)
+	_react()
 
 func _title_size() -> int:
 	return int(16 * text_scale)
@@ -114,12 +186,20 @@ func _center_text(value: String, y: float, font_size: int, color: Color) -> void
 	draw_string(UI.BODY, Vector2((size.x - width) * 0.5, y), value, HORIZONTAL_ALIGNMENT_LEFT, size.x - 10, font_size, color)
 
 func title_fits() -> bool:
+	if not presentation.is_empty():
+		var layout: Dictionary = presentation.visual.layout
+		var positions: Dictionary = Renderer.geometry(size, layout)
+		var rect: Rect2 = Renderer.title_content_rect(positions, chosen and presentation.target.get("kind", "none") != "none")
+		return Renderer.text_layout(str(power.name).replace("\n", " "), rect.size, int(18 * text_scale * maxf(1, positions.canvas.size.y / 240.0)), int(layout.get("text", {}).get("title_max_lines", 2))).fits
 	for line in _title_lines():
 		if UI.BODY.get_string_size(line, HORIZONTAL_ALIGNMENT_LEFT, -1, _title_size()).x > size.x - 10: return false
 	return true
 
 func _draw() -> void:
 	if card.is_empty(): return
+	if not presentation.is_empty():
+		Renderer.draw(self, presentation, owner_texture, {"chosen": chosen, "focused": has_focus(), "aiming": aiming, "prominent": fan_prominent, "blocked": blocked, "blocked_caption": blocked_caption, "insufficient_actions": insufficient_actions, "text_scale": text_scale})
+		return
 	var color: Color = Color(Content.SPECIES[individual.species].color)
 	var contour: PackedVector2Array = PackedVector2Array([Vector2(0, 8), Vector2(8, 0), Vector2(size.x - 8, 0), Vector2(size.x, 8), Vector2(size.x, size.y - 8), Vector2(size.x - 8, size.y), Vector2(8, size.y), Vector2(0, size.y - 8), Vector2(0, 8)])
 	draw_colored_polygon(contour, UI.RAISED if chosen else UI.INK)

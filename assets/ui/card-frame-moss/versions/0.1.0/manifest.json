@@ -1,0 +1,32 @@
+{
+  "dependencies": [],
+  "description": "Unreviewed modular card preview; not production artwork",
+  "files": {
+    "frame": {
+      "bytes": 1812802,
+      "kind": "texture",
+      "path": "frame.png",
+      "sha256": "b388105c37d195775ce0132e771d59a7d9abbbc7b805fc4fbdcabf43cb57e7ed",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "ui/card-frame-moss",
+  "provenance": {
+    "kind": "Image Gen prototype based on directly attached approved card concept",
+    "license": "Generated for this project; retains original PNG metadata",
+    "reference": "Pedro direct attachment, 1280x720, visually inspected in chat",
+    "source_file": "exec-761bda69-f89f-46f8-b124-0b11010322f3.png",
+    "source_sha256": "b388105c37d195775ce0132e771d59a7d9abbbc7b805fc4fbdcabf43cb57e7ed"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.1.0"
+}

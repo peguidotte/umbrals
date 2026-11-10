@@ -29,6 +29,7 @@ var target_available: bool = false
 var acting: bool = false
 var public_intent: Dictionary = {}
 var text_scale: float = 1.0
+var label_zoom: float = 1.0
 var ground_profile: Dictionary = {}
 var art_view: String = "front"
 var shadow_width: float = 80.0
@@ -88,6 +89,7 @@ func _ground() -> Vector2:
 	return Vector2(size.x * 0.5, size.y - 58)
 
 func set_identity(data: Dictionary, scale_text: float = 1.0, animate_lifecycle: bool = false) -> void:
+	scale_text *= label_zoom
 	var previous_uid: int = int(identity.get("uid", -1))
 	var same_individual: bool = previous_uid == int(data.get("uid", -2))
 	var was_alive: bool = int(identity.get("hp", 0)) > 0
@@ -218,5 +220,6 @@ func _draw() -> void:
 		var fraction: float = float(identity.get("hp", 0)) / maxf(1, float(identity.get("max_hp", 1)))
 		draw_rect(Rect2(bar.position, Vector2(bar.size.x * fraction, bar.size.y)), Color("7dbb9b") if not enemy else Color("dc967c"))
 		var hp: String = "%d / %d" % [int(identity.get("hp", 0)), int(identity.get("max_hp", 0))]
-		var width: float = UI.BODY.get_string_size(hp, HORIZONTAL_ALIGNMENT_LEFT, -1, 12).x
-		draw_string(UI.BODY, Vector2((size.x - width) * 0.5, size.y - 17), hp, HORIZONTAL_ALIGNMENT_LEFT, -1, 12, UI.PAPER)
+		var hp_size: int = int(12 * label_zoom)
+		var width: float = UI.BODY.get_string_size(hp, HORIZONTAL_ALIGNMENT_LEFT, -1, hp_size).x
+		draw_string(UI.BODY, Vector2((size.x - width) * 0.5, size.y - 17), hp, HORIZONTAL_ALIGNMENT_LEFT, -1, hp_size, UI.PAPER)

@@ -1,0 +1,53 @@
+{
+  "dependencies": [],
+  "description": "Card reference correction candidate; human visual approval pending",
+  "files": {
+    "generation-master": {
+      "bytes": 2234459,
+      "kind": "review",
+      "path": "review/exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+      "sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1173,
+          1341
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "portrait": {
+      "bytes": 444098,
+      "kind": "texture",
+      "path": "portrait.png",
+      "sha256": "f6b10736e72ac9b43ca763725caf5f4e0136ff8dacb34bb63b7deb7c0a98bce5",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          550,
+          550
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    }
+  },
+  "id": "umbrals/card-target-moss",
+  "provenance": {
+    "crop": [
+      600,
+      440,
+      1150,
+      990
+    ],
+    "kind": "Deterministic face crop from the new healing illustration, no repaint or resampling",
+    "license": "Generated for this project; originals preserved with metadata",
+    "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+    "source_file": "exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+    "source_sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.1.0"
+}

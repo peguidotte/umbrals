@@ -29,7 +29,7 @@ source = snapshot(['godot', '--headless', '--path', str(ROOT), '--script', scrip
 # An empty working directory proves all preloads/files come from the actual pack.
 with tempfile.TemporaryDirectory(prefix='umbral-packed-') as directory:
     exported = snapshot(['godot', '--headless', '--main-pack', str(args.pack.resolve()), '--script', script], 'exported', directory)
-comparisons = [source["catalog"] == exported["catalog"], source["initial_run"] == exported["initial_run"], *[exported[field] == args.fixtures for field in ("fixture_entry_present", "fixture_scene_present", "fixture_data_present")]]
+comparisons = [source["catalog"] == exported["catalog"], source["initial_run"] == exported["initial_run"], *[exported[field] == args.fixtures for field in ("fixture_entry_present", "fixture_scene_present", "fixture_gallery_present", "fixture_data_present")]]
 if not all(comparisons):
     raise RuntimeError('Exported catalog differs from source resources; inspect catalog-source.json and catalog-exported.json')
 report = {'suite': 'packed_catalog', 'checks': len(comparisons), 'failed': 0, 'pack': str(args.pack), 'contracts': ['all authored export fields', 'seeded initial run', 'fixture entry export boundary']}

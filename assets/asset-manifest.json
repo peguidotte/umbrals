@@ -8990,6 +8990,1134 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 1606956,
+      "id": "ui/card-frame-dew@0.1.0:frame",
+      "kind": "texture",
+      "module": "ui/card-frame-dew",
+      "path": "assets/ui/card-frame-dew/versions/0.1.0/frame.png",
+      "role": "frame",
+      "sha256": "2f596ecba5b1dbb353abca5303d2f68b65c3733f7ad35ee0b7f4702e3f9de24c",
+      "source": {
+        "kind": "Image Gen prototype based on directly attached approved card concept",
+        "license": "Generated for this project; retains original PNG metadata",
+        "reference": "Pedro direct attachment, 1280x720, visually inspected in chat",
+        "source_file": "exec-f184359c-8072-465b-9029-c0fdf1774921.png",
+        "source_sha256": "2f596ecba5b1dbb353abca5303d2f68b65c3733f7ad35ee0b7f4702e3f9de24c"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 1608049,
+      "id": "ui/card-frame-dew@0.2.0:frame",
+      "kind": "texture",
+      "module": "ui/card-frame-dew",
+      "path": "assets/ui/card-frame-dew/versions/0.2.0/frame.png",
+      "role": "frame",
+      "sha256": "14c558d656dcf8a01acba2a3d9f4ed00e1f449b12bd1ef6249e9bfc067764347",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-2bb2fbff-ce18-423b-9618-34cb5f3f66d5.png",
+        "source_sha256": "14c558d656dcf8a01acba2a3d9f4ed00e1f449b12bd1ef6249e9bfc067764347"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 1608049,
+      "id": "ui/card-frame-dew@0.2.0:generation-master",
+      "kind": "review",
+      "module": "ui/card-frame-dew",
+      "path": "assets/ui/card-frame-dew/versions/0.2.0/review/exec-2bb2fbff-ce18-423b-9618-34cb5f3f66d5.png",
+      "role": "generation-master",
+      "sha256": "14c558d656dcf8a01acba2a3d9f4ed00e1f449b12bd1ef6249e9bfc067764347",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-2bb2fbff-ce18-423b-9618-34cb5f3f66d5.png",
+        "source_sha256": "14c558d656dcf8a01acba2a3d9f4ed00e1f449b12bd1ef6249e9bfc067764347"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 1812802,
+      "id": "ui/card-frame-moss@0.1.0:frame",
+      "kind": "texture",
+      "module": "ui/card-frame-moss",
+      "path": "assets/ui/card-frame-moss/versions/0.1.0/frame.png",
+      "role": "frame",
+      "sha256": "b388105c37d195775ce0132e771d59a7d9abbbc7b805fc4fbdcabf43cb57e7ed",
+      "source": {
+        "kind": "Image Gen prototype based on directly attached approved card concept",
+        "license": "Generated for this project; retains original PNG metadata",
+        "reference": "Pedro direct attachment, 1280x720, visually inspected in chat",
+        "source_file": "exec-761bda69-f89f-46f8-b124-0b11010322f3.png",
+        "source_sha256": "b388105c37d195775ce0132e771d59a7d9abbbc7b805fc4fbdcabf43cb57e7ed"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 1772199,
+      "id": "ui/card-frame-moss@0.2.0:frame",
+      "kind": "texture",
+      "module": "ui/card-frame-moss",
+      "path": "assets/ui/card-frame-moss/versions/0.2.0/frame.png",
+      "role": "frame",
+      "sha256": "0de8f6cb1da894a8a3097efd5e1e1bda4c0c02a1034fcf9580912514a9b37221",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-815c4f5c-157a-4adb-82b5-75d519649bcd.png",
+        "source_sha256": "0de8f6cb1da894a8a3097efd5e1e1bda4c0c02a1034fcf9580912514a9b37221"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 1772199,
+      "id": "ui/card-frame-moss@0.2.0:generation-master",
+      "kind": "review",
+      "module": "ui/card-frame-moss",
+      "path": "assets/ui/card-frame-moss/versions/0.2.0/review/exec-815c4f5c-157a-4adb-82b5-75d519649bcd.png",
+      "role": "generation-master",
+      "sha256": "0de8f6cb1da894a8a3097efd5e1e1bda4c0c02a1034fcf9580912514a9b37221",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-815c4f5c-157a-4adb-82b5-75d519649bcd.png",
+        "source_sha256": "0de8f6cb1da894a8a3097efd5e1e1bda4c0c02a1034fcf9580912514a9b37221"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 10985,
+      "id": "ui/card-nature-fire@0.1.0:art-border",
+      "kind": "texture",
+      "module": "ui/card-nature-fire",
+      "path": "assets/ui/card-nature-fire/versions/0.1.0/art-border.png",
+      "role": "art-border",
+      "sha256": "a1ec4c400734fed7c17f497f320999db97814b376d0debc5fd0500c9d28dd6a2",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 4307,
+      "id": "ui/card-nature-fire@0.1.0:owner-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-fire",
+      "path": "assets/ui/card-nature-fire/versions/0.1.0/owner-plate.png",
+      "role": "owner-plate",
+      "sha256": "271759406af4af97cf54847ef1bd05956ca5f8fdbda2a39796e389398363ea8e",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          104
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 787,
+      "id": "ui/card-nature-fire@0.1.0:source-art-border",
+      "kind": "review",
+      "module": "ui/card-nature-fire",
+      "path": "assets/ui/card-nature-fire/versions/0.1.0/review/art-border.svg",
+      "role": "source-art-border",
+      "sha256": "8e9ed0454fcc78ec95fd0c6bb18eac6a85b77aafffdf0bbb05c59264a921c942",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 647,
+      "id": "ui/card-nature-fire@0.1.0:source-owner-plate",
+      "kind": "review",
+      "module": "ui/card-nature-fire",
+      "path": "assets/ui/card-nature-fire/versions/0.1.0/review/owner-plate.svg",
+      "role": "source-owner-plate",
+      "sha256": "767439cf3d7f1fe0ddedc5ebf833e5674de275bd65647474834336b51539a970",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 709,
+      "id": "ui/card-nature-fire@0.1.0:source-title-plate",
+      "kind": "review",
+      "module": "ui/card-nature-fire",
+      "path": "assets/ui/card-nature-fire/versions/0.1.0/review/title-plate.svg",
+      "role": "source-title-plate",
+      "sha256": "975411c154299f79528c95d1e6f6e67affcf452384c229ee2dd170790d22d520",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 5566,
+      "id": "ui/card-nature-fire@0.1.0:title-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-fire",
+      "path": "assets/ui/card-nature-fire/versions/0.1.0/title-plate.png",
+      "role": "title-plate",
+      "sha256": "57cdbd8fe7988217c0c5b0ffb366ed0320bdf01dccfe53a8e51f07929213b44b",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          128
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 8700,
+      "id": "ui/card-nature-fire@0.2.0:art-border",
+      "kind": "texture",
+      "module": "ui/card-nature-fire",
+      "path": "assets/ui/card-nature-fire/versions/0.2.0/art-border.png",
+      "role": "art-border",
+      "sha256": "d78948a0df238c9f3a9a180213192d18967a5ed6184fd7c3975d62f7c2fedf67",
+      "source": {
+        "kind": "Original native UI contour; existing prototype plates retained",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 4307,
+      "id": "ui/card-nature-fire@0.2.0:owner-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-fire",
+      "path": "assets/ui/card-nature-fire/versions/0.2.0/owner-plate.png",
+      "role": "owner-plate",
+      "sha256": "271759406af4af97cf54847ef1bd05956ca5f8fdbda2a39796e389398363ea8e",
+      "source": {
+        "kind": "Original native UI contour; existing prototype plates retained",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          104
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 391,
+      "id": "ui/card-nature-fire@0.2.0:source-art-border",
+      "kind": "review",
+      "module": "ui/card-nature-fire",
+      "path": "assets/ui/card-nature-fire/versions/0.2.0/review/art-border.svg",
+      "role": "source-art-border",
+      "sha256": "fa24382cc6313dc6b35613a30d086c455d7fde1e3b5287de9ab439e716f71e70",
+      "source": {
+        "kind": "Original native UI contour; existing prototype plates retained",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 5566,
+      "id": "ui/card-nature-fire@0.2.0:title-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-fire",
+      "path": "assets/ui/card-nature-fire/versions/0.2.0/title-plate.png",
+      "role": "title-plate",
+      "sha256": "57cdbd8fe7988217c0c5b0ffb366ed0320bdf01dccfe53a8e51f07929213b44b",
+      "source": {
+        "kind": "Original native UI contour; existing prototype plates retained",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          128
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 11196,
+      "id": "ui/card-nature-forest@0.1.0:art-border",
+      "kind": "texture",
+      "module": "ui/card-nature-forest",
+      "path": "assets/ui/card-nature-forest/versions/0.1.0/art-border.png",
+      "role": "art-border",
+      "sha256": "33dd501dee8bddd0dce7d2ab9a2642d269f903b76cb45f0d250a7259f0d4a704",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 4499,
+      "id": "ui/card-nature-forest@0.1.0:owner-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-forest",
+      "path": "assets/ui/card-nature-forest/versions/0.1.0/owner-plate.png",
+      "role": "owner-plate",
+      "sha256": "2076df581619edeb4a587967e11700279443e20aef71aad9bc257f3a98f15a99",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          104
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 787,
+      "id": "ui/card-nature-forest@0.1.0:source-art-border",
+      "kind": "review",
+      "module": "ui/card-nature-forest",
+      "path": "assets/ui/card-nature-forest/versions/0.1.0/review/art-border.svg",
+      "role": "source-art-border",
+      "sha256": "5851d2bcaad9b434bfb3681e202b179adca07c5f05c35fd0550e763f994f8b6f",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 647,
+      "id": "ui/card-nature-forest@0.1.0:source-owner-plate",
+      "kind": "review",
+      "module": "ui/card-nature-forest",
+      "path": "assets/ui/card-nature-forest/versions/0.1.0/review/owner-plate.svg",
+      "role": "source-owner-plate",
+      "sha256": "86eb502cf30f1653c33719238767d58fa2f7c395dc32d117bca27b270a74b28b",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 709,
+      "id": "ui/card-nature-forest@0.1.0:source-title-plate",
+      "kind": "review",
+      "module": "ui/card-nature-forest",
+      "path": "assets/ui/card-nature-forest/versions/0.1.0/review/title-plate.svg",
+      "role": "source-title-plate",
+      "sha256": "60553edb7a62d0f96d20690e423bbbb5de9b0c6fc986d4da8288e5ee657609cb",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 5868,
+      "id": "ui/card-nature-forest@0.1.0:title-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-forest",
+      "path": "assets/ui/card-nature-forest/versions/0.1.0/title-plate.png",
+      "role": "title-plate",
+      "sha256": "d5c711a354478c563b96cdd8a10a487d1741248f9176116afd8bca61f990f266",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          128
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 9159,
+      "id": "ui/card-nature-forest@0.2.0:art-border",
+      "kind": "texture",
+      "module": "ui/card-nature-forest",
+      "path": "assets/ui/card-nature-forest/versions/0.2.0/art-border.png",
+      "role": "art-border",
+      "sha256": "937fd48aebd88da2270696f8391004468482e6fa8039ececf27be878fef4b112",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-bf42bbe2-e1de-43dd-b2fd-cf3cde305e5c.png",
+        "source_sha256": "fd481095185ef22dea7375f26c9c4b06847606b9b30e2bea0835ea0a90c4df21"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 697179,
+      "id": "ui/card-nature-forest@0.2.0:generation-master",
+      "kind": "review",
+      "module": "ui/card-nature-forest",
+      "path": "assets/ui/card-nature-forest/versions/0.2.0/review/exec-bf42bbe2-e1de-43dd-b2fd-cf3cde305e5c.png",
+      "role": "generation-master",
+      "sha256": "fd481095185ef22dea7375f26c9c4b06847606b9b30e2bea0835ea0a90c4df21",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-bf42bbe2-e1de-43dd-b2fd-cf3cde305e5c.png",
+        "source_sha256": "fd481095185ef22dea7375f26c9c4b06847606b9b30e2bea0835ea0a90c4df21"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 322908,
+      "id": "ui/card-nature-forest@0.2.0:owner-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-forest",
+      "path": "assets/ui/card-nature-forest/versions/0.2.0/owner-plate.png",
+      "role": "owner-plate",
+      "sha256": "1799bdf7a9bac9d4b2bae57c2876f9bdf684ebdfe3c232c42bb61d350cb28fdb",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-bf42bbe2-e1de-43dd-b2fd-cf3cde305e5c.png",
+        "source_sha256": "fd481095185ef22dea7375f26c9c4b06847606b9b30e2bea0835ea0a90c4df21"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1117,
+          205
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 391,
+      "id": "ui/card-nature-forest@0.2.0:source-art-border",
+      "kind": "review",
+      "module": "ui/card-nature-forest",
+      "path": "assets/ui/card-nature-forest/versions/0.2.0/review/art-border.svg",
+      "role": "source-art-border",
+      "sha256": "d84bee37fd3f175c890d1a774df8660cf1939fc9b3ea4638e7d342c7d34df273",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-bf42bbe2-e1de-43dd-b2fd-cf3cde305e5c.png",
+        "source_sha256": "fd481095185ef22dea7375f26c9c4b06847606b9b30e2bea0835ea0a90c4df21"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 297462,
+      "id": "ui/card-nature-forest@0.2.0:title-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-forest",
+      "path": "assets/ui/card-nature-forest/versions/0.2.0/title-plate.png",
+      "role": "title-plate",
+      "sha256": "a7f88ee06c35e412be6f2b89fdead4b5ea06c8224387be5209063385a50b56f6",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-bf42bbe2-e1de-43dd-b2fd-cf3cde305e5c.png",
+        "source_sha256": "fd481095185ef22dea7375f26c9c4b06847606b9b30e2bea0835ea0a90c4df21"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          978,
+          215
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 10886,
+      "id": "ui/card-nature-lightning@0.1.0:art-border",
+      "kind": "texture",
+      "module": "ui/card-nature-lightning",
+      "path": "assets/ui/card-nature-lightning/versions/0.1.0/art-border.png",
+      "role": "art-border",
+      "sha256": "197380a3e9ca0eef7241600b10276a4627eb3aaa9a6bb6b3995a76d4b8d86028",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 4450,
+      "id": "ui/card-nature-lightning@0.1.0:owner-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-lightning",
+      "path": "assets/ui/card-nature-lightning/versions/0.1.0/owner-plate.png",
+      "role": "owner-plate",
+      "sha256": "c2b2df0e25547c3e3b07a23c6150be89f469cfac6b6554301ecbb0fcb1f5209b",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          104
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 787,
+      "id": "ui/card-nature-lightning@0.1.0:source-art-border",
+      "kind": "review",
+      "module": "ui/card-nature-lightning",
+      "path": "assets/ui/card-nature-lightning/versions/0.1.0/review/art-border.svg",
+      "role": "source-art-border",
+      "sha256": "419333846138c749fd5b529e22294d97204692dc77b26cd10885f9e73c78b2ea",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 647,
+      "id": "ui/card-nature-lightning@0.1.0:source-owner-plate",
+      "kind": "review",
+      "module": "ui/card-nature-lightning",
+      "path": "assets/ui/card-nature-lightning/versions/0.1.0/review/owner-plate.svg",
+      "role": "source-owner-plate",
+      "sha256": "3adb46c8e9b374fb3903d31c3f676e61be83309202b8c4f006dbb705f89fdb4e",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 709,
+      "id": "ui/card-nature-lightning@0.1.0:source-title-plate",
+      "kind": "review",
+      "module": "ui/card-nature-lightning",
+      "path": "assets/ui/card-nature-lightning/versions/0.1.0/review/title-plate.svg",
+      "role": "source-title-plate",
+      "sha256": "4bf5ada2280d24813c59217f831d67776d6776306004ffb247a0a46edfda146a",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 5760,
+      "id": "ui/card-nature-lightning@0.1.0:title-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-lightning",
+      "path": "assets/ui/card-nature-lightning/versions/0.1.0/title-plate.png",
+      "role": "title-plate",
+      "sha256": "619f1e41addc87f9b544bfdd997fc196d00873241e75870cde4f5a0551213dea",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          128
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 8358,
+      "id": "ui/card-nature-lightning@0.2.0:art-border",
+      "kind": "texture",
+      "module": "ui/card-nature-lightning",
+      "path": "assets/ui/card-nature-lightning/versions/0.2.0/art-border.png",
+      "role": "art-border",
+      "sha256": "89db1fcefcc4617ffbc5f66c4f5644aea09c4d5578b093f330bee06206ac1521",
+      "source": {
+        "kind": "Original native UI contour; existing prototype plates retained",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 4450,
+      "id": "ui/card-nature-lightning@0.2.0:owner-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-lightning",
+      "path": "assets/ui/card-nature-lightning/versions/0.2.0/owner-plate.png",
+      "role": "owner-plate",
+      "sha256": "c2b2df0e25547c3e3b07a23c6150be89f469cfac6b6554301ecbb0fcb1f5209b",
+      "source": {
+        "kind": "Original native UI contour; existing prototype plates retained",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          104
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 391,
+      "id": "ui/card-nature-lightning@0.2.0:source-art-border",
+      "kind": "review",
+      "module": "ui/card-nature-lightning",
+      "path": "assets/ui/card-nature-lightning/versions/0.2.0/review/art-border.svg",
+      "role": "source-art-border",
+      "sha256": "7030f5d619d860bd5b298cffaaab0ed95861944b3cc11e402d7e2a1afe3efd59",
+      "source": {
+        "kind": "Original native UI contour; existing prototype plates retained",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 5760,
+      "id": "ui/card-nature-lightning@0.2.0:title-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-lightning",
+      "path": "assets/ui/card-nature-lightning/versions/0.2.0/title-plate.png",
+      "role": "title-plate",
+      "sha256": "619f1e41addc87f9b544bfdd997fc196d00873241e75870cde4f5a0551213dea",
+      "source": {
+        "kind": "Original native UI contour; existing prototype plates retained",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          128
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 10988,
+      "id": "ui/card-nature-water@0.1.0:art-border",
+      "kind": "texture",
+      "module": "ui/card-nature-water",
+      "path": "assets/ui/card-nature-water/versions/0.1.0/art-border.png",
+      "role": "art-border",
+      "sha256": "ae3c41e9cda28bf1f58f9cea31f0978be6446ef1075509100001d65344304029",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 4735,
+      "id": "ui/card-nature-water@0.1.0:owner-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-water",
+      "path": "assets/ui/card-nature-water/versions/0.1.0/owner-plate.png",
+      "role": "owner-plate",
+      "sha256": "9b0e7b90e06a471e9a6156a589e58a7530bcdc6bb0712f52ed61e203b743acba",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          104
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 787,
+      "id": "ui/card-nature-water@0.1.0:source-art-border",
+      "kind": "review",
+      "module": "ui/card-nature-water",
+      "path": "assets/ui/card-nature-water/versions/0.1.0/review/art-border.svg",
+      "role": "source-art-border",
+      "sha256": "157a6fc9e4e666fd0f65a111e8ebec23aea394756d036564c46c50d03a556ca8",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 647,
+      "id": "ui/card-nature-water@0.1.0:source-owner-plate",
+      "kind": "review",
+      "module": "ui/card-nature-water",
+      "path": "assets/ui/card-nature-water/versions/0.1.0/review/owner-plate.svg",
+      "role": "source-owner-plate",
+      "sha256": "d99421dfb7b96c84713ebcd3a4903278ec68562c7879b73051a62f1b75c019cb",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 709,
+      "id": "ui/card-nature-water@0.1.0:source-title-plate",
+      "kind": "review",
+      "module": "ui/card-nature-water",
+      "path": "assets/ui/card-nature-water/versions/0.1.0/review/title-plate.svg",
+      "role": "source-title-plate",
+      "sha256": "d32e879a0815e83ce8959c12ec8c37f1a7a91d09c9a987d5f002263adc545fbe",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 6139,
+      "id": "ui/card-nature-water@0.1.0:title-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-water",
+      "path": "assets/ui/card-nature-water/versions/0.1.0/title-plate.png",
+      "role": "title-plate",
+      "sha256": "0c356666a2725d391dd3dd84d22bc8c6cb8d541f67f9b3900a07b1e3f9a2be6e",
+      "source": {
+        "kind": "Original vector UI authored for the approved composition",
+        "license": "Original project UI component",
+        "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+        "source": "Native SVG gradients/shapes, no text or creature art"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          128
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 9128,
+      "id": "ui/card-nature-water@0.2.0:art-border",
+      "kind": "texture",
+      "module": "ui/card-nature-water",
+      "path": "assets/ui/card-nature-water/versions/0.2.0/art-border.png",
+      "role": "art-border",
+      "sha256": "f763f10d49086b9c217dc80b9c7a20d274652b946a83d5ede11622fe56f3b19b",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-a095d615-de4e-4e42-8c44-4d702cc45fd8.png",
+        "source_sha256": "5f50365d2b380fcd0704cda43b5969f479798a23f976531934462f7f9dc77d25"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 781591,
+      "id": "ui/card-nature-water@0.2.0:generation-master",
+      "kind": "review",
+      "module": "ui/card-nature-water",
+      "path": "assets/ui/card-nature-water/versions/0.2.0/review/exec-a095d615-de4e-4e42-8c44-4d702cc45fd8.png",
+      "role": "generation-master",
+      "sha256": "5f50365d2b380fcd0704cda43b5969f479798a23f976531934462f7f9dc77d25",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-a095d615-de4e-4e42-8c44-4d702cc45fd8.png",
+        "source_sha256": "5f50365d2b380fcd0704cda43b5969f479798a23f976531934462f7f9dc77d25"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 328459,
+      "id": "ui/card-nature-water@0.2.0:owner-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-water",
+      "path": "assets/ui/card-nature-water/versions/0.2.0/owner-plate.png",
+      "role": "owner-plate",
+      "sha256": "1c82e788010830e7db1a749a36cc95aeb19b90670d27c3e39b4197c912a7ed4b",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-a095d615-de4e-4e42-8c44-4d702cc45fd8.png",
+        "source_sha256": "5f50365d2b380fcd0704cda43b5969f479798a23f976531934462f7f9dc77d25"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1164,
+          238
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 391,
+      "id": "ui/card-nature-water@0.2.0:source-art-border",
+      "kind": "review",
+      "module": "ui/card-nature-water",
+      "path": "assets/ui/card-nature-water/versions/0.2.0/review/art-border.svg",
+      "role": "source-art-border",
+      "sha256": "4a9b14a7a84fad5fdb27b3f93d6da4d6aead8e2d6ba88b23f3085afb519fdde5",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-a095d615-de4e-4e42-8c44-4d702cc45fd8.png",
+        "source_sha256": "5f50365d2b380fcd0704cda43b5969f479798a23f976531934462f7f9dc77d25"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 317614,
+      "id": "ui/card-nature-water@0.2.0:title-plate",
+      "kind": "texture",
+      "module": "ui/card-nature-water",
+      "path": "assets/ui/card-nature-water/versions/0.2.0/title-plate.png",
+      "role": "title-plate",
+      "sha256": "012d7c899fbc31afd1c2cf1c3f2f10e4f5206f1039ef61b93bb16cb149a2e75b",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-a095d615-de4e-4e42-8c44-4d702cc45fd8.png",
+        "source_sha256": "5f50365d2b380fcd0704cda43b5969f479798a23f976531934462f7f9dc77d25"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1020,
+          247
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      },
+      "version": "0.2.0"
+    },
+    {
       "bytes": 2381331,
       "id": "ui/gold-approved@1.0.0:codex-art",
       "kind": "texture",
@@ -9143,6 +10271,57 @@
       "version": "1.0.0"
     },
     {
+      "bytes": 20979,
+      "id": "ui/power-card-system@0.1.0:presentation",
+      "kind": "data",
+      "module": "ui/power-card-system",
+      "path": "assets/ui/power-card-system/versions/0.1.0/presentation.json",
+      "role": "presentation",
+      "sha256": "074ff44d181ddb946e664a1c5e4090b13af7e7648254816acbe3ef90de3e3345",
+      "source": {
+        "kind": "technical presentation metadata; no artwork produced",
+        "source_commit": "f29752cac7d6525865091896a1466eb65a490c9c",
+        "spec": "libfile_153984667b90819186825c23feba554b",
+        "visual_access": "Both Library image transfers failed; no pixel reproduction attempted"
+      },
+      "status": "draft",
+      "technical": {},
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 29289,
+      "id": "ui/power-card-system@0.2.0:presentation",
+      "kind": "data",
+      "module": "ui/power-card-system",
+      "path": "assets/ui/power-card-system/versions/0.2.0/presentation.json",
+      "role": "presentation",
+      "sha256": "d2b30c9fc80da0d78d9047424be35e628e760e9c931f75246276e1acdc9cf30b",
+      "source": {
+        "kind": "Approved concept directly attached by Pedro; original generated frames and original vector components",
+        "reference_pixels": "Direct chat image 1280x720 inspected, no blocked transfer retry"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 29944,
+      "id": "ui/power-card-system@0.3.0:presentation",
+      "kind": "data",
+      "module": "ui/power-card-system",
+      "path": "assets/ui/power-card-system/versions/0.3.0/presentation.json",
+      "role": "presentation",
+      "sha256": "2b25b8392d4eff066b808fc715305044e58d2fe793432efe522f0c8506f15e86",
+      "source": {
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation"
+      },
+      "status": "prototype",
+      "technical": {},
+      "version": "0.3.0"
+    },
+    {
       "bytes": 778874,
       "id": "ui/title-logo@1.0.0:texture",
       "kind": "texture",
@@ -9199,6 +10378,424 @@
         "mode": "RGB"
       },
       "version": "1.0.0"
+    },
+    {
+      "bytes": 2187998,
+      "id": "umbrals/card-art-dew@0.1.0:power-dew-mend",
+      "kind": "texture",
+      "module": "umbrals/card-art-dew",
+      "path": "assets/umbrals/card-art-dew/versions/0.1.0/power-dew-mend.png",
+      "role": "power-dew-mend",
+      "sha256": "3243b35c9da2c603839deeaafd0641626698dad865e8ca7f89c8def2221779c5",
+      "source": {
+        "identity": "dew",
+        "kind": "Image Gen prototype from the directly attached approved full-card concept",
+        "original_metadata": "PNG bytes copied unchanged",
+        "power": "dew_mend",
+        "review_status": "Candidate pixels inspected; generated poses/details vary; not approved final artwork",
+        "source_file": "exec-c98bd034-33bb-474f-b56f-97b330d79d7c.png",
+        "source_sha256": "3243b35c9da2c603839deeaafd0641626698dad865e8ca7f89c8def2221779c5"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 2382778,
+      "id": "umbrals/card-art-dew@0.1.0:power-tidal-splash",
+      "kind": "texture",
+      "module": "umbrals/card-art-dew",
+      "path": "assets/umbrals/card-art-dew/versions/0.1.0/power-tidal-splash.png",
+      "role": "power-tidal-splash",
+      "sha256": "9e49a20e0fa726cd227280252f95606160ee42aef7febf1c8acd099fc6a8753c",
+      "source": {
+        "identity": "dew",
+        "kind": "Image Gen prototype from the directly attached approved full-card concept",
+        "original_metadata": "PNG bytes copied unchanged",
+        "power": "tidal_splash",
+        "review_status": "Candidate pixels inspected; generated poses/details vary; not approved final artwork",
+        "source_file": "exec-4b1d624d-c8c4-4477-9c34-8f64f59a796f.png",
+        "source_sha256": "9e49a20e0fa726cd227280252f95606160ee42aef7febf1c8acd099fc6a8753c"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 2244754,
+      "id": "umbrals/card-art-dew@0.2.0:demo-master",
+      "kind": "review",
+      "module": "umbrals/card-art-dew",
+      "path": "assets/umbrals/card-art-dew/versions/0.2.0/review/exec-2e7c9e17-dbae-4585-82c9-13f26020c674.png",
+      "role": "demo-master",
+      "sha256": "ec91075eb460c0c30893335c5401060dfa15027fb5746c5c308910fb0871b06f",
+      "source": {
+        "demo": "Isolated nonplayable Lonlon/Forest example; never grants learning",
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+        "source_sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1173,
+          1341
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 2234459,
+      "id": "umbrals/card-art-dew@0.2.0:generation-master",
+      "kind": "review",
+      "module": "umbrals/card-art-dew",
+      "path": "assets/umbrals/card-art-dew/versions/0.2.0/review/exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+      "role": "generation-master",
+      "sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61",
+      "source": {
+        "demo": "Isolated nonplayable Lonlon/Forest example; never grants learning",
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+        "source_sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1173,
+          1341
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 2234459,
+      "id": "umbrals/card-art-dew@0.2.0:power-dew-mend",
+      "kind": "texture",
+      "module": "umbrals/card-art-dew",
+      "path": "assets/umbrals/card-art-dew/versions/0.2.0/power-dew-mend.png",
+      "role": "power-dew-mend",
+      "sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61",
+      "source": {
+        "demo": "Isolated nonplayable Lonlon/Forest example; never grants learning",
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+        "source_sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1173,
+          1341
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 2244754,
+      "id": "umbrals/card-art-dew@0.2.0:power-thorn-lash-demo",
+      "kind": "texture",
+      "module": "umbrals/card-art-dew",
+      "path": "assets/umbrals/card-art-dew/versions/0.2.0/power-thorn-lash-demo.png",
+      "role": "power-thorn-lash-demo",
+      "sha256": "ec91075eb460c0c30893335c5401060dfa15027fb5746c5c308910fb0871b06f",
+      "source": {
+        "demo": "Isolated nonplayable Lonlon/Forest example; never grants learning",
+        "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+        "source_sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1173,
+          1341
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.2.0"
+    },
+    {
+      "bytes": 2644403,
+      "id": "umbrals/card-art-moss@0.1.0:power-root-wall",
+      "kind": "texture",
+      "module": "umbrals/card-art-moss",
+      "path": "assets/umbrals/card-art-moss/versions/0.1.0/power-root-wall.png",
+      "role": "power-root-wall",
+      "sha256": "70f1b48c68dc3cdb9064c1f2138e9e62cd39b8ea691a949a1befd7da3b62cc29",
+      "source": {
+        "identity": "moss",
+        "kind": "Image Gen prototype from the directly attached approved full-card concept",
+        "original_metadata": "PNG bytes copied unchanged",
+        "power": "root_wall",
+        "review_status": "Candidate pixels inspected; generated poses/details vary; not approved final artwork",
+        "source_file": "exec-d9e6df75-1473-40c7-aa77-98b7947cd45b.png",
+        "source_sha256": "70f1b48c68dc3cdb9064c1f2138e9e62cd39b8ea691a949a1befd7da3b62cc29"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 2327412,
+      "id": "umbrals/card-art-moss@0.1.0:power-thorn-lash",
+      "kind": "texture",
+      "module": "umbrals/card-art-moss",
+      "path": "assets/umbrals/card-art-moss/versions/0.1.0/power-thorn-lash.png",
+      "role": "power-thorn-lash",
+      "sha256": "0288114c07ab4fa3fbb4264135a8b31d30b0c7ef2406983fd30a2ef4fed3a3d5",
+      "source": {
+        "identity": "moss",
+        "kind": "Image Gen prototype from the directly attached approved full-card concept",
+        "original_metadata": "PNG bytes copied unchanged",
+        "power": "thorn_lash",
+        "review_status": "Candidate pixels inspected; generated poses/details vary; not approved final artwork",
+        "source_file": "exec-91b13b12-d521-4f73-8113-fa2ef0340593.png",
+        "source_sha256": "0288114c07ab4fa3fbb4264135a8b31d30b0c7ef2406983fd30a2ef4fed3a3d5"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 2695939,
+      "id": "umbrals/card-art-verdalio@0.1.0:power-root-wall",
+      "kind": "texture",
+      "module": "umbrals/card-art-verdalio",
+      "path": "assets/umbrals/card-art-verdalio/versions/0.1.0/power-root-wall.png",
+      "role": "power-root-wall",
+      "sha256": "7228499452401cff239e27f7a8472789b2c5239637afde3ad2bf0cbbfb4f0c7e",
+      "source": {
+        "identity": "verdalio",
+        "kind": "Image Gen prototype from approved composition and current Folife identity reference",
+        "original_metadata": "PNG bytes copied unchanged",
+        "power": "root_wall",
+        "review_status": "Candidate pixels inspected; generated details vary; not approved final artwork",
+        "source_file": "exec-523ff925-fdcf-48ea-862f-cefb3ddd89de.png",
+        "source_sha256": "7228499452401cff239e27f7a8472789b2c5239637afde3ad2bf0cbbfb4f0c7e"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 2501007,
+      "id": "umbrals/card-art-verdalio@0.1.0:power-thorn-lash",
+      "kind": "texture",
+      "module": "umbrals/card-art-verdalio",
+      "path": "assets/umbrals/card-art-verdalio/versions/0.1.0/power-thorn-lash.png",
+      "role": "power-thorn-lash",
+      "sha256": "bd09e1e175df59ec03afca008e33dfb18d00cc16dd2079fb278db1c5c32aaed8",
+      "source": {
+        "identity": "verdalio",
+        "kind": "Image Gen prototype from approved composition and current Folife identity reference",
+        "original_metadata": "PNG bytes copied unchanged",
+        "power": "thorn_lash",
+        "review_status": "Candidate pixels inspected; generated details vary; not approved final artwork",
+        "source_file": "exec-91c8a5a5-da41-42fd-99e7-efcde0cd9c15.png",
+        "source_sha256": "bd09e1e175df59ec03afca008e33dfb18d00cc16dd2079fb278db1c5c32aaed8"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 2234459,
+      "id": "umbrals/card-target-dew@0.1.0:generation-master",
+      "kind": "review",
+      "module": "umbrals/card-target-dew",
+      "path": "assets/umbrals/card-target-dew/versions/0.1.0/review/exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+      "role": "generation-master",
+      "sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61",
+      "source": {
+        "crop": [
+          50,
+          300,
+          600,
+          850
+        ],
+        "kind": "Deterministic face crop from the new healing illustration, no repaint or resampling",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+        "source_sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1173,
+          1341
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 420791,
+      "id": "umbrals/card-target-dew@0.1.0:portrait",
+      "kind": "texture",
+      "module": "umbrals/card-target-dew",
+      "path": "assets/umbrals/card-target-dew/versions/0.1.0/portrait.png",
+      "role": "portrait",
+      "sha256": "e177ffb8e04719b0891803d8107ffbd685ca2d202b9e39ed981bb984dfe504a6",
+      "source": {
+        "crop": [
+          50,
+          300,
+          600,
+          850
+        ],
+        "kind": "Deterministic face crop from the new healing illustration, no repaint or resampling",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+        "source_sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          550,
+          550
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 2234459,
+      "id": "umbrals/card-target-moss@0.1.0:generation-master",
+      "kind": "review",
+      "module": "umbrals/card-target-moss",
+      "path": "assets/umbrals/card-target-moss/versions/0.1.0/review/exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+      "role": "generation-master",
+      "sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61",
+      "source": {
+        "crop": [
+          600,
+          440,
+          1150,
+          990
+        ],
+        "kind": "Deterministic face crop from the new healing illustration, no repaint or resampling",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+        "source_sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1173,
+          1341
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 444098,
+      "id": "umbrals/card-target-moss@0.1.0:portrait",
+      "kind": "texture",
+      "module": "umbrals/card-target-moss",
+      "path": "assets/umbrals/card-target-moss/versions/0.1.0/portrait.png",
+      "role": "portrait",
+      "sha256": "f6b10736e72ac9b43ca763725caf5f4e0136ff8dacb34bb63b7deb7c0a98bce5",
+      "source": {
+        "crop": [
+          600,
+          440,
+          1150,
+          990
+        ],
+        "kind": "Deterministic face crop from the new healing illustration, no repaint or resampling",
+        "license": "Generated for this project; originals preserved with metadata",
+        "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+        "source_file": "exec-96a15474-df99-4106-b447-6c31d3f145a1.png",
+        "source_sha256": "eaf139d936398a334a403c900b3ce598cc3200acdbd94cb7cba9fe2e38ceaf61"
+      },
+      "status": "prototype",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          550,
+          550
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      },
+      "version": "0.1.0"
     },
     {
       "bytes": 2369,

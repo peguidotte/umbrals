@@ -1,0 +1,47 @@
+{
+  "dependencies": [],
+  "description": "Card reference correction candidate; human visual approval pending",
+  "files": {
+    "frame": {
+      "bytes": 1608049,
+      "kind": "texture",
+      "path": "frame.png",
+      "sha256": "14c558d656dcf8a01acba2a3d9f4ed00e1f449b12bd1ef6249e9bfc067764347",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "generation-master": {
+      "bytes": 1608049,
+      "kind": "review",
+      "path": "review/exec-2bb2fbff-ce18-423b-9618-34cb5f3f66d5.png",
+      "sha256": "14c558d656dcf8a01acba2a3d9f4ed00e1f449b12bd1ef6249e9bfc067764347",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "ui/card-frame-dew",
+  "provenance": {
+    "kind": "Controlled Image Gen edit from Pedro reattached approved card concept",
+    "license": "Generated for this project; originals preserved with metadata",
+    "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation",
+    "source_file": "exec-2bb2fbff-ce18-423b-9618-34cb5f3f66d5.png",
+    "source_sha256": "14c558d656dcf8a01acba2a3d9f4ed00e1f449b12bd1ef6249e9bfc067764347"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.2.0"
+}

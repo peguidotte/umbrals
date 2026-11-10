@@ -1,0 +1,63 @@
+{
+  "dependencies": [],
+  "description": "Two explicit initial-form power illustration candidates; not final artwork",
+  "files": {
+    "power-root-wall": {
+      "bytes": 2644403,
+      "kind": "texture",
+      "path": "power-root-wall.png",
+      "provenance": {
+        "identity": "moss",
+        "kind": "Image Gen prototype from the directly attached approved full-card concept",
+        "original_metadata": "PNG bytes copied unchanged",
+        "power": "root_wall",
+        "review_status": "Candidate pixels inspected; generated poses/details vary; not approved final artwork",
+        "source_file": "exec-d9e6df75-1473-40c7-aa77-98b7947cd45b.png",
+        "source_sha256": "70f1b48c68dc3cdb9064c1f2138e9e62cd39b8ea691a949a1befd7da3b62cc29"
+      },
+      "sha256": "70f1b48c68dc3cdb9064c1f2138e9e62cd39b8ea691a949a1befd7da3b62cc29",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    },
+    "power-thorn-lash": {
+      "bytes": 2327412,
+      "kind": "texture",
+      "path": "power-thorn-lash.png",
+      "provenance": {
+        "identity": "moss",
+        "kind": "Image Gen prototype from the directly attached approved full-card concept",
+        "original_metadata": "PNG bytes copied unchanged",
+        "power": "thorn_lash",
+        "review_status": "Candidate pixels inspected; generated poses/details vary; not approved final artwork",
+        "source_file": "exec-91b13b12-d521-4f73-8113-fa2ef0340593.png",
+        "source_sha256": "0288114c07ab4fa3fbb4264135a8b31d30b0c7ef2406983fd30a2ef4fed3a3d5"
+      },
+      "sha256": "0288114c07ab4fa3fbb4264135a8b31d30b0c7ef2406983fd30a2ef4fed3a3d5",
+      "technical": {
+        "alpha": false,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "frames": 1,
+        "mode": "RGB"
+      }
+    }
+  },
+  "id": "umbrals/card-art-moss",
+  "provenance": {
+    "kind": "Image Gen from direct approved reference, original metadata retained",
+    "license": "Generated for this project; human identity/fidelity review pending",
+    "reference": "Pedro direct card concept attachment 1280x720, visible in chat"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.1.0"
+}

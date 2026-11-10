@@ -169,6 +169,11 @@ def immutable_changes(root: Path, base_ref: str) -> list[str]:
 
 def validate(root: Path = ROOT, base_ref: str | None = None, check_generated: bool = True) -> dict:
     releases = load_releases(root)
+    # Presentation data evolves through its own schema, without rewriting module-v1.
+    from card_asset_pipeline import BINDING, load_presentation
+    for key in releases:
+        if key[0] == BINDING:
+            load_presentation(root, key, releases)
     declared = set()
     texture_bytes = 0
     for key, (manifest_path, release) in releases.items():

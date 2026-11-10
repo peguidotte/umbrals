@@ -1,0 +1,66 @@
+{
+  "dependencies": [],
+  "description": "Card reference correction candidate; human visual approval pending",
+  "files": {
+    "art-border": {
+      "bytes": 8358,
+      "kind": "texture",
+      "path": "art-border.png",
+      "sha256": "89db1fcefcc4617ffbc5f66c4f5644aea09c4d5578b093f330bee06206ac1521",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "owner-plate": {
+      "bytes": 4450,
+      "kind": "texture",
+      "path": "owner-plate.png",
+      "sha256": "c2b2df0e25547c3e3b07a23c6150be89f469cfac6b6554301ecbb0fcb1f5209b",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          104
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "source-art-border": {
+      "bytes": 391,
+      "kind": "review",
+      "path": "review/art-border.svg",
+      "sha256": "7030f5d619d860bd5b298cffaaab0ed95861944b3cc11e402d7e2a1afe3efd59"
+    },
+    "title-plate": {
+      "bytes": 5760,
+      "kind": "texture",
+      "path": "title-plate.png",
+      "sha256": "619f1e41addc87f9b544bfdd997fc196d00873241e75870cde4f5a0551213dea",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          128
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "ui/card-nature-lightning",
+  "provenance": {
+    "kind": "Original native UI contour; existing prototype plates retained",
+    "license": "Generated for this project; originals preserved with metadata",
+    "reference": "Direct chat attachment re-sent by Pedro; pixels supplied to image generation"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.2.0"
+}

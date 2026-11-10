@@ -1,0 +1,1146 @@
+{
+  "coverage": {
+    "demonstrations": [
+      {
+        "form_id": "dew",
+        "power_id": "thorn_lash",
+        "reason": "Nonplayable approved-concept combination only; never grants learning",
+        "species_id": "dew"
+      }
+    ],
+    "pending": [
+      "art_border:fire",
+      "art_border:forest",
+      "art_border:lightning",
+      "art_border:water",
+      "demonstration:dew/dew/thorn_lash",
+      "enemy_portraits:characters/owl",
+      "enemy_portraits:characters/spore",
+      "enemy_portraits:characters/stag",
+      "frame:dew/dew",
+      "frame:dew/londraval",
+      "frame:dew/lonelo",
+      "frame:dew/mareveu",
+      "frame:ember/ember",
+      "frame:ember/ignivar",
+      "frame:moss/folivel",
+      "frame:moss/foslash",
+      "frame:moss/moss",
+      "frame:moss/verdalio",
+      "frame:volt/auravel",
+      "frame:volt/tempestral",
+      "frame:volt/volt",
+      "frame:volt/zuldar",
+      "illustration:dew/dew/dew_mend",
+      "illustration:dew/dew/moon_tide",
+      "illustration:dew/dew/rain_sweep",
+      "illustration:dew/dew/tidal_splash",
+      "illustration:dew/londraval/dew_mend",
+      "illustration:dew/londraval/moon_tide",
+      "illustration:dew/londraval/rain_sweep",
+      "illustration:dew/londraval/tidal_splash",
+      "illustration:dew/lonelo/dew_mend",
+      "illustration:dew/lonelo/moon_tide",
+      "illustration:dew/lonelo/rain_sweep",
+      "illustration:dew/lonelo/tidal_splash",
+      "illustration:dew/mareveu/dew_mend",
+      "illustration:dew/mareveu/moon_tide",
+      "illustration:dew/mareveu/rain_sweep",
+      "illustration:dew/mareveu/tidal_splash",
+      "illustration:ember/ember/cinder_claw",
+      "illustration:ember/ember/fireball",
+      "illustration:ember/ember/flame_guard",
+      "illustration:ember/ember/inferno",
+      "illustration:ember/ignivar/cinder_claw",
+      "illustration:ember/ignivar/fireball",
+      "illustration:ember/ignivar/flame_guard",
+      "illustration:ember/ignivar/inferno",
+      "illustration:moss/folivel/life_seed",
+      "illustration:moss/folivel/root_wall",
+      "illustration:moss/folivel/sanctuary",
+      "illustration:moss/folivel/sowing",
+      "illustration:moss/folivel/thorn_lash",
+      "illustration:moss/foslash/life_seed",
+      "illustration:moss/foslash/root_wall",
+      "illustration:moss/foslash/sanctuary",
+      "illustration:moss/foslash/sowing",
+      "illustration:moss/foslash/thorn_lash",
+      "illustration:moss/moss/life_seed",
+      "illustration:moss/moss/root_wall",
+      "illustration:moss/moss/sanctuary",
+      "illustration:moss/moss/sowing",
+      "illustration:moss/moss/thorn_lash",
+      "illustration:moss/verdalio/life_seed",
+      "illustration:moss/verdalio/root_wall",
+      "illustration:moss/verdalio/sanctuary",
+      "illustration:moss/verdalio/sowing",
+      "illustration:moss/verdalio/thorn_lash",
+      "illustration:volt/auravel/dew_mend",
+      "illustration:volt/auravel/interference",
+      "illustration:volt/auravel/judgment",
+      "illustration:volt/auravel/lightning",
+      "illustration:volt/auravel/rain_sweep",
+      "illustration:volt/auravel/static_veil",
+      "illustration:volt/auravel/storm_dive",
+      "illustration:volt/auravel/tidal_splash",
+      "illustration:volt/tempestral/dew_mend",
+      "illustration:volt/tempestral/interference",
+      "illustration:volt/tempestral/judgment",
+      "illustration:volt/tempestral/lightning",
+      "illustration:volt/tempestral/rain_sweep",
+      "illustration:volt/tempestral/static_veil",
+      "illustration:volt/tempestral/storm_dive",
+      "illustration:volt/tempestral/tidal_splash",
+      "illustration:volt/volt/interference",
+      "illustration:volt/volt/judgment",
+      "illustration:volt/volt/lightning",
+      "illustration:volt/volt/static_veil",
+      "illustration:volt/volt/storm_dive",
+      "illustration:volt/zuldar/dew_mend",
+      "illustration:volt/zuldar/interference",
+      "illustration:volt/zuldar/judgment",
+      "illustration:volt/zuldar/lightning",
+      "illustration:volt/zuldar/rain_sweep",
+      "illustration:volt/zuldar/static_veil",
+      "illustration:volt/zuldar/storm_dive",
+      "illustration:volt/zuldar/tidal_splash",
+      "owner_plate:fire",
+      "owner_plate:forest",
+      "owner_plate:lightning",
+      "owner_plate:water",
+      "target_portraits:auravel",
+      "target_portraits:dew",
+      "target_portraits:ember",
+      "target_portraits:folivel",
+      "target_portraits:foslash",
+      "target_portraits:ignivar",
+      "target_portraits:londraval",
+      "target_portraits:lonelo",
+      "target_portraits:mareveu",
+      "target_portraits:moss",
+      "target_portraits:tempestral",
+      "target_portraits:verdalio",
+      "target_portraits:volt",
+      "target_portraits:zuldar",
+      "title_plate:fire",
+      "title_plate:forest",
+      "title_plate:lightning",
+      "title_plate:water"
+    ],
+    "scope": "development"
+  },
+  "enemy_portraits": {
+    "characters/owl": {
+      "asset": {
+        "id": "characters/battle-creatures",
+        "role": "texture",
+        "version": "1.0.0"
+      },
+      "crop": [
+        0.28297632932663,
+        0.516347229480743,
+        0.209695607423782,
+        0.439684331417084
+      ],
+      "focal_point": [
+        0.38782411813736,
+        0.736189365386963
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    },
+    "characters/spore": {
+      "asset": {
+        "id": "characters/battle-creatures",
+        "role": "texture",
+        "version": "1.0.0"
+      },
+      "crop": [
+        0.00845546741038561,
+        0.543404757976532,
+        0.232243523001671,
+        0.411499440670013
+      ],
+      "focal_point": [
+        0.124577231705189,
+        0.749154448509216
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    },
+    "characters/stag": {
+      "asset": {
+        "id": "characters/battle-creatures",
+        "role": "texture",
+        "version": "1.0.0"
+      },
+      "crop": [
+        0.522547900676727,
+        0.482525378465652,
+        0.201803833246231,
+        0.490417122840881
+      ],
+      "focal_point": [
+        0.623449802398682,
+        0.727733969688416
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    }
+  },
+  "families": {
+    "dew": {
+      "default_frame": {
+        "asset": {
+          "id": "ui/card-frame-dew",
+          "role": "frame",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "form_overrides": {},
+      "reuse_default_for_forms": [
+        "dew",
+        "londraval",
+        "lonelo",
+        "mareveu"
+      ]
+    },
+    "ember": {
+      "default_frame": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "form_overrides": {},
+      "reuse_default_for_forms": [
+        "ember",
+        "ignivar"
+      ]
+    },
+    "moss": {
+      "default_frame": {
+        "asset": {
+          "id": "ui/card-frame-moss",
+          "role": "frame",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "form_overrides": {},
+      "reuse_default_for_forms": [
+        "folivel",
+        "foslash",
+        "moss",
+        "verdalio"
+      ]
+    },
+    "volt": {
+      "default_frame": {
+        "asset": null,
+        "review": "",
+        "status": "pending"
+      },
+      "form_overrides": {},
+      "reuse_default_for_forms": [
+        "auravel",
+        "tempestral",
+        "volt",
+        "zuldar"
+      ]
+    }
+  },
+  "illustrations": {
+    "dew": {
+      "dew": {
+        "dew_mend": {
+          "asset": {
+            "id": "umbrals/card-art-dew",
+            "role": "power-dew-mend",
+            "version": "0.2.0"
+          },
+          "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+          "status": "prototype"
+        },
+        "moon_tide": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "thorn_lash": {
+          "asset": {
+            "id": "umbrals/card-art-dew",
+            "role": "power-thorn-lash-demo",
+            "version": "0.2.0"
+          },
+          "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+          "status": "prototype"
+        },
+        "tidal_splash": {
+          "asset": {
+            "id": "umbrals/card-art-dew",
+            "role": "power-tidal-splash",
+            "version": "0.1.0"
+          },
+          "review": "Unreviewed generated illustration candidate; no production/identity approval",
+          "status": "prototype"
+        }
+      },
+      "londraval": {
+        "dew_mend": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "moon_tide": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "tidal_splash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "lonelo": {
+        "dew_mend": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "moon_tide": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "tidal_splash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "mareveu": {
+        "dew_mend": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "moon_tide": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "tidal_splash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      }
+    },
+    "ember": {
+      "ember": {
+        "cinder_claw": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "fireball": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "flame_guard": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "inferno": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "ignivar": {
+        "cinder_claw": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "fireball": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "flame_guard": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "inferno": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      }
+    },
+    "moss": {
+      "folivel": {
+        "life_seed": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "root_wall": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sanctuary": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sowing": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "thorn_lash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "foslash": {
+        "life_seed": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "root_wall": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sanctuary": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sowing": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "thorn_lash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "moss": {
+        "life_seed": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "root_wall": {
+          "asset": {
+            "id": "umbrals/card-art-moss",
+            "role": "power-root-wall",
+            "version": "0.1.0"
+          },
+          "review": "Unreviewed generated illustration candidate; no production/identity approval",
+          "status": "prototype"
+        },
+        "sanctuary": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sowing": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "thorn_lash": {
+          "asset": {
+            "id": "umbrals/card-art-moss",
+            "role": "power-thorn-lash",
+            "version": "0.1.0"
+          },
+          "review": "Unreviewed generated illustration candidate; no production/identity approval",
+          "status": "prototype"
+        }
+      },
+      "verdalio": {
+        "life_seed": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "root_wall": {
+          "asset": {
+            "id": "umbrals/card-art-verdalio",
+            "role": "power-root-wall",
+            "version": "0.1.0"
+          },
+          "review": "Unreviewed generated adult identity/action candidate, no production approval",
+          "status": "prototype"
+        },
+        "sanctuary": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "sowing": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "thorn_lash": {
+          "asset": {
+            "id": "umbrals/card-art-verdalio",
+            "role": "power-thorn-lash",
+            "version": "0.1.0"
+          },
+          "review": "Unreviewed generated adult identity/action candidate, no production approval",
+          "status": "prototype"
+        }
+      }
+    },
+    "volt": {
+      "auravel": {
+        "dew_mend": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "interference": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "judgment": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "lightning": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "static_veil": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "storm_dive": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "tidal_splash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "tempestral": {
+        "dew_mend": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "interference": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "judgment": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "lightning": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "static_veil": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "storm_dive": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "tidal_splash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "volt": {
+        "interference": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "judgment": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "lightning": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "static_veil": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "storm_dive": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      },
+      "zuldar": {
+        "dew_mend": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "interference": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "judgment": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "lightning": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "rain_sweep": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "static_veil": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "storm_dive": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        },
+        "tidal_splash": {
+          "asset": null,
+          "review": "",
+          "status": "pending"
+        }
+      }
+    }
+  },
+  "layout": {
+    "anchors": {
+      "cost": [
+        0.88,
+        0.15
+      ],
+      "owner": [
+        0.5,
+        0.895
+      ],
+      "target": [
+        0.88,
+        0.065
+      ],
+      "title": [
+        0.5,
+        0.19
+      ]
+    },
+    "art_region": [
+      0.08,
+      0.235,
+      0.84,
+      0.64
+    ],
+    "aspect": 0.6666666666666666,
+    "review": "V05-CARD-04: reattached reference supplied directly; organic frames, serif native labels and broad illustration opening. Human review pending.",
+    "safe_region": [
+      0.07,
+      0.14,
+      0.86,
+      0.82
+    ],
+    "text": {
+      "native": true,
+      "owner_max_lines": 1,
+      "title_max_lines": 1
+    }
+  },
+  "layout_version": 1,
+  "power_styles": {
+    "fire": {
+      "art_border": {
+        "asset": {
+          "id": "ui/card-nature-fire",
+          "role": "art-border",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "owner_plate": {
+        "asset": {
+          "id": "ui/card-nature-fire",
+          "role": "owner-plate",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "title_plate": {
+        "asset": {
+          "id": "ui/card-nature-fire",
+          "role": "title-plate",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "tokens": {
+        "background": "#ffd0a2",
+        "foreground": "#3a1409"
+      }
+    },
+    "forest": {
+      "art_border": {
+        "asset": {
+          "id": "ui/card-nature-forest",
+          "role": "art-border",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "owner_plate": {
+        "asset": {
+          "id": "ui/card-nature-forest",
+          "role": "owner-plate",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "title_plate": {
+        "asset": {
+          "id": "ui/card-nature-forest",
+          "role": "title-plate",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "tokens": {
+        "background": "#c6ef65",
+        "foreground": "#070e03"
+      }
+    },
+    "lightning": {
+      "art_border": {
+        "asset": {
+          "id": "ui/card-nature-lightning",
+          "role": "art-border",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "owner_plate": {
+        "asset": {
+          "id": "ui/card-nature-lightning",
+          "role": "owner-plate",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "title_plate": {
+        "asset": {
+          "id": "ui/card-nature-lightning",
+          "role": "title-plate",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "tokens": {
+        "background": "#ffeaa2",
+        "foreground": "#302109"
+      }
+    },
+    "water": {
+      "art_border": {
+        "asset": {
+          "id": "ui/card-nature-water",
+          "role": "art-border",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "owner_plate": {
+        "asset": {
+          "id": "ui/card-nature-water",
+          "role": "owner-plate",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "title_plate": {
+        "asset": {
+          "id": "ui/card-nature-water",
+          "role": "title-plate",
+          "version": "0.2.0"
+        },
+        "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+        "status": "prototype"
+      },
+      "tokens": {
+        "background": "#b9eaff",
+        "foreground": "#061527"
+      }
+    }
+  },
+  "schema_version": 1,
+  "target_portraits": {
+    "auravel": {
+      "asset": {
+        "id": "characters/electric-adults",
+        "role": "auravel-ally",
+        "version": "2.0.0"
+      },
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    },
+    "dew": {
+      "asset": {
+        "id": "umbrals/card-target-dew",
+        "role": "portrait",
+        "version": "0.1.0"
+      },
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+      "status": "prototype"
+    },
+    "ember": {
+      "asset": {
+        "id": "characters/battle-creatures",
+        "role": "texture",
+        "version": "1.0.0"
+      },
+      "crop": [
+        0.0225479137152433,
+        0.0608793683350086,
+        0.20913191139698,
+        0.410372048616409
+      ],
+      "focal_point": [
+        0.127113863825798,
+        0.266065388917923
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    },
+    "folivel": {
+      "asset": {
+        "id": "characters/folivel-pilot",
+        "role": "portrait",
+        "version": "1.0.0"
+      },
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    },
+    "foslash": {
+      "asset": {
+        "id": "characters/foslash-pilot",
+        "role": "portrait",
+        "version": "1.0.0"
+      },
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    },
+    "ignivar": {
+      "asset": {
+        "id": "characters/battle-evolved",
+        "role": "texture",
+        "version": "1.0.0"
+      },
+      "crop": [
+        0.103668265044689,
+        0.151515156030655,
+        0.321371614933014,
+        0.276714503765106
+      ],
+      "focal_point": [
+        0.264354079961777,
+        0.289872407913208
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    },
+    "londraval": {
+      "asset": {
+        "id": "characters/aquatic-family",
+        "role": "texture",
+        "version": "1.0.0"
+      },
+      "crop": [
+        0.411499440670013,
+        0.062006764113903,
+        0.287485897541046,
+        0.394588500261307
+      ],
+      "focal_point": [
+        0.555242419242859,
+        0.259301006793976
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    },
+    "lonelo": {
+      "asset": {
+        "id": "characters/aquatic-family",
+        "role": "texture",
+        "version": "1.0.0"
+      },
+      "crop": [
+        0.710259318351746,
+        0.197294250130653,
+        0.270574957132339,
+        0.259301006793976
+      ],
+      "focal_point": [
+        0.845546782016754,
+        0.326944768428802
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    },
+    "mareveu": {
+      "asset": {
+        "id": "characters/aquatic-family",
+        "role": "texture",
+        "version": "1.0.0"
+      },
+      "crop": [
+        0.191657274961472,
+        0.140924468636513,
+        0.211386695504189,
+        0.315670788288116
+      ],
+      "focal_point": [
+        0.297350615262985,
+        0.298759877681732
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    },
+    "moss": {
+      "asset": {
+        "id": "umbrals/card-target-moss",
+        "role": "portrait",
+        "version": "0.1.0"
+      },
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "Reattached approved reference used directly; candidate pixels inspected, in-game/human approval pending",
+      "status": "prototype"
+    },
+    "tempestral": {
+      "asset": {
+        "id": "characters/electric-family",
+        "role": "niscor-ally",
+        "version": "2.1.0"
+      },
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    },
+    "verdalio": {
+      "asset": {
+        "id": "characters/folife-pilot",
+        "role": "portrait",
+        "version": "1.1.0"
+      },
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    },
+    "volt": {
+      "asset": {
+        "id": "characters/electric-family",
+        "role": "nisca-ally",
+        "version": "2.1.0"
+      },
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    },
+    "zuldar": {
+      "asset": {
+        "id": "characters/electric-adults",
+        "role": "zuldar-ally",
+        "version": "2.0.0"
+      },
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "focal_point": [
+        0.5,
+        0.5
+      ],
+      "review": "Existing runtime identity reused; miniature framing awaits in-game review",
+      "status": "prototype"
+    }
+  },
+  "visual_references": [
+    {
+      "availability": "blocked",
+      "library_file_id": "libfile_5c99f7cc1ff481919a251afd30d5d28d",
+      "purpose": "Original official reference"
+    },
+    {
+      "availability": "blocked",
+      "library_file_id": "libfile_d3ebb3c8c5888191a652713b6cc5b870",
+      "purpose": "Approved final refinement; pixel download failed in this environment; matching final concept supplied directly in chat and pixels inspected; original Library transfer remains blocked"
+    }
+  ]
+}

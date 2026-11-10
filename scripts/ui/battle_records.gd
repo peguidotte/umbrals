@@ -3,6 +3,7 @@ extends RefCounted
 const UI = preload("res://scripts/ui/kit.gd")
 const Content = preload("res://scripts/content.gd")
 const BattleReadout = preload("res://scripts/ui/battle_readout.gd")
+const CardPreview = preload("res://scripts/ui/card_preview.gd")
 signal back_requested
 var ui = UI.new()
 var register: Callable
@@ -32,7 +33,11 @@ func pile(body: VBoxContainer, source: Array, owners: Dictionary, registry: Call
 	for key in keys:
 		var group: Dictionary = grouped[key]
 		var owner: Dictionary = owners.get(int(group.card.owner), {})
-		list.add_child(ui.label("%d×  %s · %s%s" % [int(group.count), str(Content.POWERS[group.card.power].name).replace("\n", " "), Content.display_name(owner), " · INCAPACITADO" if int(owner.hp) <= 0 else ""], 23, UI.MUTED if int(owner.hp) <= 0 else UI.PAPER))
+		var row: HBoxContainer = UI.row(18)
+		list.add_child(row)
+		var preview: Control = CardPreview.create(group.card, owner, owners.values(), Vector2(110, 165), ui.text_scale)
+		if preview != null: row.add_child(preview)
+		row.add_child(ui.label("%d×  %s · %s%s" % [int(group.count), str(Content.POWERS[group.card.power].name).replace("\n", " "), Content.display_name(owner), " · INCAPACITADO" if int(owner.hp) <= 0 else ""], 23, UI.MUTED if int(owner.hp) <= 0 else UI.PAPER))
 	if source.is_empty(): list.add_child(ui.paragraph("Esta pilha está vazia.", 23))
 	body.add_child(ui.paragraph("Cartas usadas e não usadas vão ao descarte no fim da rodada. O descarte só é embaralhado quando a compra acaba. Reservas aptas ficam fora do ciclo.", 19))
 	_button(body, "VOLTAR", back_requested.emit, "pile.back", "pile", true)

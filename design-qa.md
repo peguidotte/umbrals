@@ -1,91 +1,113 @@
-# Design QA — V04-UX-05C
+# QA visual — V05-CARD-06 (histórico CARD-05 preservado)
 
-As seis melhorias foram aprovadas pelo usuário. Referência: terceira composição
-em `ui/title-menu@1.0.0`; novas camadas de bosque/logo com proveniência no catálogo.
-A imagem de referência é conceito aprovado; os caminhos abaixo são capturas do
-executável, não imagens geradas.
+final result: blocked
 
-- Pacote entregue: `7307bbbccb4e27dcbe588fc759818b78fb47dea5f7cf28ff34bee3a88f29576e`.
-- Abertura final/vertical/reação: `test-results/V04-UX-05C-hosted-adapter/`.
-- Jogar com save/texto mobile: `test-results/V04-UX-05C-typography-verified/`.
-- Foco, hover, pressionado, ultrawide, tablet, texto ampliado, movimento reduzido:
-  `test-results/V04-UX-05C-final/`. Os hashes e complementos estão na
-  [nota da fatia](docs/title-menu-v04-05c.md).
+## Revisão atual — tipografia e centro (CARD-06)
 
-Revisão: arte dos três poderes/cartas preservada; logo limpa; botão focado com
-contorno chanfrado e losango; bosque uniforme nas margens; comandos sem colisões
-nos formatos capturados. Vertical mantém cartas e comandos em grupos próprios.
-Jogar usa o retrato e HP do checkpoint real, exibindo a próxima parada. Corrigidos
-caption sob a moldura, chanfro em largura inicial estreita, fonte pequena no
-celular e efeitos desenhados atrás do fundo. Frames do vídeo final foram abertos
-para conferir flutuação e reação, com a camada de fitas/faíscas visível.
+O título selecionado perdia seu centro porque a reserva para alvo/custo
+reduzia apenas o lado direito. A reserva agora é simétrica. As placas usam
+Cormorant Garamond Bold 700 já existente no projeto; fonte, métricas e desenho
+estão alinhados. O eixo usa tag OpenType numérica, pois `wght` textual foi
+ignorado nesta versão do motor e renderizou Light no primeiro ciclo.
 
-Verificado: 245 checagens nativas, 135 de fluxo/apresentação, complemento de 18
-após o texto de Jogar, validação de 58 releases/126 arquivos e abertura/entrada
-no adaptador Site. Não foi repetida a suíte completa, por instrução do usuário.
-Esses números cobrem etapas distintas; não são uma única execução integral no
-último pacote. Capturas de movimento reduzido da passagem funcional são idênticas.
-A nova ordem de camadas tem captura própria no adaptador final.
+O primeiro ciclo tecnicamente verde em `card-type-center-browser/` foi
+rejeitado visualmente. O ciclo Bold em `card-type-bold-browser/` passou
+759 checks; a inspeção motivou preservar a fonte anterior nos indicadores
+pequenos. `card-type-final-build/` passou 51 checks nativos, exportação e
+catálogo empacotado. A matriz final `artifacts/card-type-final-manual/` tem
+12 capturas inspecionadas, Foli/Lonlon em repouso/seleção, 720p/1080p e texto
+ampliado; nomes completos no destaque, custo e alvo legíveis, sem clipping
+do título na placa. Repouso continua com oclusão por cartas vizinhas.
 
-Limites: toque emulado, Chromium com WebGL por software, sem telefone/controle
-físicos, escuta subjetiva, leitor de tela ou regressão completa de batalha nesta
-fatia. Aprovação estética final continua humana. Não há nova promessa de
-identidade pixel a pixel para estados animados/adaptativos.
+O anexo continua visível no chat, mas o original não está disponível como
+arquivo local para comparação conjunta ou identificação exata da fonte.
+Não se declara fidelidade artística nem aprovação subjetiva. Molduras e
+catálogo parcial continuam pendentes. Fechamento técnico integral atual:
+`artifacts/card-type-final-acceptance/`; verificar seu resultado efetivo.
+Detalhes: `docs/assets/card-assets-type-v05-card06.md`.
 
----
+## Fonte e implementação
 
-Registro histórico preservado:
+- Fonte visual: anexo aprovado de Pedro, `Identidade do Umbral, poder em ação`,
+  1280 × 720, visível na conversa. Não há caminho local verificável para os
+  bytes originais neste executor. O parent informou acesso em seu workspace.
+- Implementação: combate real dos boots `motion_moss` e `motion_dew`, com a
+  prévia optativa, cartas possuídas e entradas reais do mouse/opções.
+- Viewports e PNGs: 1280 × 720 e 1920 × 1080; CSS, backing e leitura da GPU
+  coincidem em DPR 1. Não foi aplicado redimensionamento posterior.
+- Estados: mão sem seleção, Lâminas de folhagem selecionada e Gota serena
+  selecionada; texto normal/ampliado. No fixture aquático, Lonlon é o alvo
+  real de sua própria cura; a pintura fixa mostra Foli.
 
-# Design QA — V04-UX-05B, tela inicial
+## Evidência aberta e inspecionada
 
-- Source visual truth: `assets/ui/title-menu/versions/1.0.0/texture.png`, geração `exec-c4063f14-d989-4041-b562-a3b96fe10f92`, terceira revisão explicitamente escolhida pelo usuário.
-- Implementation screenshot: `test-results/V04-UX-05B-menu-final/menu-default.png`.
-- Viewport / CSS: 1672×941, deviceScaleFactor 1. Fonte e captura: 1672×941 pixels. Sem redimensionar as imagens para a comparação.
-- Estado: abertura, foco em Jogar, efeito congelado pelo modo oficial de captura. A animação é avaliada separadamente; modifica intencionalmente os pixels.
-- Full-view comparison: `test-results/V04-UX-05B-menu-final/full-comparison.png`, fonte à esquerda e jogo à direita no mesmo arquivo. Comparação aberta e inspecionada.
-- Focused comparisons: `menu-comparison.png` e `cards-comparison.png`, no mesmo diretório; foco tipográfico e nos materiais dos botões, e escala/arte das cartas. O render inteiro e o recorte de menu foram inspecionados em conjunto com a referência.
+- `artifacts/card-fan-pilot-readable/`: 12 PNGs e snapshots. Exemplo Foli final
+  para área: `foli-selected-1920x1080-large.png`. Mãos sem seleção e Foli não
+  usam o rótulo de alvo individual alterado na etapa seguinte.
+- `artifacts/card-fan-pilot-marker/`: quatro novos PNGs de Lonlon após o último
+  deslocamento do rótulo; exemplos `lonlon-selected-1280x720.png` e
+  `lonlon-selected-1920x1080-large.png`.
+- `captures.json` em cada pasta identifica estado, hora e resolução. O
+  inventário de revisão adiciona SHA-256 e a diferença de fonte entre etapas.
+- Não foi criada entrada conjunta original/render nem comparação de regiões
+  do original: falta o arquivo da fonte. Visualizações separadas do anexo no
+  chat e do jogo não são apresentadas como comparação lado a lado.
 
-## Findings e histórico da comparação
+## Histórico das correções
 
-1. **P2, corrigido — amostragem horizontal do cenário.** O primeiro ajuste pela proporção literal do PNG criou posicionamento fracionário dentro da referência lógica 1600×900. A metade direita amostrava algumas colunas vizinhas; 634231 pixels diferiam. Evidência anterior preservada em `test-results/V04-UX-05B-title-first/comparison.png`. A composição agora usa a referência lógica do jogo; controles usam regiões normalizadas da arte. O estado congelado usa o material padrão, sem o shader de movimento.
-2. **Verificação posterior:** `test-results/V04-UX-05B-menu-final/reference-comparison.json` registra **zero pixels diferentes** no enquadramento especificado. O adaptador da hospedagem também foi aberto no navegador e registrou zero diferenças em `test-results/V04-UX-05B-hosted-adapter/comparison.json`. Essa medição certifica identidade do raster nesse estado; não é nota de beleza ou compreensão humana.
-3. Não restam diferenças P0/P1/P2 observadas na abertura comparada. Estados de foco e ampliação têm alterações intencionais de apresentação.
+1. P1: mão reta e cópia central. Corrigido com leque dos botões reais,
+   crescimento da própria carta e remoção da projeção da árvore de combate.
+2. P1: cliques sobrepostos divergiam da ordem visual e animação podia deslocar
+   a área de release. Corrigidos irmãos/índices estáveis, seleção em press e
+   destaque separado do hover. `card-fan-stable-focus/`: 750 checks Web.
+3. P2: reorganização inicial encostou rótulos de campo. Grupos/escala ajustados,
+   fontes compensadas; conferidos nas duas resoluções e nos dois tamanhos.
+4. P2: retrato/área encobria o custo. Custo agora é pintado por último. O dígito
+   1 está visível nas capturas Foli/área e Lonlon/retrato.
+5. P2: aviso longo com texto ampliado aumentava a largura sobre o HP inimigo.
+   Aviso agora quebra em até duas linhas no corredor; capturas Foli ampliadas
+   em `card-fan-pilot-readable/` preservam o texto e liberam o HP.
+6. P2: rótulo do destinatário encobria o sinal azul. Separação vertical
+   conferida nos quatro PNGs de `card-fan-pilot-marker/`; nome, sinal e custo
+   permanecem simultaneamente visíveis.
+7. P2: vídeo de Conjurar mostrou a carta ampliada encobrindo projéteis.
+   Destaque agora recolhe enquanto a rodada executa; seleção/alvos permanecem
+   na mão, bloqueados para entrada. Duas capturas reais em
+   `artifacts/card-fan-cast-clear/tasks/browser.cards/card-casting-clear-lane*.png`
+   mostram campo livre e `busy=true`, seis escalas 1 e nenhum destaque grande.
+   O cenário passou 759 checks. A tentativa integral anterior foi interrompida
+   para essa correção e fica preservada, sem qualificá-la como aprovação.
 
 ## Superfícies de fidelidade
 
-- **Tipografia:** logo e rótulos são os pixels da arte aprovada, com família, peso, espaçamento, contornos e quebras preservados. Não foi escolhida uma fonte aproximada para redesenhá-los. Os Controls têm nomes e texto semântico próprios; a opção de texto ampliado aumenta o recorte original em 12%.
-- **Espaçamento/layout:** quatro áreas interativas acompanham os botões da composição. O jogo preserva o enquadramento de referência; formatos mais largos/altos mostram margens. Capturas de foco, toque 844×390 e texto ampliado foram abertas e inspecionadas, sem cortes ou sobreposição dos quatro comandos.
-- **Cores/tokens:** branco/marfim, lilás e índigo da logo e dos controles são preservados. O brilho laranja das cartas e o cenário noturno não foram reinterpretados. O foco adicional tem contorno, além de cor.
-- **Imagens:** o PNG original está intacto, com SHA-256 no manifesto. Nenhum logo, retrato ou ícone foi substituído por SVG, emoji, fonte ou desenho aproximado. A imagem é a fonte visual do menu real do Godot, com botões reais sobre suas regiões.
-- **Conteúdo:** somente UMBRAL e Jogar, Grimório, Opções, Como jogar na abertura. Nova/Continuar/Treino ficam no submenu de Jogar; créditos continuam disponíveis pelo guia. O Grimório existente continua com seu conteúdo anterior, sem atribuir a esta fatia uma reformulação do códex inteiro.
+| Superfície | Observação e estado |
+|---|---|
+| Fontes/tipografia | Serifada licenciada, texto escuro nas duas placas, nomes e custo nativos. Título completo no destaque; repouso tem sobreposição entre cartas. Não foi identificada a fonte exata do original nem certificada acessibilidade. |
+| Espaçamento/layout | Leque está no combate; um único botão destacado, com centro livre para alvos laterais. Quatro zonas do HUD e painel de plano são contexto de jogo adicional ao recorte do estudo. Repouso mais denso que o anexo. |
+| Cores/tokens | Família madeira/folhas ou água/dourado preservada; natureza do poder continua escolhendo placas/linha interna. Não houve amostragem do PNG original. |
+| Imagem/qualidade | Arte ampla sem faixa bege, custo sobre o retrato, miniatura circular, nenhum retrato redundante no rodapé. Molduras/pinturas continuam reconstruções candidatas, não equivalentes exatas aos desenhos aprovados. Sem novo desenho nesta fatia. |
+| Texto/conteúdo | Dados reais de nome, UID, custo e alvo. `Cura em Lonlon (si próprio)` esclarece o destinatário; cena fixa não define alvo. `PRÉVIA`, estatísticas e pendências continuam explícitas. Título/setas/nota do estudo não foram copiados ao combate. |
 
-## Interações e movimento efetivamente verificados
+## Pendências que bloqueiam aceite visual
 
-`tools/title_browser_review.py --video` concluiu 22 verificações, sem erros de console/página: quatro comandos, foco/volta, submenu, cancelamento de vínculo, toque emulado e efeito ao clicar na carta. Dois PNGs de movimento reduzido permaneceram idênticos após 300 ms. O teste nativo cobre RNG/save ao alternar a preferência.
+- P1: falta fonte raster original acessível para comparação conjunta e revisão
+  fiel dos contornos/ornamentos. Não há aceite artístico das molduras atuais.
+- P1 de conteúdo conhecido, fora desta fatia: Semeadura/Chuva lateral sem
+  pintura e catálogo parcial (6/73 candidatos; 67 imagens e duas molduras
+  faltantes). Não promover esses assets a produção.
+- A composição de repouso continua mais densa que a referência. A adaptação
+  preserva controles de batalha e deve ser revisada por Pedro junto aos PNGs.
 
-`test-results/V04-UX-05B-touch-effect/report.json` confirma um toque emulado na carta, efeito disparado uma vez, permanência no menu e conteúdo do localStorage inalterado. Capturas em tempos distintos mostram mudança visual. `test-results/V04-UX-05B-press-review/` verifica Jogar pressionado, sem render de fonte/botão genérico sobre a arte.
+## Validação e próximo passo
 
-O efeito consiste em refração suave, reflexos, sete faíscas limitadas e um pulso curto de energia ao tocar. Não é uma animação de poses independentes das criaturas/cartas. A preferência de movimento reduzido remove imediatamente o shader e zera seus tempos. Os efeitos não usam o RNG da partida.
+Entradas reais verificaram seleção entre cartas sobrepostas, seis nós estáveis,
+alvo inferior, inspeção, pilhas, toque e Conjurar uma única rodada. Nativos
+posteriores passaram 49 checks de apresentação e 438 de entrada. O fechamento
+integral atualizado é registrado em `artifacts/card-fan-final-acceptance/`; consultar o resultado
+efetivo, sem inferir aceite de arte de sua contagem. Logs e capturas dos runs
+focados permanecem nas respectivas pastas; as quatro capturas finais não
+registraram falha de interação.
 
-Vídeo real: `test-results/V04-UX-05B-menu-final/video/`; amostras de quadros inspecionadas. `card-effect-demo.webm` é um trecho de 20 segundos reencodificado do vídeo original. A galeria `index.html` foi aberta por HTTP local; cinco imagens carregaram, o vídeo reproduziu e não houve erro de página (`gallery-check.json`).
-
-## Open questions / limites
-
-Não há decisão pendente para implementar a abertura escolhida. Não foram testados telefone físico, controle físico, leitor de tela ou GPU real. A identidade de pixels refere-se ao estado/viewport acima; outras proporções usam o enquadramento adaptativo e o movimento produz mudanças intencionais. Localização para outros idiomas e reformulação dos submenus não fazem parte desta fatia.
-
-## Implementation checklist
-
-- [x] Usar a terceira revisão exata e preservar o original/manifesto.
-- [x] Quatro botões reais, nomes acessíveis, teclado/toque e volta.
-- [x] Reunir escolhas de expedição dentro de Jogar, preservando confirmação/save.
-- [x] Efeito nas cartas com movimento reduzido aplicado aos nós atuais.
-- [x] Captura e comparação conjunta da referência e do jogo.
-- [x] Corrigir a divergência de amostragem e conferir o novo render.
-
-## Follow-up polish
-
-P3: fora de 16:9, as margens mostram o bosque existente; o foco usa um contorno funcional simples. Nenhum P3 impede esta abertura. A legibilidade e o desempenho em aparelho físico ainda dependem de verificação nessa plataforma; testes automáticos não certificam esses resultados.
-
-Validação funcional consolidada por suítes: `artifacts/V04-UX-05B-closure-20261101T005614768531Z/closure-report.json`. As duas tentativas integrais permanecem failed; não se afirma um passe integral do orquestrador.
-
-final result: passed
+Abrir o PNG original no executor revisor, criar comparação conjunta nas mesmas
+regiões/estados e ajustar/revisar as peças artísticas antes de declarar fidelidade
+aprovada. Não foi feito merge, push, deploy ou upload de screenshots.

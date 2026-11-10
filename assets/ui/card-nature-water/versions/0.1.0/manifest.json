@@ -1,0 +1,79 @@
+{
+  "dependencies": [],
+  "description": "Unreviewed modular card preview; not production artwork",
+  "files": {
+    "art-border": {
+      "bytes": 10988,
+      "kind": "texture",
+      "path": "art-border.png",
+      "sha256": "ae3c41e9cda28bf1f58f9cea31f0978be6446ef1075509100001d65344304029",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          512
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "owner-plate": {
+      "bytes": 4735,
+      "kind": "texture",
+      "path": "owner-plate.png",
+      "sha256": "9b0e7b90e06a471e9a6156a589e58a7530bcdc6bb0712f52ed61e203b743acba",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          104
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    },
+    "source-art-border": {
+      "bytes": 787,
+      "kind": "review",
+      "path": "review/art-border.svg",
+      "sha256": "157a6fc9e4e666fd0f65a111e8ebec23aea394756d036564c46c50d03a556ca8"
+    },
+    "source-owner-plate": {
+      "bytes": 647,
+      "kind": "review",
+      "path": "review/owner-plate.svg",
+      "sha256": "d99421dfb7b96c84713ebcd3a4903278ec68562c7879b73051a62f1b75c019cb"
+    },
+    "source-title-plate": {
+      "bytes": 709,
+      "kind": "review",
+      "path": "review/title-plate.svg",
+      "sha256": "d32e879a0815e83ce8959c12ec8c37f1a7a91d09c9a987d5f002263adc545fbe"
+    },
+    "title-plate": {
+      "bytes": 6139,
+      "kind": "texture",
+      "path": "title-plate.png",
+      "sha256": "0c356666a2725d391dd3dd84d22bc8c6cb8d541f67f9b3900a07b1e3f9a2be6e",
+      "technical": {
+        "alpha": true,
+        "dimensions": [
+          512,
+          128
+        ],
+        "frames": 1,
+        "mode": "RGBA"
+      }
+    }
+  },
+  "id": "ui/card-nature-water",
+  "provenance": {
+    "kind": "Original vector UI authored for the approved composition",
+    "license": "Original project UI component",
+    "reference": "Directly attached approved water/forest plates; fire/lightning extend existing game palette and remain prototype",
+    "source": "Native SVG gradients/shapes, no text or creature art"
+  },
+  "schema_version": 1,
+  "status": "prototype",
+  "version": "0.1.0"
+}
