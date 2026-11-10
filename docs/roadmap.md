@@ -1546,3 +1546,22 @@ um timeout de captura antes do A/B foi preservado, e a repetição no mesmo buil
 passou. Catálogo, integridade de 102 releases/363 arquivos e arquitetura focados
 passaram. A silhueta abre mais nas poses extremas; revisão visual e adaptação
 da casa à direção aprovada continuam abertas. Sem merge ou promoção.
+
+
+### V04-LORE-02 — conciliação textual dos PDFs v0.2
+
+Correção documental preparada sobre main `f29752c` em 2026-11-08. Texto integral
+conferido: PDF de mundo (13 páginas) e de jogo (8 páginas), sem inspeção de imagens
+ou do ZIP primário. [Fontes e páginas](lore/fontes.md) registram evidência e status.
+Mundo explicita ecologia, evolução da representação, vínculos e o limite da
+analogia tecnológica. Primeiro jogo explicita equipe nova por run e domínio mental
+preferido, preservando mecanismos, organização e campeã em aberto. A preferência
+antiga por três iniciais é histórica: quatro opções, com um companheiro escolhido.
+As decisões posteriores da casa de Pietro e os contratos D01/D02 são preservados.
+
+Verificação documental: UTF-8, links/âncoras locais, diff sem erros de whitespace,
+ausência de marcadores de conflito e escopo exclusivamente Markdown. Gameplay,
+browser, exports e revisão visual não executados nesta fatia; não há alteração
+de runtime, catálogo, saves, assets, versão ou escopo dos marcos. Correção local,
+sem publicação ou merge. Próxima etapa: revisão desta conciliação e conferência
+do ZIP quando disponível; não declarar a bíblia final ou as propostas aprovadas.
